@@ -67,8 +67,8 @@ class AdminController extends Controller
             $greetings = "Hi";
         }
         
-        dd($times);
-        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
+        // dd($times);
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
