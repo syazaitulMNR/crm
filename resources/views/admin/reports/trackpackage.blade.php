@@ -72,7 +72,6 @@
                 <thead>
                 <tr class="header">
                     <th>#</th>
-                    <th>Order ID</th>
                     <th>IC No.</th>
                     <th>Name</th>
                     <th>Payment (RM)</th>
