@@ -50,6 +50,7 @@
                         </div>
 
                         <div class="form-group row text-center">
+                            <div class="col-md-12">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -57,7 +58,9 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
+                            </div>
 
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -67,6 +70,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
                         </div>
                     </form>
                 </div>
