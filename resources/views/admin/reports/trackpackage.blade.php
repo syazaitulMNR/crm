@@ -81,7 +81,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($payment as $key => $payments)
+                @foreach ($payment as $payments)
                 @foreach ($student as $key => $students)    
                 @if ($product->product_id == $payments->product_id)  
                 @if ($payments->stud_id == $students->stud_id)
