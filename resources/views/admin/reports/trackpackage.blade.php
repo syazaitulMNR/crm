@@ -86,7 +86,7 @@
                 @if ($payments->stud_id == $students->stud_id)
                 @if ($product->product_id == $payments->product_id)  
                 <tr>
-                    <td>{{ $students->id }}</td>
+                    <td>{{ $students->stud_id }}</td>
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
