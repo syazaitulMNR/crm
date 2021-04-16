@@ -63,7 +63,7 @@
             <br>
 
             <!-- Search box ---------------------------------------------------------->
-            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter Order ID" title="Type in a name">
+            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter IC Number" title="Type in a name">
             
             <br>
             <!-- Show success payment in table ----------------------------------------------->
