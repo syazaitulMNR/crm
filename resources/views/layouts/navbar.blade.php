@@ -58,7 +58,7 @@
             <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        {{-- <form method="POST" action="{{ url('updateprofile') }}/{{ Auth::user()->user_id }}">
+        <form method="POST" action="{{ url('updateprofile') }}/{{ Auth::user()->user_id }}">
         @csrf
             <div class="modal-body">
 
@@ -83,7 +83,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
-        </form> --}}
+        </form>
     </div>
     </div>
 </div>
