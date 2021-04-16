@@ -148,5 +148,7 @@
     </div>
 </div>
 
+<div class="text-center py-3">
 MOMENTUM INTERNET (1079998-A) © 2020 ALL RIGHTS RESERVED​
+</div>
 @endsection
