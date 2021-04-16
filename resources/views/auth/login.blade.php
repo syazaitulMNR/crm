@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="form-group row text-center">
-                            <div class="row text-center">
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
