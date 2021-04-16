@@ -7,7 +7,7 @@
 <style>
 html {
         height: 100%;
-        background: rgb(233, 233, 233); /* fallback for old browsers */
+        background-color: rgb(233, 233, 233); /* fallback for old browsers */
         background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
     }
 </style>
