@@ -73,7 +73,8 @@
                 <tr class="header">
                     <th>#</th>
                     <th>Order ID</th>
-                    <th>Customer ID</th>
+                    {{-- <th>Customer ID</th> --}}
+                    <th>Name</th>
                     <th>Payment (RM)</th>
                     <th>Status</th>
                     <th>Purchase Date</th>
@@ -81,12 +82,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($payment as $key => $payments)    
+                @foreach ($payment as $key => $payments)
+                @foreach ($student as $key => $students)    
                 @if ($product->product_id == $payments->product_id)  
+                @if ($payments->stud_id == $students->stud_id)
                 <tr>
                     <td>{{ $payment->firstItem() + $key }}</td>
                     <td>{{ $payments->payment_id }}</td>
-                    <td>{{ $payments->stud_id }}</td>
+                    {{-- <td>{{ $payments->stud_id }}</td> --}}
                     <td>RM {{ $payments->totalprice }}</td>
                     <td>
                       @if ($payments->status == 'succeeded')
@@ -103,6 +106,8 @@
                     </td>
                 </tr>
                 @endif
+                @endif
+                @endforeach
                 @endforeach
                 </tbody>
             </table>  
