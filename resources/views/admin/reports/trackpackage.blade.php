@@ -73,7 +73,7 @@
                 <tr class="header">
                     <th>#</th>
                     <th>Order ID</th>
-                    {{-- <th>Customer ID</th> --}}
+                    <th>IC No.</th>
                     <th>Name</th>
                     <th>Payment (RM)</th>
                     <th>Status</th>
@@ -88,8 +88,7 @@
                 @if ($payments->stud_id == $students->stud_id)
                 <tr>
                     <td>{{ $student->firstItem() + $key }}</td>
-                    <td>{{ $payments->payment_id }}</td>
-                    {{-- <td>{{ $payments->stud_id }}</td> --}}
+                    <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
                     <td>
