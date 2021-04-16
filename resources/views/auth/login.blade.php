@@ -1,14 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 
 @section('title')
     Login
 @endsection
-
-<style>
-html {
-        background-color: rgb(88, 88, 88); /* fallback for old browsers */
-    }
-</style>
 
 @section('content')
 <div class="container py-5">
