@@ -56,13 +56,13 @@
             
             <br>
             <!-- Show success payment in table ----------------------------------------------->
-            @if(count($student) > 0)
+            @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
                     <th>#</th>
-                    <th>IC No.</th>
-                    <th>Name</th>
+                    <th>Order ID</th>
+                    <th>Customer ID</th>
                     <th>Payment (RM)</th>
                     <th>Status</th>
                     <th>Purchase Date</th>
@@ -70,14 +70,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($student as $key => $students)    
-                @foreach ($payment as $payments)
-                @if ($payments->stud_id == $students->stud_id)
+                @foreach ($payment as $key => $payments)    
                 @if ($product->product_id == $payments->product_id)  
                 <tr>
-                    <td>{{ $student->firstItem() + $key }}</td>
-                    <td>{{ $students->ic }}</td>
-                    <td>{{ $students->first_name }}</td>
+                    <td>{{ $payment->firstItem() + $key }}</td>
+                    <td>{{ $payments->payment_id }}</td>
+                    <td>{{ $payments->stud_id }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
                     <td>
                       @if ($payments->status == 'succeeded')
@@ -94,15 +92,13 @@
                     </td>
                 </tr>
                 @endif
-                @endif
-                @endforeach
                 @endforeach
                 </tbody>
             </table>  
             @else
             <p>There are no any payment yet.</p>
             @endif
-            <div class="float-right pt-3">{{$student->links()}}</div>   
+            <div class="float-right pt-3">{{$payment->links()}}</div>   
             
           </div>
           
