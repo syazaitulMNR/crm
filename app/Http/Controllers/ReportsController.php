@@ -51,7 +51,7 @@ class ReportsController extends Controller
 
     public function trackpackage($product_id)
     {
-        $payment = Payment::where('product_id', $product_id)->first();
+        $payment = Payment::where('product_id', $product_id)->get();
         // $paymentcancel = Payment::where('product_id', $product_id)->where('status','cancelled')->paginate(10);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
