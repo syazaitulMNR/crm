@@ -56,7 +56,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         // $student = Student::where('stud_id', $stud_id)->first();
-        $student = Student::orderBy('id','asc')->paginate(15);
+        $student = Student::orderBy('id','desc')->paginate(15);
 
         $counter = Student::count();
         $totalsuccess = Payment::where('status','succeeded')->where('product_id', $product_id)->count();
