@@ -51,18 +51,20 @@ class ReportsController extends Controller
 
     public function trackpackage($product_id)
     {
-        $payment = Payment::where('product_id', $product_id)->paginate(15);
+        $payment = Payment::where('product_id', $product_id)->get();
         // $paymentcancel = Payment::where('product_id', $product_id)->where('status','cancelled')->paginate(10);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         // $student = Student::where('stud_id', $stud_id)->first();
+        $student = Student::orderBy('id','asc')->paginate(15);
 
         $counter = Student::count();
         $totalsuccess = Payment::where('status','succeeded')->where('product_id', $product_id)->count();
         $totalcancel = Payment::where('status','cancelled')->where('product_id', $product_id)->count();
         // $count_package = Payment::where('product_id', $product_id)->count();
         
-        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'counter', 'totalsuccess', 'totalcancel'));
+        // dd($student);
+        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel'));
     }
 
     public function viewbypackage($product_id, $package_id)
