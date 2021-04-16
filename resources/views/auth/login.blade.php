@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="col-md-12 py-1">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     <i class="fas fa-sign-in-alt pr-1"></i> {{ __('Login') }}
                                 </button>
                             </div>
