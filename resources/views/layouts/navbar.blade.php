@@ -27,7 +27,11 @@
                     <li class="nav-item">
                       <a class="dropdown-item" href="/dashboard"><i class="fas fa-home pr-3"></i> Dashboard</a>
                     </li>
-                    
+                    <li class="nav-item">
+                        {{-- <a class="dropdown-item" href="/manageprofile"><i class="fas fa-address-card pr-3"></i> Manage Profile</a> --}}
+                        <!-- Button trigger modal -->
+                        <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#passwordModal"><i class="fas fa-address-card pr-3"></i> Change Password</a>
+                    </li>
                     <div class="dropdown-divider"></div>
                     <li class="nav-item">
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -54,32 +58,32 @@
             <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-            {{-- <form method="POST" action="{{ url('updateprofile') }}/{{ Auth::user()->user_id }}">
-            @csrf
-                <div class="modal-body">
+        <form method="POST" action="{{ url('updateprofile') }}/{{ Auth::user()->user_id }}">
+        @csrf
+            <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ Auth::user()->password }}" required autocomplete="new-password">
-            
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password-confirm">Confirm Password</label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ Auth::user()->password }}" required autocomplete="new-password">
-                    </div>
-                        
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ Auth::user()->password }}" required autocomplete="new-password">
+        
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                
+                <div class="form-group">
+                    <label for="password-confirm">Confirm Password</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ Auth::user()->password }}" required autocomplete="new-password">
                 </div>
-            </form> --}}
+                      
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
     </div>
     </div>
 </div>
