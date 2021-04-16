@@ -60,7 +60,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 py-1">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
