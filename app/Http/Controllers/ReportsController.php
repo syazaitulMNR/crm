@@ -63,8 +63,8 @@ class ReportsController extends Controller
         $totalcancel = Payment::where('status','cancelled')->where('product_id', $product_id)->count();
         // $count_package = Payment::where('product_id', $product_id)->count();
         
-        dd($student);
-        // return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel'));
+        // dd($student);
+        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel'));
     }
 
     public function viewbypackage($product_id, $package_id)
