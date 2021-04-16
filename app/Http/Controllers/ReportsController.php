@@ -54,7 +54,6 @@ class ReportsController extends Controller
         $payment = Payment::where('product_id', $product_id)->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-        // $student = Student::where('stud_id', $stud_id)->first();
         $student = Student::orderBy('id','desc')->paginate(15);
 
         $counter = Student::count();
@@ -68,15 +67,16 @@ class ReportsController extends Controller
 
     public function viewbypackage($product_id, $package_id)
     {
-        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
+        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->paginate(15);
 
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalsuccess = Payment::where('status','succeeded')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalcancel = Payment::where('status','cancelled')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'total', 'totalsuccess', 'totalcancel'));
+        return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel'));
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
