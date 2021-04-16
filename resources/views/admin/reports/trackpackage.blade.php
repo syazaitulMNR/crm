@@ -81,12 +81,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($student as $key => $students)    
+                @foreach ($student as $students)    
                 @foreach ($payment as $payments)
                 @if ($payments->stud_id == $students->stud_id)
                 @if ($product->product_id == $payments->product_id)  
                 <tr>
-                    <td>{{ $student->firstItem() + $key }}</td>
+                    <td>{{ $students->id }}</td>
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
