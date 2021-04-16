@@ -6,9 +6,7 @@
 
 <style>
 html {
-        height: 100%;
         background-color: rgb(88, 88, 88); /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
     }
 </style>
 
