@@ -4,6 +4,12 @@
     Login
 @endsection
 
+<style>
+html {
+        background: rgb(233, 233, 233); /* fallback for old browsers */
+    }
+</style>
+
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
