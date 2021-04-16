@@ -63,7 +63,7 @@
             <br>
 
             <!-- Search box ---------------------------------------------------------->
-            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter IC Number" title="Type in a name">
+            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter Order ID" title="Type in a name">
             
             <br>
             <!-- Show success payment in table ----------------------------------------------->
@@ -81,12 +81,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($student as $students)    
+                @foreach ($student as $key => $students)    
                 @foreach ($payment as $payments)
                 @if ($payments->stud_id == $students->stud_id)
                 @if ($product->product_id == $payments->product_id)  
                 <tr>
-                    <td>{{ $students->stud_id }}</td>
+                    <td>{{ $student->firstItem() + $key }}</td>
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
