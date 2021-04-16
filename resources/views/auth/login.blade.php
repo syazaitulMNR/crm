@@ -7,7 +7,9 @@
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8"><div class="col-md-12 px-3 py-5 text-center">
+            <img src="/assets/images/logo.png" style="max-width:200px">
+        </div>
             <div class="card text-center">
                 <div class="card-header text-white bg-dark">
                     {{ __('Login') }}
