@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="text-center pb-3">
-                <img src="/assets/images/logo.png" style="max-width:200px">
+                <img src="/assets/images/logo.png" style="max-width:100px">
                 <h1 class="text-dark px-4 pt-3">Momentum Internet Management System (MIMS)</h1>
             </div>
 
