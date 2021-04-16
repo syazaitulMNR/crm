@@ -27,11 +27,7 @@
                     <li class="nav-item">
                       <a class="dropdown-item" href="/dashboard"><i class="fas fa-home pr-3"></i> Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                        {{-- <a class="dropdown-item" href="/manageprofile"><i class="fas fa-address-card pr-3"></i> Manage Profile</a> --}}
-                        <!-- Button trigger modal -->
-                        <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#passwordModal"><i class="fas fa-address-card pr-3"></i> Change Password</a>
-                    </li>
+                    
                     <div class="dropdown-divider"></div>
                     <li class="nav-item">
                         <a class="dropdown-item" href="{{ route('logout') }}"
