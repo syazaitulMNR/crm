@@ -8,9 +8,9 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="text-center pb-3">
+            <div class="col-md-7 text-center pb-3">
                 <img src="/assets/images/logo.png" style="max-width:150px">
-                <h2 class="col-md-6 text-dark py-3">Momentum Internet Management System (MIMS)</h2>
+                <h2 class="text-dark py-3">Momentum Internet Management System (MIMS)</h2>
             </div>
 
             <div class="card text-center">
