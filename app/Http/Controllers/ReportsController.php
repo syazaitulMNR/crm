@@ -111,7 +111,7 @@ class ReportsController extends Controller
         $payment = Payment::where('product_id', $product_id)->get();
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->get();
+        $package = Package::where('product_id', $product_id)->first();
 
         return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
 
