@@ -11,7 +11,7 @@ class ProgramExport implements FromView
 {
     use Exportable;
 
-    private $payment  = [], $students = [], $package = []
+    private $payment  = [], $students = [], $package = [];
 
     public function __construct($payment_list, $student_list){
         $this->payment = $payment_list;
