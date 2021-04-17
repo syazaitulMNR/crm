@@ -912,7 +912,9 @@ class HomeController extends Controller
     public function mail()
     {
         $user = 'zarina4.11@gmail.com';
-        Mail::send('test', $user, function($message) use ($user) {
+
+        $email = new \SendGrid\Mail\Mail();
+        $email->send('test', $user, function($message) use ($user) {
             $message->to($user);
             $message->subject('Sendgrid Testing');
         });
