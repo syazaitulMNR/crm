@@ -8,12 +8,12 @@
 </tr>
 </thead>
 <tbody>
-@foreach($errors as $key=>$error)
+@foreach($payment as $key=>$payments)
     <tr>
-        <td>{{ $error[0]}}</td>
-        <td>{{ $error[1]}}</td>
-        <td>{{ $error[2]}}</td>
-        <td>{{ $error[3]}}</td>
+        <td>{{ $payments[0]}}</td>
+        <td>{{ $payments[1]}}</td>
+        <td>{{ $payments[2]}}</td>
+        <td>{{ $payments[3]}}</td>
     </tr>
 @endforeach
 </tbody>
