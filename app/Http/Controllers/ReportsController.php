@@ -116,8 +116,8 @@ class ReportsController extends Controller
         );
         
 
-        dd($query);
-        // return Excel::download(new ProgramExport($payment, $product, $package, $student), 'Students.xlsx');
+        // dd($query);
+        return Excel::download(new ProgramExport($query), 'Students.xlsx');
         // return Excel::download(new ProgramExport, 'Students.xlsx');
 
         // Manage email (for existed ic in looping form) 

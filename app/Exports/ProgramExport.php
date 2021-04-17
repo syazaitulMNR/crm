@@ -23,24 +23,16 @@ class ProgramExport implements FromView
 
     use Exportable;
 
-    private $data  = [];
+    private $errors  = [];
 
-    public function __construct($data_list){
-        $this->data = $data_list;
-
-        // $this->name = $name;
-        // $this->package = $package;
-        // $this->product = $product;
-        // $this->date_from = $date_from;
-        // $this->date_to = $date_to;
-        // $this->time_from = $time_from;
-        // $this->time_to = $time_to;
+    public function __construct($error_list){
+        $this->errors = $error_list;
     }
 
     public function view(): View
     {
-        return view('admin.reports.trackpackage', [
-            'data' => $this->data,
+        return view('admin.reports.testExcel', [
+            'errors' => $this->errors,
         ]);
     }
 }
