@@ -915,9 +915,9 @@ class HomeController extends Controller
         // $from_name = 'noreply@momentuminternet.com';
         $email_pkg2 = 'zarina4.11@gmail.com'; 
         
-        $name = 'Nurzarinah Zakaria'; 
-        $products = 'STORM';
-        $package = 'General';
+        $name = 'noreply'; 
+        $products = 'product';
+        $package = 'package';
         $date_from = '1-1-2021';
         $date_to = '2-2-2021';
         $time_from = '04:21AM';
