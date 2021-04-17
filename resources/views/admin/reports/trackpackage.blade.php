@@ -30,7 +30,7 @@
     transform: rotate(-44deg);
   }
 
-  .unlink {
+  a .unlink {
     text-decoration: none; /* no underline */
   }
 
