@@ -38,8 +38,14 @@ class ReportsController extends Controller
 
     public function trackprogram()
     {
+        $q = Input::get('search');
+        $product = Product::where('ic', 'LIKE', '%' . $q . '%')
+        ->orWhere('first_name', 'LIKE', '%' . $q . '%')
+        ->paginate(15);
+        $product->appends(['search' => $q]);
+
         $student = Student::orderBy('id','desc')->get();
-        $product = Product::orderBy('id','asc')->paginate(15);
+        // $product = Product::orderBy('id','asc')->paginate(15);
         $package = Package::orderBy('id','asc')->get();
         $payment = Payment::orderBy('id','asc')->get(); 
 
