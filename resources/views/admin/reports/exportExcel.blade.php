@@ -16,11 +16,11 @@
 </tr>
 </thead>
 <tbody>
-@foreach ($student as $students) 
+@foreach($student as $students) 
 @foreach($payment as $payments)
 @foreach($package as $packages)
 @if ($payments->stud_id == $students->stud_id)
-@if ($package->package_id == $payments->package_id)
+@if ($payments->package_id == $packages->package_id)
     <tr>
         <td>{{ $students->stud_id }}</td>
         <td>{{ $students->first_name }}</td>
