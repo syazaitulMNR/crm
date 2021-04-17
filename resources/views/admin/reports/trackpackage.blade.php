@@ -54,7 +54,7 @@
             <div class="row">
               @foreach ($package as $packages)
               <div class="col-md-4">
-                <a class="btn bg-dark btn-lg text-white text-center" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}">
+                <a class="btn bg-dark btn-lg text-white text-center" style="width: 30%" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}">
                   <h6 class="pt-3 pb-2">{{$packages->name}}</h6>
                 </a>
               </div>
