@@ -31,7 +31,7 @@
                       <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
                         <tbody>
                           <tr>
-                          {{-- <td> <a href="https://www.research.net/r/stormapr2021" class="btn btn-primary py-3 px-4">Sertai Kelas</a> </td> --}}
+                          <td> <a href="https://www.research.net/r/stormapr2021" class="btn btn-primary py-3 px-4">Sertai Kelas</a> </td>
                           </tr>
                         </tbody>
                       </table>
@@ -41,17 +41,18 @@
                 <table style="border: none; cellpadding: 0; cellspacing: 0;">
                   <tr>
                       <td>
-                          {{-- <p>Peserta juga boleh klik atau copy link di bawah ke browser yang ingin digunakan <br>
-                            https://www.research.net/r/stormapr2021</p> --}}
+                          <p>Peserta juga boleh klik atau copy link di bawah ke browser yang ingin digunakan <br>
+                            https://www.research.net/r/stormapr2021</p>
                       </td>
                   </tr>
                   
                 </table>
-                {{-- @if($package == "General")
+                @if($package == "General")
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                     <tr>
                       <td>
                         <p>Jika anda berminat untuk upgrade pakej, sila pilih pakej di bawah.</p>
+                        {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
                       </td>
                     </tr>
                     <tr>
@@ -74,6 +75,7 @@
                     <tr>
                       <td>
                         <p>Jika anda berminat untuk upgrade pakej, sila pilih pakej di bawah.</p>
+                        {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
                       </td>
                     </tr>
                     <tr>
@@ -92,14 +94,14 @@
                   </table>
                 @elseif($package == "VIP")
                 @else
-                @endif --}}
+                @endif
                 <table style="border: none; cellpadding: 0; cellspacing: 0;">
                   
                   <tr>
                     <td>Terima Kasih.
                       <br><br>
                         Salam Kejayaan,<br>
-                        <b>Noreply.</b>
+                        <b>Team Momentum.</b>
                     </td>
                   </tr>
                   
@@ -125,7 +127,7 @@
               </tr> --}}
               <tr>
                 <td class="content-block powered-by">
-                  {{-- MOMENTUM INTERNET (1079998-A) © 2020 ALL RIGHTS RESERVED​ --}}
+                  MOMENTUM INTERNET (1079998-A) © 2020 ALL RIGHTS RESERVED​
                 </td>
               </tr>
             </table>

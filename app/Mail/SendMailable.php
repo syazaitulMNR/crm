@@ -37,8 +37,8 @@ class SendMailable extends Mailable
     public function build()
     {        
         return $this->view('emails.zoom_link')
-        ->from('noreply@noreply.com', 'noreply')
-        ->subject('noreply')
+        ->from('noreply@momentuminternet.com', 'noreply')
+        ->subject('TAHNIAH! KEMASKINI TELAH BERJAYA')
         ->with(
             [
                   'name' => $this->name,

@@ -882,7 +882,7 @@ class HomeController extends Controller
         return view('customer/thankyou_update');
     }
 
-    public function trycustomemail()
+    public function try()
     {
         $apikey = env('MAIL_PASSWORD');
         $sendgrid = new \SendGrid($apikey);
@@ -906,7 +906,7 @@ class HomeController extends Controller
 
         }
     }
-    public function try()
+    public function tryemail()
     {
         // Manage email (for new ic in single form)                    
         $product = 'PRD003';
