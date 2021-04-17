@@ -882,7 +882,7 @@ class HomeController extends Controller
         return view('customer/thankyou_update');
     }
 
-    public function try()
+    public function trycustomemail()
     {
         $apikey = env('MAIL_PASSWORD');
         $sendgrid = new \SendGrid($apikey);
@@ -905,6 +905,25 @@ class HomeController extends Controller
             echo 'Caught exception: '. $e->getMessage() ."\n";
 
         }
+    }
+    public function try()
+    {
+        // Manage email (for new ic in single form)                    
+        $product = 'PRD003';
+        $package = 'PKD007';
+
+        // $from_name = 'noreply@momentuminternet.com';
+        $email_pkg2 = 'zarina4.11@gmail.com'; 
+        
+        $name = 'Nurzarinah Zakaria'; 
+        $products = 'STORM';
+        $package = 'General';
+        $date_from = '1-1-2021';
+        $date_to = '2-2-2021';
+        $time_from = '04:21AM';
+        $time_to = '05:21AM';
+        
+        Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
     }
 }
 
