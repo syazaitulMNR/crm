@@ -18,8 +18,8 @@
 <tbody>
 @foreach ($student as $students) 
 @foreach($payment as $payments)
-@foreach($package as $packages)
 @if ($payments->stud_id == $students->stud_id)
+@if ($payments->package_id == $package->package_id)
     <tr>
         <td>{{ $students->stud_id }}</td>
         <td>{{ $students->first_name }}</td>
@@ -31,10 +31,9 @@
         <td>{{ $payments->totalprice }}</td>
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
-        <td>{{ $packages->name }}</td>
+        <td>{{ $package->name }}</td>
     </tr>
 @endif
-@endforeach
 @endforeach
 @endforeach
 </tbody>
