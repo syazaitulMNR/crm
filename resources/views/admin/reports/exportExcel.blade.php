@@ -7,7 +7,11 @@
     <th>IC Number</th>
     <th>Phone No</th>
     <th>Email</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
     <th>Payment Status</th>
+    <th>Payment Method</th>
+    <th>Product ID</th>
 
 </tr>
 </thead>
@@ -17,12 +21,16 @@
 @if ($payments->stud_id == $students->stud_id)
     <tr>
         <td>{{ $students->stud_id }}</td>
-        <td>{{ $payments->payment_id }}</td>
+        <td>{{ $students->first_name }}</td>
+        <td>{{ $students->last_name }}</td>
+        <td>{{ $students->ic }}</td>
+        <td>{{ $students->phoneno }}</td>
+        <td>{{ $students->email }}</td>
         <td>{{ $payments->quantity }}</td>
-        <td>{{ $payments->status }}</td>
         <td>{{ $payments->totalprice }}</td>
-        <td>{{ $payments->product_id }}</td>
+        <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
+        <td>{{ $payments->product_id }}</td>
     </tr>
 @endif
 @endforeach
