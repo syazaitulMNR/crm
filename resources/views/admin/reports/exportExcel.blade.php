@@ -32,7 +32,7 @@
         <td>{{ $payments->totalprice }}</td>
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
-        <td>{{ $package->name }}</td>
+        <td>{{ $packages->name }}</td>
     </tr>
 @endif
 @endif
