@@ -36,9 +36,9 @@ class ReportsController extends Controller
         return view('admin.reports.trackcustomer', compact('student','product','totalcust','totalpay'));
     }
 
-    public function trackprogram()
+    public function trackprogram(Request $request)
     {
-        $q = Request::get('search');
+        $q = $request->search;
         $product = Product::where('ic', 'LIKE', '%' . $q . '%')
         ->orWhere('first_name', 'LIKE', '%' . $q . '%')
         ->paginate(15);
