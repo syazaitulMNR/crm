@@ -12,16 +12,18 @@ class ProgramExport implements FromView
 {
     use Exportable;
 
-    private $payment  = [];
+    private $payment  = [], $students = [];
 
-    public function __construct($payment_list){
+    public function __construct($payment_list, $student_list){
         $this->payment = $payment_list;
+        $this->student = $student_list;
     }
 
     public function view(): View
     {
         return view('admin.reports.exportExcel', [
             'payment' => $this->payment,
+            'student' => $this->student,
         ]);
     }
 
