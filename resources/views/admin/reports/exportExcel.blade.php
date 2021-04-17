@@ -11,7 +11,7 @@
     <th>Total Price</th>
     <th>Payment Status</th>
     <th>Payment Method</th>
-    <th>Product ID</th>
+    <th>Event Name</th>
 
 </tr>
 </thead>
@@ -30,7 +30,8 @@
         <td>{{ $payments->totalprice }}</td>
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
-        <td>{{ $payments->product_id }}</td>
+        <td>{{ $product->name }}</td>
+        <td>{{ $product->name }}</td>
     </tr>
 @endif
 @endforeach
