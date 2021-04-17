@@ -163,7 +163,7 @@ class ExistCustomerController extends Controller
 
         /*-- Stripe ---------------------------------------------------------*/
         //Make Payment
-        $stripe = Stripe\Stripe::setApiKey('sk_live_B9VWddnqzpICNS9gsPBI4jSc00v60OUVak');
+        $stripe = Stripe\Stripe::setApiKey('sk_test_3hkk4U4iBvTAO5Y5yV9YisD600VdfR6nrR');
 
         try {
 
@@ -216,41 +216,41 @@ class ExistCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
-        // $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
 
-        // $to_name = 'noreply@momentuminternet.com';
-        // $to_email = $student->email; 
+        $to_name = 'noreply@momentuminternet.com';
+        $to_email = $student->email; 
         
-        // $data['name']=$student->first_name;
-        // $data['ic']=$student->ic;
-        // $data['email']=$student->email;
-        // $data['phoneno']=$student->phoneno;
-        // $data['total']=$payment->item_total;
-        // $data['quantity']=$payment->quantity;
+        $data['name']=$student->first_name;
+        $data['ic']=$student->ic;
+        $data['email']=$student->email;
+        $data['phoneno']=$student->phoneno;
+        $data['total']=$payment->item_total;
+        $data['quantity']=$payment->quantity;
 
-        // $data['product']=$product->name;
-        // $data['package_id']=$package->package_id;
-        // $data['package']=$package->name;
-        // $data['price']=$package->price;
+        $data['product']=$product->name;
+        $data['package_id']=$package->package_id;
+        $data['package']=$package->name;
+        $data['price']=$package->price;
 
-        // $data['date_receive']=date('d-m-Y');
-        // $data['payment_id']=$payment->payment_id;
-        // $data['product_id']=$product->product_id;        
-        // $data['student_id']=$student->stud_id;
+        $data['date_receive']=date('d-m-Y');
+        $data['payment_id']=$payment->payment_id;
+        $data['product_id']=$product->product_id;        
+        $data['student_id']=$student->stud_id;
           
-        // // $invoice = PDF::loadView('emails.invoice', $data);
-        // // $receipt = PDF::loadView('emails.receipt', $data);
+        // $invoice = PDF::loadView('emails.invoice', $data);
+        // $receipt = PDF::loadView('emails.receipt', $data);
 
-        // // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $invoice, $receipt)
-        // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
-        // {
-        //     $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
-        //     $message->from('noreply@momentuminternet.my','noreply');
-        //     // $message->attachData($invoice->output(), "Invoice.pdf");
-        //     // $message->attachData($receipt->output(), "Receipt.pdf");
+        // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $invoice, $receipt)
+        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
+        {
+            $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
+            $message->from('noreply@momentuminternet.my','noreply');
+            // $message->attachData($invoice->output(), "Invoice.pdf");
+            // $message->attachData($receipt->output(), "Receipt.pdf");
 
-        // });
+        });
         /*-- End Email -----------------------------------------------------------*/
 
         $student->save();
