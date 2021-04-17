@@ -30,6 +30,10 @@
     transform: rotate(-44deg);
   }
 
+  .unlink {
+    text-decoration: none; /* no underline */
+  }
+
   
 </style>
 
@@ -54,7 +58,7 @@
             <div class="row">
               @foreach ($package as $packages)
               <div class="col-md-4">
-                <a type="button" class="card bg-dark text-white text-center" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}">
+                <a class="card bg-dark text-white text-center unlink" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}">
                   <h6 class="pt-3 pb-2">{{$packages->name}}</h6>
                 </a>
               </div>
