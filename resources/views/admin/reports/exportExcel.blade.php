@@ -11,7 +11,7 @@
     <th>Total Price</th>
     <th>Payment Status</th>
     <th>Payment Method</th>
-    {{-- <th>Package</th> --}}
+    <th>Package</th>
 
 </tr>
 </thead>
@@ -32,11 +32,11 @@
         <td>{{ $payments->totalprice }}</td>
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
-        {{-- <td>{{ $package->name }}</td> --}}
+        <td>{{ $package->name }}</td>
     </tr>
-{{-- @endif --}}
 @endif
-{{-- @endforeach --}}
+@endif
+@endforeach
 @endforeach
 @endforeach
 </tbody>
