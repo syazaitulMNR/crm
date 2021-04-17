@@ -23,7 +23,8 @@
       <div class="col-md-12 "> 
           
         <!-- Search box ---------------------------------------------------------->
-        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
+        {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name"> --}}
+        <input id="search" name="term" type="text" placeholder="Enter Keywords" />
         
         <div class="float-right pt-3">{{$product->links()}}</div>
         <br>
@@ -82,6 +83,8 @@
 </div>
 
 <!-- Enable function for search data ------------------------------------->
+<link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
   function myFunction() 
   {
