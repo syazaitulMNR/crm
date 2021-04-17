@@ -108,33 +108,13 @@ class ReportsController extends Controller
 
     public function exportProgram($product_id)
     {
-        $errors = array(
-            $payment = Payment::where('product_id', $product_id)->get(),
-            $product = Product::where('product_id', $product_id)->first(),
-            $package = Package::where('product_id', $product_id)->get(),
-            $student = Student::orderBy('id','desc')->get()
-        );
-        
-
-        // dd($query);
-        return Excel::download(new ProgramExport($errors), 'Students.xlsx');
-        // return Excel::download(new ProgramExport, 'Students.xlsx');
-
-        // Manage email (for existed ic in looping form) 
+        $payment = Payment::where('product_id', $product_id)->get();
         // $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
+        // $package = Package::where('product_id', $product_id)->get();
+        // $student = Student::orderBy('id','desc')->get();
 
-        // $from_name = 'noreply@momentuminternet.com';
-        // $email_participant1 = $request->email_peserta[$key]; 
-        
-        // $name = $request->firstname_peserta[$key]; 
-        // $products = $product->name;
-        // $package = $package->name;
-        // $date_from = $product->date_from;
-        // $date_to = $product->date_to;
-        // $time_from = $product->time_from;
-        // $time_to = $product->time_to;
-        
-        // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+        // dd($product);
+        return Excel::download(new ProgramExport, 'Students.xlsx');
+        // return Excel::download(new ProgramExport, 'Students.xlsx');
     }
 }
