@@ -194,5 +194,6 @@ Route::get('exceedlimit','HomeController@participant_form');
 Route::get('products/{product_id}/{package_id}', 'NewRegisterController@index')->name('products.index');
 
 
-
+//---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');
+Route::get('mail', 'HomeController@mail');
