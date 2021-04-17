@@ -114,7 +114,7 @@ class ReportsController extends Controller
         // $student = Student::orderBy('id','desc')->get();
 
         // dd($product);
-        return Excel::download(new ProgramExport($product_id), 'Students.xlsx');
+        return Excel::download(new ProgramExport($payment), 'Students.xlsx');
         // return Excel::download(new ProgramExport, 'Students.xlsx');
     }
 }

@@ -10,8 +10,8 @@ class ProgramExport implements FromCollection
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection($product_id)
+    public function collection($payment)
     {
-        return Payment::where('product_id', $product_id)->get();
+        return Payment::where('product_id', $payment)->get();
     }
 }
