@@ -113,7 +113,7 @@ class ReportsController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         $student = Student::orderBy('id','desc')->get();
 
-        dd($student);
+        dd($package);
         // return Excel::download(new ProgramExport($query), 'Students.xlsx');
         // return Excel::download(new ProgramExport, 'Students.xlsx');
     }
