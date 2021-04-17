@@ -13,15 +13,15 @@ class InvoiceSendEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $name, $ic, $email, $phoneno, $total, $quantity, $package_id, $package, $price, $date_receive, $payment_id, $product_id, $student_id;
+    public $first_name, $ic, $email, $phoneno, $total, $quantity, $package_id, $package, $price, $date_receive, $payment_id, $product_id, $student_id;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $ic, $email, $phoneno, $total, $quantity, $package_id, $package, $price, $date_receive, $payment_id, $product_id, $student_id)
+    public function __construct($first_name, $ic, $email, $phoneno, $total, $quantity, $package_id, $package, $price, $date_receive, $payment_id, $product_id, $student_id)
     {
-        $this->name = $name;
+        $this->first_name = $first_name;
         $this->ic = $ic;
         $this->email = $email;
         $this->phoneno = $phoneno;
@@ -47,7 +47,7 @@ class InvoiceSendEmail extends Mailable
         ->subject('Pengesahan Pembelian')
         ->with(
             [
-                'name' => $this->name,
+                'first_name' => $this->first_name,
                 'ic' => $this->ic,
                 'email' => $this->email,
                 'phoneno' => $this->phoneno,
