@@ -106,8 +106,15 @@ class ReportsController extends Controller
         return redirect('viewpayment/'.$product_id.'/'.$package_id.'/'.$payment_id.'/'.$student_id)->with('updatesuccess','Payment Status Successfully Updated!');
     }
 
-    public function exportProgram()
+    public function exportProgram($product_id)
     {
-        return Excel::download(new ProgramExport, 'Students.xlsx');
+        $payment = Payment::where('product_id', $product_id)->get();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->get();
+        $student = Student::orderBy('id','desc')->get();
+
+        dd($student);
+        // return Excel::download(new ProgramExport($query), 'Students.xlsx');
+        // return Excel::download(new ProgramExport, 'Students.xlsx');
     }
 }
