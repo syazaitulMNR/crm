@@ -115,14 +115,4 @@ class ReportsController extends Controller
 
         return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
     }
-
-    public function livesearch(Request $request){
-        $term = $request->get('term');
-        $data = Student::where("ic","LIKE","%$term%")->get();
-        foreach ($data as $result)
-        {
-            $results[] = ['value' => $result->ic, 'link' => 'posts/'.$result->slug];
-        }
-        return response()->json($results);       
-    }
 }
