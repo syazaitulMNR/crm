@@ -34,6 +34,7 @@
         <td>{{ $package->name }}</td>
     </tr>
 @endif
+@endif
 @endforeach
 @endforeach
 </tbody>
