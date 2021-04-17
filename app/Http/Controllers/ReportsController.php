@@ -108,7 +108,7 @@ class ReportsController extends Controller
 
     public function exportProgram($product_id)
     {
-        $query = array(
+        $errors = array(
             $payment = Payment::where('product_id', $product_id)->get(),
             $product = Product::where('product_id', $product_id)->first(),
             $package = Package::where('product_id', $product_id)->get(),
@@ -117,7 +117,7 @@ class ReportsController extends Controller
         
 
         // dd($query);
-        return Excel::download(new ProgramExport($query), 'Students.xlsx');
+        return Excel::download(new ProgramExport($errors), 'Students.xlsx');
         // return Excel::download(new ProgramExport, 'Students.xlsx');
 
         // Manage email (for existed ic in looping form) 
