@@ -36,7 +36,7 @@
     </tr>
 {{-- @endif --}}
 @endif
-@endforeach
+{{-- @endforeach --}}
 @endforeach
 @endforeach
 </tbody>
