@@ -108,7 +108,7 @@ class ReportsController extends Controller
 
     public function exportProgram($product_id)
     {
-        $payment = Payment::where('product_id', $product_id)->first();
+        $payment = Payment::where('product_id', $product_id)->get();
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('product_id', $product_id)->first();
