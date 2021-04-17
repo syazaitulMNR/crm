@@ -121,7 +121,7 @@ Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbypackage');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
-Route::get('exportProgram', 'ReportsController@exportProgram');
+Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 
 
 //---------------------------------------------- Customer Part -------------------------------------------------//
