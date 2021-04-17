@@ -74,7 +74,7 @@
                     <th>#</th>
                     <th>IC No.</th>
                     <th>Name</th>
-                    <th>Payment (RM)</th>
+                    {{-- <th>Payment (RM)</th> --}}
                     <th>Status</th>
                     <th>Purchase Date</th>
                     <th><i class="fas fa-cogs"></i></th>
@@ -89,7 +89,7 @@
                     <td>{{ $students->stud_id }}</td>
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }}</td>
-                    <td>RM {{ $payments->totalprice }}</td>
+                    {{-- <td>RM {{ $payments->totalprice }}</td> --}}
                     <td>
                       @if ($payments->status == 'succeeded')
                         <span class="badge rounded-pill bg-success">{{ $payments->status }}</span>
