@@ -10,6 +10,21 @@ use Maatwebsite\Excel\Concerns\Exportable;
 
 class ProgramExport implements FromView
 {
+    use Exportable;
+
+    private $payment  = [];
+
+    public function __construct($payment_list){
+        $this->payment = $payment_list;
+    }
+
+    public function view(): View
+    {
+        return view('admin.reports.exportExcel', [
+            'payment' => $this->payment,
+        ]);
+    }
+
     // /**
     // * @return \Illuminate\Support\Collection
     // */
@@ -23,19 +38,5 @@ class ProgramExport implements FromView
         
     // }
 
-    use Exportable;
-
-    private $payment  = [];
-
-    public function __construct($payment_list){
-        $this->payment = $payment_list;
-    }
-
-    public function view(): View
-    {
-        return view('admin.reports.testExcel', [
-            'payment' => $this->payment,
-        ]);
-    }
 }
 
