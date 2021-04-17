@@ -11,7 +11,7 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
 
-class ProgramExport implements FromCollection
+class ProgramExport implements FromView
 {
     // /**
     // * @return \Illuminate\Support\Collection
@@ -27,6 +27,14 @@ class ProgramExport implements FromCollection
 
     public function __construct($data_list){
         $this->data = $data_list;
+
+        // $this->name = $name;
+        // $this->package = $package;
+        // $this->product = $product;
+        // $this->date_from = $date_from;
+        // $this->date_to = $date_to;
+        // $this->time_from = $time_from;
+        // $this->time_to = $time_to;
     }
 
     public function view(): View
