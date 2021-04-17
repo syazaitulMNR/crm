@@ -19,7 +19,7 @@
 @foreach ($student as $students) 
 @foreach($payment as $payments)
 @if ($payments->stud_id == $students->stud_id)
-@if ($payments->package_id == $package->package_id)
+@if ($payments->product_id == $package->product_id)
     <tr>
         <td>{{ $students->stud_id }}</td>
         <td>{{ $students->first_name }}</td>
