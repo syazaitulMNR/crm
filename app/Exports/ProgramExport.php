@@ -13,7 +13,7 @@ class ProgramExport implements FromView
 
     private $payment  = [], $students = [], $package = [];
 
-    public function __construct($payment_list, $student_list){
+    public function __construct($payment_list, $student_list, $package_list){
         $this->payment = $payment_list;
         $this->student = $student_list;
         $this->package = $package_list;
