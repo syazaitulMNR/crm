@@ -11,14 +11,14 @@
     <th>Total Price</th>
     <th>Payment Status</th>
     <th>Payment Method</th>
-    <th>Event Name</th>
+    <th>Package</th>
 
 </tr>
 </thead>
 <tbody>
-@foreach ($student as $students) 
+@foreach ($student as $students)
+@foreach($package as $packages) 
 @foreach($payment as $payments)
-@foreach($package as $packages)
 @if ($payments->product_id == $packages->product_id)
 @if ($payments->stud_id == $students->stud_id)
     <tr>
