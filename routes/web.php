@@ -196,4 +196,4 @@ Route::get('products/{product_id}/{package_id}', 'NewRegisterController@index')-
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');
-Route::get('email', 'HomeController@tryemail');
+Route::get('sendmail', 'HomeController@tryemail');
