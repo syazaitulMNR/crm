@@ -923,7 +923,7 @@ class HomeController extends Controller
         $time_from = '04:21AM';
         $time_to = '05:21AM';
         
-        Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+        \SendGrid\Mail\Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
     }
 }
 
