@@ -23,8 +23,7 @@
       <div class="col-md-12 "> 
           
         <!-- Search box ---------------------------------------------------------->
-        {{-- <input type="text" id="myInput" name="search" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name"> --}}
-        <input type="text" name="search" class="form-control" placeholder="Please Enter Event Name" title="Type in a name">
+        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
         
         <div class="float-right pt-3">{{$product->links()}}</div>
         <br>
