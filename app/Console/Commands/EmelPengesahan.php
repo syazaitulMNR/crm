@@ -40,27 +40,28 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        $words = [
-            'aberration' => 'a state or condition markedly different from the norm',
-            'convivial' => 'occupied with or fond of the pleasures of good company',
-            'diaphanous' => 'so thin as to transmit light',
-            'elegy' => 'a mournful poem; a lament for the dead',
-            'ostensible' => 'appearing as such but not necessarily so'
-        ];
-         
-        // Finding a random word
-        $key = array_rand($words);
-        $value = $words[$key];
-         
-        $users = Student::where('stud_id', $stud_id)->first();
+        $apikey = env('MAIL_PASSWORD');
+        $sendgrid = new \SendGrid($apikey);
+            
+        $email = new \SendGrid\Mail\Mail(); 
+        $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
+        $email->setSubject("DANIAL LIHAT EMEL INI SEKARANG!");
+        $email->addTo("zarina4.11@gmail.com", "Danial Sangat Hensem");
+        $email->addContent("text/html", "Danial sangatlah hensem sangat, terima kasih!");
+                
+        try {
+
+            $response = $sendgrid->send($email);
+            //print $response->statusCode() . "\n";
+            //print_r($response->headers());
+            //print $response->body() . "\n";
+
+        } catch (Exception $e) {
+
+            echo 'Caught exception: '. $e->getMessage() ."\n";
+
+        }
         
-        Mail::raw("{$key} -> {$value}", function ($mail) use ($user) {
-            $mail->from('info@tutsforweb.com');
-            $mail->to($user->email)
-                ->subject('Word of the Day');
-        });
-        
-         
         $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
     }
 }
