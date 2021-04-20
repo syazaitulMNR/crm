@@ -12,7 +12,7 @@ use App\Package;
 use App\Payment;
 use App\Student;
 use App\Ticket;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use PDF;
 
 class HomeController extends Controller
