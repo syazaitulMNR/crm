@@ -48,19 +48,13 @@ class EmelPengesahan extends Command
         $email->setSubject("CRON JOB");
         $email->addTo("zarina4.11@gmail.com", "Nurzarinah Zakaria");
         $email->addContent("text/html", "Cron Job Testing");
-                
-        try {
+        
 
             $response = $sendgrid->send($email);
             //print $response->statusCode() . "\n";
             //print_r($response->headers());
             //print $response->body() . "\n";
 
-        } catch (Exception $e) {
-
-            echo 'Caught exception: '. $e->getMessage() ."\n";
-
-        }
         
         $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
     }
