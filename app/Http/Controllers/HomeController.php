@@ -926,7 +926,7 @@ class HomeController extends Controller
         // Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
         $data = ['message' => 'This is a test!'];
 
-        Mail::to('john@example.com')->send(new TestEmail($data));
+        Mail::to('john@example.com')->send(new TestMail($data));
     }
 }
 
