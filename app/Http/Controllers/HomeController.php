@@ -909,21 +909,24 @@ class HomeController extends Controller
     public function tryemail()
     {
         // Manage email (for new ic in single form)                    
-        $product = 'PRD003';
-        $package = 'PKD007';
+        // $product = 'PRD003';
+        // $package = 'PKD007';
 
-        // $from_name = 'noreply@momentuminternet.com';
-        $email_pkg2 = 'zarina4.11@gmail.com'; 
+        // // $from_name = 'noreply@momentuminternet.com';
+        // $email_pkg2 = 'zarina4.11@gmail.com'; 
         
-        $name = 'noreply'; 
-        $products = 'product';
-        $package = 'package';
-        $date_from = '1-1-2021';
-        $date_to = '2-2-2021';
-        $time_from = '04:21AM';
-        $time_to = '05:21AM';
+        // $name = 'noreply'; 
+        // $products = 'product';
+        // $package = 'package';
+        // $date_from = '1-1-2021';
+        // $date_to = '2-2-2021';
+        // $time_from = '04:21AM';
+        // $time_to = '05:21AM';
         
-        Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+        // Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+        $data = ['message' => 'This is a test!'];
+
+        Mail::to('john@example.com')->send(new TestEmail($data));
     }
 }
 
