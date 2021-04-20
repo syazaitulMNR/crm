@@ -222,28 +222,27 @@ class ExistCustomerController extends Controller
 
         $apikey = env('MAIL_PASSWORD');
         $sendgrid = new \SendGrid($apikey);
-                
-        try {
-            $to_name = $student->first_name;
-            $to_email = $student->email; 
-            
-            $data['name']=$student->first_name;
-            $data['ic']=$student->ic;
-            $data['email']=$student->email;
-            $data['phoneno']=$student->phoneno;
-            $data['total']=$payment->item_total;
-            $data['quantity']=$payment->quantity;
 
-            $data['product']=$product->name;
-            $data['package_id']=$package->package_id;
-            $data['package']=$package->name;
-            $data['price']=$package->price;
+        $to_name = $student->first_name;
+        $to_email = $student->email; 
+        
+        $data['name']=$student->first_name;
+        $data['ic']=$student->ic;
+        $data['email']=$student->email;
+        $data['phoneno']=$student->phoneno;
+        $data['total']=$payment->item_total;
+        $data['quantity']=$payment->quantity;
 
-            $data['date_receive']=date('d-m-Y');
-            $data['payment_id']=$payment->payment_id;
-            $data['product_id']=$product->product_id;        
-            $data['student_id']=$student->stud_id;
-            
+        $data['product']=$product->name;
+        $data['package_id']=$package->package_id;
+        $data['package']=$package->name;
+        $data['price']=$package->price;
+
+        $data['date_receive']=date('d-m-Y');
+        $data['payment_id']=$payment->payment_id;
+        $data['product_id']=$product->product_id;        
+        $data['student_id']=$student->stud_id;
+          
         // $invoice = PDF::loadView('emails.invoice', $data);
         // $receipt = PDF::loadView('emails.receipt', $data);
 
@@ -256,6 +255,8 @@ class ExistCustomerController extends Controller
         //     // $message->attachData($receipt->output(), "Receipt.pdf");
 
         // });
+                
+        try {
 
             $response = $sendgrid->send('emails.mail', $data, function($email) use ($to_name, $to_email) 
             {
