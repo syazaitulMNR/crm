@@ -36,7 +36,7 @@ return [
     ],
 
     'sendgrid' => [
-        'api_key' => env('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'),
+        'api_key' => env('MAIL_PASSWORD'),
     ],
 
 ];
