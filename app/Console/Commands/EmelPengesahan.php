@@ -44,8 +44,10 @@ class EmelPengesahan extends Command
      
         Mail::send('test', $data, function($message) {
            $message->to('zarina4.11@gmail.com', 'Nurzarinah Zakaria')->subject('Laravel Basic Testing Mail');
-           $message->from('noreply@momentuminternet.my','moreply');
+           $message->from('noreply@momentuminternet.my','noreply');
         });
+
+        $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
      
     }
 }
