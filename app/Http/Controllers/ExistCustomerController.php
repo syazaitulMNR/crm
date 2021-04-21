@@ -220,7 +220,7 @@ class ExistCustomerController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
 
-        $to_name = 'noreply@momentuminternet.com';
+        $to_name = $student->first_name;
         $to_email = $student->email; 
         
         $data['name']=$student->first_name;
