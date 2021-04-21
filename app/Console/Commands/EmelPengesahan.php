@@ -40,28 +40,14 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        $apikey = env('MAIL_PASSWORD');
-        $sendgrid = new \SendGrid($apikey);
-            
-        $email = new \SendGrid\Mail\Mail(); 
-        $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
-        $email->setSubject("CRON JOB");
-        $email->addTo("zarina4.11@gmail.com", "Nurzarinah Zakaria");
-        $email->addContent("text/html", "Cron Job Testing");
-                
-        try {
-
-            $response = $sendgrid->send($email);
-            //print $response->statusCode() . "\n";
-            //print_r($response->headers());
-            //print $response->body() . "\n";
-
-        } catch (Exception $e) {
-
-            echo 'Caught exception: '. $e->getMessage() ."\n";
-
-        }
-
+        $data = array('name'=>"Virat Gandhi");
+     
+        Mail::send('test', $data, function($message) {
+           $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
+              ('Laravel Basic Testing Mail');
+           $message->from('noreply@momentuminternet.my','Virat Gandhi');
+        });
+     
     }
 }
 
