@@ -40,12 +40,11 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        $data = array('name'=>"Virat Gandhi");
+        $data = array('name'=>"Nurzarinah Zakaria");
      
         Mail::send('test', $data, function($message) {
-           $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
-              ('Laravel Basic Testing Mail');
-           $message->from('noreply@momentuminternet.my','Virat Gandhi');
+           $message->to('zarina4.11@gmail.com', 'Nurzarinah Zakaria')->subject('Laravel Basic Testing Mail');
+           $message->from('noreply@momentuminternet.my','moreply');
         });
      
     }
