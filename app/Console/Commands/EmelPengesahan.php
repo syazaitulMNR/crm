@@ -40,8 +40,8 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        $to_name = "Nurzarinah Zakaria";
-        $to_email = "zarina4.11@gmail.com";
+        $name = "Nurzarinah Zakaria";
+        $email = "zarina4.11@gmail.com";
 
         $data = array(
             'name'=>"Nurzarinah Zakaria",
