@@ -40,57 +40,59 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        // $apikey = env('MAIL_PASSWORD');
-        // $sendgrid = new \SendGrid($apikey);
+        $apikey = env('MAIL_PASSWORD');
+        $sendgrid = new \SendGrid($apikey);
             
-        // $email = new \SendGrid\Mail\Mail(); 
-        // $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
-        // $email->setSubject("CRON JOB");
-        // $email->addTo("zarina4.11@gmail.com", "Nurzarinah Zakaria");
-        // $email->addContent("text/html", "Cron Job Testing");
+        $email = new \SendGrid\Mail\Mail(); 
+        $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
+        $email->setSubject("CRON JOB");
+        $email->addTo("zarina4.11@gmail.com", "Nurzarinah Zakaria");
+        $email->addContent("text/html", "Cron Job Testing");
                 
-        // try {
+        try {
 
-        //     $response = $sendgrid->send($email);
-        //     //print $response->statusCode() . "\n";
-        //     //print_r($response->headers());
-        //     //print $response->body() . "\n";
+            $response = $sendgrid->send($email);
+            //print $response->statusCode() . "\n";
+            //print_r($response->headers());
+            //print $response->body() . "\n";
 
-        // } catch (Exception $e) {
+        } catch (Exception $e) {
 
-        //     echo 'Caught exception: '. $e->getMessage() ."\n";
+            echo 'Caught exception: '. $e->getMessage() ."\n";
 
-        // }
+        }
 
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-
-        $to_name = $student->first_name;
-        $to_email = $student->email; 
-        
-        $data['name']=$student->first_name;
-        $data['ic']=$student->ic;
-        $data['email']=$student->email;
-        $data['phoneno']=$student->phoneno;
-        $data['total']=$payment->item_total;
-        $data['quantity']=$payment->quantity;
-
-        $data['product']=$product->name;
-        $data['package_id']=$package->package_id;
-        $data['package']=$package->name;
-        $data['price']=$package->price;
-
-        $data['date_receive']=date('d-m-Y');
-        $data['payment_id']=$payment->payment_id;
-        $data['product_id']=$product->product_id;        
-        $data['student_id']=$student->stud_id;
-          
-        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
-        {
-            $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
-            $message->from('noreply@momentuminternet.my','noreply');
-        });
-        
-        $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
     }
 }
+
+
+// $product = Product::where('product_id', $product_id)->first();
+// $package = Package::where('package_id', $package_id)->first();
+
+// $to_name = $student->first_name;
+// $to_email = $student->email; 
+
+// $data['name']=$student->first_name;
+// $data['ic']=$student->ic;
+// $data['email']=$student->email;
+// $data['phoneno']=$student->phoneno;
+// $data['total']=$payment->item_total;
+// $data['quantity']=$payment->quantity;
+
+// $data['product']=$product->name;
+// $data['package_id']=$package->package_id;
+// $data['package']=$package->name;
+// $data['price']=$package->price;
+
+// $data['date_receive']=date('d-m-Y');
+// $data['payment_id']=$payment->payment_id;
+// $data['product_id']=$product->product_id;        
+// $data['student_id']=$student->stud_id;
+  
+// Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
+// {
+//     $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
+//     $message->from('noreply@momentuminternet.my','noreply');
+// });
+
+// $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
