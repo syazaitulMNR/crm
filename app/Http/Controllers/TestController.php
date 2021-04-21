@@ -10,7 +10,7 @@ class TestController extends Controller
     public function basic_email() {
         $data = array('name'=>"Virat Gandhi");
      
-        Mail::send(['text'=>'test'], $data, function($message) {
+        Mail::send('test', $data, function($message) {
            $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
               ('Laravel Basic Testing Mail');
            $message->from('noreply@momentuminternet.my','Virat Gandhi');
