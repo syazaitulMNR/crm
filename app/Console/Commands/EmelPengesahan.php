@@ -61,7 +61,7 @@ class EmelPengesahan extends Command
         );
      
         Mail::send('emails.mail', $data, function($message) use ($name, $email) {
-           $message->to($name, $email)->subject('Laravel Basic Testing Mail');
+           $message->to($email, $name)->subject('Laravel Basic Testing Mail');
            $message->from('noreply@momentuminternet.my','noreply');
         });
 
