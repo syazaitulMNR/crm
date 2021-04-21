@@ -86,8 +86,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS','noreply@momentuminternet.my'),
-        'name' => env('MAIL_FROM_NAME','noreply'), 
+        'address' => env('MAIL_FROM_ADDRESS'),
+        'name' => env('MAIL_FROM_NAME'), 
     ],
 
     /*
