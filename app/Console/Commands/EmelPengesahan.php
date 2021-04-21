@@ -44,24 +44,25 @@ class EmelPengesahan extends Command
 
         foreach ($users as $user)
         {
-            $name = "Nurzarinah Zakaria";
-            $email = "zarina4.11@gmail.com";
+            if ($user->email == "zarina4.11@gmail.com"){
 
-            $data = array(
-                'product'=>"Product Test",
-                'package_id'=>"PKD001",
-                'package'=>"Package Test",
-                'payment_id'=>"OD001",
-                'product_id'=>"PRD001",
-                'student_id'=>"MI001",
-            );
-        
-            Mail::send('emails.mail', $data, function($message) use ($user) {
-            $message->to($user->email)->subject('Pengesahan Pembelian');
-            $message->from('noreply@momentuminternet.my','noreply');
-            });
+                $data = array(
+                    'product'=>"Product Test",
+                    'package_id'=>"PKD001",
+                    'package'=>"Package Test",
+                    'payment_id'=>"OD001",
+                    'product_id'=>"PRD001",
+                    'student_id'=>"MI001",
+                );
+            
+                Mail::send('emails.mail', $data, function($message) use ($user) {
+                $message->to($user->email)->subject('Pengesahan Pembelian');
+                $message->from('noreply@momentuminternet.my','noreply');
+                });
 
-            $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
+                $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
+            }
+            
         }
      
     }
