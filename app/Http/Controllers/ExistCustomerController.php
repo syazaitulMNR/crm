@@ -220,10 +220,7 @@ class ExistCustomerController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
 
-        $apikey = env('MAIL_PASSWORD');
-        $sendgrid = new \SendGrid($apikey);
-
-        $to_name = $student->first_name;
+        $to_name = 'noreply@momentuminternet.com';
         $to_email = $student->email; 
         
         $data['name']=$student->first_name;
@@ -247,34 +244,14 @@ class ExistCustomerController extends Controller
         // $receipt = PDF::loadView('emails.receipt', $data);
 
         // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $invoice, $receipt)
-        // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
-        // {
-        //     $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
-        //     $message->from('noreply@momentuminternet.my','noreply');
-        //     // $message->attachData($invoice->output(), "Invoice.pdf");
-        //     // $message->attachData($receipt->output(), "Receipt.pdf");
+        Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
+        {
+            $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
+            $message->from('noreply@momentuminternet.my','noreply');
+            // $message->attachData($invoice->output(), "Invoice.pdf");
+            // $message->attachData($receipt->output(), "Receipt.pdf");
 
-        // });
-                
-        try {
-
-            $response = $sendgrid->send('emails.mail', $data, function($email) use ($to_name, $to_email) 
-            {
-                $email = new \SendGrid\Mail\Mail(); 
-                $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
-                $email->setSubject("Pengesahan Pembelian");
-                $email->addTo($to_email, $to_name);
-    
-            });
-            //print $response->statusCode() . "\n";
-            //print_r($response->headers());
-            //print $response->body() . "\n";
-
-        } catch (Exception $e) {
-
-            echo 'Caught exception: '. $e->getMessage() ."\n";
-
-        }
+        });
         /*-- End Email -----------------------------------------------------------*/
 
         $student->save();
