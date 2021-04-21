@@ -40,32 +40,37 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        $name = "Nurzarinah Zakaria";
-        $email = "zarina4.11@gmail.com";
+        $users = User::all();
 
-        $data = array(
-            'name'=>"Nurzarinah Zakaria",
-            'ic'=>"123456789874",
-            'email'=>"zarina4.11@gmail.com",
-            'phoneno'=>"0102654231",
-            'total'=>"111",
-            'quantity'=>"1",
-            'product'=>"Product Test",
-            'package_id'=>"PKD001",
-            'package'=>"Package Test",
-            'price'=>"Nurzarinah Zakaria",
-            'date_receive'=>"01/01/01",
-            'payment_id'=>"OD001",
-            'product_id'=>"PRD001",
-            'student_id'=>"MI001",
-        );
-     
-        Mail::send('emails.mail', $data, function($message) use ($name, $email) {
-           $message->to($email, $name)->subject('Laravel Basic Testing Mail');
-           $message->from('noreply@momentuminternet.my','noreply');
-        });
+        foreach ($users as $user)
+        {
+            $name = "Nurzarinah Zakaria";
+            $email = "zarina4.11@gmail.com";
 
-        $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
+            $data = array(
+                'name'=>"Nurzarinah Zakaria",
+                'ic'=>"123456789874",
+                'email'=>"zarina4.11@gmail.com",
+                'phoneno'=>"0102654231",
+                'total'=>"111",
+                'quantity'=>"1",
+                'product'=>"Product Test",
+                'package_id'=>"PKD001",
+                'package'=>"Package Test",
+                'price'=>"Nurzarinah Zakaria",
+                'date_receive'=>"01/01/01",
+                'payment_id'=>"OD001",
+                'product_id'=>"PRD001",
+                'student_id'=>"MI001",
+            );
+        
+            Mail::send('emails.mail', $data, function($message) use ($user) {
+            $message->to($user->email)->subject('Pengesahan Pembelian');
+            $message->from('noreply@momentuminternet.my','noreply');
+            });
+
+            $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
+        }
      
     }
 }
