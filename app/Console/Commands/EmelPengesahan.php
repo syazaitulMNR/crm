@@ -57,8 +57,8 @@ class EmelPengesahan extends Command
             'student_id'=>"MI001",
         );
      
-        Mail::send('emails.mail', $data, function($message) {
-           $message->to('zarina4.11@gmail.com', 'Nurzarinah Zakaria')->subject('Laravel Basic Testing Mail');
+        Mail::send('emails.mail', $data, function($message) use ($name, $email) {
+           $message->to($name, $email)->subject('Laravel Basic Testing Mail');
            $message->from('noreply@momentuminternet.my','noreply');
         });
 
