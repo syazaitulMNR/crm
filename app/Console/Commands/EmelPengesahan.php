@@ -48,17 +48,9 @@ class EmelPengesahan extends Command
             $email = "zarina4.11@gmail.com";
 
             $data = array(
-                'name'=>"Nurzarinah Zakaria",
-                'ic'=>"123456789874",
-                'email'=>"zarina4.11@gmail.com",
-                'phoneno'=>"0102654231",
-                'total'=>"111",
-                'quantity'=>"1",
                 'product'=>"Product Test",
                 'package_id'=>"PKD001",
                 'package'=>"Package Test",
-                'price'=>"Nurzarinah Zakaria",
-                'date_receive'=>"01/01/01",
                 'payment_id'=>"OD001",
                 'product_id'=>"PRD001",
                 'student_id'=>"MI001",
