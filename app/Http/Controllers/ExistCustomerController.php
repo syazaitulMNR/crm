@@ -9,7 +9,6 @@ use App\Student;
 use App\Payment;
 use Stripe;
 use Mail;
-use App\Console\Commands\EmelPengesahan;
 
 class ExistCustomerController extends Controller
 {
@@ -218,7 +217,7 @@ class ExistCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
-        $theJob = new EmelPengesahan($product_id);
+        // $theJob = new EmelPengesahan($product_id);
         // $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
 
