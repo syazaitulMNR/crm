@@ -199,5 +199,5 @@ Route::get('try','HomeController@try');
 Route::get('sendmail', 'HomeController@tryemail');
 Route::get('sendbasicemail','TestController@basic_email');
 
-Route::get('payment', 'PaymentController@index');
-Route::post('payment-process', 'PaymentController@process');
+Route::get('payment', 'TestController@index');
+Route::post('payment-process', 'TestController@process');
