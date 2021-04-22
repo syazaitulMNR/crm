@@ -58,14 +58,14 @@ Pendaftaran Pembeli
   
                             <div class="form-group row">
                                 <div class="col-md-12 px-5">
-                                    <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
+                                    <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
                                         <i class="far fa-credit-card fa-3x"></i>
-                                        <br>Kad Debit/Kredit
+                                        <br>Stripe
                                     </button>
                                 
-                                    <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
+                                    <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
                                         <i class="fas fa-university fa-3x"></i>
-                                        <br>FPX
+                                        <br>Billplz
                                     </button>
                                 </div>
                             </div>

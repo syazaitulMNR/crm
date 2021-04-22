@@ -105,8 +105,8 @@ class ExistCustomerController extends Controller
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
-        $card = 'Debit/Credit Card';
-        $fpx = 'FPX';
+        $stripe = 'Stripe';
+        $billplz = 'Billplz';
   
         return view('customer_exist.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx'));
     }
