@@ -133,20 +133,20 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
   
         //Check if form has been key in
-        if($payment->pay_method == 'Debit/Credit Card'){
+        if($payment->pay_method == 'Stripe'){
 
-            return redirect('data-kad/'.  $product_id . '/' . $package_id . '/' . $stud_id );
+            return redirect('data-stripe/'.  $product_id . '/' . $package_id . '/' . $stud_id );
 
-        }else if($payment->pay_method == 'FPX'){
+        }else if($payment->pay_method == 'Billplz'){
 
-            return redirect('data-fpx/'.  $product_id . '/' . $package_id . '/' . $stud_id );
+            return redirect('data-billplz/'.  $product_id . '/' . $package_id . '/' . $stud_id );
 
         }else{
             echo 'invalid';
         }
     }
 
-    public function card_payment($product_id, $package_id, Request $request)
+    public function stripe_payment($product_id, $package_id, Request $request)
     {
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
@@ -156,7 +156,7 @@ class ExistCustomerController extends Controller
         return view('customer_exist.card_method',compact('product', 'package', 'student', 'payment'));
     }
 
-    public function saveCardMethod($product_id, $package_id, Request $request)
+    public function saveStripeMethod($product_id, $package_id, Request $request)
     {        
         $package = Package::where('package_id', $package_id)->first();
         $payment = $request->session()->get('payment');

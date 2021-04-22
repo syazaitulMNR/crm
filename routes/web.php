@@ -162,8 +162,8 @@ Route::get('langkah-ketiga/{product_id}/{package_id}/{stud_id}', 'ExistCustomerC
 Route::get('langkah-keempat/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stepFour');
 Route::post('save4/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStepFour');
 Route::get('pay-method/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@pay_method');
-Route::get('data-kad/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@card_payment');
-Route::post('saveCard/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveCardMethod');
+Route::get('data-stripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stripe_payment');
+Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStripeMethod');
 Route::get('data-fpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@fpx_payment');
 Route::get('saveFpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveFpxMethod');
 // Route::get('regstudent/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@existedstudent');
