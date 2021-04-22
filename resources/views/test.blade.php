@@ -6,8 +6,8 @@
   <body>
     {{-- <h2>Test Email</h2>
     <p>{{ $test_message }}</p> --}}
-    <h1>Hi, {{ $name }}</h1>
-    <p>Sending Mail from Laravel.</p>
+    {{-- <h1>Hi, {{ $name }}</h1> --}}
+    {{-- <p>Sending Mail from Laravel.</p> --}}
 
     <form action="{{ url('payment-process') }}" method="POST">
       @csrf
