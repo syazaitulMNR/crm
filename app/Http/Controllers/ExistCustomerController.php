@@ -301,9 +301,17 @@ class ExistCustomerController extends Controller
         // return redirect($pay_data['url']);
     }
 
-    public function redirect_billplz()
+    public function redirect_billplz(Request $request)
     {
-        return view('customer/thankyou');
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+
+        // $payment->save();
+    
+        // $request->session()->forget('student');
+        // $request->session()->forget('payment');
+        dd($payment);
+        // return view('customer/thankyou');
     }
 
     // public function fpx_payment($product_id, $package_id, Request $request)
