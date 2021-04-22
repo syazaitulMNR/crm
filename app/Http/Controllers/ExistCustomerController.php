@@ -284,7 +284,7 @@ class ExistCustomerController extends Controller
             \Duit\MYR::given($payment->totalprice * 100),
             'https://mims.momentuminternet.my',
             $product->name . ' - ' . $package->name,
-            // ['redirect_url' => 'https://mims.momentuminternet.my/redirect-billplz']
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-billplz']
         );
 
         $pay_data = $response->toArray();
