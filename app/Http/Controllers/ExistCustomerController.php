@@ -283,7 +283,7 @@ class ExistCustomerController extends Controller
             $student->first_name,
             \Duit\MYR::given($payment->totalprice * 100),
             'http://example.com/webhook/',
-            $product->name . '-' . $package->name,
+            $product->name . ' - ' . $package->name,
             ['redirect_url' => 'http://example.com/redirect/']
         );
 
