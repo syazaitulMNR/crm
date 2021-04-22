@@ -134,11 +134,11 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
   
         //Check if form has been key in
-        if($payment->pay_method == 'Stripe'){
+        if($payment->pay_method == 'Debit/Credit Card'){
 
             return redirect('data-stripe/'.  $product_id . '/' . $package_id . '/' . $stud_id );
 
-        }else if($payment->pay_method == 'Billplz'){
+        }else if($payment->pay_method == 'FPX'){
 
             return redirect('data-billplz/'.  $product_id . '/' . $package_id . '/' . $stud_id );
 
