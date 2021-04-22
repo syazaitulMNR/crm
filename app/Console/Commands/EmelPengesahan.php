@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 use App\User;
 use App\Cronjob;
-use App\Product;
 use Illuminate\Support\Facades\Mail;
 
 class EmelPengesahan extends Command
@@ -30,10 +29,9 @@ class EmelPengesahan extends Command
      *
      * @return void
      */
-    public function __construct(Product $product_id)
+    public function __construct()
     {
-        // parent::__construct();
-        $this->product_id = $product_id;
+        parent::__construct();
     }
 
     /**
@@ -43,7 +41,7 @@ class EmelPengesahan extends Command
      */
     public function handle()
     {
-        $jobs = Cronjob::where('product_id', $this->product_id)->first();
+        // $jobs = Cronjob::where('product_id', $this->product_id)->first();
         $users = User::all();
 
         foreach ($users as $user)
