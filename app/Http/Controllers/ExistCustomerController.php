@@ -106,8 +106,8 @@ class ExistCustomerController extends Controller
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
-        $stripe = 'Stripe';
-        $billplz = 'Billplz';
+        $stripe = 'Debit/Credit Card';
+        $billplz = 'FPX';
   
         return view('customer_exist.step4',compact('student', 'payment', 'product', 'package', 'stripe', 'billplz'));
     }
@@ -288,14 +288,6 @@ class ExistCustomerController extends Controller
         );
 
         $pay_data = $response->toArray();
-
-        $addData = array(
-            'status' => $pay_data['state'],
-            'stripe_id' => $pay_data['id']
-        );
-
-        $payment->fill($addData);
-        $request->session()->put('payment', $payment);
         
         dd($addData);
         // return redirect($pay_data['url']);
@@ -306,6 +298,13 @@ class ExistCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
+        $addData = array(
+            'status' => $pay_data['state'],
+            'stripe_id' => $pay_data['id']
+        );
+
+        $payment->fill($addData);
+        $request->session()->put('payment', $payment);
         // $payment->save();
     
         // $request->session()->forget('student');
