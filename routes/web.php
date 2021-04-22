@@ -172,7 +172,7 @@ Route::get('redirect-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustome
 // Route::post('register/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@updatestd');
 
 // Thank you page
-Route::get('thankyoupage/{product_id}/{package_id}/{stud_id}/{payment_id}','HomeController@thankyou');
+Route::get('registration-success','HomeController@thankyou');
 
 
 /*
