@@ -69,14 +69,14 @@ class HomeController extends Controller
         }
     }
 
-    public function thankyou($product_id, $package_id, $stud_id, $payment_id) 
+    public function thankyou() 
     {
-        $student = Student::where('stud_id', $stud_id)->first();
-        $product = Product::where('product_id',$product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
+        // $product = Product::where('product_id',$product_id)->first();
+        // $package = Package::where('package_id', $package_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
 
-        return view('customer/thankyou', compact('student','product', 'package', 'payment'));
+        return view('customer/thankyou');
     }
 
     /*-- Participant Registration ------------------------------------------*/
