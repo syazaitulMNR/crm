@@ -288,7 +288,7 @@ class ExistCustomerController extends Controller
         );
 
         $test = $response->toArray();
-        dd($response);
+        dd($bill);
 
         // return redirect($test['url']);
     }
