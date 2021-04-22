@@ -288,9 +288,9 @@ class ExistCustomerController extends Controller
         );
 
         $test = $response->toArray();
-        //dd($test['url']);
+        dd($test['url']);
 
-        return redirect($test['url']);
+        // return redirect($test['url']);
     }
 
     // public function fpx_payment($product_id, $package_id, Request $request)
