@@ -282,7 +282,7 @@ class ExistCustomerController extends Controller
             $student->phoneno,
             $student->first_name,
             \Duit\MYR::given($payment->totalprice * 100),
-            'https://mims.momentuminternet.my',
+            'https://mims.momentuminternet.my/redirect-billplz',
             $product->name . ' - ' . $package->name,
             ['redirect_url' => 'https://mims.momentuminternet.my/redirect-billplz']
         );
