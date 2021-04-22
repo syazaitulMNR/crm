@@ -289,7 +289,7 @@ class ExistCustomerController extends Controller
 
         $pay_data = $response->toArray();
         
-        dd($response);
+        dd($pay_data);
         // return redirect($pay_data['url']);
     }
 
