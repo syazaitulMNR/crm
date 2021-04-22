@@ -108,7 +108,7 @@ class ExistCustomerController extends Controller
         $stripe = 'Stripe';
         $billplz = 'Billplz';
   
-        return view('customer_exist.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx'));
+        return view('customer_exist.step4',compact('student', 'payment', 'product', 'package', 'stripe', 'billplz'));
     }
 
     public function saveStepFour($product_id, $package_id, $stud_id, Request $request)
