@@ -289,8 +289,8 @@ class ExistCustomerController extends Controller
 
         $pay_data = $response->toArray();
         
-        // dd($addData);
-        return redirect($pay_data['url']);
+        dd($response);
+        // return redirect($pay_data['url']);
     }
 
     public function redirect_billplz(Request $request)
