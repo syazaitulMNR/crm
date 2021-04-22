@@ -121,10 +121,8 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
         $payment->fill($validatedData);
         $request->session()->put('payment', $payment);
-
-        dd($payment->pay_method);
  
-        // return redirect('pay-method/'.  $product_id . '/' . $package_id . '/' . $stud_id );
+        return redirect('pay-method/'.  $product_id . '/' . $package_id . '/' . $stud_id );
     }
 
     public function pay_method($product_id, $package_id, $stud_id, Request $request)
