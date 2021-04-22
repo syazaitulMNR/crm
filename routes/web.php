@@ -164,8 +164,9 @@ Route::post('save4/{product_id}/{package_id}/{stud_id}', 'ExistCustomerControlle
 Route::get('pay-method/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@pay_method');
 Route::get('data-stripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stripe_payment');
 Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStripeMethod');
-Route::get('data-fpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@fpx_payment');
-Route::get('saveFpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveFpxMethod');
+Route::post('data-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@billplz_payment');
+// Route::get('data-fpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@fpx_payment');
+// Route::get('saveFpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveFpxMethod');
 // Route::get('regstudent/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@existedstudent');
 // Route::post('register/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@updatestd');
 
