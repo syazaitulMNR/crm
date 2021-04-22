@@ -282,26 +282,39 @@ class ExistCustomerController extends Controller
             $student->phoneno,
             $student->first_name,
             \Duit\MYR::given($payment->totalprice * 100),
-            'http://example.com/webhook/',
+            redirect('redirect-billplz'.  $product_id . '/' . $package_id . '/' . $student->stud_id),
             $product->name . ' - ' . $package->name,
-            ['redirect_url' => 'http://example.com/redirect/']
+            ['redirect_url' => redirect('redirect-billplz'.  $product_id . '/' . $package_id . '/' . $student->stud_id)]
         );
 
-        $test = $response->toArray();
+        $pay_data = $response->toArray();
 
-        $payment->save();
-    
-        $request->session()->forget('student');
-        $request->session()->forget('payment');
+        $addData = array(
+            'status' => $pay_data['state'],
+            'stripe_id' => $pay_data['id']
+        );
+
+        $payment->fill($addData);
+        $request->session()->put('payment', $payment);
         
-        dd($test);
-
-        // return redirect($test['url']);
+        dd($pay_data);
+        // return redirect($pay_data['url']);
     }
 
-    public function redirect_url()
+    public function redirect_billplz($product_id, $package_id, Request $request)
     {
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
 
+        // $payment->save();
+    
+        // $request->session()->forget('student');
+        // $request->session()->forget('payment');
+        dd($payment);
+
+        // return redirect('thankyoupage/'.  $product_id . '/' . $package_id . '/' . $student->stud_id . '/' . $payment->payment_id);
     }
 
     // public function fpx_payment($product_id, $package_id, Request $request)
