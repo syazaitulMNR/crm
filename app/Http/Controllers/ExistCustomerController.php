@@ -288,9 +288,20 @@ class ExistCustomerController extends Controller
         );
 
         $test = $response->toArray();
-        dd($test['state']);
+
+        $payment->save();
+    
+        $request->session()->forget('student');
+        $request->session()->forget('payment');
+        
+        dd($test);
 
         // return redirect($test['url']);
+    }
+
+    public function redirect_url()
+    {
+
     }
 
     // public function fpx_payment($product_id, $package_id, Request $request)
