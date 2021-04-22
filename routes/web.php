@@ -165,7 +165,7 @@ Route::get('pay-method/{product_id}/{package_id}/{stud_id}', 'ExistCustomerContr
 Route::get('data-stripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stripe_payment');
 Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStripeMethod');
 Route::get('data-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@billplz_payment');
-Route::get('redirect-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@redirect_billplz');
+Route::get('redirect-billplz', 'ExistCustomerController@redirect_billplz');
 // Route::get('data-fpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@fpx_payment');
 // Route::get('saveFpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveFpxMethod');
 // Route::get('regstudent/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@existedstudent');
