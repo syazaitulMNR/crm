@@ -297,8 +297,8 @@ class ExistCustomerController extends Controller
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
         
-        dd($pay_data);
-        // return redirect($pay_data['url']);
+        // dd($pay_data);
+        return redirect($pay_data['url']);
     }
 
     public function redirect_billplz($product_id, $package_id, Request $request)
