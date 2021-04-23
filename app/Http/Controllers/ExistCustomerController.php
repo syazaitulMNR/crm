@@ -289,8 +289,15 @@ class ExistCustomerController extends Controller
 
         $pay_data = $response->toArray();
         
-        dd($pay_data);
-        // return redirect($pay_data['url']);
+        $addData = array(
+            'stripe_id' => $pay_data['id']
+        );
+
+        $payment->fill($addData);
+        $request->session()->put('payment', $payment);
+
+        // dd($pay_data);
+        return redirect($pay_data['url']);
     }
 
     public function redirect_billplz(Request $request)
@@ -298,9 +305,15 @@ class ExistCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
+        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+
+        $bill = $billplz->bill();
+        $response = $bill->get($payment->stripe_id);
+
+        $pay_data = $response->toArray();
+
         $addData = array(
-            'status' => $pay_data['state'],
-            'stripe_id' => $pay_data['id']
+            'status' => $pay_data['state']
         );
 
         $payment->fill($addData);
@@ -309,7 +322,7 @@ class ExistCustomerController extends Controller
     
         // $request->session()->forget('student');
         // $request->session()->forget('payment');
-        dd($payment);
+        dd($response);
         // return view('customer/thankyou');
     }
 
