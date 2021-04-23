@@ -79,9 +79,9 @@
                     <td>RM {{ $payments->totalprice }}</td>
                     <td>
                       @if ($payments->status == 'paid')
-                        <span class="badge rounded-pill bg-success"> {{ $payments->status }} </span>
+                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
                       @elseif ($payments->status == 'due')
-                        <span class="badge rounded-pill bg-danger"> {{ $payments->status }} </span>
+                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
                       @else
                         <p>NULL</p>
                       @endif
