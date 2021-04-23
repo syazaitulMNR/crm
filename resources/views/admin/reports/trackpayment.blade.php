@@ -118,10 +118,10 @@
                             <div class="col-sm-4">
                                 <p>: &nbsp;&nbsp;&nbsp; 
                                     RM {{ $payment->totalprice }}.00 &nbsp;
-                                    @if ($payment->status == 'succeeded')
-                                        <span class="badge rounded-pill bg-success">{{ $payment->status }}</span>
-                                    @elseif ($payment->status == 'cancelled')
-                                        <span class="badge rounded-pill bg-danger">{{ $payment->status }}</span>
+                                    @if ($payment->status == 'paid')
+                                        <span class="badge rounded-pill bg-success"> {{ $payment->status }} </span>
+                                    @elseif ($payment->status == 'due')
+                                        <span class="badge rounded-pill bg-danger"> {{ $payment->status }} </span>
                                     @else
                                         <p>NULL</p>
                                     @endif
