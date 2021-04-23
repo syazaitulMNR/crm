@@ -55,14 +55,14 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($student as $key => $students)
+        @foreach ($stud as $key => $students)
         @foreach ($package as $value)  
         @foreach ($payment as $payments)  
         @if ($product->product_id == $students->product_id) 
         @if ($students->package_id == $value->package_id)  
         @if ($students->stud_id == $payments->stud_id)                 
           <tr>
-            <td>{{ $student->firstItem() + $key }}</td>
+            <td>{{ $stud->firstItem() + $key }}</td>
             <td>{{ $students->stud_id  }}</td>
             <td>{{ $students->first_name  }}&nbsp;{{ $students->last_name  }}</td>
             <td>{{ $value->name  }}</td>
