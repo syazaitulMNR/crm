@@ -340,7 +340,7 @@ class NewCustomerController extends Controller
         $request->session()->forget('student');
         $request->session()->forget('payment');
         
-        return redirect('thankyoupage/'.  $product_id . '/' . $package_id . '/' . $student->stud_id . '/' . $payment->payment_id);
+        return redirect('pendaftaran-berjaya');
     }
 
     // public function fpx_payment($product_id, $package_id, Request $request)
