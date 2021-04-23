@@ -220,11 +220,7 @@ class ExistCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
-        $details = [
-    		'subject' => 'Pengesahan Pembelian'
-    	];
-
-        $job = new EmelPengesahan($details);
+        
         // $theJob = new EmelPengesahan($product_id);
         // $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
