@@ -78,7 +78,7 @@ class ReportsController extends Controller
         $package = Package::where('package_id', $package_id)->first();
 
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $totalsuccess = Payment::where('status','succeeded')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalcancel = Payment::where('status','cancelled')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
         return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'total', 'totalsuccess', 'totalcancel'));

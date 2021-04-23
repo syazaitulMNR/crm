@@ -91,7 +91,7 @@
                     <td>{{ $students->first_name }}</td>
                     {{-- <td>RM {{ $payments->totalprice }}</td> --}}
                     <td>
-                      @if ($payments->status == 'succeeded')
+                      @if ($payments->status == 'paid')
                         <span class="badge rounded-pill bg-success">{{ $payments->status }}</span>
                       @elseif ($payments->status == 'cancelled')
                         <span class="badge rounded-pill bg-danger">{{ $payments->status }}</span>
@@ -125,7 +125,7 @@
                 <h3 class="pt-4">{{$totalsuccess}}</h3>
               </div>
               <div class="card-footer">
-                <h6>Total Succeeded</h6>
+                <h6>Total Paid</h6>
               </div>
             </div>
     
@@ -135,7 +135,7 @@
                 <h3 class="pt-4">{{$totalcancel}}</h3>
               </div>
               <div class="card-footer">
-                <h6>Total Cancelled</h6>
+                <h6>Total Due</h6>
               </div>
             </div>
           
