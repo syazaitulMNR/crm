@@ -141,8 +141,8 @@
                             <div class="col-sm-4">
                                 <select class="form-select form-control-sm" name="status" aria-label="Default select example">
                                     <option disabled selected>-- {{ $payment->status }} --</option>
-                                    <option value="succeeded">succeeded</option>
-                                    <option value="cancelled">cancelled</option>
+                                    <option value="paid">paid</option>
+                                    <option value="due">due</option>
                                 </select>
                             </div>
                             <div class="col-sm-2">
