@@ -5,13 +5,13 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 use App\User;
-// use App\Cronjob;
+use App\Cronjob;
 use Illuminate\Support\Facades\Mail;
 
-use App\Student;
-use App\Product;
-use App\Package;
-use App\Payment;
+// use App\Student;
+// use App\Product;
+// use App\Package;
+// use App\Payment;
 
 class EmelPengesahan extends Command
 {
@@ -29,18 +29,18 @@ class EmelPengesahan extends Command
      */
     protected $description = 'Menghantar emel pengesahan pembelian selepas pelanggan selesai mendaftar dan membuat bayaran';
 
-    protected $details;
+    // protected $details;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct()
     {
-        // parent::__construct();
+        parent::__construct();
 
-        $this->details = $details;
+        // $this->details = $details;
     }
 
     /**
@@ -51,52 +51,52 @@ class EmelPengesahan extends Command
     public function handle()
     {
         // $jobs = Cronjob::where('product_id', $product_id)->first();
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $product = Product::where('product_id', $product_id)->first();
+        // $package = Package::where('package_id', $package_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
 
-        $data = User::all();
-        $input['subject'] = $this->details['subject'];
+        $users = User::all();
+        // $input['subject'] = $this->details['subject'];
 
-        foreach ($data as $key => $value) {
-            $input['email'] = $value->email;
-            $input['name'] = $value->name;
+        // foreach ($data as $key => $value) {
+        //     $input['email'] = $value->email;
+        //     $input['name'] = $value->name;
 
-            $input['product'] = $product->name;
-            $input['package'] = $package->name;
+        //     $input['product'] = $product->name;
+        //     $input['package'] = $package->name;
 
-            $input['payment_id'] = $payment->payment_id;
-            $input['product_id'] = $product->product_id; 
-            $input['package_id'] = $package->package_id;       
-            $input['student_id'] = $value->stud_id;
+        //     $input['payment_id'] = $payment->payment_id;
+        //     $input['product_id'] = $product->product_id; 
+        //     $input['package_id'] = $package->package_id;       
+        //     $input['student_id'] = $value->stud_id;
 
-            \Mail::send('emails.mail', [], function($message) use($input){
-                $message->to($input['email'], $input['name'])
-                    ->subject($input['subject']);
-            });
-        }
-        // foreach ($users as $user)
-        // {
-        //     if ($user->email == "zarina4.11@gmail.com"){
-
-        //         $data = array(
-        //             'product'=>"Product Test",
-        //             'package_id'=>"PKD001",
-        //             'package'=>"Package Test",
-        //             'payment_id'=>"OD001",
-        //             'product_id'=>"PRD001",
-        //             'student_id'=>"MI001",
-        //         );
-            
-        //         Mail::send('emails.mail', $data, function($message) use ($user) {
-        //         $message->to($user->email)->subject('Pengesahan Pembelian');
-        //         $message->from('noreply@momentuminternet.my','noreply');
-        //         });
-
-        //         $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
-        //     }
-            
+        //     \Mail::send('emails.mail', [], function($message) use($input){
+        //         $message->to($input['email'], $input['name'])
+        //             ->subject($input['subject']);
+        //     });
         // }
+        foreach ($users as $user)
+        {
+            if ($user->email == "zarina4.11@gmail.com"){
+
+                $data = array(
+                    'product'=>"Product Test",
+                    'package_id'=>"PKD001",
+                    'package'=>"Package Test",
+                    'payment_id'=>"OD001",
+                    'product_id'=>"PRD001",
+                    'student_id'=>"MI001",
+                );
+            
+                Mail::send('emails.mail', $data, function($message) use ($user) {
+                $message->to($user->email)->subject('Pengesahan Pembelian');
+                $message->from('noreply@momentuminternet.my','noreply');
+                });
+
+                $this->info('Emel Pengesahan Pembelian Dihantar Kepada Pembeli');
+            }
+            
+        }
      
     }
 }
