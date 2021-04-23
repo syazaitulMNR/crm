@@ -237,6 +237,7 @@ class NewCustomerController extends Controller
     {        
         //dd($request->all());
 
+        $package = Package::where('package_id', $package_id)->first();
         $payment = $request->session()->get('payment');
         $student = $request->session()->get('student');
 
