@@ -321,8 +321,19 @@ class ExistCustomerController extends Controller
 
         if ($payment->status == 'paid')
         {
+            $payment->save();
+    
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+
             return view('customer/thankyou');  
         } else {
+
+            $payment->save();
+    
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            
             return view('customer/failed_payment');
         }
         dd($pay_data['state']);
