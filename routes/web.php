@@ -148,8 +148,10 @@ Route::post('store4/{product_id}/{package_id}', 'NewCustomerController@postCreat
 Route::get('payment-method/{product_id}/{package_id}', 'NewCustomerController@payment_method');
 Route::get('maklumat-kad/{product_id}/{package_id}', 'NewCustomerController@card_payment');
 Route::post('storeCard/{product_id}/{package_id}', 'NewCustomerController@postCardMethod');
-Route::get('fpx-bank/{product_id}/{package_id}', 'NewCustomerController@fpx_payment');
-Route::get('storeFpx/{product_id}/{package_id}', 'NewCustomerController@postFpxMethod');
+Route::get('data-fpx/{product_id}/{package_id}', 'NewCustomerController@pay_billplz');
+Route::get('redirect-billplz', 'NewCustomerController@redirect_payment');
+// Route::get('fpx-bank/{product_id}/{package_id}', 'NewCustomerController@fpx_payment');
+// Route::get('storeFpx/{product_id}/{package_id}', 'NewCustomerController@postFpxMethod');
 // Route::get('regnewstudent/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@newstudent');
 // Route::post('registernew/{product_id}/{package_id}', 'NewCustomerController@storestd');
 
