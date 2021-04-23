@@ -290,7 +290,7 @@ class ExistCustomerController extends Controller
         $pay_data = $response->toArray();
         
         $addData = array(
-            'stripe_id' => $pay_data['id']
+            'billplz_id' => $pay_data['id']
         );
 
         $payment->fill($addData);
