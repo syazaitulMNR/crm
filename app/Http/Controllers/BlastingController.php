@@ -29,14 +29,14 @@ class BlastingController extends Controller
     {
         $product = Product::where('product_id', $product_id)->get();
         $stud = Student::orderBy('id','desc')->paginate(15);
-        // $student = Student::where('product_id', $product_id)->get();
+        $student = Student::where('product_id', $product_id)->get();
         $package = Package::where('product_id', $product_id)->get(); 
         $payment = Payment::where('product_id', $product_id)->get();
 
-        // $totalcust = Student::where('product_id', $product_id)->count();
+        $totalcust = Student::where('product_id', $product_id)->count();
         
         // dd($student);
-        return view('admin.viewblast', compact('stud', 'product','package', 'payment'));
+        return view('admin.viewblast', compact('stud', 'student', 'product','package', 'payment', 'totalcust'));
     }
 
     

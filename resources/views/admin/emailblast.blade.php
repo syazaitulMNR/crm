@@ -11,7 +11,7 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
       <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Email Blasting</b>
+        <a href="dashboard">Dashboard</a> / Email Blasting
       </div>
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -52,8 +52,7 @@
                 {{-- <td class="text-center">{{$totalcust}}</td> --}}
                 <td>
                     <a class="btn btn-light" href="{{ url('view-event') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
-                    <a class="btn btn-light" href="/send-bulk-mail"><i class="fas fa-eye"></i></a>
-                    {{-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-paper-plane"></i></button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-paper-plane"></i></button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -71,7 +70,7 @@
                             </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </td>
             </tr>
             @endforeach
