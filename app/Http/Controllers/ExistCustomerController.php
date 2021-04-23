@@ -205,7 +205,7 @@ class ExistCustomerController extends Controller
             }
 
             $addData = array(
-                'status' => 'succeeded',
+                'status' => 'paid',
                 'stripe_id' => $customer->id
             );
 
@@ -333,10 +333,9 @@ class ExistCustomerController extends Controller
     
             $request->session()->forget('student');
             $request->session()->forget('payment');
-            
+
             return view('customer/failed_payment');
         }
-        dd($pay_data['state']);
         
     }
 
