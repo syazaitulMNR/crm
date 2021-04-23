@@ -63,8 +63,8 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->paginate(15);
 
         $counter = Student::count();
-        $totalsuccess = Payment::where('status','succeeded')->where('product_id', $product_id)->count();
-        $totalcancel = Payment::where('status','cancelled')->where('product_id', $product_id)->count();
+        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         // $count_package = Payment::where('product_id', $product_id)->count();
         
         // dd($student);
