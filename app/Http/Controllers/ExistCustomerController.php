@@ -308,7 +308,7 @@ class ExistCustomerController extends Controller
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
         $bill = $billplz->bill();
-        $response = $bill->get($payment->stripe_id);
+        $response = $bill->get($payment->billplz_id);
 
         $pay_data = $response->toArray();
 
