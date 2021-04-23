@@ -11,6 +11,8 @@ use Stripe;
 use Mail;
 use Billplz\Client;
 
+use App\Console\Commands\EmelPengesahan;
+
 class ExistCustomerController extends Controller
 {
     public function stepOne($product_id, $package_id, $stud_id, Request $request){
@@ -218,6 +220,11 @@ class ExistCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
+        $details = [
+    		'subject' => 'Pengesahan Pembelian'
+    	];
+
+        $job = new BlastQueueEmail($details);
         // $theJob = new EmelPengesahan($product_id);
         // $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
