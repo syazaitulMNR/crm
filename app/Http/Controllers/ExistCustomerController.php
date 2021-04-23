@@ -318,13 +318,18 @@ class ExistCustomerController extends Controller
 
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
-        // $payment->save();
-    
-        // $request->session()->forget('student');
-        // $request->session()->forget('payment');
+
+        if ($payment->status == 'paid')
+        {
+            return view('customer/thankyou');  
+        } else {
+            return view('customer/failed_payment');
+        }
         dd($pay_data['state']);
-        // return view('customer/thankyou');
+        
     }
+
+
 
     // public function fpx_payment($product_id, $package_id, Request $request)
     // {
