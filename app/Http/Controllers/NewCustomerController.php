@@ -284,7 +284,7 @@ class NewCustomerController extends Controller
             }
 
             $addData = array(
-                'status' => 'succeeded',
+                'status' => 'paid',
                 'stripe_id' => $customer->id
             );
 
