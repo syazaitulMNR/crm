@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Student;
+use App\User;
 use App\Product;
 use App\Package;
 use App\Payment;
@@ -41,7 +41,7 @@ class BlastQueueEmail implements ShouldQueue
         $package = Package::where('package_id', $package_id)->first();
         $payment = Package::where('payment_id', $payment_id)->first();
         
-        $data = Student::all();
+        $data = User::all();
         $input['subject'] = $this->details['subject'];
 
         foreach ($data as $key => $value) {
