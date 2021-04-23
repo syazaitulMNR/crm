@@ -9,6 +9,7 @@ use App\Student;
 use App\Payment;
 use Stripe;
 use Mail;
+use Billplz\Client;
 
 class NewCustomerController extends Controller
 {
