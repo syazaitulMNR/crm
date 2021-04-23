@@ -34,10 +34,7 @@ class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
                 'last_name'  => $row['last_name'], 
                 'ic'         => $row['ic'],
                 'email'      => $row['email'],
-                'phoneno'    => $row['phoneno'],
-                'product_id'    => $row['product_id'],
-                'package_id'    => $row['package_id'],
-                
+                'phoneno'    => $row['phoneno'],                
             ]);
         }
         
