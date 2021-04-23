@@ -38,7 +38,7 @@ class EmelPengesahan extends Command
      */
     public function __construct($details)
     {
-        parent::__construct();
+        // parent::__construct();
 
         $this->details = $details;
     }

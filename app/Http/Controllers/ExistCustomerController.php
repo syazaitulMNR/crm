@@ -224,7 +224,7 @@ class ExistCustomerController extends Controller
     		'subject' => 'Pengesahan Pembelian'
     	];
 
-        $job = new BlastQueueEmail($details);
+        $job = new EmelPengesahan($details);
         // $theJob = new EmelPengesahan($product_id);
         // $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
