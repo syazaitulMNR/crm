@@ -33,10 +33,10 @@ class BlastingController extends Controller
         $package = Package::where('product_id', $product_id)->get(); 
         $payment = Payment::where('product_id', $product_id)->get();
 
-        $totalcust = Student::where('product_id', $product_id)->count();
+        // $totalcust = Student::where('product_id', $product_id)->count();
         
         // dd($student);
-        return view('admin.viewblast', compact('stud', 'product','package', 'payment', 'totalcust'));
+        return view('admin.viewblast', compact('stud', 'product','package', 'payment'));
     }
 
     
