@@ -23,7 +23,7 @@
     <div class="float-right pt-3">{{$stud->links()}}</div>
     @if(count($stud) > 0)
 
-    <table class="table table-hover">
+    {{-- <table class="table table-hover">
       <thead>
         <tr>
         <th scope="col">ID</th>
@@ -32,18 +32,18 @@
       </thead>
       <tbody>
         @foreach ($student as $key => $students)
-        @if ($product->product_id == $students->product_id)
+        {{-- @if ($product->product_id == $students->product_id) 
         <tr>
           <td>{{ $students->first_name  }}</td>
-          {{-- <td>{{ $payment->status  }}</td> --}}
+          {{-- <td>{{ $payment->status  }}</td> 
         </tr>
-        @endif
+        {{-- @endif 
         @endforeach
       </tbody>
-    </table>
+    </table> --}}
 
 
-    {{-- <table class="table table-hover">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col" style="width: 10%">#</th>
@@ -96,7 +96,7 @@
         @endforeach 
         @endforeach
       </tbody>
-    </table> --}}
+    </table>
     @else
       <p>There are no customer to display.</p>
     @endif
