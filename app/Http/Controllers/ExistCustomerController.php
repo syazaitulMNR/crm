@@ -322,7 +322,7 @@ class ExistCustomerController extends Controller
     
         // $request->session()->forget('student');
         // $request->session()->forget('payment');
-        dd($response);
+        dd($pay_data);
         // return view('customer/thankyou');
     }
 
