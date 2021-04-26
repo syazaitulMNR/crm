@@ -275,18 +275,19 @@ class ExistCustomerController extends Controller
         $payment_id = $payment->payment_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
-  
-        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+
+        dd($product_name);
+        // dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
 
         // $student->save();
         // $payment->save();
   
-        $request->session()->forget('student');
-        $request->session()->forget('payment');
+        // $request->session()->forget('student');
+        // $request->session()->forget('payment');
         
-        return redirect('pendaftaran-berjaya');
+        // return redirect('pendaftaran-berjaya');
     }
 
     public function billplz_payment($product_id, $package_id, Request $request)
