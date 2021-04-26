@@ -276,7 +276,7 @@ class ExistCustomerController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        dd($product_name);
+        dd($package_name);
         // dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
