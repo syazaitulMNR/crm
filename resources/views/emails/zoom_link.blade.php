@@ -47,7 +47,7 @@
                   </tr>
                   
                 </table>
-                @if($package == "General")
+                @if($package_name == "General")
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                     <tr>
                       <td>
@@ -70,7 +70,7 @@
                       </td>
                     </tr>
                   </table>
-                @elseif($package == "Flex")
+                @elseif($package_name == "Flex")
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                     <tr>
                       <td>
@@ -92,7 +92,7 @@
                       </td>
                     </tr>
                   </table>
-                @elseif($package == "VIP")
+                @elseif($package_name == "VIP")
                 @else
                 @endif
                 <table style="border: none; cellpadding: 0; cellspacing: 0;">
