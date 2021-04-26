@@ -197,6 +197,12 @@ Route::get('exceedlimit','HomeController@participant_form');
 
 Route::get('products/{product_id}/{package_id}', 'NewRegisterController@index')->name('products.index');
 
+/*
+|--------------------------------------------------------------------------
+| Upgrade Package
+|--------------------------------------------------------------------------
+*/
+Route::get('updateform/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@upgrade_package');
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');
