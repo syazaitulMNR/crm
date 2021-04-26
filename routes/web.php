@@ -208,7 +208,7 @@ Route::post('payment-process', 'TestController@process');
 
 Route::get('test/email', function(){
   
-	$send_mail = 'test@gmail.com';
+	$send_mail = 'zarina4.11@gmail.com';
   
     dispatch(new App\Jobs\SendEmailJob($send_mail));
   
