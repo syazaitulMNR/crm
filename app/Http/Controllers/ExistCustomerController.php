@@ -263,7 +263,7 @@ class ExistCustomerController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
-        $payment->save();
+        // $payment->save();
   
         $request->session()->forget('student');
         $request->session()->forget('payment');
