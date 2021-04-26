@@ -37,13 +37,12 @@ class PengesahanJob implements ShouldQueue
      * @return void
      */
     public function handle()
-    {
-        $email = new PengesahanPembelian(   $this->product_name,
-                                            $this->package_name,
-                                            $this->packageId,
-                                            $this->payment_id,
-                                            $this->productId,
-                                            $this->student_id   );        
-        Mail::to($this->send_mail)->send($email);
+    {    
+        Mail::to($this->send_mail)->send(new PengesahanPembelian(   $this->product_name,
+                                                                    $this->package_name,
+                                                                    $this->packageId,
+                                                                    $this->payment_id,
+                                                                    $this->productId,
+                                                                    $this->student_id ));
     }
 }
