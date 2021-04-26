@@ -271,12 +271,12 @@ class ExistCustomerController extends Controller
 
         $send_mail = $student->email;
         $product = $product->name;
-        $package_id = $package->package_id;
+        $packageId = $package_id;
         $payment_id = $payment->payment_id;
-        $product_id = $product->product_id;        
+        $productId = $product_id;        
         $student_id = $student->stud_id;
   
-        dispatch(new App\Jobs\PengesahanJob($send_mail, $product, $package_id, $payment_id, $product_id, $student_id));
+        dispatch(new App\Jobs\PengesahanJob($send_mail, $product, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
 

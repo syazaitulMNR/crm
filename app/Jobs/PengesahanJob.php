@@ -13,20 +13,20 @@ use Mail;
 class PengesahanJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $send_mail, $product, $package_id, $payment_id, $product_id, $student_id;
+    protected $send_mail, $product, $packageId, $payment_id, $productId, $student_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($send_mail, $product, $package_id, $payment_id, $product_id, $student_id)
+    public function __construct($send_mail, $product, $packageId, $payment_id, $productId, $student_id)
     {
         $this->send_mail = $send_mail;
         $this->product = $product;
-        $this->package_id = $package_id;
+        $this->packageId = $packageId;
         $this->payment_id = $payment_id;
-        $this->product_id = $product_id;
+        $this->productId = $productId;
         $this->student_id = $student_id;
     }
 
@@ -40,9 +40,9 @@ class PengesahanJob implements ShouldQueue
         $email = new PengesahanPembelian();        
         Mail::to(   $this->send_mail,
                     $this->product,
-                    $this->package_id,
+                    $this->packageId,
                     $this->payment_id,
-                    $this->product_id,
+                    $this->productId,
                     $this->student_id   )->send($email);
     }
 }
