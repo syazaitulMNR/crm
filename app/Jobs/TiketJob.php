@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\SendMailable;
+use Mail;
 
 class TiketJob implements ShouldQueue
 {
@@ -38,12 +39,12 @@ class TiketJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->email)->send(new SendMailable(   $this->name,
-                                                                $this->product_name,
-                                                                $this->package_name,
-                                                                $this->date_from,
-                                                                $this->date_to,
-                                                                $this->time_from,
-                                                                $this->time_to ));
+        Mail::to($this->email)->send(new SendMailable(  $this->name,
+                                                        $this->product_name,
+                                                        $this->package_name,
+                                                        $this->date_from,
+                                                        $this->date_to,
+                                                        $this->time_from,
+                                                        $this->time_to ));
     }
 }
