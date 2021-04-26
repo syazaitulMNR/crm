@@ -275,7 +275,7 @@ class ExistCustomerController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
   
-        dispatch(new App\Jobs\PengesahanJob($send_mail, $product, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new PengesahanJob($send_mail, $product, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
 
