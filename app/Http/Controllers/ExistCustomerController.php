@@ -219,22 +219,7 @@ class ExistCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
-        
-        // $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
-
-        // $to_name = $student->first_name;
-        // $to_email = $student->email; 
-
-        // $data = array(
-        //     'product'=>"Product Test",
-        //     'package_id'=>"PKD001",
-        //     'package'=>"Package Test",
-        //     'payment_id'=>"OD001",
-        //     'product_id'=>"PRD001",
-        //     'student_id'=>"MI001",
-        // );
-        
+                
         // $data['name']=$student->first_name;
         // $data['ic']=$student->ic;
         // $data['email']=$student->email;
@@ -276,12 +261,11 @@ class ExistCustomerController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        // dd(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
         dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
 
-        // $student->save();
+        $student->save();
         // $payment->save();
   
         $request->session()->forget('student');
