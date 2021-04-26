@@ -28,7 +28,7 @@ class PengesahanPembelian extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Mail using Queue in Larvel 8')            
-            ->view('welcome');
+        return $this->subject('Pengesahan Pembelian')            
+            ->view('emails.mail');
     }
 }

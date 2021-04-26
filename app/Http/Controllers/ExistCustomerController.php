@@ -265,28 +265,23 @@ class ExistCustomerController extends Controller
         //     // $message->attachData($receipt->output(), "Receipt.pdf");
 
         // });
+
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+
+        $send_mail = $student->email;
+        $product = $product->name;
+        $package_id = $package->package_id;
+        $payment_id = $payment->payment_id;
+        $product_id = $product->product_id;        
+        $student_id = $student->stud_id;
+  
+        dispatch(new App\Jobs\PengesahanJob($send_mail, $product, $package_id, $payment_id, $product_id, $student_id));
+        
         /*-- End Email -----------------------------------------------------------*/
 
-        // Manage email (for existed ic in looping form) 
-        // $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
-
-        // $from_name = 'noreply@momentuminternet.com';
-        // $email_participant1 = $request->email_peserta[$key]; 
-        
-        // $name = $request->firstname_peserta[$key]; 
-        // $products = $product->name;
-        // $package = $package->name;
-        // $date_from = $product->date_from;
-        // $date_to = $product->date_to;
-        // $time_from = $product->time_from;
-        // $time_to = $product->time_to;
-        
-        // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-        
-
-        $student->save();
-        $payment->save();
+        // $student->save();
+        // $payment->save();
   
         $request->session()->forget('student');
         $request->session()->forget('payment');
