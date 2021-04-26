@@ -160,6 +160,7 @@ class ExistCustomerController extends Controller
 
     public function saveStripeMethod($product_id, $package_id, Request $request)
     {        
+        $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $payment = $request->session()->get('payment');
         $student = $request->session()->get('student');
@@ -250,9 +251,6 @@ class ExistCustomerController extends Controller
 
         // });
 
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-
         $send_mail = $student->email;
         $product_name = $product->name;        
         $package_name = $package->name;
@@ -330,7 +328,7 @@ class ExistCustomerController extends Controller
         if ($payment->status == 'paid')
         {
             /*-- Manage Email ---------------------------------------------------*/
-            
+
             $product = Product::where('product_id', $product_id)->first();
             $package = Package::where('package_id', $package_id)->first();
 
