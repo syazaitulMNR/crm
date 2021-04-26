@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\SendMailable;
+use App\Jobs\PengesahanJob;
 use App\Mail\TestMail;
 use App\Product;
 use App\Feature;
@@ -139,20 +140,19 @@ class HomeController extends Controller
                             if(Student::where('ic', $value)->exists())
                             {    
                                 // Manage email (for existed ic in looping form) 
-                                // $product = Product::where('product_id', $product_id)->first();
-                                // $package = Package::where('package_id', $package_id)->first();
+                                $product = Product::where('product_id', $product_id)->first();
+                                $package = Package::where('package_id', $package_id)->first();
 
-                                // $from_name = 'noreply@momentuminternet.com';
-                                // $email_participant1 = $request->email_peserta[$key]; 
+                                $email_participant1 = $request->email_peserta[$key]; 
+                                $name = $request->firstname_peserta[$key]; 
+                                $product_name = $product->name;
+                                $package_name = $package->name;
+                                $date_from = $product->date_from;
+                                $date_to = $product->date_to;
+                                $time_from = $product->time_from;
+                                $time_to = $product->time_to;
                                 
-                                // $name = $request->firstname_peserta[$key]; 
-                                // $products = $product->name;
-                                // $package = $package->name;
-                                // $date_from = $product->date_from;
-                                // $date_to = $product->date_to;
-                                // $time_from = $product->time_from;
-                                // $time_to = $product->time_to;
-                                
+                                dispatch(new TiketJob($email_participant1, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                                 // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                                 
                                 continue;
@@ -177,20 +177,20 @@ class HomeController extends Controller
                     
                             ));
                 
-                            // Manage email (for new ic in looping form)
-                            // $product = Product::where('product_id', $product_id)->first();
-                            // $package = Package::where('package_id', $package_id)->first();
+                            // Manage email (for existed ic in looping form) 
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
 
-                            // $from_name = 'noreply@momentuminternet.com';
-                            // $email_participant2 = $request->email_peserta[$key]; 
+                            $email_participant2 = $request->email_peserta[$key]; 
+                            $name = $request->firstname_peserta[$key]; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
                             
-                            // $name = $request->firstname_peserta[$key]; 
-                            // $products = $product->name;
-                            // $package = $package->name;
-                            // $date_from = $product->date_from;
-                            // $date_to = $product->date_to;
-                            // $time_from = $product->time_from;
-                            // $time_to = $product->time_to;
+                            dispatch(new TiketJob($email_participant2, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                             
                             // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                         }
@@ -208,21 +208,20 @@ class HomeController extends Controller
                         'payment_id' => $payment_id
                     ));
 
-                    // Manage email (for existed ic in single form)   
-                    // $product = Product::where('product_id', $product_id)->first();
-                    // $package = Package::where('package_id', $package_id)->first();
+                    // Manage email (for existed ic in looping form) 
+                    $product = Product::where('product_id', $product_id)->first();
+                    $package = Package::where('package_id', $package_id)->first();
 
-                    // $from_name = 'noreply@momentuminternet.com';
-                    // $email_buyer = $request->email; 
+                    $email_buyer = $request->email; 
+                    $name = $request->first_name; 
+                    $product_name = $product->name;
+                    $package_name = $package->name;
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
                     
-                    // $name = $request->first_name; 
-                    // $products = $product->name;
-                    // $package = $package->name;
-                    // $date_from = $product->date_from;
-                    // $date_to = $product->date_to;
-                    // $time_from = $product->time_from;
-                    // $time_to = $product->time_to;
-                    
+                    dispatch(new TiketJob($email_buyer, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                     
                     // Mail::to($email_buyer)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
 
                 }else{
@@ -248,20 +247,19 @@ class HomeController extends Controller
                     ));
                                     
                     // Manage email (for new ic in single form)                    
-                    // $product = Product::where('product_id', $product_id)->first();
-                    // $package = Package::where('package_id', $package_id)->first();
+                    $product = Product::where('product_id', $product_id)->first();
+                    $package = Package::where('package_id', $package_id)->first();
 
-                    // $from_name = 'noreply@momentuminternet.com';
-                    // $email_buyer2 = $request->email; 
+                    $email_buyer2 = $request->email; 
+                    $name = $request->first_name; 
+                    $product_name = $product->name;
+                    $package_name = $package->name;
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
                     
-                    // $name = $request->first_name; 
-                    // $products = $product->name;
-                    // $package = $package->name;
-                    // $date_from = $product->date_from;
-                    // $date_to = $product->date_to;
-                    // $time_from = $product->time_from;
-                    // $time_to = $product->time_to;
-                    
+                    dispatch(new TiketJob($email_buyer2, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                     // Mail::to($email_buyer2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                 
                     // If quantity = 1
@@ -276,9 +274,19 @@ class HomeController extends Controller
                             if(Student::where('ic', $value)->exists())
                             {
                                 // Manage email (for existed ic in single form)                        
-                                // $product = Product::where('product_id', $product_id)->first();
-                                // $package = Package::where('package_id', $package_id)->first();
+                                $product = Product::where('product_id', $product_id)->first();
+                                $package = Package::where('package_id', $package_id)->first();
 
+                                $email_participant3 = $request->email_peserta[$key];
+                                $name = $request->firstname_peserta[$key]; 
+                                $product_name = $product->name;
+                                $package_name = $package->name;
+                                $date_from = $product->date_from;
+                                $date_to = $product->date_to;
+                                $time_from = $product->time_from;
+                                $time_to = $product->time_to;
+                                
+                                dispatch(new TiketJob($email_participant3, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                                 // $from_name = 'noreply@momentuminternet.com';
                                 // $email_participant3 = $request->email_peserta[$key]; 
                                 
@@ -316,20 +324,19 @@ class HomeController extends Controller
                             ));
                                                     
                             // Manage email (for new ic in looping form)
-                            // $product = Product::where('product_id', $product_id)->first();
-                            // $package = Package::where('package_id', $package_id)->first();
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
 
-                            // $from_name = 'noreply@momentuminternet.com';
-                            // $email_participant4 = $request->email_peserta[$key]; 
+                            $email_participant4 = $request->email_peserta[$key];
+                            $name = $request->firstname_peserta[$key]; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
                             
-                            // $name = $request->firstname_peserta[$key]; 
-                            // $products = $product->name;
-                            // $package = $package->name;
-                            // $date_from = $product->date_from;
-                            // $date_to = $product->date_to;
-                            // $time_from = $product->time_from;
-                            // $time_to = $product->time_to;
-                            
+                            dispatch(new TiketJob($email_participant4, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                             // Mail::to($email_participant4)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                             
                         }
@@ -395,21 +402,20 @@ class HomeController extends Controller
                     
                             ));
                                             
-                            // Manage email (for new ic in single form)                    
-                            // $product = Product::where('product_id', $product_id)->first();
-                            // $package = Package::where('package_id', $package_id)->first();
+                            // Manage email (for new ic in single form)   
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
 
-                            // $from_name = 'noreply@momentuminternet.com';
-                            // $email_pkg1 = $request->email_free1; 
+                            $email_pkg1 = $request->email_free1;
+                            $name = $request->firstname_free1; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
                             
-                            // $name = $request->firstname_free1; 
-                            // $products = $product->name;
-                            // $package = $package->name;
-                            // $date_from = $product->date_from;
-                            // $date_to = $product->date_to;
-                            // $time_from = $product->time_from;
-                            // $time_to = $product->time_to;
-                            
+                            dispatch(new TiketJob($email_pkg1, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to)); 
                             // Mail::to($email_pkg1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
 
                         }elseif ($payment->package_id == 'PKD008'){
@@ -433,21 +439,20 @@ class HomeController extends Controller
                     
                             ));
                                             
-                            // Manage email (for new ic in single form)                    
-                            // $product = Product::where('product_id', $product_id)->first();
-                            // $package = Package::where('package_id', $package_id)->first();
+                            // Manage email (for new ic in single form) 
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
 
-                            // // $from_name = 'noreply@momentuminternet.com';
-                            // $email_pkg2 = $request->email_free2; 
+                            $email_pkg2 = $request->email_free2;
+                            $name = $request->firstname_free2; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
                             
-                            // $name = $request->firstname_free2; 
-                            // $products = $product->name;
-                            // $package = $package->name;
-                            // $date_from = $product->date_from;
-                            // $date_to = $product->date_to;
-                            // $time_from = $product->time_from;
-                            // $time_to = $product->time_to;
-                            
+                            dispatch(new TiketJob($email_pkg2, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                                 
                             // Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
 
                         }elseif ($payment->package_id == 'PKD009'){
@@ -471,22 +476,22 @@ class HomeController extends Controller
                     
                             ));
                                             
-                            // Manage email (for new ic in single form)                    
-                            // $product = Product::where('product_id', $product_id)->first();
-                            // $package = Package::where('package_id', $package_id)->first();
+                            // Manage email (for new ic in single form)     
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
 
-                            // $from_name = 'noreply@momentuminternet.com';
-                            // $email_pkg3 = $request->email_free3; 
+                            $email_pkg3 = $request->email_free3;
+                            $name = $request->firstname_free3; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
                             
-                            // $name = $request->firstname_free3; 
-                            // $products = $product->name;
-                            // $package = $package->name;
-                            // $date_from = $product->date_from;
-                            // $date_to = $product->date_to;
-                            // $time_from = $product->time_from;
-                            // $time_to = $product->time_to;
-                            
+                            dispatch(new TiketJob($email_pkg3, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));  
                             // Mail::to($email_pkg3)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+
                         }else{
                             echo "No package available";
                         }
@@ -500,20 +505,19 @@ class HomeController extends Controller
                             if(Student::where('ic', $value)->exists())
                             {    
                                 // Manage email (for existed ic in looping form) 
-                                // $product = Product::where('product_id', $product_id)->first();
-                                // $package = Package::where('package_id', $package_id)->first();
+                                $product = Product::where('product_id', $product_id)->first();
+                                $package = Package::where('package_id', $package_id)->first();
 
-                                // $from_name = 'noreply@momentuminternet.com';
-                                // $email_participant1 = $request->email_peserta[$key]; 
+                                $email_participant1 = $request->email_peserta[$key];
+                                $name = $request->firstname_peserta[$key]; 
+                                $product_name = $product->name;
+                                $package_name = $package->name;
+                                $date_from = $product->date_from;
+                                $date_to = $product->date_to;
+                                $time_from = $product->time_from;
+                                $time_to = $product->time_to;
                                 
-                                // $name = $request->firstname_peserta[$key]; 
-                                // $products = $product->name;
-                                // $package = $package->name;
-                                // $date_from = $product->date_from;
-                                // $date_to = $product->date_to;
-                                // $time_from = $product->time_from;
-                                // $time_to = $product->time_to;
-                                
+                                dispatch(new TiketJob($email_participant1, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                                 // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                                 
                                 continue;
@@ -539,20 +543,19 @@ class HomeController extends Controller
                             ));
                 
                             // Manage email (for new ic in looping form)
-                            // $product = Product::where('product_id', $product_id)->first();
-                            // $package = Package::where('package_id', $package_id)->first();
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
 
-                            // $from_name = 'noreply@momentuminternet.com';
-                            // $email_participant2 = $request->email_peserta[$key]; 
+                            $email_participant2 = $request->email_peserta[$key];
+                            $name = $request->firstname_peserta[$key]; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
                             
-                            // $name = $request->firstname_peserta[$key]; 
-                            // $products = $product->name;
-                            // $package = $package->name;
-                            // $date_from = $product->date_from;
-                            // $date_to = $product->date_to;
-                            // $time_from = $product->time_from;
-                            // $time_to = $product->time_to;
-                            
+                            dispatch(new TiketJob($email_participant2, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                            
                             // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                         }
                     }
@@ -569,7 +572,20 @@ class HomeController extends Controller
                         'payment_id' => $payment_id
                     ));
 
-                    // Manage email (for existed ic in single form)   
+                    // Manage email (for existed ic in single form)  
+                    $product = Product::where('product_id', $product_id)->first();
+                    $package = Package::where('package_id', $package_id)->first();
+
+                    $email_buyer = $request->email;
+                    $name = $request->first_name; 
+                    $product_name = $product->name;
+                    $package_name = $package->name;
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
+                    
+                    dispatch(new TiketJob($email_buyer, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to)); 
                     // $product = Product::where('product_id', $product_id)->first();
                     // $package = Package::where('package_id', $package_id)->first();
 
@@ -608,7 +624,20 @@ class HomeController extends Controller
             
                     ));
                                     
-                    // Manage email (for new ic in single form)                    
+                    // Manage email (for new ic in single form)   
+                    $product = Product::where('product_id', $product_id)->first();
+                    $package = Package::where('package_id', $package_id)->first();
+
+                    $email_buyer2 = $request->email;
+                    $name = $request->first_name; 
+                    $product_name = $product->name;
+                    $package_name = $package->name;
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
+                    
+                    dispatch(new TiketJob($email_buyer2, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                 
                     // $product = Product::where('product_id', $product_id)->first();
                     // $package = Package::where('package_id', $package_id)->first();
 
@@ -651,7 +680,20 @@ class HomeController extends Controller
                     
                             ));
                                             
-                            // Manage email (for new ic in single form)                    
+                            // Manage email (for new ic in single form) 
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
+
+                            $email_pkg1 = $request->email_free1;
+                            $name = $request->firstname_free1; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
+                            
+                            dispatch(new TiketJob($email_pkg1, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                   
                             // $product = Product::where('product_id', $product_id)->first();
                             // $package = Package::where('package_id', $package_id)->first();
 
@@ -689,7 +731,20 @@ class HomeController extends Controller
                     
                             ));
                                             
-                            // Manage email (for new ic in single form)                    
+                            // Manage email (for new ic in single form)           
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
+
+                            $email_pkg2 = $request->email_free2;
+                            $name = $request->firstname_free2; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
+                            
+                            dispatch(new TiketJob($email_pkg2, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));         
                             // $product = Product::where('product_id', $product_id)->first();
                             // $package = Package::where('package_id', $package_id)->first();
 
@@ -727,7 +782,20 @@ class HomeController extends Controller
                     
                             ));
                                             
-                            // Manage email (for new ic in single form)                    
+                            // Manage email (for new ic in single form) 
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
+
+                            $email_pkg3 = $request->email_free3;
+                            $name = $request->firstname_free3; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
+                            
+                            dispatch(new TiketJob($email_pkg3, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                   
                             // $product = Product::where('product_id', $product_id)->first();
                             // $package = Package::where('package_id', $package_id)->first();
 
@@ -755,7 +823,20 @@ class HomeController extends Controller
                             // If the ic at looping form exist
                             if(Student::where('ic', $value)->exists())
                             {
-                                // Manage email (for existed ic in single form)                        
+                                // Manage email (for existed ic in single form)      
+                                $product = Product::where('product_id', $product_id)->first();
+                                $package = Package::where('package_id', $package_id)->first();
+
+                                $email_participant3 = $request->email_peserta[$key];
+                                $name = $request->firstname_peserta[$key]; 
+                                $product_name = $product->name;
+                                $package_name = $package->name;
+                                $date_from = $product->date_from;
+                                $date_to = $product->date_to;
+                                $time_from = $product->time_from;
+                                $time_to = $product->time_to;
+                                
+                                dispatch(new TiketJob($email_participant3, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                  
                                 // $product = Product::where('product_id', $product_id)->first();
                                 // $package = Package::where('package_id', $package_id)->first();
 
@@ -796,6 +877,19 @@ class HomeController extends Controller
                             ));
                                                     
                             // Manage email (for new ic in looping form)
+                            $product = Product::where('product_id', $product_id)->first();
+                            $package = Package::where('package_id', $package_id)->first();
+
+                            $email_participant4 = $request->email_peserta[$key];
+                            $name = $request->firstname_peserta[$key]; 
+                            $product_name = $product->name;
+                            $package_name = $package->name;
+                            $date_from = $product->date_from;
+                            $date_to = $product->date_to;
+                            $time_from = $product->time_from;
+                            $time_to = $product->time_to;
+                            
+                            dispatch(new TiketJob($email_participant4, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                             // $product = Product::where('product_id', $product_id)->first();
                             // $package = Package::where('package_id', $package_id)->first();
 
