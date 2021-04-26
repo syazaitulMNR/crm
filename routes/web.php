@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\TestMail;
 use App\Http\Controllers\PDFController;
 use Illuminate\Http\Request;
+use App\Mail\PengesahanPembelian;
 
 /*
 |--------------------------------------------------------------------------
@@ -210,7 +211,7 @@ Route::get('test/email', function(){
   
 	$send_mail = 'zarina4.11@gmail.com';
   
-    dispatch(new App\Jobs\SendEmailJob($send_mail));
+    dispatch(new App\Jobs\PengesahanPembelian($send_mail));
   
     dd('send mail successfully !!');
 });
