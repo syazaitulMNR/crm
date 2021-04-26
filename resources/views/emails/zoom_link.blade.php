@@ -47,11 +47,11 @@
                   </tr>
                   
                 </table>
-                @if($package_name == "General")
+                {{-- @if($package_name == "General") --}}
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                     <tr>
                       <td>
-                        <p>Jika anda berminat untuk upgrade pakej, sila pilih pakej di bawah.</p>
+                        <p>Jika anda berminat untuk upgrade pakej, sila klik butang di bawah.</p>
                         {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
                       </td>
                     </tr>
@@ -61,8 +61,9 @@
                           <tbody>
                             <tr>
                             <td> 
-                              <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
-                              <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a>
+                              <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Upgrade Package</a>
+                              {{-- <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
+                              <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a> --}}
                             </td>
                             </tr>
                           </tbody>
@@ -70,12 +71,11 @@
                       </td>
                     </tr>
                   </table>
-                @elseif($package_name == "Flex")
-                  <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
+                {{-- @elseif($package_name == "Flex") --}}
+                  {{-- <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                     <tr>
                       <td>
                         <p>Jika anda berminat untuk upgrade pakej, sila pilih pakej di bawah.</p>
-                        {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
                       </td>
                     </tr>
                     <tr>
@@ -91,10 +91,10 @@
                         </table>
                       </td>
                     </tr>
-                  </table>
-                @elseif($package_name == "VIP")
+                  </table> --}}
+                {{-- @elseif($package_name == "VIP")
                 @else
-                @endif
+                @endif --}}
                 <table style="border: none; cellpadding: 0; cellspacing: 0;">
                   
                   <tr>
