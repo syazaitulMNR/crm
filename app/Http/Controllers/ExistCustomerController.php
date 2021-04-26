@@ -265,8 +265,7 @@ class ExistCustomerController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
-        $student->save();
-        // $payment->save();
+        $payment->save();
   
         $request->session()->forget('student');
         $request->session()->forget('payment');
@@ -330,6 +329,23 @@ class ExistCustomerController extends Controller
 
         if ($payment->status == 'paid')
         {
+            /*-- Manage Email ---------------------------------------------------*/
+            
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;        
+            $package_name = $package->name;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+            
+            /*-- End Email -----------------------------------------------------------*/
+
             $payment->save();
     
             $request->session()->forget('student');
