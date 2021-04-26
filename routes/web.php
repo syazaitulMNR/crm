@@ -205,3 +205,12 @@ Route::get('sendbasicemail','TestController@basic_email');
 
 Route::get('payment', 'TestController@index');
 Route::post('payment-process', 'TestController@process');
+
+Route::get('test/email', function(){
+  
+	$send_mail = 'test@gmail.com';
+  
+    dispatch(new App\Jobs\SendEmailJob($send_mail));
+  
+    dd('send mail successfully !!');
+});

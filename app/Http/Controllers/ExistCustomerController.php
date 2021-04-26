@@ -221,12 +221,20 @@ class ExistCustomerController extends Controller
 
         /*-- Manage Email ---------------------------------------------------*/
         
-        // $theJob = new EmelPengesahan($product_id);
         // $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
 
         // $to_name = $student->first_name;
         // $to_email = $student->email; 
+
+        // $data = array(
+        //     'product'=>"Product Test",
+        //     'package_id'=>"PKD001",
+        //     'package'=>"Package Test",
+        //     'payment_id'=>"OD001",
+        //     'product_id'=>"PRD001",
+        //     'student_id'=>"MI001",
+        // );
         
         // $data['name']=$student->first_name;
         // $data['ic']=$student->ic;
@@ -258,6 +266,24 @@ class ExistCustomerController extends Controller
 
         // });
         /*-- End Email -----------------------------------------------------------*/
+
+        // Manage email (for existed ic in looping form) 
+        // $product = Product::where('product_id', $product_id)->first();
+        // $package = Package::where('package_id', $package_id)->first();
+
+        // $from_name = 'noreply@momentuminternet.com';
+        // $email_participant1 = $request->email_peserta[$key]; 
+        
+        // $name = $request->firstname_peserta[$key]; 
+        // $products = $product->name;
+        // $package = $package->name;
+        // $date_from = $product->date_from;
+        // $date_to = $product->date_to;
+        // $time_from = $product->time_from;
+        // $time_to = $product->time_to;
+        
+        // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+        
 
         $student->save();
         $payment->save();
