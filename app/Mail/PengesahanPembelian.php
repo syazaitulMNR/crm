@@ -29,6 +29,6 @@ class PengesahanPembelian extends Mailable
     public function build()
     {
         return $this->subject('Pengesahan Pembelian')            
-            ->view('welcome');
+            ->view('emails.mail');
     }
 }
