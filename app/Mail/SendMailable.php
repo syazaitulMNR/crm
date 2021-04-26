@@ -37,7 +37,7 @@ class SendMailable extends Mailable
     public function build()
     {        
         return $this->view('emails.zoom_link')
-        ->subject('Tahniah! Kemaskini Tiket Peserta Telah Berjaya')
+        ->subject('Tahniah! Pengemaskinian Tiket Anda Telah Berjaya')
         ->with(
             [
                   'name' => $this->name,
