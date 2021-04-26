@@ -11,18 +11,18 @@ class SendMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $name, $package, $product, $date_from, $date_to, $time_from, $time_to;
+    public $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $package, $product, $date_from, $date_to, $time_from, $time_to)
+    public function __construct($name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to)
     {
-        $this->name = $name;
-        $this->package = $package;
-        $this->product = $product;
+        $this->name = $name;    
+        $this->product_name = $product_name;    
+        $this->package_name = $package_name;
         $this->date_from = $date_from;
         $this->date_to = $date_to;
         $this->time_from = $time_from;
@@ -37,13 +37,12 @@ class SendMailable extends Mailable
     public function build()
     {        
         return $this->view('emails.zoom_link')
-        ->from('noreply@momentuminternet.com', 'noreply')
-        ->subject('TAHNIAH! KEMASKINI TELAH BERJAYA')
+        ->subject('Tahniah! Kemaskini Tiket Peserta Telah Berjaya')
         ->with(
             [
                   'name' => $this->name,
-                  'package' => $this->package,
-                  'product' => $this->product,
+                  'package_name' => $this->package_name,
+                  'product_name' => $this->product_name,
                   'date_from' => $this->date_from,
                   'date_to' => $this->date_to,
                   'time_from' => $this->time_from,
