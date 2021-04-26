@@ -43,6 +43,8 @@ class PengesahanJob implements ShouldQueue
                     $this->packageId,
                     $this->payment_id,
                     $this->productId,
-                    $this->student_id   )->send($email);
+                    $this->student_id   )
+                    ->send($email)            
+                    ->view('emails.mail');
     }
 }
