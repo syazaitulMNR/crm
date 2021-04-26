@@ -236,8 +236,7 @@ class NewCustomerController extends Controller
 
     public function postCardMethod($product_id, $package_id, Request $request)
     {        
-        //dd($request->all());
-
+        $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $payment = $request->session()->get('payment');
         $student = $request->session()->get('student');
@@ -333,6 +332,17 @@ class NewCustomerController extends Controller
         //     // $message->attachData($receipt->output(), "Receipt.pdf");
 
         // });
+
+        $send_mail = $student->email;
+        $product_name = $product->name;        
+        $package_name = $package->name;
+        $packageId = $package_id;
+        $payment_id = $payment->payment_id;
+        $productId = $product_id;        
+        $student_id = $student->stud_id;
+
+        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+
         /*-- End Email -----------------------------------------------------------*/
 
         $student->save();
@@ -400,6 +410,23 @@ class NewCustomerController extends Controller
 
         if ($payment->status == 'paid')
         {
+            /*-- Manage Email ---------------------------------------------------*/
+
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;        
+            $package_name = $package->name;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+            
+            /*-- End Email -----------------------------------------------------------*/
+            
             $student->save();
             $payment->save();
     
