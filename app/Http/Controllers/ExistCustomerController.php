@@ -269,13 +269,14 @@ class ExistCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
 
         $send_mail = $student->email;
-        $product_name = $product->name;
+        $product_name = $product->name;        
+        $package_name = $package->name;
         $packageId = $package_id;
         $payment_id = $payment->payment_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
   
-        dispatch(new PengesahanJob($send_mail, $product_name, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
 

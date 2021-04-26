@@ -15,7 +15,7 @@
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" >
                     <tr>
                       <td>
-                        <h3>Pendaftaran {{ $product }} anda telah berjaya</h3>
+                        <h3>Pendaftaran {{ $product_name }} anda telah berjaya</h3>
                         <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                           <tbody>
                             <tr>
@@ -24,8 +24,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                  <b>Program</b> : {{ $product }}<br>
-                                  <b>Pakej</b> : {{ $package }}<br>
+                                  <b>Program</b> : {{ $product_name }}<br>
+                                  <b>Pakej</b> : {{ $package_name }}<br>
                                   <b>Order ID</b> : {{ $payment_id }}
                                 </td>
                                 {{-- <td class="align-center">
@@ -67,7 +67,7 @@
                                   <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
                                     <tbody>
                                       <tr>
-                                      <td> <a href="{{ url('updateform') }}/{{ $product_id }}/{{ $package_id }}/{{ $student_id }}/{{ $payment_id }}" class="btn btn-primary py-3 px-4">Kemaskini</a> </td>
+                                      <td> <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}" class="btn btn-primary py-3 px-4">Kemaskini</a> </td>
                                       </tr>
                                     </tbody>
                                   </table>
