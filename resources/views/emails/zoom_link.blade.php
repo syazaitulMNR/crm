@@ -15,13 +15,13 @@
                   <tr>
                       <td>
                           <p><h3>Hai {{ $name }}!</h3>
-                          Terima kasih kerana ingin menyertai program {{$product}}.<br></p>
+                          Terima kasih kerana ingin menyertai program {{$product_name}}.<br></p>
                       </td>
                   </tr>
                   <tr>
                       <td>
                           <p><b>Maklumat program adalah seperti berikut:-</b></p>
-                          Pakej : {{$package}}<br>
+                          Pakej : {{$package_name}}<br>
                           Tarikh : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
                           Masa : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br></p>
                       </td>
