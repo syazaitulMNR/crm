@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Mail\SendMailable;
-use App\Jobs\PengesahanJob;
-use App\Mail\TestMail;
+// use App\Mail\SendMailable;
+use App\Jobs\TiketJob;
+// use App\Mail\TestMail;
 use App\Product;
 use App\Feature;
 use App\Package;
