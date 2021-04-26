@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\TestMail;
 use App\Http\Controllers\PDFController;
 use Illuminate\Http\Request;
-use App\Jobs\PengesahanJob;
 
 /*
 |--------------------------------------------------------------------------
