@@ -48,7 +48,7 @@ Upgrade Pakej
                         @if($current_package->price >= $packages->price)
                         @else
                             <div class="pricing">
-                                <div class="mySubmit">
+                                <div class="btn">
                                     <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
                                 </div>
                             </div>
