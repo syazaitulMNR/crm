@@ -46,21 +46,16 @@ Upgrade Pakej
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
+                            <div class="pricing">
+                                <div class="mySubmit" style="width:48%">
+                                    <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
+                                </div>
+                            </div>
                             {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%"> --}}
                             {{-- <button type="submit" class="btn btn-dark">Pilih</button> --}}
                         @endif
                         @endforeach
 
-                        <div class="pricing">
-                            <div class="row">
-                              @foreach ($package as $packages)
-                                <div class="mySubmit">
-                                    <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
-                                </div>
-                              </div>      
-                              @endforeach
-                            </div>
-                        </div>
                     </div>
 
                 </div>
