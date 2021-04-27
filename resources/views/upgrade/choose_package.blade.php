@@ -29,8 +29,6 @@ Upgrade Pakej
                         @else
                             <div class="col-auto">
                                 <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
-                                <br>
-                                <button type="submit" class="btn btn-dark">Pilih</button>
                             </div>
                         @endif
                         @endforeach
