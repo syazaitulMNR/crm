@@ -7,6 +7,7 @@ Upgrade Pakej
 <style>
     .mySubmit:hover {
         shadow: 10px 10px;
+        shadow-color: #000;
     }
 </style>
 
