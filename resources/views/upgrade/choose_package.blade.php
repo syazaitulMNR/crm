@@ -18,7 +18,7 @@ Upgrade Pakej
                 @csrf
   
                 @foreach($package as $packages)
-                <img src="/storage/assets/images/{{ $packages->package_image }}">
+                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}">
                     
                 @endforeach
             </form>
