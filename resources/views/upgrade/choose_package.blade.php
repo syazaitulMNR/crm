@@ -18,7 +18,8 @@ Upgrade Pakej
                 @csrf
   
                 @foreach($package as $packages)
-                    {{ $packages->package_image }}
+                <img src="/storage/cover_<?php echo url('/'); ?>/assets/images/{{ $packages->package_image }}">
+                    
                 @endforeach
             </form>
         </div>
