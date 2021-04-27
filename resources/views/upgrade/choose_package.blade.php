@@ -19,7 +19,7 @@ Upgrade Pakej
   
                 <div class="row justify-content-center">
                     <div class="col-md-5">
-                        <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:58%">
+                        <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:56%">
                         <h6 class="text-center">Pakej Semasa</h6>
                     </div>
 
