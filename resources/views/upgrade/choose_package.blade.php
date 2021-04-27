@@ -18,10 +18,16 @@ Upgrade Pakej
                 @csrf
   
                 <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/images')}}/{{ $package->package_image }}" style="width: 20%">
+                        <h6 class="text-center">Pakej Semasa</h6>
+                    </div>
 
-                    @foreach($package as $packages)
-                    <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width: 30%">
-                    @endforeach
+                    <div class="col-md-4">
+                        @foreach($package as $packages)
+                        <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width: 20%">
+                        @endforeach
+                    </div>
 
                 </div>
                     
