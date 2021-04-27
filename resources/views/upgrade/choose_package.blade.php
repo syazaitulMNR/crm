@@ -7,19 +7,18 @@ Upgrade Pakej
 <style>
     /* Pricing Card */
     .pricing .mySubmit {
-        border: none;   
-        color: dark; 
-        transition: all 0.2s;
-        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
-        border-radius: 1rem;
-        width: 48%;
+      border: none;   
+      color: dark; 
+      border-radius: 1rem;
+      transition: all 0.2s;
+      box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     }
     .pricing .btn {
-        border-radius: 5rem;
-        letter-spacing: .1rem;
-        font-weight: bold;
-        padding: 1rem;
-        transition: all 0.2s;
+      border-radius: 5rem;
+      letter-spacing: .1rem;
+      font-weight: bold;
+      padding: 1rem;
+      transition: all 0.2s;
     }
   
   </style>
@@ -47,16 +46,26 @@ Upgrade Pakej
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
-                            <div class="pricing">
-                                <div class="btn">
-                                    <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
-                                </div>
-                            </div>
                             {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%"> --}}
                             {{-- <button type="submit" class="btn btn-dark">Pilih</button> --}}
+                            <input type="image" class="mySubmit" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
                         @endif
                         @endforeach
 
+                        <div class="pricing">
+                            <div class="row">
+                              @foreach ($package as $packages)
+                                <div class="cards mb-5 mb-lg-0">
+                                  <div class="cards-body py-4 px-4">
+                                    <h5 class="cards-title text-uppercase text-center">{{ $packages->name  }}</h5>
+                                    <h6 class="cards-price text-center">RM {{ $packages->price }}</h6>
+                                    <a href="{{ url('buypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}" class="btn btn-dark btn-block text-uppercase">Beli</a>
+                                  </div>
+                                </div>
+                              </div>      
+                              @endforeach
+                            </div>
+                        </div>
                     </div>
 
                 </div>
