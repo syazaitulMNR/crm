@@ -27,7 +27,7 @@ Upgrade Pakej
                         @foreach($package as $packages)
                         @if($current_package->package_id == $packages->package_id)
                             <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
-                            @continue
+                            
                         @endif
                         @endforeach
                     </div>
