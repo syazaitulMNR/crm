@@ -4,6 +4,12 @@
 Upgrade Pakej
 @endsection
 
+<style>
+    .mySubmit:hover {
+        shadow: 10px 10px;
+    }
+</style>
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -29,7 +35,7 @@ Upgrade Pakej
                         @else
                             {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%"> --}}
                             {{-- <button type="submit" class="btn btn-dark">Pilih</button> --}}
-                            <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
+                            <input type="image" class="mySubmit" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
                         @endif
                         @endforeach
                     </div>
