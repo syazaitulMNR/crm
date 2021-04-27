@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+{{$product->name}}, {{$package->name}},{{$student->name}}, {{$payment->status}}
 Sila Pilih Pakej Baru:
 
 Pakej 1
