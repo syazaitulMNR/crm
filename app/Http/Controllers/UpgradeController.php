@@ -15,7 +15,7 @@ class UpgradeController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
-        $student = Student::where('stud_id', $student_id)->first();
+        $student = Student::where('stud_id', $stud_id)->first();
 
         return view('upgrade.choose_package');
     }
