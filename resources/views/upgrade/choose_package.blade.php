@@ -7,17 +7,18 @@ Upgrade Pakej
 <style>
     /* Pricing Card */
     .pricing .mySubmit {
-      border: none;   
-      color: dark; 
-      transition: all 0.2s;
-      box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+        border: none;   
+        color: dark; 
+        transition: all 0.2s;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+        border-radius: 1rem;
     }
     .pricing .btn {
-      border-radius: 5rem;
-      letter-spacing: .1rem;
-      font-weight: bold;
-      padding: 1rem;
-      transition: all 0.2s;
+        border-radius: 5rem;
+        letter-spacing: .1rem;
+        font-weight: bold;
+        padding: 1rem;
+        transition: all 0.2s;
     }
   
   </style>
