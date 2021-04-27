@@ -12,6 +12,7 @@ Upgrade Pakej
         transition: all 0.2s;
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
         border-radius: 1rem;
+        width: 48%;
     }
     .pricing .btn {
         border-radius: 5rem;
@@ -47,7 +48,7 @@ Upgrade Pakej
                         @if($current_package->price >= $packages->price)
                         @else
                             <div class="pricing">
-                                <div class="mySubmit" style="width:48%">
+                                <div class="mySubmit">
                                     <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit"/>
                                 </div>
                             </div>
