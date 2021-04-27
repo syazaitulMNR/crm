@@ -19,13 +19,13 @@ Upgrade Pakej
   
                 <div class="row justify-content-center">
                     <div class="col-md-4">
-                        <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="height:80%">
+                        <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:60%">
                         <h6 class="text-center">Pakej Semasa</h6>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         @foreach($package as $packages)
-                        <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:50%">
+                        <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:40%">
                         @endforeach
                     </div>
 
