@@ -27,9 +27,7 @@ Upgrade Pakej
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
-                            <div class="col-auto">
-                                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
-                            </div>
+                            <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
                         @endif
                         @endforeach
                     </div>
