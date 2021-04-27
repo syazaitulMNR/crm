@@ -25,7 +25,7 @@ Upgrade Pakej
 
                     <div class="col-md-7">
                         @foreach($package as $packages)
-                        <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:30%">
+                        <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:40%">
                         @endforeach
                     </div>
 
