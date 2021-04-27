@@ -17,7 +17,7 @@ Upgrade Pakej
             <form action="" method="POST">
                 @csrf
   
-                @foreach($package as $package)
+                @foreach($package as $packages)
                     {{ $packages->package_image }}
                 @endforeach
             </form>
