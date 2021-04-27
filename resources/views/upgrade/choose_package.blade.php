@@ -13,7 +13,7 @@ Upgrade Pakej
             <h6>Hai! Sila buat pilihan di bawah untuk upgrade pakej.</h6>
         </div>
 
-        <div class="col-md-12 d-flex justify-content-center pb-5">
+        <div class="col-md-12 pb-5">
             <form action="" method="POST">
                 @csrf
   
