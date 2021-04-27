@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Package;
-use App\Payment;
 use App\Student;
+use App\Payment;
 
 class UpgradeController extends Controller
 {
@@ -17,7 +17,7 @@ class UpgradeController extends Controller
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
 
-        dd($payment);
+        dd($student);
         // return view('upgrade.choose_package', compact('product', 'package', 'payment', 'student'));
     }
 }
