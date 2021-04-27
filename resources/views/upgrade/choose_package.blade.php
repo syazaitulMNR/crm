@@ -17,10 +17,14 @@ Upgrade Pakej
             <form action="" method="POST">
                 @csrf
   
-                @foreach($package as $packages)
-                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width: 30%">
+                <div class="form-group row">
+
+                    @foreach($package as $packages)
+                    <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width: 30%">
+                    @endforeach
+
+                </div>
                     
-                @endforeach
             </form>
         </div>
     </div>
