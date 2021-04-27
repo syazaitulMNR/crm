@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{$product->name}}, {{$package->name}},{{$student->name}}, {{$payment->status}}
+{{$product->name}}, {{$package->price}},{{$student->stud_id}}, {{$payment->status}}
 Sila Pilih Pakej Baru:
 
 Pakej 1
