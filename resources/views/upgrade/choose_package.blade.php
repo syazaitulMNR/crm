@@ -103,7 +103,7 @@ Upgrade Pakej
                                     <a href="{{ url('buypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}" class="btn btn-dark btn-block text-uppercase">Beli</a>
                                   </div>
                                 </div>--}}
-                                <input src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit" class="btn btn-warning btn-block text-uppercase"/>
+                                <input type="image" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" name="submit" style="width:48%" alt="submit" class="btn btn-warning btn-block text-uppercase"/>
                               </div>      
                               @endforeach
                             </div>
