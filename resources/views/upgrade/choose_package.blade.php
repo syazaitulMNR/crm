@@ -17,7 +17,7 @@ Upgrade Pakej
             <form action="" method="POST">
                 @csrf
   
-                <div class="row text-center">
+                <div class="row justify-content-center">
 
                     @foreach($package as $packages)
                     <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width: 30%">
