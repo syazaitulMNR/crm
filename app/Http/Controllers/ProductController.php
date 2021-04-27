@@ -139,31 +139,31 @@ class ProductController extends Controller
         $auto_inc_pkd = $package->id + 1;
         $packageId = 'PKD' . 0 . 0 . $auto_inc_pkd;
               
-        // $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-        // $request->package_image->move(public_path('assets/images'), $imagename);
+        $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
+        $request->package_image->move(public_path('assets/images'), $imagename);
 
         Package::create(array(
 
             'package_id'=> $packageId,
             'name' => $request->name,
             'price'=> $request->price,
-            // 'package_image' => $imagename,
+            'package_image' => $imagename,
             'product_id'=> $id
 
         ));  
 
-        // foreach($request->feature as $keys => $values) {
+        foreach($request->feature as $keys => $values) {
 
-        //     $auto_inc_fid = $feature->id + 1;
-        //     $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
+            $auto_inc_fid = $feature->id + 1;
+            $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
                     
-        //    Feature::create(array(
-        //         'feat_id'=> $featureId,
-        //         'name'=> $values,
-        //         'product_id'=> $id,
-        //         'package_id'=> $packageId
-        //     ));
-        // }
+           Feature::create(array(
+                'feat_id'=> $featureId,
+                'name'=> $values,
+                'product_id'=> $id,
+                'package_id'=> $packageId
+            ));
+        }
 
        // dd($package->package_image);
         return redirect('package/'.$id)->with('success', 'Package Successfully Created'); 
@@ -191,19 +191,19 @@ class ProductController extends Controller
         $product = Product::where('product_id', $productId)->first();
         $package = Package::where('package_id', $packageId)->first();    
         
-        // if($request->hasFile('package_image'))
-        // {
-        //     $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-        //     $request->package_image->move(public_path('assets/images'), $imagename);
-        // }
+        if($request->hasFile('package_image'))
+        {
+            $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
+            $request->package_image->move(public_path('assets/images'), $imagename);
+        }
 
         $package->name = $request->name;
         $package->price = $request->price;
 
-        // if($request->hasFile('package_image'))
-        // {
-        //     $package->package_image = $imagename;
-        // }
+        if($request->hasFile('package_image'))
+        {
+            $package->package_image = $imagename;
+        }
 
         $package->save();
 
