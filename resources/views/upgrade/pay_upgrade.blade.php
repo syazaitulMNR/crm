@@ -45,27 +45,7 @@ Pendaftaran Pembeli
                                 <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
                                 <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
                             </div>
-                            <div class="col-md-6 pb-2">
-                                <label for="quantity">Kuantiti:</label>
-                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required>
-                                    <option value="" disabled selected>-- Tiket --</option>
-                                    <option value="1">1 (Free 1 General)</option>
-                                    {{-- <option value="1">1 (Free 1 {{ $package->name }})</option> --}}
-                                    {{-- <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option> --}}
-                                </select>
-                            </div>
-                            <div class="col-md-6 pb-2">
-                                <label for="totalprice">Jumlah Harga (RM)</label><br>
-                                <h3><input type="text" id="totalprice" name="totalprice" value="" style="border: none; outline-width: 0;" readonly></h3>
-                            </div>
+                            
                         </div>
   
                     </div>
