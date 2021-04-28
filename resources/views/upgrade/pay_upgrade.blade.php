@@ -15,11 +15,8 @@ Pendaftaran Pembeli
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="" method="POST">
                 @csrf
-                <div class="card w-100">
-                    <div class="card-header bg-dark text-white">Langkah 2: Maklumat Tiket</div>
-  
-                    <div class="card-body">
-  
+                <div class="pricing-item bg-white py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">  
+                      
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul class="px-3">
@@ -52,9 +49,7 @@ Pendaftaran Pembeli
                             </div> --}}
                         </div>
   
-                    </div>
                     
-                    <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
                                 <a href="" class="btn btn-danger">Kembali</a>
@@ -63,7 +58,6 @@ Pendaftaran Pembeli
                                 <button type="submit" class="btn btn-dark">Seterusnya</button>
                             </div>
                         </div>
-                    </div>
                 </div>
             </form>
         </div>
