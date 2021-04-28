@@ -99,8 +99,8 @@ Upgrade Pakej
 
 <script>
     var x = '{{ $current_package->price }}';
-    var y = 1;
-    var z = x + y;
+    var y = 2;
+    var z = x - y;
     document.getElementById("price").innerHTML = z;
     </script>
 @endsection
