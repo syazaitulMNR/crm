@@ -17,11 +17,11 @@ Upgrade Pakej
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 px-3 pt-5 pb-3 text-center">
+        {{-- <div class="col-md-12 px-3 pt-5 pb-3 text-center">
             <img src="/assets/images/logo.png" style="max-width:200px">
             <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
             <h6>Hai! Sila buat pilihan di bawah untuk upgrade pakej.</h6>
-        </div>
+        </div> --}}
 
         <div class="col-md-12 pb-5">
             <form action="" method="POST">
@@ -49,10 +49,9 @@ Upgrade Pakej
                 </div> --}}
 
                 <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">
-                    <h1 class="font-weight-bold">Choose Pricing Plan</h1>
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam urna massa, ullamcorper quis libero
-                        non, semper convallis nisl. Nulla facilisi. Cras id tortor ex. Curabitur eget lectus fermentum, convallis massa
-                        pulvinar, mattis ex.</p>
+                    <img src="/assets/images/logo.png" style="max-width:200px">
+                    <h1 class="font-weight-bold">{{ $product->name }}</h1>
+                    <p class="lead">Hai! Sila buat pilihan di bawah untuk upgrade pakej.</p>
                 </div>
                 <div class="container text-center">
                     <div class="row">
