@@ -7,6 +7,7 @@ use App\Product;
 use App\Package;
 use App\Student;
 use App\Payment;
+use App\Feature;
 
 class UpgradeController extends Controller
 {
@@ -17,8 +18,9 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
+        $feature = Feature::orderBy('id','asc')->get();
 
         // dd($student);
-        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'payment', 'student'));
+        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'payment', 'student', 'feature'));
     }
 }

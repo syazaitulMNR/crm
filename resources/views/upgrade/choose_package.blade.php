@@ -64,10 +64,9 @@ Upgrade Pakej
                                 </div>
                                 <div class="pricing-description">
                                     <ul class="list-unstyled mt-3 mb-1">
-                                        <li>30 users included</li>
-                                        <li>15 GB of storage</li>
-                                        <li>Phone and email support</li>
-                                        <li>Help center access</li>
+                                        @foreach($feature as $features)
+                                        <li>{{ $features->name }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="pricing-price pb-1 text-primary color-primary-text mb-3">
