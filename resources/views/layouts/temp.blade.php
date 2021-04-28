@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Epilogue", sans-serif;
+                font-family: "Roboto", sans-serif;
                 background: transparent;
             }
 
