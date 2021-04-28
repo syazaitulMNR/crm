@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: verdana, arial, helvetica;
+                font-family: Helvetica, arial, verdana;
                 background: transparent;
             }
 
