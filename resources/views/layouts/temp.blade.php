@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Montserrat Alternates", sans-serif;
+                font-family: "Poppins", sans-serif;
                 background: transparent;
             }
 
