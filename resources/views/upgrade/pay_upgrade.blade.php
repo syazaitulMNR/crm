@@ -4,6 +4,32 @@
 Upgrade Pakej
 @endsection
 
+{{-- Custom button css ----------------------------}}
+<style>
+    .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 32px 16px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 5px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    }
+    .button4 {
+    background-color: #f3f3f3;
+    color: #202020;
+    border: 1px #e7e7e7 solid;
+    width: 250px;
+    }
+
+    .button4:hover {background-color: #e7e7e7;}
+</style>
+
 @section('content')
 <div class="container">
     <div class="row">
