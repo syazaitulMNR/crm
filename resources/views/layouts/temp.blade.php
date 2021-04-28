@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Lato", sans-serif;
+                font-family: "Montserrat", sans-serif;
                 background: transparent;
             }
 
