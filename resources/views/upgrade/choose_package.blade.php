@@ -43,11 +43,11 @@ Upgrade Pakej
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                                 <div class="pricing-description">
-                                    <ul class="list-unstyled mt-3 mb-1 py-2 px-4">
+                                    <ul class="list-unstyled mt-3 mb-1 py-2">
                                         @foreach($feature as $features)
                                         @if($current_package->package_id == $features->package_id)
                                             <li>{{ $features->name }}</li>
-                                            <hr class="my-1 mx-4">
+                                            <hr class="my-1 mx-3">
                                         @endif
                                         @endforeach
                                     </ul>
@@ -75,11 +75,11 @@ Upgrade Pakej
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                                 <div class="pricing-description">
-                                    <ul class="list-unstyled mt-3 mb-1 py-2 px-4">
+                                    <ul class="list-unstyled mt-3 mb-1 py-2">
                                         @foreach($feature as $features)
                                         @if($packages->package_id == $features->package_id)
                                         <li>{{ $features->name }}</li>
-                                        <hr class="m-1 mx-4">
+                                        <hr class="m-1 mx-3">
                                         @endif
                                         @endforeach
                                     </ul>
