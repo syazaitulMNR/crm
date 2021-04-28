@@ -5,13 +5,10 @@ Upgrade Pakej
 @endsection
 
 <style>
-    .myButton{
-        cursor:pointer;
-        border:none;
-        width:100px;
-        height:100px;
+    .vl {
+        border-left: 1px solid grey;
+        height: 375px;
     }
-
 </style>
 
 @section('content')
