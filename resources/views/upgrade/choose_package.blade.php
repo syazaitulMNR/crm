@@ -62,8 +62,8 @@ Upgrade Pakej
                                 <div class="text-primary" style="font-size: 75px">
                                     <i class="fa fa-check-circle"></i>
                                 </div>
-                                <div class="pricing-description py-2">
-                                    <ul class="list-unstyled mt-3 mb-1">
+                                <div class="pricing-description">
+                                    <ul class="list-unstyled mt-3 mb-1 py-2">
                                         @foreach($feature as $features)
                                         @if($current_package->package_id == $features->package_id)
                                             <li>{{ $features->name }}</li>
@@ -92,8 +92,8 @@ Upgrade Pakej
                                 <div class="text-primary" style="font-size: 75px">
                                     <i class="fa fa-check-circle"></i>
                                 </div>
-                                <div class="pricing-description py-2">
-                                    <ul class="list-unstyled mt-3 mb-1">
+                                <div class="pricing-description">
+                                    <ul class="list-unstyled mt-3 mb-1 py-2">
                                         @foreach($feature as $features)
                                         @if($packages->package_id == $features->package_id)
                                         <li>{{ $features->name }}</li>
