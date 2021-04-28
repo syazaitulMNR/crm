@@ -47,6 +47,13 @@
                     </div>
                 </div>
 
+                <div class="col-md-8">                         
+                    <div class="form-group">
+                        <label for="formFile" class="form-label">Package Image</label>
+                        <input class="form-control" type="file" id="formFile" name="package_image">
+                    </div>
+                </div>
+
                 <div class='col-md-8'>
                     <label for="name">Features</label>
                     @foreach ($feature as $value)
@@ -60,13 +67,6 @@
 
                     <div id="newRow"></div>
                     <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
-                </div>
-
-                <div class="col-md-8">                         
-                    <div class="form-group">
-                        <label for="formFile" class="form-label">Package Image</label>
-                        <input class="form-control" type="file" id="formFile" name="package_image">
-                    </div>
                 </div>
                     
                 <div class='col-md-8 pt-3'>
