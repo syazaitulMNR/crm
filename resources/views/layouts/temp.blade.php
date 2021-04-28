@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Plus Jakarta Sans", sans-serif;
+                font-family: "Epilogue", sans-serif;
                 background: transparent;
             }
 
