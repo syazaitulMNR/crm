@@ -56,7 +56,7 @@ Upgrade Pakej
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
-                                <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:48%">
+                                <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:60%">
                                 {{-- <div class="pt-4 pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
@@ -77,7 +77,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
                                     </h1>
                                 </div> --}}
-                                <div class="pricing-button pb-4">
+                                <div class="pricing-button py-4">
                                     <button type="button" class="btn btn-lg btn-outline-primary w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ Upgrade Pakej
                         @else
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item">
-                                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
+                                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:60%">
                                 {{-- <div class="pt-4 pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $packages->name }}</h4>
                                 </div>
@@ -108,7 +108,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $packages->price }}
                                     </h1>
                                 </div> --}}
-                                <div class="pricing-button pb-4">
+                                <div class="pricing-button py-4">
                                     <button type="button" class="btn btn-lg btn-primary w-75">Get started</button>
                                 </div>
                             </div>
