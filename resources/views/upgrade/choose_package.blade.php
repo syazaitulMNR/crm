@@ -23,7 +23,7 @@ Upgrade Pakej
             <h6>Hai! Sila buat pilihan di bawah untuk upgrade pakej.</h6>
         </div>
 
-        <div class="col-md-12 py-2">
+        <div class="col-md-12 py-3">
             <form action="" method="POST">
                 @csrf
   
