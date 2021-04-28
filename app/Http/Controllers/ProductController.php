@@ -207,16 +207,15 @@ class ProductController extends Controller
 
         $package->save();
 
-        // foreach($request->feature as $key => $value)
-        // {
-        //     $feature = Feature::where('package_id', $packageId)->where('feat_id', $request->feat_id[$key])->first();
-        //     $feature->name = $value;
-        //     $feature->save();
-        // }
+        foreach($request->feature as $key => $value)
+        {
+            $feature = Feature::where('package_id', $packageId)->where('feat_id', $request->feat_id[$key])->first();
+            $feature->name = $value;
+            $feature->save();
+        }
 
         foreach($request->features as $keys => $values) 
         {          
-            $feature = Feature::where('package_id', $packageId)->first();
             $auto_inc_fid = $feature->id + 1;
             $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
 
