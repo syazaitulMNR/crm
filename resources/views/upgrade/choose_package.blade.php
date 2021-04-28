@@ -79,7 +79,7 @@ Upgrade Pakej
                                         @foreach($feature as $features)
                                         @if($packages->package_id == $features->package_id)
                                         <li>{{ $features->name }}</li>
-                                        <hr class="m-0">
+                                        <hr class="m-2">
                                         @endif
                                         @endforeach
                                     </ul>
