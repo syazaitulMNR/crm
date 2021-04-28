@@ -1,59 +1,90 @@
 @extends('layouts.temp')
 
 @section('title')
-Upgrade Pakej
+Pendaftaran Pembeli
 @endsection
-
-<style>
-    .myButton{
-        cursor:pointer;
-        border:none;
-        width:100px;
-        height:100px;
-    }
-
-</style>
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 px-3 pt-5 pb-3 text-center border-bottom">
-            <img src="/assets/images/logo.png" style="max-width:150px">
+        <div class="col-md-12 px-3 py-5 text-center">
+            <img src="/assets/images/logo.png" style="max-width:200px">
             <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
         </div>
 
-        <div class="col-md-12 py-3">
+        <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="" method="POST">
                 @csrf
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
-                            <div class="pricing-item bg-white py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
-                                <div class="form-group row">
-                                    <div class="col-md-6 pb-2">
-                                        <label for="package">Pakej:</label>
-                                        <input type="text"  value="{{ $current_package->name }}" class="form-control" readonly/>
-                                    </div>
-                                    <div class="col-md-6 pb-2">
-                                        <label for="price">Harga:</label>
-                                        <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
-                                        <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
-                                    </div>
+                <div class="card w-100">
+                    <div class="card-header bg-dark text-white">Langkah 2: Maklumat Tiket</div>
+  
+                    <div class="card-body">
+  
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="px-3">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
+                            @endif
+  
+                        <div class="form-group row">
+                            {{-- <input type="hidden" value="{{ $payment_id ?? ''}}" class="form-control" name="payment_id" readonly/> --}}
+                            <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
+                            <input type="hidden" value="{{ $current_package->package_id }}" class="form-control" name="package_id" readonly/>
+                            <input type="hidden" value="{{ $student->stud_id }}" class="form-control" name="stud_id" readonly/>
 
-
-                                <div class="pricing-button pt-1 pb-1">
-                                    <button type="button" class="btn btn-lg btn-outline-dark w-75" disabled>Pakej Semasa</button>
-                                </div>
+                            <div class="col-md-6 pb-2">
+                                <label for="package">Pakej:</label>
+                                <input type="text"  value="{{ $current_package->name }}" class="form-control" readonly/>
+                            </div>
+                            <div class="col-md-6 pb-2">
+                                <label for="price">Harga:</label>
+                                <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
+                                <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
+                            </div>
+                            <div class="col-md-6 pb-2">
+                                <label for="quantity">Kuantiti:</label>
+                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required>
+                                    <option value="" disabled selected>-- Tiket --</option>
+                                    <option value="1">1 (Free 1 General)</option>
+                                    {{-- <option value="1">1 (Free 1 {{ $package->name }})</option> --}}
+                                    {{-- <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option> --}}
+                                </select>
+                            </div>
+                            <div class="col-md-6 pb-2">
+                                <label for="totalprice">Jumlah Harga (RM)</label><br>
+                                <h3><input type="text" id="totalprice" name="totalprice" value="" style="border: none; outline-width: 0;" readonly></h3>
                             </div>
                         </div>
-                        
+  
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="col-md-12">
+                            <div class="pull-left">
+                                <a href="" class="btn btn-danger">Kembali</a>
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-dark">Seterusnya</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                    
             </form>
         </div>
+
     </div>
 </div>
+
 @endsection
