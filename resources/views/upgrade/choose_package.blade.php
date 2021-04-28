@@ -5,10 +5,13 @@ Upgrade Pakej
 @endsection
 
 <style>
-    .vl {
-        border-left: 1px solid grey;
-        height: 375px;
+    .myButton{
+        cursor:pointer;
+        border:none;
+        width:100px;
+        height:100px;
     }
+
 </style>
 
 @section('content')
@@ -53,10 +56,23 @@ Upgrade Pakej
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
-                                <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:48%">
+                                <div class="pt-4 pb-2" style="letter-spacing: 2px">
+                                    <h4>{{ $current_package->name }}</h4>
+                                </div>
+                                <div class="text-primary" style="font-size: 75px">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div class="pricing-description">
+                                    <ul class="list-unstyled mt-3 mb-1">
+                                        <li>30 users included</li>
+                                        <li>15 GB of storage</li>
+                                        <li>Phone and email support</li>
+                                        <li>Help center access</li>
+                                    </ul>
+                                </div>
                                 <div class="pricing-price pb-1 text-primary color-primary-text mb-3">
                                     <h1 style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">€</span>50
+                                        <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
                                     </h1>
                                 </div>
                                 <div class="pricing-button pb-4">
@@ -64,16 +80,28 @@ Upgrade Pakej
                                 </div>
                             </div>
                         </div>
-
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item">
-                                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
+                                <div class="pt-4 pb-2" style="letter-spacing: 2px">
+                                    <h4>{{ $packages->name }}</h4>
+                                </div>
+                                <div class="text-primary" style="font-size: 75px">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div class="pricing-description">
+                                    <ul class="list-unstyled mt-3 mb-1">
+                                        <li>30 users included</li>
+                                        <li>15 GB of storage</li>
+                                        <li>Phone and email support</li>
+                                        <li>Help center access</li>
+                                    </ul>
+                                </div>
                                 <div class="pricing-price pb-1 text-primary color-primary-text mb-3">
                                     <h1 style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">€</span>25
+                                        <span style="font-size: 20px;">RM</span>{{ $packages->price }}
                                     </h1>
                                 </div>
                                 <div class="pricing-button pb-4">
