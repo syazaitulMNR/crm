@@ -207,25 +207,25 @@ class ProductController extends Controller
 
         $package->save();
 
-        // foreach($request->feature as $key => $value)
-        // {
-        //     $feature = Feature::where('package_id', $id)->where('feat_id', $request->feat_id[$key])->first();
-        //     $feature->name = $value;
-        //     $feature->save();
-        // }
+        foreach($request->feature as $key => $value)
+        {
+            $feature = Feature::where('package_id', $id)->where('feat_id', $request->feat_id[$key])->first();
+            $feature->name = $value;
+            $feature->save();
+        }
 
-        // foreach($request->features as $keys => $values) 
-        // {          
-        //     $auto_inc_fid = $feature->id + 1;
-        //     $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
+        foreach($request->features as $keys => $values) 
+        {          
+            $auto_inc_fid = $feature->id + 1;
+            $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
 
-        //     Feature::create(array(
-        //          'feat_id'=> $featureId,
-        //          'name'=> $values,
-        //          'product_id'=> $productId,
-        //          'package_id'=> $id
-        //      ));
-        // }
+            Feature::create(array(
+                 'feat_id'=> $featureId,
+                 'name'=> $values,
+                 'product_id'=> $productId,
+                 'package_id'=> $id
+             ));
+        }
 
         return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
     }

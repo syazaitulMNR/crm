@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                {{-- <div class='col-md-8'>
+                <div class='col-md-8'>
                     <label for="name">Features</label>
                     @foreach ($feature as $value)
                     <div id="inputFormRow">
@@ -60,7 +60,7 @@
 
                     <div id="newRow"></div>
                     <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
-                </div> --}}
+                </div>
 
                 <div class="col-md-8">                         
                     <div class="form-group">
