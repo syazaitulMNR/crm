@@ -33,7 +33,7 @@ Upgrade Pakej
                 </div> --}}
                 <div class="container text-center">
                     <div class="row">
-                        <div class="col-md-3 d-block m-auto">
+                        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                                 <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:70%">
                                 {{-- <div class="pt-4 pb-2" style="letter-spacing: 2px">
@@ -64,7 +64,7 @@ Upgrade Pakej
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
-                        <div class="col-md-3 pb-4 d-block m-auto">
+                        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item py-4">
                                 <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:70%">
                                 {{-- <div class="pt-4 pb-2" style="letter-spacing: 2px">
