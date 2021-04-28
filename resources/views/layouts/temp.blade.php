@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Roboto", sans-serif;
+                font-family: "Lato", sans-serif;
                 background: transparent;
             }
 
