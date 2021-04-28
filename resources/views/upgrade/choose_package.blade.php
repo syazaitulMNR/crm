@@ -28,7 +28,7 @@ Upgrade Pakej
                 @csrf
   
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
+                    <div class="col-md-6 text-right">
                         <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:48%">
                         <h6 class="text-center">Pakej Semasa</h6>
                     </div>
