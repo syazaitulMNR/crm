@@ -54,6 +54,7 @@ Upgrade Pakej
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
                                 <div class="py-2">
+                                    <p style="text-decoration: line-through;">RM{{ $packages->price }}</p>
                                     <span id="price"></span>
                                 </div>
                                 <div class="form-group row">
