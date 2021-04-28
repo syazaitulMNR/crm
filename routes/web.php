@@ -202,7 +202,8 @@ Route::get('products/{product_id}/{package_id}', 'NewRegisterController@index')-
 | Upgrade Package
 |--------------------------------------------------------------------------
 */
-Route::get('upgrade-package/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@choose_package');
+Route::get('upgrade-package/{product_id}/{package_id}/{stud_id}', 'UpgradeController@choose_package');
+Route::get('upgrade-payment/{product_id}/{package_id}/{stud_id}', 'UpgradeController@pay_package');
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');

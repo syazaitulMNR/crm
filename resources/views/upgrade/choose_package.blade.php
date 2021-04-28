@@ -4,16 +4,6 @@
 Upgrade Pakej
 @endsection
 
-<style>
-    .myButton{
-        cursor:pointer;
-        border:none;
-        width:100px;
-        height:100px;
-    }
-
-</style>
-
 @section('content')
 <div class="container">
     <div class="row">

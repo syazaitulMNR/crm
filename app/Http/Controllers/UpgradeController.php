@@ -11,16 +11,15 @@ use App\Feature;
 
 class UpgradeController extends Controller
 {
-    public function choose_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function choose_package($product_id, $package_id, $stud_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
         $feature = Feature::orderBy('id','asc')->get();
 
         // dd($student);
-        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'payment', 'student', 'feature'));
+        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature'));
     }
 }
