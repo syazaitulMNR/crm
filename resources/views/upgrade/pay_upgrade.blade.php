@@ -29,14 +29,16 @@ Upgrade Pakej
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
-                                <div class="col-md-6 pb-2">
-                                    <label for="package">Pakej:</label>
-                                    <input type="text"  value="{{ $current_package->name }}" class="form-control" readonly/>
-                                </div>
-                                <div class="col-md-6 pb-2">
-                                    <label for="price">Harga:</label>
-                                    <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
-                                    <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
+                                <div class="form-group row">
+                                    <div class="col-md-6 pb-2">
+                                        <label for="package">Pakej:</label>
+                                        <input type="text"  value="{{ $current_package->name }}" class="form-control" readonly/>
+                                    </div>
+                                    <div class="col-md-6 pb-2">
+                                        <label for="price">Harga:</label>
+                                        <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
+                                        <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
+                                    </div>
                                 </div>
 
 
