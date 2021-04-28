@@ -78,7 +78,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pb-4">
-                                    <input type="button" class="btn btn-lg btn-primary w-75" value="Pakej Semasa" readonly/>
+                                    <button type="button" class="btn btn-lg btn-primary w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
                         </div>
