@@ -53,7 +53,7 @@ Upgrade Pakej
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
-                                <div class="row">
+                                <div class="py-2">
                                     <span id="price">{{ $current_package->price }}</span>
                                 </div>
                                 <div class="form-group row">
