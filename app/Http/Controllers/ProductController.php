@@ -215,7 +215,8 @@ class ProductController extends Controller
         }
 
         foreach($request->features as $keys => $values) 
-        {          
+        {        
+            $feature = Feature::where('package_id', $packageId)->first();  
             $auto_inc_fid = $feature->id + 1;
             $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
 
