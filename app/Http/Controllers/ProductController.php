@@ -209,7 +209,7 @@ class ProductController extends Controller
 
         foreach($request->feature as $key => $value)
         {
-            $feature = Feature::where('package_id', $id)->where('feat_id', $request->feat_id[$key])->first();
+            $feature = Feature::where('package_id', $packageId)->where('feat_id', $request->feat_id[$key])->first();
             $feature->name = $value;
             $feature->save();
         }
