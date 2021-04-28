@@ -58,7 +58,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="button" class="btn btn-outline-dark w-75" disabled>Pakej Semasa</button>
+                                    <button type="button" class="btn btn-lg btn-outline-dark w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="button" class="btn btn-dark w-75">Tukar Pakej</button>
+                                    <button type="button" class="btn btn-lg btn-dark w-75">Tukar Pakej</button>
                                 </div>
                             </div>
                         </div>
