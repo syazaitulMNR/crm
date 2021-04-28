@@ -59,7 +59,7 @@ Upgrade Pakej
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                                 <div class="pt-4 pb-2" style="letter-spacing: 2px">
-                                    <h4></h4>
+                                    <h4>Intermediate</h4>
                                 </div>
                                 <div class="text-primary" style="font-size: 75px">
                                     <i class="fa fa-check-circle"></i>
@@ -78,7 +78,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pb-4">
-                                    <button type="button" class="btn btn-lg btn-primary w-75" disabled>Pakej Semasa</button>
+                                    <button type="button" class="btn btn-lg btn-outline-primary w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pb-4">
-                                    <button type="button" class="btn btn-lg btn-outline-primary w-75">Get started</button>
+                                    <button type="button" class="btn btn-lg btn-primary w-75">Get started</button>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pb-4">
-                                    <button type="button" class="btn btn-lg btn-outline-primary w-75">Get started</button>
+                                    <button type="button" class="btn btn-lg btn-primary w-75">Get started</button>
                                 </div>
                             </div>
                         </div>
