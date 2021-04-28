@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Quicksand", sans-serif;
+                font-family: "Rubik", sans-serif;
                 background: transparent;
             }
 
