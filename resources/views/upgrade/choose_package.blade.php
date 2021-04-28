@@ -67,6 +67,9 @@ Upgrade Pakej
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-1 d-none d-lg-block">
+                            <div class="vl"></div>
+                        </div>
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
