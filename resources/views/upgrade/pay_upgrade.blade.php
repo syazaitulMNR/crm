@@ -37,16 +37,16 @@ Pendaftaran Pembeli
                                 <label for="package">Pakej:</label>
                                 <input type="text"  value="{{ $current_package->name }}" class="form-control" readonly/>
                             </div>
-                            <div class="col-md-6 pb-2">
+                            {{-- <div class="col-md-6 pb-2">
                                 <label for="price">Harga:</label>
                                 <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
                                 <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
-                            </div>
-{{--                             
+                            </div> --}}
+                            
                             <div class="col-md-12 pb-2">
                                 <label for="totalprice">Jumlah Harga (RM)</label><br>
                                 <h3><input type="text" id="totalprice" name="totalprice" value="" style="border: none; outline-width: 0;" readonly></h3>
-                            </div> --}}
+                            </div>
                         </div>
   
                     
