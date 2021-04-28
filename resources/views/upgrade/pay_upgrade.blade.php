@@ -48,7 +48,7 @@ Upgrade Pakej
                 </div> --}}
                 <div class="container text-center">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
+                        <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
@@ -65,9 +65,6 @@ Upgrade Pakej
                                             <br>FPX
                                         </button>
                                     </div>
-                                </div>
-                                <div class="pricing-button pt-1 pb-1">
-                                    <button type="button" class="btn btn-lg btn-outline-dark w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
                         </div>
