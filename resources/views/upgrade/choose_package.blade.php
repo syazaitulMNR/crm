@@ -4,6 +4,16 @@
 Upgrade Pakej
 @endsection
 
+<style>
+    .myButton{
+        cursor:pointer;
+        border:none;
+        width:100px;
+        height:100px;
+    }
+
+</style>
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -27,7 +37,8 @@ Upgrade Pakej
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
                         @else
-                            <button><img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%"></button>
+                            {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%"> --}}
+                            <input class="myButton" src="{{ asset('assets/images')}}/{{ $packages->package_image }}" type="submit" value="">
                         @endif
                         @endforeach
                     </div>
