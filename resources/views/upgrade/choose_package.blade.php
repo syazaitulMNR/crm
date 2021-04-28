@@ -76,7 +76,7 @@ Upgrade Pakej
                                 </div>
                                 <div class="pricing-price pb-1 text-dark color-dark-text mb-3">
                                     <h1 style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">RM</span><span>{{ $packages->price }}</span>
+                                        <span style="font-size: 20px;">RM</span><span id="price">{{ $packages->price }}</span>
                                     </h1>
                                 </div>
                                 <p style="text-decoration: line-through;">RM{{ $packages->price }}</p>
@@ -96,4 +96,11 @@ Upgrade Pakej
         </div>
     </div>
 </div>
+
+<script>
+    var x = 5;
+    var y = 2;
+    var z = x + y;
+    document.getElementById("price").innerHTML = z;
+    </script>
 @endsection
