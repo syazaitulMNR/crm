@@ -109,7 +109,7 @@ Upgrade Pakej
                                     </h1>
                                 </div> --}}
                                 <div class="pricing-button py-4">
-                                    <button type="button" class="btn btn-primary w-75">Get started</button>
+                                    <button type="button" class="btn btn-primary w-75">Tukar Pakej</button>
                                 </div>
                             </div>
                         </div>
