@@ -45,7 +45,11 @@ Pendaftaran Pembeli
                                 <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
                                 <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
                             </div>
-                            
+{{--                             
+                            <div class="col-md-12 pb-2">
+                                <label for="totalprice">Jumlah Harga (RM)</label><br>
+                                <h3><input type="text" id="totalprice" name="totalprice" value="" style="border: none; outline-width: 0;" readonly></h3>
+                            </div> --}}
                         </div>
   
                     </div>
