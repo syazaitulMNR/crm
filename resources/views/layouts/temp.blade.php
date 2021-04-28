@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Poppins", sans-serif;
+                font-family: "Poppins Light", sans-serif;
                 background: transparent;
             }
 
