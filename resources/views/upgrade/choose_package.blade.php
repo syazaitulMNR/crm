@@ -77,7 +77,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
                                     </h1>
                                 </div> --}}
-                                <div class="pricing-button py-4">
+                                <div class="pricing-button py-3">
                                     <button type="button" class="btn btn-outline-primary w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $packages->price }}
                                     </h1>
                                 </div> --}}
-                                <div class="pricing-button py-4">
+                                <div class="pricing-button py-3">
                                     <button type="button" class="btn btn-primary w-75">Tukar Pakej</button>
                                 </div>
                             </div>
