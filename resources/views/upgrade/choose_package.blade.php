@@ -27,27 +27,6 @@ Upgrade Pakej
             <form action="" method="POST">
                 @csrf
   
-                {{-- <div class="row justify-content-center">
-                    <div class="col-md-6 text-right">
-                        <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:48%">
-                        <h6 class="text-center">Pakej Semasa</h6>
-                    </div>
-
-                    <div class="col-md-6">
-                        @foreach($package as $packages)
-                        @if($current_package->price >= $packages->price)
-                        @else
-                            <div class="col-md-6">
-                                <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:48%">
-                                <button class="btn btn-dark">Pilih</button>
-                            </div>
-                            
-                        @endif
-                        @endforeach
-                    </div>
-
-                </div> --}}
-
                 {{-- <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">
                     <h1 class="font-weight-bold">{{ $product->name }}</h1>
                     <p class="lead">Hai! Sila buat pilihan di bawah untuk upgrade pakej.</p>
@@ -77,7 +56,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
                                     </h1>
                                 </div> --}}
-                                <div class="pricing-button pt-4">
+                                <div class="pricing-button pt-4 pb-1">
                                     <button type="button" class="btn btn-outline-primary w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
@@ -108,7 +87,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $packages->price }}
                                     </h1>
                                 </div> --}}
-                                <div class="pricing-button pt-4">
+                                <div class="pricing-button pt-4 pb-1">
                                     <button type="button" class="btn btn-primary w-75">Tukar Pakej</button>
                                 </div>
                             </div>
@@ -116,32 +95,6 @@ Upgrade Pakej
                         
                         @endif
                         @endforeach
-                        {{-- <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
-                            <div class="pricing-item">
-                                <div class="pt-4 pb-2" style="letter-spacing: 2px">
-                                    <h4>Professional</h4>
-                                </div>
-                                <div class="text-primary" style="font-size: 75px">
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div class="pricing-description">
-                                    <ul class="list-unstyled mt-3 mb-1">
-                                        <li>30 users included</li>
-                                        <li>15 GB of storage</li>
-                                        <li>Phone and email support</li>
-                                        <li>Help center access</li>
-                                    </ul>
-                                </div>
-                                <div class="pricing-price pb-1 text-primary color-primary-text mb-3">
-                                    <h1 style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">€</span>125
-                                    </h1>
-                                </div>
-                                <div class="pricing-button pb-4">
-                                    <button type="button" class="btn btn-lg btn-primary w-75">Get started</button>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
                 
