@@ -36,7 +36,7 @@ Upgrade Pakej
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block">
                             <div class="pricing-item py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29);">
                                 {{-- <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:70%"> --}}
-                                <div class="pt-4 pb-2" style="letter-spacing: 2px">
+                                <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
                                 <div class="text-success" style="font-size: 75px">
@@ -68,7 +68,7 @@ Upgrade Pakej
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block">
                             <div class="pricing-item py-4">
                                 {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:70%"> --}}
-                                <div class="pt-4 pb-2" style="letter-spacing: 2px">
+                                <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $packages->name }}</h4>
                                 </div>
                                 <div class="text-success" style="font-size: 75px">
