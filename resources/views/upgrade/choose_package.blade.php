@@ -79,7 +79,7 @@ Upgrade Pakej
                                         <span style="font-size: 20px;">RM</span>{{ $packages->price }}
                                     </h1>
                                 </div>
-                                <p class="text-decoration-line-through">{{ $packages->price }}</p>
+                                <p style="text-decoration: line-through;">{{ $packages->price }}</p>
                                 <div class="pricing-button pt-1 pb-1">
                                     <button type="button" class="btn btn-lg btn-dark w-75">Tukar Pakej</button>
                                 </div>
