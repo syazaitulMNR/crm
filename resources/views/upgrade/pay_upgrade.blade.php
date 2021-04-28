@@ -27,23 +27,18 @@ Upgrade Pakej
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
-                                <div class="text-success" style="font-size: 75px">
-                                    <i class="fa fa-check-circle"></i>
-                                </div>
-                                <div class="pricing-description">
-                                    <ul class="list-unstyled mt-3 mb-1 py-2 px-1">
-                                        @foreach($feature as $features)
-                                        @if($current_package->package_id == $features->package_id)
-                                            <li class="text-break">{{ $features->name }}</li>
-                                            <hr class="my-1 mx-3">
-                                        @endif
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <div class="pricing-price pb-1 text-dark color-dark-text mb-3">
-                                    <h1 style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
-                                    </h1>
+                                <div class="form-group row">
+                                    <div class="col-md-12 px-5">
+                                        <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
+                                            <i class="far fa-credit-card fa-3x"></i>
+                                            <br>Kad Debit/Kredit
+                                        </button>
+                                    
+                                        <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
+                                            <i class="fas fa-university fa-3x"></i>
+                                            <br>FPX
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
                                     <button type="button" class="btn btn-lg btn-outline-dark w-75" disabled>Pakej Semasa</button>
