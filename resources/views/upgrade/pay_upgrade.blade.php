@@ -87,5 +87,6 @@ Upgrade Pakej
     var y = 2;
     var z = x + y;
     document.getElementById("price").innerHTML = z;
+    console.log(x);
 </script>
 @endsection
