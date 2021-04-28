@@ -56,8 +56,9 @@
             }
 
             body {
-                font-family: "Poppins Light", sans-serif;
+                font-family: "Poppins Medium", sans-serif;
                 background: transparent;
+                font-size: 10px;
             }
 
             /*form styles*/
