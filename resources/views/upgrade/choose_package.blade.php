@@ -82,6 +82,7 @@ Upgrade Pakej
                             </div>
                         </div>
                         @foreach($package as $packages)
+                        @foreach($feature as $features)
                         @if($current_package->price >= $packages->price)
                         @else
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
@@ -94,10 +95,9 @@ Upgrade Pakej
                                 </div>
                                 <div class="pricing-description">
                                     <ul class="list-unstyled mt-3 mb-1">
-                                        <li>30 users included</li>
-                                        <li>15 GB of storage</li>
-                                        <li>Phone and email support</li>
-                                        <li>Help center access</li>
+                                        @if($packages->package_id == $features->package_id)
+                                        <li>{{ $features->name }}</li>
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="pricing-price pb-1 text-primary color-primary-text mb-3">
@@ -112,6 +112,7 @@ Upgrade Pakej
                         </div>
                         
                         @endif
+                        @endforeach
                         @endforeach
                         {{-- <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block m-auto">
                             <div class="pricing-item">
