@@ -31,12 +31,12 @@ Upgrade Pakej
                             <div class="pricing-item bg-white py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="col-md-6 pb-2">
                                     <label for="package">Pakej:</label>
-                                    <input type="text"  value="{{ $package->name }}" class="form-control" readonly/>
+                                    <input type="text"  value="{{ $current_package->name }}" class="form-control" readonly/>
                                 </div>
                                 <div class="col-md-6 pb-2">
                                     <label for="price">Harga:</label>
-                                    <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
-                                    <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
+                                    <input type="text" value="{{ $current_package->price }}" class="form-control" readonly/>
+                                    <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
                                 </div>
 
 
