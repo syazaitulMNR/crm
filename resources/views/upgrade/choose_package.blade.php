@@ -46,7 +46,8 @@ Upgrade Pakej
                                     <ul class="list-unstyled mt-3 mb-1 py-2">
                                         @foreach($feature as $features)
                                         @if($current_package->package_id == $features->package_id)
-                                            <li class="border-bottom">{{ $features->name }}</li>
+                                            <li>{{ $features->name }}</li>
+                                            <hr>
                                         @endif
                                         @endforeach
                                     </ul>
