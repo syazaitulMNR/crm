@@ -64,6 +64,33 @@ Upgrade Pakej
                         </div>
                         @foreach($package as $packages)
                         @if($current_package->price >= $packages->price)
+                            <div class="pricing-item py-4">
+                                {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:70%"> --}}
+                                <div class="pb-2" style="letter-spacing: 2px">
+                                    <h4>{{ $packages->name }}</h4>
+                                </div>
+                                <div class="text-success" style="font-size: 75px">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div class="pricing-description">
+                                    <ul class="list-unstyled mt-3 mb-1 py-2 px-1">
+                                        @foreach($feature as $features)
+                                        @if($packages->package_id == $features->package_id)
+                                        <li class="text-break">{{ $features->name }}</li>
+                                        <hr class="m-1 mx-3">
+                                        @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="pricing-price pb-1 text-dark color-dark-text mb-3">
+                                    <h1 style="font-weight: 1000; font-size: 3.5em;">
+                                        <span style="font-size: 20px;">RM</span>{{ $packages->price }}
+                                    </h1>
+                                </div>
+                                <div class="pricing-button pt-1 pb-1">
+                                    <button type="button" class="btn btn-lg btn-dark w-75">Tukar Pakej</button>
+                                </div>
+                            </div>
                         @else
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
                             <div class="pricing-item py-4">
