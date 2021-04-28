@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "Open Sans", sans-serif;
+                font-family: "Plus Jakarta Sans", sans-serif;
                 background: transparent;
             }
 
