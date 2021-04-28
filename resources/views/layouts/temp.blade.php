@@ -26,7 +26,8 @@
         <script src="https://js.stripe.com/v3/"></script>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">		
+		<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         
         <!-- Styles -->
@@ -56,7 +57,7 @@
             }
 
             body {
-                font-family: Helvetica, arial, verdana;
+                /* font-family: Helvetica, arial, verdana; */
                 background: transparent;
             }
 
