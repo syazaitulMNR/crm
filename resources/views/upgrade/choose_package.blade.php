@@ -43,9 +43,9 @@ Upgrade Pakej
                                     </ul>
                                 </div>
                                 <div class="pricing-price pb-1 text-dark color-dark-text mb-3">
-                                    <p style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">RM</span><p class="text-decoration-line-through">{{ $current_package->price }}</p>
-                                    </p>
+                                    <h1 style="font-weight: 1000; font-size: 3.5em;">
+                                        <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
+                                    </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
                                     <button type="button" class="btn btn-lg btn-outline-dark w-75" disabled>Pakej Semasa</button>
@@ -77,6 +77,7 @@ Upgrade Pakej
                                 <div class="pricing-price pb-1 text-dark color-dark-text mb-3">
                                     <h1 style="font-weight: 1000; font-size: 3.5em;">
                                         <span style="font-size: 20px;">RM</span>{{ $packages->price }}
+                                        <p class="text-decoration-line-through">This text has a line going through it.</p>
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
