@@ -53,6 +53,9 @@ Upgrade Pakej
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
+                                <div class="row">
+                                    <span id="price">{{ $current_package->price }}</span>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-md-12 px-5">
                                         <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
@@ -76,4 +79,13 @@ Upgrade Pakej
         </div>
     </div>
 </div>
+
+
+
+<script>
+    var x = '{{ $current_package->price }}';
+    var y = 2;
+    var z = x + y;
+    document.getElementById("price").innerHTML = z;
+</script>
 @endsection
