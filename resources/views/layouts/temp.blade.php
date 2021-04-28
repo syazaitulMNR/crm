@@ -58,7 +58,7 @@
             body {
                 font-family: "Poppins Medium", sans-serif;
                 background: transparent;
-                font-size: 11px;
+                font-size: 12px;
             }
 
             /*form styles*/
