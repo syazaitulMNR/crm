@@ -78,7 +78,7 @@ Upgrade Pakej
                                     </h1>
                                 </div> --}}
                                 <div class="pricing-button py-4">
-                                    <button type="button" class="btn btn-lg btn-outline-primary w-75" disabled>Pakej Semasa</button>
+                                    <button type="button" class="btn btn-outline-primary w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@ Upgrade Pakej
                                     </h1>
                                 </div> --}}
                                 <div class="pricing-button py-4">
-                                    <button type="button" class="btn btn-lg btn-primary w-75">Get started</button>
+                                    <button type="button" class="btn btn-primary w-75">Get started</button>
                                 </div>
                             </div>
                         </div>
