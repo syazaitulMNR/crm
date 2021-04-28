@@ -39,7 +39,7 @@ Upgrade Pakej
                                 <div class="pt-4 pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
-                                <div class="text-primary" style="font-size: 75px">
+                                <div class="text-success" style="font-size: 75px">
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                                 <div class="pricing-description">
@@ -57,7 +57,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-4 pb-1">
-                                    <button type="button" class="btn btn-outline-danger w-75" disabled>Pakej Semasa</button>
+                                    <button type="button" class="btn btn-outline-dark w-75" disabled>Pakej Semasa</button>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ Upgrade Pakej
                                 <div class="pt-4 pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $packages->name }}</h4>
                                 </div>
-                                <div class="text-primary" style="font-size: 75px">
+                                <div class="text-success" style="font-size: 75px">
                                     <i class="fa fa-check-circle"></i>
                                 </div>
                                 <div class="pricing-description">
@@ -88,7 +88,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-4 pb-1">
-                                    <button type="button" class="btn btn-danger w-75">Tukar Pakej</button>
+                                    <button type="button" class="btn btn-dark w-75">Tukar Pakej</button>
                                 </div>
                             </div>
                         </div>
