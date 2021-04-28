@@ -47,7 +47,7 @@ Upgrade Pakej
                                         @foreach($feature as $features)
                                         @if($current_package->package_id == $features->package_id)
                                             <li>{{ $features->name }}</li>
-                                            <hr class="my-1 mx-2">
+                                            <hr class="my-1 mx-4">
                                         @endif
                                         @endforeach
                                     </ul>
@@ -79,7 +79,7 @@ Upgrade Pakej
                                         @foreach($feature as $features)
                                         @if($packages->package_id == $features->package_id)
                                         <li>{{ $features->name }}</li>
-                                        <hr class="m-1 mx-2">
+                                        <hr class="m-1 mx-4">
                                         @endif
                                         @endforeach
                                     </ul>
