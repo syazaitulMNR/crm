@@ -65,7 +65,9 @@ Upgrade Pakej
                                 <div class="pricing-description">
                                     <ul class="list-unstyled mt-3 mb-1">
                                         @foreach($feature as $features)
-                                        <li>{{ $features->name }}</li>
+                                        @if($current_package->package_id == $features->package_id)
+                                            <li>{{ $features->name }}</li>
+                                        @endif
                                         @endforeach
                                     </ul>
                                 </div>
