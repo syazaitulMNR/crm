@@ -56,7 +56,7 @@
             }
 
             body {
-                font-family: "baloo";
+                font-family: Helvetica, arial, verdana;
                 background: transparent;
             }
 
