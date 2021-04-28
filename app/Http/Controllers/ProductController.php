@@ -223,7 +223,7 @@ class ProductController extends Controller
                  'feat_id'=> $featureId,
                  'name'=> $values,
                  'product_id'=> $productId,
-                 'package_id'=> $id
+                 'package_id'=> $packageId
              ));
         }
 
