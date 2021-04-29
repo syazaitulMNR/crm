@@ -81,7 +81,7 @@ Upgrade Pakej
                                     </div>
                                 </div>
 
-                                <div class="inline field px-2 pb-4">
+                                <div class="inline field px-2 pt-2 pb-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
