@@ -71,7 +71,7 @@ Upgrade Pakej
                                                 <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
                                             </td>
                                             <td>
-                                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control w-50" required>
+                                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control w-75" required>
                                                 <option value="" disabled selected>-- Tiket --</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
