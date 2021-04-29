@@ -15,7 +15,7 @@ Upgrade Pakej
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     margin: 4px 5px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -24,7 +24,7 @@ Upgrade Pakej
     background-color: #f3f3f3;
     color: #202020;
     border: 1px #e7e7e7 solid;
-    width: 250px;
+    width: 200px;
     }
 
     .button4:hover {background-color: #e7e7e7;}
@@ -86,7 +86,7 @@ Upgrade Pakej
                                                 </select>
                                             </td>
                                             <td>
-                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none;" readonly>
+                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -96,20 +96,29 @@ Upgrade Pakej
                                     <span id="price"></span>
                                 </div> --}}
 
-                                <div class="form-group row">
-                                    <div class="col-md-12 px-5">
-                                        <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                            <i class="far fa-credit-card fa-3x"></i>
-                                            <br>Kad Debit/Kredit
-                                        </button>
-                                    
-                                        <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                            <i class="fas fa-university fa-3x"></i>
-                                            <br>FPX
-                                        </button>
-                                    </div>
-                                </div>
-
+                                <table class="table table-responsive">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th>Jenis Pembayaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
+                                                    <i class="far fa-credit-card fa-2x"></i>
+                                                    <br>Kad Debit/Kredit
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
+                                                    <i class="fas fa-university fa-2x"></i>
+                                                    <br>FPX
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 {{-- <div class="col-md-12 pb-5">
                                     <div class="pull-left">
                                         <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></a>
