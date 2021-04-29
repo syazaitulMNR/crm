@@ -51,9 +51,10 @@ Upgrade Pakej
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="pb-2" style="letter-spacing: 2px">
-                                    <h4>{{ $current_package->name }} <i class="fas fa-arrow-right  fa-1x"></i> New Package</h4>
+                                    <h4>{{ $current_package->name }} <i class="fas fa-arrow-right"></i> New Package</h4>
                                 </div>
 
+                                <div data-ng-app="" data-ng-init="quantity=1;price=5">
                                 <table class="table table-light">
                                     <thead>
                                         <tr>
@@ -66,12 +67,13 @@ Upgrade Pakej
                                     <tbody>
                                         <tr>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><input type="number" ng-model="price"></td>
+                                            <td><input type="number" ng-model="quantity"></td>
+                                            <td>{{quantity * price}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                </div>
                                 {{-- <div class="py-2">
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
@@ -101,6 +103,7 @@ Upgrade Pakej
 </div>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <script>
     var x = '{{ $current_package->price }}';
@@ -108,5 +111,23 @@ Upgrade Pakej
     var z = x - y;
     document.getElementById("price").innerHTML = z;
     console.log(x);
+</script>
+
+<script>
+function calculateAmount(val) {
+        
+    var prices = document.getElementById("price").value;
+    var total_price = val * prices;
+
+    /*display the result*/
+    var divobj = document.getElementById('totalprice');
+    divobj.value = total_price;
+
+    var totallagi = document.getElementById('total_lagi');
+    totallagi.value = total_price;
+
+    document.getElementById('total_lah').innerHTML = total_price;
+
+}
 </script>
 @endsection
