@@ -96,7 +96,7 @@ Upgrade Pakej
                                     <span id="price"></span>
                                 </div> --}}
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="button" class="btn btn-lg btn-dark w-75">Seterusnya</button>
+                                    <button type="button" class="btn btn-dark rounded-circle"><i class="fas fa-long-arrow-alt-right"></i></button>
                                 </div>
                             </div>
                         </div>
