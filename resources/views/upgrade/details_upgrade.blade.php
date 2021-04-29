@@ -66,7 +66,7 @@ Upgrade Pakej
                                             <tr>
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
-                                                    RM {{ $packages->price }}
+                                                    RM <span id="deducted"></span>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                                 </td>
                                                 <td>
@@ -128,7 +128,7 @@ Upgrade Pakej
     var x = document.getElementById("price").value;
     var y = '{{ $current_package->price }}';
     var z = x - y;
-    document.getElementById("price").innerHTML = z;
+    document.getElementById("deducted").innerHTML = z;
     console.log(y);
 </script>
 
