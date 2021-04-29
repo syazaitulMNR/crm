@@ -51,7 +51,7 @@ Upgrade Pakej
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="alert alert-primary text-left" role="alert">
-                                    <i class="fas fa-info-circle"></i> <p class="border-left">Anda akan dinaik taraf kepada pakej {{ $package->name }}</p> 
+                                    <i class="fas fa-info-circle"></i> <span class="border-left">Anda akan dinaik taraf kepada pakej {{ $package->name }}</span> 
                                   </div>
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
