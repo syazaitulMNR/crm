@@ -95,13 +95,16 @@ Upgrade Pakej
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
                                 </div> --}}
-                                <div class="row">
-                                    <div class="pricing-button pt-1 pb-1 text-left">
-                                        <button type="button" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></button>
+                                <div class="row-fluid">
+                                    <div class="col-md-12">
+                                        <div class="pricing-button pt-1 pb-1 text-left">
+                                            <button type="button" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></button>
+                                        </div>
+                                        <div class="pricing-button pt-1 pb-1 text-right">
+                                            <button type="button" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="pricing-button pt-1 pb-1 text-right">
-                                        <button type="button" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
