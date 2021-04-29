@@ -14,7 +14,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 py-3">
-            <form action="" method="POST">
+            <form action="{{ url('save-upgrade') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
                 @csrf
   
                 {{-- <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">

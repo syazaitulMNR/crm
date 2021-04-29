@@ -11,16 +11,38 @@ use App\Feature;
 
 class UpgradeController extends Controller
 {
-    public function choose_package($product_id, $package_id, $stud_id, Request $request){
+    public function choose_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $feature = Feature::orderBy('id','asc')->get();
+        $payment = Payment::where('payment_id', $payment_id)->first();
 
-        // dd($student);
-        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature'));
+        $new_package = $request->session()->get('payment');
+
+        dd($new_package);
+        // return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
+    }
+
+    public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
+        $validatedData = $request->validate([
+            'product_id' => 'required',
+            'package_id' => 'required'
+        ]);
+
+        // if(empty($request->session()->get('payment'))){
+        //     $stud = new Student();
+        //     $stud->fill($validatedData);
+        //     $request->session()->put('student', $stud);
+        // }else{
+            $new_package = $request->session()->get('payment');
+            $new_package->fill($validatedData);
+            $request->session()->put('payment', $new_package);
+        // }
+
+        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, Request $request){

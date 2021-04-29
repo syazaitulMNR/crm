@@ -202,10 +202,11 @@ Route::get('products/{product_id}/{package_id}', 'NewRegisterController@index')-
 | Upgrade Package
 |--------------------------------------------------------------------------
 */
-Route::get('upgrade-package/{product_id}/{package_id}/{stud_id}', 'UpgradeController@choose_package');
-Route::get('upgrade-details/{product_id}/{package_id}/{stud_id}', 'UpgradeController@details_upgrade');
-Route::get('pay-upgrade/{product_id}/{package_id}/{stud_id}', 'UpgradeController@pay_upgrade');
-Route::get('card-method/{product_id}/{package_id}/{stud_id}', 'UpgradeController@card_method');
+Route::get('upgrade-package/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@choose_package');
+Route::post('save-upgrade/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@save_package');
+Route::get('upgrade-details/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@details_upgrade');
+Route::get('pay-upgrade/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@pay_upgrade');
+Route::get('card-method/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@card_method');
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');
