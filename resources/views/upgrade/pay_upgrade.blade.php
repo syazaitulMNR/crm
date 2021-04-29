@@ -55,7 +55,7 @@ Upgrade Pakej
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table>
                                         <thead>
                                             <tr>
                                                 <th>Pakej</th>
