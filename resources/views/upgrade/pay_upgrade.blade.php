@@ -67,7 +67,7 @@ Upgrade Pakej
                                         <tr>
                                             <td>{{ $package->name }}</td>
                                             <td>
-                                                <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
+                                                {{ $package->price }}
                                                 <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
                                             </td>
                                             <td>
