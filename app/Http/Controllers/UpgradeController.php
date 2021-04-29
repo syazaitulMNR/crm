@@ -31,15 +31,15 @@ class UpgradeController extends Controller
             'package_id' => 'required'
         ]);
 
-        // if(empty($request->session()->get('payment'))){
-        //     $stud = new Student();
-        //     $stud->fill($validatedData);
-        //     $request->session()->put('student', $stud);
-        // }else{
+        if(empty($request->session()->get('payment'))){
+            $new_package = new Payment();
+            $new_package->fill($validatedData);
+            $request->session()->put('payment', $new_package);
+        }else{
             $new_package = $request->session()->get('payment');
             $new_package->fill($validatedData);
             $request->session()->put('payment', $new_package);
-        // }
+        }
 
         
         dd($new_package);
