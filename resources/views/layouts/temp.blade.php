@@ -163,7 +163,7 @@
                 font-size: 18px;
                 line-height: 1.33;
                 border-radius: 25px;
-                box-shadow: 1px 1px 3px #252020;
+                box-shadow: 1px 1px 3px #2520206d;
             }
             .btn-circle.btn-xl {
                 width: 70px;
