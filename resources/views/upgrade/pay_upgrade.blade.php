@@ -54,8 +54,8 @@ Upgrade Pakej
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
 
-                                <table class="table">
-                                    <thead class="thead-light">
+                                <table class="table table-light">
+                                    <thead>
                                         <tr>
                                             <th>Pakej</th>
                                             <th>Harga</th>
