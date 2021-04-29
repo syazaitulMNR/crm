@@ -61,7 +61,7 @@ Upgrade Pakej
                                 </div>
 
                                 <div class="field px-2">
-                                    <div class="two fields">
+                                    <div class="one fields">
                                         <div class="field">
                                             <div class="row">
                                                 <div class="col">
@@ -71,13 +71,13 @@ Upgrade Pakej
                                                 <div class="col">
                                                     <input class="form-control" type="number" name="year" placeholder="YYYY" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" required="">
                                                 </div>
+                                                <div class="col">
+                                                    <input class="form-control" type="number" name="cvc" placeholder="CVC Code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" required>
+                                                </div>
+                                                <input type="hidden" name="jumlah" class="col-sm-6 text-left pt-2" value="{{ $payment->totalprice }}" readonly >
                                             </div>
+
                                         </div>
-                    
-                                        <div class="field py-3">
-                                            <input class="form-control" type="number" name="cvc" placeholder="CVC Code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" required>
-                                        </div>
-                                        <input type="hidden" name="jumlah" class="col-sm-6 text-left pt-2" value="{{ $payment->totalprice }}" readonly >
                                     </div>
                                 </div>
 
