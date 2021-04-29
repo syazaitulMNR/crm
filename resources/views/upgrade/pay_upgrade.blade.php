@@ -106,14 +106,14 @@ Upgrade Pakej
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="text-center">
-                                                <td>
+                                            <tr>
+                                                <td class="text-right">
                                                     <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
                                                         <i class="far fa-credit-card fa-2x"></i><br>
                                                         <br>Kad Debit/Kredit
                                                     </button>
                                                 </td>
-                                                <td>
+                                                <td class="text-left">
                                                     <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
                                                         <i class="fas fa-university fa-2x"></i><br>
                                                         <br>FPX
