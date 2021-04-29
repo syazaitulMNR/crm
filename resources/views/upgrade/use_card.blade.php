@@ -41,7 +41,7 @@ Upgrade Pakej
 
                                 <img class="img-responsive" style="width:200px" src="https://www.hydrohotel.co.im/wp-content/uploads/2020/03/payment-options.png">
 
-                                <div class="form-group px-2">
+                                <div class="form-group w-75 px-2">
                                     <input class="form-control" type="text" name="cardholder" placeholder="Name on Card" required>
                                 </div>
 
@@ -55,7 +55,7 @@ Upgrade Pakej
                                     
                                 </div>
 
-                                <div class="form-group px-2">
+                                <div class="form-group w-75 px-2">
                                     <input  class="creditcard form-control" name="cardnumber" placeholder="Card Number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     type="number" maxlength="16" required="">
                                 </div>
