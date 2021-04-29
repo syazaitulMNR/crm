@@ -165,14 +165,6 @@
                 border-radius: 25px;
                 box-shadow: 1px 1px 3px #2520206d;
             }
-            .btn-circle.btn-xl {
-                width: 70px;
-                height: 70px;
-                padding: 10px 16px;
-                font-size: 24px;
-                line-height: 1.33;
-                border-radius: 35px;
-            }
         </style> 
         
     </head>
