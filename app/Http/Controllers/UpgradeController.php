@@ -19,8 +19,8 @@ class UpgradeController extends Controller
         $student = Student::where('stud_id', $stud_id)->first();
         $feature = Feature::orderBy('id','asc')->get();
 
-        dd($student);
-        // return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature'));
+        // dd($student);
+        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature'));
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, Request $request){
