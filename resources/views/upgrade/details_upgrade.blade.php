@@ -129,7 +129,6 @@ Upgrade Pakej
     var y = '{{ $current_package->price }}';
     var z = x - y;
     document.getElementById("deducted").innerHTML = z;
-    console.log(y);
 </script>
 
 <script>
@@ -142,10 +141,10 @@ function calculateAmount(val) {
     var divobj = document.getElementById('totalprice');
     divobj.value = total_price;
 
-    var totallagi = document.getElementById('total_lagi');
-    totallagi.value = total_price;
+    // var totallagi = document.getElementById('total_lagi');
+    // totallagi.value = total_price;
 
-    document.getElementById('total_lah').innerHTML = total_price;
+    // document.getElementById('total_lah').innerHTML = total_price;
 
 }
 </script>
