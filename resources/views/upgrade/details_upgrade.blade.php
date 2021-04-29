@@ -67,7 +67,7 @@ Upgrade Pakej
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                                    RM <span id="deducted"></span>
+                                                    RM <span id="new_price"></span>
                                                 </td>
                                                 <td>
                                                     <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
@@ -85,7 +85,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline-width:0;" readonly>
+                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -128,13 +128,14 @@ Upgrade Pakej
     var x = document.getElementById("price").value;
     var y = '{{ $current_package->price }}';
     var z = x - y;
-    document.getElementById("deducted").innerHTML = z;
+    document.getElementById("new_price").innerHTML = z;
+    console.log(x);
 </script>
 
 <script>
 function calculateAmount(val) {
         
-    var prices = document.getElementById("deducted").value;
+    var prices = document.getElementById("price").value;
     var total_price = val * prices;
 
     /*display the result*/
@@ -145,7 +146,6 @@ function calculateAmount(val) {
     totallagi.value = total_price;
 
     document.getElementById('total_lah').innerHTML = total_price;
-    console.log(val);
 
 }
 </script>
