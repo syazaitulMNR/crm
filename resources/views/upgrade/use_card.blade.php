@@ -72,7 +72,7 @@ Upgrade Pakej
                                                     <input class="form-control" type="number" name="year" placeholder="YYYY" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" required="">
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-control" type="number" name="cvc" placeholder="CVC Code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" required>
+                                                    <input class="form-control" type="number" name="cvc" placeholder="CVC" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" required>
                                                 </div>
                                                 <input type="hidden" name="jumlah" class="col-sm-6 text-left pt-2" value="{{ $payment->totalprice }}" readonly >
                                             </div>
