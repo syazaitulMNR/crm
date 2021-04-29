@@ -99,8 +99,8 @@ Upgrade Pakej
                                 </div> --}}
 
                                 <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="thead">
+                                    <table class="table table-borderless">
+                                        <thead class="border-bottom">
                                             <tr>
                                                 <th colspan="2">Jenis Pembayaran</th>
                                             </tr>
