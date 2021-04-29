@@ -60,8 +60,8 @@ Upgrade Pakej
                                     type="number" maxlength="16" required="">
                                 </div>
 
-                                <div class="field px-2">
-                                    <div class="one fields w-75">
+                                <div class="field w-75 px-2">
+                                    <div class="one fields">
                                         <div class="field">
                                             <div class="row">
                                                 <div class="col">
