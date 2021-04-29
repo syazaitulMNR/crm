@@ -53,12 +53,6 @@ Upgrade Pakej
                                 <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                     <h4>Maklumat Tiket</h4>
                                 </div>
-
-                                <div class="row-fluid pt-1">
-                                   <div class="alert alert-info text-left" role="alert">
-                                        <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej dibawah telah ditolak daripada pembayaran pakej sebelum
-                                    </div> 
-                                </div>
                                 
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
@@ -98,7 +92,13 @@ Upgrade Pakej
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div>                                
+
+                                <div class="row-fluid pt-1">
+                                    <div class="alert alert-info text-left" role="alert">
+                                         <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
+                                     </div> 
+                                 </div>
                                 {{-- <div class="py-2">
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
