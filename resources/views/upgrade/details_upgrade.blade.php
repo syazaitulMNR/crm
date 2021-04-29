@@ -50,6 +50,9 @@ Upgrade Pakej
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
+                                <div class="alert alert-primary" role="alert">
+                                    Anda akan dinaik taraf kepada pakej {{ $package->name }}
+                                  </div>
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
                                         <thead class="border-bottom">
