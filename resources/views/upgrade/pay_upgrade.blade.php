@@ -48,7 +48,7 @@ Upgrade Pakej
                                 <div class="border-bottom pb-2" style="letter-spacing: 2px">
                                     <h4>Jenis Pembayaran</h4>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group pt-2 row">
                                     <div class="col-md-12 px-5">
                                         <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
                                             <i class="far fa-credit-card fa-3x"></i>
