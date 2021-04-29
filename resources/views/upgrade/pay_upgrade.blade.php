@@ -54,7 +54,7 @@ Upgrade Pakej
                                     <h4>{{ $current_package->name }} <i class="fas fa-long-arrow-alt-right"></i> New Package</h4>
                                 </div>
 
-                                <table class="table">
+                                <table class="table table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Pakej</th>
