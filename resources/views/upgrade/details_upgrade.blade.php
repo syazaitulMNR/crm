@@ -85,7 +85,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
+                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline-width:0;" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -138,8 +138,8 @@ function calculateAmount(val) {
     var total_price = val * prices;
 
     /*display the result*/
-    var divobj = document.getElementById('totalprice');
-    divobj.value = total_price;
+    document.getElementById('totalprice').innerHTML = total_price;
+    // divobj.value = total_price;
 
     // var totallagi = document.getElementById('total_lagi');
     // totallagi.value = total_price;
