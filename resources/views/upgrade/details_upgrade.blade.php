@@ -54,7 +54,7 @@ Upgrade Pakej
                                     <h4>Maklumat Tiket</h4>
                                 </div>
 
-                                <div class="col-md-12">
+                                <div class="row pt-1">
                                    <div class="alert alert-info text-left" role="alert">
                                         <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej dibawah telah ditolak daripada pembayaran pakej sebelum
                                     </div> 
