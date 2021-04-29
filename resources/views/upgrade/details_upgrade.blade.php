@@ -139,12 +139,12 @@ function calculateAmount(val) {
 
     /*display the result*/
     var divobj = document.getElementById('totalprice');
-    // divobj.value = total_price;
+    divobj.value = total_price;
 
-    // var totallagi = document.getElementById('total_lagi');
-    // totallagi.value = total_price;
+    var totallagi = document.getElementById('total_lagi');
+    totallagi.value = total_price;
 
-    // document.getElementById('total_lah').innerHTML = total_price;
+    document.getElementById('total_lah').innerHTML = total_price;
     console.log(val);
 
 }
