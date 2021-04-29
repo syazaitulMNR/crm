@@ -54,7 +54,6 @@ Upgrade Pakej
                                     <h4>{{ $current_package->name }} <i class="fas fa-arrow-right"></i> New Package</h4>
                                 </div>
 
-                                <div data-ng-app="" data-ng-init="quantity=1;price=5">
                                 <table class="table table-light">
                                     <thead>
                                         <tr>
@@ -67,13 +66,31 @@ Upgrade Pakej
                                     <tbody>
                                         <tr>
                                             <td></td>
-                                            <td><input type="number" ng-model="price"></td>
-                                            <td><input type="number" ng-model="quantity"></td>
-                                            <td>{{quantity * price}}</td>
+                                            <td>
+                                                <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
+                                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
+                                            </td>
+                                            <td>
+                                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required>
+                                                <option value="" disabled selected>-- Tiket --</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                </div>
                                 {{-- <div class="py-2">
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
@@ -103,7 +120,6 @@ Upgrade Pakej
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <script>
     var x = '{{ $current_package->price }}';
