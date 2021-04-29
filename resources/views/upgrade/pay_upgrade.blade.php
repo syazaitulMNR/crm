@@ -15,7 +15,7 @@ Upgrade Pakej
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 14px;
     margin: 4px 5px;
     transition-duration: 0.4s;
     cursor: pointer;
@@ -24,7 +24,7 @@ Upgrade Pakej
     background-color: #f3f3f3;
     color: #202020;
     border: 1px #e7e7e7 solid;
-    width: 100%;
+    width: 100px;
     }
 
     .button4:hover {background-color: #e7e7e7;}
