@@ -51,7 +51,7 @@ Upgrade Pakej
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="pb-2" style="letter-spacing: 2px">
-                                    <h4>{{ $current_package->name }}</h4> <i class="fas fa-arrow-right"></i> <h4>New Package</h4>
+                                    <h4>{{ $current_package->name }} <i class="fas fa-arrow-right"></i> New Package</h4>
                                 </div>
 
                                 <table class="table table-light">
