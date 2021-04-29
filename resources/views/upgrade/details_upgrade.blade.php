@@ -92,41 +92,14 @@ Upgrade Pakej
                                 {{-- <div class="py-2">
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
-                                </div> --}}
-
-                                <div class="table-responsive">
-                                    <table class="table table-borderless">
-                                        <thead class="border-bottom">
-                                            <tr>
-                                                <th colspan="2">Jenis Pembayaran</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-right">
-                                                    <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                                        <i class="far fa-credit-card fa-2x"></i><br>
-                                                        <br>Kad Debit/Kredit
-                                                    </button>
-                                                </td>
-                                                <td class="text-left">
-                                                    <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                                        <i class="fas fa-university fa-2x"></i><br>
-                                                        <br>FPX
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
+                                </div> --}}                                
                                 <div class="col-md-12 pb-5">
                                     <div class="pull-left">
                                         <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></a>
                                     </div>
-                                    {{-- <div class="pull-right">
+                                    <div class="pull-right">
                                         <button type="submit" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
