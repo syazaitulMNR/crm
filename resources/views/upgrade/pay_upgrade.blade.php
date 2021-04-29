@@ -67,7 +67,7 @@ Upgrade Pakej
                                         <tr>
                                             <td>{{ $package->name }}</td>
                                             <td>
-                                                RM {{ $package->price }}.00
+                                                RM {{ $package->price }}
                                                 <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
                                             </td>
                                             <td>
@@ -86,7 +86,7 @@ Upgrade Pakej
                                                 </select>
                                             </td>
                                             <td>
-                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>.00
+                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -137,7 +137,7 @@ function calculateAmount(val) {
 
     /*display the result*/
     var divobj = document.getElementById('totalprice');
-    divobj.value = total_price;
+    divobj.value = total_price.00;
 
     var totallagi = document.getElementById('total_lagi');
     totallagi.value = total_price;
