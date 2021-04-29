@@ -83,7 +83,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; width: 35px" readonly>
+                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
