@@ -96,12 +96,12 @@ Upgrade Pakej
                                     <span id="price"></span>
                                 </div> --}}
                                 <div class="col-md-12">
-                                    <div class="pricing-button pt-1 pb-1 text-left">
-                                        <button type="button" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></button>
+                                    <div class="pull-left">
+                                        <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></a>
                                     </div>
-                                    <div class="pricing-button pt-1 pb-1 text-right">
-                                        <button type="button" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
-                                    </div>                                    
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
