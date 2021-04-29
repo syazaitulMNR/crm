@@ -59,9 +59,10 @@ Upgrade Pakej
                             <div class="pricing-item py-4">
                                 {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:70%"> --}}
                                 <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
+
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $packages->name }}</h4>
-                                    <input type="hidden" value="{{ $packages->name }}" class="form-control" name="package_name" readonly/>
+                                    <input type="hidden" value="{{ $packages->name }}" class="form-control" name="name" readonly/>
                                 </div>
                                 <div class="text-success" style="font-size: 75px">
                                     <i class="fa fa-check-circle"></i>
