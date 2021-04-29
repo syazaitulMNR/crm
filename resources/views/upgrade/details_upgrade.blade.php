@@ -125,7 +125,7 @@ Upgrade Pakej
 
 
 <script>
-    var x = '{{ $current_package->price }}';
+    var x = document.getElementById("price");
     var y = '{{ $current_package->price }}';
     var z = x - y;
     document.getElementById("price").innerHTML = z;
