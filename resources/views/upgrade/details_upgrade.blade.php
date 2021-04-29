@@ -135,7 +135,7 @@ Upgrade Pakej
 <script>
 function calculateAmount(val) {
         
-    var prices = document.getElementById("price").value;
+    var prices = document.getElementById("deducted").value;
     var total_price = val * prices;
 
     /*display the result*/
