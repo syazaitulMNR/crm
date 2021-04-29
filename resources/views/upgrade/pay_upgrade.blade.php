@@ -57,7 +57,7 @@ Upgrade Pakej
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
-                                            <tr>
+                                            <tr class="text-center">
                                                 <th>Pakej</th>
                                                 <th>Harga</th>
                                                 <th>Kuantiti</th>
@@ -65,7 +65,7 @@ Upgrade Pakej
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr class="text-center">
                                                 <td>{{ $package->name }}</td>
                                                 <td>
                                                     RM {{ $package->price }}
