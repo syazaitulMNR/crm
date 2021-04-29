@@ -55,8 +55,8 @@ Upgrade Pakej
                                 </div>
 
                                 <div class="table-responsive">
-                                    <table>
-                                        <thead>
+                                    <table class="table table-borderless">
+                                        <thead class="border-bottom">
                                             <tr>
                                                 <th>Pakej</th>
                                                 <th>Harga</th>
