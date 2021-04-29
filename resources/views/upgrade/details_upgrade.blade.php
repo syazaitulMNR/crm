@@ -33,7 +33,7 @@ Upgrade Pakej
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 px-3 pt-5 pb-3 text-center border-bottom">
+        <div class="col-md-12 px-3 pt-5 pb-3 text-center">
             <img src="/assets/images/logo.png" style="max-width:150px">
             <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
         </div>
