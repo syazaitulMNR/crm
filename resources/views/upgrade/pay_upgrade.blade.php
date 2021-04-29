@@ -68,7 +68,7 @@ Upgrade Pakej
                                             <tr>
                                                 <td>{{ $package->name }}</td>
                                                 <td>
-                                                    RM {{ $package->price }}
+                                                    RM {{ $current_package->price }}
                                                     <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
                                                 </td>
                                                 <td>
