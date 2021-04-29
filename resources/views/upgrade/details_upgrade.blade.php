@@ -94,7 +94,8 @@ Upgrade Pakej
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>     
+                                </div>   
+                                @endif  
                                 @endforeach                           
 
                                 <div class="row-fluid pt-1">
