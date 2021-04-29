@@ -59,7 +59,6 @@ Upgrade Pakej
                             <div class="pricing-item py-4">
                                 {{-- <img src="{{ asset('assets/images')}}/{{ $packages->package_image }}" style="width:70%"> --}}
                                 <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
-                                <input type="hidden" value="{{ $packages->package_id }}" class="form-control" name="package_id" readonly/>
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $packages->name }}</h4>
                                 </div>
@@ -82,7 +81,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
+                                    <button type="submit" class="btn btn-circle btn-lg btn-dark" name="package_id" value="{{ $packages->package_id }}"><i class="fas fa-arrow-right py-1"></i></button>
                                 </div>
                             </div>
                         </div>
