@@ -4,6 +4,21 @@
 Upgrade Pakej
 @endsection
 
+{{-- Style to remove arrow in number input ---------}}
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+</style>
+
 @section('content')
 <div class="container">
     <div class="row">
