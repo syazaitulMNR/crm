@@ -39,7 +39,9 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 py-3">
-            
+            <form action="{{ url('save-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
+                @csrf
+  
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
@@ -48,72 +50,74 @@ Upgrade Pakej
                                     <h4>Maklumat Tiket</h4>
                                 </div>
                                 
-                                <form action="{{ url('save-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
-                                    @csrf
-                      
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless">
-                                            <thead class="border-bottom">
-                                                <tr>
-                                                    <th>Pakej</th>
-                                                    <th>Harga</th>
-                                                    <th>Kuantiti</th>
-                                                    <th class="text-center">Jumlah Bayaran</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>{{ $package_detail->name }}</td>
-                                                    <td>
-                                                        RM {{ $package_detail->price }}
-                                                        <input type="hidden" id="price" name="price" value="{{ $package_detail->price }}" disabled>
-                                                    </td>
-                                                    <td>
-                                                        <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
-                                                        <option value="" disabled selected>-</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                        <option value="10">10</option>
-                                                        </select>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>                            
+                                @foreach ($package as $packages)
+                                @if ($new_package->package_id == $packages->package_id)
+                                <div class="table-responsive">
+                                    <table class="table table-borderless">
+                                        <thead class="border-bottom">
+                                            <tr>
+                                                <th>Pakej</th>
+                                                <th>Harga</th>
+                                                <th>Kuantiti</th>
+                                                <th class="text-center">Jumlah Bayaran</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ $packages->name }}</td>
+                                                <td>
+                                                    RM {{ $packages->price }}
+                                                    <input type="hidden" id="price" name="price" value="{{ $packages->price }}" disabled>
+                                                </td>
+                                                <td>
+                                                    <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
+                                                    <option value="" disabled selected>-</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    </select>
+                                                </td>
+                                                <td class="text-center">
+                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>   
+                                @endif  
+                                @endforeach                           
 
-                                    <div class="row-fluid pt-1">
-                                        <div class="alert alert-info text-left" role="alert">
-                                            <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
-                                        </div> 
+                                <div class="row-fluid pt-1">
+                                    <div class="alert alert-info text-left" role="alert">
+                                         <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
+                                     </div> 
+                                 </div>
+                                {{-- <div class="py-2">
+                                    <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
+                                    <span id="price"></span>
+                                </div> --}}                                
+                                <div class="col-md-12 pb-5">
+                                    <div class="pull-left">
+                                        <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{$payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                     </div>
-                                    {{-- <div class="py-2">
-                                        <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
-                                        <span id="price"></span>
-                                    </div> --}}                                
-                                    <div class="col-md-12 pb-5">
-                                        <div class="pull-left">
-                                            <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{$payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
-                                        </div>
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                    
+            </form>
         </div>
     </div>
 </div>

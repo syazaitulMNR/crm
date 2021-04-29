@@ -82,7 +82,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="submit" class="btn btn-circle btn-lg btn-dark" name="package_id" value="{{ $packages->package_id }}"><i class="fas fa-arrow-right py-1"></i></button>
+                                    <button type="submit" class="btn btn-circle btn-lg btn-dark" value="{{ $packages->package_id }}"><i class="fas fa-arrow-right py-1"></i></button>
                                 </div>
                             </div>
                         </div>
