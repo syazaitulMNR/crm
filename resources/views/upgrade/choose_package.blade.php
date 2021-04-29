@@ -80,7 +80,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="button" class="btn btn-lg btn-dark w-75">Tukar Pakej</button>
+                                    <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                                 </div>
                             </div>
                         </div>
