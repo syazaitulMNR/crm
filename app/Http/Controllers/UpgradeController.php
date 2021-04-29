@@ -55,8 +55,8 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('payment');
 
-        dd($new_package);
-        // return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
+        // dd($new_package);
+        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
     }
 
     public function save_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
