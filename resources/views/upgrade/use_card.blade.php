@@ -61,8 +61,8 @@ Upgrade Pakej
                                 </div>
 
                                 <div class="field px-2">
-                                    <div class="one fields">
-                                        <div class="field w-75">
+                                    <div class="one fields w-75">
+                                        <div class="field">
                                             <div class="row">
                                                 <div class="col">
                                                     <input class="form-control" type="number" name="month" placeholder="MM" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" required="">
