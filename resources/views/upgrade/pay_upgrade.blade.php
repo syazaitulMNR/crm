@@ -57,15 +57,15 @@ Upgrade Pakej
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
-                                            <tr class="text-center">
+                                            <tr>
                                                 <th>Pakej</th>
                                                 <th>Harga</th>
                                                 <th>Kuantiti</th>
-                                                <th>Jumlah Bayaran</th>
+                                                <th class="text-center">Jumlah Bayaran</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="text-center">
+                                            <tr>
                                                 <td>{{ $package->name }}</td>
                                                 <td>
                                                     RM {{ $package->price }}
@@ -86,7 +86,7 @@ Upgrade Pakej
                                                     <option value="10">10</option>
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
                                                 </td>
                                             </tr>
