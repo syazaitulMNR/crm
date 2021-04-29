@@ -22,8 +22,7 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('payment');
 
-        dd($new_package);
-        // return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
+        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
     }
 
     public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -42,7 +41,9 @@ class UpgradeController extends Controller
             $request->session()->put('payment', $new_package);
         // }
 
-        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        
+        dd($new_package);
+        // return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, Request $request){
