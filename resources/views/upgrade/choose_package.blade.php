@@ -15,17 +15,12 @@ Upgrade Pakej
 
         <div class="col-md-12 py-3">
             <form action="{{ url('save-upgrade') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
-                @csrf
+            @csrf
   
-                {{-- <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">
-                    <h1 class="font-weight-bold">{{ $product->name }}</h1>
-                    <p class="lead">Hai! Sila buat pilihan di bawah untuk upgrade pakej.</p>
-                </div> --}}
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
-                                {{-- <img src="{{ asset('assets/images')}}/{{ $current_package->package_image }}" style="width:70%"> --}}
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
@@ -81,7 +76,7 @@ Upgrade Pakej
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
-                                    <button type="submit" class="btn btn-circle btn-lg btn-dark" value="{{ $packages->package_id }}"><i class="fas fa-arrow-right py-1"></i></button>
+                                    <button type="submit" class="btn btn-circle btn-lg btn-dark" name="package_id" value="{{ $packages->package_id }}"><i class="fas fa-arrow-right py-1"></i></button>
                                 </div>
                             </div>
                         </div>
