@@ -105,7 +105,7 @@ Upgrade Pakej
                                 </div> --}}                                
                                 <div class="col-md-12 pb-5">
                                     <div class="pull-left">
-                                        <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:30%"></i></a>
+                                        <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                     </div>
                                     <div class="pull-right">
                                         <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
