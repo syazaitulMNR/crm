@@ -129,7 +129,7 @@ Upgrade Pakej
     var y = '{{ $current_package->price }}';
     var z = x - y;
     document.getElementById("price").innerHTML = z;
-    console.log(x);
+    console.log(y);
 </script>
 
 <script>
