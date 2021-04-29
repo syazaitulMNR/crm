@@ -18,7 +18,7 @@ Upgrade Pakej
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
-                            <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
+                            <div class="pricing-item bg-white py-4 px-4 w-75" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                     <h4>Jenis Pembayaran</h4>
                                 </div>
@@ -41,7 +41,7 @@ Upgrade Pakej
 
                                 <img class="img-responsive" style="width:200px" src="https://www.hydrohotel.co.im/wp-content/uploads/2020/03/payment-options.png">
 
-                                <div class="form-group w-75 px-2">
+                                <div class="form-group px-2">
                                     <input class="form-control" type="text" name="cardholder" placeholder="Name on Card" required>
                                 </div>
 
@@ -55,12 +55,12 @@ Upgrade Pakej
                                     
                                 </div>
 
-                                <div class="form-group w-75 px-2">
+                                <div class="form-group px-2">
                                     <input  class="creditcard form-control" name="cardnumber" placeholder="Card Number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     type="number" maxlength="16" required="">
                                 </div>
 
-                                <div class="field w-75 px-2">
+                                <div class="field px-2">
                                     <div class="one fields">
                                         <div class="field">
                                             <div class="row">
