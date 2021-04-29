@@ -67,7 +67,7 @@ Upgrade Pakej
                                         <tr>
                                             <td>{{ $package->name }}</td>
                                             <td>
-                                                RM {{ $package->price }}
+                                                RM {{ $package->price }}.00
                                                 <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
                                             </td>
                                             <td>
@@ -86,7 +86,7 @@ Upgrade Pakej
                                                 </select>
                                             </td>
                                             <td>
-                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
+                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>.00
                                             </td>
                                         </tr>
                                     </tbody>
