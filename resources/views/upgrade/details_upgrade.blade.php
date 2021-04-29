@@ -89,9 +89,7 @@ Upgrade Pakej
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>   
-                                    @endif  
-                                    @endforeach                           
+                                    </div>                            
 
                                     <div class="row-fluid pt-1">
                                         <div class="alert alert-info text-left" role="alert">
