@@ -86,7 +86,7 @@ Upgrade Pakej
                                                 </select>
                                             </td>
                                             <td>
-                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
+                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none;" readonly>
                                             </td>
                                         </tr>
                                     </tbody>
