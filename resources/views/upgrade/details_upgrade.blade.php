@@ -42,10 +42,6 @@ Upgrade Pakej
             <form action="{{ url('save-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
   
-                {{-- <div class="w-50 px-3 py-3 pt-md-4 pb-md-4 mx-auto text-center">
-                    <h1 class="font-weight-bold">{{ $product->name }}</h1>
-                    <p class="lead">Hai! Sila buat pilihan di bawah untuk upgrade pakej.</p>
-                </div> --}}
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
