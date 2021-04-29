@@ -45,31 +45,21 @@ Upgrade Pakej
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
-                                
-                                <div class="table-responsive">
-                                    <table class="table table-borderless">
-                                        <thead class="border-bottom">
-                                            <tr>
-                                                <th colspan="2">Jenis Pembayaran</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-right">
-                                                    <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                                        <i class="far fa-credit-card fa-2x"></i><br>
-                                                        <br>Kad Debit/Kredit
-                                                    </button>
-                                                </td>
-                                                <td class="text-left">
-                                                    <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                                        <i class="fas fa-university fa-2x"></i><br>
-                                                        <br>FPX
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="pb-2" style="letter-spacing: 2px">
+                                    <h4>Jenis Pembayaran</h4>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12 px-5">
+                                        <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
+                                            <i class="far fa-credit-card fa-3x"></i>
+                                            <br>Kad Debit/Kredit
+                                        </button>
+                                    
+                                        <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
+                                            <i class="fas fa-university fa-3x"></i>
+                                            <br>FPX
+                                        </button>
+                                    </div>
                                 </div>
                                 
                                 <div class="col-md-12 pb-5">
