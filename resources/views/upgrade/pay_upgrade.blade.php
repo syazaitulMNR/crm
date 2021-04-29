@@ -54,43 +54,45 @@ Upgrade Pakej
                                     <h4>{{ $current_package->name }} <i class="fas fa-long-arrow-alt-right"></i> New Package</h4>
                                 </div>
 
-                                <table class="table table-responsive">
-                                    <thead>
-                                        <tr>
-                                            <th>Pakej</th>
-                                            <th>Harga</th>
-                                            <th>Kuantiti</th>
-                                            <th>Jumlah Bayaran</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ $package->name }}</td>
-                                            <td>
-                                                RM {{ $package->price }}
-                                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
-                                            </td>
-                                            <td>
-                                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control w-100" required>
-                                                <option value="" disabled selected>-</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Pakej</th>
+                                                <th>Harga</th>
+                                                <th>Kuantiti</th>
+                                                <th>Jumlah Bayaran</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ $package->name }}</td>
+                                                <td>
+                                                    RM {{ $package->price }}
+                                                    <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
+                                                </td>
+                                                <td>
+                                                    <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control w-100" required>
+                                                    <option value="" disabled selected>-</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    RM <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 {{-- <div class="py-2">
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
