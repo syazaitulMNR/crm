@@ -27,7 +27,6 @@ class UpgradeController extends Controller
 
     public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
         $validatedData = $request->validate([
-            'name' => 'required',
             'product_id' => 'required',
             'package_id' => 'required'
         ]);
