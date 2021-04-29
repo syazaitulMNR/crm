@@ -41,8 +41,8 @@ class UpgradeController extends Controller
             $request->session()->put('package', $package_detail);
         }
 
-        dd($package_detail);
-        // return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        // dd($package_detail);
+        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -55,9 +55,10 @@ class UpgradeController extends Controller
         $payment = Payment::where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('payment');
+        $package_detail = $request->session()->get('package');
 
         // dd($new_package);
-        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
+        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package', 'package_detail'));
     }
 
     public function save_details($product_id, $package_id, $stud_id, $payment_id, Request $request){

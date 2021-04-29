@@ -48,8 +48,6 @@ Upgrade Pakej
                                     <h4>Maklumat Tiket</h4>
                                 </div>
                                 
-                                @foreach ($package as $packages)
-                                @if ($new_package->package_id == $packages->package_id)
                                 <form action="{{ url('save-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                                     @csrf
                       
@@ -65,10 +63,10 @@ Upgrade Pakej
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $packages->name }}</td>
+                                                    <td>{{ $package_detail->name }}</td>
                                                     <td>
-                                                        RM {{ $packages->price }}
-                                                        <input type="hidden" id="price" name="price" value="{{ $packages->price }}" disabled>
+                                                        RM {{ $package_detail->price }}
+                                                        <input type="hidden" id="price" name="price" value="{{ $package_detail->price }}" disabled>
                                                     </td>
                                                     <td>
                                                         <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
