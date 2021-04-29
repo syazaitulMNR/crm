@@ -99,7 +99,7 @@ Upgrade Pakej
                                 <table class="table table-responsive">
                                     <thead class="thead">
                                         <tr>
-                                            <th>Jenis Pembayaran</th>
+                                            <th colspan="2">Jenis Pembayaran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
