@@ -53,10 +53,29 @@ Upgrade Pakej
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
-                                <div class="py-2">
+
+                                <table class="table table-light">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Pakej</th>
+                                            <th>Harga</th>
+                                            <th>Kuantiti</th>
+                                            <th>Jumlah Bayaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {{-- <div class="py-2">
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
-                                </div>
+                                </div> --}}
                                 <div class="form-group row">
                                     <div class="col-md-12 px-5">
                                         <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
