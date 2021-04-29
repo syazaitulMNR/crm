@@ -66,7 +66,7 @@ Upgrade Pakej
                                             <tr>
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
-                                                    <input type="hidden" id="old_price" value="{{ $packages->price }}" disabled>
+                                                    <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                                     RM <span id="deducted"></span>
                                                 </td>
                                                 <td>
@@ -85,7 +85,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
+                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -125,7 +125,7 @@ Upgrade Pakej
 
 
 <script>
-    var x = document.getElementById("old_price").value;
+    var x = document.getElementById("price").value;
     var y = '{{ $current_package->price }}';
     var z = x - y;
     document.getElementById("deducted").innerHTML = z;
@@ -139,7 +139,7 @@ function calculateAmount(val) {
     var total_price = val * prices;
 
     /*display the result*/
-    var divobj = document.getElementById('new_total');
+    var divobj = document.getElementById('totalprice');
     divobj.value = total_price;
 
     var totallagi = document.getElementById('total_lagi');
