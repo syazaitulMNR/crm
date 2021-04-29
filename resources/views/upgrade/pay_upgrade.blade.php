@@ -45,10 +45,10 @@ Upgrade Pakej
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
-                                <div class="border-bottom pb-2" style="letter-spacing: 2px">
+                                <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                     <h4>Jenis Pembayaran</h4>
                                 </div>
-                                <div class="form-group pt-2 row">
+                                <div class="form-group pt-1 row">
                                     <div class="col-md-12 px-5">
                                         <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
                                             <i class="far fa-credit-card fa-3x"></i>
