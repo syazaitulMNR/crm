@@ -41,12 +41,10 @@ class UpgradeController extends Controller
             $request->session()->put('payment', $new_package);
         }
 
-        
-        // dd($new_package);
         return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
-    public function details_upgrade($product_id, $package_id, $stud_id, Request $request){
+    public function details_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->first();
@@ -55,8 +53,10 @@ class UpgradeController extends Controller
         $feature = Feature::orderBy('id','asc')->get();
         $payment = Payment::where('stud_id', $stud_id)->first();
 
-        // dd($student);
-        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
+        $new_package = $request->session()->get('payment');
+
+        dd($new_package);
+        // return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
     }
 
     public function pay_upgrade($product_id, $package_id, $stud_id, Request $request){
