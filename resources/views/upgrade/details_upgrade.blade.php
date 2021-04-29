@@ -54,6 +54,8 @@ Upgrade Pakej
                                     <h4>Maklumat Tiket</h4>
                                 </div>
                                 
+                                @foreach ($package as $packages)
+                                @if ($new_package->package_id == $packages->package_id)
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
                                         <thead class="border-bottom">
@@ -66,9 +68,9 @@ Upgrade Pakej
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{ $new_package->name }}</td>
+                                                <td>{{ $packages->name }}</td>
                                                 <td>
-                                                    RM {{ $new_package->price }}
+                                                    RM {{ $packages->price }}
                                                     <input type="hidden" id="price" name="price" value="{{ $new_package->price }}" disabled>
                                                 </td>
                                                 <td>
@@ -92,7 +94,8 @@ Upgrade Pakej
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>                                
+                                </div>     
+                                @endforeach                           
 
                                 <div class="row-fluid pt-1">
                                     <div class="alert alert-info text-left" role="alert">

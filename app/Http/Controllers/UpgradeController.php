@@ -47,7 +47,7 @@ class UpgradeController extends Controller
     public function details_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->get();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $feature = Feature::orderBy('id','asc')->get();
