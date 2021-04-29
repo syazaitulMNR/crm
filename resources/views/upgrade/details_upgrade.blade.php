@@ -53,9 +53,13 @@ Upgrade Pakej
                                 <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                     <h4>Maklumat Tiket</h4>
                                 </div>
-                                <div class="alert alert-info text-left pt-1" role="alert">
-                                    <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej dibawah telah ditolak daripada pembayaran pakej sebelum
+
+                                <div class="col-md-12">
+                                   <div class="alert alert-info text-left" role="alert">
+                                        <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej dibawah telah ditolak daripada pembayaran pakej sebelum
+                                    </div> 
                                 </div>
+                                
                                 <div class="table-responsive">
                                     <table class="table table-borderless">
                                         <thead class="border-bottom">
