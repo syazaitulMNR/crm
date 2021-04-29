@@ -142,10 +142,10 @@ function calculateAmount(val) {
     var divobj = document.getElementById('new_total');
     divobj.value = total_price;
 
-    // var totallagi = document.getElementById('total_lagi');
-    // totallagi.value = total_price;
+    var totallagi = document.getElementById('total_lagi');
+    totallagi.value = total_price;
 
-    // document.getElementById('total_lah').innerHTML = total_price;
+    document.getElementById('total_lah').innerHTML = total_price;
 
 }
 </script>
