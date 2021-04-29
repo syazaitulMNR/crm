@@ -95,10 +95,10 @@ Upgrade Pakej
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
                                 </div> --}}
-                                    <div class="pull-left">
+                                    <div class="text-left">
                                         <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></a>
                                     </div>
-                                    <div class="pull-right">
+                                    <div class="text-right">
                                         <button type="submit" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
                                     </div>
                             </div>
