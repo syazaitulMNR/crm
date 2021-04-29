@@ -108,7 +108,7 @@ Upgrade Pakej
                                         <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left py-1"></i></a>
                                     </div>
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-circle btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
+                                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                                     </div>
                                 </div>
                             </div>
