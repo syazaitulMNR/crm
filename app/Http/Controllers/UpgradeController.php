@@ -84,8 +84,9 @@ class UpgradeController extends Controller
         $feature = Feature::orderBy('id','asc')->get();
         $payment = Payment::where('stud_id', $stud_id)->first();
 
-        // dd($student);
-        return view('upgrade.pay_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
+        $new_package = $request->session()->get('payment');
+        dd($new_package);
+        // return view('upgrade.pay_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
     }
 
     public function card_method($product_id, $package_id, $stud_id, Request $request){
