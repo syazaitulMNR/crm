@@ -66,8 +66,8 @@ Upgrade Pakej
                                             <tr>
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
-                                                    RM <span id="deducted"></span>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
+                                                    RM <span id="deducted"></span>
                                                 </td>
                                                 <td>
                                                     <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
