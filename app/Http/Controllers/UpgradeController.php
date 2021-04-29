@@ -42,8 +42,8 @@ class UpgradeController extends Controller
         }
 
         
-        dd($new_package);
-        // return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        // dd($new_package);
+        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, Request $request){
