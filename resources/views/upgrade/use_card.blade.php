@@ -126,7 +126,7 @@ Upgrade Pakej
                                         <a href="{{ url('pay-upgrade') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-outline-dark rounded-circle"><i class="fas fa-arrow-left py-1"></i></a>
                                     </div>
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
+                                        <button type="submit" class="btn btn-success rounded-circle"><i class="fas fa-check py-1"></i></button>
                                     </div>
                                 </div>
                             </div>
