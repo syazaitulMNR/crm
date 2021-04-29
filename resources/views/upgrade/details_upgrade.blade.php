@@ -66,13 +66,13 @@ Upgrade Pakej
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{ $package->name }}</td>
+                                                <td>{{ $new_package->name }}</td>
                                                 <td>
-                                                    RM {{ $current_package->price }}
-                                                    <input type="hidden" id="price" name="price" value="{{ $current_package->price }}" disabled>
+                                                    RM {{ $new_package->price }}
+                                                    <input type="hidden" id="price" name="price" value="{{ $new_package->price }}" disabled>
                                                 </td>
                                                 <td>
-                                                    <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control w-100" required>
+                                                    <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
                                                     <option value="" disabled selected>-</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -87,7 +87,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
+                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -105,7 +105,7 @@ Upgrade Pakej
                                 </div> --}}                                
                                 <div class="col-md-12 pb-5">
                                     <div class="pull-left">
-                                        <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                                        <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{$payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                     </div>
                                     <div class="pull-right">
                                         <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
