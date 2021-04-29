@@ -95,18 +95,8 @@ Upgrade Pakej
                                     <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
                                     <span id="price"></span>
                                 </div> --}}
-                                <div class="form-group row">
-                                    <div class="col-md-12 px-5">
-                                        <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                            <i class="far fa-credit-card fa-3x"></i>
-                                            <br>Kad Debit/Kredit
-                                        </button>
-                                    
-                                        <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                            <i class="fas fa-university fa-3x"></i>
-                                            <br>FPX
-                                        </button>
-                                    </div>
+                                <div class="pricing-button pt-1 pb-1">
+                                    <button type="button" class="btn btn-lg btn-dark w-75">Seterusnya</button>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +127,7 @@ function calculateAmount(val) {
 
     /*display the result*/
     var divobj = document.getElementById('totalprice');
-    divobj.value = total_price.00;
+    divobj.value = total_price;
 
     var totallagi = document.getElementById('total_lagi');
     totallagi.value = total_price;
