@@ -30,6 +30,7 @@ class UpgradeController extends Controller
 
     public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
         $new_payment = Payment::where('payment_id', $payment_id)->first();
+        $new_package = $request->session()->get('payment');
 
         $validatedData = [
             $new_payment->package_id = $request->package_id,
@@ -37,12 +38,15 @@ class UpgradeController extends Controller
 
         ];
 
+        $new_package->fill($validatedData);
+        $request->session()->put('payment', $new_package);
+
         // $validatedData = $request->validate([
         //     'product_id' => 'required',
         //     'package_id' => 'required'
         // ]);
 
-        dd($validatedData);
+        dd($request->session()->put('payment', $new_package););
         // if(empty($request->session()->get('payment'))){
         //     $new_package = new Payment();
         //     $new_package->fill($validatedData);
