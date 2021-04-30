@@ -68,10 +68,11 @@ Upgrade Pakej
                                                 <td>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                                     RM <input type="text" id="new_price" name="price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px" readonly>
-                                                    {{-- <span id="new_price"></span> --}}
+                                                    {{-- RM <span id="new_price"></span> --}}
+                                                    
                                                 </td>
                                                 <td>
-                                                    <select id="quantity" name="quantity" onchange="new_amount(this.value)" class="form-control w-100" required>
+                                                    <select name="quantity" onchange="new_amount(this.value)" class="form-control w-100" required>
                                                     <option value="" disabled selected>-</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -136,18 +137,12 @@ Upgrade Pakej
 <script>
 function new_amount(val) {
         
-    var prices = document.getElementById("new_price").value;
-    var total_price = val * prices;
+    var newprice = document.getElementById("new_price").value;
+    var newamount = val * newprice;
 
     /*display the result*/
     var divobj = document.getElementById('new_total');
-    divobj.value = total_price;
-
-    var totallagi = document.getElementById('total_lagi');
-    totallagi.value = total_price;
-
-    document.getElementById('total_lah').innerHTML = total_price;
-    console.log(val);
+    divobj.value = newamount;
 }
 </script>
 @endsection
