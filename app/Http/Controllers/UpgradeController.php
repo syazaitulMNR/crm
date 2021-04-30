@@ -284,7 +284,7 @@ class UpgradeController extends Controller
         $new_package->fill($addData);
         $request->session()->put('payment', $new_package);
 
-        if ($payment->status == 'paid')
+        if ($new_package->status == 'paid')
         {
             /*-- Manage Email ---------------------------------------------------*/
 
