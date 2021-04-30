@@ -36,6 +36,7 @@ class UpgradeController extends Controller
 
         if(empty($request->session()->get('payment'))){
             // $new_package = new Payment();
+            $new_package = $request->session()->get('payment');
             $new_package->fill($validatedData);
             $request->session()->put('payment', $new_package);
         }else{
