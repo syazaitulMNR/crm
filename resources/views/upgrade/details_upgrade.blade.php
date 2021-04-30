@@ -130,7 +130,12 @@ Upgrade Pakej
     var x = document.getElementById("price").value;
     var y = '{{ $current_package->price }}';
     var z = x - y;
-    document.getElementById("new_price").innerHTML = z;
+
+    /*display the result*/
+    var total = document.getElementById('new_price');
+    total.value = z;
+
+    // document.getElementById("new_price").innerHTML = z;
     console.log(z);
 </script>
 
@@ -142,7 +147,9 @@ function new_amount(val) {
 
     /*display the result*/
     var divobj = document.getElementById('new_total');
-    divobj.value = newamount;
+    divobj.value = newamount;\
+
+    console.log(newamount);
 }
 </script>
 @endsection
