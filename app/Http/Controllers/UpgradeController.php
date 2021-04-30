@@ -97,7 +97,7 @@ class UpgradeController extends Controller
         $request->session()->put('payment', $new_package);
 
         // dd($new_package);
-        return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('choose-method/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function choose_method($product_id, $package_id, $stud_id, $payment_id, Request $request)
