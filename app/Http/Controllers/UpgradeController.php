@@ -198,8 +198,8 @@ class UpgradeController extends Controller
                 'stripe_id' => $customer->id
             );
 
-            $payment->fill($addData);
-            $request->session()->put('payment', $payment);
+            $new_package->fill($addData);
+            $request->session()->put('payment', $new_package);
 
         } catch (\Exception $ex) {
             return redirect()->back()->with('error', $ex->getMessage());
@@ -212,7 +212,7 @@ class UpgradeController extends Controller
         $product_name = $product->name;        
         $package_name = $package->name;
         $packageId = $package_id;
-        $payment_id = $new_package->payment_id;
+        $payment_id = $payment->payment_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
