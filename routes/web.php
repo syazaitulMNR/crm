@@ -211,6 +211,8 @@ Route::post('save-payment/{product_id}/{package_id}/{stud_id}/{payment_id}', 'Up
 Route::get('choose-method/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@choose_method');
 Route::get('card-method/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@card_method');
 Route::post('save-stripe/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@save_stripe');
+Route::get('pay-billplz/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@billplz_pay');
+Route::get('redirect-pay', 'UpgradeController@redirect_pay');
 Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 
 //---------------------------------------------- Testing Part -------------------------------------------------//

@@ -121,7 +121,7 @@ class UpgradeController extends Controller
 
         }else if($new_package->pay_method == 'FPX'){
 
-            return redirect('data-billplz/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
+            return redirect('pay-billplz/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
 
         }else{
             echo 'Error 404';
@@ -226,6 +226,99 @@ class UpgradeController extends Controller
         $request->session()->forget('payment');
         
         return redirect('naik-taraf-berjaya');
+    }
+
+    public function billplz_pay($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    {        
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->first();
+        $current_package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $stud_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+
+        $new_package = $request->session()->get('payment');
+
+        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+
+        $bill = $billplz->bill();
+
+        $response = $bill->create(
+            'ffesmlep',
+            $student->email,
+            $student->phoneno,
+            $student->first_name,
+            \Duit\MYR::given($payment->totalprice * 100),
+            'https://mims.momentuminternet.my/redirect-pay',
+            $product->name . ' - ' . $package->name,
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-pay']
+        );
+
+        $pay_data = $response->toArray();
+        
+        $addData = array(
+            'billplz_id' => $pay_data['id']
+        );
+
+        $new_package->fill($addData);
+        $request->session()->put('payment', $new_package);
+
+        // dd($pay_data);
+        return redirect($pay_data['url']);
+    }
+
+    public function redirect_pay(Request $request)
+    {
+        $new_package = $request->session()->get('payment');
+
+        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+
+        $bill = $billplz->bill();
+        $response = $bill->get($new_package->billplz_id);
+
+        $pay_data = $response->toArray();
+
+        $addData = array(
+            'status' => $pay_data['state']
+        );
+
+        $new_package->fill($addData);
+        $request->session()->put('payment', $new_package);
+
+        if ($payment->status == 'paid')
+        {
+            /*-- Manage Email ---------------------------------------------------*/
+
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;        
+            $package_name = $package->name;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+            
+            /*-- End Email -----------------------------------------------------------*/
+
+            $new_package->save();
+    
+            // $request->session()->forget('student');
+            $request->session()->forget('payment');
+
+            return redirect('naik-taraf-berjaya');  
+        } else {
+
+            $payment->save();
+    
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+
+            return view('customer/failed_payment');
+        }
+        
     }
 
     public function success_upgrade()
