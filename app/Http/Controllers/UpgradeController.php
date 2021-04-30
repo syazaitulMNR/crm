@@ -29,35 +29,22 @@ class UpgradeController extends Controller
     }
 
     public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
-        $new_payment = Payment::where('payment_id', $payment_id)->first();
-        $new_package = $request->session()->get('payment');
+        $validatedData = $request->validate([
+            'product_id' => 'required',
+            'package_id' => 'required'
+        ]);
 
-        $validatedData = [
-            $new_payment->package_id = $request->package_id,
-            $new_payment->product_id = $request->product_id,
+        if(empty($request->session()->get('payment'))){
+            $new_package = new Payment();
+            $new_package->fill($validatedData);
+            $request->session()->put('payment', $new_package);
+        }else{
+            $new_package = $request->session()->get('payment');
+            $new_package->fill($validatedData);
+            $request->session()->put('payment', $new_package);
+        }
 
-        ];
-
-        $new_package->fill($validatedData);
-        $request->session()->put('payment', $new_package);
-
-        // $validatedData = $request->validate([
-        //     'product_id' => 'required',
-        //     'package_id' => 'required'
-        // ]);
-
-        dd($request->session()->put('payment', $new_package));
-        // if(empty($request->session()->get('payment'))){
-        //     $new_package = new Payment();
-        //     $new_package->fill($validatedData);
-        //     $request->session()->put('payment', $new_package);
-        // }else{
-        //     $new_package = $request->session()->get('payment');
-        //     $new_package->fill($validatedData);
-        //     $request->session()->put('payment', $new_package);
-        // }
-
-        // return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
