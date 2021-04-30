@@ -4,6 +4,13 @@
   Terima Kasih
 @endsection
 
+<style>
+    body {
+      background-color:rgb(233, 233, 233)!important ; 
+    }
+  
+</style>
+
 @section('content')
 <div class="row">
   <div class="col-md-12 px-5 py-4">
