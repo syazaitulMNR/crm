@@ -29,12 +29,24 @@ class UpgradeController extends Controller
     }
 
     public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
-        $validatedData = $request->validate([
-            'product_id' => 'required',
-            'package_id' => 'required'
-        ]);
+        $new_payment = Payment::where('payment_id', $payment_id)->first();
 
-        dd($request->session()->get('payment'));
+        $product->name = $request->prodname;
+        $product->description = $request->description;
+        $product->date_from = $request->date1;
+
+        $validatedData = [
+            $new_payment->package_id = $request->package_id,
+            $new_payment->product_id = $request->product_id,
+
+        ];
+
+        // $validatedData = $request->validate([
+        //     'product_id' => 'required',
+        //     'package_id' => 'required'
+        // ]);
+
+        dd($validatedData);
         // if(empty($request->session()->get('payment'))){
         //     $new_package = new Payment();
         //     $new_package->fill($validatedData);
