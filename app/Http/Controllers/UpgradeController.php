@@ -61,6 +61,7 @@ class UpgradeController extends Controller
 
     public function save_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
         $validatedData = $request->validate([
+            'price' => 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric'
         ]);
