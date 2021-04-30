@@ -225,6 +225,6 @@ class UpgradeController extends Controller
         $request->session()->forget('package');
         $request->session()->forget('payment');
         
-        return redirect('pendaftaran-berjaya');
+        return view('upgrade.thankyou_upgrade');
     }
 }
