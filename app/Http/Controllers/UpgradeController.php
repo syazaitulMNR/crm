@@ -31,10 +31,6 @@ class UpgradeController extends Controller
     public function save_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
         $new_payment = Payment::where('payment_id', $payment_id)->first();
 
-        $product->name = $request->prodname;
-        $product->description = $request->description;
-        $product->date_from = $request->date1;
-
         $validatedData = [
             $new_payment->package_id = $request->package_id,
             $new_payment->product_id = $request->product_id,
