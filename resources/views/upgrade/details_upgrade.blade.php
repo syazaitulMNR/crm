@@ -71,7 +71,7 @@ Upgrade Pakej
                                                     {{-- <span id="new_price"></span> --}}
                                                 </td>
                                                 <td>
-                                                    <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
+                                                    <select id="quantity" name="quantity" onchange="new_amount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
                                                     <option value="" disabled selected>-</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -86,7 +86,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
+                                                    RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -134,13 +134,13 @@ Upgrade Pakej
 </script>
 
 <script>
-function calculateAmount(val) {
+function new_amount(val) {
         
     var prices = document.getElementById("new_price").value;
     var total_price = val * prices;
 
     /*display the result*/
-    var divobj = document.getElementById('totalprice');
+    var divobj = document.getElementById('new_total');
     divobj.value = total_price;
 
     var totallagi = document.getElementById('total_lagi');
