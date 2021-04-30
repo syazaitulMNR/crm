@@ -28,7 +28,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 py-3">
-            <form action="" method="POST">
+            <form action="" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_test_lrGwlGkyv7dR6xG0pgQ7PFoI00D6Ef6y4Q">
                 @csrf
                 <div class="container text-center">
                     <div class="row">
@@ -141,7 +141,7 @@ Upgrade Pakej
                                         <a href="{{ url('pay-upgrade') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                     </div>
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>
+                                        <button type="submit" name="myButton" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -154,5 +154,18 @@ Upgrade Pakej
         </div>
     </div>
 </div>
+
+{{-- Disabled multiple submission on payment --------------------------------------------------------------------------------}}
+<script type="text/javascript">
+
+    function checkForm(form) // Submit button clicked
+    {
+        form.myButton.disabled = true;
+        form.myButton.value = "Wait...";
+        return true;
+    }
+
+</script>
+{{-- End Disabled multiple submission on payment ----------------------------------------------------------------------------}}
 
 @endsection
