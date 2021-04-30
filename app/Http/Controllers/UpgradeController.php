@@ -46,7 +46,7 @@ class UpgradeController extends Controller
         //     'package_id' => 'required'
         // ]);
 
-        dd($request->session()->put('payment', $new_package););
+        dd($request->session()->put('payment', $new_package));
         // if(empty($request->session()->get('payment'))){
         //     $new_package = new Payment();
         //     $new_package->fill($validatedData);
