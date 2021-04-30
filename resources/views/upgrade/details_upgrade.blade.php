@@ -70,7 +70,7 @@ Upgrade Pakej
                                                     RM <span id="new_price"></span>
                                                 </td>
                                                 <td>
-                                                    <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
+                                                    <select id="quantity" name="quantity" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
                                                     <option value="" disabled selected>-</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -85,7 +85,7 @@ Upgrade Pakej
                                                     </select>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="totalprice" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
+                                                    RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -129,24 +129,29 @@ Upgrade Pakej
     var y = '{{ $current_package->price }}';
     var z = x - y;
     document.getElementById("new_price").innerHTML = z;
-    console.log(x);
 </script>
 
 <script>
-function calculateAmount(val) {
+    var a = document.getElementById("new_price").value;
+    var b = document.getElementById("quantity").value;
+    var c = a * b;
+
+    document.getElementById("new_total").innerHTML = c;
+    console.log(b);
+// function calculateAmount(val) {
         
-    var prices = document.getElementById("new_price").value;
-    var total_price = val * prices;
+//     var prices = document.getElementById("new_price").value;
+//     var total_price = val * prices;
 
-    /*display the result*/
-    var divobj = document.getElementById('totalprice');
-    divobj.value = total_price;
+//     /*display the result*/
+//     var divobj = document.getElementById('totalprice');
+//     divobj.value = total_price;
 
-    var totallagi = document.getElementById('total_lagi');
-    totallagi.value = total_price;
+//     var totallagi = document.getElementById('total_lagi');
+//     totallagi.value = total_price;
 
-    document.getElementById('total_lah').innerHTML = total_price;
+//     document.getElementById('total_lah').innerHTML = total_price;
 
-}
+// }
 </script>
 @endsection
