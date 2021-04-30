@@ -39,7 +39,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 py-3">
-            <form action="" method="POST">
+            <form action="{{ url('save-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
                 <div class="container text-center">
                     <div class="row">
