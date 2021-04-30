@@ -311,7 +311,7 @@ class UpgradeController extends Controller
             return redirect('naik-taraf-berjaya');  
         } else {
 
-            $payment->save();
+            $new_package->save();
     
             $request->session()->forget('student');
             $request->session()->forget('payment');
