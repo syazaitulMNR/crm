@@ -10,7 +10,7 @@ use App\Payment;
 use App\Feature;
 use Stripe;
 use Billplz\Client;
-use App\Jobs\PengesahanJob;
+use App\Jobs\UpgradeJob;
 
 class UpgradeController extends Controller
 {
@@ -216,7 +216,7 @@ class UpgradeController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
 
