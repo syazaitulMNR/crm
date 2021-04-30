@@ -28,7 +28,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 py-3">
-            <form action="" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_test_lrGwlGkyv7dR6xG0pgQ7PFoI00D6Ef6y4Q">
+            <form action="{{ url('save-stripe') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_test_lrGwlGkyv7dR6xG0pgQ7PFoI00D6Ef6y4Q">
                 @csrf
                 <div class="container text-center">
                     <div class="row">

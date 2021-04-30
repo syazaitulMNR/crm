@@ -210,6 +210,7 @@ Route::get('pay-upgrade/{product_id}/{package_id}/{stud_id}/{payment_id}', 'Upgr
 Route::post('save-payment/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@save_payment');
 Route::get('choose-method/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@choose_method');
 Route::get('card-method/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@card_method');
+Route::post('save-stripe/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@save_stripe');
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');
