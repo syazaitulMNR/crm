@@ -225,6 +225,11 @@ class UpgradeController extends Controller
         $request->session()->forget('package');
         $request->session()->forget('payment');
         
+        return redirect('naik-taraf-berjaya');
+    }
+
+    public function success_upgrade()
+    {
         return view('upgrade.thankyou_upgrade');
     }
 }
