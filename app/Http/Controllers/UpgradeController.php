@@ -34,18 +34,18 @@ class UpgradeController extends Controller
             'package_id' => 'required'
         ]);
 
-        if(empty($request->session()->get('payment'))){
-            // $new_package = new Payment();
-            $new_package = $request->session()->get('payment');
-            $new_package->fill($validatedData);
-            $request->session()->put('payment', $new_package);
-        }else{
-            $new_package = $request->session()->get('payment');
-            $new_package->fill($validatedData);
-            $request->session()->put('payment', $new_package);
-        }
+        dd(empty($request->session()->get('payment')));
+        // if(empty($request->session()->get('payment'))){
+        //     $new_package = new Payment();
+        //     $new_package->fill($validatedData);
+        //     $request->session()->put('payment', $new_package);
+        // }else{
+        //     $new_package = $request->session()->get('payment');
+        //     $new_package->fill($validatedData);
+        //     $request->session()->put('payment', $new_package);
+        // }
 
-        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        // return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function details_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
