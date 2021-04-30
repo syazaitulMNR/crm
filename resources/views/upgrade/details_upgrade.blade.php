@@ -71,7 +71,7 @@ Upgrade Pakej
                                                     {{-- <span id="new_price"></span> --}}
                                                 </td>
                                                 <td>
-                                                    <select id="quantity" name="quantity" onchange="new_amount(this.value)" value="{{ $new_package->quantity ?? '' }}" class="form-control w-100" required>
+                                                    <select id="quantity" name="quantity" onchange="new_amount(this.value)" class="form-control w-100" required>
                                                     <option value="" disabled selected>-</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
