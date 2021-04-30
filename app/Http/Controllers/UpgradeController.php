@@ -125,7 +125,7 @@ class UpgradeController extends Controller
         }
     }
 
-    public function card_method($product_id, $package_id, $stud_id, Request $request){
+    public function card_method($product_id, $package_id, $stud_id, $payment_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->first();
