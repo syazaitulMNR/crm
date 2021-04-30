@@ -147,7 +147,7 @@ function new_amount(val) {
 
     /*display the result*/
     var divobj = document.getElementById('new_total');
-    divobj.value = newamount;\
+    divobj.value = newamount;
 
     console.log(newamount);
 }
