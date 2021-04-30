@@ -247,7 +247,7 @@ class UpgradeController extends Controller
             $student->email,
             $student->phoneno,
             $student->first_name,
-            \Duit\MYR::given($payment->totalprice * 100),
+            \Duit\MYR::given($new_package->totalprice * 100),
             'https://mims.momentuminternet.my/redirect-pay',
             $product->name . ' - ' . $package->name,
             ['redirect_url' => 'https://mims.momentuminternet.my/redirect-pay']
