@@ -138,4 +138,90 @@ class UpgradeController extends Controller
         // dd($new_package);
         return view('upgrade.use_card', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
     }
+
+    public function save_stripe($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    {        
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->first();
+        $current_package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $stud_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+
+        $new_package = $request->session()->get('payment');
+
+        /*-- Stripe ---------------------------------------------------------*/
+        //Make Payment
+        $stripe = Stripe\Stripe::setApiKey('sk_test_3hkk4U4iBvTAO5Y5yV9YisD600VdfR6nrR');
+
+        try {
+
+            // Generate token
+            $token = Stripe\Token::create(array(
+                "card" => array(
+                    "number"    => $request->cardnumber,
+                    "exp_month" => $request->month,
+                    "exp_year"  => $request->year,
+                    "cvc"       => $request->cvc,
+                    "name"      => $request->cardholder
+                )
+            ));
+
+            // If not generate view error
+            if (!isset($token['id'])) {
+
+                return redirect()->back()->with('error','Token is not generate correct');
+            
+            }   else{
+    
+                // Create a Customer:
+                $customer = \Stripe\Customer::create([
+
+                    'name' => $student->first_name,
+                    'source' => $token['id'],
+                    'email' => $student->email,
+                ]);
+
+                // Make a Payment
+                Stripe\Charge::create([
+                    "currency" => "myr",
+                    "description" => "MIMS - ".$package->name,
+                    "customer" => $customer->id,
+                    "amount" => $new_package->totalprice * 100,
+                ]);
+            }
+
+            $addData = array(
+                'status' => 'paid',
+                'stripe_id' => $customer->id
+            );
+
+            $payment->fill($addData);
+            $request->session()->put('payment', $payment);
+
+        } catch (\Exception $ex) {
+            return redirect()->back()->with('error', $ex->getMessage());
+        }
+        /*-- End Stripe -----------------------------------------------------*/
+
+        /*-- Manage Email ---------------------------------------------------*/
+                
+        $send_mail = $student->email;
+        $product_name = $product->name;        
+        $package_name = $package->name;
+        $packageId = $package_id;
+        $payment_id = $new_package->payment_id;
+        $productId = $product_id;        
+        $student_id = $student->stud_id;
+
+        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+        
+        /*-- End Email -----------------------------------------------------------*/
+
+        $new_package->save();
+  
+        $request->session()->forget('package');
+        $request->session()->forget('payment');
+        
+        return redirect('pendaftaran-berjaya');
+    }
 }
