@@ -83,8 +83,8 @@ class UpgradeController extends Controller
         $payment = Payment::where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('payment');
-        dd($new_package);
-        // return view('upgrade.pay_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
+        // dd($new_package);
+        return view('upgrade.pay_upgrade', compact('product', 'package', 'current_package', 'student', 'feature', 'payment'));
     }
 
     public function card_method($product_id, $package_id, $stud_id, Request $request){
