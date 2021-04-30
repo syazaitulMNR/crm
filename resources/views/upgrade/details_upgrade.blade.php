@@ -67,8 +67,8 @@ Upgrade Pakej
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                                    RM <input type="text" id="new_price" name="price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px" readonly>
-                                                    {{-- RM <span id="new_price"></span> --}}
+                                                    {{-- RM <input type="text" id="new_price" name="price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px" readonly> --}}
+                                                    RM <span id="new_price"></span>
                                                     
                                                 </td>
                                                 <td>
@@ -131,7 +131,7 @@ Upgrade Pakej
     var y = '{{ $current_package->price }}';
     var z = x - y;
     document.getElementById("new_price").innerHTML = z;
-    console.log(x);
+    console.log(z);
 </script>
 
 <script>
