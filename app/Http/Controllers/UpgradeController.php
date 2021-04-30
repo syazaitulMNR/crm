@@ -8,6 +8,9 @@ use App\Package;
 use App\Student;
 use App\Payment;
 use App\Feature;
+use Stripe;
+use Billplz\Client;
+use App\Jobs\PengesahanJob;
 
 class UpgradeController extends Controller
 {
