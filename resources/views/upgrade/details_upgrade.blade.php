@@ -67,7 +67,7 @@ Upgrade Pakej
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                                    RM <input type="text" id="new_price" name="price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px outline-width: none;" readonly>
+                                                    RM <input type="text" id="new_price" name="price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                                     {{-- RM <span id="show_price"></span> --}}
                                                     
                                                 </td>
@@ -85,10 +85,10 @@ Upgrade Pakej
                                                     <option value="9">9</option>
                                                     <option value="10">10</option>
                                                     </select> --}}
-                                                    <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px outline-width: none;" readonly>
+                                                    <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                                 </td>
                                                 <td class="text-center">
-                                                    RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline-width: none;" readonly>
+                                                    RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                                 </td>
                                             </tr>
                                         </tbody>
