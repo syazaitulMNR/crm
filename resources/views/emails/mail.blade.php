@@ -79,6 +79,33 @@
                       </td>
                     </tr>
                     <tr>
+                      <td>
+                        <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
+                          <tr>
+                            <td>
+                              <p>Jika anda berminat untuk upgrade pakej, sila klik butang di bawah.</p>
+                              {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="align-center">
+                              <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
+                                <tbody>
+                                  <tr>
+                                  <td> 
+                                    <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Upgrade Package</a>
+                                    {{-- <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
+                                    <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a> --}}
+                                  </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
                         <td>
                             <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
                         </td>
