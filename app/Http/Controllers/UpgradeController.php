@@ -209,9 +209,9 @@ class UpgradeController extends Controller
         /*-- Manage Email ---------------------------------------------------*/
                 
         $send_mail = $student->email;
-        $product_name = $product->name;       
+        $product_name = $product->name;        
         $package_name = $package->name;
-        $packageId = $package_id;
+        $packageId = $new_package->package_id;
         $payment_id = $payment->payment_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
@@ -225,7 +225,7 @@ class UpgradeController extends Controller
         $request->session()->forget('package');
         $request->session()->forget('payment');
         
-        return redirect('naik-taraf-berjaya/'. $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
+        return redirect('naik-taraf-berjaya');
     }
 
     public function billplz_pay($product_id, $package_id, $stud_id, $payment_id, Request $request)
@@ -321,13 +321,8 @@ class UpgradeController extends Controller
         
     }
 
-    public function success_upgrade($product_id, $package_id, $stud_id, $payment_id)
+    public function success_upgrade()
     {
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
         return view('upgrade.thankyou_upgrade');
     }
 }
