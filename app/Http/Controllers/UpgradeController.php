@@ -35,7 +35,7 @@ class UpgradeController extends Controller
         ]);
 
         if(empty($request->session()->get('payment'))){
-            $new_package = new Payment();
+            $new_package = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
             $new_package->fill($validatedData);
             $request->session()->put('payment', $new_package);
         }else{
