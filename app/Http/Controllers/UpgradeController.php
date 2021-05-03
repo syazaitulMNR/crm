@@ -206,10 +206,14 @@ class UpgradeController extends Controller
         }
         /*-- End Stripe -----------------------------------------------------*/
 
+        $new_package->save();
+  
+        $request->session()->forget('package');
+        $request->session()->forget('payment');
         /*-- Manage Email ---------------------------------------------------*/
                 
         $send_mail = $student->email;
-        $product_name = $product->name;        
+        $product_name = $product->name;       
         $package_name = $package->name;
         $packageId = $package_id;
         $payment_id = $payment->payment_id;
@@ -220,10 +224,6 @@ class UpgradeController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
-        $new_package->save();
-  
-        $request->session()->forget('package');
-        $request->session()->forget('payment');
         
         return redirect('naik-taraf-berjaya');
     }
