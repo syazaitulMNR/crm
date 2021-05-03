@@ -220,7 +220,7 @@ class UpgradeController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
-        // $new_package->save();
+        $new_package->save();
   
         $request->session()->forget('package');
         $request->session()->forget('payment');
