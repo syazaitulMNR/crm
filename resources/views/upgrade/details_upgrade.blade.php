@@ -149,7 +149,6 @@ Upgrade Pakej
     var divobj = document.getElementById('new_total');
     divobj.value = c;
 
-    // document.getElementById("show_price").innerHTML = z;
     console.log(c);
 // function new_amount(val) {
         
