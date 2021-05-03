@@ -305,7 +305,7 @@ class UpgradeController extends Controller
 
             $new_package->save();
     
-            // $request->session()->forget('student');
+            $request->session()->forget('student');
             $request->session()->forget('payment');
 
             return redirect('naik-taraf-berjaya');  

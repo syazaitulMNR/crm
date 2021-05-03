@@ -29,7 +29,7 @@
                                   <b>Order ID</b> : {{ $payment_id }}
                                 </td>
                             </tr>
-                            <hr>
+                            {{-- <hr>
                             <tr>
                               <td class="align-center">
                                 <table style="border: none; cellpadding: 0; cellspacing: 0;" >
@@ -51,7 +51,7 @@
                                     </tbody>
                                   </table>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <hr>
                           </tbody>
                         </table>
