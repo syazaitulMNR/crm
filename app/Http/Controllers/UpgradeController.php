@@ -206,10 +206,6 @@ class UpgradeController extends Controller
         }
         /*-- End Stripe -----------------------------------------------------*/
 
-        $new_package->save();
-  
-        $request->session()->forget('package');
-        $request->session()->forget('payment');
         /*-- Manage Email ---------------------------------------------------*/
                 
         $send_mail = $student->email;
@@ -224,8 +220,12 @@ class UpgradeController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
+        $new_package->save();
+  
+        $request->session()->forget('package');
+        $request->session()->forget('payment');
         
-        return redirect('naik-taraf-berjaya');
+        return redirect('naik-taraf-berjaya/'. $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
     }
 
     public function billplz_pay($product_id, $package_id, $stud_id, $payment_id, Request $request)
@@ -321,8 +321,13 @@ class UpgradeController extends Controller
         
     }
 
-    public function success_upgrade()
+    public function success_upgrade($product_id, $package_id, $stud_id, $payment_id)
     {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $current_package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $stud_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
         return view('upgrade.thankyou_upgrade');
     }
 }
