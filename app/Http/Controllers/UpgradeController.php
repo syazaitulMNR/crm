@@ -106,7 +106,7 @@ class UpgradeController extends Controller
     public function choose_method($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
@@ -131,7 +131,7 @@ class UpgradeController extends Controller
     public function card_method($product_id, $package_id, $stud_id, $payment_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
@@ -145,7 +145,7 @@ class UpgradeController extends Controller
     public function save_stripe($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {        
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
@@ -231,7 +231,7 @@ class UpgradeController extends Controller
     public function billplz_pay($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {        
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
