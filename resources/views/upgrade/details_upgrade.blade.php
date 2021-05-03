@@ -72,7 +72,7 @@ Upgrade Pakej
                                                     
                                                 </td>
                                                 <td>
-                                                    <select name="quantity" onchange="new_amount(this.value)" class="form-control w-100" required>
+                                                    {{-- <select name="quantity" onchange="new_amount(this.value)" class="form-control w-100" required>
                                                     <option value="" disabled selected>-</option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -84,7 +84,8 @@ Upgrade Pakej
                                                     <option value="8">8</option>
                                                     <option value="9">9</option>
                                                     <option value="10">10</option>
-                                                    </select>
+                                                    </select> --}}
+                                                    <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px" readonly>
                                                 </td>
                                                 <td class="text-center">
                                                     RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px" readonly>
@@ -140,16 +141,26 @@ Upgrade Pakej
 </script>
 
 <script>
-function new_amount(val) {
-        
-    var newprice = document.getElementById("new_price").value;
-    var newamount = val * newprice;
+    var a = document.getElementById("quantity").value;
+    var b = document.getElementById("new_price").value;
+    var c = b * a;
 
     /*display the result*/
     var divobj = document.getElementById('new_total');
-    divobj.value = newamount;
+    divobj.value = c;
 
-    console.log(newamount);
-}
+    // document.getElementById("show_price").innerHTML = z;
+    console.log(c);
+// function new_amount(val) {
+        
+//     var newprice = document.getElementById("new_price").value;
+//     var newamount = val * newprice;
+
+//     /*display the result*/
+//     var divobj = document.getElementById('new_total');
+//     divobj.value = newamount;
+
+//     console.log(newamount);
+// }
 </script>
 @endsection
