@@ -63,7 +63,7 @@ class UpgradeController extends Controller
 
     public function save_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
         $validatedData = $request->validate([
-            // 'upgrade_count' => 'required|numeric',
+            'upgrade_count' => 'required|numeric',
             'pay_price' => 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric'
@@ -73,8 +73,8 @@ class UpgradeController extends Controller
         $new_package->fill($validatedData);
         $request->session()->put('payment', $new_package);
 
-        // dd($new_package->upgrade_count);
-        return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        dd($new_package->upgrade_count);
+        // return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function pay_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
