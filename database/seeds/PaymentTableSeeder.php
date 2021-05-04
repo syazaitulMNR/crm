@@ -14,6 +14,7 @@ class PaymentTableSeeder extends Seeder
     {
         Payment::create([
             'payment_id' => 'OD001',
+            'pay_price' => '999',
             'totalprice' => '999',
             'quantity' => '1',
             'status' => 'succeeded',
