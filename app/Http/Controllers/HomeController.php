@@ -928,7 +928,7 @@ class HomeController extends Controller
         $data['phoneno']=$student->phoneno;
         $data['total']=$payment->totalprice;
         $data['quantity']=$payment->quantity;
-        $data['payment_count']=$payment->payment_count;
+        $data['upgrade_count']=$payment->upgrade_count;
 
         $data['product']=$product->name;
         $data['package_id']=$package_id;
