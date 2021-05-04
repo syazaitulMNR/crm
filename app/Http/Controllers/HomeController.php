@@ -932,7 +932,7 @@ class HomeController extends Controller
         $data['product']=$product->name;
         $data['package_id']=$package_id;
         $data['package']=$package->name;
-        $data['price']=$package->price;
+        $data['price']=$payment->pay_price;
 
         $data['date_receive']=date('d-m-Y');
         $data['payment_id']=$payment_id;
@@ -960,7 +960,7 @@ class HomeController extends Controller
         $data['product']=$product->name;
         $data['package_id']=$package_id;
         $data['package']=$package->name;
-        $data['price']=$package->price;
+        $data['price']=$payment->pay_price;
 
         $data['date_receive']=date('d-m-Y');
         $data['payment_id']=$payment_id;
