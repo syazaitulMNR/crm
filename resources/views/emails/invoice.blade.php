@@ -174,7 +174,7 @@
                         {{-- for bulk ticket --}}
                         {{ $package }}
                         <br>
-                        - Upgrade
+                        <em>- Upgrade</em>
 
                         {{-- for get1free1 ticket --}}
                         {{-- {{ $package }} (Free 1 {{ $package }}) --}}
