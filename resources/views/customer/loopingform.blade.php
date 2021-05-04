@@ -50,26 +50,26 @@ Kemaskini Peserta
         <div class="card-body">
           <div class="form-group row text-left px-4">
             <div class="col-md-6 pb-3">
-              <p>No. Kad Pengenalan/Passport:</p>
+              No. Kad Pengenalan/Passport:<br>
               <strong>{{$student->ic}}</strong>
               <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
             </div>
 
             <div class="col-md-6 pb-3">
-              <p>Nama Pembeli:</p>
+              Nama Pembeli:<br>
               <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
               <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
               <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
             </div>
 
             <div class="col-md-6 pb-3">
-              <p>Emel:</p>
+              Emel:<br>
               <strong>{{$student->email }}</strong>
               <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
             </div>
 
             <div class="col-md-6 pb-3">
-              <p>No. Tel:</p>
+              No. Tel:<br>
               <strong>{{$student->phoneno}}</strong>
                   <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
             </div>
