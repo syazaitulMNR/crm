@@ -48,7 +48,7 @@ Upgrade Pakej
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                     <h4>Maklumat Tiket</h4>
-                                    {{-- <input type="hidden" name="upgrade_count" value="{{ $payment->upgrade_count ?? '1'}}" disabled> --}}
+                                    <input type="hidden" id="upgrade_count" name="upgrade_count" value="{{ $payment->upgrade_count ?? ''}}" disabled>
                                 </div>
                                 
                                 @foreach ($package as $packages)
@@ -119,7 +119,16 @@ Upgrade Pakej
     </div>
 </div>
 
+<script>
+    var count = 1;
 
+    /*display the result*/
+    var up = document.getElementById('upgrade_count');
+    up.value = count;
+
+    // document.getElementById("show_price").innerHTML = z;
+    console.log(up);
+</script>
 
 <script>
     var x = document.getElementById("price").value;
