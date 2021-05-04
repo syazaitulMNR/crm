@@ -75,34 +75,28 @@
                                 </td>
                             </tr>
                             <hr>
+                            <tr>
+                              <td>
+                                <p>Jika anda berminat untuk upgrade pakej, sila klik butang di bawah.</p>
+                                {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="align-center">
+                                <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
+                                  <tbody>
+                                    <tr>
+                                    <td> 
+                                      <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Upgrade Package</a>
+                                      {{-- <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
+                                      <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a> --}}
+                                    </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
                           </tbody>
-                        </table>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
-                          <tr>
-                            <td>
-                              <p>Jika anda berminat untuk upgrade pakej, sila klik butang di bawah.</p>
-                              {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="align-center">
-                              <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
-                                <tbody>
-                                  <tr>
-                                  <td> 
-                                    <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Upgrade Package</a>
-                                    {{-- <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
-                                    <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a> --}}
-                                  </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
                         </table>
                       </td>
                     </tr>
@@ -155,56 +149,3 @@
       </tr>
     </table>
 @endsection
-
-
-
-
-
-{{-- 
-
-
-
-@extends('layouts.temp')
-
-@section('content')
-<div class="container text-center">
-
-    <p class="pb-2">Hai {{ $name }},</p>
-
-    <h2 class="fs-title pb-3">Kami telah menerima pembayaran anda!</h2>
-        
-    <h3>Pesanan Tiket</h3>
-    {{ $date_joined }}<br>
-    Order ID: {{ $payment_id }}<br>
-
-    <hr class="my-4">
-
-    <p> IC Number : {{ $ic }} </p>
-    <p> Nama : {{ $name }} </p> 
-    <p> Phone Number : {{ $phoneno }} </p> 
-    <p> Package : {{ $package }} </p>
-    <p> Quantity : {{ $quantity }} </p> 
-    <p> Total : {{ $total }} </p> 
-
-    <hr class="my-4">
-        
-    <p class="pb-2">Sila klik pada butang di bawah untuk kemaskini maklumat peserta</p>   
-    <a href="#" class="btn btn-warning py-3 px-4">Kemaskini</a>
-
-    <hr class="my-4">
-
-    <h3>Jika terdapat sebarang pertanyaan, sila hubungi kami di talian: </h3>
-        
-    <p>Whatsapp   : 012-7851281</p>
-        
-    <p>Sekian,</p>
-        
-    <p>Terima kasih.</p>
-        
-    <p>Yang benar,</p>
-        
-    <p><b>MOMENTUM INTERNET</b></p>
-
-
-</div>
-@endsection --}}
