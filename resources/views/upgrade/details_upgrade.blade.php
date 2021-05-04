@@ -48,6 +48,7 @@ Upgrade Pakej
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                                 <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                     <h4>Maklumat Tiket</h4>
+                                    <input type="hidden" name="upgrade_count" value="1" disabled>
                                 </div>
                                 
                                 @foreach ($package as $packages)
@@ -77,13 +78,6 @@ Upgrade Pakej
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
                                                     </select> --}}
                                                     <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                                 </td>

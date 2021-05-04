@@ -65,15 +65,16 @@ class UpgradeController extends Controller
         $validatedData = $request->validate([
             'pay_price' => 'required|numeric',
             'quantity' => 'required|numeric',
-            'totalprice'=> 'required|numeric'
+            'totalprice'=> 'required|numeric',
+            'upgrade_count' => 'required|numeric'
         ]);
 
         $new_package = $request->session()->get('payment');
         $new_package->fill($validatedData);
         $request->session()->put('payment', $new_package);
 
-        // dd($new_package->pay_price);
-        return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        dd($new_package->upgrade_count);
+        // return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function pay_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
