@@ -48,7 +48,35 @@ Kemaskini Peserta
         <div class="card-header bg-dark text-white text-center">Maklumat Pembeli</div>
   
         <div class="card-body">
-          <table class="table table-borderless text-left">
+          <div class="form-group row text-left px-4">
+            <div class="col-md-6 pb-2">
+              <p>No. Kad Pengenalan/Passport:</p>
+              <strong>{{$student->ic}}</strong>
+              <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
+            </div>
+
+            <div class="col-md-6 pb-2">
+              <p>Nama Pembeli:</p>
+              <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
+              <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
+              <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
+            </div>
+
+            <div class="col-md-6 pb-2">
+              <p>Emel:</p>
+              <strong>{{$student->email }}</strong>
+              <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
+            </div>
+
+            <div class="col-md-6 pb-2">
+              <p>No. Tel:</p>
+              <strong>{{$student->phoneno}}</strong>
+                  <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
+            </div>
+            
+          </div>
+
+          {{-- <table class="table table-borderless text-left">
             <tr>
                 <td class="w-50">No. Kad Pengenalan / Passport</td>
                 <td>:</td>
@@ -82,7 +110,7 @@ Kemaskini Peserta
                   <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
                 </td>
             </tr>
-          </table>
+          </table> --}}
 
           <div class="py-2">
             <a class="btn btn-dark" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="fas fa-download pr-2"></i>Invois</a>
