@@ -77,8 +77,7 @@
                             <hr>
                             <tr>
                               <td>
-                                <p>Jika anda berminat untuk upgrade pakej, sila klik butang di bawah.</p>
-                                {{-- <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p> --}}
+                                <p>Jika anda berminat untuk naik taraf pakej, sila klik butang di bawah.</p>
                               </td>
                             </tr>
                             <tr>
@@ -88,6 +87,8 @@
                                     <tr>
                                     <td> 
                                       <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Upgrade Package</a>
+                                      <br>
+                                      <p>*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p>
                                       {{-- <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
                                       <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a> --}}
                                     </td>
