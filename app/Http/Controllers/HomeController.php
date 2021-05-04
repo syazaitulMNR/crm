@@ -99,9 +99,9 @@ class HomeController extends Controller
         }else{
 
             // if bulk ticket
-            // return view('customer/loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+            return view('customer/loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
             // if get 1 free 1 ticket
-            return view('customer/get1free1', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+            // return view('customer/get1free1', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
 
         }
     }
