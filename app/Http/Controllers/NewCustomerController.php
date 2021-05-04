@@ -92,8 +92,8 @@ class NewCustomerController extends Controller
         // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
   
-        return view('customer_new.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
-        // return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
+        // return view('customer_new.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
+        return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
     }
   
     /**
@@ -105,6 +105,7 @@ class NewCustomerController extends Controller
     {
         $validatedData = $request->validate([
             'payment_id' => 'required',
+            'pay_price'=> 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric',
             'stud_id' => 'required',

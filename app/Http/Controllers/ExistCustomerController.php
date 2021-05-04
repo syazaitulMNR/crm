@@ -63,14 +63,15 @@ class ExistCustomerController extends Controller
         // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
   
-        return view('customer_exist.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
-        // return view('customer_exist.step2_bulkticket', compact('student', 'payment', 'product', 'package', 'payment_id'));
+        // return view('customer_exist.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
+        return view('customer_exist.step2_bulkticket', compact('student', 'payment', 'product', 'package', 'payment_id'));
     }
 
     public function saveStepTwo($product_id, $package_id, $stud_id, Request $request)
     {
         $validatedData = $request->validate([
             'payment_id' => 'required',
+            'pay_price'=> 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric',
             'stud_id' => 'required',
