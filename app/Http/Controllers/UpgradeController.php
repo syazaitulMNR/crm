@@ -56,15 +56,13 @@ class UpgradeController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
 
         $new_package = $request->session()->get('payment');
-        $upgrade_count = 1; 
 
         // dd($new_package);
-        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package', 'upgrade_count'));
+        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
     }
 
     public function save_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
         $validatedData = $request->validate([
-            'upgrade_count' => 'required|numeric',
             'pay_price' => 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric'
@@ -74,8 +72,8 @@ class UpgradeController extends Controller
         $new_package->fill($validatedData);
         $request->session()->put('payment', $new_package);
 
-        dd($new_package->upgrade_count);
-        // return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        // dd($new_package->pay_price);
+        return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function pay_upgrade($product_id, $package_id, $stud_id, $payment_id, Request $request){
