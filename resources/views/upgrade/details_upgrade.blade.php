@@ -67,7 +67,7 @@ Upgrade Pakej
                                                 <td>{{ $packages->name }}</td>
                                                 <td>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                                    RM <input type="text" id="new_price" name="price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
+                                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                                     {{-- RM <span id="show_price"></span> --}}
                                                     
                                                 </td>
