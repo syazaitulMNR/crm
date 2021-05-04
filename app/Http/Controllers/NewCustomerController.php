@@ -338,6 +338,7 @@ class NewCustomerController extends Controller
         $date_from = $product->date_from;
         $date_to = $product->date_to;
         $time_from = $product->time_from;
+        $time_to = $product->time_to;
         $packageId = $package_id;
         $payment_id = $payment->payment_id;
         $productId = $product_id;        

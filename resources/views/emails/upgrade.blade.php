@@ -25,7 +25,8 @@
                             <tr>
                                 <td>
                                   <b>Program</b> : {{ $product_name }}<br>
-                                  <b>Pakej</b> : {{ $package_name }}<br>
+                                  <b>Tarikh</b> : {{ $date_from }} - {{ $date_to }}<br>
+                                  <b>Waktu</b> : {{ $time_from }} - {{ $time_to}}<br>
                                   <b>Order ID</b> : {{ $payment_id }}
                                 </td>
                             </tr>
@@ -106,56 +107,3 @@
       </tr>
     </table>
 @endsection
-
-
-
-
-
-{{-- 
-
-
-
-@extends('layouts.temp')
-
-@section('content')
-<div class="container text-center">
-
-    <p class="pb-2">Hai {{ $name }},</p>
-
-    <h2 class="fs-title pb-3">Kami telah menerima pembayaran anda!</h2>
-        
-    <h3>Pesanan Tiket</h3>
-    {{ $date_joined }}<br>
-    Order ID: {{ $payment_id }}<br>
-
-    <hr class="my-4">
-
-    <p> IC Number : {{ $ic }} </p>
-    <p> Nama : {{ $name }} </p> 
-    <p> Phone Number : {{ $phoneno }} </p> 
-    <p> Package : {{ $package }} </p>
-    <p> Quantity : {{ $quantity }} </p> 
-    <p> Total : {{ $total }} </p> 
-
-    <hr class="my-4">
-        
-    <p class="pb-2">Sila klik pada butang di bawah untuk kemaskini maklumat peserta</p>   
-    <a href="#" class="btn btn-warning py-3 px-4">Kemaskini</a>
-
-    <hr class="my-4">
-
-    <h3>Jika terdapat sebarang pertanyaan, sila hubungi kami di talian: </h3>
-        
-    <p>Whatsapp   : 012-7851281</p>
-        
-    <p>Sekian,</p>
-        
-    <p>Terima kasih.</p>
-        
-    <p>Yang benar,</p>
-        
-    <p><b>MOMENTUM INTERNET</b></p>
-
-
-</div>
-@endsection --}}
