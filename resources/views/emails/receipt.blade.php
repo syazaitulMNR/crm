@@ -173,7 +173,7 @@
                 </td>
             </tr>
             
-            @if( $payment_count == '1' )
+            @if( $payment_count == 1 )
                 <tr class="item">
                     <td>
                         {{-- for bulk ticket --}}
