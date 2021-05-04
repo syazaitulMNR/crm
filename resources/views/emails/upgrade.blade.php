@@ -25,8 +25,8 @@
                             <tr>
                                 <td>
                                   <b>Program</b> : {{ $product_name }}<br>
-                                  <b>Tarikh</b> : {{ $date_from }} - {{ $date_to }}<br>
-                                  <b>Waktu</b> : {{ $time_from }} - {{ $time_to}}<br>
+                                  <b>Tarikh</b> : {{ $date_from }} hingga {{ $date_to }}<br>
+                                  <b>Waktu</b> : {{ $time_from }} hingga {{ $time_to}}<br>
                                   <b>Order ID</b> : {{ $payment_id }}
                                 </td>
                             </tr>
