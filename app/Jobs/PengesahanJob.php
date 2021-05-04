@@ -13,18 +13,21 @@ use Mail;
 class PengesahanJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id;
+    protected $send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id)
+    public function __construct($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)
     {
         $this->send_mail = $send_mail;
         $this->product_name = $product_name;        
-        $this->package_name = $package_name;
+        $this->date_from = $date_from;        
+        $this->date_to = $date_to;        
+        $this->time_from = $time_from;        
+        $this->time_to = $time_to;
         $this->packageId = $packageId;
         $this->payment_id = $payment_id;
         $this->productId = $productId;
@@ -39,7 +42,10 @@ class PengesahanJob implements ShouldQueue
     public function handle()
     {    
         Mail::to($this->send_mail)->send(new PengesahanPembelian(   $this->product_name,
-                                                                    $this->package_name,
+                                                                    $this->date_from,
+                                                                    $this->date_to,
+                                                                    $this->time_from,
+                                                                    $this->time_to,
                                                                     $this->packageId,
                                                                     $this->payment_id,
                                                                     $this->productId,
