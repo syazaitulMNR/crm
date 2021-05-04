@@ -196,6 +196,7 @@ class UpgradeController extends Controller
 
             $addData = array(
                 'status' => 'paid',
+                'upgrade_count' => 1,
                 'stripe_id' => $customer->id
             );
 
@@ -260,6 +261,7 @@ class UpgradeController extends Controller
         $pay_data = $response->toArray();
         
         $addData = array(
+            'upgrade_count' => 1,
             'billplz_id' => $pay_data['id']
         );
 
