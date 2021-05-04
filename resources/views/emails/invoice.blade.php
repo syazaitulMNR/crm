@@ -171,11 +171,11 @@
             <tr class="item">
                 <td>
                     {{-- for bulk ticket --}}
-                    {{-- {{ $package }} --}}
+                    {{ $package }}
 
                     {{-- for get1free1 ticket --}}
                     {{-- {{ $package }} (Free 1 {{ $package }}) --}}
-                    {{ $package }} (Free 1 General)
+                    {{-- {{ $package }} (Free 1 General) --}}
                 </td>
                 
                 <td>
