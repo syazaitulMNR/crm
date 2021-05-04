@@ -56,9 +56,10 @@ class UpgradeController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
 
         $new_package = $request->session()->get('payment');
+        $upgrade_count = 1; 
 
         // dd($new_package);
-        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
+        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package', 'upgrade_count'));
     }
 
     public function save_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
