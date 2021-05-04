@@ -168,24 +168,47 @@
                 </td>
             </tr>
             
-            <tr class="item">
-                <td>
-                    {{-- for bulk ticket --}}
-                    {{ $package }}
+            @if( $payment_count == 1 )
+                <tr class="item">
+                    <td>
+                        {{-- for bulk ticket --}}
+                        {{ $package }}
+                        <br>
+                        - Upgrade
 
-                    {{-- for get1free1 ticket --}}
-                    {{-- {{ $package }} (Free 1 {{ $package }}) --}}
-                    {{-- {{ $package }} (Free 1 General) --}}
-                </td>
-                
-                <td>
-                    {{ $price }}.00
-                </td>
+                        {{-- for get1free1 ticket --}}
+                        {{-- {{ $package }} (Free 1 {{ $package }}) --}}
+                        {{-- {{ $package }} (Free 1 General) --}}
+                    </td>
+                    
+                    <td>
+                        {{ $price }}.00
+                    </td>
 
-                <td>
-                    {{ $quantity }}
-                </td>
-            </tr>
+                    <td>
+                        {{ $quantity }}
+                    </td>
+                </tr>
+            @else
+                <tr class="item">
+                    <td>
+                        {{-- for bulk ticket --}}
+                        {{ $package }}
+
+                        {{-- for get1free1 ticket --}}
+                        {{-- {{ $package }} (Free 1 {{ $package }}) --}}
+                        {{-- {{ $package }} (Free 1 General) --}}
+                    </td>
+                    
+                    <td>
+                        {{ $price }}.00
+                    </td>
+
+                    <td>
+                        {{ $quantity }}
+                    </td>
+                </tr>
+            @endif
             
             {{-- <tr class="item last">
                 <td>
