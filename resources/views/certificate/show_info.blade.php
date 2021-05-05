@@ -74,7 +74,7 @@ Upgrade Pakej
                                     <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right" style="padding-top:35%"></i></a>
                                 </div>
                             </div>
                         </div>
