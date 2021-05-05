@@ -47,7 +47,29 @@ Upgrade Pakej
                                 <h4>Butiran Peserta</h4>
                             </div>
                             
-                            <div class="form-group row px-4">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td class="w-50">No. Kad Pengenalan / Passport</td>
+                                    <td>:</td>
+                                    <td><strong>{{$student->ic}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-50">Nama Pembeli</td>
+                                    <td>:</td>
+                                    <td class="text-break"><strong>{{$stud->first_name }}</strong> <strong>{{$stud->last_name}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-50">Emel</td>
+                                    <td>:</td>
+                                    <td class="text-break"><strong>{{$stud->email }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-50">No. Telefon</td>
+                                    <td>:</td>
+                                    <td><strong>{{$stud->phoneno}}</strong></td>
+                                </tr>
+                            </table>
+                            {{-- <div class="form-group row px-4 pt-3">
                                 <div class="col-md-6 pb-3">
                                   No. Kad Pengenalan/Passport<br>
                                   <strong>{{$student->ic}}</strong>
@@ -68,7 +90,7 @@ Upgrade Pakej
                                   <strong>{{$student->phoneno}}</strong>
                                 </div>
                                 
-                            </div>
+                            </div> --}}
                             
                             <div class="col-md-12 pb-5">
                                 <div class="pull-left">
