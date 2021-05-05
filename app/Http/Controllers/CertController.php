@@ -28,9 +28,7 @@ class CertController extends Controller
 
         }else{
 
-            // return redirect('regnewstudent/'. $product_id . '/' . $package_id . '/' . $request->ic);
-            echo 'student tak ada';
-            // return redirect('maklumat-pembeli/'. $product_id . '/' . $package_id . '/' . $request->ic);
+            return view('certificate.not_found');
 
         }
     }
