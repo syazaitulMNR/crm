@@ -49,22 +49,22 @@ Upgrade Pakej
                             
                             <table class="table table-borderless">
                                 <tr>
-                                    <td class="w-50">No. Kad Pengenalan / Passport</td>
+                                    <td style="40%">No. Kad Pengenalan / Passport</td>
                                     <td>:</td>
                                     <td><strong>{{$student->ic}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-50">Nama Pembeli</td>
+                                    <td style="40%">Nama Pembeli</td>
                                     <td>:</td>
                                     <td class="text-break"><strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-50">Emel</td>
+                                    <td style="40%">Emel</td>
                                     <td>:</td>
                                     <td class="text-break"><strong>{{$student->email }}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-50">No. Telefon</td>
+                                    <td style="40%">No. Telefon</td>
                                     <td>:</td>
                                     <td><strong>{{$student->phoneno}}</strong></td>
                                 </tr>
