@@ -46,58 +46,40 @@ Upgrade Pakej
                             <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                 <h4>Butiran Peserta</h4>
                             </div>
-                            
-                            <table class="table table-borderless">
-                                <tr>
-                                    <td class="w-50">No. Kad Pengenalan / Passport</td>
-                                    <td>:</td>
-                                    <td><strong>{{$student->ic}}</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-50">Nama Pembeli</td>
-                                    <td>:</td>
-                                    <td class="text-break"><strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-50">Emel</td>
-                                    <td>:</td>
-                                    <td class="text-break"><strong>{{$student->email }}</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-50">No. Telefon</td>
-                                    <td>:</td>
-                                    <td><strong>{{$student->phoneno}}</strong></td>
-                                </tr>
-                            </table>
-                            {{-- <div class="form-group row px-4 pt-3">
+                            <div class="form-group row text-left px-4">
                                 <div class="col-md-6 pb-3">
-                                  No. Kad Pengenalan/Passport<br>
+                                  No. Kad Pengenalan/Passport:<br>
                                   <strong>{{$student->ic}}</strong>
+                                  <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  Nama Pembeli<br>
+                                  Nama Pembeli:<br>
                                   <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
+                                  <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
+                                  <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  Emel<br>
+                                  Emel:<br>
                                   <strong>{{$student->email }}</strong>
+                                  <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  No. Tel<br>
+                                  No. Tel:<br>
                                   <strong>{{$student->phoneno}}</strong>
+                                      <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
                                 </div>
                                 
-                            </div> --}}
+                            </div>
                             
                             <div class="col-md-12 pb-5">
                                 <div class="pull-left">
                                     <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></a>
+                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -40,6 +40,25 @@ class CertController extends Controller
         return view('certificate.show_info ', compact('product', 'student'));
     }
 
+    public function store_info($product_id, $stud_id, Request $request)
+    {
+        $validatedData = $request->validate([
+            'payment_id' => 'required',
+            'pay_price'=> 'required|numeric',
+            'quantity' => 'required|numeric',
+            'totalprice'=> 'required|numeric',
+            'product_type' => 'required',
+            'stud_id' => 'required',
+            'product_id' => 'required',
+            'cert_id' => 'required'
+        ]);
+
+        $request->session()->get('payment');
+        $payment = new Payment();
+        $payment->fill($validatedData);
+        $request->session()->put('payment', $payment);
+    }
+
     public function payment_method($product_id, $stud_id, Request $request)
     {
         $product = Product::where('product_id',$product_id)->first();
