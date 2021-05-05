@@ -17,7 +17,7 @@ E-Certificate
                 <div class="col-auto pb-4 d-block mx-auto">
                     <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                         
-                        <div class="px-3 py-3">Sila masukkan no. IC/passport bagi mendapatkan e-sijil</div>
+                        <div class="lead px-3 py-3">Sila masukkan no. IC/passport bagi mendapatkan e-sijil</div>
                         <form action="{{ url('verify') }}/{{ $product->product_id }}" method="get">
                             @csrf
                             <div class="col-md-12">
@@ -60,7 +60,7 @@ E-Certificate
     </div>
 </div> --}}
 
-<footer class="text-center px-4 py-5">
+<footer class="text-center px-4 py-2">
     <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
 </footer>
 
