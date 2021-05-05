@@ -48,7 +48,7 @@ class CertController extends Controller
         $data['name']=$student->first_name;
         $data['ic']=$student->ic;
 
-        $data['product_name']=$product->name;
+        $data['program_name']=$product->name;
 
         $data['date_receive']=date('d-m-Y');
         $data['product_id']=$product_id;        
