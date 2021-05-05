@@ -76,7 +76,7 @@ Upgrade Pakej
 
                             <div class="table-responsive">
                                 <table class="table table-borderless">
-                                    <thead class="border-bottom">
+                                    <thead class="border-top border-bottom">
                                         <tr>
                                             <th>Program</th>
                                             <th>Harga</th>
