@@ -46,33 +46,28 @@ Upgrade Pakej
                             <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                 <h4>Butiran Sijil</h4>
                             </div>
-                            <div class="form-group row text-left px-4 pt-3">
-                                <div class="col-md-6 pb-2">
-                                  <b>No. Kad Pengenalan/Passport:</b><br>
-                                  <p>{{$student->ic}}</p>
-                                  <input type="hidden" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
-                                </div>
-                    
-                                <div class="col-md-6 pb-2">
-                                    <b>Nama Pembeli:</b><br>
-                                  <p>{{$student->first_name }} {{$student->last_name}}</p>
-                                  <input type="hidden" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
-                                  <input type="hidden" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
-                                </div>
-                    
-                                <div class="col-md-6 pb-2">
-                                    <b>Emel:</b><br>
-                                  <p>{{$student->email }}</p>
-                                  <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
-                                </div>
-                    
-                                <div class="col-md-6 pb-2">
-                                    <b>No. Tel:</b><br>
-                                  <p>{{$student->phoneno}}</p>
-                                      <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
-                                </div>
-                                
-                            </div>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td class="w-50">No. Kad Pengenalan / Passport</td>
+                                    <td>:</td>
+                                    <td><strong>{{$student->ic}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-50">Nama Pembeli</td>
+                                    <td>:</td>
+                                    <td class="text-break"><strong>{{$stud->first_name }}</strong> <strong>{{$stud->last_name}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-50">Emel</td>
+                                    <td>:</td>
+                                    <td class="text-break"><strong>{{$stud->email }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-50">No. Telefon</td>
+                                    <td>:</td>
+                                    <td><strong>{{$stud->phoneno}}</strong></td>
+                                </tr>
+                            </table>
 
                             
                             <div class="col-md-12 pb-5">
@@ -80,7 +75,7 @@ Upgrade Pakej
                                     <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('get-cert') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></a>
+                                    <a href="{{ url('get-cert') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1" style="padding-top:15%"></i></a>
                                 </div>
                             </div>
                         </div>
