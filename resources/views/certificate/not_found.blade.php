@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 
 @section('title')
 Not Found
@@ -16,12 +16,12 @@ Not Found
     <div class="col-md-12 px-5 py-4">
         <div class="text-center">
             <h3 class="display-4">Harap Maaf!</h3>
-            <h3 class="display-4">Rekod anda tiada dalam sistem kami</h3>
+            <h3 class="display-4">Rekod anda tiada dalam sistem kami.</h3>
             <div class="py-3" style="font-size: 24px; color: red;">
             <i class="far fa-times-circle fa-8x text-center"></i>
             </div>
             <hr>
-            <p class="lead">Jika ada sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/">hubungi kami.</a></p>
+            <p class="lead">Jika terdapat sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/">hubungi kami.</a></p>
         </div>
     </div>
 </div>
