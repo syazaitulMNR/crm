@@ -95,7 +95,7 @@ Upgrade Pakej
                                                 <input type="text" id="qty" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
                                             </td>
                                             <td class="text-center">
-                                                RM <input type="text" class="text-center" name="totalpayment" value="" style="border: none; width: 40px; outline: none;" readonly>
+                                                RM <input type="text" class="text-center" id="totalpayment" name="totalpayment" value="" style="border: none; width: 40px; outline: none;" readonly>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -124,8 +124,8 @@ Upgrade Pakej
     var c = b * a;
 
     /*display the result*/
-    // var divobj = document.getElementById('totalpayment');
-    // divobj.value = c;
+    var jumlah = document.getElementById('totalpayment');
+    jumlah.value = c;
 
     console.log(c);
 </script>
