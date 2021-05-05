@@ -25,7 +25,9 @@ E-Certificate
                                 <p style="font-size: 10pt; color:#202020; text-align: left;"><em>Cth: 91042409**** / A********</em></p>
                             </div>
                             <div class="col-md-12 pb-3">
-                                <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
+                                </div>
                             </div>
                         </form>
 
