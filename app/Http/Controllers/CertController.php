@@ -23,13 +23,21 @@ class CertController extends Controller
         if(Student::where('ic', $request->ic)->exists()){
             
             $student = Student::where('ic', $request->ic)->first();
-            return redirect('payment/' . $product_id . '/'.$student->stud_id);
+            return redirect('butiran-peserta/' . $product_id . '/'.$student->stud_id);
 
         }else{
 
             return view('certificate.not_found');
 
         }
+    }
+
+    public function show_info($product_id, $stud_id, Request $request)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+        $student = Student::where('stud_id', $stud_id)->first();
+
+        return view('certificate.show_info');
     }
 
     public function payment_method($product_id, $stud_id, Request $request)
@@ -40,26 +48,30 @@ class CertController extends Controller
         $payment = $request->session()->get('payment');
         
         $payment_id = 'OD'.uniqid();
+        $stripe = 'Debit/Credit Card';
+        $billplz = 'FPX';
 
-        return view('certificate.method_pay', compact('product', 'student', 'payment', 'payment_id'));
+        return view('certificate.method_pay', compact('product', 'student', 'payment', 'payment_id', 'stripe', 'billplz'));
     }
 
     public function store_method($product_id, $stud_id, Request $request)
     {
-        echo 'bayo laa apa lagi';
-        // $validatedData = $request->validate([
-        //     'payment_id' => 'required',
-        //     'pay_price'=> 'required|numeric',
-        //     'quantity' => 'required|numeric',
-        //     'totalprice'=> 'required|numeric',
-        //     'product_type' => 'required',
-        //     'stud_id' => 'required',
-        //     'cert_id' => 'required'
-        // ]);
+        // echo 'bayo laa apa lagi';
+        $validatedData = $request->validate([
+            'payment_id' => 'required',
+            'pay_price'=> 'required|numeric',
+            'quantity' => 'required|numeric',
+            'totalprice'=> 'required|numeric',
+            'product_type' => 'required',
+            'stud_id' => 'required',
+            'cert_id' => 'required'
+        ]);
 
-        // $request->session()->get('payment');
-        // $payment = new Payment();
-        // $payment->fill($validatedData);
-        // $request->session()->put('payment', $payment);
+        $request->session()->get('payment');
+        $payment = new Payment();
+        $payment->fill($validatedData);
+        $request->session()->put('payment', $payment);
+
+
     }
 }
