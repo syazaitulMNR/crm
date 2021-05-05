@@ -75,8 +75,8 @@ Upgrade Pakej
                             </div>
 
                             <div class="table-responsive pb-4">
-                                <table class="table table-borderless">
-                                    <thead class="border-top border-bottom">
+                                <table class="table table-bordered">
+                                    <thead>
                                         <tr>
                                             <th>Sijil Program</th>
                                             <th>Harga</th>
