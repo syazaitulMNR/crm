@@ -59,7 +59,7 @@ E-Certificate
     </div>
 </div> --}}
 
-<footer class="text-center px-4 py-2">
+<footer class="lead text-center px-4 py-2">
     <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
 </footer>
 
