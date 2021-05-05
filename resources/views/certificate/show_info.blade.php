@@ -56,17 +56,17 @@ Upgrade Pakej
                                 <tr>
                                     <td class="w-50">Nama Pembeli</td>
                                     <td>:</td>
-                                    <td class="text-break"><strong>{{$stud->first_name }}</strong> <strong>{{$stud->last_name}}</strong></td>
+                                    <td class="text-break"><strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong></td>
                                 </tr>
                                 <tr>
                                     <td class="w-50">Emel</td>
                                     <td>:</td>
-                                    <td class="text-break"><strong>{{$stud->email }}</strong></td>
+                                    <td class="text-break"><strong>{{$student->email }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td class="w-50">No. Telefon</td>
                                     <td>:</td>
-                                    <td><strong>{{$stud->phoneno}}</strong></td>
+                                    <td><strong>{{$student->phoneno}}</strong></td>
                                 </tr>
                             </table>
                             {{-- <div class="form-group row px-4 pt-3">
