@@ -51,12 +51,12 @@ Upgrade Pakej
                                 <div class="form-group pt-2 row">
                                     <div class="col-md-12 px-5">
                                         <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                            <i class="far fa-credit-card fa-3x"></i>
-                                            <br>Kad Debit/Kredit
+                                            <i class="far fa-credit-card fa-3x pb-3"></i>
+                                            Kad Debit/Kredit
                                         </button>
                                     
                                         <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                            <i class="fas fa-university fa-3x"></i>
+                                            <i class="fas fa-university fa-3x pb-3"></i>
                                             <br>FPX
                                         </button>
                                     </div>
