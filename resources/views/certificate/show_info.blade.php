@@ -124,8 +124,8 @@ Upgrade Pakej
     var c = b * a;
 
     /*display the result*/
-    var divobj = document.getElementById('totalpayment');
-    divobj.value = c;
+    // var divobj = document.getElementById('totalpayment');
+    // divobj.value = c;
 
     console.log(c);
 </script>
