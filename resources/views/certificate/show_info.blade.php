@@ -49,22 +49,22 @@ Upgrade Pakej
                             
                             <div class="form-group row px-4">
                                 <div class="col-md-6 pb-3">
-                                  No. Kad Pengenalan/Passport:
+                                  No. Kad Pengenalan/Passport<br>
                                   <strong>{{$student->ic}}</strong>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  Nama Pembeli:
+                                  Nama Pembeli<br>
                                   <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  Emel:
+                                  Emel<br>
                                   <strong>{{$student->email }}</strong>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  No. Tel:
+                                  No. Tel<br>
                                   <strong>{{$student->phoneno}}</strong>
                                 </div>
                                 
