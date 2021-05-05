@@ -73,6 +73,34 @@ Upgrade Pakej
                                 </div>
                                 
                             </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <thead class="border-bottom">
+                                        <tr>
+                                            <th>Program</th>
+                                            <th>Harga</th>
+                                            <th>Kuantiti</th>
+                                            <th class="text-center">Jumlah Bayaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $product->name }}</td>
+                                            <td>
+                                                RM <input type="text" name="price" value="" style="border: none; width: 40px; outline: none;" readonly>
+                                                
+                                            </td>
+                                            <td>
+                                                <input type="text" id="quantity" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
+                                            </td>
+                                            <td class="text-center">
+                                                RM <input type="text" class="text-center" name="totalprice" value="" style="border: none; width: 40px; outline: none;" readonly>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>  
                             
                             <div class="col-md-12 pb-5">
                                 <div class="pull-left">
