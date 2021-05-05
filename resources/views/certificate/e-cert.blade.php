@@ -142,14 +142,14 @@
                     <table>
                         <tr>
                             <td>
-                                Program : {{ $program_name }}
-                                Created: {{ $date_receive }}
+                                {{ $program_name }}
+                                {{ $date_receive }}
                             </td>
 
                             <td></td>
                             
                             <td>
-                                Receipt To:<br>
+                                
                                 {{ $name }}<br>
                                 {{ $ic }}
                             </td>
@@ -158,15 +158,7 @@
                 </td>
             </tr>
         </table>
-        {{-- <br>
-        <div class="notices">
-            <div>Notes:</div>
-            <div class="notice">To update the participant information, please click on the 'Kemaskini' button that appears in the email.</div>
-        </div> --}}
         <br>
-        <footer class="center" style="font-size: 10pt;">
-            This is a computer generated invoice. No signature is required.
-        </footer>
     </div>
 </body>
 </html>
