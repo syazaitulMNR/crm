@@ -26,7 +26,7 @@
         <script src="https://js.stripe.com/v3/"></script>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         
         <!-- Styles -->
