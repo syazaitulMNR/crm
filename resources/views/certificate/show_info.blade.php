@@ -78,7 +78,7 @@ Upgrade Pakej
                                 <table class="table table-borderless">
                                     <thead class="border-top border-bottom">
                                         <tr>
-                                            <th>Program</th>
+                                            <th>Sijil Program</th>
                                             <th>Harga</th>
                                             <th>Kuantiti</th>
                                             <th class="text-center">Jumlah Bayaran</th>
