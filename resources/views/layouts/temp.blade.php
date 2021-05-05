@@ -39,15 +39,6 @@
         {{-- CDN Ends Font Awesome --}}
 
         <style>
-            
-            /*custom font*/
-            @import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-            /*basic reset*/
-            * {
-                margin: 0;
-                padding: 0;
-            }
 
             html {
                 height: 100%;
@@ -56,7 +47,6 @@
             }
 
             body {
-                font-family: Helvetica, arial, verdana;
                 background: transparent;
             }
 
