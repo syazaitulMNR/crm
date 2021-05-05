@@ -1,7 +1,7 @@
 @extends('layouts.temp')
 
 @section('title')
-{{ $product->name }}
+E-Certificate
 @endsection
 
 @section('content')

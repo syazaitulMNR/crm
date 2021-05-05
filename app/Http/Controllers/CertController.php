@@ -23,13 +23,43 @@ class CertController extends Controller
         if(Student::where('ic', $request->ic)->exists()){
             
             $student = Student::where('ic', $request->ic)->first();
-            echo 'student ada';
-            // return redirect('langkah-pertama/' . $product_id . '/' . $package_id .'/'.$student->stud_id);
+            return redirect('payment/' . $product_id . '/'.$student->stud_id);
 
         }else{
 
             return view('certificate.not_found');
 
         }
+    }
+
+    public function payment_method($product_id, $stud_id, Request $request)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+        $student = Student::where('stud_id', $stud_id)->first();
+
+        $payment = $request->session()->get('payment');
+        
+        $payment_id = 'OD'.uniqid();
+
+        return view('certificate.method_pay', compact('product', 'student', 'payment', 'payment_id'));
+    }
+
+    public function store_method($product_id, $stud_id, Request $request)
+    {
+        echo 'bayo laa apa lagi';
+        // $validatedData = $request->validate([
+        //     'payment_id' => 'required',
+        //     'pay_price'=> 'required|numeric',
+        //     'quantity' => 'required|numeric',
+        //     'totalprice'=> 'required|numeric',
+        //     'product_type' => 'required',
+        //     'stud_id' => 'required',
+        //     'cert_id' => 'required'
+        // ]);
+
+        // $request->session()->get('payment');
+        // $payment = new Payment();
+        // $payment->fill($validatedData);
+        // $request->session()->put('payment', $payment);
     }
 }

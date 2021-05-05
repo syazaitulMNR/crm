@@ -217,11 +217,13 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 
 /*
 |--------------------------------------------------------------------------
-| Upgrade Package
+| E-Certificate
 |--------------------------------------------------------------------------
 */
 Route::get('e-cert/{product_id}', 'CertController@ic_check');
 Route::get('verify/{product_id}', 'CertController@checking_ic');
+Route::get('payment/{product_id}/{stud_id}', 'CertController@payment_method');
+Route::post('store-method/{product_id}/{stud_id}', 'CertController@store_method');
 
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
