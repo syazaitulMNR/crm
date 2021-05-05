@@ -47,30 +47,28 @@ Upgrade Pakej
                                 <h4>Butiran Peserta</h4>
                             </div>
                             
-                            <div class="col-md-12">
-                                <table class="table table-borderless">
-                                    <tr>
-                                        <td style="width:30%">No. Kad Pengenalan / Passport</td>
-                                        <td>:</td>
-                                        <td><strong>{{$student->ic}}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:30%">Nama</td>
-                                        <td>:</td>
-                                        <td class="text-break"><strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:30%">Emel</td>
-                                        <td>:</td>
-                                        <td class="text-break"><strong>{{$student->email }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width:30%">No. Telefon</td>
-                                        <td>:</td>
-                                        <td><strong>{{$student->phoneno}}</strong></td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td style="width:30%">No. Kad Pengenalan / Passport</td>
+                                    <td>:</td>
+                                    <td><strong>{{$student->ic}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:30%">Nama</td>
+                                    <td>:</td>
+                                    <td class="text-break"><strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:30%">Emel</td>
+                                    <td>:</td>
+                                    <td class="text-break"><strong>{{$student->email }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:30%">No. Telefon</td>
+                                    <td>:</td>
+                                    <td><strong>{{$student->phoneno}}</strong></td>
+                                </tr>
+                            </table>
                             {{-- <div class="form-group row px-4 pt-3">
                                 <div class="col-md-6 pb-3">
                                   No. Kad Pengenalan/Passport<br>
