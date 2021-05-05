@@ -47,7 +47,7 @@ Upgrade Pakej
                                 <h4>Butiran Peserta</h4>
                             </div>
                             
-                            <div class="d-flex justify-content-center">
+                            <div class="col-md-12">
                                 <table class="table table-borderless">
                                     <tr>
                                         <td style="width:30%">No. Kad Pengenalan / Passport</td>
