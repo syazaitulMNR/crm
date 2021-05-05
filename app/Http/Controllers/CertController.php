@@ -37,7 +37,7 @@ class CertController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
 
-        return view('certificate.show_info');
+        return view('certificate.show_info ', compact('product', 'student'));
     }
 
     public function payment_method($product_id, $stud_id, Request $request)
