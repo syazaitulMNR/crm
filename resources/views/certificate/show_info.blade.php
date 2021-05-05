@@ -44,7 +44,7 @@ Upgrade Pakej
                     <div class="col-auto pb-4 d-block mx-auto">
                         <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                             <div class="border-bottom pb-1" style="letter-spacing: 2px">
-                                <h4>Butiran Peserta</h4>
+                                <h4>Butiran Sijil</h4>
                             </div>
                             <div class="form-group row text-left px-4 pt-3">
                                 <div class="col-md-6 pb-3">
