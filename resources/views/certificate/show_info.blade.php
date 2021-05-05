@@ -47,7 +47,7 @@ Upgrade Pakej
                                 <h4>Butiran Peserta</h4>
                             </div>
                             <div class="form-group row text-left px-4">
-                                <div class="col-md-6 pb-3">
+                                <div class="col-md-4 pb-3">
                                   No. Kad Pengenalan/Passport:<br>
                                   <strong>{{$student->ic}}</strong>
                                   <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
@@ -60,7 +60,7 @@ Upgrade Pakej
                                   <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
                                 </div>
                     
-                                <div class="col-md-6 pb-3">
+                                <div class="col-md-4 pb-3">
                                   Emel:<br>
                                   <strong>{{$student->email }}</strong>
                                   <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
