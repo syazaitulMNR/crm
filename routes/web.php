@@ -215,6 +215,14 @@ Route::get('pay-billplz/{product_id}/{package_id}/{stud_id}/{payment_id}', 'Upgr
 Route::get('redirect-pay', 'UpgradeController@redirect_pay');
 Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 
+/*
+|--------------------------------------------------------------------------
+| Upgrade Package
+|--------------------------------------------------------------------------
+*/
+Route::get('e-cert/{product_id}', 'CertController@ic_check');
+
+
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try','HomeController@try');
 Route::get('sendmail', 'HomeController@tryemail');

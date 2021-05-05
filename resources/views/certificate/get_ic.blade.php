@@ -1,7 +1,7 @@
 @extends('layouts.temp')
 
 @section('title')
-{{ $package->name }}
+{{ $product->name }}
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
     <div class="col-md-12 d-flex justify-content-center">
         <div class="card w-75">
             <div class="px-3 py-3">No. Kad Pengenalan / Passport</div>
-            <form action="{{ url('verification') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
+            <form action="{{ url('verify') }}/{{ $product->product_id }}" method="get">
                 @csrf
                 <div class="col-md-12">
                     <input type="text" class="form-control" name="ic" placeholder="tanpa '-'" maxlength="12" required="" >
