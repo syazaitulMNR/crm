@@ -53,7 +53,7 @@ Upgrade Pakej
                                   <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
                                 </div>
                     
-                                <div class="col-md-4 pb-3">
+                                <div class="col-md-6 pb-3">
                                     <b>Nama Pembeli:</b><br>
                                   <p>{{$student->first_name }}</p> <p>{{$student->last_name}}</p>
                                   <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
@@ -66,7 +66,7 @@ Upgrade Pakej
                                   <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
                                 </div>
                     
-                                <div class="col-md-4 pb-3">
+                                <div class="col-md-6 pb-3">
                                     <b>No. Tel:</b><br>
                                   <p>{{$student->phoneno}}</p>
                                       <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
