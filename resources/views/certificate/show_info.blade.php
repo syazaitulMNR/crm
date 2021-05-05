@@ -46,24 +46,25 @@ Upgrade Pakej
                             <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                 <h4>Butiran Peserta</h4>
                             </div>
+                            
                             <div class="form-group row px-4">
                                 <div class="col-md-6 pb-3">
-                                  No. Kad Pengenalan/Passport:<br>
+                                  No. Kad Pengenalan/Passport:
                                   <strong>{{$student->ic}}</strong>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  Nama Pembeli:<br>
+                                  Nama Pembeli:
                                   <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  Emel:<br>
+                                  Emel:
                                   <strong>{{$student->email }}</strong>
                                 </div>
                     
                                 <div class="col-md-6 pb-3">
-                                  No. Tel:<br>
+                                  No. Tel:
                                   <strong>{{$student->phoneno}}</strong>
                                 </div>
                                 
