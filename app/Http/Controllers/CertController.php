@@ -47,10 +47,8 @@ class CertController extends Controller
             'pay_price'=> 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric',
-            'product_type' => 'required',
             'stud_id' => 'required',
-            'product_id' => 'required',
-            'cert_id' => 'required'
+            'product_id' => 'required'
         ]);
 
         $request->session()->get('payment');

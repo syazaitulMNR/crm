@@ -50,14 +50,14 @@ Upgrade Pakej
                                 <div class="col-md-6 pb-2">
                                   <b>No. Kad Pengenalan/Passport:</b><br>
                                   <p>{{$student->ic}}</p>
-                                  <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
+                                  <input type="hidden" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
                                 </div>
                     
                                 <div class="col-md-6 pb-2">
                                     <b>Nama Pembeli:</b><br>
                                   <p>{{$student->first_name }} {{$student->last_name}}</p>
-                                  <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
-                                  <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
+                                  <input type="hidden" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
+                                  <input type="hidden" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
                                 </div>
                     
                                 <div class="col-md-6 pb-2">
