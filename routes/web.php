@@ -221,6 +221,7 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 |--------------------------------------------------------------------------
 */
 Route::get('e-cert/{product_id}', 'CertController@ic_check');
+Route::get('verify/{product_id}', 'CertController@checking_ic');
 
 
 //---------------------------------------------- Testing Part -------------------------------------------------//

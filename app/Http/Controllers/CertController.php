@@ -9,7 +9,7 @@ use App\Student;
 class CertController extends Controller
 {
     /*-- Check IC Page -----------------------------------------------*/
-    public function ic_check($product_id,$package_id)
+    public function ic_check($product_id)
     {
         // $package = Package::where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -17,7 +17,7 @@ class CertController extends Controller
         return view('certificate.get_ic', compact('product'));
     }
 
-    public function checking_ic($product_id, $package_id, Request $request)
+    public function checking_ic($product_id, Request $request)
     {
         // Check if ic exist
         if(Student::where('ic', $request->ic)->exists()){
