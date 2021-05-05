@@ -42,7 +42,7 @@ Upgrade Pakej
             <div class="container text-center">
                 <div class="row">
                     <div class="col-auto pb-4 d-block mx-auto">
-                        <div class="pricing-item bg-white justify-content-center py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
+                        <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
                             <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                 <h4>Butiran Peserta</h4>
                             </div>
@@ -53,7 +53,7 @@ Upgrade Pakej
                                   <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
                                 </div>
                     
-                                <div class="col-md-4 pb-3">
+                                <div class="col-md-2 pb-3">
                                   Nama Pembeli:<br>
                                   <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
                                   <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
@@ -66,7 +66,7 @@ Upgrade Pakej
                                   <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
                                 </div>
                     
-                                <div class="col-md-4 pb-3">
+                                <div class="col-md-2 pb-3">
                                   No. Tel:<br>
                                   <strong>{{$student->phoneno}}</strong>
                                       <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
