@@ -37,58 +37,24 @@ class CertController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
 
-        return view('certificate.show_info ', compact('product', 'student'));
+        return view('certificate.show_info', compact('product', 'student'));
     }
 
-    public function store_info($product_id, $stud_id, Request $request)
-    {
-        $validatedData = $request->validate([
-            'payment_id' => 'required',
-            'pay_price'=> 'required|numeric',
-            'quantity' => 'required|numeric',
-            'totalprice'=> 'required|numeric',
-            'stud_id' => 'required',
-            'product_id' => 'required'
-        ]);
-
-        $request->session()->get('payment');
-        $payment = new Payment();
-        $payment->fill($validatedData);
-        $request->session()->put('payment', $payment);
-    }
-
-    public function payment_method($product_id, $stud_id, Request $request)
-    {
-        $product = Product::where('product_id',$product_id)->first();
+    public function get_cert($product_id, $stud_id){
+        $product = Product::where('product_id', $product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
+                
+        $data['name']=$student->first_name;
+        $data['ic']=$student->ic;
 
-        $payment = $request->session()->get('payment');
-        
-        $payment_id = 'OD'.uniqid();
-        $stripe = 'Debit/Credit Card';
-        $billplz = 'FPX';
+        $data['product_name']=$product->name;
 
-        return view('certificate.method_pay', compact('product', 'student', 'payment', 'payment_id', 'stripe', 'billplz'));
+        $data['date_receive']=date('d-m-Y');
+        $data['product_id']=$product_id;        
+        $data['student_id']=$stud_id;
+
+        $pdf = PDF::loadView('certificate.e-cert', $data);
+        return $pdf->download( $product->name . '.pdf');
     }
 
-    public function store_method($product_id, $stud_id, Request $request)
-    {
-        // echo 'bayo laa apa lagi';
-        $validatedData = $request->validate([
-            'payment_id' => 'required',
-            'pay_price'=> 'required|numeric',
-            'quantity' => 'required|numeric',
-            'totalprice'=> 'required|numeric',
-            'product_type' => 'required',
-            'stud_id' => 'required',
-            'cert_id' => 'required'
-        ]);
-
-        $request->session()->get('payment');
-        $payment = new Payment();
-        $payment->fill($validatedData);
-        $request->session()->put('payment', $payment);
-
-
-    }
 }

@@ -74,42 +74,13 @@ Upgrade Pakej
                                 
                             </div>
 
-                            <div class="col-md-12 pb-4">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Sijil Program</th>
-                                                <th>Harga</th>
-                                                <th>Kuantiti</th>
-                                                <th class="text-center">Jumlah Bayaran</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ $product->name }}</td>
-                                                <td>
-                                                    RM <input type="text" id="cert_price" name="price" value="999" style="border: none; width: 40px; outline: none;" readonly>
-                                                    
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="qty" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
-                                                </td>
-                                                <td class="text-center">
-                                                    RM <input type="text" class="text-center" id="totalpayment" name="totalpayment" value="" style="border: none; width: 40px; outline: none;" readonly>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>  
                             
                             <div class="col-md-12 pb-5">
                                 <div class="pull-left">
                                     <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right" style="padding-top:35%"></i></a>
+                                    <a href="{{ url('get-cert') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></a>
                                 </div>
                             </div>
                         </div>
