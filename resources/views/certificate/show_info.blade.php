@@ -88,11 +88,11 @@ Upgrade Pakej
                                         <tr>
                                             <td>{{ $product->name }}</td>
                                             <td>
-                                                RM <input type="text" id="price" name="price" value="999" style="border: none; width: 40px; outline: none;" readonly>
+                                                RM <input type="text" id="cert_price" name="price" value="999" style="border: none; width: 40px; outline: none;" readonly>
                                                 
                                             </td>
                                             <td>
-                                                <input type="text" id="quantity" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
+                                                <input type="text" id="qty" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
                                             </td>
                                             <td class="text-center">
                                                 RM <input type="text" class="text-center" name="totalpayment" value="" style="border: none; width: 40px; outline: none;" readonly>
@@ -119,8 +119,8 @@ Upgrade Pakej
 </div>
 
 <script>
-    var a = document.getElementById("quantity").value;
-    var b = document.getElementById("price").value;
+    var a = document.getElementById("qty").value;
+    var b = document.getElementById("cert_price").value;
     var c = b * a;
 
     /*display the result*/
