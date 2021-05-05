@@ -46,7 +46,7 @@ Upgrade Pakej
                             <div class="border-bottom pb-1" style="letter-spacing: 2px">
                                 <h4>Butiran Peserta</h4>
                             </div>
-                            <div class="form-group row text-left px-4">
+                            <div class="form-group row text-left px-4 pt-3">
                                 <div class="col-md-6 pb-3">
                                   No. Kad Pengenalan/Passport:<br>
                                   <strong>{{$student->ic}}</strong>
