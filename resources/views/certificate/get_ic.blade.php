@@ -6,9 +6,43 @@ E-Certificate
 
 @section('content')
 <div class="row">
+    <div class="col-md-12 px-3 pt-5 pb-3 text-center">
+        <img src="/assets/images/logo.png" style="max-width:150px">
+        <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
+    </div>
+
+    <div class="col-md-12 py-3">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-auto pb-4 d-block mx-auto">
+                    <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
+                        
+                        <div class="px-3 py-3">Sila masukkan no. IC/passport bagi mendapatkan e-sijil</div>
+                        <form action="{{ url('verify') }}/{{ $product->product_id }}" method="get">
+                            @csrf
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="ic" placeholder="tanpa '-'" maxlength="12" required="" >
+                                <p style="font-size: 10pt; color:#202020; text-align: left;"><em>Cth: 91042409**** / A********</em></p>
+                            </div>
+                            <div class="col-md-12 pb-3">
+                                <button type="submit" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-right" style="padding-top:35%"></i></button>
+                            </div>
+                        </form>
+
+                        
+                        <div class="col-md-12 text-center pb-5">
+                            <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-right" style="padding-top:35%"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="row">
     <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:200px">
-        <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
+        <h1 class="text-dark px-4 pt-3">E-Sijil</h1>
     </div>
     
     <div class="col-md-12 d-flex justify-content-center">
@@ -26,7 +60,7 @@ E-Certificate
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 
 <footer class="text-center px-4 py-5">
     <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
