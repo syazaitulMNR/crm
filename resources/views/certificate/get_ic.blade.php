@@ -29,10 +29,6 @@ E-Certificate
                             </div>
                         </form>
 
-                        
-                        <div class="col-md-12 text-center pb-5">
-                            <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-right" style="padding-top:35%"></i></a>
-                        </div>
                     </div>
                 </div>
             </div>
