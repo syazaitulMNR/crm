@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Student;
+use PDF;
 
 class CertController extends Controller
 {
