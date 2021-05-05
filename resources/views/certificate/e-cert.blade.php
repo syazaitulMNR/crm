@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Customer Receipt</title>
+    <title>{{ $program_name }}</title>
     
     <style>
     .invoice-box {
