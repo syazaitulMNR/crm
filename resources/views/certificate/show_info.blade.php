@@ -74,32 +74,34 @@ Upgrade Pakej
                                 
                             </div>
 
-                            <div class="table-responsive pb-4">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Sijil Program</th>
-                                            <th>Harga</th>
-                                            <th>Kuantiti</th>
-                                            <th class="text-center">Jumlah Bayaran</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ $product->name }}</td>
-                                            <td>
-                                                RM <input type="text" id="cert_price" name="price" value="999" style="border: none; width: 40px; outline: none;" readonly>
-                                                
-                                            </td>
-                                            <td>
-                                                <input type="text" id="qty" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
-                                            </td>
-                                            <td class="text-center">
-                                                RM <input type="text" class="text-center" id="totalpayment" name="totalpayment" value="" style="border: none; width: 40px; outline: none;" readonly>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="col-md-12 pb-4">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Sijil Program</th>
+                                                <th>Harga</th>
+                                                <th>Kuantiti</th>
+                                                <th class="text-center">Jumlah Bayaran</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ $product->name }}</td>
+                                                <td>
+                                                    RM <input type="text" id="cert_price" name="price" value="999" style="border: none; width: 40px; outline: none;" readonly>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="qty" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly>
+                                                </td>
+                                                <td class="text-center">
+                                                    RM <input type="text" class="text-center" id="totalpayment" name="totalpayment" value="" style="border: none; width: 40px; outline: none;" readonly>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>  
                             
                             <div class="col-md-12 pb-5">
