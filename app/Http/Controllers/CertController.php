@@ -23,7 +23,7 @@ class CertController extends Controller
         if(Student::where('ic', $request->ic)->exists()){
             
             $student = Student::where('ic', $request->ic)->first();
-            return redirect('butiran-peserta/' . $product_id . '/'.$student->stud_id);
+            return redirect('participant-details/' . $product_id . '/'.$student->stud_id);
 
         }else{
 
