@@ -1,7 +1,7 @@
 @extends('layouts.temp')
 
 @section('title')
-Not Found
+Harap Maaf!
 @endsection
 
 <style>
