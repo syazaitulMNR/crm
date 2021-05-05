@@ -47,7 +47,7 @@ Upgrade Pakej
                                 <h4>Butiran Peserta</h4>
                             </div>
                             <div class="form-group row text-left px-4">
-                                <div class="col-md-8 pb-3">
+                                <div class="col-md-6 pb-3">
                                   No. Kad Pengenalan/Passport:<br>
                                   <strong>{{$student->ic}}</strong>
                                   <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
@@ -60,7 +60,7 @@ Upgrade Pakej
                                   <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
                                 </div>
                     
-                                <div class="col-md-8 pb-3">
+                                <div class="col-md-6 pb-3">
                                   Emel:<br>
                                   <strong>{{$student->email }}</strong>
                                   <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
@@ -79,7 +79,7 @@ Upgrade Pakej
                                     <a href="{{ url('e-cert') }}/{{ $product->product_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right" style="padding-top:35%"></i></a>
+                                    <a href="{{ url('payment') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btnZ-dark"><i class="fas fa-arrow-right" style="padding-top:35%"></i></a>
                                 </div>
                             </div>
                         </div>
