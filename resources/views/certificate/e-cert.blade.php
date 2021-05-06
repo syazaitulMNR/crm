@@ -13,9 +13,10 @@ E-Certificate
 </div>
 
 <div class="row">
-    <div class="col-md-12 py-5 text-center border-bottom">
+    <div class="col-md-12 py-5 text-center">
         <h1 class="display-1">CERTIFICATE</h1>
         <h3 class="display-4">OF COMPLETION</h3>
+        <hr>
     </div>
 </div>
 
