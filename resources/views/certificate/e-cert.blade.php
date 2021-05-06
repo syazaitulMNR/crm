@@ -38,7 +38,7 @@ E-Certificate
     </div>
 </div>
 
-<div class="row">
+<div class="row py-5">
     <div class="col-md-6 text-center" style="padding-left: 20%;">  
         <img src="/assets/images/certified_cop.png" style="max-width:150px;">
     </div>
