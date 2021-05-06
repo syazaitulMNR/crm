@@ -12,6 +12,10 @@ E-Certificate
     </div>
 </div>
 
-
+<div class="row">
+    <div class="col-md-12 py-5 text-center">
+        <img src="/assets/images/logo.png" style="max-width:150px">
+    </div>
+</div>
 
 @endsection
