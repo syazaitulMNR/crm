@@ -23,7 +23,7 @@ E-Certificate
 <div class="row">
     <div class="col-md-12 pt-5 text-center">
         <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
-        <hr>
+        <h3> {{ $student->ic }}</h3>
     </div>
 </div>
 
