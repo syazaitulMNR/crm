@@ -39,10 +39,10 @@ E-Certificate
 </div>
 
 <div class="row">
-    <div class="col-md-6" style="padding-left: 20%;">  
+    <div class="col-md-6 text-center" style="padding-left: 20%;">  
         <img src="/assets/images/certified_cop.png" style="max-width:150px;">
     </div>
-    <div class="col-md-6" style="padding-right: 20%;">  
+    <div class="col-md-6 text-center" style="padding-right: 20%;">  
         <img src="/assets/images/sign.jpg" style="max-width:150px;">
         <h5 class="border-top">Najib Asaddok</h5>
     </div>
