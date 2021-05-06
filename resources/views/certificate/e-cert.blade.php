@@ -32,6 +32,10 @@ E-Certificate
         <p class="lead"> Successfully complete the</p>
         <h3> {{ $product->name }}</h3>
     </div>
+    <div class="col-md-12 pt-5 text-center">
+        <p class="lead"> Date</p>
+        <h3> {{ $product->date_from }} to {{ $product->date_from }}</h3>
+    </div>
 </div>
 
 <div class="row">
