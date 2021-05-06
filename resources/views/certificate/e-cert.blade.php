@@ -34,7 +34,7 @@ E-Certificate
     </div>
     <div class="col-md-12 pt-5 text-center">
         <p class="lead"> Date</p>
-        <h3> {{ $product->date_from }} </h3> to <h3> {{ $product->date_from }}</h3>
+        <h3> {{ $product->date_from }} &nbsp; to &nbsp; {{ $product->date_to }}</h3>
     </div>
 </div>
 
