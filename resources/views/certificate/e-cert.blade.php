@@ -23,9 +23,14 @@ E-Certificate
 <div class="row">
     <div class="col-md-12 pt-5 text-center">
         <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
-        <h5> {{ $student->ic }}</h5>
+        <h5> ({{ $student->ic }})</h5>
     </div>
 </div>
 
-
+<div class="row">
+    <div class="col-md-12 pt-5 text-center">
+        <p class="lead"> Successfully complete the</p>
+        <h3> {{ $product->name }}</h3>
+    </div>
+</div>
 @endsection
