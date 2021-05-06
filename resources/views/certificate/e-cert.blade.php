@@ -27,7 +27,7 @@ E-Certificate
     </div>
 </div>
 
-<div class="row">
+<div class="row pb-5">
     <div class="col-md-12 pt-5 text-center">
         <p class="lead"> Successfully complete the</p>
         <h3> {{ $product->name }}</h3>
