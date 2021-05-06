@@ -4,8 +4,13 @@
 E-Certificate
 @endsection
 
-<style>
-@media print{@page {size: landscape}}
+<style media="print">
+    @page { 
+        size: landscape;
+    }
+    body { 
+        writing-mode: tb-rl;
+    }
 </style>
 
 @section('content')
