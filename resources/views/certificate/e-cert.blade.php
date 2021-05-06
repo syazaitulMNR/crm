@@ -15,9 +15,17 @@ E-Certificate
 <div class="row">
     <div class="col-md-12 py-5 text-center">
         <h1 class="display-1">CERTIFICATE</h1>
-        <h3 class="display-4">OF COMPLETION</h3>
+        <h1 class="display-4">OF COMPLETION</h1>
         <hr>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12 py-5 text-center">
+        <h1 class="display-4"> {{ $student->first_name }} {{ $student->last_name }}</h1>
+        <hr>
+    </div>
+</div>
+
 
 @endsection
