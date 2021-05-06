@@ -14,8 +14,8 @@ E-Certificate
 
 <div class="row">
     <div class="col-md-12 py-5 text-center">
-        <p class="fs-1">CERTIFICATE</p>
-        <p class="fs-2">OF COMPLETION</p>
+        <h1>CERTIFICATE</h1>
+        <h3>OF COMPLETION</h3>
     </div>
 </div>
 
