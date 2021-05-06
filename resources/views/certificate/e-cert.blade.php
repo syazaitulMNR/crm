@@ -44,7 +44,9 @@ E-Certificate
         </div>
         <div class="col-md-6 text-center" style="padding-right: 10%;">  
             <img src="/assets/images/signature.png" style="max-width:100px;">
-            <h5 class="border-top pt-2">Najib Asaddok</h5>
+            <h3 class="border-top pt-2">Najib Asaddok</h3>
+            <p class="lead"> Chief Executive Officer (CEO)</p>
+            <p class="lead"> Momentum Internet Sdn Bhd </p>
         </div>
     </div>
 </div>
