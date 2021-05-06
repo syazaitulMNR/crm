@@ -33,7 +33,7 @@ E-Certificate
         <h3> {{ $product->name }}</h3>
     </div>
     <div class="col-md-12 pt-5 text-center">
-        <p class="lead"> Date</p>
+        <p class="lead"> that was held on </p>
         <h3> {{ $product->date_from }} &nbsp; to &nbsp; {{ $product->date_to }}</h3>
     </div>
 </div>
