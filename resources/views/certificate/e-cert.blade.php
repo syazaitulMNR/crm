@@ -35,7 +35,7 @@ E-Certificate
 </div>
 
 <div class="row">
-    <div class="col-md-12 pt-5 text-center">
+    <div class="col-md-12 pt-5">
         <img src="/assets/images/certified.png" style="max-width:150px">
     </div>
 </div>
