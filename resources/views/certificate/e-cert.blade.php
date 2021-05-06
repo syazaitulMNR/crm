@@ -36,7 +36,9 @@ E-Certificate
 
 <div class="row">
     <div class="col-md-12 pt-5 px-5">
-        <img src="/assets/images/certified_cop.png" style="max-width:150px; padding-left: 30%">
+        <div class="px-5">  
+            <img src="/assets/images/certified_cop.png" style="max-width:150px;">
+        </div>
     </div>
 </div>
 @endsection
