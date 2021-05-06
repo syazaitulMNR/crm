@@ -40,10 +40,10 @@ E-Certificate
     </div>
     
     <div class="row py-5">
-        <div class="col-md-6 text-center" style="padding-left: 20%;">  
+        <div class="col-md-6 text-center" style="padding-left: 10%;">  
             <img src="/assets/images/certified_cop.png" style="max-width:150px;">
         </div>
-        <div class="col-md-6 text-center" style="padding-right: 20%;">  
+        <div class="col-md-6 text-center" style="padding-right: 10%;">  
             <img src="/assets/images/signature.png" style="max-width:100px;">
             <h5 class="border-top">Najib Asaddok</h5>
         </div>
