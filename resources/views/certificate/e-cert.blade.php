@@ -44,7 +44,7 @@ E-Certificate
         </div>
         <div class="col-md-6 text-center" style="padding-right: 10%;">  
             <img src="/assets/images/signature.png" style="max-width:100px;">
-            <h5 class="border-top">Najib Asaddok</h5>
+            <h5 class="border-top pt-2">Najib Asaddok</h5>
         </div>
     </div>
 </div>
