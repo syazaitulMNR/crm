@@ -21,8 +21,8 @@ E-Certificate
 </div>
 
 <div class="row">
-    <div class="col-md-12 py-5 text-center">
-        <h1 class="display-4"> {{ $student->first_name }} {{ $student->last_name }}</h1>
+    <div class="col-md-12 text-center">
+        <p class="lead"> {{ $student->first_name }} {{ $student->last_name }}</p>
         <hr>
     </div>
 </div>
