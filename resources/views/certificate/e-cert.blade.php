@@ -4,6 +4,10 @@
 E-Certificate
 @endsection
 
+<style>
+@media print{@page {size: landscape}}
+</style>
+
 @section('content')
 
 <div class="row">
