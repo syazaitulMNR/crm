@@ -43,7 +43,7 @@ E-Certificate
         <img src="/assets/images/certified_cop.png" style="max-width:150px;">
     </div>
     <div class="col-md-6 text-center" style="padding-right: 20%;">  
-        <img src="/assets/images/sign.jpg" style="max-width:150px;">
+        <img src="/assets/images/signature.png" style="max-width:200px;">
         <h5 class="border-top">Najib Asaddok</h5>
     </div>
 </div>
