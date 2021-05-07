@@ -8,7 +8,8 @@ E-Certificate
     body, html {
         height: 100% !important;
         background-color: #fff !important;
-        margin: 10px !important;
+        margin-top: 10px !important;        
+        margin-bottom: 10px !important;
     }
 
     .bg {
@@ -16,7 +17,7 @@ E-Certificate
     background-image: url("/assets/images/e-cert.png");
 
     /* Full height */
-    height: 100%;
+    height: 95%;
 
     /* Center and scale the image nicely */
     background-position: center;
