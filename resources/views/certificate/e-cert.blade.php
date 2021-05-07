@@ -31,20 +31,16 @@ E-Certificate
 <div class="bg">
     <div class="container" style="border-width:10px !important">
         <div class="py-5"></div>
-        <div class="row py-5">
-            <div class="col-md-12 pt-5 text-center">
-                <img src="/assets/images/logo.png" style="max-width:200px">
+            <div class="row py-5">
+                <div class="col-md-12 pt-5 text-center">
+                    <img src="/assets/images/logo.png" style="max-width:200px">
+                </div>
             </div>
-        </div>
         
-        <div class="row">
             <div class="col-md-12 py-4 text-center">
                 <h1 class="display-1 text-break">CERTIFICATE</h1>
                 <h1 class="display-4">OF COMPLETION</h1>
             </div>
-        </div>
-        
-        <div class="row">
             <div class="col-md-12 py-5 text-center">
                 <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
                 <h5> ({{ $student->ic }})</h5>
