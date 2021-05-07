@@ -6,8 +6,7 @@ E-Certificate
 
 <style>
     body {
-    background-image: url("/assets/images/e-cert.png");
-    background-color: #cccccc;
+    background-image: url("/assets/images/e-cert.png") !important;
     }
 </style>
 
