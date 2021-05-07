@@ -7,7 +7,7 @@ E-Certificate
 <style>
     body, html {
         height: 100% !important;
-        background-color: #fff !important;
+        /* background-color: #fff !important; */
     }
 
     .bg {
@@ -27,7 +27,7 @@ E-Certificate
 @section('content')
 
 <div class="bg">
-    <div class="container mt-2" style="border-width:10px !important">
+    <div class="container" style="border-width:10px !important">
         <div class="py-5"></div>
         <div class="row py-5">
             <div class="col-md-12 pt-5 text-center">
