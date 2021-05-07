@@ -57,7 +57,7 @@ E-Certificate
 .centered {
 position: absolute;
   top: 8px;
-  left: 15%;
+  left: 14%;
 }
 
 </style>
