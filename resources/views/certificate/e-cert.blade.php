@@ -6,7 +6,7 @@ E-Certificate
 
 @section('content')
 
-<div class="container">
+<div class="container border border-5 border-secondary">
     <div class="row">
         <div class="col-md-12 pt-5 text-center">
             <img src="/assets/images/logo.png" style="max-width:150px">
