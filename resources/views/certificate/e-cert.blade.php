@@ -7,6 +7,8 @@ E-Certificate
 <style>
     body {
     background-image: url("/assets/images/e-cert.png") !important;
+    height: 500px !important; /* You must set a specified height */
+    background-position: center !important; /* Center the image */
     }
 </style>
 
