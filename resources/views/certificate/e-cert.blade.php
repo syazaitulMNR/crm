@@ -68,7 +68,7 @@ E-Certificate
 
 {{-- <div class="bg"> --}}
     <div class="container">
-        <img src="/assets/images/e-cert.png" alt="e-cert" style="width:100%;">
+        <img src="/assets/images/e-cert.png" alt="e-cert" style="width:1080px;">
         <div class="centered">
             <div class="py-5"></div>
             <div class="row py-5">
