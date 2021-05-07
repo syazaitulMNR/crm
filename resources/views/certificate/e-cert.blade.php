@@ -45,9 +45,7 @@ E-Certificate
                 <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
                 <h5> ({{ $student->ic }})</h5>
             </div>
-        </div>
-        
-        <div class="row pb-5">
+
             <div class="col-md-12 py-5 text-center">
                 <p class="lead"> Successfully complete the</p>
                 <h3> {{ $product->name }}</h3>
@@ -56,9 +54,7 @@ E-Certificate
                 <p class="lead"> that was held on </p>
                 <h3> {{ $product->date_from }} &nbsp; to &nbsp; {{ $product->date_to }}</h3>
             </div>
-        </div>
-        
-        <div class="row-fluid py-4">
+            
             <div class="col-md-6 text-center pb-5" style="padding-left: 10%;">  
                 <img src="/assets/images/certified_cop.png" style="max-width:200px;">
             </div>
