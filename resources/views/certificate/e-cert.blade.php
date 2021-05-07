@@ -33,7 +33,7 @@ E-Certificate
         <div class="py-5"></div>
         <div class="row py-5">
             <div class="col-md-12 pt-5 text-center">
-                <img src="/assets/images/logo.png" style="max-width:200px">
+                <img src="/assets/images/logo-text.png" style="max-width:200px">
             </div>
         </div>
         
@@ -46,6 +46,7 @@ E-Certificate
         
         <div class="row">
             <div class="col-md-12 py-5 text-center">
+                <p class="lead">This certifies that</p>
                 <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
                 <h5> ({{ $student->ic }})</h5>
             </div>
@@ -53,7 +54,7 @@ E-Certificate
         
         <div class="row pb-5">
             <div class="col-md-12 py-5 text-center">
-                <p class="lead"> Successfully complete the</p>
+                <p class="lead"> has successfully completed</p>
                 <h3> {{ $product->name }}</h3>
             </div>
             <div class="col-md-12 py-5 text-center">
