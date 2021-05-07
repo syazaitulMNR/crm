@@ -8,14 +8,13 @@ E-Certificate
     body, html {
         height: 100% !important;
         background-color: #fff !important;
-    background-attachment: fixed !important;
         padding-top: 8px !important;        
         padding-bottom: 8px !important;
     }
 
     .bg {
     /* The image used */
-    background-image: url("/assets/images/e-cert.png");
+    background-image: url("/assets/images/e-cert.png") fixed;
 
     /* Full height */
     height: 100%;
