@@ -20,7 +20,7 @@ E-Certificate
                         <div class="lead px-3 py-3">Sila masukkan no. IC/passport bagi mendapatkan e-sijil</div>
                         <form action="{{ url('verify') }}/{{ $product->product_id }}" method="get">
                             @csrf
-                            <div class="col-md-12 pb-3">
+                            <div class="col-md-12 pb-4">
                                 <input type="text" class="form-control" name="ic" placeholder="tanpa '-' .Cth: 91042409**** / A********" maxlength="12" required="" >
                             </div>
                             <div class="col-md-12 pb-5">
