@@ -33,13 +33,13 @@ class CertController extends Controller
         }
     }
 
-    public function show_info($product_id, $stud_id, Request $request)
-    {
-        $product = Product::where('product_id',$product_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+    // public function show_info($product_id, $stud_id, Request $request)
+    // {
+    //     $product = Product::where('product_id',$product_id)->first();
+    //     $student = Student::where('stud_id', $stud_id)->first();
 
-        return view('certificate.show_info', compact('product', 'student'));
-    }
+    //     return view('certificate.show_info', compact('product', 'student'));
+    // }
 
     public function get_cert($product_id, $stud_id)
     {
