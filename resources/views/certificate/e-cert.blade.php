@@ -22,7 +22,7 @@ E-Certificate
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1900px 1080px;
+    background-size: 1080px 100px;
     }
 </style>
 
