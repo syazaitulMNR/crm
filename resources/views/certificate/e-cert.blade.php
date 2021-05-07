@@ -15,8 +15,7 @@ E-Certificate
     background-image: url("/assets/images/e-cert.png");
 
     /* Full height */
-    /* height: 100%; */
-    width: 100%;
+    height: 100%;
 
     /* Center and scale the image nicely */
     background-position: center;
