@@ -159,7 +159,7 @@
         
     </head>
     <body>  
-        <div class="container-fluid">
+        <div class="container-fluid mb-3">
             @yield('content')
         </div>
     </body>
