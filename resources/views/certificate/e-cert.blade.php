@@ -31,7 +31,7 @@ E-Certificate
 <div class="bg">
     <div class="container" style="border-width:10px !important">
         <div class="py-5"></div>
-        <div class="row py-5">
+        <div class="row py-4">
             <div class="col-md-12 pt-5 text-center">
                 <img src="/assets/images/logo-text.png" style="max-width:200px">
             </div>
@@ -52,7 +52,7 @@ E-Certificate
             </div>
         </div>
         
-        <div class="row pb-5">
+        <div class="row pb-4">
             <div class="col-md-12 py-5 text-center">
                 <p class="lead"> has successfully completed the course</p>
                 <h3> {{ $product->name }}</h3>
