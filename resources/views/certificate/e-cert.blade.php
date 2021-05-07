@@ -7,6 +7,7 @@ E-Certificate
 <style>
     body, html {
         height: 100% !important;
+        background-color: #fff !important;
     }
 
     .bg {
