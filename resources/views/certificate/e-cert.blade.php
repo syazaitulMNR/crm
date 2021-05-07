@@ -33,7 +33,7 @@ E-Certificate
         <div class="py-5"></div>
         <div class="row py-4">
             <div class="col-md-12 pt-5 text-center">
-                <img src="/assets/images/logo-text.png" style="max-width:200px">
+                <img src="/assets/images/logo_text.png" style="max-width:200px">
             </div>
         </div>
         
