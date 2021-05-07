@@ -5,8 +5,9 @@ E-Certificate
 @endsection
 
 <style>
-    .container {
+    body {
     background-image: url("/assets/images/e-cert.png") !important;
+    margin-bottom: 10% !important;
     
     }
 </style>
