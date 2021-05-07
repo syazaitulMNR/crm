@@ -28,7 +28,7 @@ E-Certificate
     .container {
   position: relative;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .bottom-left {
