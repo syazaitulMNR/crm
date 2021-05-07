@@ -14,7 +14,7 @@ E-Certificate
 
     .bg {
     /* The image used */
-    background-image: url("/assets/images/e-cert.png") fixed;
+    background-image: url("/assets/images/e-cert.png");
 
     /* Full height */
     height: 100%;
