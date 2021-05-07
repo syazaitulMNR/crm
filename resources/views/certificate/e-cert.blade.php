@@ -57,7 +57,7 @@ E-Certificate
 .centered {
   position: absolute;
   top: 50%;
-  left: 30%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -102,10 +102,10 @@ E-Certificate
             </div>
             
             <div class="row py-4">
-                <div class="col-md-6 text-center pb-5" style="padding-left: 10%;">  
+                <div class="col-md-6 text-center pb-5">  
                     <img src="/assets/images/certified_cop.png" style="max-width:200px;">
                 </div>
-                <div class="col-md-6 text-center pb-5" style="padding-right: 10%;">  
+                <div class="col-md-6 text-center pb-5">  
                     <img src="/assets/images/signature.png" style="max-width:80px;">
                     <h3 class="border-top border-dark mt-2 mx-5">Najib Asaddok</h3>
                     <p class="lead m-0"> Chief Executive Officer (CEO)</p>
