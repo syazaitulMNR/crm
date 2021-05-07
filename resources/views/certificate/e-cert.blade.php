@@ -25,11 +25,10 @@ E-Certificate
     background-size: cover; 
     } */
 
-    /* .container {
+    .container {
   position: relative;
-  text-align: center;
   color: rgb(0, 0, 0);
-} */
+}
 
 .bottom-left {
   position: absolute;
