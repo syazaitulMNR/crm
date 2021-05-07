@@ -4,6 +4,13 @@
 E-Certificate
 @endsection
 
+<style>
+    body {
+    background-image: url("/assets/images/e-cert.png");
+    background-color: #cccccc;
+    }
+</style>
+
 @section('content')
 
 <div class="container border border-secondary my-3 bg-white" style="border-width:10px !important">
