@@ -102,10 +102,10 @@ E-Certificate
             </div>
             
             <div class="row py-4">
-                <div class="col-md-6 text-center pb-5">  
+                <div class="col-md-6 text-center pb-5 ml-0">  
                     <img src="/assets/images/certified_cop.png" style="max-width:200px;">
                 </div>
-                <div class="col-md-6 text-center pb-5">  
+                <div class="col-md-6 text-center pb-5 mr-0">  
                     <img src="/assets/images/signature.png" style="max-width:80px;">
                     <h3 class="border-top border-dark mt-2 mx-5">Najib Asaddok</h3>
                     <p class="lead m-0"> Chief Executive Officer (CEO)</p>
