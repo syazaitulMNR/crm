@@ -129,10 +129,10 @@
           color: #3498db;
           cursor: pointer;
           display: inline-block;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: bold;
           margin: 0;
-          padding: 12px 25px;
+          padding: 6px 12px;
           text-decoration: none;
           text-transform: capitalize;
           text-align: center;  }

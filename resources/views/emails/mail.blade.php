@@ -41,11 +41,11 @@
                             </tr>
                             <hr>
                             <tr>
-                              <td class="align-center">
+                              <td>
                                 <table style="border: none; cellpadding: 0; cellspacing: 0;" >
                                   <tbody>
                                   <tr>
-                                      <td>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit pembayaran</td>
+                                      <td>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit pembayaran atau jika anda hendak menaik taraf pakej:</td>
                                   </tr>
                                   </tbody>
                                 </table>
@@ -56,14 +56,17 @@
                                   <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
                                     <tbody>
                                       <tr>
-                                      <td> <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}" class="btn btn-primary py-3 px-4">Kemaskini</a> </td>
+                                      <td> 
+                                        <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}" class="btn btn-primary py-3 px-4">Kemaskini</a> </td><td> 
+                                        <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf Pakej</a>
+                                      </td>
                                       </tr>
                                     </tbody>
                                   </table>
                                 </td>
                             </tr>
                             <hr>
-                            <tr>
+                            {{-- <tr>
                               <td class="align-center">
                                 <p>Jika anda berminat untuk naik taraf pakej, sila klik butang di bawah.</p>
                               </td>
@@ -74,15 +77,15 @@
                                   <tbody>
                                     <tr>
                                     <td> 
-                                      <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Upgrade Package</a>
+                                      <a class="btn btn-primary py-3 px-4" href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf Pakej</a>
                                       {{-- <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-flex/" class="btn btn-primary py-3 px-4">Flex</a>
                                       <a href="https://order.momentuminternet.com/product/up-gen-storm-2021-24-25-apr-2021-online-vip/" class="btn btn-primary py-3 px-4">VIP</a> --}}
-                                    </td>
+                                    {{-- </td>
                                     </tr>
                                   </tbody>
                                 </table>
                               </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                               <td>
                                 <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p>
