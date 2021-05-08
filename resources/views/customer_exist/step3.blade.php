@@ -50,9 +50,9 @@ Pendaftaran Pembeli
                                 <td class="w-50">Kuantiti Tiket</td>
                                 <td>:</td>
                                 {{-- If get 1 free 1 ticket --}}
-                                <td><strong>{{$payment->quantity}} (Free 1 General)</strong></td>
+                                {{-- <td><strong>{{$payment->quantity}} (Free 1 General)</strong></td> --}}
                                 {{-- If bulk ticket --}}
-                                {{-- <td><strong>{{$payment->quantity}}</strong></td> --}}
+                                <td><strong>{{$payment->quantity}}</strong></td>
                             </tr>
                             <tr>
                                 <td class="w-50">Jumlah Bayaran</td>
