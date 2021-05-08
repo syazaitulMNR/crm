@@ -33,15 +33,15 @@
                             <hr>
                             <tr>
                               <td>                                
-                                <p>PENTING!</p>
+                                <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Sila jawab soalan kaji selidik ini supaya anda dapat info kelas dan update terkini:</p>
+                                <p>1. Sila jawab soalan kaji selidik ini supaya anda dapat perolehi maklumat terkini program:</p>
                               </td>
                             </tr>
                             <tr>
-                              <td class="align-center">
-                                <a href="http://google.com"> {{ $product_name }}</a>
-                              </td>
+                                <td class="align-center">
+                                    <a href="http://google.com"> {{ $product_name }}</a>
+                                </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
                             <hr>

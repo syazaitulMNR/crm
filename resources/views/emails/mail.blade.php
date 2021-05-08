@@ -33,7 +33,7 @@
                             <hr>
                             <tr>
                               <td>                                
-                                <p>PENTING! Wajib follow step di bawah, supaya anda dapat info kelas dan update terkini.</p>
+                                <p>PENTING! Wajib ikuti langkah di bawah supaya anda dapat perolehi maklumat terkini program.</p>
                                 <br>
                                 <p>1. Sila jawab soalan kaji selidik ini:</p>
                               </td>
