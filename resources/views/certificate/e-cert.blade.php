@@ -59,7 +59,7 @@ E-Certificate
             </div>
             <div class="col-md-12 py-5 text-center">
                 <p class="lead"> that was held on </p>
-                <h3> {{ $product->date('d/m/Y', strtotime($date_from)) }} &nbsp; - &nbsp; {{ $product->date('d/m/Y', strtotime($date_to)) }}</h3>
+                <h3> {{ date('d/m/Y', strtotime($product->date_from)) }} &nbsp; - &nbsp; {{ date('d/m/Y', strtotime($product->date_to)) }}</h3>
             </div>
         </div>
         <div class="row py-4">
