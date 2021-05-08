@@ -35,12 +35,23 @@
                               <td>                                
                                 <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
+                                <p>1. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois:</p>
                               </td>
                             </tr>
                             <tr>
                               <td class="align-center">
                                 <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
+                              </td>
+                            </tr>
+                            <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+                            <tr>
+                              <td>
+                                <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="align-center">
+                                
                                 <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
                               </td>
                             </tr>
