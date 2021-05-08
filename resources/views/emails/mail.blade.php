@@ -25,8 +25,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                  <b>Tarikh</b> : {{ $date_from }} hingga {{ $date_to }}<br>
-                                  <b>Waktu</b> : {{ $time_from }} hingga {{ $time_to}}<br>
+                                  <b>Tarikh</b> : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
+                                  <b>Masa</b> : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br>
                                   <b>Order ID</b> : {{ $payment_id }}
                                 </td>
                             </tr>
