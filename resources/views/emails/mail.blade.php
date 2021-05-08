@@ -15,11 +15,6 @@
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" >
                     <tr>
                       <td>
-                        <img src="/assets/images/logo.png" style="max-width:200px">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
                         <h3>Pendaftaran anda telah berjaya!</h3>
                         <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                           <tbody>
@@ -39,19 +34,18 @@
                             <tr>
                               <td>
                                 <p>PENTING! Wajib follow step di bawah, supaya anda dapat info kelas dan update terkini.</p>
-                                <br>
-                                <p>Jawab Soal Selidik ini -> <a href="http://google.com"> {{ $product_name }}</a></p>
-                                <p>Selepas jawab Soal Selidik, anda akan dibawa ke Channel Telegram Khas. Segala update kelas dan info program akan diupdate di Telegram Channel tersebut.</p>
                               </td>
                             </tr>
                             <hr>
                             <tr>
                               <td>
+                                <p>Jawab soalan kaji selidik ini: <a href="http://google.com"> {{ $product_name }}</a></p>
+                                <p style="font-size: 10px; color:red">Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
                                 <p>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
-                                <br>
-                                {{-- <p>Kemaskini butiran peserta -> <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
-                                <p>Naik Taraf Pakej -> <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
-                                <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p> --}}
                               </td>
                             </tr>
                             <tr>
