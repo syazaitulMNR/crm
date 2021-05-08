@@ -13,23 +13,25 @@ use Mail;
 class TiketJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to;
+    protected $send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to)
+    public function __construct($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)
     {
-        $this->email = $email;
-        $this->name = $name;    
-        $this->product_name = $product_name;    
-        $this->package_name = $package_name;
-        $this->date_from = $date_from;
-        $this->date_to = $date_to;
-        $this->time_from = $time_from;
+        $this->send_mail = $send_mail;
+        $this->product_name = $product_name;        
+        $this->date_from = $date_from;        
+        $this->date_to = $date_to;        
+        $this->time_from = $time_from;        
         $this->time_to = $time_to;
+        $this->packageId = $packageId;
+        $this->payment_id = $payment_id;
+        $this->productId = $productId;
+        $this->student_id = $student_id;
     }
 
     /**
@@ -39,12 +41,14 @@ class TiketJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->email)->send(new SendMailable(  $this->name,
-                                                        $this->product_name,
-                                                        $this->package_name,
+        Mail::to($this->email)->send(new SendMailable(  $this->product_name,
                                                         $this->date_from,
                                                         $this->date_to,
                                                         $this->time_from,
-                                                        $this->time_to ));
+                                                        $this->time_to,
+                                                        $this->packageId,
+                                                        $this->payment_id,
+                                                        $this->productId,
+                                                        $this->student_id ));
     }
 }
