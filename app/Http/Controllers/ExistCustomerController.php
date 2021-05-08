@@ -36,7 +36,7 @@ class ExistCustomerController extends Controller
         ]);
   
         if(empty($request->session()->get('student'))){
-            $stud = new Student();
+            $stud = Student::where('stud_id', $stud_id)->first();
             $stud->fill($validatedData);
             $request->session()->put('student', $stud);
         }else{
@@ -264,6 +264,7 @@ class ExistCustomerController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
+        $student->save();
         $payment->save();
   
         $request->session()->forget('student');
@@ -345,6 +346,7 @@ class ExistCustomerController extends Controller
             
             /*-- End Email -----------------------------------------------------------*/
 
+            $student->save();
             $payment->save();
     
             $request->session()->forget('student');
@@ -353,6 +355,7 @@ class ExistCustomerController extends Controller
             return view('customer/thankyou');  
         } else {
 
+            $student->save();
             $payment->save();
     
             $request->session()->forget('student');
