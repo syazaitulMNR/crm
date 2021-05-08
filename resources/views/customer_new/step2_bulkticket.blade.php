@@ -81,7 +81,7 @@ Pendaftaran Pembeli
     </div>
 </div>
 
-<script>
+{{-- <script>
     function myFunction(val) {
 
         var total;
@@ -128,5 +128,5 @@ Pendaftaran Pembeli
         }
 
     }
-</script>
+</script> --}}
 @endsection
