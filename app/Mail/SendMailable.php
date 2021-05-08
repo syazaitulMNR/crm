@@ -37,7 +37,7 @@ class SendMailable extends Mailable
     public function build()
     {        
         return $this->view('emails.update_mail')
-        ->subject('Pengesahan Pembelian Tiket')
+        ->subject('Pengesahan Pendaftaran Peserta')
         ->with(
             [
                   'name' => $this->name,
