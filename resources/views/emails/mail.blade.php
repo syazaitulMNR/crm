@@ -35,7 +35,7 @@
                               <td>                                
                                 <p>PENTING! Wajib follow step di bawah, supaya anda dapat info kelas dan update terkini.</p>
                                 <br>
-                                <p>1. Jawab soalan kaji selidik ini:</p>
+                                <p>1. Sila jawab soalan kaji selidik ini:</p>
                               </td>
                             </tr>
                             <tr>
@@ -43,7 +43,7 @@
                                 <a href="http://google.com"> {{ $product_name }}</a>
                               </td>
                             </tr>
-                            <p style="font-size: 10px; color:red">Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+                            <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
                             <tr>
                               <td>
                                 <p>2. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
