@@ -144,15 +144,17 @@ class HomeController extends Controller
                                 $package = Package::where('package_id', $package_id)->first();
 
                                 $email = $request->email_peserta[$key]; 
-                                $name = $request->firstname_peserta[$key]; 
                                 $product_name = $product->name;
-                                $package_name = $package->name;
                                 $date_from = $product->date_from;
                                 $date_to = $product->date_to;
                                 $time_from = $product->time_from;
                                 $time_to = $product->time_to;
+                                $packageId = $package_id;
+                                $payment_id = $payment->payment_id;
+                                $productId = $product_id;        
+                                $student_id = $student->stud_id;
                                 
-                                dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
+                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                                 // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                                 
                                 continue;
@@ -182,15 +184,17 @@ class HomeController extends Controller
                             $package = Package::where('package_id', $package_id)->first();
 
                             $email = $request->email_peserta[$key]; 
-                            $name = $request->firstname_peserta[$key]; 
                             $product_name = $product->name;
-                            $package_name = $package->name;
                             $date_from = $product->date_from;
                             $date_to = $product->date_to;
                             $time_from = $product->time_from;
                             $time_to = $product->time_to;
+                            $packageId = $package_id;
+                            $payment_id = $payment->payment_id;
+                            $productId = $product_id;        
+                            $student_id = $student->stud_id;
                             
-                            dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
+                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                             
                             // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                         }
@@ -213,15 +217,17 @@ class HomeController extends Controller
                     $package = Package::where('package_id', $package_id)->first();
 
                     $email = $request->email; 
-                    $name = $request->first_name; 
                     $product_name = $product->name;
-                    $package_name = $package->name;
                     $date_from = $product->date_from;
                     $date_to = $product->date_to;
                     $time_from = $product->time_from;
                     $time_to = $product->time_to;
+                    $packageId = $package_id;
+                    $payment_id = $payment->payment_id;
+                    $productId = $product_id;        
+                    $student_id = $student->stud_id;
                     
-                    dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));                     
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));                     
                     // Mail::to($email_buyer)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
 
                 }else{
@@ -251,15 +257,17 @@ class HomeController extends Controller
                     $package = Package::where('package_id', $package_id)->first();
 
                     $email = $request->email; 
-                    $name = $request->first_name; 
                     $product_name = $product->name;
-                    $package_name = $package->name;
                     $date_from = $product->date_from;
                     $date_to = $product->date_to;
                     $time_from = $product->time_from;
                     $time_to = $product->time_to;
+                    $packageId = $package_id;
+                    $payment_id = $payment->payment_id;
+                    $productId = $product_id;        
+                    $student_id = $student->stud_id;
                     
-                    dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                     // Mail::to($email_buyer2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                 
                     // If quantity = 1
@@ -278,15 +286,17 @@ class HomeController extends Controller
                                 $package = Package::where('package_id', $package_id)->first();
 
                                 $email = $request->email_peserta[$key];
-                                $name = $request->firstname_peserta[$key]; 
                                 $product_name = $product->name;
-                                $package_name = $package->name;
                                 $date_from = $product->date_from;
                                 $date_to = $product->date_to;
                                 $time_from = $product->time_from;
                                 $time_to = $product->time_to;
+                                $packageId = $package_id;
+                                $payment_id = $payment->payment_id;
+                                $productId = $product_id;        
+                                $student_id = $student->stud_id;
                                 
-                                dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
+                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                                 // $from_name = 'noreply@momentuminternet.com';
                                 // $email_participant3 = $request->email_peserta[$key]; 
                                 
@@ -328,15 +338,17 @@ class HomeController extends Controller
                             $package = Package::where('package_id', $package_id)->first();
 
                             $email = $request->email_peserta[$key];
-                            $name = $request->firstname_peserta[$key]; 
                             $product_name = $product->name;
-                            $package_name = $package->name;
                             $date_from = $product->date_from;
                             $date_to = $product->date_to;
                             $time_from = $product->time_from;
                             $time_to = $product->time_to;
+                            $packageId = $package_id;
+                            $payment_id = $payment->payment_id;
+                            $productId = $product_id;        
+                            $student_id = $student->stud_id;
                             
-                            dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
+                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                             // Mail::to($email_participant4)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                             
                         }
