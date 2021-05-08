@@ -32,20 +32,21 @@
                             </tr>
                             <hr>
                             <tr>
-                              <td>
+                              <td>                                
                                 <p>PENTING! Wajib follow step di bawah, supaya anda dapat info kelas dan update terkini.</p>
-                              </td>
-                            </tr>
-                            <hr>
-                            <tr>
-                              <td>
-                                <p>Jawab soalan kaji selidik ini: <a href="http://google.com"> {{ $product_name }}</a></p>
-                                <p style="font-size: 10px; color:red">Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+                                <br>
+                                <p>1. Jawab soalan kaji selidik ini:</p>
                               </td>
                             </tr>
                             <tr>
+                              <td class="align-center">
+                                <a href="http://google.com"> {{ $product_name }}</a>
+                              </td>
+                            </tr>
+                            <p style="font-size: 10px; color:red">Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+                            <tr>
                               <td>
-                                <p>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
+                                <p>2. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
                               </td>
                             </tr>
                             <tr>
