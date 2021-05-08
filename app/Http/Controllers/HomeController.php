@@ -975,7 +975,7 @@ class HomeController extends Controller
 
     public function thankyou_update() 
     {
-        return view('customer/thankyou_update');
+        return view('customer.thankyou_update');
     }
 
     public function try()
