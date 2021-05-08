@@ -422,13 +422,16 @@ class NewCustomerController extends Controller
 
             $send_mail = $student->email;
             $product_name = $product->name;        
-            $package_name = $package->name;
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
             $packageId = $package_id;
             $payment_id = $payment->payment_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
 
-            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $packageId, $payment_id, $productId, $student_id));
+            dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
             
             /*-- End Email -----------------------------------------------------------*/
             
