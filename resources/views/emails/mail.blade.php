@@ -15,6 +15,11 @@
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" >
                     <tr>
                       <td>
+                        <img src="/assets/images/logo.png" style="max-width:200px">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
                         <h3>Pendaftaran anda telah berjaya!</h3>
                         <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                           <tbody>
@@ -40,12 +45,21 @@
                               </td>
                             </tr>
                             <hr>
-                            <tr>
+                            {{-- <tr>
                               <td>
-                                <p>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit pembayaran atau jika anda hendak menaik taraf pakej:</p>
+                                <p>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
                                 <br>
                                 <p>Kemaskini butiran peserta -> <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
                                 <p>Naik Taraf Pakej -> <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
+                                <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p>
+                              </td>
+                            </tr> --}}
+                            <tr>
+                              <td>
+                                <p>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
+                                <br>
+                                <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
+                                <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
                                 <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p>
                               </td>
                             </tr>
