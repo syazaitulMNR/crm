@@ -166,12 +166,12 @@ class HomeController extends Controller
 
                             Student::create(array(
 
-                                'stud_id'=> $stud_id,
+                                'stud_id' => $stud_id,
                                 'first_name' => $request->firstname_peserta[$key],
                                 'last_name' => $request->lastname_peserta[$key],
                                 'ic' => $value,
-                                'email'=> $request->email_peserta[$key],
-                                'phoneno'=> '+6'.$request->phoneno_peserta[$key],
+                                'email' => $request->email_peserta[$key],
+                                'phoneno' => $request->phoneno_peserta[$key],
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -239,8 +239,8 @@ class HomeController extends Controller
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
                         'ic' => $request->ic,
-                        'email'=> $request->email,
-                        'phoneno'=> '+6'.$request->phoneno,
+                        'email' => $request->email,
+                        'phoneno' => $request->phoneno,
                         'product_id' => $product_id,
                         'package_id' => $package_id
             
@@ -316,8 +316,8 @@ class HomeController extends Controller
                                 'first_name' => $request->firstname_peserta[$key],
                                 'last_name' => $request->lastname_peserta[$key],
                                 'ic' => $value,
-                                'email'=> $request->email_peserta[$key],
-                                'phoneno'=> '+6'.$request->phoneno_peserta[$key],
+                                'email' => $request->email_peserta[$key],
+                                'phoneno' => $request->phoneno_peserta[$key],
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -396,7 +396,7 @@ class HomeController extends Controller
                                 'last_name' => $request->lastname_free1,
                                 'ic' => $request->ic_free1,
                                 'email'=> $request->email_free1,
-                                'phoneno'=> '+6'.$request->phoneno_free1,
+                                'phoneno'=> $request->phoneno_free1,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -432,8 +432,8 @@ class HomeController extends Controller
                                 'first_name' => $request->firstname_free2,
                                 'last_name' => $request->lastname_free2,
                                 'ic' => $request->ic_free2,
-                                'email'=> $request->email_free2,
-                                'phoneno'=> '+6'.$request->phoneno_free2,
+                                'email' => $request->email_free2,
+                                'phoneno' => $request->phoneno_free2,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -469,8 +469,8 @@ class HomeController extends Controller
                                 'first_name' => $request->firstname_free3,
                                 'last_name' => $request->lastname_free3,
                                 'ic' => $request->ic_free3,
-                                'email'=> $request->email_free3,
-                                'phoneno'=> '+6'.$request->phoneno_free3,
+                                'email' => $request->email_free3,
+                                'phoneno' => $request->phoneno_free3,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -535,8 +535,8 @@ class HomeController extends Controller
                                 'first_name' => $request->firstname_peserta[$key],
                                 'last_name' => $request->lastname_peserta[$key],
                                 'ic' => $value,
-                                'email'=> $request->email_peserta[$key],
-                                'phoneno'=> '+6'.$request->phoneno_peserta[$key],
+                                'email' => $request->email_peserta[$key],
+                                'phoneno' => $request->phoneno_peserta[$key],
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -617,8 +617,8 @@ class HomeController extends Controller
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
                         'ic' => $request->ic,
-                        'email'=> $request->email,
-                        'phoneno'=> '+6'.$request->phoneno,
+                        'email' => $request->email,
+                        'phoneno' => $request->phoneno,
                         'product_id' => $product_id,
                         'package_id' => $package_id
             
@@ -673,8 +673,8 @@ class HomeController extends Controller
                                 'first_name' => $request->firstname_free1,
                                 'last_name' => $request->lastname_free1,
                                 'ic' => $request->ic_free1,
-                                'email'=> $request->email_free1,
-                                'phoneno'=> '+6'.$request->phoneno_free1,
+                                'email' => $request->email_free1,
+                                'phoneno' => $request->phoneno_free1,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -720,12 +720,12 @@ class HomeController extends Controller
 
                             Student::create(array(
 
-                                'stud_id'=> $stud_id_pkg2,
+                                'stud_id' => $stud_id_pkg2,
                                 'first_name' => $request->firstname_free2,
                                 'last_name' => $request->lastname_free2,
                                 'ic' => $request->ic_free2,
-                                'email'=> $request->email_free2,
-                                'phoneno'=> '+6'.$request->phoneno_free2,
+                                'email' => $request->email_free2,
+                                'phoneno' => $request->phoneno_free2,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -771,12 +771,12 @@ class HomeController extends Controller
 
                             Student::create(array(
 
-                                'stud_id'=> $stud_id_pkg3,
+                                'stud_id' => $stud_id_pkg3,
                                 'first_name' => $request->firstname_free3,
                                 'last_name' => $request->lastname_free3,
                                 'ic' => $request->ic_free3,
-                                'email'=> $request->email_free3,
-                                'phoneno'=> '+6'.$request->phoneno_free3,
+                                'email' => $request->email_free3,
+                                'phoneno' => $request->phoneno_free3,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
@@ -865,12 +865,12 @@ class HomeController extends Controller
 
                             Student::create(array(
 
-                                'stud_id'=> $stud_id,
+                                'stud_id' => $stud_id,
                                 'first_name' => $request->firstname_peserta[$key],
                                 'last_name' => $request->lastname_peserta[$key],
                                 'ic' => $value,
-                                'email'=> $request->email_peserta[$key],
-                                'phoneno'=> '+6'.$request->phoneno_peserta[$key],
+                                'email' => $request->email_peserta[$key],
+                                'phoneno' => $request->phoneno_peserta[$key],
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
