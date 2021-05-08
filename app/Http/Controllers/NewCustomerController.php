@@ -10,6 +10,7 @@ use App\Payment;
 use Stripe;
 use Mail;
 use Billplz\Client;
+use App\Jobs\PengesahanJob;
 
 class NewCustomerController extends Controller
 {
