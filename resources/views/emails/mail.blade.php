@@ -33,20 +33,9 @@
                             <hr>
                             <tr>
                               <td>                                
-                                <p>PENTING! Wajib ikuti langkah di bawah supaya anda dapat perolehi maklumat terkini program.</p>
+                                <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Sila jawab soalan kaji selidik ini:</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="align-center">
-                                <a href="http://google.com"> {{ $product_name }}</a>
-                              </td>
-                            </tr>
-                            <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
-                            <tr>
-                              <td>
-                                <p>2. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
+                                <p>1. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois atau jika anda hendak menaik taraf pakej:</p>
                               </td>
                             </tr>
                             <tr>
@@ -83,7 +72,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
+                            <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
                         </td>
                     </tr>
                     <tr>

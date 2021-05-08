@@ -40,7 +40,7 @@
                             </tr>
                             <tr>
                                 <td class="align-center">
-                                    <a href="http://google.com"> {{ $product_name }}</a>
+                                    <a href="http://google.com"> Soalan kaji selidik</a>
                                 </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
@@ -51,7 +51,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
+                            <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
                         </td>
                     </tr>
                     <tr>
