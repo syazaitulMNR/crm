@@ -43,8 +43,8 @@ Pendaftaran Pembeli
                             <div class="col-md-6 pb-2">
                                 <label for="price">Harga:</label>
                                 <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
-                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
-                                <input type="hidden" name="pay_price" value="{{ $package->price }}" disabled>
+                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" readonly>
+                                <input type="hidden" name="pay_price" value="{{ $package->price }}" readonly>
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="quantity">Kuantiti:</label>
@@ -58,7 +58,7 @@ Pendaftaran Pembeli
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="totalprice">Jumlah Harga (RM)</label><br>
-                                <h3><input type="text" id="jumlahharga" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
+                                <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
                             </div>
                         </div>
   
@@ -81,7 +81,7 @@ Pendaftaran Pembeli
     </div>
 </div>
 
-<script>
+{{-- <script>
     function myFunction(val) {
 
         var total;
@@ -128,6 +128,6 @@ Pendaftaran Pembeli
         }
 
     }
-</script>
+</script> --}}
 
 @endsection
