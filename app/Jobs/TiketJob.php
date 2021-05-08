@@ -22,7 +22,7 @@ class TiketJob implements ShouldQueue
      */
     public function __construct($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)
     {
-        $this->send_mail = $send_mail;
+        $this->email = $email;
         $this->product_name = $product_name;        
         $this->date_from = $date_from;        
         $this->date_to = $date_to;        
