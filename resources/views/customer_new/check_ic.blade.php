@@ -29,7 +29,7 @@
 </div> --}}
 
 <div class="row">
-    <div class="col-md-12 px-3 pt-5 pb-3 text-center">
+    <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:150px">
         <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
     </div>
