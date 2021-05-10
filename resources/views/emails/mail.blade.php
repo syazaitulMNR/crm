@@ -41,11 +41,11 @@
                             <tr>
                               <td class="align-center">
                                 <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
-                                <br>
                               </td>
                             </tr>
                             <tr>
                               <td>
+                                <br>
                                 <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
                               </td>
                             </tr>
