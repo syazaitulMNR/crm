@@ -45,23 +45,24 @@ E-Certificate
         </div>
         
         <div class="row">
-            <div class="col-md-12 py-5 text-center">
+            <div class="col-md-12 py-4 text-center">
                 <p class="lead">This certifies that</p>
                 <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
                 <h5> ({{ $student->ic }})</h5>
             </div>
         </div>
         
-        <div class="row pb-4">
-            <div class="col-md-12 py-5 text-center">
+        <div class="row">
+            <div class="col-md-12 py-4 text-center">
                 <p class="lead"> has successfully completed the course</p>
                 <h3> {{ $product->name }}</h3>
             </div>
-            <div class="col-md-12 py-5 text-center">
+            <div class="col-md-12 py-4 text-center">
                 <p class="lead"> that was held on </p>
                 <h3> {{ date('d/m/Y', strtotime($product->date_from)) }} &nbsp; - &nbsp; {{ date('d/m/Y', strtotime($product->date_to)) }}</h3>
             </div>
         </div>
+
         <div class="row py-4">
             <div class="col-md-6 text-center pb-5" style="padding-left: 10%;">  
                 <img src="/assets/images/certified_cop.png" style="max-width:200px;">
