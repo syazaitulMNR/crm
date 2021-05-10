@@ -8,7 +8,7 @@ E-Certificate
     body, html {
         height: 100% !important;
         background-color: #fff !important;
-        margin: 0 !important;
+        margin-left: 0 !important;
         /* padding-top: 8px !important;        
         padding-bottom: 8px !important; */
     }
