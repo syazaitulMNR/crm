@@ -18,7 +18,6 @@ E-Certificate
 
     /* Full height */
     height: 100%;
-    margin: 0 !important;
 
     /* Center and scale the image nicely */
     background-position: center;
