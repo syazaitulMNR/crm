@@ -136,10 +136,10 @@ Pendaftaran Pembeli
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('langkah-keempat') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-danger">Kembali</a>
+                                <a href="{{ url('langkah-keempat') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                             <div class="pull-right">
-                                <button type="submit" name="myButton" class="btn btn-primary">Bayar RM {{$payment->totalprice}}</button>
+                                <button type="submit" name="myButton" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>
                             </div>
                         </div>
                     </div>
