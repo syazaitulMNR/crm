@@ -79,7 +79,7 @@ Pendaftaran Pembeli
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-right">
-                                <button type="submit" class="btn btn-dark">Seterusnya</button>
+                                <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                             </div>
                         </div>
                     </div>
