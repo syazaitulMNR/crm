@@ -28,7 +28,7 @@
 
 <div class="col-md-12 px-2 pt-5 text-center">
     <img src="/assets/images/logo.png" style="max-width:200px">
-    <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
+    <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
 </div>
 
 <div id="msform" class="px-2 py-3">
