@@ -36,6 +36,10 @@
                                 <p class="align-center">PENTING!</p>
                                 <br>
                                 <p>1. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois:</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="align-center">
                                 <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
                                 <br>
                               </td>
@@ -43,7 +47,11 @@
                             <tr>
                               <td>
                                 <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
-                                <a class="align-center" href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="align-center">
+                                <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
                               </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p>
