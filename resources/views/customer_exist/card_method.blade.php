@@ -30,7 +30,7 @@ Pendaftaran Pembeli
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="{{ url('saveStripe') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_test_lrGwlGkyv7dR6xG0pgQ7PFoI00D6Ef6y4Q">
                 @csrf
-                <div class="card w-100">
+                <div class="card w-100 shadow">
                     <div class="card-header bg-dark text-white">Langkah 5: Pembayaran Tiket</div>
   
                     <div class="card-body">

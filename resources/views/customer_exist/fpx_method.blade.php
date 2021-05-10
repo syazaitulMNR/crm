@@ -16,7 +16,7 @@ Pendaftaran Pembeli
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form id="payment-form" onsubmit="return checkForm(this);">
                 @csrf
-                <div class="card w-100">
+                <div class="card w-100 shadow">
                     <div class="card-header bg-dark text-white">Langkah 5: Pembayaran Tiket </div>
   
                     <div class="card-body">

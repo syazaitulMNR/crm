@@ -15,7 +15,7 @@ Pendaftaran Pembeli
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="{{ url('langkah-keempat') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="get" >
                 {{ csrf_field() }}
-                <div class="card w-100">
+                <div class="card w-100 shadow">
                     <div class="card-header bg-dark text-white">Langkah 3: Pengesahan Pembelian</div>
    
                     <div class="card-body px-2">
