@@ -15,7 +15,7 @@ Pendaftaran Pembeli
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="{{ url('store2') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
                 @csrf
-                <div class="card w-100">
+                <div class="card w-100 shadow">
                     <div class="card-header bg-dark text-white">Langkah 2/5: Maklumat Tiket</div>
   
                     <div class="card-body">

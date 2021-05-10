@@ -29,7 +29,7 @@ Pendaftaran Pembeli
             <form action="{{ url('store1') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
                 @csrf
   
-                <div class="card w-100">
+                <div class="card w-100 shadow">
                     <div class="card-header bg-dark text-white">Langkah 1/5: Maklumat Pembeli</div>
   
                     <div class="card-body">
