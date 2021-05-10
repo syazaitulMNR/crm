@@ -76,7 +76,7 @@ Pendaftaran Pembeli
                           
                     </div>
   
-                    {{-- <div class="card-footer"> --}}
+                    <div class="card-footer">
                         {{-- <div class="col-md-12">
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-dark">Seterusnya</button>
@@ -88,7 +88,7 @@ Pendaftaran Pembeli
                                 <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
                             </div>
                         </div>
-                    {{-- </div> --}}
+                    </div>
                 </div>
             </form>
         </div>
