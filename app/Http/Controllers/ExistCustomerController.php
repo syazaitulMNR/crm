@@ -267,11 +267,11 @@ class ExistCustomerController extends Controller
         
         /*-- End Email -----------------------------------------------------------*/
 
-        // $student->save();
-        // $payment->save();
+        $student->save();
+        $payment->save();
   
-        // $request->session()->forget('student');
-        // $request->session()->forget('payment');
+        $request->session()->forget('student');
+        $request->session()->forget('payment');
         
         return redirect('pendaftaran-berjaya');
     }
