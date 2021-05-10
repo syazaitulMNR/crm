@@ -16,7 +16,7 @@ Pendaftaran Pembeli
             <form action="{{ url('save2') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
                 @csrf
                 <div class="card w-100 shadow">
-                    <div class="card-header bg-dark text-white">Langkah 2: Maklumat Tiket</div>
+                    <div class="card-header bg-dark text-white">Langkah 2/5: Maklumat Tiket</div>
   
                     <div class="card-body">
   

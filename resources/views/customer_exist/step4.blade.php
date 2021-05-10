@@ -42,7 +42,7 @@ Pendaftaran Pembeli
             <form action="{{ url('save4') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
                 @csrf
                 <div class="card w-100 shadow">
-                    <div class="card-header bg-dark text-white">Langkah 4: Pilih Jenis Pembayaran</div>
+                    <div class="card-header bg-dark text-white">Langkah 4/5: Pilih Jenis Pembayaran</div>
   
                     <div class="card-body">
   
