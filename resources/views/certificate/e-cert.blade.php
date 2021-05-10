@@ -31,21 +31,21 @@ E-Certificate
 <div class="bg">
     <div class="container" style="border-width:10px !important">
         <div class="py-5"></div>
-        <div class="row py-4">
+        <div class="row py-5">
             <div class="col-md-12 pt-5 text-center">
                 <img src="/assets/images/logo_text.png" style="max-width:200px">
             </div>
         </div>
         
-        <div class="row py-2">
-            <div class="col-md-12 py-4 text-center">
+        <div class="row">
+            <div class="col-md-12 pt-5 text-center">
                 <h1 class="display-1 text-break">CERTIFICATE</h1>
                 <h1 class="display-4">OF COMPLETION</h1>
             </div>
         </div>
         
         <div class="row">
-            <div class="col-md-12 py-4 text-center">
+            <div class="col-md-12 pt-5 text-center">
                 <p class="lead">This certifies that</p>
                 <h3> {{ $student->first_name }} {{ $student->last_name }}</h3>
                 <h5> ({{ $student->ic }})</h5>
@@ -53,11 +53,11 @@ E-Certificate
         </div>
         
         <div class="row pb-5">
-            <div class="col-md-12 py-4 text-center">
+            <div class="col-md-12 pt-5 text-center">
                 <p class="lead"> has successfully completed the course</p>
                 <h3> {{ $product->name }}</h3>
             </div>
-            <div class="col-md-12 py-4 text-center">
+            <div class="col-md-12 pt-5 text-center">
                 <p class="lead"> that was held on </p>
                 <h3> {{ date('d/m/Y', strtotime($product->date_from)) }} &nbsp; - &nbsp; {{ date('d/m/Y', strtotime($product->date_to)) }}</h3>
             </div>
