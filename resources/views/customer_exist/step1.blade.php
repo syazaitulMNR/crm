@@ -83,7 +83,7 @@ Pendaftaran Pembeli
                             </div>
                         </div> --}}
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 pb-3">
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
                             </div>
