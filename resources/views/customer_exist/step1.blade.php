@@ -48,26 +48,26 @@ Pendaftaran Pembeli
 
                             <input type="hidden" value="{{ $student->stud_id }}" class="form-control" name="stud_id" readonly/>
 
-                            <div class="col-md-10 pb-2">
+                            <div class="col-md-12 pb-2">
                                 <label for="description">No. Kad Pengenalan/Passport:</label>
                                 <input type="text"  value="{{ $student->ic ?? '' }}" class="form-control" name="ic" readonly/>
                             </div>
 
-                            <div class="col-md-5 pb-2">
+                            <div class="col-md-6 pb-2">
                                 <label for="title">Nama Pertama:</label>
                                 <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name">
                             </div>
-                            <div class="col-md-5 pb-2">
+                            <div class="col-md-6 pb-2">
                                 <label for="title">Nama Akhir:</label>
                                 <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name">
                             </div>
 
-                            <div class="col-md-5 pb-2">
+                            <div class="col-md-6 pb-2">
                                 <label for="description">Emel:</label>
                                 <input type="text"  value="{{ $student->email ?? '' }}" class="form-control" name="email" placeholder="example@gmail.com"/>
                             </div>
                             
-                            <div class="col-md-5 pb-2">
+                            <div class="col-md-6 pb-2">
                                 <label for="description">No. Telefon:</label><br>
                                 <input id="input-phone" type="tel" name="phoneno" value="{{ $student->phoneno ?? '' }}" class="form-control" />
                                 <label style="font-size: 10pt;"><em>Sila pilih kod negara Cth: *+60 dan isikan no anda *Cth: 1123456789</em></label>
@@ -83,7 +83,7 @@ Pendaftaran Pembeli
                             </div>
                         </div> --}}
 
-                        <div class="col-md-10 pb-3">
+                        <div class="col-md-12 pb-3">
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
                             </div>
