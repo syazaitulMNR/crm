@@ -60,12 +60,12 @@ Pendaftaran Pembeli
                                 <div class="col-md-12 px-5">
                                     <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
                                         <i class="far fa-credit-card fa-3x"></i>
-                                        <br>Kad Debit/Kredit
+                                        <br><br>Kad Debit/Kredit
                                     </button>
                                 
                                     <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
                                         <i class="fas fa-university fa-3x"></i>
-                                        <br>FPX
+                                        <br><br>FPX
                                     </button>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ Pendaftaran Pembeli
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('langkah-ketiga') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-danger pull-right">Kembali</a>
+                                <a href="{{ url('langkah-ketiga') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                         </div>
                     </div>
