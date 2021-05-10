@@ -24,14 +24,14 @@ Pendaftaran Pembeli
     <div class="row">
         <div class="col-md-12 px-3 py-5 text-center">
             <img src="/assets/images/logo.png" style="max-width:200px">
-            <h1 class="text-dark px-4 pt-3">{{ $product->name }}</h1>
+            <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="{{ url('storeCard') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_live_lNl5S8TossaoQYO0qKwSM5pr004b28isKu">
                 @csrf
-                <div class="card w-100">
-                    <div class="card-header bg-dark text-white">Langkah 5: Pembayaran Tiket</div>
+                <div class="card w-100 shadow">
+                    <div class="card-header bg-dark text-white">Langkah 5/5: Pembayaran Tiket</div>
   
                     <div class="card-body">
 
@@ -136,10 +136,10 @@ Pendaftaran Pembeli
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('jenis-pembayaran') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-danger pull-right">Kembali</a>
+                                <a href="{{ url('jenis-pembayaran') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                             <div class="pull-right">
-                                <button type="submit" name="myButton" class="btn btn-primary">Bayar RM {{$payment->totalprice}}</button>
+                                <button type="submit" name="myButton" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>
                             </div>
                         </div>
                     </div>
