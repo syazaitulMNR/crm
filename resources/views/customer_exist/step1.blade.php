@@ -25,7 +25,7 @@ Pendaftaran Pembeli
             <h6>Hai! Terima kasih kerana masih setia menghadiri program kami. Sila semak butiran peribadi anda.</h6>
         </div>
 
-        <div class="col-md-12 d-flex justify-content-center pb-5">
+        <div class="col-md-10 d-flex justify-content-center pb-5">
             <form action="{{ url('save1') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
                 @csrf
   
