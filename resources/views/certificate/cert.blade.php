@@ -28,8 +28,8 @@
 <body class="bg">
     <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-            <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                {{-- <img src="https://i.ibb.co/0DfVnFJ/top.png"  style="display: block;" /> --}}
+            <td>
+                <p style="margin: 0;">Row 1</p>
             </td>
         </tr>
         <tr>
