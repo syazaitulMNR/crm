@@ -24,8 +24,8 @@
         }
     </style>
 </head>
-<body class="bg">
-    <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
+<body>
+    <table class="bg" role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
                 <p style="margin: 0;">Row 1</p>
