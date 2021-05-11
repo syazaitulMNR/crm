@@ -51,12 +51,12 @@ Upgrade Pakej
                         @if ($new_package->package_id == $packages->package_id)
                         <table class="table table-borderless">
                             <tr>
-                                <td class="w-50">Pakej</td>
+                                <td >Pakej</td>
                                 <td>:</td>
                                 <td class="text-break"><strong>{{ $packages->name }}</strong></td>
                             </tr>
                             <tr>
-                                <td class="w-50">Harga</td>
+                                <td >Harga</td>
                                 <td>:</td>
                                 <td>
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
@@ -64,12 +64,12 @@ Upgrade Pakej
                                 </td>
                             </tr>
                             <tr>
-                                <td class="w-50">Kuantiti</td>
+                                <td >Kuantiti</td>
                                 <td>:</td>
                                 <td><strong>RM <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
                             </tr>
                             <tr class="border-bottom border-top">
-                                <td class="w-50">Jumlah Bayaran</td>
+                                <td >Jumlah Bayaran</td>
                                 <td>:</td>
                                 <td><strong>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
                             </tr>
