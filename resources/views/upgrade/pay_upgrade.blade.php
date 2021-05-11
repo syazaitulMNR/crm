@@ -38,7 +38,7 @@ Upgrade Pakej
             <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
         </div>
 
-        <div class="col-md-12 py-3">
+        <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="{{ url('save-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
                 <div class="container text-center">
