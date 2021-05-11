@@ -66,7 +66,7 @@ Upgrade Pakej
                             <tr>
                                 <td >Kuantiti</td>
                                 <td>:</td>
-                                <td>RM <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
+                                <td><input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
                             </tr>
                             <tr class="border-bottom border-top">
                                 <td >Jumlah Bayaran</td>
