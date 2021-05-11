@@ -10,14 +10,26 @@
             margin: 0;
             padding: 0;
         }
+        .bg {
+            /* The image used */
+            background-image: url("https://i.ibb.co/0DfVnFJ/top.png");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         
     </style>
 </head>
-<body>
+<body class="bg">
     <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                <img src="https://i.ibb.co/0DfVnFJ/top.png"  style="display: block;" />
+                {{-- <img src="https://i.ibb.co/0DfVnFJ/top.png"  style="display: block;" /> --}}
             </td>
         </tr>
         <tr>
