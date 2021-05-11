@@ -17,7 +17,7 @@
     <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
-                <img src="https://imgur.com/GqlCPoT" alt="Creating Email Magic." width="300" height="230" style="display: block;" />
+                <img src="https://ibb.co/1X9mDHm" alt="Creating Email Magic." width="300" height="230" style="display: block;" />
             </td>
         </tr>
         <tr>
