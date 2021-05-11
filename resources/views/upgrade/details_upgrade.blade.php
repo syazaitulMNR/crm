@@ -68,7 +68,7 @@ Upgrade Pakej
                                 <td>:</td>
                                 <td><strong>RM <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
                             </tr>
-                            <tr>
+                            <tr class="border-bottom border-top">
                                 <td class="w-50">Jumlah Bayaran</td>
                                 <td>:</td>
                                 <td><strong>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
@@ -76,12 +76,6 @@ Upgrade Pakej
                         </table> 
                         @endif  
                         @endforeach 
-
-                        <hr>
-                        <div class="col-md-12">
-                            <p class="fs-6 text-center">Sila pastikan maklumat telah diisi dengan betul</p>
-                        </div>
-                        <hr>
                     </div>
 
                     <div class="card-footer">
