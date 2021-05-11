@@ -53,12 +53,12 @@ Upgrade Pakej
                             <tr>
                                 <td >Pakej</td>
                                 <td>:</td>
-                                <td class="w-75 text-break">{{ $packages->name }}</td>
+                                <td class="text-break">{{ $packages->name }}</td>
                             </tr>
                             <tr>
                                 <td >Harga</td>
                                 <td>:</td>
-                                <td class="w-75">
+                                <td>
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                     RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                 </td>
@@ -66,12 +66,12 @@ Upgrade Pakej
                             <tr>
                                 <td >Kuantiti</td>
                                 <td>:</td>
-                                <td class="w-75"><input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
+                                <td><input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
                             </tr>
                             <tr class="border-bottom border-top">
                                 <td >Jumlah Bayaran</td>
                                 <td>:</td>
-                                <td class="w-75">RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
+                                <td>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
                             </tr>
                         </table> 
                         @endif  
