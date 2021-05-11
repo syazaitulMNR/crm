@@ -13,12 +13,13 @@
     </style>
 </head>
 <body>
-    <table align="center" border="1" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+    <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
                 <p style="margin: 0;">Hello!</p>
             </td>
         </tr>
     </table>
+    
 </body>
 </html>
