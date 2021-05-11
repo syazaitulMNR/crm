@@ -224,7 +224,7 @@ Route::get('e-cert/{product_id}', 'CertController@ic_check');
 Route::get('verify/{product_id}', 'CertController@checking_ic');
 Route::get('get-cert/{product_id}/{stud_id}', 'CertController@get_cert');
 
-
+Route::get('certificate/{product_id}/{stud_id}', 'CertController@extract_cert');
 
 
 
