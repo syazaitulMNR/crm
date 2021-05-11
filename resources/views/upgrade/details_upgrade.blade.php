@@ -53,25 +53,25 @@ Upgrade Pakej
                             <tr>
                                 <td >Pakej</td>
                                 <td>:</td>
-                                <td class="text-break"><strong>{{ $packages->name }}</strong></td>
+                                <td class="text-break">{{ $packages->name }}</td>
                             </tr>
                             <tr>
                                 <td >Harga</td>
                                 <td>:</td>
                                 <td>
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                    <strong>RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong>
+                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                 </td>
                             </tr>
                             <tr>
                                 <td >Kuantiti</td>
                                 <td>:</td>
-                                <td><strong>RM <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
+                                <td>RM <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
                             </tr>
                             <tr class="border-bottom border-top">
                                 <td >Jumlah Bayaran</td>
                                 <td>:</td>
-                                <td><strong>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
+                                <td>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
                             </tr>
                         </table> 
                         @endif  
