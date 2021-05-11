@@ -10,9 +10,21 @@
             margin: 0;
             padding: 0;
         }
+        .bg {
+            /* The image used */
+            background-image: url("/assets/images/cert.png");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
-<body>
+<body class="bg">
     <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
