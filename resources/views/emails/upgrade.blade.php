@@ -15,43 +15,33 @@
                   <table style="border: none; cellpadding: 0; cellspacing: 0;" >
                     <tr>
                       <td>
-                        <h3>Tahniah! Anda telah berjaya menaik taraf pakej.</h3>
+                        <h3>Anda telah berjaya menaik taraf pakej!</h3>
                         <table style="border: none; cellpadding: 0; cellspacing: 0;" class="btn btn-primary">
                           <tbody>
                             <tr>
-                                <td>Assalamualaikum & Salam Sejahtera Tuan/Cik/Puan,<br><br>
-                                Terima Kasih kerana berminat untuk menyertai:</td>
+                                <td>Assalamualaikum & Salam Sejahtera Tuan/Puan,<br><br>
+                                Tahniah kerana sudah mendaftar ke Program {{ $product_name }}.
+                                Program ini akan berlangsung pada:</td>
                             </tr>
                             <tr>
                                 <td>
-                                  <b>Program</b> : {{ $product_name }}<br>
-                                  <b>Tarikh</b> : {{ $date_from }} hingga {{ $date_to }}<br>
-                                  <b>Waktu</b> : {{ $time_from }} hingga {{ $time_to}}<br>
+                                  <b>Tarikh</b> : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
+                                  <b>Masa</b> : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br>
                                   <b>Order ID</b> : {{ $payment_id }}
                                 </td>
                             </tr>
                             <hr>
                             <tr>
-                              <td class="align-center">
-                                <table style="border: none; cellpadding: 0; cellspacing: 0;" >
-                                  <tbody>
-                                  <tr>
-                                      <td>Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit pembayaran</td>
-                                  </tr>
-                                  </tbody>
-                                </table>
+                              <td>                                
+                                <p class="align-center">PENTING!</p>
+                                <br>
+                                <p>1. Sila klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois:</p>
                               </td>
                             </tr>
                             <tr>
-                                <td class="align-center">
-                                  <table style="width: 100%; border: none; cellpadding: 0; cellspacing: 0;" >
-                                    <tbody>
-                                      <tr>
-                                      <td> <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}" class="btn btn-primary py-3 px-4">Kemaskini</a> </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
+                              <td class="align-center">
+                                <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
+                              </td>
                             </tr>
                             <hr>
                           </tbody>
@@ -60,7 +50,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <p>Sekiranya ada sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
+                            <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
                         </td>
                     </tr>
                     <tr>
