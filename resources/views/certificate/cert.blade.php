@@ -12,7 +12,7 @@
         }
         .bg {
             /* The image used */
-            background-image: url("https://i.ibb.co/0DfVnFJ/top.png");
+            background-image: url("https://i.ibb.co/z2Thj3c/cert.png");
 
             /* Full height */
             height: 100%;
