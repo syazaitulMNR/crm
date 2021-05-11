@@ -4,8 +4,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>E-Cert | Momentum Internet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0;">
+<body>
     <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td>
