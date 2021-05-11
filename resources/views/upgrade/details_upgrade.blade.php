@@ -49,7 +49,7 @@ Upgrade Pakej
 
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
-                        <table class="table table-borderless" style="width: 400px;">
+                        <table class="table table-borderless w-100">
                             <tr>
                                 <td >Pakej</td>
                                 <td>:</td>
