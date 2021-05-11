@@ -42,7 +42,73 @@ Upgrade Pakej
             <form action="{{ url('save-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
   
-                <div class="container text-center">
+                <div class="card w-100 shadow">
+                    <div class="card-header bg-dark text-white">Maklumat Tiket</div>
+   
+                    <div class="card-body px-2">
+
+                        @foreach ($package as $packages)
+                        @if ($new_package->package_id == $packages->package_id)
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="w-50">Pakej</td>
+                                <td>:</td>
+                                <td class="text-break"><strong>{{ $packages->name }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="w-50">Harga</td>
+                                <td>:</td>
+                                <td>
+                                    <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
+                                    <strong>RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-50">Kuantiti</td>
+                                <td>:</td>
+                                <td><strong>RM <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
+                            </tr>
+                            <tr>
+                                <td class="w-50">Jumlah Bayaran</td>
+                                <td>:</td>
+                                <td><strong>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></strong></td>
+                            </tr>
+                        </table> 
+                        @endif  
+                        @endforeach 
+
+                        <hr>
+                        <div class="col-md-12">
+                            <p class="fs-6 text-center">Sila pastikan maklumat telah diisi dengan betul</p>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="col-md-12">
+                            <div class="pull-left">
+                                <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{$payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                            </div>
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+{{-- -------------------------------------------------------------------- --}}
+
+
+
+
+
+
+                {{-- <div class="container text-center">
                     <div class="row">
                         <div class="col-auto pb-4 d-block mx-auto">
                             <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
@@ -68,16 +134,10 @@ Upgrade Pakej
                                                 <td>
                                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                                     RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
-                                                    {{-- RM <span id="show_price"></span> --}}
+                                                    
                                                     
                                                 </td>
                                                 <td>
-                                                    {{-- <select name="quantity" onchange="new_amount(this.value)" class="form-control w-100" required>
-                                                    <option value="" disabled selected>-</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    </select> --}}
                                                     <input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                                 </td>
                                                 <td class="text-center">
@@ -94,11 +154,7 @@ Upgrade Pakej
                                     <div class="alert alert-info text-left" role="alert">
                                          <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
                                      </div> 
-                                 </div>
-                                {{-- <div class="py-2">
-                                    <p style="text-decoration: line-through;">RM{{ $current_package->price }}</p>
-                                    <span id="price"></span>
-                                </div> --}}                                
+                                 </div>                               
                                 <div class="col-md-12 pb-5">
                                     <div class="pull-left">
                                         <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{$payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
@@ -110,7 +166,7 @@ Upgrade Pakej
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 
                     
             </form>
