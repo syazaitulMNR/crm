@@ -42,7 +42,7 @@ Upgrade Pakej
             <form action="{{ url('save-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
   
-                <div class="card w-100 shadow">
+                <div class="card w-100 shadow px-2">
                     <div class="card-header bg-dark text-white">Maklumat Tiket</div>
    
                     <div class="card-body px-3">
