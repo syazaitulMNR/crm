@@ -41,40 +41,45 @@ Upgrade Pakej
         <div class="col-md-12 d-flex justify-content-center pb-5">
             <form action="{{ url('save-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-auto pb-4 d-block mx-auto">
-                            <div class="pricing-item bg-white py-4 px-4" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
-                                <div class="border-bottom pb-1" style="letter-spacing: 2px">
-                                    <h4>Jenis Pembayaran</h4>
+
+                <div class="card w-100 shadow">
+                    <div class="card-header bg-dark text-white">Jenis Pembayaran</div>
+  
+                    <div class="card-body">
+  
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="px-3">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <div class="form-group pt-2 row">
-                                    <div class="col-md-12 px-5">
-                                        <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                            <i class="far fa-credit-card fa-3x"></i>
-                                            <br><br>Kad Debit/Kredit
-                                        </button>
-                                    
-                                        <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                            <i class="fas fa-university fa-3x"></i>
-                                            <br><br>FPX
-                                        </button>
-                                    </div>
-                                </div>
+                            @endif
+  
+                            <div class="form-group row">
+                                <div class="col-md-12 px-5">
+                                    <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
+                                        <i class="far fa-credit-card fa-3x"></i>
+                                        <br><br>Kad Debit/Kredit
+                                    </button>
                                 
-                                <div class="col-md-12 pb-5">
-                                    <div class="pull-left">
-                                        <a href="{{ url('upgrade-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
-                                    </div>
-                                    {{-- <div class="pull-right">
-                                        <button type="submit" class="btn btn-dark rounded-circle"><i class="fas fa-arrow-right py-1"></i></button>
-                                    </div> --}}
+                                    <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
+                                        <i class="fas fa-university fa-3x"></i>
+                                        <br><br>FPX
+                                    </button>
                                 </div>
+                            </div>
+  
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-md-12">
+                            <div class="pull-left">
+                                <a href="{{ url('upgrade-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
                     
             </form>
         </div>
