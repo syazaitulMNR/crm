@@ -45,11 +45,11 @@ Upgrade Pakej
                 <div class="card w-100 shadow">
                     <div class="card-header bg-dark text-white">Maklumat Tiket</div>
    
-                    <div class="card-body">
+                    <div class="card-body px-2">
 
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
-                        <table class="table table-borderless px-5">
+                        <table class="table table-borderless" style="width: 100%;">
                             <tr>
                                 <td >Pakej</td>
                                 <td>:</td>
