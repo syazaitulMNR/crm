@@ -32,40 +32,40 @@
             </td>
         </tr>
         <tr>
-            <td align="center" colspan="2" style="padding: 40px 0 30px 0;">
+            <td align="center" colspan="2" style="padding: 35px 0 30px 0;">
                 <img src="https://i.ibb.co/Pw5Wz90/logo-text.png" style="margin: 0; max-width:150px">
             </td>
         </tr>
         <tr>
-            <td align="center" colspan="2" style="padding: 40px 0 30px 0;">
+            <td align="center" colspan="2" style="padding: 35px 0 30px 0;">
                 <h1 style="margin: 0;">CERTIFICATE</h1>
                 <h1 style="margin: 0;">OF COMPLETION</h1>
             </td>
         </tr>
         <tr>
-            <td align="center" colspan="2" style="padding: 40px 0 30px 0;">
+            <td align="center" colspan="2" style="padding: 35px 0 30px 0;">
                 <p style="margin: 0;">This certifies that</p>
                 <h3 style="margin: 0;"> {{ $first_name }} {{ $last_name }}</h3>
                 <h5 style="margin: 0;"> ({{ $ic }})</h5>
             </td>
         </tr>
         <tr>
-            <td align="center" colspan="2" style="padding: 40px 0 30px 0;">
+            <td align="center" colspan="2" style="padding: 35px 0 30px 0;">
                 <p style="margin: 0;"> has successfully completed the course</p>
                 <h3 style="margin: 0;"> {{ $program_name }}</h3>
             </td>
         </tr>
         <tr>
-            <td align="center" colspan="2" style="padding: 40px 0 30px 0;">
+            <td align="center" colspan="2" style="padding: 35px 0 30px 0;">
                 <p style="margin: 0;"> that was held on </p>
                 <h3> {{ $date_from }} &nbsp; - &nbsp; {{ $date_to }}</h3>
             </td>
         </tr>
         <tr>
-            <td align="center" style="padding: 40px 0 30px 0;">
+            <td align="center" style="padding: 35px 0 30px 0;">
                 <img src="https://i.ibb.co/5k9QRyk/certified-cop.png" style="max-width:150px; margin: 0;">
             </td>
-            <td align="center" style="padding: 40px 0 30px 0;">
+            <td align="center" style="padding: 35px 0 30px 0;">
                 <img src="https://i.ibb.co/7WDt18B/sign.png" style="max-width:80px; margin: 0;">
                 <h3 style="margin: 0;">Najib Asaddok</h3>
                 <p style="margin: 0;"> Chief Executive Officer (CEO)</p>
