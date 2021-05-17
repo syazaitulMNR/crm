@@ -10,7 +10,7 @@ E-Certificate
         <div class="col-md-12 px-3 py-5 text-center">
             <img src="/assets/images/logo.png" style="max-width:200px">
             <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
-            <h6>Hai! Tahniah kerana telah memberi komitmen yang terbaik sehingga ke akhir program.</h6>
+            <h6>Hai! Tahniah kerana telah memberikan komitmen yang terbaik sehingga ke akhir program.</h6>
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">  
@@ -21,18 +21,13 @@ E-Certificate
 
                     <div class="form-group row">
 
-                        <div class="col-md-12 pb-2">
-                            <label for="description">No. Kad Pengenalan/Passport:</label>
-                            <input type="text"  value="{{ $student->ic }}" class="form-control" readonly/>
-                        </div>
-
                         <div class="col-md-6 pb-2">
-                            <label for="title">Nama Pertama:</label>
-                            <input type="text" value="{{ $student->first_name }}" class="form-control" readonly/>
+                            <label for="title">No. Kad Pengenalan/Passport:</label>
+                            <input type="text" value="{{ $student->ic }}" class="form-control" readonly/>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <label for="title">Nama Akhir:</label>
-                            <input type="text" value="{{ $student->last_name }}" class="form-control" readonly/>
+                            <label for="title">Nama Peserta:</label>
+                            <input type="text" value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" readonly/>
                         </div>
 
                         <div class="col-md-6 pb-2">
