@@ -54,7 +54,9 @@ class ProductController extends Controller
             'cert_image' => $imagename,
         ]);
 
-        return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
+        dd($imagename);
+
+        // return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
     }
     
     public function edit($id)
