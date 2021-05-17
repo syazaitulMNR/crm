@@ -45,12 +45,14 @@ class CertController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
                 
-        $data['name']=$student->first_name;
+        $data['first_name']=$student->first_name;
+        $data['last_name']=$student->last_name;
         $data['ic']=$student->ic;
 
         $data['program_name']=$product->name;
 
-        $data['date_receive']=date('d-m-Y');
+        $data['date_from']=date('d/m/Y', strtotime($product->date_from));        
+        $data['date_to']=date('d/m/Y', strtotime($product->date_to));
         $data['product_id']=$product_id;        
         $data['student_id']=$stud_id;
 

@@ -41,20 +41,20 @@
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
                 <p style="margin: 0;">This certifies that</p>
-                <h3 style="margin: 0;"> {{ $student->first_name }} {{ $student->last_name }}</h3>
-                <h5 style="margin: 0;"> ({{ $student->ic }})</h5>
+                <h3 style="margin: 0;"> {{ $first_name }} {{ $last_name }}</h3>
+                <h5 style="margin: 0;"> ({{ $ic }})</h5>
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
                 <p style="margin: 0;"> has successfully completed the course</p>
-                <h3 style="margin: 0;"> {{ $product->name }}</h3>
+                <h3 style="margin: 0;"> {{ $program_name }}</h3>
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
                 <p style="margin: 0;"> that was held on </p>
-                <h3> {{ date('d/m/Y', strtotime($product->date_from)) }} &nbsp; - &nbsp; {{ date('d/m/Y', strtotime($product->date_to)) }}</h3>
+                <h3> {{ $date_from }} &nbsp; - &nbsp; {{ $date_to }}</h3>
             </td>
         </tr>
         <tr>
