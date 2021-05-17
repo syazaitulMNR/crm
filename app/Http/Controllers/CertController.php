@@ -50,6 +50,7 @@ class CertController extends Controller
         $data['ic']=$student->ic;
 
         $data['program_name']=$product->name;
+        $data['cert_image']=$product->cert_image;
 
         $data['date_from']=date('d/m/Y', strtotime($product->date_from));        
         $data['date_to']=date('d/m/Y', strtotime($product->date_to));
