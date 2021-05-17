@@ -12,7 +12,7 @@
         }
         .bg {
             /* The image used */
-            background-image: url("https://i.ibb.co/HP2C1yG/e-cert.png");
+            background-image: url("{{ asset('assets/images/e-cert.png') }}");
 
             /* Full height */
             height: 100%;
