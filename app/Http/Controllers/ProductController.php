@@ -67,19 +67,11 @@ class ProductController extends Controller
     {
         $product = Product::where('product_id', $id)->first();             
 
-        // Handle Image Upload
-        // if($request->hasFile('cover_image')){
-        //     // Get filename with the extension
-        //     $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-        //     // Get just filename
-        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        //     // Get just ext
-        //     $extension = $request->file('cover_image')->getClientOriginalExtension();
-        //     // Filename to store
-        //     $fileNameToStore=$filename.'_'.time().'.'.$extension;
-        //     // Upload Image
-        //     $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        // } 
+        if($request->hasFile('cert_image'))
+        {
+            $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+            $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
+        }
 
         $product->name = $request->prodname;
         $product->description = $request->description;
@@ -87,9 +79,12 @@ class ProductController extends Controller
         $product->date_to = $request->date2;
         $product->time_from = $request->time1;
         $product->time_to = $request->time2;
-        // if($request->hasFile('cover_image')){
-        //     $product->cover_image = $fileNameToStore;
-        // }
+
+        if($request->hasFile('package_image'))
+        {
+            $product->cert_image = $imagename;
+        }
+
         $product->save();
 
         return redirect('product')->with('updatesuccess', 'Event Successfully Updated');
