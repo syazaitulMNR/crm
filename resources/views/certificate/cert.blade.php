@@ -62,11 +62,11 @@
             </td>
         </tr>
         <tr>
-            <td align="center" style="padding: 40px 100px 40px 100px;">
+            <td align="center" style="padding: 80px 0 50px 0;">
                 <img src="{{ asset('assets/images/cert_logo.png') }}" style="max-width:150px; margin: 0;">
             </td>
-            <td align="center" style="padding: 40px 100px 40px 100px;">
-                <img src="{{ asset('assets/images/sign.png') }}" style="max-width:80px; margin: 0;">
+            <td align="center" style="padding: 80px 0 50px 0;">
+                <img src="{{ asset('assets/images/cert_logo.png') }}" style="max-width:80px; margin: 0;">
                 <h3 style="margin: 0;">Najib Asaddok</h3>
                 <p style="margin: 0;"> Chief Executive Officer (CEO)</p>
                 <p style="margin: 0;"> Momentum Internet Sdn Bhd </p>
