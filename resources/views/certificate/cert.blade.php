@@ -28,7 +28,7 @@
 <body class="bg">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-            <td align="center" colspan="2" style="padding: 20px 0 30px 0;">
+            <td align="center" colspan="2" style="padding: 20px 0 40px 0;">
             </td>
         </tr>
         <tr>
@@ -45,14 +45,14 @@
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
                 <p style="margin: 0;">This certifies that</p>
-                <h3 style="margin: 0;"> {{ $first_name }} {{ $last_name }}</h3>
+                <h3 style="margin-bottom: 0;"> {{ $first_name }} {{ $last_name }}</h3>
                 <h5 style="margin: 0;"> ({{ $ic }})</h5>
             </td>
         </tr>
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
                 <p style="margin: 0;"> has successfully completed the course</p>
-                <h3 style="margin: 0;"> {{ $program_name }}</h3>
+                <h3> {{ $program_name }}</h3>
             </td>
         </tr>
         <tr>
