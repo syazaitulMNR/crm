@@ -15,7 +15,7 @@ E-Certificate
 
         <div class="col-md-12 d-flex justify-content-center pb-5">  
             <div class="card w-100 shadow">
-                <div class="card-header bg-dark text-white">Maklumat Peserta</div>
+                <div class="card-header bg-dark text-white">Sila semak butiran peribadi anda</div>
 
                 <div class="card-body">
 
