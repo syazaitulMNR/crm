@@ -21,7 +21,8 @@ class CreateProductTable extends Migration
             $table->string('date_from');
             $table->string('date_to');
             $table->string('time_from');
-            $table->string('time_to');
+            $table->string('time_to');            
+            $table->string('cert_image');
             $table->timestamps();
         });
     }
