@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
-                <img src="/assets/images/logo_text.png" style="margin: 0; max-width:150px">
+                <img src="{{ asset('assets/images/logo_text.png') }}" style="margin: 0; max-width:150px">
             </td>
         </tr>
         <tr>
