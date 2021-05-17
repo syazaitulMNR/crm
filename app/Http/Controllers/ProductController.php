@@ -40,15 +40,8 @@ class ProductController extends Controller
         $auto_inc_prd = $product->id + 1;
         $productId = 'PRD' . 0 . 0 . $auto_inc_prd;
 
-        // if($request->hasFile('cover_image')){
-        //     $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        //     $extension = $request->file('cover_image')->getClientOriginalExtension();
-        //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        //     $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        // } else {
-        //     $fileNameToStore = 'noimage.jpg';
-        // }
+        $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+        $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
 
         Product::create([
             'product_id' => $productId,
@@ -58,7 +51,7 @@ class ProductController extends Controller
             'date_to' => $request->date2,
             'time_from' => $request->time1,
             'time_to' => $request->time2,
-            // 'cover_image' => $fileNameToStore,
+            'cert_image' => $imagename,
         ]);
 
         return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');

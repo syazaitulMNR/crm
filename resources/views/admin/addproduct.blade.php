@@ -67,12 +67,13 @@
                     </div>
                 </div>
 
-                {{-- <div class='col-md-8'>         
+                <div class="col-md-8">                         
                     <div class="form-group">
-                        <p>Cover Image</p>
-                        <input type="file" id="myFile" name="cover_image">
+                        <label for="formFile" class="form-label">Certificate Image</label>
+                        <input class="form-control" type="file" id="formFile" name="cert_image">
+                        <em>*Please ignore this part if there is no certificate provided for the event</em>
                     </div>
-                    </div> --}}
+                </div>
                         
                 <div class='col-md-8 pt-3'>
                     <button type='submit' class='btn btn-primary float-right'> Submit </button>
