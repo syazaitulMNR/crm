@@ -26,18 +26,18 @@ E-Certificate
                             <input type="text" value="{{ $student->ic }}" class="form-control" readonly/>
                         </div>
                         <div class="col-md-6 pb-2">
-                            <label for="title">Nama Peserta:</label>
-                            <input type="text" value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" readonly/>
+                            <label for="title">No. Telefon:</label>
+                            <input type="text" value="{{ $student->phoneno }}" class="form-control" readonly/>
                         </div>
 
                         <div class="col-md-6 pb-2">
-                            <label for="description">Emel:</label>
-                            <input type="text"  value="{{ $student->email }}" class="form-control" readonly/>
+                            <label for="description">Nama Peserta:</label>
+                            <input type="text"  value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" readonly/>
                         </div>
                         
                         <div class="col-md-6 pb-2">
-                            <label for="description">No. Telefon:</label><br>
-                            <input type="tel" name="phoneno" value="{{ $student->phoneno }}" class="form-control" readonly/>
+                            <label for="description">Emel:</label><br>
+                            <input type="tel"  value="{{ $student->email }}" class="form-control" readonly/>
                         </div>
                     </div>
                         
