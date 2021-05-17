@@ -23,21 +23,21 @@ E-Certificate
 
                         <div class="col-md-6 pb-2">
                             <label for="title">No. Kad Pengenalan/Passport:</label>
-                            <input type="text" value="{{ $student->ic }}" class="form-control" readonly/>
+                            <input type="text" value="{{ $student->ic }}" class="form-control" disabled/>
                         </div>
                         <div class="col-md-6 pb-2">
                             <label for="title">No. Telefon:</label>
-                            <input type="text" value="{{ $student->phoneno }}" class="form-control" readonly/>
+                            <input type="text" value="{{ $student->phoneno }}" class="form-control" disabled/>
                         </div>
 
                         <div class="col-md-6 pb-2">
                             <label for="description">Nama Peserta:</label>
-                            <input type="text"  value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" readonly/>
+                            <input type="text"  value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" disabled/>
                         </div>
                         
                         <div class="col-md-6 pb-2">
                             <label for="description">Emel:</label><br>
-                            <input type="tel"  value="{{ $student->email }}" class="form-control" readonly/>
+                            <input type="tel"  value="{{ $student->email }}" class="form-control" disabled/>
                         </div>
                     </div>
                         
