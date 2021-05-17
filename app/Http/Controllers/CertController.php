@@ -57,7 +57,7 @@ class CertController extends Controller
         $data['product_id']=$product_id;        
         $data['student_id']=$stud_id;
 
-        dd($cert_image);
+        dd($product->cert_image);
 
         // $pdf = PDF::loadView('certificate.cert', $data);
         // return $pdf->download( $product->name . '.pdf');
