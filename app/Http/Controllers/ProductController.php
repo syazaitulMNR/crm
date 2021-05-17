@@ -54,9 +54,7 @@ class ProductController extends Controller
             'cert_image' => $imagename,
         ]);
 
-        dd($imagename);
-
-        // return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
+        return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
     }
     
     public function edit($id)
@@ -82,7 +80,7 @@ class ProductController extends Controller
         $product->time_from = $request->time1;
         $product->time_to = $request->time2;
 
-        if($request->hasFile('package_image'))
+        if($request->hasFile('cert_image'))
         {
             $product->cert_image = $imagename;
         }
