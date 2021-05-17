@@ -29,42 +29,44 @@
     <table role="presentation" border="1" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 1</p>
+                <img src="https://i.ibb.co/Pw5Wz90/logo-text.png" style="margin: 0; max-width:200px">
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 2</p>
+                <h1 style="margin: 0;">CERTIFICATE</h1>
+                <h1 style="margin: 0;">OF COMPLETION</h1>
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 3</p>
+                <p style="margin: 0;">This certifies that</p>
+                <h3 style="margin: 0;"> {{ $student->first_name }} {{ $student->last_name }}</h3>
+                <h5 style="margin: 0;"> ({{ $student->ic }})</h5>
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 4</p>
+                <p style="margin: 0;"> has successfully completed the course</p>
+                <h3 style="margin: 0;"> {{ $product->name }}</h3>
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 5</p>
+                <p style="margin: 0;"> that was held on </p>
+                <h3> {{ date('d/m/Y', strtotime($product->date_from)) }} &nbsp; - &nbsp; {{ date('d/m/Y', strtotime($product->date_to)) }}</h3>
             </td>
         </tr>
         <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 6</p>
+                <img src="https://i.ibb.co/5k9QRyk/certified-cop.png" style="max-width:200px;">
             </td>
-        </tr>
-        <tr>
             <td align="center" style="padding: 40px 0 30px 0;">
                 <p style="margin: 0;">Row 7</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="center" style="padding: 40px 0 30px 0;">
-                <p style="margin: 0;">Row 8</p>
+                <img src="https://i.ibb.co/7WDt18B/sign.png" style="max-width:80px; margin: 0;">
+                <h3 style="margin: 0;">Najib Asaddok</h3>
+                <p style="margin: 0;"> Chief Executive Officer (CEO)</p>
+                <p style="margin: 0;"> Momentum Internet Sdn Bhd </p>
             </td>
         </tr>
     </table>
