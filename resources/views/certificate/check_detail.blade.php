@@ -57,7 +57,7 @@ E-Certificate
 
                     <div class="col-md-12 pb-3">
                         <div class="pull-right">
-                            <a href="{{ url('certificate') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></a>
+                            <a href="{{ url('certificate') }}/{{ $product->product_id }}/{{ $student->stud_id }}" name="myButton" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></a>
                         </div>
                     </div>
                 </div>
