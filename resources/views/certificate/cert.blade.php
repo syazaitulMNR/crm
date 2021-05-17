@@ -63,7 +63,7 @@
         </tr>
         <tr>
             <td align="center" style="padding: 80px 0 50px 0;">
-                <img src="{{ asset('assets/images/cert_badge.png') }}" style="max-width:150px; margin: 0;">
+                <img src="{{ asset('assets/images/cert_logo.png') }}" style="max-width:150px; margin: 0;">
             </td>
             <td align="center" style="padding: 80px 0 50px 0;">
                 <img src="{{ asset('assets/images/sign.png') }}" style="max-width:80px; margin: 0;">
