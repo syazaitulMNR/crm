@@ -62,10 +62,10 @@
             </td>
         </tr>
         <tr>
-            <td align="center" style="padding: 40px 0 200px 0;">
+            <td align="center" style="padding: 40px 100px 100px 0;">
                 <img src="{{ asset('assets/images/cert_logo.png') }}" style="max-width:150px; margin: 0;">
             </td>
-            <td align="center" style="padding: 40px 0 200px 0;">
+            <td align="center" style="padding: 40px 100px 100px 0;">
                 <img src="{{ asset('assets/images/sign.png') }}" style="max-width:80px; margin: 0;">
                 <h3 style="margin: 0;">Najib Asaddok</h3>
                 <p style="margin: 0;"> Chief Executive Officer (CEO)</p>
