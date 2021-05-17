@@ -28,6 +28,10 @@
 <body class="bg">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
+            <td align="center" colspan="2" style="padding: 20px 0 15px 0;">
+            </td>
+        </tr>
+        <tr>
             <td align="center" colspan="2" style="padding: 40px 0 30px 0;">
                 <img src="https://i.ibb.co/Pw5Wz90/logo-text.png" style="margin: 0; max-width:150px">
             </td>
