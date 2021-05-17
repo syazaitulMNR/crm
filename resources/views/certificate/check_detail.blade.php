@@ -10,7 +10,7 @@ E-Certificate
         <div class="col-md-12 px-3 py-5 text-center">
             <img src="/assets/images/logo.png" style="max-width:200px">
             <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
-            <h6>Hai! Tahniah kerana telah memberi komitmen yang terbaik hingga ke akhir program. Sila semak butiran peribadi anda untuk pengesahan butiran sijil.</h6>
+            <h6>Hai! Tahniah kerana telah memberi komitmen yang terbaik sehingga ke akhir program. Sila semak butiran peribadi anda untuk pengesahan butiran sijil.</h6>
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">  
