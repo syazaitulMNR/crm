@@ -57,7 +57,7 @@ E-Certificate
 
                     <div class="col-md-12 pb-3">
                         <div class="pull-right">
-                            <a href="{{ url('certificate') }}/{{ $product->product_id }}/{{ $student->stud_id }}" name="myButton" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>
+                            <a href="{{ url('certificate') }}/{{ $product->product_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ E-Certificate
 </div>
 
 {{-- Disabled multiple submission on payment --------------------------------------------------------------------------------}}
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 
     function checkForm(form) // Submit button clicked
     {
@@ -76,6 +76,6 @@ E-Certificate
         return true;
     }
 
-</script>
+</script> --}}
 {{-- End Disabled multiple submission on payment ----------------------------------------------------------------------------}}
 @endsection
