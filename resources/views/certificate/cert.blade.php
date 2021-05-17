@@ -28,7 +28,7 @@
 <body class="bg">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-            <td align="center" colspan="2" style="padding: 20px 0 40px 0;">
+            <td align="center" colspan="2" style="padding: 20px 0 60px 0;">
             </td>
         </tr>
         <tr>
