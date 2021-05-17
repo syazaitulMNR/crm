@@ -12,7 +12,7 @@
         }
         .bg {
             /* The image used */
-            background-image: url("{{ asset('assets/images/cert.png') }}");
+            background-image: url("{{ asset('assets/images/arb_cert.png') }}");
 
             /* Full height */
             height: 100%;
