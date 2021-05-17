@@ -33,12 +33,12 @@ class CertController extends Controller
         }
     }
 
-    public function get_cert($product_id, $stud_id)
+    public function checking_cert($product_id, $stud_id)
     {
         $product = Product::where('product_id', $product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
 
-        return view('certificate.e-cert', compact('product', 'student'));
+        return view('certificate.check_detail', compact('product', 'student'));
     }
 
     public function extract_cert($product_id, $stud_id){
