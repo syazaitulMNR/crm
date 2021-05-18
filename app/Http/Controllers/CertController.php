@@ -21,15 +21,25 @@ class CertController extends Controller
     public function checking_ic($product_id, Request $request)
     {
         $student = Student::where('ic', $request->ic)->first();
-        $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
-        $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
-        
-        // dd($check_payment);
-        // Check if ic exist
+        $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
-        if($check_payment->isEmpty()){
+        if($check_student->isEmpty()){
+
+            $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
+            $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
             
-            return view('certificate.not_found');
+            // Check if ic exist
+            if($check_payment->isEmpty()){
+                
+                return view('certificate.not_found');
+
+            }else{
+
+                if ($student->stud_id == $payment->stud_id){
+                    return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
+                }
+
+            }
 
         }else{
 
