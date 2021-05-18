@@ -36,7 +36,7 @@
         <form action="{{ url('importExcel') }}" class="row" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <h5>Import Student</h5>
+            <h5>Import Customer</h5>
 
             <div class="input-group p-3">
                 <input type="file" name="file" class="form-control" required>
@@ -68,7 +68,7 @@
             <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                 <!-- create campaign -->
                 <div class="btn-group" role="group" aria-label="First group">
-                    <h5>List of Student</h5>
+                    <h5>List of Customer</h5>
                     {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name"> --}}
                 </div>
                 
