@@ -12,7 +12,6 @@ class CertController extends Controller
     /*-- Check IC Page -----------------------------------------------*/
     public function ic_check($product_id)
     {
-        // $package = Package::where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
 
         return view('certificate.get_ic', compact('product'));
@@ -20,11 +19,14 @@ class CertController extends Controller
 
     public function checking_ic($product_id, Request $request)
     {
+        $student = Student::where('ic', $request->ic)->first();
+        $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
+        
         // Check if ic exist
-        if(Student::where('ic', $request->ic)->exists()){
+        if($student->stud_id == $payment->stud_id){
             
-            $student = Student::where('ic', $request->ic)->first();
-            return redirect('check-cert/' . $product_id . '/'.$student->stud_id);
+            dd($student);
+            // return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
 
         }else{
 
@@ -37,6 +39,7 @@ class CertController extends Controller
     {
         $product = Product::where('product_id', $product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
+        // $payment = Payment::where('product_id', $product_id)->where('stud_id', $stud_id)->first();
 
         return view('certificate.check_detail', compact('product', 'student'));
     }
