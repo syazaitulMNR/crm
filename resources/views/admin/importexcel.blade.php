@@ -67,14 +67,14 @@
                 <!-- create campaign -->
                 <div class="btn-group" role="group" aria-label="First group">
                     <h5>List of Customer</h5>
-                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
+                    {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name"> --}}
                 </div>
                 
-                <div class="input-group">
+                {{-- <div class="input-group">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pt-1"></i></a>
-                </div>
+                </div> --}}
             </div>
-            {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
+            <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
          
             <div class="row float-right pt-3">
                 <div class="col-auto">
@@ -83,7 +83,7 @@
                 <div class="col-auto pt-1">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download"></i></a>
                 </div>
-            </div> --}}
+            </div>
             
             <br>  
 
