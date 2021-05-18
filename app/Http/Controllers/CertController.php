@@ -21,7 +21,7 @@ class CertController extends Controller
     public function checking_ic($product_id, Request $request)
     {
         $student = Student::where('ic', $request->ic)->first();
-        $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
+        $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
         $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
         
         // dd($check_payment);
