@@ -74,10 +74,11 @@
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pt-1"></i></a>
                 </div> --}}
             </div>
+            <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
          
             <div class="row float-right pt-3">
                 <div class="col-auto">
-                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
+                    <div>{{$data->links()}}</div>
                 </div>
                 <div class="col-auto pt-1">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download"></i></a>
@@ -112,7 +113,7 @@
                         </tr>
                         @endforeach
                     </table>
-                    <div class="float-right pt-3">{{$data->links()}}</div>
+                    {{-- <div class="float-right pt-3">{{$data->links()}}</div> --}}
                     @else
                     <p>There are no customer to display.</p>
                     @endif
