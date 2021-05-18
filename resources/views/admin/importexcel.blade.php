@@ -63,14 +63,11 @@
         <br>
         <div class="panel panel-default">
 
-            <!-- Search box ---------------------------------------------------------->
-            <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
-
             <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                 <!-- create campaign -->
                 <div class="btn-group" role="group" aria-label="First group">
                     <h5>List of Customer</h5>
-                    {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name"> --}}
+                    <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
                 </div>
                 
                 <div class="input-group">
