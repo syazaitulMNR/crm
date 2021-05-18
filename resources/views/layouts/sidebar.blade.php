@@ -30,12 +30,12 @@
           
           <div class="nav-link" style="color: #ABB2B9">Configuration</div>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/viewstudents">
               <span data-feather="home"></span>
               <i class="fas fa-user-tie" style="margin-right: 29px"></i> Customer 
             </a>            
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/database-management">
