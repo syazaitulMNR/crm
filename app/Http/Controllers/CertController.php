@@ -43,7 +43,7 @@ class CertController extends Controller
 
         }else{
 
-            echo 'Takde langsung';
+            return view('certificate.not_found');
 
         }
     }
