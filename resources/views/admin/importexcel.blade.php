@@ -113,7 +113,7 @@
                         </tr>
                         @endforeach
                     </table>
-                    <div class="float-right pt-3">{{$data->links()}}</div>
+                    {{-- <div class="float-right pt-3">{{$data->links()}}</div> --}}
                     @else
                     <p>There are no customer to display.</p>
                     @endif
