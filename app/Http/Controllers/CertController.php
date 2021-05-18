@@ -21,9 +21,9 @@ class CertController extends Controller
     public function checking_ic($product_id, Request $request)
     {
         $student = Student::where('ic', $request->ic)->first();
-        $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
+        // $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
-        if($check_student->isEmpty()){
+        if(Student::where('ic', $request->ic)->exists()){
 
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
             $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
@@ -43,9 +43,7 @@ class CertController extends Controller
 
         }else{
 
-            if ($student->stud_id == $payment->stud_id){
-                return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
-            }
+            echo 'Takde langsung';
 
         }
     }
