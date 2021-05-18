@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top px-5" style="background-color: #ffffff; padding-top:1%; padding-bottom:1%; box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.2);">
     <a class="site-logo-inner" href="#">
-        <img src="{{ asset('assets/images/logo.png') }}" class="custom-logo" width="50" height="40" alt="">
+        <img src="{{ asset('assets/images/logo.png') }}" class="custom-logo" width="50" alt="">
     </a>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left:2%;">
