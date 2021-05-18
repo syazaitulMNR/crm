@@ -41,6 +41,7 @@ class ProductController extends Controller
         $productId = 'PRD' . 0 . 0 . $auto_inc_prd;
 
         $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+        $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
         $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
 
         Product::create([
@@ -51,7 +52,7 @@ class ProductController extends Controller
             'date_to' => $request->date2,
             'time_from' => $request->time1,
             'time_to' => $request->time2,
-            'cert_image' => $imagename,
+            'cert_image' => $cert_image,
         ]);
 
         return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
@@ -70,6 +71,7 @@ class ProductController extends Controller
         if($request->hasFile('cert_image'))
         {
             $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+            $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
             $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
         }
 
@@ -82,7 +84,7 @@ class ProductController extends Controller
 
         if($request->hasFile('cert_image'))
         {
-            $product->cert_image = $imagename;
+            $product->cert_image = $cert_image;
         }
 
         $product->save();
@@ -128,7 +130,7 @@ class ProductController extends Controller
         $packageId = 'PKD' . 0 . 0 . $auto_inc_pkd;
               
         $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-        $request->package_image->move(public_path('assets/images'), $imagename);
+        $request->package_image->move(public_path('assets/images/packages'), $imagename);
 
         Package::create(array(
 
@@ -182,7 +184,7 @@ class ProductController extends Controller
         if($request->hasFile('package_image'))
         {
             $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-            $request->package_image->move(public_path('assets/images'), $imagename);
+            $request->package_image->move(public_path('assets/images/packages'), $imagename);
         }
 
         $package->name = $request->name;
