@@ -32,7 +32,40 @@
 
       <br> 
 
-      @if(count($student) > 0)
+      <div class="panel-body">
+        <div class="table-responsive">
+            <!-- Show details in table ----------------------------------------------->
+            @if(count($student) > 0)
+            <table class="table table-hover" id="myTable">
+                <tr>
+                    <th>#</th>
+                    {{-- <th>ID</th> --}}
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>IC No.</th>
+                    <th>Email</th>
+                    <th>Phone No</th>
+                </tr>
+                @foreach($student as $key => $row)
+                <tr>
+                    <td>{{ $student->firstItem() + $key  }}</td>
+                    {{-- <td>{{ $row->stud_id }}</td> --}}
+                    <td>{{ $row->first_name }}</td>
+                    <td>{{ $row->last_name }}</td>
+                    <td>{{ $row->ic }}</td>
+                    <td>{{ $row->email }}</td>
+                    <td>{{ $row->phoneno }}</td>
+                </tr>
+                @endforeach
+            </table>
+            {{-- <div class="float-right pt-3">{{$data->links()}}</div> --}}
+            @else
+            <p>There are no customer to display.</p>
+            @endif
+        </div>
+      </div>
+
+      {{-- @if(count($student) > 0)
         <table class="table table-hover" id="myTable">
           <thead>
             <tr>
@@ -47,7 +80,7 @@
           <tbody>
               @foreach ($student as $key => $students)  
                 @foreach ($product as $products)
-                  {{-- @if ($students->product_id == $products->product_id)                                      --}}
+                  {{-- @if ($students->product_id == $products->product_id)                                     
                     <tr>
                       <td>{{ $student->firstItem() + $key  }}</td>
                       <td>{{ $students->ic }}</td>
@@ -59,17 +92,17 @@
                         {{-- @if(Auth::user()->role_id == '5f97695f34dad' )
                         @else
                         <a class="btn btn-danger" href="{{ url('deletestudent') }}/{{ $students->stud_id }}"><i class="fas fa-trash-alt"></i></a>
-                        @endif --}}
+                        @endif 
                       </td>
                     </tr>    
-                  {{-- @endif               --}}
+                  {{-- @endif               
                 @endforeach 
               @endforeach
           </tbody>
         </table>
       @else
         <p>There are no record to display.</p>
-      @endif
+      @endif --}}
     </main>
   </div>
 </div>
@@ -83,7 +116,7 @@
     table = document.getElementById("myTable");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
+      td = tr[i].getElementsByTagName("td")[3];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {

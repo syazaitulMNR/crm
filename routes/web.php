@@ -95,7 +95,7 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 */
 Route::get('new-customer', 'StudentController@addstudents');
 Route::post('new-customer/details', 'StudentController@details');
-Route::get('viewstudents', 'StudentController@viewstudents');
+Route::get('view-customer', 'StudentController@viewstudents');
 Route::get('viewdetails/{id}',  'StudentController@viewdetails');
 Route::get('sendmail/{id}/{payment_id}',  'StudentController@sendEmail');
 Route::post('editdetails/{id}', 'StudentController@editdetails');

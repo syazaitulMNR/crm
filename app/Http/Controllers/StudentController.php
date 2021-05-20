@@ -51,13 +51,7 @@ class StudentController extends Controller
             'name'=> $request->name,
             'ic' => $request->ic,
             'phoneno' => $request->phoneno,
-            'email' => $request->email,
-            'address' => $request->address,
-            'birthdate' => $request->birthdate,
-            'gender' => $request->gender,
-            'company' => $request->company,
-            'position' => $request->position,
-            'salary' => $request->salary
+            'email' => $request->email
         ));
 
         return redirect('viewstudents')->with('addsuccess','Customer Successfully Created!');
@@ -66,11 +60,11 @@ class StudentController extends Controller
     public function viewstudents()
     {
         $student = Student::orderBy('id','desc')->paginate(15);
-        $product = Product::orderBy('id', 'desc')->get();
-        $package = Package::orderBy('id', 'desc')->first();
+        // $product = Product::orderBy('id', 'desc')->get();
+        // $package = Package::orderBy('id', 'desc')->first();
         //$user = User::where('product_id', $id)->first();
         
-        return view('admin.students.viewstudents', compact('student','product', 'package'));
+        return view('admin.students.viewstudents', compact('student'));
     }
 
     public function viewdetails($id)
