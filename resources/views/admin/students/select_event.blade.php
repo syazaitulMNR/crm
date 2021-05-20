@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Select Event
+    Add New Customer
 @endsection
 
 @include('layouts.navbar')
@@ -46,7 +46,7 @@
               <td>{{ date('d/m/Y', strtotime($products->created_at)) }}</td>
               <td>{{ $products->name }}</td>
               <td class="text-center">
-                <a class="btn btn-light" href="{{ url('select-package') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
+                <a class="btn btn-light" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
               </td>
             </tr>
             @endforeach
