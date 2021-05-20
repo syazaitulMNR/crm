@@ -45,8 +45,32 @@
         </div>
   
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">{{ $package->name }}</h1>
-            <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a>
+          <h1 class="h2">{{ $package->name }}</h1>
+
+          {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
+            <i class="fas fa-plus pr-1"></i> New Customer
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="newcustomer" tabindex="-1" aria-labelledby="newcustomerLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+            
         </div>
 
         <div class="row">
