@@ -43,6 +43,7 @@ class StudentController extends Controller
 
     public function select_package($product_id){
 
+        $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->paginate(15);
         return view('admin.students.select_package', compact('package'));
 
