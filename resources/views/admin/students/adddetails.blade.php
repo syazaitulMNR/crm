@@ -14,7 +14,7 @@
           <h1 class="h2">Customer Details</h1>
         </div>
 
-        <form action="{{ url('student/details') }}" name="form1" id="form1" method="POST"> 
+        <form action="{{ url('new-customer/details') }}" name="form1" id="form1" method="POST"> 
         @csrf
 
             <div class="row" style="padding-left:10%">
