@@ -106,23 +106,26 @@
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Quantity</label>
                       <div class="col-sm-8">
-                      <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
-                        <option value="" disabled selected>-- Tiket --</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
+                        <input type="hidden" class="form-control" name="quantity" value="1" readonly>
+                        <p>1</p>
+                        {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
+                          <option value="" disabled selected>-- Tiket --</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select> --}}
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Total Payment (RM)</label>
                       <div class="col-sm-8">
-                      <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: none;" readonly>
+                        <input type="text" class="form-control" name="pay_price" id="price" value="{{ $package->price }}" readonly> 
+                      {{-- <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: none;" readonly> --}}
                       </div>
                   </div>
                                     
                   <div class='col-md-12 text-right px-5'>
-                      <button type='submit' class='btn btn-success'> <i class="fas fa-save"></i> </button>
+                      <button type='submit' class='btn btn-success'> <i class="fas fa-save"></i> Save </button>
                   </div>
                 </form>
               </div>
