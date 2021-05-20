@@ -52,29 +52,12 @@
           </li>        
           @endif
           
-          {{-- <div class="nav-link" style="color: #ABB2B9">Customer</div>
-          <li class="nav-item pb-3">
-            <a class="nav-link text-white bg-dark " href="/view-customer">
-              <i class="fas fa-eye" style="margin-right: 25px"></i> All Customer
-            </a>  
-            <a class="nav-link text-white bg-dark " href="/new-customer">
-              <i class="fas fa-plus" style="margin-right: 25px"></i> New Customer
-            </a>          
-          </li> --}}
-
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
-          <li class="nav-item"> 
-            <a class="nav-link dropdown-toggle text-white bg-dark active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-clipboard-list"  style="margin-right: 32px"></i> Customer
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="/view-customer">
-                <i class="fas fa-eye" style="margin-right: 25px"></i>View Customer
-              </a>
-              <a class="dropdown-item" href="/new-customer">
-                <i class="fas fa-plus" style="margin-right: 25px"></i> New Customer
-              </a>
-            </div>          
+          <li class="nav-item">
+            <a class="nav-link text-white bg-dark " href="/view-customer">
+              <span data-feather="home"></span>
+              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Customer 
+            </a>            
           </li>
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/trackprogram">
