@@ -17,7 +17,7 @@
    
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Manage Customer</h1>
-        <a href="select-event" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a>
+        {{-- <a href="select-event" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
     </div> 
 
     <div class="row">
