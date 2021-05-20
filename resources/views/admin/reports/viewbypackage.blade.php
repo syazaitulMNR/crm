@@ -53,50 +53,46 @@
             <i class="fas fa-plus pr-1"></i> New Customer
           </button>
           <!-- Modal -->
-          <div class="modal fade" id="newcustomer" tabindex="-1" aria-labelledby="newcustomerLabel" aria-hidden="true">
-            <div class="modal-dialog">
+          <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header border-bottom-0">
+                  <h5 class="modal-title" id="exampleModalLabel">Add New Customer</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
-                  @csrf
-                  <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="col-sm-8 form-control" name="ic"  >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-right">Name :</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="col-sm-8 form-control" name="name" >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-right">Tel No. :</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="col-sm-8 form-control" name="phoneno"  >
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label text-right">Email :</label>
-                        <div class="col-sm-10">
-                        <input type="email" class="col-sm-8 form-control" name="email"  >
-                        </div>
-                    </div>
-                                        
-                    {{-- <div class='col-md-8'>
-                        <button type='submit' class='btn btn-primary float-right'> Submit </button>
-                    </div> --}}
+                <form action="{{ url('new-customer/details') }}" name="form1" id="form1" method="POST"> 
+                @csrf
+                  <div class="form-group row">
+                      <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
+                      <div class="col-sm-10">
+                      <input type="text" class="col-sm-8 form-control" name="ic"  >
+                      </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                  <div class="form-group row">
+                      <label for="name" class="col-sm-2 col-form-label text-right">Name :</label>
+                      <div class="col-sm-10">
+                      <input type="text" class="col-sm-8 form-control" name="name" >
+                      </div>
                   </div>
-              </form>
+                  <div class="form-group row">
+                      <label for="name" class="col-sm-2 col-form-label text-right">Tel No. :</label>
+                      <div class="col-sm-10">
+                      <input type="text" class="col-sm-8 form-control" name="phoneno"  >
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="name" class="col-sm-2 col-form-label text-right">Email :</label>
+                      <div class="col-sm-10">
+                      <input type="email" class="col-sm-8 form-control" name="email"  >
+                      </div>
+                  </div>
+                                    
+                  <div class='col-md-8'>
+                      <button type='submit' class='btn btn-primary float-right'> Submit </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
