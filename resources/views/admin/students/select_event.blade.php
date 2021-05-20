@@ -22,10 +22,9 @@
 
     <div class="row">
       <div class="col-md-12 "> 
-        <h5>Please select the event to continue</h5>
-
-        {{-- <!-- Search box ---------------------------------------------------------->
-        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name"> --}}
+          
+        <!-- Search box ---------------------------------------------------------->
+        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
         
         <div class="float-right pt-3">{{$product->links()}}</div>
         <br>
