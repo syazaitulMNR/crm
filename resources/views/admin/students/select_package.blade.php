@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Select Event
+    Select Package
 @endsection
 
 @include('layouts.navbar')
@@ -26,7 +26,7 @@
         <!-- Search box ---------------------------------------------------------->
         <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
         
-        <div class="float-right pt-3">{{$product->links()}}</div>
+        <div class="float-right pt-3">{{$package->links()}}</div>
         <br>
         
         <!-- View event details in table ----------------------------------------->
@@ -34,17 +34,17 @@
           <thead>
             <tr class="header">
               <th>#</th>
-              <th style="width:12%">Event Date</th>
-              <th>Event Name</th>
+              <th style="width:12%">Event Name</th>
+              <th>Price</th>
               <th class="text-center"><i class="fas fa-cogs"></i></th>
             </tr>
           </thead>
           <tbody> 
-            @foreach ($product as $key => $products)
+            @foreach ($package as $key => $packages)
             <tr>
-              <td>{{ $product->firstItem() + $key }}</td>
-              <td>{{ date('d/m/Y', strtotime($products->created_at)) }}</td>
-              <td>{{ $products->name }}</td>
+              <td>{{ $package->firstItem() + $key }}</td>
+              <td>{{ $packages->name }}</td>
+              <td>{{ $packages->price }}</td>
               <td class="text-center">
                 <a class="btn btn-light" href="{{ url('select-package') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
               </td>
@@ -73,7 +73,7 @@
 
     for (i = 0; i < tr.length; i++) 
     {
-      td = tr[i].getElementsByTagName("td")[2];
+      td = tr[i].getElementsByTagName("td")[1];
       
       if (td) {
         txtValue = td.textContent || td.innerText;

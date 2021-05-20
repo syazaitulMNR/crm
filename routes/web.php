@@ -94,6 +94,7 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 |--------------------------------------------------------------------------
 */
 Route::get('select-event', 'StudentController@select_event');
+Route::get('select-package/{$product_id}', 'StudentController@select_package');
 
 Route::get('new-customer', 'StudentController@addstudents');
 Route::post('new-customer/details', 'StudentController@details');
