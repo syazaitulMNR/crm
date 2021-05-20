@@ -56,7 +56,7 @@
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="">
               <span data-feather="home"></span>
-              <i class="fas fa-plus" style="margin-right: 25px"></i> Add New
+              <i class="fas fa-plus" style="margin-right: 25px"></i> New Customer
             </a>            
           </li>
 
