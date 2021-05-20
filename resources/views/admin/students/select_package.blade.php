@@ -46,7 +46,7 @@
               <td>{{ $packages->name }}</td>
               <td>{{ $packages->price }}</td>
               <td class="text-center">
-                <a class="btn btn-light" href="{{ url('select-package') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
+                <a class="btn btn-light" href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-chevron-right"></i></a>
               </td>
             </tr>
             @endforeach
