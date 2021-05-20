@@ -90,9 +90,11 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 
 /*
 |--------------------------------------------------------------------------
-| Manage student
+| Manage Customer
 |--------------------------------------------------------------------------
 */
+Route::get('select-event', 'StudentController@addstudents');
+
 Route::get('new-customer', 'StudentController@addstudents');
 Route::post('new-customer/details', 'StudentController@details');
 Route::get('view-customer', 'StudentController@viewstudents');

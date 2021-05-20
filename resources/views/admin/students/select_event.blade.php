@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Sales Tracking
+    Add New Customer
 @endsection
 
 @include('layouts.navbar')
@@ -12,12 +12,12 @@
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">   
      
     <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-      <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>Manage Customer</b>
+      <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/trackprogram">Manage Customer</a> 
+      / <b> New Customer</b>
     </div>
    
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Manage Customer</h1>
-        <a href="select-event" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a>
+        <h1 class="h2">Please select the event below</h1>
     </div> 
 
     <div class="row">
@@ -55,28 +55,6 @@
 
       </div>
                 
-      {{-- <div class="col-md-3">
-        <div class="card mb-4 text-center">
-          <div class="card-body pt-4">
-            <i class="fas fa-user-tie fa-3x" style="color:rgb(69, 91, 139)"></i>
-            <h3 class="pt-4">{{$totalcust}}</h3>
-          </div>
-          <div class="card-footer">
-            <h6>Total Customers</h6>
-          </div>
-        </div>
-
-        <div class="card mb-4 text-center">
-          <div class="card-body pt-4">
-            <i class="fa fa-ticket-alt fa-3x" style="color:rgb(69, 139, 69)"></i>
-            <h3 class="pt-4">{{$totalpay}}</h3>
-          </div>
-          <div class="card-footer">
-            <h6>Total Payments</h6>
-          </div>
-        </div>
-
-      </div> --}}
     </div>
        
   </main>
