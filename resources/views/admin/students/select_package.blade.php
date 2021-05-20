@@ -34,7 +34,7 @@
           <thead>
             <tr class="header">
               <th>#</th>
-              <th style="width:12%">Event Name</th>
+              <th>Event Name</th>
               <th>Price</th>
               <th class="text-center"><i class="fas fa-cogs"></i></th>
             </tr>
