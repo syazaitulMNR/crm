@@ -52,6 +52,14 @@
           </li>        
           @endif
           
+          <div class="nav-link" style="color: #ABB2B9">Customer</div>
+          <li class="nav-item pb-3">
+            <a class="nav-link text-white bg-dark " href="">
+              <span data-feather="home"></span>
+              <i class="fas fa-plus" style="margin-right: 25px"></i> Add New
+            </a>            
+          </li>
+
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/trackprogram">
