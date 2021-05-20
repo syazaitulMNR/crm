@@ -30,7 +30,7 @@ class StudentController extends Controller
 
     public function select_event(){
         $student = Student::orderBy('id','desc')->get();
-        // $product = Product::orderBy('id','asc')->paginate(15);
+        $product = Product::orderBy('id','asc')->paginate(15);
         $package = Package::orderBy('id','asc')->get();
         $payment = Payment::orderBy('id','asc')->get(); 
 
