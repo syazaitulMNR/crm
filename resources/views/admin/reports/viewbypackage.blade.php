@@ -92,9 +92,9 @@
                   <hr>
 
                   <div class="form-group row px-5">
-                    <label for="ic" class="col-sm-3 col-form-label">Price</label>
+                    <label for="ic" class="col-sm-3 col-form-label">Price (RM)</label>
                     <div class="col-sm-9">
-                    <input type="text" class="form-control" name="pay_price" value="{{ $package->price }}" >
+                    <input type="text" class="form-control" name="pay_price" value="{{ $package->price }}" readonly>
                     </div>
                   </div>
                   <div class="form-group row px-5">
