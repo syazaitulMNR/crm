@@ -255,17 +255,12 @@
 <script>
   function calculateAmount(val) {
       
-      var prices = document.getElementById("price").value;
-      var total_price = val * prices;
+    var prices = document.getElementById("price").value;
+    var total_price = val * prices;
 
-      /*display the result*/
-      var divobj = document.getElementById('totalprice');
-      divobj.value = total_price;
-
-      var totallagi = document.getElementById('total_lagi');
-      totallagi.value = total_price;
-
-      document.getElementById('total_lah').innerHTML = total_price;
+    /*display the result*/
+    var divobj = document.getElementById('totalprice');
+    divobj.value = total_price;
 
   }
   </script>
