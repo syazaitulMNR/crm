@@ -125,8 +125,8 @@
                       </div>
                   </div>
                                     
-                  <div class='col-md-12 text-right px-5'>
-                      <button type='submit' class='btn btn-success'> <i class="fas fa-save"></i> Save </button>
+                  <div class='col-md-12 text-right px-4'>
+                      <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
                   </div>
                 </form>
               </div>
