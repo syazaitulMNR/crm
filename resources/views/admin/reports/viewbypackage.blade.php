@@ -64,7 +64,7 @@
                 </div>
                 <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" name="form1" id="form1" method="POST"> 
                 @csrf
-                  <div class="form-group row">
+                  <div class="form-group row text-center">
                       <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
                       <div class="col-sm-10">
                       <input type="text" class="col-sm-8 form-control" name="ic"  >
