@@ -64,19 +64,20 @@ class StudentController extends Controller
         return json_encode($package);
     }
 
-    public function details(Request $request)
+    public function details($product_id, $package_id, Request $request)
     { 
-        $studId = uniqid();
+        echo 'simpan';
+        // $studId = uniqid();
         
-        Student::create(array(
-            'stud_id'=> $studId,
-            'name'=> $request->name,
-            'ic' => $request->ic,
-            'phoneno' => $request->phoneno,
-            'email' => $request->email
-        ));
+        // Student::create(array(
+        //     'stud_id'=> $studId,
+        //     'name'=> $request->name,
+        //     'ic' => $request->ic,
+        //     'phoneno' => $request->phoneno,
+        //     'email' => $request->email
+        // ));
 
-        return redirect('viewstudents')->with('addsuccess','Customer Successfully Created!');
+        // return redirect('viewstudents')->with('addsuccess','Customer Successfully Created!');
     }
 
     public function viewstudents()

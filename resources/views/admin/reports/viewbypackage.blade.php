@@ -60,13 +60,43 @@
                   <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
+                  @csrf
+                  <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="col-sm-8 form-control" name="ic"  >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label text-right">Name :</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="col-sm-8 form-control" name="name" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label text-right">Tel No. :</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="col-sm-8 form-control" name="phoneno"  >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label text-right">Email :</label>
+                        <div class="col-sm-10">
+                        <input type="email" class="col-sm-8 form-control" name="email"  >
+                        </div>
+                    </div>
+                                        
+                    {{-- <div class='col-md-8'>
+                        <button type='submit' class='btn btn-primary float-right'> Submit </button>
+                    </div> --}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+              </form>
               </div>
             </div>
           </div>
