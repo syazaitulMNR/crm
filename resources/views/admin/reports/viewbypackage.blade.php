@@ -88,6 +88,27 @@
                       <input type="email" class="form-control" name="email"  >
                       </div>
                   </div>
+
+                  <hr>
+
+                  <div class="form-group row px-5">
+                    <label for="ic" class="col-sm-3 col-form-label">Price</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" name="pay_price" value="{{ $package->price }}" >
+                    </div>
+                  </div>
+                  <div class="form-group row px-5">
+                      <label for="name" class="col-sm-3 col-form-label">Quantity</label>
+                      <div class="col-sm-9">
+                      <input type="text" class="form-control" name="quantity" >
+                      </div>
+                  </div>
+                  <div class="form-group row px-5">
+                      <label for="name" class="col-sm-3 col-form-label">Total Price</label>
+                      <div class="col-sm-9">
+                      <input type="text" class="form-control" name="totalprice"  >
+                      </div>
+                  </div>
                                     
                   <div class='col-md-12 text-right px-5'>
                       <button type='submit' class='btn btn-success'> <i class="fas fa-save"></i> </button>

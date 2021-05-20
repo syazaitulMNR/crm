@@ -75,7 +75,19 @@ class StudentController extends Controller
             'email' => $request->email
         ));
 
-        Payment::
+        $payment_id = 'OD'.uniqid();
+
+        Payment::create(array(
+            'payment_id'=> $payment_id,
+            'pay_price'=> $request->pay_price,
+            'totalprice'=> $request->totalprice,
+            'quantity' => $request->quantity,
+            'status' => 'paid',
+            'pay_method' => 'FPX',
+            'stud_id' => $stud_id,
+            'product_id' => $product_id,
+            'package_id' => $package_id
+        ));
 
         return redirect('viewstudents')->with('addsuccess','Customer Successfully Added!');
     }
