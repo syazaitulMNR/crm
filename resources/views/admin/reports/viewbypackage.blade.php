@@ -65,26 +65,26 @@
                 <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
                 @csrf
                   <div class="form-group row px-5">
-                      <label for="ic" class="col-sm-3 col-form-label">IC No.</label>
-                      <div class="col-sm-9">
+                      <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
+                      <div class="col-sm-8">
                       <input type="text" class="form-control" name="ic"  >
                       </div>
                   </div>
                   <div class="form-group row px-5">
-                      <label for="name" class="col-sm-3 col-form-label">Name</label>
-                      <div class="col-sm-9">
+                      <label for="name" class="col-sm-4 col-form-label">Name</label>
+                      <div class="col-sm-8">
                       <input type="text" class="form-control" name="name" >
                       </div>
                   </div>
                   <div class="form-group row px-5">
-                      <label for="name" class="col-sm-3 col-form-label">Tel No.</label>
-                      <div class="col-sm-9">
+                      <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
+                      <div class="col-sm-8">
                       <input type="text" class="form-control" name="phoneno"  >
                       </div>
                   </div>
                   <div class="form-group row px-5">
-                      <label for="name" class="col-sm-3 col-form-label">Email</label>
-                      <div class="col-sm-9">
+                      <label for="name" class="col-sm-4 col-form-label">Email</label>
+                      <div class="col-sm-8">
                       <input type="email" class="form-control" name="email"  >
                       </div>
                   </div>
@@ -92,14 +92,14 @@
                   <hr>
 
                   <div class="form-group row px-5">
-                    <label for="ic" class="col-sm-3 col-form-label">Price (RM)</label>
-                    <div class="col-sm-9">
+                    <label for="ic" class="col-sm-4 col-form-label">Price (RM)</label>
+                    <div class="col-sm-8">
                     <input type="text" class="form-control" name="pay_price" id="price" value="{{ $package->price }}" readonly>   
                     </div>
                   </div>
                   <div class="form-group row px-5">
-                      <label for="name" class="col-sm-3 col-form-label">Quantity</label>
-                      <div class="col-sm-9">
+                      <label for="name" class="col-sm-4 col-form-label">Quantity</label>
+                      <div class="col-sm-8">
                       <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
                         <option value="" disabled selected>-- Tiket --</option>
                         <option value="1">1</option>
@@ -109,8 +109,8 @@
                       </div>
                   </div>
                   <div class="form-group row px-5">
-                      <label for="name" class="col-sm-3 col-form-label">Total Payment</label>
-                      <div class="col-sm-9">
+                      <label for="name" class="col-sm-4 col-form-label">Total Payment</label>
+                      <div class="col-sm-8">
                       <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
                       </div>
                   </div>
