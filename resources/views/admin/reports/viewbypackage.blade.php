@@ -100,7 +100,12 @@
                   <div class="form-group row px-5">
                       <label for="name" class="col-sm-3 col-form-label">Quantity</label>
                       <div class="col-sm-9">
-                      <input type="text" class="form-control" name="quantity" >
+                      <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-control" required>
+                        <option value="" disabled selected>-- Tiket --</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
                       </div>
                   </div>
                   <div class="form-group row px-5">
