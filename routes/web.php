@@ -93,6 +93,7 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 | Manage student
 |--------------------------------------------------------------------------
 */
+Route::get('new-customer', 'StudentController@addstudents');
 Route::post('student/details', 'StudentController@details');
 Route::get('viewstudents', 'StudentController@viewstudents');
 Route::get('viewdetails/{id}',  'StudentController@viewdetails');

@@ -54,7 +54,7 @@
           
           <div class="nav-link" style="color: #ABB2B9">Customer</div>
           <li class="nav-item pb-3">
-            <a class="nav-link text-white bg-dark " href="">
+            <a class="nav-link text-white bg-dark " href="/new-customer">
               <span data-feather="home"></span>
               <i class="fas fa-plus" style="margin-right: 25px"></i> New Customer
             </a>            
