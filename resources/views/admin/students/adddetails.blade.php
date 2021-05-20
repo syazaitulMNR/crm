@@ -17,95 +17,95 @@
         <form action="{{ url('student/details') }}" name="form1" id="form1" method="POST"> 
         @csrf
 
-        <div class="row" style="padding-left:10%">
-            <div class="col-md-5">
-                <div class="form-group {{ ($errors->has('roll'))?'has-error':'' }}">
-              <label for="roll">Event <span class="required">*</span></label>
-              <select name="product" class="form-control" id="product">
-                  <option value="">-- Select Event --</option>
-                  @foreach ($product as $products)
-                      <option value="{{ $products->product_id }}">{{ ucfirst($products->name) }}</option>
-                  @endforeach
-              </select>
-           </div>
+            <div class="row" style="padding-left:10%">
+                <div class="col-md-5">
+                    <div class="form-group {{ ($errors->has('roll'))?'has-error':'' }}">
+                <label for="roll">Event <span class="required">*</span></label>
+                <select name="product" class="form-control" id="product">
+                    <option value="">-- Select Event --</option>
+                    @foreach ($product as $products)
+                        <option value="{{ $products->product_id }}">{{ ucfirst($products->name) }}</option>
+                    @endforeach
+                </select>
             </div>
-            <div class="col-md-5">
-                <div class="form-group {{ ($errors->has('name'))?'has-error':'' }}">
-              <label for="roll">Package </label>
-              <select name="package" class="form-control" id="package">
-              </select>
-           </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group {{ ($errors->has('name'))?'has-error':'' }}">
+                <label for="roll">Package </label>
+                <select name="package" class="form-control" id="package">
+                </select>
             </div>
-        </div>
+                </div>
+            </div>
 
-        <hr>
+            <hr>
 
-        <div class="form-group row">
-            <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="ic"  >
+            <div class="form-group row">
+                <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="ic"  >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Name :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="name" >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Name :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="name" >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Tel No. :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="phoneno"  >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Tel No. :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="phoneno"  >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Email :</label>
-            <div class="col-sm-10">
-            <input type="email" class="col-sm-8 form-control" name="email"  >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Email :</label>
+                <div class="col-sm-10">
+                <input type="email" class="col-sm-8 form-control" name="email"  >
+                </div>
             </div>
-        </div>
 
-        <hr>
+            {{-- <hr>
 
-        <div class="form-group row">
-            <label for="ic" class="col-sm-2 col-form-label text-right">Address :</label>
-            <div class="col-sm-10">
-            <textarea type="text" class="col-sm-8 form-control" name="address"> </textarea>
+            <div class="form-group row">
+                <label for="ic" class="col-sm-2 col-form-label text-right">Address :</label>
+                <div class="col-sm-10">
+                <textarea type="text" class="col-sm-8 form-control" name="address"> </textarea>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Date of Birth :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="birthdate"  >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Date of Birth :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="birthdate"  >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Gender :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="gender"  >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Gender :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="gender"  >
+                </div>
             </div>
-        </div>
 
-        <hr>
+            <hr>
 
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Company Name :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="company" >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Company Name :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="company" >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Position :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="position"  >
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Position :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="position"  >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-right">Salary :</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-8 form-control" name="salary" >
-            </div>
-        </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label text-right">Salary :</label>
+                <div class="col-sm-10">
+                <input type="text" class="col-sm-8 form-control" name="salary" >
+                </div>
+            </div> --}}
                     
             <div class='col-md-8'>
                 <button type='submit' class='btn btn-primary float-right'> Submit </button>
