@@ -46,6 +46,7 @@
   
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">{{ $package->name }}</h1>
+            <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a>
         </div>
 
         <div class="row">

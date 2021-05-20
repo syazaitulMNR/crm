@@ -16,30 +16,6 @@
 
         <form action="{{ url('new-customer/details') }}" name="form1" id="form1" method="POST"> 
         @csrf
-
-            <div class="row" style="padding-left:10%">
-                <div class="col-md-5">
-                    <div class="form-group {{ ($errors->has('roll'))?'has-error':'' }}">
-                <label for="roll">Event <span class="required">*</span></label>
-                <select name="product" class="form-control" id="product">
-                    <option value="">-- Select Event --</option>
-                    @foreach ($product as $products)
-                        <option value="{{ $products->product_id }}">{{ ucfirst($products->name) }}</option>
-                    @endforeach
-                </select>
-            </div>
-                </div>
-                <div class="col-md-5">
-                    <div class="form-group {{ ($errors->has('name'))?'has-error':'' }}">
-                <label for="roll">Package </label>
-                <select name="package" class="form-control" id="package">
-                </select>
-            </div>
-                </div>
-            </div>
-
-            <hr>
-
             <div class="form-group row">
                 <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
                 <div class="col-sm-10">

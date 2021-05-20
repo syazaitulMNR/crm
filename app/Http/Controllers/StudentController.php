@@ -29,43 +29,30 @@ class StudentController extends Controller
     }
 
     /*-- Manage student ----------------------------------------------------------------*/
-    public function select_event(){
-        $student = Student::orderBy('id','desc')->get();
-        $product = Product::orderBy('id','asc')->paginate(15);
-        $package = Package::orderBy('id','asc')->get();
-        $payment = Payment::orderBy('id','asc')->get(); 
+    // public function select_event(){
+    //     $student = Student::orderBy('id','desc')->get();
+    //     $product = Product::orderBy('id','asc')->paginate(15);
+    //     $package = Package::orderBy('id','asc')->get();
+    //     $payment = Payment::orderBy('id','asc')->get(); 
 
-        // $totalcust = Student::count();
-        // $totalpay = Payment::count();
+    //     // $totalcust = Student::count();
+    //     // $totalpay = Payment::count();
 
-        return view('admin.students.select_event', compact('student','product','package', 'payment'));
-    }
+    //     return view('admin.students.select_event', compact('student','product','package', 'payment'));
+    // }
 
-    public function select_package($product_id){
+    // public function select_package($product_id){
 
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->paginate(15);
-        return view('admin.students.select_package', compact('product', 'package'));
+    //     $product = Product::where('product_id', $product_id)->first();
+    //     $package = Package::where('product_id', $product_id)->paginate(15);
+    //     return view('admin.students.select_package', compact('product', 'package'));
 
-    }
+    // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function addstudents()
+    public function addstudents($product_id, $package_id)
     {
-        $product = Product::orderBy('id','asc')->get();
-        $package = Package::orderBy('id','asc')->get();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         
         return view('admin.students.adddetails', compact('product','package'));
     }
