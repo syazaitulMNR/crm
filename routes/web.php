@@ -97,7 +97,7 @@ Route::get('select-event', 'StudentController@select_event');
 Route::get('select-package/{product_id}', 'StudentController@select_package');
 
 Route::get('new-customer/{product_id}/{package_id}', 'StudentController@add_student');
-Route::post('new-customer/save/{product_id}/{package_id}', 'StudentController@save_customer');
+
 Route::get('view-customer', 'StudentController@viewstudents');
 Route::get('viewdetails/{id}',  'StudentController@viewdetails');
 Route::get('sendmail/{id}/{payment_id}',  'StudentController@sendEmail');
@@ -123,6 +123,7 @@ Route::get('trackcustomer', 'ReportsController@trackcustomer');
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbypackage');
+Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');

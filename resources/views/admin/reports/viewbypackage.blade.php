@@ -126,6 +126,12 @@
         </div>
 
         <div class="row">
+          @if ($message = Session::get('addsuccess'))
+          <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+              <strong>{{ $message }}</strong>
+          </div>
+          @endif
           <div class="col-md-9 "> 
 
             <!-- Search box ---------------------------------------------------------->

@@ -63,34 +63,34 @@ class StudentController extends Controller
     //     return json_encode($package);
     // }
 
-    public function save_customer($product_id, $package_id, Request $request)
-    { 
-        $stud_id = 'MI'.uniqid();
+    // public function save_customer($product_id, $package_id, Request $request)
+    // { 
+    //     $stud_id = 'MI'.uniqid();
         
-        Student::create(array(
-            'stud_id'=> $stud_id,
-            'name'=> $request->name,
-            'ic' => $request->ic,
-            'phoneno' => $request->phoneno,
-            'email' => $request->email
-        ));
+    //     Student::create(array(
+    //         'stud_id'=> $stud_id,
+    //         'name'=> $request->name,
+    //         'ic' => $request->ic,
+    //         'phoneno' => $request->phoneno,
+    //         'email' => $request->email
+    //     ));
 
-        $payment_id = 'OD'.uniqid();
+    //     $payment_id = 'OD'.uniqid();
 
-        Payment::create(array(
-            'payment_id'=> $payment_id,
-            'pay_price'=> $request->pay_price,
-            'totalprice'=> $request->totalprice,
-            'quantity' => $request->quantity,
-            'status' => 'paid',
-            'pay_method' => 'FPX',
-            'stud_id' => $stud_id,
-            'product_id' => $product_id,
-            'package_id' => $package_id
-        ));
+    //     Payment::create(array(
+    //         'payment_id'=> $payment_id,
+    //         'pay_price'=> $request->pay_price,
+    //         'totalprice'=> $request->totalprice,
+    //         'quantity' => $request->quantity,
+    //         'status' => 'paid',
+    //         'pay_method' => 'FPX',
+    //         'stud_id' => $stud_id,
+    //         'product_id' => $product_id,
+    //         'package_id' => $package_id
+    //     ));
 
-        return redirect('viewstudents')->with('addsuccess','Customer Successfully Added!');
-    }
+    //     return redirect('viewstudents')->with('addsuccess','Customer Successfully Added!');
+    // }
 
     public function viewstudents()
     {
