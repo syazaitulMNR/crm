@@ -89,7 +89,7 @@
                       </div>
                   </div>
                                     
-                  <div class='col-md-8 text-right'>
+                  <div class='col-md-12 text-right'>
                       <button type='submit' class='btn btn-success'> <i class="fas fa-save"></i> </button>
                   </div>
                 </form>
