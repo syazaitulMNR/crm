@@ -107,7 +107,7 @@
                       <label for="name" class="col-sm-4 col-form-label">Quantity</label>
                       <div class="col-sm-8">
                         <input type="hidden" class="form-control" name="quantity" value="1" readonly>
-                        <p>1</p>
+                        <label>1</label>
                         {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
                           <option value="" disabled selected>-- Tiket --</option>
                           <option value="1">1</option>
@@ -119,7 +119,8 @@
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Total Payment (RM)</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" name="pay_price" id="price" value="{{ $package->price }}" readonly> 
+                        <input type="hidden" class="form-control" name="totalprice" value="{{ $package->price }}" readonly> 
+                        <label>{{$package->price}}</label>
                       {{-- <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: none;" readonly> --}}
                       </div>
                   </div>
