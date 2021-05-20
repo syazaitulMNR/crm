@@ -53,16 +53,16 @@
           @endif
           
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/view-customer">
               <span data-feather="home"></span>
               <i class="fas fa-user-tie" style="margin-right: 29px"></i> Manage Customer 
             </a>            
-          </li>
+          </li> --}}
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/trackprogram">
               <span data-feather="home"></span>
-              <i class="fas fa-clipboard-list" style="margin-right: 31px"></i> Order History
+              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Manage Customer 
             </a>            
           </li>
           {{-- <li class="nav-item"> 
