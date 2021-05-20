@@ -17,12 +17,13 @@
     </div>
    
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Please select the event below</h1>
+        <h1 class="h2">New Customer</h1>
     </div> 
 
     <div class="row">
       <div class="col-md-12 "> 
-          
+        <h6>Please select the event to continue</h6>
+
         <!-- Search box ---------------------------------------------------------->
         <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
         
