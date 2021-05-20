@@ -111,7 +111,8 @@
                   <div class="form-group row px-5">
                       <label for="name" class="col-sm-4 col-form-label">Total Payment</label>
                       <div class="col-sm-8">
-                      <input type="text" id="totalprice" class="form-control" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
+                      <input type="text" id="totalprice" class="form-control" value="" style="border: none; outline-width: 0;" readonly>                      
+                      <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0;" readonly>
                       </div>
                   </div>
                                     
