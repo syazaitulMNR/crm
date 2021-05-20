@@ -49,7 +49,7 @@ class StudentController extends Controller
 
     // }
 
-    public function addstudents($product_id, $package_id)
+    public function add_student($product_id, $package_id)
     {
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
@@ -57,27 +57,27 @@ class StudentController extends Controller
         return view('admin.students.adddetails', compact('product','package'));
     }
 
-    /*--                                   --------------------------------------*/
-    public function getpackage($id) 
-    {        
-        $package = Package::where('package_id',$id)->get();
-        return json_encode($package);
-    }
+    // public function getpackage($id) 
+    // {        
+    //     $package = Package::where('package_id',$id)->get();
+    //     return json_encode($package);
+    // }
 
-    public function details($product_id, $package_id, Request $request)
+    public function save_customer($product_id, $package_id, Request $request)
     { 
-        echo 'simpan';
-        // $studId = uniqid();
+        $stud_id = 'MI'.uniqid();
         
-        // Student::create(array(
-        //     'stud_id'=> $studId,
-        //     'name'=> $request->name,
-        //     'ic' => $request->ic,
-        //     'phoneno' => $request->phoneno,
-        //     'email' => $request->email
-        // ));
+        Student::create(array(
+            'stud_id'=> $stud_id,
+            'name'=> $request->name,
+            'ic' => $request->ic,
+            'phoneno' => $request->phoneno,
+            'email' => $request->email
+        ));
 
-        // return redirect('viewstudents')->with('addsuccess','Customer Successfully Created!');
+        Payment::
+
+        return redirect('viewstudents')->with('addsuccess','Customer Successfully Added!');
     }
 
     public function viewstudents()

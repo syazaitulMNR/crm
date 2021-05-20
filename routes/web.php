@@ -96,8 +96,8 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 Route::get('select-event', 'StudentController@select_event');
 Route::get('select-package/{product_id}', 'StudentController@select_package');
 
-Route::get('new-customer/{product_id}/{package_id}', 'StudentController@addstudents');
-Route::post('new-customer/save/{product_id}/{package_id}', 'StudentController@details');
+Route::get('new-customer/{product_id}/{package_id}', 'StudentController@add_student');
+Route::post('new-customer/save/{product_id}/{package_id}', 'StudentController@save_customer');
 Route::get('view-customer', 'StudentController@viewstudents');
 Route::get('viewdetails/{id}',  'StudentController@viewdetails');
 Route::get('sendmail/{id}/{payment_id}',  'StudentController@sendEmail');

@@ -62,34 +62,34 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form class="px-5" action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
+                <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
                 @csrf
-                  <div class="form-group row">
+                  <div class="form-group row px-5">
                       <label for="ic" class="col-sm-3 col-form-label">IC No.</label>
                       <div class="col-sm-9">
                       <input type="text" class="form-control" name="ic"  >
                       </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group row px-5">
                       <label for="name" class="col-sm-3 col-form-label">Name</label>
                       <div class="col-sm-9">
                       <input type="text" class="form-control" name="name" >
                       </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group row px-5">
                       <label for="name" class="col-sm-3 col-form-label">Tel No.</label>
                       <div class="col-sm-9">
                       <input type="text" class="form-control" name="phoneno"  >
                       </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group row px-5">
                       <label for="name" class="col-sm-3 col-form-label">Email</label>
                       <div class="col-sm-9">
                       <input type="email" class="form-control" name="email"  >
                       </div>
                   </div>
                                     
-                  <div class='col-md-12 text-right'>
+                  <div class='col-md-12 text-right px-5'>
                       <button type='submit' class='btn btn-success'> <i class="fas fa-save"></i> </button>
                   </div>
                 </form>
