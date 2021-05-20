@@ -66,25 +66,25 @@
                 @csrf
                   <div class="form-group row px-5">
                       <label for="ic" class="col-sm-2 col-form-label text-right">IC No. :</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                       <input type="text" class="form-control" name="ic"  >
                       </div>
                   </div>
                   <div class="form-group row px-5">
                       <label for="name" class="col-sm-2 col-form-label text-right">Name :</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                       <input type="text" class="form-control" name="name" >
                       </div>
                   </div>
                   <div class="form-group row px-5">
                       <label for="name" class="col-sm-2 col-form-label text-right">Tel No. :</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                       <input type="text" class="form-control" name="phoneno"  >
                       </div>
                   </div>
                   <div class="form-group row px-5">
                       <label for="name" class="col-sm-2 col-form-label text-right">Email :</label>
-                      <div class="col-sm-10">
+                      <div class="col-sm-9">
                       <input type="email" class="form-control" name="email"  >
                       </div>
                   </div>
