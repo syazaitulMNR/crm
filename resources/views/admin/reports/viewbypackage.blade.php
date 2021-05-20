@@ -71,9 +71,15 @@
                       </div>
                   </div>
                   <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Name</label>
+                      <label for="name" class="col-sm-4 col-form-label">First Name</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="name" >
+                      <input type="text" class="form-control" name="first_name" >
+                      </div>
+                  </div>
+                  <div class="form-group row px-4">
+                      <label for="name" class="col-sm-4 col-form-label">Last Name</label>
+                      <div class="col-sm-8">
+                      <input type="text" class="form-control" name="last_name" >
                       </div>
                   </div>
                   <div class="form-group row px-4">

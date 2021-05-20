@@ -90,7 +90,8 @@ class ReportsController extends Controller
         
         Student::create(array(
             'stud_id'=> $stud_id,
-            'name'=> $request->name,
+            'first_name'=> $request->first_name,
+            'last_name'=> $request->last_name,
             'ic' => $request->ic,
             'phoneno' => $request->phoneno,
             'email' => $request->email
