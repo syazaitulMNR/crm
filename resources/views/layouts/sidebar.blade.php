@@ -56,13 +56,13 @@
           <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/view-customer">
               <span data-feather="home"></span>
-              <i class="fas fa-user-tie" style="margin-right: 27px"></i> Manage Customer 
+              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Manage Customer 
             </a>            
           </li>
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/trackprogram">
               <span data-feather="home"></span>
-              <i class="fas fa-clipboard-list" style="margin-right: 25px"></i> Order History
+              <i class="fas fa-clipboard-list" style="margin-right: 29px"></i> Order History
             </a>            
           </li>
           {{-- <li class="nav-item"> 
