@@ -109,9 +109,9 @@
                       </div>
                   </div>
                   <div class="form-group row px-5">
-                      <label for="name" class="col-sm-3 col-form-label">Total Price</label>
+                      <label for="name" class="col-sm-3 col-form-label">Total Payment</label>
                       <div class="col-sm-9">
-                      <input type="text" class="form-control" name="totalprice"  >
+                      <input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly>
                       </div>
                   </div>
                                     
@@ -246,5 +246,29 @@
     }
   }
 </script>
+
+<!--
+|--------------------------------------------------------------------------
+| This function is to calculate Total Price
+|--------------------------------------------------------------------------
+-->
+<script>
+  function calculateAmount(val) {
+      
+      var prices = document.getElementById("price").value;
+      var total_price = val * prices;
+
+      /*display the result*/
+      var divobj = document.getElementById('totalprice');
+      divobj.value = total_price;
+
+      var totallagi = document.getElementById('total_lagi');
+      totallagi.value = total_price;
+
+      document.getElementById('total_lah').innerHTML = total_price;
+
+  }
+  </script>
+  
 
 @endsection
