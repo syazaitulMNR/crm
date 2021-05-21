@@ -92,6 +92,7 @@ class ProductController extends Controller
         $product->date_to = $request->date2;
         $product->time_from = $request->time1;
         $product->time_to = $request->time2;
+        $product->offer_id = $request->offer_id;
 
         if($request->hasFile('cert_image'))
         {
