@@ -10,6 +10,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImportExcelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $data = Student::orderBy('id','desc')->paginate(15);
