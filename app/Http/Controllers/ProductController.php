@@ -153,8 +153,8 @@ class ProductController extends Controller
 
         foreach($request->feature as $keys => $values) {
 
-            $auto_inc_fid = $feature->id + 1;
-            $featureId = 'FID' . 0 . 0 . $auto_inc_fid;
+            
+            $featureId = 'FID' . uniqid();
                     
            Feature::create(array(
                 'feat_id'=> $featureId,
