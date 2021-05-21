@@ -64,9 +64,9 @@
                 <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
                 <td>{{ date('h:i a', strtotime($products->time_from)) }} - {{ date('h:i a', strtotime($products->time_to)) }}</td>
               <td>
-                <a class="btn btn-light" href="{{ url('package') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
-                <a class="btn btn-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="fas fa-edit"></i></a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $products->product_id }}"><i class="fas fa-trash-alt"></i></button>
+                <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
+                <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="fas fa-edit"></i></a>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $products->product_id }}"><i class="fas fa-trash-alt"></i></button>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal{{ $products->product_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
