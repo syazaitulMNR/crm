@@ -25,27 +25,27 @@ class ReportsController extends Controller
         $this->middleware('auth');
     }
 
-    public function trackcustomer()
-    {
-        $student = Student::orderBy('id','desc')->paginate(15);
-        $product = Product::orderBy('id', 'desc')->get();
+    // public function trackcustomer()
+    // {
+    //     $student = Student::orderBy('id','desc')->paginate(15);
+    //     $product = Product::orderBy('id', 'desc')->get();
          
-        $totalcust = Student::count();
-        $totalpay = Payment::count();
+    //     $totalcust = Student::count();
+    //     $totalpay = Payment::count();
 
-        return view('admin.reports.trackcustomer', compact('student','product','totalcust','totalpay'));
-    }
+    //     return view('admin.reports.trackcustomer', compact('student','product','totalcust','totalpay'));
+    // }
 
     public function trackprogram(Request $request)
     {
         $q = $request->search;
-        $product = Product::where('name', 'LIKE', '%' . $q . '%')
-        ->orWhere('product_id', 'LIKE', '%' . $q . '%')
-        ->paginate(15);
-        $product->appends(['search' => $q]);
+        // $product = Product::where('name', 'LIKE', '%' . $q . '%')
+        // ->orWhere('product_id', 'LIKE', '%' . $q . '%')
+        // ->paginate(15);
+        // $product->appends(['search' => $q]);
 
         $student = Student::orderBy('id','desc')->get();
-        // $product = Product::orderBy('id','asc')->paginate(15);
+        $product = Product::orderBy('id','desc')->paginate(15);
         $package = Package::orderBy('id','asc')->get();
         $payment = Payment::orderBy('id','asc')->get(); 
 

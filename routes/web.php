@@ -130,7 +130,7 @@ Route::get('send-bulk-mail', 'BlastingController@sendBulkMail');
 | Manage report
 |--------------------------------------------------------------------------
 */
-Route::get('trackcustomer', 'ReportsController@trackcustomer');
+// Route::get('trackcustomer', 'ReportsController@trackcustomer');
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbypackage');
