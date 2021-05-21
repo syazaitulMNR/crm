@@ -236,7 +236,7 @@ Route::get('certificate/{product_id}/{stud_id}', 'CertController@extract_cert');
 | Log Out
 |--------------------------------------------------------------------------
 */
-Route::get('logout', 'LoginController@logout');
+Route::get('logout', 'Auth\LoginController@logout');
 
 
 
