@@ -92,7 +92,7 @@
                 {{-- <a class="btn btn-primary" href="{{ url('update-offer') }}/{{ $offer->offer_id }}"><i class="fas fa-edit"></i> Update</a> --}}
                 <!-- Update trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateoffer">
-                    <i class="fas fa-edit pr-1"></i> Update
+                    <i class="fas fa-edit"></i>
                 </button>
                 <!-- Update Modal -->
                 <div class="modal fade" id="updateoffer" tabindex="-1" role="dialog" aria-labelledby="updateofferLabel" aria-hidden="true">
@@ -122,7 +122,7 @@
                 </div>
 
                 <!-- Delete trigger modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $offer->offer_id }}"><i class="fas fa-trash-alt pr-1"></i> Delete</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $offer->offer_id }}"><i class="fas fa-trash-alt pr-1"></i></button>
                 <!-- Delete Modal -->
                 <div class="modal fade" id="delete{{ $offer->offer_id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
