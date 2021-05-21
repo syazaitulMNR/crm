@@ -62,8 +62,8 @@
             <td>{{ $packages->name  }}</td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
-              <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="fas fa-eye pr-1"></i>View</a>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="fas fa-trash-alt pr-1"></i>Delete</button>
+              <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="fas fa-eye"></i></a>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="fas fa-trash-alt"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $packages->package_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">

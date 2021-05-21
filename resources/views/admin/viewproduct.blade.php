@@ -18,7 +18,7 @@
         <h1 class="h2">Event</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <a href="addproduct" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> Add New Event</a>
+            <a href="addproduct" type="button" class="btn btn-outline-secondary"><i class="fas fa-plus"></i> Add New Event</a>
           </div>
         </div>
       </div>
