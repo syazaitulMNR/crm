@@ -40,7 +40,7 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
           <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> 
-          / <a href="/trackprogram">Order History</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"> {{ $product->name }} </a> 
+          / <a href="/trackprogram">Customer</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"> {{ $product->name }} </a> 
           / <b>{{ $package->name }}</b>
         </div>
   
@@ -149,7 +149,7 @@
                 <strong>{{ $message }}</strong>
             </div>
             @endif
-            
+
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">
