@@ -39,6 +39,8 @@ class OfferController extends Controller
 
         $offers->name = $request->name;
         $offers->save();
+
+        return redirect('view-offer')->with('update-success', 'Offer Successfully Updated'); 
     }
 
 }
