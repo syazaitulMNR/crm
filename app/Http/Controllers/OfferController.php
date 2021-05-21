@@ -43,4 +43,13 @@ class OfferController extends Controller
         return redirect('view-offer')->with('update-success', 'Offer Successfully Updated'); 
     }
 
+    public function delete($offer_id)
+    {
+        $offers = Offer::where('offer_id', $offer_id);
+
+        $offers->delete();
+
+        return back()->with('delete', 'Offer Successfully Deleted');
+    }
+
 }

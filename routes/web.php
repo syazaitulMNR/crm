@@ -96,11 +96,7 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 Route::get('view-offer', 'OfferController@view');
 Route::post('new-offer/save', 'OfferController@create');
 Route::post('update-offer/save/{offer_id}', 'OfferController@update');
-
-
-Route::get('edit/{id}', 'ProductController@edit');
-Route::post('update/{id}',  'ProductController@update');
-Route::get('delete/{id}', 'ProductController@destroy');
+Route::get('delete-offer/{offer_id}', 'OfferController@delete');
 
 /*
 |--------------------------------------------------------------------------
