@@ -20,6 +20,8 @@ class OfferController extends Controller
 
     public function create(Request $request)
     {
+        $offers = Offer::orderBy('id','desc')->first();
+        
         $auto_inc_offer = $offers->id + 1;
         $offer_id = 'OFF' . 0 . 0 . $auto_inc_offer;
 
