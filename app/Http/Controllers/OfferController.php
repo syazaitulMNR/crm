@@ -22,15 +22,16 @@ class OfferController extends Controller
     {
         $offers = Offer::orderBy('id','desc')->first();
         
-        $auto_inc_offer = $offers->id + 1;
-        $offer_id = 'OFF' . 0 . 0 . $auto_inc_offer;
+        dd($offers);
+        // $auto_inc_offer = $offers->id + 1;
+        // $offer_id = 'OFF' . 0 . 0 . $auto_inc_offer;
 
-        Offer::create([
-            'offer_id' => $offer_id,
-            'name' => $request->name
-        ]);
+        // Offer::create([
+        //     'offer_id' => $offer_id,
+        //     'name' => $request->name
+        // ]);
 
-        return redirect('view-offer')->with('add-success', 'Offer Successfully Created');
+        // return redirect('view-offer')->with('add-success', 'Offer Successfully Created');
     }
 
 }
