@@ -15,10 +15,9 @@
       </div>
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Offer</h1>
+        <h1 class="h2">Manage Offer</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
-                {{-- <a href="add-offer" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus pt-1"></i> Add New Offer</a> --}}
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newoffer">
                     <i class="fas fa-plus pr-1"></i> New Offer
@@ -90,10 +89,42 @@
                 <td>{{ $offers->firstItem() + $key  }}</td>
                 <td>{{ $offer->name  }}</td>
               <td>
-                <a class="btn btn-primary" href="{{ url('update-offer') }}/{{ $offer->offer_id }}"><i class="fas fa-edit"></i> Update</a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $offer->offer_id }}"><i class="fas fa-trash-alt"></i> Delete</button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal{{ $offer->offer_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                {{-- <a class="btn btn-primary" href="{{ url('update-offer') }}/{{ $offer->offer_id }}"><i class="fas fa-edit"></i> Update</a> --}}
+                <!-- Update trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateoffer">
+                    <i class="fas fa-edit pr-1"></i> Update
+                </button>
+                <!-- Update Modal -->
+                <div class="modal fade" id="updateoffer" tabindex="-1" role="dialog" aria-labelledby="updateofferLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                            <h5 class="modal-title" id="updateofferLabel">Update Offer</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ url('update-offer/save') }}/{{ $offer->offer_id }}" method="POST"> 
+                        @csrf
+                            <div class="form-group row px-4">
+                                <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" value="{{ $offer->name }}">
+                                </div>
+                            </div>
+                                                
+                            <div class='col-md-12 text-right px-4'>
+                                <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Delete trigger modal -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $offer->offer_id }}"><i class="fas fa-trash-alt pr-1"></i> Delete</button>
+                <!-- Delete Modal -->
+                <div class="modal fade" id="delete{{ $offer->offer_id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">

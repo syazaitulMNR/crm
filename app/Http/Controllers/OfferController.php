@@ -33,4 +33,12 @@ class OfferController extends Controller
         return redirect('view-offer')->with('add-success', 'Offer Successfully Created');
     }
 
+    public function update($offer_id, Request $request)
+    {
+        $offers = Offer::where('offer_id', $offer_id)->first();
+
+        $offers->name = $request->name;
+        $offers->save();
+    }
+
 }
