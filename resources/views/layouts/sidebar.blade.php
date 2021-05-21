@@ -62,7 +62,7 @@
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/trackprogram">
               <span data-feather="home"></span>
-              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Customer Management 
+              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Customer 
             </a>            
           </li>
           {{-- <li class="nav-item"> 
