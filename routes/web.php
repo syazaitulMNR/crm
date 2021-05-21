@@ -90,6 +90,17 @@ Route::get('feature/{id}', 'ProductController@viewpack');
 
 /*
 |--------------------------------------------------------------------------
+| Manage offer
+|--------------------------------------------------------------------------
+*/
+Route::get('offer', 'OfferController@viewproduct');
+Route::post('addproduct', 'ProductController@create');
+Route::get('edit/{id}', 'ProductController@edit');
+Route::post('update/{id}',  'ProductController@update');
+Route::get('delete/{id}', 'ProductController@destroy');
+
+/*
+|--------------------------------------------------------------------------
 | Manage Customer
 |--------------------------------------------------------------------------
 */

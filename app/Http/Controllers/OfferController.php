@@ -12,4 +12,10 @@ class OfferController extends Controller
         $this->middleware('auth');
     }
 
+    public function view()
+    {
+        $offers = Offer::orderBy('id','asc')->paginate(15);
+        return view('admin.viewproduct', compact('offers'));
+    }
+
 }
