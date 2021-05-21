@@ -33,7 +33,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{ url('new-offer/save') }}/{{ $offers->offer_id }}" method="POST"> 
+                        <form action="{{ url('new-offer/save') }}" method="POST"> 
                         @csrf
                             <div class="form-group row px-4">
                                 <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
