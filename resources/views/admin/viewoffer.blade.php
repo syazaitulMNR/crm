@@ -19,7 +19,7 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="mr-2">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newoffer">
+                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newoffer">
                     <i class="fas fa-plus pr-1"></i> New Offer
                 </button>
                 <!-- Modal -->
