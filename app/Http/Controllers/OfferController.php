@@ -20,19 +20,18 @@ class OfferController extends Controller
 
     public function create(Request $request)
     {
-        $offers = Offer::orderBy('id','desc');
+        $offers = Offer::orderBy('id','desc')->first();
         
-        $auto_inc_offer = $offers->id + 1;
-        
-        dd($auto_inc_offer);
+        // $auto_inc_offer = $offers->id + 1;
         // $offer_id = 'OFF' . 0 . 0 . $auto_inc_offer;
+        $offer_id = 'OFF' . 001;
 
-        // Offer::create([
-        //     'offer_id' => $offer_id,
-        //     'name' => $request->name
-        // ]);
+        Offer::create([
+            'offer_id' => $offer_id,
+            'name' => $request->name
+        ]);
 
-        // return redirect('view-offer')->with('add-success', 'Offer Successfully Created');
+        return redirect('view-offer')->with('add-success', 'Offer Successfully Created');
     }
 
 }
