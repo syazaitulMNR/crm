@@ -32,13 +32,25 @@
         @endif
 
         <!-- Add product form --------------------------------------------------->
-        <form action="{{ url('addproduct') }}" method="POST" enctype="multipart/form-data"> 
+        <form action="{{ url('new-product/save') }}" method="POST" enctype="multipart/form-data"> 
         @csrf
             <div class="row pt-3" style="padding-left: 8%">
-                <div class='col-md-8'>         
+                <div class='col-md-4'>         
                     <div class="form-group">
                         <label for="name">Event Name</label>
                         <input name="prodname" type="text" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class='col-md-4'>         
+                    <div class="form-group">
+                        <label for="name">Offer Provided</label>
+                        <select class="form-select" aria-label="Default select example" name="offer_id">
+                            <option selected>-- Please Select One --</option>
+                            @foreach($offers as $offer)
+                            <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 

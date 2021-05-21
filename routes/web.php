@@ -20,9 +20,9 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-Route::get('/addproduct', function () {
-    return view('admin.addproduct');
-});
+// Route::get('/addproduct', function () {
+//     return view('admin.addproduct');
+// });
 
 Route::get('/addpack', function () {
     return view('admin.addpackage');
@@ -69,7 +69,8 @@ Route::get('exportExcel', 'ImportExcelController@export');
 |--------------------------------------------------------------------------
 */
 Route::get('product', 'ProductController@viewproduct');
-Route::post('addproduct', 'ProductController@create');
+Route::get('addproduct', 'ProductController@create');
+Route::post('new-product/save', 'ProductController@store');
 Route::get('edit/{id}', 'ProductController@edit');
 Route::post('update/{id}',  'ProductController@update');
 Route::get('delete/{id}', 'ProductController@destroy');

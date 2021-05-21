@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use App\Product;
 use App\Package;
 use App\Feature;
+use App\Offer;
 use validator;
 
 class ProductController extends Controller
@@ -33,7 +34,14 @@ class ProductController extends Controller
         return view('admin.viewproduct', compact('product'));
     }
 
-    public function create(Request $request)
+    public function create()
+    {
+        $offers = Offer::orderBy('id','asc')->get();
+
+        return view('admin.addproduct', compact('offers'));
+    }
+
+    public function store(Request $request)
     {
         $product = Product::orderBy('id','desc')->first();
 
@@ -53,6 +61,7 @@ class ProductController extends Controller
             'time_from' => $request->time1,
             'time_to' => $request->time2,
             'cert_image' => $cert_image,
+            'offer_id' => $request->offer_id
         ]);
 
         return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
