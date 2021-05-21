@@ -48,7 +48,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col" style="width: 10%">#</th>
+          <th scope="col">#</th>
           <th scope="col">Package</th>
           {{-- <th scope="col">Image</th> --}}
           <th scope="col"><i class="fas fa-cogs"></i></th>
