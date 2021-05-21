@@ -136,18 +136,20 @@
         </div>
 
         <div class="row">
-          @if ($message = Session::get('addsuccess'))
-          <div class="alert alert-success alert-block">
-              <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-              <strong>{{ $message }}</strong>
-          </div>
-          @endif
           <div class="col-md-9 "> 
 
             <!-- Search box ---------------------------------------------------------->
             <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter Order ID" title="Type in a name">
             
             <br>
+            
+            @if ($message = Session::get('addsuccess'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+            
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">
