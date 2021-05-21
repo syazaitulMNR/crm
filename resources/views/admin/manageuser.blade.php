@@ -66,8 +66,8 @@
                     <td>{{$user->name}}</td>
                     <td>{{$role->name}}</td>
                     <td>
-                      <a href="{{ url('update') }}/{{ $user->user_id }}" class="btn btn-light"><i class="fas fa-eye"></i></a>
-                      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $user->user_id }}"><i class="fas fa-trash-alt"></i></button>
+                      <a href="{{ url('update') }}/{{ $user->user_id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $user->user_id }}"><i class="fas fa-trash-alt"></i></button>
                       <!-- Modal -->
                       <div class="modal fade" id="exampleModal{{ $user->user_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
