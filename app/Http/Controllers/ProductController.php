@@ -30,13 +30,13 @@ class ProductController extends Controller
 
     public function viewproduct()
     {
-        $product = Product::orderBy('id','asc')->paginate(15);
+        $product = Product::orderBy('id','desc')->paginate(15);
         return view('admin.viewproduct', compact('product'));
     }
 
     public function create()
     {
-        $offers = Offer::orderBy('id','asc')->get();
+        $offers = Offer::orderBy('id','desc')->get();
 
         return view('admin.addproduct', compact('offers'));
     }
