@@ -16,7 +16,7 @@
           <div class="nav-link" style="color: #ABB2B9">User Management</div>
             <a class="nav-link text-white bg-dark " href="/manageuser">
               <span data-feather="home"></span>
-              <i class="fas fa-users" style="margin-right: 25px"></i> Users 
+              <i class="fas fa-users" style="margin-right: 25px"></i> User
             </a>
           </li>
           
@@ -24,13 +24,13 @@
           <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/product">
               <span data-feather="home"></span>
-              <i class="fas fa-calendar" style="margin-right: 30px"></i> Events
+              <i class="fas fa-calendar" style="margin-right: 30px"></i> Event
             </a>            
           </li>  
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="">
               <span data-feather="home"></span>
-              <i class="fas fa-calendar" style="margin-right: 30px"></i> Offers
+              <i class="fas fa-calendar" style="margin-right: 30px"></i> Offer
             </a>            
           </li> 
           
