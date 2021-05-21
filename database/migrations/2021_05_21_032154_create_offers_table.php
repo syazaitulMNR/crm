@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Certificate extends Migration
+class CreateOffersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class Certificate extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('offers', function (Blueprint $table) {
+            $table->id();    
+            $table->string('offer_id');
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Certificate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('offers');
     }
 }
