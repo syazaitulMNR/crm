@@ -22,8 +22,9 @@ class OfferController extends Controller
     {
         $offers = Offer::orderBy('id','desc');
         
-        dd($offers);
-        // $auto_inc_offer = $offers->id + 1;
+        $auto_inc_offer = $offers->id + 1;
+        
+        dd($auto_inc_offer);
         // $offer_id = 'OFF' . 0 . 0 . $auto_inc_offer;
 
         // Offer::create([
