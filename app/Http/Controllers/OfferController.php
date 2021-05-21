@@ -14,7 +14,7 @@ class OfferController extends Controller
 
     public function view()
     {
-        $offers = Offer::orderBy('id','asc')->paginate(15);
+        $offers = Offer::orderBy('id','desc')->paginate(15);
         return view('admin.viewoffer', compact('offers'));
     }
 
