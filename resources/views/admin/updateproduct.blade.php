@@ -39,8 +39,8 @@
                     <div class="form-group">
                         <label for="name">Offer Provided</label>
                         <select class="form-select" aria-label="Default select example" name="offer_id">
-                            <option disabled selected>-- {{ $offers->name }} --</option>
                             @foreach($offers as $offer)
+                            <option disabled selected>-- {{ $offer->name }} --</option>
                             <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
                             @endforeach
                         </select>
