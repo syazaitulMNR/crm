@@ -28,10 +28,22 @@
         <form action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
         @csrf
             <div class="row py-3" style="padding-left: 8%">
-                <div class='col-md-8'>         
+                <div class='col-md-4'>         
                     <div class="form-group">
                         <label for="name">Product</label>
                         <input name="prodname" type="text" class="form-control" value="{{ $product->name }}" required>
+                    </div>
+                </div>
+
+                <div class='col-md-4'>         
+                    <div class="form-group">
+                        <label for="name">Offer Provided</label>
+                        <select class="form-select" aria-label="Default select example" name="offer_id">
+                            <option disabled selected>-- {{ $offer->name }} --</option>
+                            @foreach($offers as $offer)
+                            <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
