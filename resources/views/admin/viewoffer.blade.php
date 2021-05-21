@@ -17,20 +17,50 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Offer</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group mr-2">
-            <a href="add-offer" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> Add New Offer</a>
-          </div>
+            <div class="btn-group mr-2">
+                {{-- <a href="add-offer" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus pt-1"></i> Add New Offer</a> --}}
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#newoffer">
+                    <i class="fas fa-plus pr-1"></i> New Offer
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="newoffer" tabindex="-1" role="dialog" aria-labelledby="newofferLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header border-bottom-0">
+                            <h5 class="modal-title" id="exampleModalLabel">Create New Offer</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="{{ url('new-offer/save') }}/{{ $offers->offer_id }}" method="POST"> 
+                        @csrf
+                            <div class="form-group row px-4">
+                                <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" >
+                                </div>
+                            </div>
+                                                
+                            <div class='col-md-12 text-right px-4'>
+                                <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
       
-      @if ($message = Session::get('addsuccess'))
+      @if ($message = Session::get('add-success'))
       <div class="alert alert-success alert-block">
           <button type="button" class="close" data-bs-dismiss="alert">×</button>	
           <strong>{{ $message }}</strong>
       </div>
       @endif
       
-      @if ($message = Session::get('updatesuccess'))
+      @if ($message = Session::get('update-success'))
       <div class="alert alert-info alert-block">
           <button type="button" class="close" data-bs-dismiss="alert">×</button>	
           <strong>{{ $message }}</strong>

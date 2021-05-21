@@ -30,7 +30,7 @@
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="view-offer">
               <span data-feather="home"></span>
-              <i class="fas fa-calendar" style="margin-right: 30px"></i> Offer
+              <i class="fas fa-tag" style="margin-right: 30px"></i> Offer
             </a>            
           </li> 
           

@@ -18,4 +18,17 @@ class OfferController extends Controller
         return view('admin.viewoffer', compact('offers'));
     }
 
+    public function create(Request $request)
+    {
+        $auto_inc_offer = $offers->id + 1;
+        $offer_id = 'OFF' . 0 . 0 . $auto_inc_offer;
+
+        Offer::create([
+            'offer_id' => $offer_id,
+            'name' => $request->name
+        ]);
+
+        return redirect('view-offer')->with('add-success', 'Offer Successfully Created');
+    }
+
 }
