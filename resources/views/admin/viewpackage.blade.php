@@ -50,7 +50,7 @@
         <tr>
           <th scope="col" style="width: 10%">#</th>
           <th scope="col">Package</th>
-          <th scope="col">Image</th>
+          {{-- <th scope="col">Image</th> --}}
           <th scope="col"><i class="fas fa-cogs"></i></th>
         </tr>
       </thead>
@@ -60,7 +60,7 @@
           <tr>
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
-            <td>{{ $packages->package_image  }}</td>
+            {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
               <a class="btn btn-light" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="fas fa-eye"></i></a>
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="fas fa-trash-alt"></i></button>
