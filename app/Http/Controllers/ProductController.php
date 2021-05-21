@@ -138,15 +138,15 @@ class ProductController extends Controller
         $auto_inc_pkd = $package->id + 1;
         $packageId = 'PKD' . 0 . 0 . $auto_inc_pkd;
               
-        $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-        $request->package_image->move(public_path('assets/images/packages'), $imagename);
+        // $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
+        // $request->package_image->move(public_path('assets/images/packages'), $imagename);
 
         Package::create(array(
 
             'package_id'=> $packageId,
             'name' => $request->name,
             'price'=> $request->price,
-            'package_image' => $imagename,
+            // 'package_image' => $imagename,
             'product_id'=> $id
 
         ));  
@@ -190,19 +190,19 @@ class ProductController extends Controller
         $product = Product::where('product_id', $productId)->first();
         $package = Package::where('package_id', $packageId)->first();    
         
-        if($request->hasFile('package_image'))
-        {
-            $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-            $request->package_image->move(public_path('assets/images/packages'), $imagename);
-        }
+        // if($request->hasFile('package_image'))
+        // {
+        //     $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
+        //     $request->package_image->move(public_path('assets/images/packages'), $imagename);
+        // }
 
         $package->name = $request->name;
         $package->price = $request->price;
 
-        if($request->hasFile('package_image'))
-        {
-            $package->package_image = $imagename;
-        }
+        // if($request->hasFile('package_image'))
+        // {
+        //     $package->package_image = $imagename;
+        // }
 
         $package->save();
 
