@@ -18,7 +18,7 @@
       <h1 class="h2">Package</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
-          <a href="{{ url('addpackage') }}/{{ $product->product_id }}" type="button" class="btn btn-outline-secondary"><i class="fas fa-plus"></i> New Package</a>
+          <a href="{{ url('addpackage') }}/{{ $product->product_id }}" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> New Package</a>
         </div>
       </div>
     </div>
