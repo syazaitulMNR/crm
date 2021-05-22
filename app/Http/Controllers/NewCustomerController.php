@@ -100,19 +100,20 @@ class NewCustomerController extends Controller
 
         } else if($product->offer_id == 'OFF002') {
             //for Buy 1 Get 1 (Same Ticket)
-            echo 'Buy 1 Get 1 (Same Ticket)';
+            
+            return view('customer_new.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else if($product->offer_id == 'OFF003') {
             //for Bulk Ticket
-            echo 'Bulk Ticket';
+            
+            return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else {
 
             echo 'No Such Offer';
 
         }
-        // return view('customer_new.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
-        // return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
+        
     }
   
     /**
