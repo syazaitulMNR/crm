@@ -86,8 +86,9 @@ Pendaftaran Pembeli
 
         var total;
         var package_name = '{{ $package->name }}';
-        var package1 = 'Economy';
-        var package2 = 'Premium';
+        var package1 = 'General';
+        var package2 = 'Gold';
+        var package3 = 'Diamond';
 
         if (package_name == package1) {
             
@@ -113,8 +114,8 @@ Pendaftaran Pembeli
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
 
-        } else {
-            
+        } else if (package_name == package3) {
+
             if (val == 1) {
                 total = 219;
             } else if (val == 2) {
@@ -124,6 +125,10 @@ Pendaftaran Pembeli
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
+
+        } else {
+
+            echo 'No such package for this event';
 
         }
 
