@@ -59,9 +59,10 @@ class ProductController extends Controller
                 'date_to' => $request->date2,
                 'time_from' => $request->time1,
                 'time_to' => $request->time2,
+                'cert_image' => 'none',
                 'offer_id' => $request->offer_id
             ]);
-            
+
         } else {
 
             $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
