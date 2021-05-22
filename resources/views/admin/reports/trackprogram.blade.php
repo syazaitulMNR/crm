@@ -33,7 +33,7 @@
           <thead>
             <tr class="header">
               <th>#</th>
-              <th style="width:12%">Event Date</th>
+              <th>Event Date</th>
               <th>Event Name</th>
               <th class="text-center"><i class="fas fa-cogs"></i></th>
             </tr>
