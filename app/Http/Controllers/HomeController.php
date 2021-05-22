@@ -403,7 +403,7 @@ class HomeController extends Controller
                     if ($payment->quantity == 1){
                         // Can access paid ticket form
 
-                    }else{
+                    // }else{
                         
                         // Can access free ticket form
 
@@ -439,7 +439,7 @@ class HomeController extends Controller
                             dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));
                             // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                             
-                            continue;
+                            // continue;
                         }
 
                         // If ic at free ticket form not exist
@@ -603,7 +603,7 @@ class HomeController extends Controller
                                 
                                 dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));          
 
-                                continue;
+                                // continue;
                             }
 
                             // If the ic at free ticket form not exist
