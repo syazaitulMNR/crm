@@ -48,8 +48,8 @@ Pendaftaran Pembeli
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="quantity">Kuantiti:</label>
-                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required>
-                                {{-- <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> untuk tiket yg ada discount --}}
+                                {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> --}}
+                                <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> untuk tiket yg ada discount
                                     <option value="" disabled selected>-- Tiket --</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -58,7 +58,7 @@ Pendaftaran Pembeli
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="totalprice">Jumlah Harga (RM)</label><br>
-                                <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
+                                <h3><input type="text" id="jumlahharga" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
                             </div>
                         </div>
   
@@ -81,13 +81,13 @@ Pendaftaran Pembeli
     </div>
 </div>
 
-{{-- <script>
+<script>
     function myFunction(val) {
 
         var total;
         var package_id = '{{ $package->package_id }}';
-        var package1 = 'PKD007';
-        var package2 = 'PKD008';
+        var package1 = 'PKD001';
+        var package2 = 'PKD002';
 
         if (package_id == package1) {
             
@@ -128,5 +128,5 @@ Pendaftaran Pembeli
         }
 
     }
-</script> --}}
+</script>
 @endsection
