@@ -95,7 +95,8 @@ class ExistCustomerController extends Controller
             'totalprice'=> 'required|numeric',
             'stud_id' => 'required',
             'product_id' => 'required',
-            'package_id' => 'required'
+            'package_id' => 'required',
+            'offer_id' => 'required'
         ]);
 
         $request->session()->get('payment');
