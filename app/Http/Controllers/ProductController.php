@@ -48,23 +48,27 @@ class ProductController extends Controller
         $auto_inc_prd = $product->id + 1;
         $productId = 'PRD' . 0 . 0 . $auto_inc_prd;
 
-        $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
-        $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
-        $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
+        $check_image = $request->cert_image;
+        
+        dd($check_image);
 
-        Product::create([
-            'product_id' => $productId,
-            'name' => $request->prodname,
-            // 'description' => $request->description,
-            'date_from' => $request->date1,
-            'date_to' => $request->date2,
-            'time_from' => $request->time1,
-            'time_to' => $request->time2,
-            'cert_image' => $cert_image,
-            'offer_id' => $request->offer_id
-        ]);
+        // $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+        // $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
+        // $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
 
-        return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
+        // Product::create([
+        //     'product_id' => $productId,
+        //     'name' => $request->prodname,
+        //     // 'description' => $request->description,
+        //     'date_from' => $request->date1,
+        //     'date_to' => $request->date2,
+        //     'time_from' => $request->time1,
+        //     'time_to' => $request->time2,
+        //     'cert_image' => $cert_image,
+        //     'offer_id' => $request->offer_id
+        // ]);
+
+        // return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
     }
     
     public function edit($id)
