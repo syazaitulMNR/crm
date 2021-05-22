@@ -94,15 +94,16 @@ class NewCustomerController extends Controller
         $payment_id = 'OD'.uniqid();
   
         if($product->offer_id == 'OFF001') {
+            //for no offer ticket
 
-            echo 'No Offer';
+            return view('customer_new.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else if($product->offer_id == 'OFF002') {
-
+            //for Buy 1 Get 1 (Same Ticket)
             echo 'Buy 1 Get 1 (Same Ticket)';
 
         } else if($product->offer_id == 'OFF003') {
-
+            //for Bulk Ticket
             echo 'Bulk Ticket';
 
         } else {
