@@ -47,12 +47,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-8">                         
+                {{-- <div class="col-md-8">                         
                     <div class="form-group">
                         <label for="formFile" class="form-label">Package Image</label>
                         <input class="form-control" type="file" id="formFile" name="package_image">
                     </div>
-                </div>
+                </div> --}}
 
                 <div class='col-md-8'>
                     <label for="name">Features</label>
