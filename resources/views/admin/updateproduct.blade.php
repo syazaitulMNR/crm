@@ -38,7 +38,7 @@
                 <div class='col-md-4'>         
                     <div class="form-group">
                         <label for="name">Offer Provided</label>
-                        <select class="form-select" aria-label="Default select example" name="offer_id">
+                        <select class="form-select" aria-label="Default select example" name="offer_id" required>
                             <option disabled selected>-- Please Select One --</option>
                             @foreach($offers as $offer)
                             <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
@@ -47,12 +47,12 @@
                     </div>
                 </div>
 
-                <div class='col-md-8'>         
+                {{-- <div class='col-md-8'>         
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea name="description" type="text" class="form-control" required>{{ $product->description }}</textarea>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class='col-md-8'>     
                     <label for="name">Date</label>

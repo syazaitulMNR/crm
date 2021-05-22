@@ -55,7 +55,7 @@ class ProductController extends Controller
         Product::create([
             'product_id' => $productId,
             'name' => $request->prodname,
-            'description' => $request->description,
+            // 'description' => $request->description,
             'date_from' => $request->date1,
             'date_to' => $request->date2,
             'time_from' => $request->time1,
@@ -87,7 +87,7 @@ class ProductController extends Controller
         }
 
         $product->name = $request->prodname;
-        $product->description = $request->description;
+        // $product->description = $request->description;
         $product->date_from = $request->date1;
         $product->date_to = $request->date2;
         $product->time_from = $request->time1;
