@@ -41,7 +41,7 @@ Kemaskini Peserta
     </div>
 
     <div class="col-md-12 d-flex justify-content-center pb-5">
-      <form id="msform" name="frm" action="{{ url('updateforms') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="post" onsubmit="return checkForm(this);">
+      <form id="msform" name="frm" action="{{ url('get1free1same') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="post" onsubmit="return checkForm(this);">
       @csrf
 
       <div class="card w-100">

@@ -202,7 +202,7 @@ Route::get('updateform/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeC
 //if bulk ticket
 Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@add_participant');
 //if get 1 free 1 same ticket
-Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_get1free1same');
+Route::post('get1free1same/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_get1free1same');
 
 Route::get('exportInvoice/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportInvoice');
 Route::get('exportReceipt/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportReceipt');
