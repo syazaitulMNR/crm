@@ -98,10 +98,26 @@ class HomeController extends Controller
 
         }else{
 
-            // if bulk ticket
-            return view('customer/loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-            // if get 1 free 1 ticket
-            // return view('customer/get1free1', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+            if($product->offer_id == 'OFF001') {
+                //for no offer ticket
+                echo 'Normal Ticket';
+    
+            } else if($product->offer_id == 'OFF002') {
+                //for Buy 1 Get 1 (Same Ticket)
+                
+                return view('customer.get1free1', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+    
+            } else if($product->offer_id == 'OFF003') {
+                //for Bulk Ticket
+                
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+    
+            } else {
+    
+                echo 'No Such Offer';
+    
+            }
+
 
         }
     }
