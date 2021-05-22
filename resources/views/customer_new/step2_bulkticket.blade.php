@@ -85,11 +85,11 @@ Pendaftaran Pembeli
     function myFunction(val) {
 
         var total;
-        var package_id = '{{ $package->package_id }}';
-        var package1 = 'PKD001';
-        var package2 = 'PKD002';
+        var package_name = '{{ $package->name }}';
+        var package1 = 'Economy';
+        var package2 = 'Premium';
 
-        if (package_id == package1) {
+        if (package_name == package1) {
             
             if (val == 1) {
                 total = 10;
@@ -101,7 +101,7 @@ Pendaftaran Pembeli
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
 
-        } else if (package_id == package2) {
+        } else if (package_name == package2) {
 
             if (val == 1) {
                 total = 119;

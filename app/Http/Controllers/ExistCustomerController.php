@@ -62,9 +62,28 @@ class ExistCustomerController extends Controller
         // $auto_inc = $count->id + 1;
         // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
+
+        if($product->offer_id == 'OFF001') {
+            //for no offer ticket
+
+            return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id'));
+
+        } else if($product->offer_id == 'OFF002') {
+            //for Buy 1 Get 1 (Same Ticket)
+            
+            return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id'));
+
+        } else if($product->offer_id == 'OFF003') {
+            //for Bulk Ticket
+            
+            return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
+
+        } else {
+
+            echo 'No Such Offer';
+
+        }
   
-        // return view('customer_exist.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
-        return view('customer_exist.step2_bulkticket', compact('student', 'payment', 'product', 'package', 'payment_id'));
     }
 
     public function saveStepTwo($product_id, $package_id, $stud_id, Request $request)

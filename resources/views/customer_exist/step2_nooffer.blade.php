@@ -43,22 +43,19 @@ Pendaftaran Pembeli
                             <div class="col-md-6 pb-2">
                                 <label for="price">Harga:</label>
                                 <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
-                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" readonly>
-                                <input type="hidden" name="pay_price" value="{{ $package->price }}" readonly>
+                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
+                                <input type="hidden" name="pay_price" value="{{ $package->price }}" disabled>
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="quantity">Kuantiti:</label>
-                                {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> --}}
-                                <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> untuk tiket yg ada discount
+                                <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required>
                                     <option value="" disabled selected>-- Tiket --</option>
                                     <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
                                 </select>
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="totalprice">Jumlah Harga (RM)</label><br>
-                                <h3><input type="text" id="jumlahharga" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
+                                <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
                             </div>
                         </div>
   
@@ -80,54 +77,5 @@ Pendaftaran Pembeli
 
     </div>
 </div>
-
-<script>
-    function myFunction(val) {
-
-        var total;
-        var package_name = '{{ $package->name }}';
-        var package1 = 'Economy';
-        var package2 = 'Premium';
-
-        if (package_name == package1) {
-            
-            if (val == 1) {
-                total = 10;
-            } else if (val == 2) {
-                total = 20;
-            } else {
-                total = 30;
-            }
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
-
-        } else if (package_name == package2) {
-
-            if (val == 1) {
-                total = 119;
-            } else if (val == 2) {
-                total = 238;
-            } else {
-                total = 299;
-            }
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
-
-        } else {
-            
-            if (val == 1) {
-                total = 219;
-            } else if (val == 2) {
-                total = 438;
-            } else {
-                total = 499;
-            }
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
-
-        }
-
-    }
-</script>
 
 @endsection
