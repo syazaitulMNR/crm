@@ -35,6 +35,7 @@ Pendaftaran Pembeli
                             <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
                             <input type="hidden" value="{{ $package->package_id }}" class="form-control" name="package_id" readonly/>
                             <input type="hidden" value="{{ $student->stud_id }}" class="form-control" name="stud_id" readonly/>
+                            <input type="hidden" value="{{ $product->offer_id }}" class="form-control" name="offer_id" readonly/>
 
                             <div class="col-md-6 pb-2">
                                 <label for="package">Pakej:</label>
