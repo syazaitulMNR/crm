@@ -100,7 +100,7 @@ class HomeController extends Controller
 
             if($payment->offer_id == 'OFF001') {
                 //for no offer ticket
-                echo 'Normal Ticket';
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
             } else if($payment->offer_id == 'OFF002') {
                 //for Buy 1 Get 1 (Same Ticket)
@@ -108,7 +108,7 @@ class HomeController extends Controller
                 return view('customer.get1free1same', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
             } else if($payment->offer_id == 'OFF003') {
-                //for Bulk Ticket
+                //For No Offer or Bulk Ticket
                 
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
@@ -121,7 +121,8 @@ class HomeController extends Controller
 
         }
     }
-
+    
+    //For No Offer or Bulk Ticket
     public function add_participant($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {
         if($request->myButton == 'Simpan'){
@@ -377,13 +378,7 @@ class HomeController extends Controller
 
     }
 
-    // public function add_participant($product_id, $package_id, $stud_id, $payment_id, Request $request)
-    // {        
-    //     
-                
-    // }
-
-    public function register_get1free1($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    public function register_get1free1same($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {
         if($request->myButton == 'Simpan'){
             echo 'simpan';
@@ -408,13 +403,10 @@ class HomeController extends Controller
                     if ($payment->quantity == 1){
                         // Can access single form
 
-                        //tambah if..else untuk get 1 free 1
+                        //tambah if..else untuk get 1 free 1 same ticket
                         if ($payment->package_id == 'PKD007'){
 
                             //for package 1 free ticket
-                            // $id_pkg1 = Student::orderBy('id','desc')->first();
-                            // $auto_inc = $id_pkg1->id + 1;
-                            // $stud_id_pkg1 = 'MI' . 0 . 0 . $auto_inc;
                             $stud_id_pkg1 = 'MI'.uniqid();
 
                             Student::create(array(

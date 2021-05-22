@@ -98,10 +98,9 @@ Kemaskini Peserta
         <div class="card-header bg-dark text-white text-center">Maklumat Peserta</div>
   
         <div class="card-body">
-          
+          {{-- Start Paid Ticket --}}
           <div class="col-md-12 mx-auto text-right">
             <h4>Tiket {{$package->name}} #1</h4>
-            {{-- <h4>Tiket #1</h4> --}}
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >
               <label class="form-check-label" for="flexCheckDefault">
@@ -136,9 +135,44 @@ Kemaskini Peserta
                 <input id="phoneno2" class="form-control pb-2" type="tel" name="phoneno" placeholder="Tanpa '-' cth. 01123456789" required>
             </div>
           </div>
+          {{-- End Paid Ticket --}}
+
+          {{-- Start Free Ticket --}}
+          <div class="col-md-12 mx-auto text-right">
+            <hr>
+            <h4>Tiket {{$package->name}} (Free) #2</h4>
+            <hr>
+          </div>
+
+          <div class="form-group row text-left px-4">
+            <div class="col-md-12 pb-2">
+                <label for="description">No. Kad Pengenalan/Passport:</label>
+                <input class="form-control pb-2" type="text" name="ic_free1" placeholder="Tanpa '-' cth. 91042409**** / A********" maxlength="12" required>
+            </div>
+
+            <div class="col-md-6 pb-2">
+                <label for="title">Nama Pertama:</label>
+                <input type="text" name="firstname_free1" class="form-control pb-2" placeholder="Mohammad" aria-label="First name" required>
+            </div>
+            <div class="col-md-6 pb-2">
+                <label for="title">Nama Akhir:</label>
+                <input type="text" name="lastname_free1" class="form-control pb-2" placeholder="Ali" aria-label="Last name" required>
+            </div>
+
+            <div class="col-md-6 pb-2">
+                <label for="description">Emel:</label>
+                <input class="form-control pb-2" type="email" name="email_free1" placeholder="cth. example@gmail.com" required>
+            </div>
+            
+            <div class="col-md-6 pb-2">
+                <label for="description">No. Telefon:</label><br>
+                <input class="form-control pb-2" type="tel" name="phoneno_free1" placeholder="Tanpa '-' cth. 01123456789" required>
+            </div>
+          </div>
+          {{-- End Free Ticket --}}
 
           {{-- start if ada offer get 1 free 1 --}}
-          @if ($payment->package_id == 'PKD007')
+          {{-- @if ($payment->package_id == 'PKD007')
             
             <div class="col-md-12 mx-auto text-right">
               <hr>
@@ -174,7 +208,7 @@ Kemaskini Peserta
           @elseif ($payment->package_id == 'PKD008')
             <div class="col-md-12 mx-auto text-right">
               <hr>
-              {{-- <h4>Tiket Flex (Free) #2</h4> --}}
+              {{-- <h4>Tiket Flex (Free) #2</h4>
               <h4>Tiket General (Free) #2</h4>
               <hr>
             </div>
@@ -207,7 +241,7 @@ Kemaskini Peserta
           @elseif ($payment->package_id == 'PKD009')
             <div class="col-md-12 mx-auto text-right">
               <hr>
-              {{-- <h4>Tiket VIP (Free) #2</h4> --}}
+              {{-- <h4>Tiket VIP (Free) #2</h4> 
               <h4>Tiket General (Free) #2</h4>
               <hr>
             </div>
@@ -243,10 +277,10 @@ Kemaskini Peserta
             <p>There are no free ticket for this package</p>
             <hr>
           </div>
-          @endif
+          @endif --}}
           {{-- end if ada offer get 1 free 1 --}}
 
-          @for ($i = 1;  $i < $payment->quantity ; $i++) 
+          {{-- @for ($i = 1;  $i < $payment->quantity ; $i++) 
           <br>
 
           <div class="col-md-12 mx-auto text-right">
@@ -280,7 +314,7 @@ Kemaskini Peserta
                 <input class="form-control pb-2" type="tel" name="phoneno_peserta[]" placeholder="Tanpa '-' cth. 01123456789" required>
             </div>
           </div>
-          @endfor
+          @endfor --}}
           
         </div>
 
