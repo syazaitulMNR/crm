@@ -93,15 +93,15 @@ class NewCustomerController extends Controller
         // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
   
-        if($product->offer_id == 'OFF1') {
+        if($product->offer_id == 'OFF001') {
 
             echo 'No Offer';
 
-        } else if($product->offer_id == 'OFF2') {
+        } else if($product->offer_id == 'OFF002') {
 
             echo 'Buy 1 Get 1 (Same Ticket)';
 
-        } else if($product->offer_id == 'OFF3') {
+        } else if($product->offer_id == 'OFF003') {
 
             echo 'Bulk Ticket';
 
