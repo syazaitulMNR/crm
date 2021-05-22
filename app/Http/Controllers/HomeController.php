@@ -105,7 +105,7 @@ class HomeController extends Controller
             } else if($payment->offer_id == 'OFF002') {
                 //for Buy 1 Get 1 (Same Ticket)
                 
-                return view('customer.get1free1', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+                return view('customer.get1free1same', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
             } else if($payment->offer_id == 'OFF003') {
                 //for Bulk Ticket
