@@ -50,25 +50,38 @@ class ProductController extends Controller
 
         $check_image = $request->cert_image;
         
-        dd($check_image);
+        if($check_image == null){
+            Product::create([
+                'product_id' => $productId,
+                'name' => $request->prodname,
+                // 'description' => $request->description,
+                'date_from' => $request->date1,
+                'date_to' => $request->date2,
+                'time_from' => $request->time1,
+                'time_to' => $request->time2,
+                'offer_id' => $request->offer_id
+            ]);
+            
+        } else {
 
-        // $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
-        // $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
-        // $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
+            $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+            $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
+            $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
 
-        // Product::create([
-        //     'product_id' => $productId,
-        //     'name' => $request->prodname,
-        //     // 'description' => $request->description,
-        //     'date_from' => $request->date1,
-        //     'date_to' => $request->date2,
-        //     'time_from' => $request->time1,
-        //     'time_to' => $request->time2,
-        //     'cert_image' => $cert_image,
-        //     'offer_id' => $request->offer_id
-        // ]);
+            Product::create([
+                'product_id' => $productId,
+                'name' => $request->prodname,
+                // 'description' => $request->description,
+                'date_from' => $request->date1,
+                'date_to' => $request->date2,
+                'time_from' => $request->time1,
+                'time_to' => $request->time2,
+                'cert_image' => $cert_image,
+                'offer_id' => $request->offer_id
+            ]);
+        }
 
-        // return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
+        return redirect('addpackage'.'/'.$productId)->with('success', 'Event Successfully Created');
     }
     
     public function edit($id)
