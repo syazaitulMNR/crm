@@ -13,14 +13,14 @@ use Mail;
 class TiketJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id;
+    protected $email, $product_name, $date_from, $date_to, $time_from, $time_to, $payment_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)
+    public function __construct($email, $product_name, $date_from, $date_to, $time_from, $time_to, $payment_id)
     {
         $this->email = $email;
         $this->product_name = $product_name;        

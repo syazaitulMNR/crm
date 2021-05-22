@@ -562,7 +562,7 @@ class HomeController extends Controller
                     $time_from = $product->time_from;
                     $time_to = $product->time_to;
                     
-                    dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to));        
+                    dispatch(new TiketJob($email, $name, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $payment_id));        
                 
                     // If quantity = 1
                     if ($payment->quantity == 1){
