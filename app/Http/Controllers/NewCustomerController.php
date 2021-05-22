@@ -93,8 +93,25 @@ class NewCustomerController extends Controller
         // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
   
+        if($product->offer_id == 'OFF1') {
+
+            echo 'No Offer';
+
+        } else if($product->offer_id == 'OFF2') {
+
+            echo 'Buy 1 Get 1 (Same Ticket)';
+
+        } else if($product->offer_id == 'OFF3') {
+
+            echo 'Bulk Ticket';
+
+        } else {
+
+            echo 'No Such Offer';
+
+        }
         // return view('customer_new.step2',compact('student', 'payment', 'product', 'package', 'payment_id'));
-        return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
+        // return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
     }
   
     /**
