@@ -89,6 +89,7 @@ Pendaftaran Pembeli
         var package1 = 'General';
         var package2 = 'Gold';
         var package3 = 'Diamond';
+        var error = 'No such package for this event';
 
         if (package_name == package1) {
             
@@ -128,7 +129,7 @@ Pendaftaran Pembeli
 
         } else {
             
-            echo 'No such package for this event';
+            error;
 
         }
 
