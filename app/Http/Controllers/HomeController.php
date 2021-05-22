@@ -403,7 +403,7 @@ class HomeController extends Controller
                     if ($payment->quantity == 1){
                         // Can access paid ticket form
 
-                    // }else{
+                    }else{
                         
                         // Can access free ticket form
 
