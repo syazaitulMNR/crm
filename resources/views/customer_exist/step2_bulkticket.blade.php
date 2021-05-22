@@ -129,7 +129,8 @@ Pendaftaran Pembeli
 
         } else {
             
-            error;
+            var totallagi = document.getElementById('jumlahharga');
+            totallagi.value = error;
 
         }
 
