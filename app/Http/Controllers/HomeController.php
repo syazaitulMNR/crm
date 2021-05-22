@@ -98,16 +98,16 @@ class HomeController extends Controller
 
         }else{
 
-            if($product->offer_id == 'OFF001') {
+            if($payment->offer_id == 'OFF001') {
                 //for no offer ticket
                 echo 'Normal Ticket';
     
-            } else if($product->offer_id == 'OFF002') {
+            } else if($payment->offer_id == 'OFF002') {
                 //for Buy 1 Get 1 (Same Ticket)
                 
                 return view('customer.get1free1', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
-            } else if($product->offer_id == 'OFF003') {
+            } else if($payment->offer_id == 'OFF003') {
                 //for Bulk Ticket
                 
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
