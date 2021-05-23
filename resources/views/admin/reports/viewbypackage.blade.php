@@ -67,31 +67,31 @@
                   <div class="form-group row px-4">
                       <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="ic" placeholder="950101012036" maxlength="12" >
+                      <input type="text" class="form-control" name="ic" placeholder="950101012036" maxlength="12" required>
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">First Name</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="first_name" placeholder="John">
+                      <input type="text" class="form-control" name="first_name" placeholder="John" required>
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Last Name</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="last_name" placeholder="Doe">
+                      <input type="text" class="form-control" name="last_name" placeholder="Doe" required>
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" >
+                      <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" required>
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Email</label>
                       <div class="col-sm-8">
-                      <input type="email" class="form-control" name="email" placeholder="example@gmail.com" >
+                      <input type="email" class="form-control" name="email" placeholder="example@gmail.com" required>
                       </div>
                   </div>
 
