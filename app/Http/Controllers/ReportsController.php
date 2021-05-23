@@ -76,17 +76,15 @@ class ReportsController extends Controller
 
     public function viewbypackage($product_id, $package_id)
     {
-        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->get();
+        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
-        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
-        $student = Student::orderBy('id', 'desc')->get();
 
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'ticket', 'student', 'total', 'totalsuccess', 'totalcancel'));
+        return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'total', 'totalsuccess', 'totalcancel'));
     }
 
     public function save_customer($product_id, $package_id, Request $request)
@@ -153,8 +151,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-        $ticket = Ticket::where('product_id', $product_id)->get();
 
-        return Excel::download(new ProgramExport($payment, $student, $package, $ticket), $product->name.'.xlsx');
+        return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
     }
 }

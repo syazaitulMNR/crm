@@ -12,18 +12,15 @@
     <th>Payment Status</th>
     <th>Payment Method</th>
     <th>Package</th>
-    <th>Ticket Type</th>
 
 </tr>
 </thead>
 <tbody>
-@foreach($ticket as $tickets)
 @foreach($student as $students) 
 @foreach($payment as $payments)
 @foreach($package as $packages)
 @if ($payments->stud_id == $students->stud_id)
-@if ($tickets->ic == $students->ic)
-@if ($tickets->package_id == $packages->package_id)
+@if ($payments->package_id == $packages->package_id)
     <tr>
         <td>{{ $students->stud_id }}</td>
         <td>{{ $students->first_name }}</td>
@@ -36,12 +33,9 @@
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
         <td>{{ $packages->name }}</td>
-        <td>{{ $tickets->ticket_type }}</td>
     </tr>
 @endif
 @endif
-@endif
-@endforeach
 @endforeach
 @endforeach
 @endforeach

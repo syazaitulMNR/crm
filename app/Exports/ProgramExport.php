@@ -11,13 +11,12 @@ class ProgramExport implements FromView
 {
     use Exportable;
 
-    private $payment  = [], $students = [], $package = [], $ticket = [];
+    private $payment  = [], $students = [], $package = [];
 
-    public function __construct($payment_list, $student_list, $package_list, $ticket_list){
+    public function __construct($payment_list, $student_list, $package_list){
         $this->payment = $payment_list;
         $this->student = $student_list;
         $this->package = $package_list;
-        $this->ticket = $ticket_list;
     }
 
     public function view(): View
@@ -26,7 +25,6 @@ class ProgramExport implements FromView
             'payment' => $this->payment,
             'student' => $this->student,
             'package' => $this->package,
-            'ticket' => $this->ticket,
         ]);
     }
 

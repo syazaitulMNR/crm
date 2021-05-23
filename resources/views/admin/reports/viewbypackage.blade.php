@@ -151,61 +151,6 @@
             @endif
 
             <!-- Show success payment in table ----------------------------------------------->
-            @if(count($ticket) > 0)
-            <table class="table table-hover" id="successTable">
-                <thead>
-                <tr class="header">
-                    <th>#</th>
-                    <th>Order ID</th>
-                    <th>IC No.</th>
-                    <th>Name</th>
-                    <th>Payment (RM)</th>
-                    <th>Status</th>
-                    <th>Purchase Date</th>
-                    <th><i class="fas fa-cogs"></i></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($ticket as $key => $tickets)
-                @foreach ($student as $students)
-                @foreach ($payment as $payments)    
-                @if ($students->stud_id == $payments->stud_id)
-                @if ($payments->product_id == $tickets->product_id)  
-                @if ($product->product_id == $payments->product_id)  
-                <tr>
-                    <td>{{ $ticket->firstItem() + $key }}</td>
-                    <td>{{ $payments->payment_id }}</td>
-                    <td>{{ $tickets->ic }}</td>
-                    <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                    <td>RM {{ $payments->totalprice }}</td>
-                    <td>
-                      @if ($payments->status == 'paid')
-                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                      @elseif ($payments->status == 'due')
-                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                      @else
-                        <p>NULL</p>
-                      @endif
-                    </td>
-                    <td>{{ date('d/m/Y', strtotime($tickets->created_at)) }}</td>
-                    <td>
-                      <a class="btn btn-primary" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-edit"></i></a>
-                    </td>
-                </tr>
-                @endif
-                @endif
-                @endif
-                @endforeach
-                @endforeach
-                @endforeach
-                </tbody>
-            </table>  
-            @else
-            <p>There are no any ticket sold yet.</p>
-            @endif
-            <div class="float-right pt-3">{{$ticket->links()}}</div> 
-
-            {{-- <!-- Show success payment in table ----------------------------------------------->
             @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">
                 <thead>
@@ -248,7 +193,7 @@
             @else
             <p>There are no any payment yet.</p>
             @endif
-            <div class="float-right pt-3">{{$payment->links()}}</div>    --}}
+            <div class="float-right pt-3">{{$payment->links()}}</div>   
             
           </div>
           
