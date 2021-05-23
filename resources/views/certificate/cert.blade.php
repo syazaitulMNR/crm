@@ -45,20 +45,20 @@
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
                 <p style="margin: 0;">This certifies that</p>
-                <h3 style="margin-bottom: 0;"> {{ $first_name }} {{ $last_name }}</h3>
+                <h3 style="margin: 0;"> {{ $first_name }} {{ $last_name }}</h3>
                 <h4 style="margin: 0;"> ({{ $ic }})</h4>
             </td>
         </tr>
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
                 <p style="margin: 0;"> has successfully completed the course</p>
-                <h3> {{ $program_name }}</h3>
+                <h3 style="margin: 0;"> {{ $program_name }}</h3>
             </td>
         </tr>
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
                 <p style="margin: 0;"> that was held on </p>
-                <h3> {{ $date_from }} &nbsp; - &nbsp; {{ $date_to }}</h3>
+                <h3 style="margin: 0;"> {{ $date_from }} &nbsp; - &nbsp; {{ $date_to }}</h3>
             </td>
         </tr>
         <tr>
