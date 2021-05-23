@@ -48,6 +48,8 @@
       </div>
       @endif
 
+      <br>
+      
       <!-- Show data in cards --------------------------------------------------->
       <div class="row mb-3">
         <div class="col-xl-3 col-lg-6">
@@ -97,7 +99,7 @@
       </div>
         
       <br>
-      
+
       <hr class="mb-2">
 
       <!-- Show data in chart --------------------------------------------------->
