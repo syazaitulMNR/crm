@@ -68,7 +68,7 @@
                     <div class="rotate">
                       <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
                     </div>
-                    <h6 class="pt-3 pl-3">Success Payment</h6>
+                    <h6 class="lead pt-3 pl-3">Paid</h6>
                     <h3 class="pb-1 pl-3">{{$totalsuccess}}</h3>
                   </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div class="rotate">
                       <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
                     </div>
-                    <h6 class="pt-3 pl-3">Due Payment</h6>
+                    <h6 class="lead pt-3 pl-3">Due</h6>
                     <h3 class="pb-1 pl-3">{{$totalcancel}}</h3>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
                     </div>
-                    <h6 class="pt-3 pl-3">Paid Ticket</h6>
+                    <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$paidticket}}</h3>
                   </div>
                 </div>
@@ -101,7 +101,7 @@
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
                     </div>
-                    <h6 class="pt-3 pl-3">Free Ticket</h6>
+                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$freeticket}}</h3>
                   </div>
                 </div>
