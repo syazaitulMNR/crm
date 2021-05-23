@@ -49,14 +49,14 @@
       @endif
 
       <br>
-      
+
       <!-- Show data in cards --------------------------------------------------->
       <div class="row mb-3">
         <div class="col-xl-3 col-lg-6">
           <div class="card bg-light card-inverse shadow">
             <div class="card-block">
               <div class="rotate">
-                <i class="fa fa-users fa-6x"></i>
+                <i class="fa fa-users fa-6x" style="color:rgba(195, 0, 255, 0.3)"></i>
               </div>
               <h6 class="pt-3 pl-3">Total Customers</h6>
               <h3 class="pb-1 pl-3">{{$student}}</h3>
