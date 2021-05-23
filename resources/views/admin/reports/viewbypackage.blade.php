@@ -67,7 +67,7 @@
                   <div class="form-group row px-4">
                       <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="ic" placeholder="950101012036" >
+                      <input type="text" class="form-control" name="ic" placeholder="950101012036" maxlength="12" >
                       </div>
                   </div>
                   <div class="form-group row px-4">
