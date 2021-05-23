@@ -150,7 +150,7 @@
             </div>
             @endif
 
-            @if ($message = Session::get('addsuccess'))
+            @if ($message = Session::get('updatepayment'))
             <div class="alert alert-info alert-block">
                 <button type="button" class="close" data-bs-dismiss="alert">×</button>	
                 <strong>{{ $message }}</strong>
