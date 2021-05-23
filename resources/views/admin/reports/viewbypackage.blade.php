@@ -236,14 +236,14 @@
           
           <div class="col-md-3">
 
-            <div class="card mb-4 text-center">
-                <div class="card-block bg-light text-dark shadow">
-                    <div class="rotate">
-                    <i class="fas fa-file-invoice-dollar fa-6x"></i>
-                    </div>
-                    <h3 class="pt-3 pl-3">{{$total}}</h3>
-                    <h6 class="pb-1 pl-3">Total Purchased</h6>
-                </div>
+            <div class="card mb-4 text-center shadow">
+              <div class="card-block bg-light text-dark">
+                  <div class="rotate">
+                  <i class="fas fa-file-invoice-dollar fa-6x"></i>
+                  </div>
+                  <h3 class="pt-3 pl-3">{{$total}}</h3>
+                  <h6 class="pb-1 pl-3">Total Purchased</h6>
+              </div>
             </div>
 
             <div class="card mb-4 text-center">
