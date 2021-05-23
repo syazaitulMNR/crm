@@ -60,6 +60,9 @@
               </div>
               @endforeach
             </div> --}}
+            
+            <br>
+
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
