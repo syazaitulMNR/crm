@@ -90,8 +90,8 @@ class ReportsController extends Controller
 
     public function save_customer($product_id, $package_id, Request $request)
     { 
-        $student = Student::where('ic', $request->ic);
-        dd($student);
+        $student = Student::where('ic', $request->ic)->first();
+        dd($student->stud_id);
         
         // if(Student::where('ic', $request->ic)->exists()){
 
