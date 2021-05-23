@@ -17,10 +17,10 @@
 </tr>
 </thead>
 <tbody>
+@foreach($ticket as $tickets)
 @foreach($student as $students) 
 @foreach($payment as $payments)
 @foreach($package as $packages)
-@foreach($ticket as $tickets)
 @if ($payments->stud_id == $students->stud_id)
 @if ($tickets->ic == $students->ic)
 @if ($tickets->package_id == $packages->package_id)
