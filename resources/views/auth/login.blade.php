@@ -10,7 +10,7 @@
         <div class="col-md-8">
             <div class="text-center pb-3">
                 <img src="/assets/images/logo.png" style="max-width:150px">
-                <h2 class="text-dark px-5 py-3">Momentum Internet Management System (MIMS)</h2>
+                <h2 class="lead text-dark px-5 py-3">Momentum Internet Management System (MIMS)</h2>
             </div>
 
             <div class="card text-center">
