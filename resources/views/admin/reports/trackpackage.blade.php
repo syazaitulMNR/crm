@@ -65,9 +65,9 @@
               <div class="col-xl-3 col-lg-6">
                 <div class="card card-inverse">
                   <div class="card-block">
-                    <span class="rotate" style="color: green">
-                      <i class="fa fa-users fa-6x"></i>
-                    </span>
+                    <div class="rotate">
+                      <i class="fa fa-users fa-6x" style="color: green"></i>
+                    </div>
                     <h6 class="pt-3 pl-3">Success Payment</h6>
                     <h3 class="pb-1 pl-3">{{$totalsuccess}}</h3>
                   </div>
@@ -76,9 +76,9 @@
               <div class="col-xl-3 col-lg-6">
                 <div class="card card-inverse">
                   <div class="card-block">
-                    <span class="rotate" style="color: orange">
-                      <i class="fa fa-chart-bar fa-6x"></i>
-                    </span>
+                    <div class="rotate">
+                      <i class="fa fa-chart-bar fa-6x" style="color: orange"></i>
+                    </div>
                     <h6 class="pt-3 pl-3">Due Payment</h6>
                     <h3 class="pb-1 pl-3">{{$totalcancel}}</h3>
                   </div>
@@ -87,9 +87,9 @@
               <div class="col-xl-3 col-lg-6">
                 <div class="card card-inverse">
                   <div class="card-block">
-                    <span class="rotate" style="color: blue">
-                      <i class="fa fa-chart-area fa-7x"></i>
-                    </span>
+                    <div class="rotate">
+                      <i class="fa fa-chart-area fa-7x" style="color: blue"></i>
+                    </div>
                     <h6 class="pt-3 pl-3">Paid Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$paidticket}}</h3>
                   </div>
@@ -98,9 +98,9 @@
               <div class="col-xl-3 col-lg-6">
                 <div class="card card-inverse">
                   <div class="card-block">
-                    <span class="rotate" style="color: cyan">
-                      <i class="fa fa-chart-line fa-6x"></i>
-                    </span>
+                    <div class="rotate">
+                      <i class="fa fa-chart-line fa-6x" style="color: cyan"></i>
+                    </div>
                     <h6 class="pt-3 pl-3">Free Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$freeticket}}</h3>
                   </div>
