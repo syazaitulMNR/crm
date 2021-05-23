@@ -238,31 +238,31 @@
 
             <div class="card mb-4 text-center shadow">
               <div class="card-block bg-light text-dark">
-                  <div class="rotate">
-                  <i class="fas fa-file-invoice-dollar fa-6x"></i>
-                  </div>
-                  <h3 class="pt-3 pl-3">{{$total}}</h3>
-                  <h6 class="pb-1 pl-3">Total Purchased</h6>
+                <div class="rotate">
+                <i class="fas fa-file-invoice-dollar fa-6x"></i>
+                </div>
+                <h3 class="pt-3 pl-3">{{$total}}</h3>
+                <h6 class="pb-1 pl-3">Total Purchased</h6>
               </div>
             </div>
 
-            <div class="card mb-4 text-center">
-              <div class="card-body pt-4">
-                <i class="far fa-check-circle fa-3x" style="color:rgb(69, 139, 95)"></i>
-                <h3 class="pt-4">{{$totalsuccess}}</h3>
-              </div>
-              <div class="card-footer">
-                <h6>Total Paid</h6>
+            <div class="card mb-4 text-center shadow">
+              <div class="card-block bg-light text-dark">
+                <div class="rotate">
+                  <i class="far fa-check-circle fa-3x" style="color:rgba(0, 255, 94, 0.3)"></i>
+                </div>
+                <h3 class="pt-3 pl-3">{{$totalsuccess}}</h3>
+                <h6 class="pb-1 pl-3">Paid</h6>
               </div>
             </div>
-    
-            <div class="card mb-4 text-center">
-              <div class="card-body pt-4">
-                <i class="far fa-times-circle fa-3x" style="color:rgb(240, 0, 0)"></i>
-                <h3 class="pt-4">{{$totalcancel}}</h3>
-              </div>
-              <div class="card-footer">
-                <h6>Total Due</h6>
+
+            <div class="card mb-4 text-center shadow">
+              <div class="card-block bg-light text-dark">
+                <div class="rotate">
+                  <i class="far fa-times-circle fa-3x" style="color:rgba(255, 0, 0, 0.3)"></i>
+                </div>
+                <h3 class="pt-3 pl-3">{{$totalcancel}}</h3>
+                <h6 class="pb-1 pl-3">Due</h6>
               </div>
             </div>
           
