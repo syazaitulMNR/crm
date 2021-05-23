@@ -151,7 +151,7 @@
             @endif
 
             <!-- Show success payment in table ----------------------------------------------->
-            @if(count($payment) > 0)
+            @if(count($ticket) > 0)
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
@@ -165,10 +165,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($payment as $key => $payments)    
+                @foreach ($ticket as $key => $tickets)
+                @foreach ($payment as $payments)    
+                @if ($payments->product_id == $tickets->product_id)  
                 @if ($product->product_id == $payments->product_id)  
                 <tr>
-                    <td>{{ $payment->firstItem() + $key }}</td>
+                    <td>{{ $ticket->firstItem() + $key }}</td>
                     <td>{{ $payments->payment_id }}</td>
                     <td>{{ $payments->stud_id }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
@@ -181,19 +183,21 @@
                         <p>NULL</p>
                       @endif
                     </td>
-                    <td>{{ date('d/m/Y', strtotime($payments->created_at)) }}</td>
+                    <td>{{ date('d/m/Y', strtotime($tickets->created_at)) }}</td>
                     <td>
                       <a class="btn btn-primary" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-edit"></i></a>
                     </td>
                 </tr>
                 @endif
+                @endif
+                @endforeach
                 @endforeach
                 </tbody>
             </table>  
             @else
-            <p>There are no any payment yet.</p>
+            <p>There are no any ticket sold yet.</p>
             @endif
-            <div class="float-right pt-3">{{$payment->links()}}</div>   
+            <div class="float-right pt-3">{{$ticket->links()}}</div>   
             
           </div>
           

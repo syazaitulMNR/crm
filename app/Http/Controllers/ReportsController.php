@@ -76,9 +76,10 @@ class ReportsController extends Controller
 
     public function viewbypackage($product_id, $package_id)
     {
-        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
+        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
