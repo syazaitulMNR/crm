@@ -610,7 +610,7 @@ class HomeController extends Controller
                             'stud_id' => $stud_id_free,
                             'first_name' => $request->firstname_free1,
                             'last_name' => $request->lastname_free1,
-                            'ic' => $request->ic_free1,,
+                            'ic' => $request->ic_free1,
                             'email' => $request->email_free1,
                             'phoneno' => $request->phoneno_free1,
                             'product_id' => $product_id,
