@@ -88,7 +88,7 @@
                 <div class="card card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fas fa-ticket-alt fa-7x" style="color: rgba(17, 0, 255, 0.3)"></i>
+                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Paid Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$paidticket}}</h3>
