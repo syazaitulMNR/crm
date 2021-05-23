@@ -60,6 +60,54 @@
               </div>
               @endforeach
             </div> --}}
+            <!-- Show data in cards --------------------------------------------------->
+            <div class="row mb-3">
+              <div class="col-xl-3 col-lg-6">
+                <div class="card card-inverse card-success">
+                  <div class="card-block bg-success">
+                    <div class="rotate">
+                      <i class="fa fa-users fa-6x"></i>
+                    </div>
+                    <h6 class="text-white pt-3 pl-3">Success Payment</h6>
+                    <h3 class="pb-1 pl-3 text-white">{{$totalsuccess}}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-6">
+                <div class="card card-inverse card-danger">
+                  <div class="card-block bg-danger">
+                    <div class="rotate">
+                      <i class="fa fa-chart-bar fa-6x"></i>
+                    </div>
+                    <h6 class="text-white pt-3 pl-3">Due Payment</h6>
+                    <h3 class="pb-1 pl-3 text-white">{{$totalcancel}}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-6">
+                <div class="card card-inverse card-info">
+                  <div class="card-block bg-info">
+                    <div class="rotate">
+                      <i class="fa fa-chart-area fa-7x"></i>
+                    </div>
+                    <h6 class="text-white pt-3 pl-3">Paid Ticket</h6>
+                    <h3 class="pb-1 pl-3 text-white">{{$paidticket}}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-6">
+                <div class="card card-inverse card-warning">
+                  <div class="card-block bg-warning">
+                    <div class="rotate">
+                      <i class="fa fa-chart-line fa-6x"></i>
+                    </div>
+                    <h6 class="text-white pt-3 pl-3">Free Ticket</h6>
+                    <h3 class="pb-1 pl-3 text-white">{{$freeticket}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <br>
 
             <!-- Search box ---------------------------------------------------------->

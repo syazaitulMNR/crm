@@ -7,6 +7,7 @@ use App\Student;
 use App\Product;
 use App\Package;
 use App\Payment;
+use App\Ticket;
 use App\Exports\ProgramExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -65,10 +66,12 @@ class ReportsController extends Controller
         $counter = Student::count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         // $count_package = Payment::where('product_id', $product_id)->count();
         
         // dd($student);
-        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel'));
+        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
     public function viewbypackage($product_id, $package_id)
