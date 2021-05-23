@@ -82,6 +82,9 @@
                 <tr>
                   <td>{{ $package->firstItem() + $key }}</td>
                   <td>{{ $packages->name  }}</td>
+                  <td class="text-center">
+                    <a class="btn btn-dark" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-chevron-right"></i></a>
+                  </td>
                 </tr>
                 @endif
                 @endforeach
