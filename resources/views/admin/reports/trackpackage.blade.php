@@ -65,7 +65,7 @@
               <div class="col-xl-3 col-lg-6">
                 <div class="card card-inverse">
                   <div class="card-block">
-                    <div class="rotate" color="green">
+                    <div class="rotate" style="color: green">
                       <i class="fa fa-users fa-6x"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Success Payment</h6>
@@ -74,9 +74,9 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse card-danger">
+                <div class="card card-inverse">
                   <div class="card-block">
-                    <div class="rotate">
+                    <div class="rotate" style="color: orange">
                       <i class="fa fa-chart-bar fa-6x"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Due Payment</h6>
@@ -85,9 +85,9 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse card-info">
-                  <div class="card-block bg-info">
-                    <div class="rotate">
+                <div class="card card-inverse">
+                  <div class="card-block">
+                    <div class="rotate" style="color: blue">
                       <i class="fa fa-chart-area fa-7x"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Paid Ticket</h6>
@@ -96,9 +96,9 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse card-warning">
-                  <div class="card-block bg-warning">
-                    <div class="rotate">
+                <div class="card card-inverse">
+                  <div class="card-block">
+                    <div class="rotate" style="color: cyan">
                       <i class="fa fa-chart-line fa-6x"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Free Ticket</h6>
