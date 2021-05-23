@@ -77,7 +77,7 @@
                 <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 204, 0, 0.3)"></i>
+                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Due Payment</h6>
                     <h3 class="pb-1 pl-3">{{$totalcancel}}</h3>
