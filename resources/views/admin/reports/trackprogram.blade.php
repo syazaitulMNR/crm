@@ -42,7 +42,7 @@
             @foreach ($product as $key => $products)
             <tr>
               <td>{{ $product->firstItem() + $key }}</td>
-              <td>{{ date('d/m/Y', strtotime($products->created_at)) }}</td>
+              <td>{{ date('d/m/Y', strtotime($products->date_from)) }}</td>
               <td>{{ $products->name }}</td>
               <td class="text-center">
                 <a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
