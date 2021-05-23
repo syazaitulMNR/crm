@@ -242,7 +242,7 @@
                 <i class="fas fa-file-invoice-dollar fa-6x"></i>
                 </div>
                 <h3 class="pt-3 pl-3">{{$total}}</h3>
-                <h6 class="display-1 pb-1 pl-3">Total Purchased</h6>
+                <h6 class="lead pb-1 pl-3">Total Purchased</h6>
               </div>
             </div>
 
@@ -252,7 +252,7 @@
                 <i class="far fa-check fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
                 
                 <h3 class="pt-3 pl-3">{{$totalsuccess}}</h3>
-                <h6 class="display-1 pb-1 pl-3">Paid</h6>
+                <h6 class="lead pb-1 pl-3">Paid</h6>
               </div>
             </div>
 
@@ -262,7 +262,7 @@
                 <i class="far fa-times fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
                 
                 <h3 class="pt-3 pl-3">{{$totalcancel}}</h3>
-                <h6 class="display-1 pb-1 pl-3">Due</h6>
+                <h6 class="lead pb-1 pl-3">Due</h6>
               </div>
             </div>
           
