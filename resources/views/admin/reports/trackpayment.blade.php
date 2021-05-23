@@ -39,7 +39,7 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">   
         
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-            <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> 
+            <a href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> 
             / <a href="/trackprogram">Customer</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}">{{ $product->name }}</a> 
             / <b>{{ $student->first_name }}</b>
         </div>
@@ -146,7 +146,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i></button>
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save pr-1"></i> Save </button>
                             </div>
                         </div>
                             {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
