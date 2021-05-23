@@ -17,7 +17,7 @@ class CreateTicketTable extends Migration
             $table->id();
             $table->string('ticket_id');
             $table->string('ticket_type');
-            $table->string('stud_id');            
+            $table->string('ic');            
             $table->string('product_id');
             $table->string('package_id');
             $table->string('payment_id');
