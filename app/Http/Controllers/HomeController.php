@@ -164,7 +164,7 @@ class HomeController extends Controller
                                 Ticket::create(array(
                                     'ticket_id' => $ticket_id,
                                     'ticket_type' => 'paid',
-                                    'stud_id' => $stud_id,
+                                    'ic' => $value,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
                                     'payment_id' => $payment_id
@@ -214,7 +214,7 @@ class HomeController extends Controller
                             Ticket::create(array(
                                 'ticket_id' => $ticket_id,
                                 'ticket_type' => 'paid',
-                                'stud_id' => $stud_id_looping,
+                                'ic' => $value,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
                                 'payment_id' => $payment_id
@@ -248,7 +248,7 @@ class HomeController extends Controller
                     Ticket::create(array(
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
-                        'stud_id' => $stud_id,
+                        'ic' => $request->ic,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -297,7 +297,7 @@ class HomeController extends Controller
                     Ticket::create(array(
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
-                        'stud_id' => $stud_id_single,
+                        'ic' => $request->ic,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -340,7 +340,7 @@ class HomeController extends Controller
                                 Ticket::create(array(
                                     'ticket_id' => $ticket_id,
                                     'ticket_type' => 'paid',
-                                    'stud_id' => $stud_id,
+                                    'ic' => $value,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
                                     'payment_id' => $payment_id
@@ -390,7 +390,7 @@ class HomeController extends Controller
                             Ticket::create(array(
                                 'ticket_id' => $ticket_id,
                                 'ticket_type' => 'paid',
-                                'stud_id' => $stud_id_looping,
+                                'ic' => $value,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
                                 'payment_id' => $payment_id
@@ -453,7 +453,7 @@ class HomeController extends Controller
                     Ticket::create(array(
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
-                        'stud_id' => $stud_id,
+                        'ic' => $request->ic,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -487,7 +487,7 @@ class HomeController extends Controller
                         Ticket::create(array(
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
-                            'stud_id' => $stud_id,
+                            'ic' => $request->ic_free1,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -537,7 +537,7 @@ class HomeController extends Controller
                         Ticket::create(array(
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
-                            'stud_id' => $stud_id_free,
+                            'ic' => $request->ic_free1,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -588,7 +588,7 @@ class HomeController extends Controller
                     Ticket::create(array(
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
-                        'stud_id' => $stud_id_paid,
+                        'ic' => $request->ic,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -622,7 +622,7 @@ class HomeController extends Controller
                         Ticket::create(array(
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
-                            'stud_id' => $stud_id,
+                            'ic' => $request->ic_free1,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -671,7 +671,7 @@ class HomeController extends Controller
                         Ticket::create(array(
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
-                            'stud_id' => $stud_id_free,
+                            'ic' => $request->ic_free1,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
