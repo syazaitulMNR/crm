@@ -56,7 +56,7 @@
           <div class="card bg-light card-inverse shadow">
             <div class="card-block">
               <div class="rotate">
-                <i class="fa fa-users fa-6x" style="color:rgba(195, 0, 255, 0.3)"></i>
+                <i class="fa fa-users fa-6x" style="color:rgba(93, 0, 255, 0.3)"></i>
               </div>
               <h6 class="pt-3 pl-3">Total Customers</h6>
               <h3 class="pb-1 pl-3">{{$student}}</h3>
@@ -67,7 +67,7 @@
           <div class="card bg-light card-inverse shadow">
             <div class="card-block">
               <div class="rotate">
-                <i class="fa fa-chart-bar fa-6x"></i>
+                <i class="fa fa-chart-bar fa-6x" style="color:rgba(13, 255, 0, 0.3)"></i>
               </div>
               <h6 class="pt-3 pl-3">Today (RM)</h6>
               <h3 class="pb-1 pl-3">{{$today}}</h3>
@@ -78,7 +78,7 @@
           <div class="card bg-light card-inverse shadow">
             <div class="card-block">
               <div class="rotate">
-                <i class="fa fa-chart-area fa-7x"></i>
+                <i class="fa fa-chart-area fa-7x" style="color:rgba(255, 0, 149, 0.3)"></i>
               </div>
               <h6 class="pt-3 pl-3">Monthly (RM)</h6>
               <h3 class="pb-1 pl-3">{{$monthly}}</h3>
@@ -89,7 +89,7 @@
           <div class="card bg-light card-inverse shadow">
             <div class="card-block">
               <div class="rotate">
-                <i class="fa fa-chart-line fa-6x"></i>
+                <i class="fa fa-chart-line fa-6x" style="color:rgba(0, 255, 217, 0.3)"></i>
               </div>
               <h6 class="pt-3 pl-3">Yearly (RM)</h6>
               <h3 class="pb-1 pl-3">{{$yearly}}</h3>
