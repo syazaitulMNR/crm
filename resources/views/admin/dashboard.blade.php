@@ -56,8 +56,8 @@
               <div class="rotate">
                 <i class="fa fa-users fa-6x"></i>
               </div>
-              <h6 class="text-white pt-3 pl-3">Total Customers</h6>
-              <h3 class="pb-1 pl-3 text-white">{{$student}}</h3>
+              <h6 class="pt-3 pl-3">Total Customers</h6>
+              <h3 class="pb-1 pl-3">{{$student}}</h3>
             </div>
           </div>
         </div>
@@ -67,8 +67,8 @@
               <div class="rotate">
                 <i class="fa fa-chart-bar fa-6x"></i>
               </div>
-              <h6 class="text-white pt-3 pl-3">Today (RM)</h6>
-              <h3 class="pb-1 pl-3 text-white">{{$today}}</h3>
+              <h6 class="pt-3 pl-3">Today (RM)</h6>
+              <h3 class="pb-1 pl-3">{{$today}}</h3>
             </div>
           </div>
         </div>
@@ -78,8 +78,8 @@
               <div class="rotate">
                 <i class="fa fa-chart-area fa-7x"></i>
               </div>
-              <h6 class="text-white pt-3 pl-3">Monthly (RM)</h6>
-              <h3 class="pb-1 pl-3 text-white">{{$monthly}}</h3>
+              <h6 class="pt-3 pl-3">Monthly (RM)</h6>
+              <h3 class="pb-1 pl-3">{{$monthly}}</h3>
             </div>
           </div>
         </div>
@@ -89,8 +89,8 @@
               <div class="rotate">
                 <i class="fa fa-chart-line fa-6x"></i>
               </div>
-              <h6 class="text-white pt-3 pl-3">Yearly (RM)</h6>
-              <h3 class="pb-1 pl-3 text-white">{{$yearly}}</h3>
+              <h6 class="pt-3 pl-3">Yearly (RM)</h6>
+              <h3 class="pb-1 pl-3">{{$yearly}}</h3>
             </div>
           </div>
         </div>
