@@ -90,32 +90,54 @@ class ReportsController extends Controller
 
     public function save_customer($product_id, $package_id, Request $request)
     { 
-        $stud_id = 'MI'.uniqid();
+        $student = Student::where('ic', $request->ic);
+        dd($student);
         
-        Student::create(array(
-            'stud_id'=> $stud_id,
-            'first_name'=> $request->first_name,
-            'last_name'=> $request->last_name,
-            'ic' => $request->ic,
-            'phoneno' => $request->phoneno,
-            'email' => $request->email
-        ));
+        // if(Student::where('ic', $request->ic)->exists()){
 
-        $payment_id = 'OD'.uniqid();
+        //     $payment_id = 'OD'.uniqid();
 
-        Payment::create(array(
-            'payment_id'=> $payment_id,
-            'pay_price'=> $request->pay_price,
-            'totalprice'=> $request->totalprice,
-            'quantity' => $request->quantity,
-            'status' => 'paid',
-            'pay_method' => 'FPX',
-            'stud_id' => $stud_id,
-            'product_id' => $product_id,
-            'package_id' => $package_id
-        ));
+        //     Payment::create(array(
+        //         'payment_id'=> $payment_id,
+        //         'pay_price'=> $request->pay_price,
+        //         'totalprice'=> $request->totalprice,
+        //         'quantity' => $request->quantity,
+        //         'status' => 'paid',
+        //         'pay_method' => 'FPX',
+        //         'stud_id' => $stud_id,
+        //         'product_id' => $product_id,
+        //         'package_id' => $package_id
+        //     ));
 
-        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
+        // }else{
+
+        //     $stud_id = 'MI'.uniqid();
+            
+        //     Student::create(array(
+        //         'stud_id'=> $stud_id,
+        //         'first_name'=> $request->first_name,
+        //         'last_name'=> $request->last_name,
+        //         'ic' => $request->ic,
+        //         'phoneno' => $request->phoneno,
+        //         'email' => $request->email
+        //     ));
+
+        //     $payment_id = 'OD'.uniqid();
+
+        //     Payment::create(array(
+        //         'payment_id'=> $payment_id,
+        //         'pay_price'=> $request->pay_price,
+        //         'totalprice'=> $request->totalprice,
+        //         'quantity' => $request->quantity,
+        //         'status' => 'paid',
+        //         'pay_method' => 'FPX',
+        //         'stud_id' => $stud_id,
+        //         'product_id' => $product_id,
+        //         'package_id' => $package_id
+        //     ));
+        // }
+
+        // return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
