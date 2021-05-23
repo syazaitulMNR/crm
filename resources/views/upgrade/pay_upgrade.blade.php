@@ -64,10 +64,10 @@ Upgrade Pakej
                                         <br><br>Kad Debit/Kredit
                                     </button>
                                 
-                                    <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
+                                    {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
                                         <i class="fas fa-university fa-3x"></i>
                                         <br><br>FPX
-                                    </button>
+                                    </button> --}}
                                 </div>
                             </div>
   
