@@ -62,7 +62,7 @@
             </div> --}}
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
-              <div class="col-xl-3 col-lg-6">
+              <div class="col-xl-3 col-lg-6 shadow">
                 <div class="card card-inverse">
                   <div class="card-block">
                     <div class="rotate">
@@ -73,7 +73,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-3 col-lg-6">
+              <div class="col-xl-3 col-lg-6 shadow">
                 <div class="card card-inverse">
                   <div class="card-block">
                     <div class="rotate">
@@ -84,7 +84,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-3 col-lg-6">
+              <div class="col-xl-3 col-lg-6 shadow">
                 <div class="card card-inverse">
                   <div class="card-block">
                     <div class="rotate">
@@ -95,7 +95,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-3 col-lg-6">
+              <div class="col-xl-3 col-lg-6 shadow">
                 <div class="card card-inverse">
                   <div class="card-block">
                     <div class="rotate">
