@@ -105,7 +105,8 @@ class ReportsController extends Controller
                 'pay_method' => 'FPX',
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
-                'package_id' => $package_id
+                'package_id' => $package_id,
+                'offer_id' => 'OFF001'
             ));
 
         }else{
@@ -132,7 +133,8 @@ class ReportsController extends Controller
                 'pay_method' => 'FPX',
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
-                'package_id' => $package_id
+                'package_id' => $package_id,
+                'offer_id' => 'OFF001'
             ));
         }
 
