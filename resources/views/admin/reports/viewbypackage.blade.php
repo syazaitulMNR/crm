@@ -85,7 +85,7 @@
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
                       <div class="col-sm-8">
-                      <input type="tel" class="form-control" name="phoneno" placeholder="+60123456789" minlength="12" required>
+                      <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" value="+60" required>
                       </div>
                   </div>
                   <div class="form-group row px-4">
