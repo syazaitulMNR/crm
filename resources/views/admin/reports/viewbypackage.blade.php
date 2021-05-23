@@ -139,7 +139,7 @@
           <div class="col-md-9 "> 
 
             <!-- Search box ---------------------------------------------------------->
-            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter Order ID" title="Type in a name">
+            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
             
             <br>
             
