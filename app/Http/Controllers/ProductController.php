@@ -97,31 +97,45 @@ class ProductController extends Controller
         $product = Product::where('product_id', $id)->first();    
         $check_image = $request->hasFile('cert_image');
         
-        dd($check_image);
+        // dd($check_image);
 
-        // if($request->hasFile('cert_image'))
-        // {
-        //     $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
-        //     $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
-        //     $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
-        // }
+        if($check_image == false){
 
-        // $product->name = $request->prodname;
-        // // $product->description = $request->description;
-        // $product->date_from = $request->date1;
-        // $product->date_to = $request->date2;
-        // $product->time_from = $request->time1;
-        // $product->time_to = $request->time2;
-        // $product->offer_id = $request->offer_id;
+            $product->name = $request->prodname;
+            // $product->description = $request->description;
+            $product->date_from = $request->date1;
+            $product->date_to = $request->date2;
+            $product->time_from = $request->time1;
+            $product->time_to = $request->time2;
+            $product->offer_id = $request->offer_id;
+            $product->save();
 
-        // if($request->hasFile('cert_image'))
-        // {
-        //     $product->cert_image = $cert_image;
-        // }
+        } else {
 
-        // $product->save();
+            if($request->hasFile('cert_image'))
+            {
+                $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
+                $cert_image = 'https://mims.momentuminternet.my/assets/images/certificate/' . $imagename;
+                $request->cert_image->move(public_path('assets/images/certificate'), $imagename);
+            }
 
-        // return redirect('product')->with('updatesuccess', 'Event Successfully Updated');
+            $product->name = $request->prodname;
+            // $product->description = $request->description;
+            $product->date_from = $request->date1;
+            $product->date_to = $request->date2;
+            $product->time_from = $request->time1;
+            $product->time_to = $request->time2;
+            $product->offer_id = $request->offer_id;
+
+            if($request->hasFile('cert_image'))
+            {
+                $product->cert_image = $cert_image;
+            }
+
+            $product->save();
+        }
+
+        return redirect('product')->with('updatesuccess', 'Event Successfully Updated');
     }
 
     public function destroy($id)
