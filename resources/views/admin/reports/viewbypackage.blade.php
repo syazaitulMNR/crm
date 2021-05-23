@@ -150,6 +150,13 @@
             </div>
             @endif
 
+            @if ($message = Session::get('addsuccess'))
+            <div class="alert alert-info alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">

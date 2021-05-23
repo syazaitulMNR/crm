@@ -52,13 +52,6 @@
                     
             <div class="col-md-12">
                 
-                @if ($message = Session::get('updatesuccess'))
-                <div class="alert alert-info alert-block">
-                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                    <strong>{{ $message }}</strong>
-                </div>
-                @endif
-
                 <div class="card mb-4">
                     <div class="card-header">
                     <b>Personal Details</b>

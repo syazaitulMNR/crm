@@ -143,7 +143,7 @@ class ReportsController extends Controller
         $payment->save();
 
         // dd($request->status);
-        return redirect('viewpayment/'.$product_id.'/'.$package_id.'/'.$payment_id.'/'.$student_id)->with('updatesuccess','Payment Status Successfully Updated!');
+        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Payment Status Successfully Updated!');
     }
 
     public function exportProgram($product_id)
