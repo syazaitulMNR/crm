@@ -4,12 +4,12 @@
     <th>Customer ID</th>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>IC Number</th>
-    <th>Phone No</th>
+    <th>IC No.</th>
+    <th>Phone No.</th>
     <th>Email</th>
     <th>Quantity</th>
-    <th>Total Price</th>
-    <th>Payment Status</th>
+    <th>Payment</th>
+    <th>Status</th>
     <th>Payment Method</th>
     <th>Package</th>
 
