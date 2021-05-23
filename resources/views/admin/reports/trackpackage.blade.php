@@ -49,7 +49,7 @@
         </div>
 
         <div class="row">
-          <div class="col-md-9 "> 
+          <div class="col-md-12 "> 
             
             {{-- <div class="row">
               @foreach ($package as $packages)
@@ -187,7 +187,7 @@
             
           </div>
           
-          <div class="col-md-3">
+          {{-- <div class="col-md-3">
 
             <div class="card mb-4 text-center">
               <div class="card-body pt-4">
@@ -209,7 +209,7 @@
               </div>
             </div>
           
-          </div>
+          </div> --}}
           
         </div>
         
