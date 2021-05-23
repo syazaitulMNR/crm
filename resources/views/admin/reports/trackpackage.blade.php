@@ -66,7 +66,7 @@
                 <div class="card card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fa fa-users fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
+                      <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Success Payment</h6>
                     <h3 class="pb-1 pl-3">{{$totalsuccess}}</h3>
@@ -77,7 +77,7 @@
                 <div class="card card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fa fa-chart-bar fa-6x" style="color: rgba(255, 204, 0, 0.3)"></i>
+                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 204, 0, 0.3)"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Due Payment</h6>
                     <h3 class="pb-1 pl-3">{{$totalcancel}}</h3>
@@ -88,7 +88,7 @@
                 <div class="card card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fa fa-chart-area fa-7x" style="color: rgba(17, 0, 255, 0.3)"></i>
+                      <i class="fas fa-ticket-alt fa-7x" style="color: rgba(17, 0, 255, 0.3)"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Paid Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$paidticket}}</h3>
@@ -99,7 +99,7 @@
                 <div class="card card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fa fa-chart-line fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
+                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
                     </div>
                     <h6 class="pt-3 pl-3">Free Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$freeticket}}</h3>
