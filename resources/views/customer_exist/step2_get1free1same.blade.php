@@ -44,8 +44,8 @@ Pendaftaran Pembeli
                             <div class="col-md-6 pb-2">
                                 <label for="price">Harga:</label>
                                 <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
-                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" disabled>
-                                <input type="hidden" name="pay_price" value="{{ $package->price }}" disabled>
+                                <input type="hidden" id="price" name="price" value="{{ $package->price }}" readonly>
+                                <input type="hidden" name="pay_price" value="{{ $package->price }}" readonly>
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="quantity">Kuantiti:</label>
