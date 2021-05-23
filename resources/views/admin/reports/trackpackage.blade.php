@@ -63,7 +63,7 @@
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse shadow">
+                <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
                       <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
@@ -74,7 +74,7 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse shadow">
+                <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
                       <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 204, 0, 0.3)"></i>
@@ -85,7 +85,7 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse shadow">
+                <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
@@ -96,7 +96,7 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse shadow">
+                <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
