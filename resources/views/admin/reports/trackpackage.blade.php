@@ -108,13 +108,7 @@
               </div>
             </div>
 
-            <br>
-
-            <!-- Search box ---------------------------------------------------------->
-            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Please Enter IC Number" title="Type in a name">
-            
-            <br>
-            <!-- Show success payment in table ----------------------------------------------->
+            <!-- Show package in table ----------------------------------------------->
             @if(count($package) > 0)
             <table class="table table-hover" id="successTable">
                 <thead>
