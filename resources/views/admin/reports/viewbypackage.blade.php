@@ -172,7 +172,7 @@
                 <tr>
                     <td>{{ $ticket->firstItem() + $key }}</td>
                     <td>{{ $payments->payment_id }}</td>
-                    <td>{{ $payments->stud_id }}</td>
+                    <td>{{ $tickets->ic }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
                     <td>
                       @if ($payments->status == 'paid')
