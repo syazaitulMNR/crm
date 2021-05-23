@@ -237,7 +237,7 @@
           <div class="col-md-3">
 
             <div class="card mb-4 text-center">
-                <div class="card-block bg-light text-dark">
+                <div class="card-block bg-light text-dark shadow">
                     <div class="rotate">
                     <i class="fas fa-file-invoice-dollar fa-6x"></i>
                     </div>
