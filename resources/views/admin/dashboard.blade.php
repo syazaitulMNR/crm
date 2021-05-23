@@ -58,7 +58,7 @@
               <div class="rotate">
                 <i class="fa fa-users fa-6x" style="color:rgba(93, 0, 255, 0.3)"></i>
               </div>
-              <h6 class="pt-3 pl-3">Total Customers</h6>
+              <h6 class="lead pt-3 pl-3">Total Customers</h6>
               <h3 class="pb-1 pl-3">{{$student}}</h3>
             </div>
           </div>
@@ -69,7 +69,7 @@
               <div class="rotate">
                 <i class="fa fa-chart-bar fa-6x" style="color:rgba(13, 255, 0, 0.3)"></i>
               </div>
-              <h6 class="pt-3 pl-3">Today (RM)</h6>
+              <h6 class="lead pt-3 pl-3">Today (RM)</h6>
               <h3 class="pb-1 pl-3">{{$today}}</h3>
             </div>
           </div>
@@ -80,7 +80,7 @@
               <div class="rotate">
                 <i class="fa fa-chart-area fa-7x" style="color:rgba(255, 0, 149, 0.3)"></i>
               </div>
-              <h6 class="pt-3 pl-3">Monthly (RM)</h6>
+              <h6 class="lead pt-3 pl-3">Monthly (RM)</h6>
               <h3 class="pb-1 pl-3">{{$monthly}}</h3>
             </div>
           </div>
@@ -91,7 +91,7 @@
               <div class="rotate">
                 <i class="fa fa-chart-line fa-6x" style="color:rgba(0, 255, 217, 0.3)"></i>
               </div>
-              <h6 class="pt-3 pl-3">Yearly (RM)</h6>
+              <h6 class="lead pt-3 pl-3">Yearly (RM)</h6>
               <h3 class="pb-1 pl-3">{{$yearly}}</h3>
             </div>
           </div>
