@@ -46,37 +46,29 @@ Pendaftaran Pembeli
   
                     <div class="card-body">
   
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul class="px-3">
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-  
-                            <div class="form-group row">
-                                <div class="col-md-12 px-5">
-                                    <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
-                                        <i class="far fa-credit-card fa-3x"></i>
-                                        <br><br>Kad Debit/Kredit
-                                    </button>
-                                
-                                    <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
-                                        <i class="fas fa-university fa-3x"></i>
-                                        <br><br>FPX
-                                    </button>
-                                </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="px-3">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-{{-- 
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="pay_method" value="card" id="btnradio1" autocomplete="off" checked>
-                                <label class="btn btn-outline-primary" for="btnradio1">Card</label>
-                              
-                                <input type="radio" class="btn-check" name="pay_method" value="fpx" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="btnradio2">fpx</label>
-                            </div> --}}
+                        @endif
+
+                        <div class="form-group row">
+                            <div class="col-md-12 px-5">
+                                <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
+                                    <i class="far fa-credit-card fa-3x"></i>
+                                    <br><br>Kad Debit/Kredit
+                                </button>
+                            
+                                {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
+                                    <i class="fas fa-university fa-3x"></i>
+                                    <br><br>FPX
+                                </button> --}}
+                            </div>
+                        </div>
   
                     </div>
                     <div class="card-footer">
