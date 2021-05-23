@@ -151,7 +151,7 @@
             @endif
 
             <!-- Show success payment in table ----------------------------------------------->
-            @if(count($student) > 0)
+            @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
@@ -171,9 +171,9 @@
                     <th><i class="fas fa-cogs"></i></th> --}}
                 </tr>
                 </thead>
-                <tbody>
-                  @foreach ($student as $students)    
+                <tbody> 
                   @foreach ($payment as $payments)
+                  @foreach ($student as $students)   
                   @if ($payments->stud_id == $students->stud_id)
                   @if ($product->product_id == $payments->product_id)  
                   <tr>
@@ -227,7 +227,7 @@
             @else
             <p>There are no any payment yet.</p>
             @endif
-            <div class="float-right pt-3">{{$student->links()}}</div>   
+            <div class="float-right pt-3">{{$payment->links()}}</div>   
             
           </div>
           
