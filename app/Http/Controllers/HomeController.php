@@ -399,14 +399,41 @@ class HomeController extends Controller
                 if(Student::where('ic', $request->ic)->exists())
                 {
                     // If the ic at paid ticket form exist
+                    // Process for Paid Ticket form
+                    $ticket = Ticket::orderBy('id','Desc')->first();
+                    $auto_inc_tik = $ticket->id + 1;
+                    $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
 
-                    if ($payment->quantity == 1){
-                        // Can access paid ticket form
+                    Ticket::create(array(
+                        'ticket_id' => $ticket_id,
+                        'ticket_type' => 'paid',
+                        'stud_id' => $stud_id,
+                        'product_id' => $product_id,
+                        'package_id' => $package_id,
+                        'payment_id' => $payment_id
+                    ));
 
-                    // }else{
+                    // Manage email (for existed ic in paid ticket form)  
+                    $product = Product::where('product_id', $product_id)->first();
+                    $package = Package::where('package_id', $package_id)->first();
+
+                    $email = $request->email;
+                    $product_name = $product->name;
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
+                    $packageId = $package_id;
+                    $payment_id = $payment->payment_id;
+                    $productId = $product_id;        
+                    $student_id = $student->stud_id;
+                    
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                         
-                        // Can access free ticket form
-
+                    // Process for free ticket form
+                    // Check if the ic at free ticket form exist
+                    if(Student::where('ic', $request->ic_free1)->exists())
+                    {    
                         $ticket = Ticket::orderBy('id','Desc')->first();
                         $auto_inc_tik = $ticket->id + 1;
                         $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
@@ -419,37 +446,34 @@ class HomeController extends Controller
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
                         ));
-                        
-                        // Check if the ic at free ticket form exist
-                        if(Student::where('ic', $value)->exists())
-                        {    
-                            // Manage email (for existed ic in looping form) 
-                            $product = Product::where('product_id', $product_id)->first();
-                            $package = Package::where('package_id', $package_id)->first();
 
-                            $email = $request->email_free1;
-                            $product_name = $product->name;
-                            $date_from = $product->date_from;
-                            $date_to = $product->date_to;
-                            $time_from = $product->time_from;
-                            $time_to = $product->time_to;
-                            $packageId = $package_id;
-                            $payment_id = $payment->payment_id;
-                            $productId = $product_id;        
-                            $student_id = $student->stud_id;
-                            
-                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-                            // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-                            
-                            // continue;
-                        }
+                        // Manage email (for existed ic in looping form) 
+                        $product = Product::where('product_id', $product_id)->first();
+                        $package = Package::where('package_id', $package_id)->first();
+
+                        $email = $request->email_free1;
+                        $product_name = $product->name;
+                        $date_from = $product->date_from;
+                        $date_to = $product->date_to;
+                        $time_from = $product->time_from;
+                        $time_to = $product->time_to;
+                        $packageId = $package_id;
+                        $payment_id = $payment->payment_id;
+                        $productId = $product_id;        
+                        $student_id = $student->stud_id;
+                        
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                        // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+                        
+                        // continue;
+                    } else {
 
                         // If ic at free ticket form not exist
-                        $stud_id = 'MI'.uniqid();
+                        $stud_id_free = 'MI'.uniqid();
 
                         Student::create(array(
 
-                            'stud_id'=> $stud_id,
+                            'stud_id'=> $stud_id_free,
                             'first_name' => $request->firstname_free1,
                             'last_name' => $request->lastname_free1,
                             'ic' => $value,
@@ -467,7 +491,7 @@ class HomeController extends Controller
                         Ticket::create(array(
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
-                            'stud_id' => $stud_id,
+                            'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -486,52 +510,21 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $payment_id = $payment->payment_id;
                         $productId = $product_id;        
-                        $student_id = $student->stud_id;
+                        $student_id = $stud_id_free;
                         
                         dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));                            
                         // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-                        
                     }
-                        
-                    $ticket = Ticket::orderBy('id','Desc')->first();
-                    $auto_inc_tik = $ticket->id + 1;
-                    $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
-
-                    Ticket::create(array(
-                        'ticket_id' => $ticket_id,
-                        'ticket_type' => 'paid',
-                        'stud_id' => $stud_id,
-                        'product_id' => $product_id,
-                        'package_id' => $package_id,
-                        'payment_id' => $payment_id
-                    ));
-
-                    // Manage email (for existed ic in single form)  
-                    $product = Product::where('product_id', $product_id)->first();
-                    $package = Package::where('package_id', $package_id)->first();
-
-                    $email = $request->email;
-                    $product_name = $product->name;
-                    $date_from = $product->date_from;
-                    $date_to = $product->date_to;
-                    $time_from = $product->time_from;
-                    $time_to = $product->time_to;
-                    $packageId = $package_id;
-                    $payment_id = $payment->payment_id;
-                    $productId = $product_id;        
-                    $student_id = $student->stud_id;
-                    
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)); 
 
                 }else{
 
                     // If the ic at paid ticket form not exist
 
-                    $stud_id = 'MI'.uniqid();
+                    $stud_id_paid = 'MI'.uniqid();
 
                     Student::create(array(
 
-                        'stud_id'=> $stud_id,
+                        'stud_id'=> $stud_id_paid,
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
                         'ic' => $request->ic,
@@ -549,7 +542,7 @@ class HomeController extends Controller
                     Ticket::create(array(
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
-                        'stud_id' => $stud_id,
+                        'stud_id' => $stud_id_paid,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -568,100 +561,93 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $payment_id = $payment->payment_id;
                     $productId = $product_id;        
-                    $student_id = $student->stud_id;
+                    $student_id = $stud_id_paid;
                     
                     dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));        
                 
-                    // If quantity = 1
-                    if ($payment->quantity == 1){
-                        // Can access paid ticket form
+                    // Process for free ticket form
+                    // If the ic at free ticket form exist
+                    if(Student::where('ic', $request->ic_free1)->exists())
+                    {
+                        $ticket = Ticket::orderBy('id','Desc')->first();
+                        $auto_inc_tik = $ticket->id + 1;
+                        $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+
+                        Ticket::create(array(
+                            'ticket_id' => $ticket_id,
+                            'ticket_type' => 'free',
+                            'stud_id' => $stud_id,
+                            'product_id' => $product_id,
+                            'package_id' => $package_id,
+                            'payment_id' => $payment_id
+                        ));
+
+                        // Manage email (for existed ic in free ticket form)      
+                        $product = Product::where('product_id', $product_id)->first();
+                        $package = Package::where('package_id', $package_id)->first();
+
+                        $email = $request->email_free1;
+                        $product_name = $product->name;
+                        $date_from = $product->date_from;
+                        $date_to = $product->date_to;
+                        $time_from = $product->time_from;
+                        $time_to = $product->time_to;
+                        $packageId = $package_id;
+                        $payment_id = $payment->payment_id;
+                        $productId = $product_id;        
+                        $student_id = $student->stud_id;
                         
-                    // }else{
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));          
 
-                        // Can access free ticket form
+                        // continue;
+                    } else {
 
-                            // If the ic at free ticket form exist
-                            if(Student::where('ic', $value)->exists())
-                            {
-                                $ticket = Ticket::orderBy('id','Desc')->first();
-                                $auto_inc_tik = $ticket->id + 1;
-                                $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+                        // If the ic at free ticket form not exist
+                        $stud_id_free = 'MI'.uniqid();
 
-                                Ticket::create(array(
-                                    'ticket_id' => $ticket_id,
-                                    'ticket_type' => 'free',
-                                    'stud_id' => $stud_id,
-                                    'product_id' => $product_id,
-                                    'package_id' => $package_id,
-                                    'payment_id' => $payment_id
-                                ));
+                        Student::create(array(
 
-                                // Manage email (for existed ic in free ticket form)      
-                                $product = Product::where('product_id', $product_id)->first();
-                                $package = Package::where('package_id', $package_id)->first();
-        
-                                $email = $request->email_free1;
-                                $product_name = $product->name;
-                                $date_from = $product->date_from;
-                                $date_to = $product->date_to;
-                                $time_from = $product->time_from;
-                                $time_to = $product->time_to;
-                                $packageId = $package_id;
-                                $payment_id = $payment->payment_id;
-                                $productId = $product_id;        
-                                $student_id = $student->stud_id;
+                            'stud_id' => $stud_id_free,
+                            'first_name' => $request->firstname_free1,
+                            'last_name' => $request->lastname_free1,
+                            'ic' => $value,
+                            'email' => $request->email_free1,
+                            'phoneno' => $request->phoneno_free1,
+                            'product_id' => $product_id,
+                            'package_id' => $package_id
+                
+                        ));
                                 
-                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));          
+                        $ticket = Ticket::orderBy('id','Desc')->first();
+                        $auto_inc_tik = $ticket->id + 1;
+                        $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
 
-                                // continue;
-                            }
+                        Ticket::create(array(
+                            'ticket_id' => $ticket_id,
+                            'ticket_type' => 'free',
+                            'stud_id' => $stud_id_free,
+                            'product_id' => $product_id,
+                            'package_id' => $package_id,
+                            'payment_id' => $payment_id
+                        ));
 
-                            // If the ic at free ticket form not exist
-                            $stud_id = 'MI'.uniqid();
+                        // Manage email (for new ic in looping form)
+                        $product = Product::where('product_id', $product_id)->first();
+                        $package = Package::where('package_id', $package_id)->first();
 
-                            Student::create(array(
-
-                                'stud_id' => $stud_id,
-                                'first_name' => $request->firstname_free1,
-                                'last_name' => $request->lastname_free1,
-                                'ic' => $value,
-                                'email' => $request->email_free1,
-                                'phoneno' => $request->phoneno_free1,
-                                'product_id' => $product_id,
-                                'package_id' => $package_id
-                    
-                            ));
-                                  
-                            $ticket = Ticket::orderBy('id','Desc')->first();
-                            $auto_inc_tik = $ticket->id + 1;
-                            $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
-
-                            Ticket::create(array(
-                                'ticket_id' => $ticket_id,
-                                'ticket_type' => 'free',
-                                'stud_id' => $stud_id,
-                                'product_id' => $product_id,
-                                'package_id' => $package_id,
-                                'payment_id' => $payment_id
-                            ));
-
-                            // Manage email (for new ic in looping form)
-                            $product = Product::where('product_id', $product_id)->first();
-                            $package = Package::where('package_id', $package_id)->first();
-
-                            $email = $request->email_free1;
-                            $product_name = $product->name;
-                            $date_from = $product->date_from;
-                            $date_to = $product->date_to;
-                            $time_from = $product->time_from;
-                            $time_to = $product->time_to;
-                            $packageId = $package_id;
-                            $payment_id = $payment->payment_id;
-                            $productId = $product_id;        
-                            $student_id = $student->stud_id;
-                            
-                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-                            
+                        $email = $request->email_free1;
+                        $product_name = $product->name;
+                        $date_from = $product->date_from;
+                        $date_to = $product->date_to;
+                        $time_from = $product->time_from;
+                        $time_to = $product->time_to;
+                        $packageId = $package_id;
+                        $payment_id = $payment->payment_id;
+                        $productId = $product_id;        
+                        $student_id = $stud_id_free;
+                        
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                        
                     }
                 }
 
