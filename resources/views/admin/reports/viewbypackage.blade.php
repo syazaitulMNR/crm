@@ -157,7 +157,8 @@
                 <tr class="header">
                     <th>#</th>
                     <th>Order ID</th>
-                    <th>Customer ID</th>
+                    <th>IC No.</th>
+                    <th>Name</th>
                     <th>Payment (RM)</th>
                     <th>Status</th>
                     <th>Purchase Date</th>
@@ -166,13 +167,16 @@
                 </thead>
                 <tbody>
                 @foreach ($ticket as $key => $tickets)
+                @foreach ($student as $students)
                 @foreach ($payment as $payments)    
+                @if ($students->stud_id == $payments->stud_id)
                 @if ($payments->product_id == $tickets->product_id)  
                 @if ($product->product_id == $payments->product_id)  
                 <tr>
                     <td>{{ $ticket->firstItem() + $key }}</td>
                     <td>{{ $payments->payment_id }}</td>
                     <td>{{ $tickets->ic }}</td>
+                    <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                     <td>RM {{ $payments->totalprice }}</td>
                     <td>
                       @if ($payments->status == 'paid')
@@ -192,13 +196,14 @@
                 @endif
                 @endforeach
                 @endforeach
+                @endforeach
                 </tbody>
             </table>  
             @else
             <p>There are no any ticket sold yet.</p>
             @endif
             <div class="float-right pt-3">{{$ticket->links()}}</div> 
-            
+
             {{-- <!-- Show success payment in table ----------------------------------------------->
             @if(count($payment) > 0)
             <table class="table table-hover" id="successTable">
