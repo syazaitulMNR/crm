@@ -38,7 +38,7 @@ class ReportsController extends Controller
 
     public function trackprogram(Request $request)
     {
-        $q = $request->search;
+        // $q = $request->search;
         // $product = Product::where('name', 'LIKE', '%' . $q . '%')
         // ->orWhere('product_id', 'LIKE', '%' . $q . '%')
         // ->paginate(15);

@@ -67,14 +67,39 @@
             
             <br>
             <!-- Show success payment in table ----------------------------------------------->
-            @if(count($student) > 0)
+            @if(count($package) > 0)
+            <table class="table table-hover" id="successTable">
+                <thead>
+                <tr class="header">
+                    <th>#</th>
+                    <th>Package Name</th>
+                    <th><i class="fas fa-cogs"></i></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($package as $key => $packages)    
+                @if ($product->product_id == $packages->product_id)   
+                <tr>
+                  <td>{{ $package->firstItem() + $key }}</td>
+                  <td>{{ $packages->name  }}</td>
+                </tr>
+                @endif
+                @endforeach
+                </tbody>
+            </table>  
+            @else
+            <p>There are no package yet.</p>
+            @endif
+            <div class="float-right pt-3">{{$package->links()}}</div>
+
+            {{-- @if(count($student) > 0)
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
                     <th>#</th>
                     <th>IC No.</th>
                     <th>Name</th>
-                    {{-- <th>Payment (RM)</th> --}}
+                    {{-- <th>Payment (RM)</th> 
                     <th>Status</th>
                     <th>Purchase Date</th>
                     <th><i class="fas fa-cogs"></i></th>
@@ -89,7 +114,7 @@
                     <td>{{ $students->stud_id }}</td>
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }}</td>
-                    {{-- <td>RM {{ $payments->totalprice }}</td> --}}
+                    {{-- <td>RM {{ $payments->totalprice }}</td> 
                     <td>
                       @if ($payments->status == 'paid')
                         <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
@@ -113,7 +138,7 @@
             @else
             <p>There are no any success payment yet.</p>
             @endif
-            <div class="float-right pt-3">{{$student->links()}}</div>   
+            <div class="float-right pt-3">{{$student->links()}}</div>    --}}
             
           </div>
           
