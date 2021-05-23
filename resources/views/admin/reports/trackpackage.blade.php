@@ -63,8 +63,8 @@
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse">
-                  <div class="card-block shadow">
+                <div class="card card-inverse shadow">
+                  <div class="card-block">
                     <div class="rotate">
                       <i class="fa fa-users fa-6x" style="color: green"></i>
                     </div>
@@ -74,8 +74,8 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse">
-                  <div class="card-block shadow">
+                <div class="card card-inverse shadow">
+                  <div class="card-block">
                     <div class="rotate">
                       <i class="fa fa-chart-bar fa-6x" style="color: orange"></i>
                     </div>
@@ -85,8 +85,8 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse">
-                  <div class="card-block shadow">
+                <div class="card card-inverse shadow">
+                  <div class="card-block">
                     <div class="rotate">
                       <i class="fa fa-chart-area fa-7x" style="color: blue"></i>
                     </div>
@@ -96,8 +96,8 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card card-inverse">
-                  <div class="card-block shadow">
+                <div class="card card-inverse shadow">
+                  <div class="card-block">
                     <div class="rotate">
                       <i class="fa fa-chart-line fa-6x" style="color: cyan"></i>
                     </div>
