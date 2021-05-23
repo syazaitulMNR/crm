@@ -67,31 +67,31 @@
                   <div class="form-group row px-4">
                       <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="ic"  >
+                      <input type="text" class="form-control" name="ic" placeholder=".exp: 950101012036" >
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">First Name</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="first_name" >
+                      <input type="text" class="form-control" name="first_name" placeholder=".exp: John">
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Last Name</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="last_name" >
+                      <input type="text" class="form-control" name="last_name" placeholder=".exp: Doe">
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="phoneno" placeholder="+60" >
+                      <input type="text" class="form-control" name="phoneno" placeholder=".exp: +60123456789" >
                       </div>
                   </div>
                   <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Email</label>
                       <div class="col-sm-8">
-                      <input type="email" class="form-control" name="email"  >
+                      <input type="email" class="form-control" name="email" placeholder=".exp: example@gmail.com" >
                       </div>
                   </div>
 
