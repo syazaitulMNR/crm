@@ -14,7 +14,8 @@ class TicketTableSeeder extends Seeder
     {
         Ticket::create([
             'ticket_id' => 'TIK001',
-            'stud_id' => 'MI001',
+            'ticket_type' => 'paid'
+            'ic' => '912345678900',
             'product_id' => 'PRD001', 
             'package_id' => 'PKD001',
             'payment_id'=> 'OD001'
