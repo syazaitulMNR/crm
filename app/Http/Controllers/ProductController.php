@@ -99,7 +99,7 @@ class ProductController extends Controller
         
         // dd($check_image);
 
-        if($check_image == false){
+        if($check_image->isEmpty()){
 
             $product->name = $request->prodname;
             // $product->description = $request->description;
