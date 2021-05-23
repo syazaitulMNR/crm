@@ -199,9 +199,9 @@ Route::get('pendaftaran-berjaya','HomeController@thankyou');
 |--------------------------------------------------------------------------
 */
 Route::get('updateform/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@participant_form');
-//if bulk ticket
-Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@add_participant');
-//if get 1 free 1 same ticket
+// If no offer/bulk ticket
+Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_bulk');
+// If get 1 free 1 same ticket
 Route::post('get1free1same/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_get1free1same');
 
 Route::get('exportInvoice/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportInvoice');

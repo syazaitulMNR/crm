@@ -123,7 +123,7 @@ class HomeController extends Controller
     }
     
     //For No Offer or Bulk Ticket
-    public function add_participant($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    public function register_bulk($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {
         if($request->myButton == 'Simpan'){
             echo 'simpan';
@@ -156,6 +156,20 @@ class HomeController extends Controller
                             // Check if the ic at looping form exist
                             if(Student::where('ic', $value)->exists())
                             {    
+                                // Process for Paid Ticket form
+                                $ticket = Ticket::orderBy('id','Desc')->first();
+                                $auto_inc_tik = $ticket->id + 1;
+                                $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+
+                                Ticket::create(array(
+                                    'ticket_id' => $ticket_id,
+                                    'ticket_type' => 'paid',
+                                    'stud_id' => $stud_id,
+                                    'product_id' => $product_id,
+                                    'package_id' => $package_id,
+                                    'payment_id' => $payment_id
+                                ));
+
                                 // Manage email (for existed ic in looping form) 
                                 $product = Product::where('product_id', $product_id)->first();
                                 $package = Package::where('package_id', $package_id)->first();
@@ -172,20 +186,16 @@ class HomeController extends Controller
                                 $student_id = $student->stud_id;
                                 
                                 dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-                                // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                                 
                                 continue;
                             }
 
                             // If ic at looping form not exist
-                            // $id = Student::orderBy('id','desc')->first();
-                            // $auto_inc = $id->id + 1;
-                            // $stud_id = 'MI' . 0 . 0 . $auto_inc;
-                            $stud_id = 'MI'.uniqid();
+                            $stud_id_looping = 'MI'.uniqid();
 
                             Student::create(array(
 
-                                'stud_id' => $stud_id,
+                                'stud_id' => $stud_id_looping,
                                 'first_name' => $request->firstname_peserta[$key],
                                 'last_name' => $request->lastname_peserta[$key],
                                 'ic' => $value,
@@ -194,6 +204,20 @@ class HomeController extends Controller
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
+                            ));
+
+                            // Process for Paid Ticket form
+                            $ticket = Ticket::orderBy('id','Desc')->first();
+                            $auto_inc_tik = $ticket->id + 1;
+                            $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+
+                            Ticket::create(array(
+                                'ticket_id' => $ticket_id,
+                                'ticket_type' => 'paid',
+                                'stud_id' => $stud_id_looping,
+                                'product_id' => $product_id,
+                                'package_id' => $package_id,
+                                'payment_id' => $payment_id
                             ));
                 
                             // Manage email (for existed ic in looping form) 
@@ -209,20 +233,21 @@ class HomeController extends Controller
                             $packageId = $package_id;
                             $payment_id = $payment->payment_id;
                             $productId = $product_id;        
-                            $student_id = $student->stud_id;
+                            $student_id = $stud_id_looping;
                             
                             dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                             
-                            // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                         }
                     }
 
+                    // Process for Paid Ticket form
                     $ticket = Ticket::orderBy('id','Desc')->first();
                     $auto_inc_tik = $ticket->id + 1;
                     $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
 
                     Ticket::create(array(
                         'ticket_id' => $ticket_id,
+                        'ticket_type' => 'paid',
                         'stud_id' => $stud_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
@@ -244,21 +269,16 @@ class HomeController extends Controller
                     $productId = $product_id;        
                     $student_id = $student->stud_id;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));                     
-                    // Mail::to($email_buyer)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)); 
 
                 }else{
 
                     // If the ic at single form not exist
-
-                    // $id2 = Student::orderBy('id','desc')->first();
-                    // $auto_inc = $id2->id + 1;
-                    // $stud_id = 'MI' . 0 . 0 . $auto_inc;
-                    $stud_id = 'MI'.uniqid();
+                    $stud_id_single = 'MI'.uniqid();
                             
                     Student::create(array(
 
-                        'stud_id'=> $stud_id,
+                        'stud_id'=> $stud_id_single,
                         'first_name' => $request->first_name,
                         'last_name' => $request->last_name,
                         'ic' => $request->ic,
@@ -268,7 +288,21 @@ class HomeController extends Controller
                         'package_id' => $package_id
             
                     ));
-                                    
+                           
+                    // Process for Paid Ticket form
+                    $ticket = Ticket::orderBy('id','Desc')->first();
+                    $auto_inc_tik = $ticket->id + 1;
+                    $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+
+                    Ticket::create(array(
+                        'ticket_id' => $ticket_id,
+                        'ticket_type' => 'paid',
+                        'stud_id' => $stud_id_single,
+                        'product_id' => $product_id,
+                        'package_id' => $package_id,
+                        'payment_id' => $payment_id
+                    ));
+
                     // Manage email (for new ic in single form)                    
                     $product = Product::where('product_id', $product_id)->first();
                     $package = Package::where('package_id', $package_id)->first();
@@ -282,7 +316,7 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $payment_id = $payment->payment_id;
                     $productId = $product_id;        
-                    $student_id = $student->stud_id;
+                    $student_id = $stud_id_single;
                     
                     dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                     // Mail::to($email_buyer2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
@@ -298,6 +332,20 @@ class HomeController extends Controller
                             // If the ic at looping form exist
                             if(Student::where('ic', $value)->exists())
                             {
+                                // Process for Paid Ticket form
+                                $ticket = Ticket::orderBy('id','Desc')->first();
+                                $auto_inc_tik = $ticket->id + 1;
+                                $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+
+                                Ticket::create(array(
+                                    'ticket_id' => $ticket_id,
+                                    'ticket_type' => 'paid',
+                                    'stud_id' => $stud_id,
+                                    'product_id' => $product_id,
+                                    'package_id' => $package_id,
+                                    'payment_id' => $payment_id
+                                ));
+
                                 // Manage email (for existed ic in single form)                        
                                 $product = Product::where('product_id', $product_id)->first();
                                 $package = Package::where('package_id', $package_id)->first();
@@ -314,32 +362,16 @@ class HomeController extends Controller
                                 $student_id = $student->stud_id;
                                 
                                 dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-                                // $from_name = 'noreply@momentuminternet.com';
-                                // $email_participant3 = $request->email_peserta[$key]; 
                                 
-                                // $name = $request->firstname_peserta[$key]; 
-                                // $products = $product->name;
-                                // $package = $package->name;
-                                // $date_from = $product->date_from;
-                                // $date_to = $product->date_to;
-                                // $time_from = $product->time_from;
-                                // $time_to = $product->time_to;
-                                
-                                // Mail::to($email_participant3)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-
                                 continue;
                             }
 
                             // If the ic at looping form not exist
-
-                            // $id3 = Student::orderBy('id','desc')->first();
-                            // $auto_inc = $id3->id + 1;
-                            // $stud_id = 'MI' . 0 . 0 . $auto_inc;
-                            $stud_id = 'MI'.uniqid();
+                            $stud_id_looping = 'MI'.uniqid();
 
                             Student::create(array(
 
-                                'stud_id'=> $stud_id,
+                                'stud_id'=> $stud_id_looping,
                                 'first_name' => $request->firstname_peserta[$key],
                                 'last_name' => $request->lastname_peserta[$key],
                                 'ic' => $value,
@@ -348,6 +380,20 @@ class HomeController extends Controller
                                 'product_id' => $product_id,
                                 'package_id' => $package_id
                     
+                            ));
+
+                            // Process for Paid Ticket form
+                            $ticket = Ticket::orderBy('id','Desc')->first();
+                            $auto_inc_tik = $ticket->id + 1;
+                            $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
+
+                            Ticket::create(array(
+                                'ticket_id' => $ticket_id,
+                                'ticket_type' => 'paid',
+                                'stud_id' => $stud_id_looping,
+                                'product_id' => $product_id,
+                                'package_id' => $package_id,
+                                'payment_id' => $payment_id
                             ));
                                                     
                             // Manage email (for new ic in looping form)
@@ -363,7 +409,7 @@ class HomeController extends Controller
                             $packageId = $package_id;
                             $payment_id = $payment->payment_id;
                             $productId = $product_id;        
-                            $student_id = $student->stud_id;
+                            $student_id = $stud_id_looping;
                             
                             dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
                             // Mail::to($email_participant4)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
