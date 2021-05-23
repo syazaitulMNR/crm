@@ -158,9 +158,7 @@
                   <th>#</th>
                   <th>IC No.</th>
                   <th>Name</th>
-                  {{-- <th>Payment (RM)</th> --}} 
                   <th>Status</th>
-                  <th>Purchase Date</th>
                   <th><i class="fas fa-cogs"></i></th>
                     {{-- <th>#</th>
                     <th>Order ID</th>
@@ -180,7 +178,6 @@
                       <td>{{ $payment->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
                       <td>{{ $students->first_name }}</td>
-                      {{-- <td>RM {{ $payments->totalprice }}</td> --}}
                       <td>
                         @if ($payments->status == 'paid')
                           <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
@@ -190,7 +187,6 @@
                           <p>NULL</p>
                         @endif
                       </td>
-                      <td>{{ date('d/m/Y', strtotime($payments->created_at)) }}</td>
                       <td>
                         <a class="btn btn-primary" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-edit"></i></a>
                       </td>
