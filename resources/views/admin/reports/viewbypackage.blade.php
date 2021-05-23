@@ -177,7 +177,7 @@
                   <tr>
                       <td>{{ $payment->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
-                      <td>{{ $students->first_name }}</td>
+                      <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                       <td>
                         @if ($payments->status == 'paid')
                           <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
