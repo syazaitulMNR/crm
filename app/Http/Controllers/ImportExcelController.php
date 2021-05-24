@@ -23,7 +23,7 @@ class ImportExcelController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $data = Student::orderBy('id','desc')->paginate(15);
 
-        return view('admin.importexcel', compact('data'));
+        return view('admin.importexcel', compact('data', 'product', 'package'));
     }
 
     function import()
