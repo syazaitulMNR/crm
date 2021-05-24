@@ -77,14 +77,14 @@
             </div>
             {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name"> --}}
          
-            <div class="row float-right pt-3">
+            {{-- <div class="row float-right pt-3">
                 {{-- <div class="col-auto">
                     <div>{{$data->links()}}</div>
-                </div> --}}
+                </div>
                 <div class="col-auto pt-1">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pr-1"></i>Download the format</a>
                 </div>
-            </div>
+            </div> --}}
             
             <br>  
 
@@ -116,6 +116,12 @@
                         </tr>
                     </table>
                 </div>
+            </div>
+
+            <br>
+
+            <div class="col-auto pt-1">
+                <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pr-1"></i>Download the format</a>
             </div>
 
             {{-- <div class="panel-body">
