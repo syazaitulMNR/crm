@@ -89,7 +89,7 @@
             <br>  
 
             <div class="panel-body">
-                <p class="py-1">Please use this format.</p>
+                <p class="py-1">1) Please download this format before import to database.</p>
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
@@ -121,7 +121,7 @@
 
             <div class="row float-right pt-3">
                 <div class="col-auto pt-1">
-                    <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pr-2"></i>Download the format</a>
+                    <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pr-2"></i>Download</a>
                 </div>
             </div>
 
