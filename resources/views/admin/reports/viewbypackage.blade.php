@@ -47,91 +47,96 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">{{ $package->name }}</h1>
 
-          {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
-            <i class="fas fa-plus pr-1"></i> New Customer
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header border-bottom-0">
-                  <h5 class="modal-title" id="exampleModalLabel">Add New Customer</h5>
-                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
-                @csrf
-                  <div class="form-group row px-4">
-                      <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
-                      <div class="col-sm-8">
-                      <input type="text" class="form-control" name="ic" placeholder="950101012036" maxlength="12" required>
-                      </div>
+          <div class="btn-group">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
+              <i class="fas fa-plus pr-1"></i> New Customer
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Customer</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                  <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">First Name</label>
-                      <div class="col-sm-8">
-                      <input type="text" class="form-control" name="first_name" placeholder="John" required>
-                      </div>
-                  </div>
-                  <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Last Name</label>
-                      <div class="col-sm-8">
-                      <input type="text" class="form-control" name="last_name" placeholder="Doe" required>
-                      </div>
-                  </div>
-                  <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
-                      <div class="col-sm-8">
-                      <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" value="+60" required>
-                      </div>
-                  </div>
-                  <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Email</label>
-                      <div class="col-sm-8">
-                      <input type="email" class="form-control" name="email" placeholder="example@gmail.com" required>
-                      </div>
-                  </div>
-
-                  <hr>
-
-                  <div class="form-group row px-4">
-                    <label for="ic" class="col-sm-4 col-form-label">Price (RM)</label>
-                    <div class="col-sm-8">
-                    <input type="text" class="form-control" name="pay_price" id="price" value="{{ $package->price }}" readonly>   
+                  <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
+                  @csrf
+                    <div class="form-group row px-4">
+                        <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" name="ic" placeholder="950101012036" maxlength="12" required>
+                        </div>
                     </div>
-                  </div>
-                  <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Quantity</label>
+                    <div class="form-group row px-4">
+                        <label for="name" class="col-sm-4 col-form-label">First Name</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" name="first_name" placeholder="John" required>
+                        </div>
+                    </div>
+                    <div class="form-group row px-4">
+                        <label for="name" class="col-sm-4 col-form-label">Last Name</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" name="last_name" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="form-group row px-4">
+                        <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" value="+60" required>
+                        </div>
+                    </div>
+                    <div class="form-group row px-4">
+                        <label for="name" class="col-sm-4 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                        <input type="email" class="form-control" name="email" placeholder="example@gmail.com" required>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group row px-4">
+                      <label for="ic" class="col-sm-4 col-form-label">Price (RM)</label>
                       <div class="col-sm-8">
-                        <input type="hidden" class="form-control" name="quantity" value="1" readonly>
-                        <label class="col-form-label">1</label>
-                        {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
-                          <option value="" disabled selected>-- Tiket --</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select> --}}
+                      <input type="text" class="form-control" name="pay_price" id="price" value="{{ $package->price }}" readonly>   
                       </div>
-                  </div>
-                  <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Total Payment (RM)</label>
-                      <div class="col-sm-8">
-                        <input type="hidden" class="form-control" name="totalprice" value="{{ $package->price }}" readonly> 
-                        <label class="col-form-label">{{$package->price}}</label>
-                      {{-- <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: none;" readonly> --}}
-                      </div>
-                  </div>
-                                    
-                  <div class='col-md-12 text-right px-4'>
-                      <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
-                  </div>
-                </form>
+                    </div>
+                    <div class="form-group row px-4">
+                        <label for="name" class="col-sm-4 col-form-label">Quantity</label>
+                        <div class="col-sm-8">
+                          <input type="hidden" class="form-control" name="quantity" value="1" readonly>
+                          <label class="col-form-label">1</label>
+                          {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
+                            <option value="" disabled selected>-- Tiket --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select> --}}
+                        </div>
+                    </div>
+                    <div class="form-group row px-4">
+                        <label for="name" class="col-sm-4 col-form-label">Total Payment (RM)</label>
+                        <div class="col-sm-8">
+                          <input type="hidden" class="form-control" name="totalprice" value="{{ $package->price }}" readonly> 
+                          <label class="col-form-label">{{$package->price}}</label>
+                        {{-- <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: none;" readonly> --}}
+                        </div>
+                    </div>
+                                      
+                    <div class='col-md-12 text-right px-4'>
+                        <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
+
+            <a href="" type="button" class="btn btn-outline-secondary"><i class="fas fa-plus pr-1"></i> Import Customer</a>
           </div>
+          {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
+          
             
         </div>
 
