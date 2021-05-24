@@ -63,25 +63,24 @@
         </form>
            
         <br>
-        {{-- <div class="panel panel-default">
+        <div class="panel panel-default">
 
             <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                 <!-- create campaign -->
                 <div class="btn-group" role="group" aria-label="First group">
-                    <h5>List of Customer</h5>
-                    {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
+                    <h5>How To Import ?</h5>
                 </div>
                 
                 {{-- <div class="input-group">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pt-1"></i></a>
-                </div> 
+                </div> --}}
             </div>
-            <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
+            {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name"> --}}
          
             <div class="row float-right pt-3">
-                <div class="col-auto">
+                {{-- <div class="col-auto">
                     <div>{{$data->links()}}</div>
-                </div>
+                </div> --}}
                 <div class="col-auto pt-1">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download"></i></a>
                 </div>
@@ -89,14 +88,14 @@
             
             <br>  
 
-            <div class="panel-body">
+            {{-- <div class="panel-body">
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
                     @if(count($data) > 0)
                     <table class="table table-hover" id="myTable">
                         <tr>
                             <th>#</th>
-                            {{-- <th>ID</th>
+                            {{-- <th>ID</th> 
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>IC No.</th>
@@ -106,7 +105,7 @@
                         @foreach($data as $key => $row)
                         <tr>
                             <td>{{ $data->firstItem() + $key  }}</td>
-                            {{-- <td>{{ $row->stud_id }}</td>
+                            {{-- <td>{{ $row->stud_id }}</td> 
                             <td>{{ $row->first_name }}</td>
                             <td>{{ $row->last_name }}</td>
                             <td>{{ $row->ic }}</td>
@@ -115,13 +114,13 @@
                         </tr>
                         @endforeach
                     </table>
-                    {{-- <div class="float-right pt-3">{{$data->links()}}</div>
+                    {{-- <div class="float-right pt-3">{{$data->links()}}</div> 
                     @else
                     <p>There are no customer to display.</p>
                     @endif
                 </div>
-            </div>
-        </div> --}}
+            </div> --}}
+        </div>
     </main>
 </div>
 
