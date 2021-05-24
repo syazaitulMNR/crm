@@ -36,6 +36,16 @@ class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
                 'email'      => $row['email'],
                 'phoneno'    => $row['phoneno'],                
             ]);
+
+            // return new Payment([
+            //     // 'stud_id'    => $stud_id,
+            //     'payment_id'    => $row['stud_id'],
+            //     'pay_price'     => $row['first_name'],
+            //     'totalprice'    => $row['last_name'], 
+            //     'quantity'      => $row['ic'],
+            //     'status'        => $row['email'],
+            //     'pay_method'    => $row['phoneno'],                
+            // ]);
         }
         
     }
