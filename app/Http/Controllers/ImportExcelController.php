@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Product;
+use App\Package;
 use App\Exports\StudentExport;
 use App\Imports\StudentImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,8 +17,10 @@ class ImportExcelController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index($product_id, $package_id)
     {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $data = Student::orderBy('id','desc')->paginate(15);
 
         return view('admin.importexcel', compact('data'));

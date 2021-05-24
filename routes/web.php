@@ -136,7 +136,7 @@ Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'R
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 
-Route::get('database-management','ImportExcelController@index');
+Route::get('database-management/{product_id}/{package_id}','ImportExcelController@index');
 Route::post('importExcel','ImportExcelController@import');
 Route::get('exportExcel', 'ImportExcelController@export');
 
