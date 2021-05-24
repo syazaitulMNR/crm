@@ -89,6 +89,7 @@
             <br>  
 
             <div class="panel-body">
+                <p class="lead">Please follow this format</p>
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
