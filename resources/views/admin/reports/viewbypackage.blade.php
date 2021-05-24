@@ -133,7 +133,7 @@
               </div>
             </div>
 
-            <a href="" type="button" class="btn btn-outline-secondary"><i class="fas fa-plus pr-1"></i> Import Customer</a>
+            <a href="" type="button" class="btn btn-outline-secondary"><i class="fas fa-upload pr-1"></i> Import Customer</a>
           </div>
           {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
           
