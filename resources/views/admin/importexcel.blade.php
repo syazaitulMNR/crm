@@ -120,8 +120,10 @@
 
             <br>
 
-            <div class="col-auto pt-1">
-                <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pr-1"></i>Download the format</a>
+            <div class="row float-right pt-3">
+                <div class="col-auto pt-1">
+                    <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pr-1"></i>Download the format</a>
+                </div>
             </div>
 
             {{-- <div class="panel-body">
