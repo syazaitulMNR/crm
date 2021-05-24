@@ -88,6 +88,36 @@
             
             <br>  
 
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <!-- Show details in table ----------------------------------------------->
+                    <table class="table table-hover" id="myTable">
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>IC No.</th>
+                            <th>Email</th>
+                            <th>Phone No</th>
+                            <th>Price (RM)</th>
+                            <th>Quantity</th>
+                            <th>Total Payment</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>900101014321</td>
+                            <td>example@gmail.com</td>
+                            <td>+60123456789</td>
+                            <td>199</td>
+                            <td>1</td>
+                            <td>199</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
             {{-- <div class="panel-body">
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
@@ -125,7 +155,7 @@
 </div>
 
 <!-- Enable function for search data ------------------------------------->
-<script>
+{{-- <script>
     function myFunction() {
       var input, filter, table, tr, td, i, txtValue;
   
@@ -150,5 +180,5 @@
         }       
       }
     }
-</script>
+</script> --}}
 @endsection
