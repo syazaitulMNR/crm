@@ -89,7 +89,7 @@
             <br>  
 
             <div class="panel-body">
-                <p>Please follow download this format</p>
+                <p>Please download this example format</p>
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
