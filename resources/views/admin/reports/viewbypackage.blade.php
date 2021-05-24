@@ -133,7 +133,7 @@
               </div>
             </div>
 
-            <a href="{{ url('importExcel') }}" type="button" class="btn btn-outline-primary"><i class="fas fa-upload pr-1"></i> Import Customer</a>
+            <a href="database-management" type="button" class="btn btn-outline-primary"><i class="fas fa-upload pr-1"></i> Import Customer</a>
           </div>
           {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
           
