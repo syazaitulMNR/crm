@@ -81,10 +81,6 @@
                 {{-- <div class="col-auto">
                     <div>{{$data->links()}}</div>
                 </div> --}}
-                <div class="col-auto">
-                    <p>Please download this example format</p>
-                </div>
-                
                 <div class="col-auto pt-1">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download"></i></a>
                 </div>
@@ -93,6 +89,8 @@
             <br>  
 
             <div class="panel-body">
+                <p class="text-right">Please download this example format</p>
+
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
