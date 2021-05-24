@@ -63,18 +63,18 @@
         </form>
            
         <br>
-        <div class="panel panel-default">
+        {{-- <div class="panel panel-default">
 
             <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                 <!-- create campaign -->
                 <div class="btn-group" role="group" aria-label="First group">
                     <h5>List of Customer</h5>
-                    {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name"> --}}
+                    {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
                 </div>
                 
                 {{-- <div class="input-group">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}"><i class="fas fa-download pt-1"></i></a>
-                </div> --}}
+                </div> 
             </div>
             <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter IC Number" title="Type in a name">
          
@@ -96,7 +96,7 @@
                     <table class="table table-hover" id="myTable">
                         <tr>
                             <th>#</th>
-                            {{-- <th>ID</th> --}}
+                            {{-- <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>IC No.</th>
@@ -106,7 +106,7 @@
                         @foreach($data as $key => $row)
                         <tr>
                             <td>{{ $data->firstItem() + $key  }}</td>
-                            {{-- <td>{{ $row->stud_id }}</td> --}}
+                            {{-- <td>{{ $row->stud_id }}</td>
                             <td>{{ $row->first_name }}</td>
                             <td>{{ $row->last_name }}</td>
                             <td>{{ $row->ic }}</td>
@@ -115,13 +115,13 @@
                         </tr>
                         @endforeach
                     </table>
-                    {{-- <div class="float-right pt-3">{{$data->links()}}</div> --}}
+                    {{-- <div class="float-right pt-3">{{$data->links()}}</div>
                     @else
                     <p>There are no customer to display.</p>
                     @endif
                 </div>
             </div>
-        </div>
+        </div> --}}
     </main>
 </div>
 
