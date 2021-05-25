@@ -29,6 +29,7 @@
             <td>1</td>
             <td>799</td>
             <td>paid</td>
+            <td>CDM/FPX/Senang Pay</td>
             <td>PRD001</td>
             <td>PKD001</td>
             <td>OFF001</td>
