@@ -32,7 +32,7 @@ class ImportExcelController extends Controller
         // (new StudentImport)->toCollection(request()->file('file'));
         // (new StudentImport)->import(request()->file('file'));
         // dd(Excel::import(new StudentImport, request()->file('file')));
-        // return back()->with('success', 'The file has been inserted to queue, it may take a while to successfully import.');
+        return back()->with('success', 'The file has been inserted to queue, it may take a while to successfully import.');
     }
 
     public function export()
