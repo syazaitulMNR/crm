@@ -20,7 +20,7 @@ class StudentImport implements ToCollection
 
     public function collection(Collection $rows)
     {
-        dump($rows[2]);
+        // dump($rows[2]);
         // $student = Student::where('ic', $rows['ic'])->first();
 
         // $stud_id = 'MI' . uniqid();
@@ -47,31 +47,31 @@ class StudentImport implements ToCollection
 
         // }else{
 
-        //     foreach ($rows as $row) 
-        //     {
-        //         Student::create([
-        //             'stud_id'    => $stud_id,
-        //             'first_name' => $row['first_name'],
-        //             'last_name'  => $row['last_name'], 
-        //             'ic'         => $row['ic'],
-        //             'email'      => $row['email'],
-        //             'phoneno'    => '+' . $row['phoneno'],
-        //         ]);
+            foreach ($rows as $row) 
+            {
+                Student::create([
+                    'stud_id'    => $stud_id,
+                    'first_name' => $row['first_name'],
+                    'last_name'  => $row['last_name'], 
+                    'ic'         => $row['ic'],
+                    'email'      => $row['email'],
+                    'phoneno'    => '+' . $row['phoneno'],
+                ]);
 
-        //         Payment::create([
-        //             'payment_id'    => $payment_id,
-        //             'pay_price'     => $row['price'], 
-        //             'quantity'      => $row['quantity'],
-        //             'totalprice'    => $row['payment'],
-        //             'status'        => $row['status'],
-        //             'pay_method'    => $row['pay_method'], 
-        //             'stud_id'       => $student->stud_id,
-        //             'product_id'    => $row['product_id'],
-        //             'package_id'    => $row['package_id'],
-        //             'offer_id'      => $row['offer_id'], 
-        //             'user_id'      => $row['user_id'],
-        //         ]);
-        //     }
+                Payment::create([
+                    'payment_id'    => $payment_id,
+                    'pay_price'     => $row['price'], 
+                    'quantity'      => $row['quantity'],
+                    'totalprice'    => $row['payment'],
+                    'status'        => $row['status'],
+                    'pay_method'    => $row['pay_method'], 
+                    'stud_id'       => $student->stud_id,
+                    'product_id'    => $row['product_id'],
+                    'package_id'    => $row['package_id'],
+                    'offer_id'      => $row['offer_id'], 
+                    'user_id'      => $row['user_id'],
+                ]);
+            }
             
         // }
     }
