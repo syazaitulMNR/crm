@@ -16,7 +16,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 // class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
 class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 {
-    // use Importable;
+    use Importable;
 
     public function collection(Collection $rows)
     {
