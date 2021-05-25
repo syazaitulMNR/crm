@@ -138,7 +138,7 @@ Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 
 Route::get('database-management/{product_id}/{package_id}','ImportExcelController@index');
 Route::post('importExcel','ImportExcelController@import');
-Route::get('exportExcel', 'ImportExcelController@export');
+Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
 
 //---------------------------------------------- Customer Part -------------------------------------------------//
 
