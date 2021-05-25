@@ -121,6 +121,7 @@
                             <td>FPX</td>
                             <td>PRD001</td>
                             <td>PKD001</td>
+                            <td>OFF001</td>
                             <td>UID001</td>
                         </tr>
                     </table>
