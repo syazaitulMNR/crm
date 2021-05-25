@@ -20,59 +20,60 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 
     public function collection(Collection $rows)
     {
-        $student = Student::where('ic', $rows[2])->first();
+        dump($rows);
+        // $student = Student::where('ic', $rows[2])->first();
 
-        $stud_id = 'MI' . uniqid();
-        $payment_id = 'OD' . uniqid();
+        // $stud_id = 'MI' . uniqid();
+        // $payment_id = 'OD' . uniqid();
 
-        if(Student::where('ic', $rows[2])->exists()){
+        // if(Student::where('ic', $rows[2])->exists()){
 
-            foreach ($rows as $row) 
-            {
-                Payment::create([
-                    'payment_id'    => $payment_id,
-                    'pay_price'     => $row[5], 
-                    'quantity'      => $row[6],
-                    'totalprice'    => $row[7],
-                    'status'        => $row[8],
-                    'pay_method'    => $row[9], 
-                    'stud_id'       => $student->stud_id,
-                    'product_id'    => $row[10],
-                    'package_id'    => $row[11],
-                    'offer_id'      => $row[12], 
-                    'user_id'      => $row[13],
-                ]);
-            }
+        //     foreach ($rows as $row) 
+        //     {
+        //         Payment::create([
+        //             'payment_id'    => $payment_id,
+        //             'pay_price'     => $row[5], 
+        //             'quantity'      => $row[6],
+        //             'totalprice'    => $row[7],
+        //             'status'        => $row[8],
+        //             'pay_method'    => $row[9], 
+        //             'stud_id'       => $student->stud_id,
+        //             'product_id'    => $row[10],
+        //             'package_id'    => $row[11],
+        //             'offer_id'      => $row[12], 
+        //             'user_id'      => $row[13],
+        //         ]);
+        //     }
 
-        }else{
+        // }else{
 
-            foreach ($rows as $row) 
-            {
-                Student::create([
-                    'stud_id'    => $stud_id,
-                    'first_name' => $row[0],
-                    'last_name'  => $row[1], 
-                    'ic'         => $row[2],
-                    'email'      => $row[3],
-                    'phoneno'    => '+' . $row[4],
-                ]);
+        //     foreach ($rows as $row) 
+        //     {
+        //         Student::create([
+        //             'stud_id'    => $stud_id,
+        //             'first_name' => $row[0],
+        //             'last_name'  => $row[1], 
+        //             'ic'         => $row[2],
+        //             'email'      => $row[3],
+        //             'phoneno'    => '+' . $row[4],
+        //         ]);
 
-                Payment::create([
-                    'payment_id'    => $payment_id,
-                    'pay_price'     => $row[5], 
-                    'quantity'      => $row[6],
-                    'totalprice'    => $row[7],
-                    'status'        => $row[8],
-                    'pay_method'    => $row[9], 
-                    'stud_id'       => $student->stud_id,
-                    'product_id'    => $row[10],
-                    'package_id'    => $row[11],
-                    'offer_id'      => $row[12], 
-                    'user_id'      => $row[13],
-                ]);
-            }
+        //         Payment::create([
+        //             'payment_id'    => $payment_id,
+        //             'pay_price'     => $row[5], 
+        //             'quantity'      => $row[6],
+        //             'totalprice'    => $row[7],
+        //             'status'        => $row[8],
+        //             'pay_method'    => $row[9], 
+        //             'stud_id'       => $student->stud_id,
+        //             'product_id'    => $row[10],
+        //             'package_id'    => $row[11],
+        //             'offer_id'      => $row[12], 
+        //             'user_id'      => $row[13],
+        //         ]);
+        //     }
             
-        }
+        // }
     }
 
     /**
