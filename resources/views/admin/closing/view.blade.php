@@ -50,28 +50,28 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First Name</th>
+            {{-- <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">IC No.</th>
             <th scope="col">Email</th>
-            <th scope="col">Phone No.</th>
+            <th scope="col">Phone No.</th> --}}
             <th scope="col">Date Register</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($payment as $key => $payments)  
-            @foreach ($student as $students)     
+            {{-- @foreach ($student as $students)      --}}
             @if ($payments->user_id == Auth::user()->user_id)                 
             <tr>
                 <td>{{ $payment->firstItem() + $key  }}</td>
-                <td>{{ $students->first_name  }}</td>
+                {{-- <td>{{ $students->first_name  }}</td>
                 <td>{{ $students->last_name }}</td>
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->email }}</td>
-                <td>{{ $students->phoneno }}</td>
+                <td>{{ $students->phoneno }}</td> --}}
                 <td>{{ date('d/m/Y', strtotime($payments->date_from)) }} - {{ date('d/m/Y', strtotime($payments->date_to)) }}</td>
             </tr>  
-            @endif
+            {{-- @endif --}}
             @endforeach  
             @endforeach
         </tbody>
