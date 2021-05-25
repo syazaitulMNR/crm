@@ -22,7 +22,6 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
         $this->product = $prd_id;
         $this->package = $pkd_id;
     }
-    // use Importable;
 
     public function collection(Collection $rows)
     {

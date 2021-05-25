@@ -10,26 +10,9 @@ use Maatwebsite\Excel\Concerns\FromView;
 // class StudentExport implements FromCollection
 class StudentExport implements FromView
 {
-    private $product  = [], $package = [];
-
-    public function __construct($product_list, $package_list){
-        $this->product = $product_list;
-        $this->package = $package_list;
-    }
-
     public function view(): View
     {
-        return view('admin.reports.import_format', [
-            'product' => $this->product,
-            'package' => $this->package,
-        ]);
+        return view('admin.reports.import_format');
     }
 
-    // /**
-    // * @return \Illuminate\Support\Collection
-    // */
-    // public function collection()
-    // {
-    //     return Student::all();
-    // }
 }

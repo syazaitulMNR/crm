@@ -13,8 +13,6 @@
             <th>pay_method</th>
             <th>offer_id</th>
             <th>user_id</th>
-            <th>product_id</th>
-            <th>package_id</th>
         
         </tr>
     </thead>
@@ -32,7 +30,5 @@
             <td>CDM/FPX/Senang Pay</td>
             <td>OFF001</td>
             <td>UID001</td>
-            <td>{{ $product->product_id }}</td>
-            <td>{{ $package->package_id }}</td>
         </tr>
 </tbody>
