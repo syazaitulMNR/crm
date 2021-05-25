@@ -159,10 +159,9 @@ class ProductController extends Controller
         $package = Package::where('product_id', $id)->paginate(15);
         $package_id = Package::where('product_id', $id)->get();
 
-        // $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/' . $package_id->package_id;
-        dd($package_id);
+        $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/' . $package_id->package_id;
 
-        // return view('admin/viewpackage', compact('feature','product', 'package', 'link'));   
+        return view('admin/viewpackage', compact('feature','product', 'package', 'link'));   
     }
     
     public function pack($id)
