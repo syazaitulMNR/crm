@@ -145,7 +145,7 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 | Closing Tracker
 |--------------------------------------------------------------------------
 */
-
+Route::get('closing-list','ClosingController@view');
 
 //---------------------------------------------- Customer Part -------------------------------------------------//
 
