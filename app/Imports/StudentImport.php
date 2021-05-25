@@ -23,8 +23,8 @@ class StudentImport implements ToCollection
         // dump($rows[2]);
         // $student = Student::where('ic', $rows['ic'])->first();
 
-        // $stud_id = 'MI' . uniqid();
-        // $payment_id = 'OD' . uniqid();
+        $stud_id = 'MI' . uniqid();
+        $payment_id = 'OD' . uniqid();
 
         // if(Student::where('ic', $rows['ic'])->exists()){
 
@@ -65,7 +65,7 @@ class StudentImport implements ToCollection
                     'totalprice'    => $row['payment'],
                     'status'        => $row['status'],
                     'pay_method'    => $row['pay_method'], 
-                    'stud_id'       => $student->stud_id,
+                    'stud_id'       => $stud_id,
                     'product_id'    => $row['product_id'],
                     'package_id'    => $row['package_id'],
                     'offer_id'      => $row['offer_id'], 
