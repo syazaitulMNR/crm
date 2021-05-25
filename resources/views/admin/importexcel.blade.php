@@ -105,8 +105,6 @@
                             <th>Pay Method</th>
                             <th>Offer ID</th>
                             <th>User ID</th>
-                            <th>Product ID</th>
-                            <th>Package ID</th>
                         </tr>
                         <tr>
                             <td>John</td>
@@ -120,8 +118,6 @@
                             <td>FPX</td>
                             <td>OFF001</td>
                             <td>UID001</td>
-                            <td>PRD001</td>
-                            <td>PKD001</td>
                         </tr>
                     </table>
                 </div>
