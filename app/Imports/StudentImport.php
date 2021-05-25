@@ -20,12 +20,12 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 
     public function collection(Collection $rows)
     {
-        $student = Student::where('ic', $rows['ic'])->first();
+        $student = Student::where('ic', $rows[2])->first();
 
         $stud_id = 'MI' . uniqid();
         $payment_id = 'OD' . uniqid();
 
-        if(Student::where('ic', $rows['ic'])->exists()){
+        if(Student::where('ic', $rows[2])->exists()){
 
             foreach ($rows as $row) 
             {
