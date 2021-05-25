@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Database Management
+    Import Customer
 @endsection
 
 @include('layouts.navbar')
@@ -14,11 +14,11 @@
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
             <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> 
             / <a href="/trackprogram">Customer</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"> {{ $product->name }} </a> 
-            / <b>{{ $package->name }}</b>
+            / <a href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $package->package_id }}">{{ $package->name }}</a> / Import Customer<b></b>
         </div>
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Database Management</h1>
+          <h1 class="h2">Import Customer</h1>
         </div>
 
         @if ($message = Session::get('success'))
@@ -44,22 +44,7 @@
                 <input type="file" name="file" class="form-control" required>
                 <button class="btn btn-dark"><i class="fas fa-upload pt-1"></i></button>
             </div>
-
-            {{-- <div class="btn-toolbar justify-content-between pt-3" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group" role="group" aria-label="First group" style="width:94%">
-                    <input type="file" name="file" class="form-control" required>
-                </div>
-
-                <div class="input-group pl-0">
-                    <button class="btn btn-dark"><i class="fas fa-upload pt-1"></i></button>
-                </div>
-            </div> --}}
-            {{-- <div class="col-auto" style="width:94%">
-                <input type="file" name="file" class="form-control" required>
-            </div>
-            <div class="col-auto pt-1">
-                <button class="btn btn-dark"><i class="fas fa-upload"></i></button>
-            </div> --}}
+            
         </form>
            
         <br>
