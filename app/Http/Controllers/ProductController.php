@@ -160,7 +160,7 @@ class ProductController extends Controller
         $package_id = Package::where('product_id', $id)->get();
 
         // $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/' . $package_id->package_id;
-        dd($package_id->package_id);
+        dd($package_id);
 
         // return view('admin/viewpackage', compact('feature','product', 'package', 'link'));   
     }
