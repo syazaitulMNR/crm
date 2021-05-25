@@ -20,28 +20,28 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 
     public function collection(Collection $rows)
     {
-        dump($rows);
-        // $student = Student::where('ic', $rows[2])->first();
+        dump($rows['ic']);
+        // $student = Student::where('ic', $rows['ic'])->first();
 
         // $stud_id = 'MI' . uniqid();
         // $payment_id = 'OD' . uniqid();
 
-        // if(Student::where('ic', $rows[2])->exists()){
+        // if(Student::where('ic', $rows['ic'])->exists()){
 
         //     foreach ($rows as $row) 
         //     {
         //         Payment::create([
         //             'payment_id'    => $payment_id,
-        //             'pay_price'     => $row[5], 
-        //             'quantity'      => $row[6],
-        //             'totalprice'    => $row[7],
-        //             'status'        => $row[8],
-        //             'pay_method'    => $row[9], 
+        //             'pay_price'     => $row['price'], 
+        //             'quantity'      => $row['quantity'],
+        //             'totalprice'    => $row['payment'],
+        //             'status'        => $row['status'],
+        //             'pay_method'    => $row['pay_method'], 
         //             'stud_id'       => $student->stud_id,
-        //             'product_id'    => $row[10],
-        //             'package_id'    => $row[11],
-        //             'offer_id'      => $row[12], 
-        //             'user_id'      => $row[13],
+        //             'product_id'    => $row['product_id'],
+        //             'package_id'    => $row['package_id'],
+        //             'offer_id'      => $row['offer_id'], 
+        //             'user_id'      => $row['user_id'],
         //         ]);
         //     }
 
@@ -51,25 +51,25 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
         //     {
         //         Student::create([
         //             'stud_id'    => $stud_id,
-        //             'first_name' => $row[0],
-        //             'last_name'  => $row[1], 
-        //             'ic'         => $row[2],
-        //             'email'      => $row[3],
-        //             'phoneno'    => '+' . $row[4],
+        //             'first_name' => $row['first_name'],
+        //             'last_name'  => $row['last_name'], 
+        //             'ic'         => $row['ic'],
+        //             'email'      => $row['email'],
+        //             'phoneno'    => '+' . $row['phoneno'],
         //         ]);
 
         //         Payment::create([
         //             'payment_id'    => $payment_id,
-        //             'pay_price'     => $row[5], 
-        //             'quantity'      => $row[6],
-        //             'totalprice'    => $row[7],
-        //             'status'        => $row[8],
-        //             'pay_method'    => $row[9], 
+        //             'pay_price'     => $row['price'], 
+        //             'quantity'      => $row['quantity'],
+        //             'totalprice'    => $row['payment'],
+        //             'status'        => $row['status'],
+        //             'pay_method'    => $row['pay_method'], 
         //             'stud_id'       => $student->stud_id,
-        //             'product_id'    => $row[10],
-        //             'package_id'    => $row[11],
-        //             'offer_id'      => $row[12], 
-        //             'user_id'      => $row[13],
+        //             'product_id'    => $row['product_id'],
+        //             'package_id'    => $row['package_id'],
+        //             'offer_id'      => $row['offer_id'], 
+        //             'user_id'      => $row['user_id'],
         //         ]);
         //     }
             
