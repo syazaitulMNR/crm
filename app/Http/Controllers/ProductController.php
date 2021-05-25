@@ -157,11 +157,11 @@ class ProductController extends Controller
         $feature = Feature::where('product_id', $id)->get();
         $product = Product::where('product_id', $id)->first();
         $package = Package::where('product_id', $id)->paginate(15);
-        $package_id = Package::where('product_id', $id)->first();
+        $package_id = Package::where('product_id', $id)->get();
 
-        foreach($product as $products)
+        foreach($package_id as $packages)
         {
-            dd($package_id);
+            dd($packages->package_id);
             // if ($products->product_id == $package_id->product_id)
             // {
             //     $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/' . $package_id->package_id;
