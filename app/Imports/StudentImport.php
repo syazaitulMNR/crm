@@ -27,47 +27,47 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
         foreach ($rows as $row) 
         {
-            $student = Student::where('ic', $row['ic'])->first();
+            $student = Student::where('ic', $row[2])->first();
 
-            if(Student::where('ic', $row['ic'])->exists()){
+            if(Student::where('ic', $row[2])->exists()){
 
                 Payment::create([
                     'payment_id'    => $payment_id,
-                    'pay_price'     => $row['price'], 
-                    'quantity'      => $row['quantity'],
-                    'totalprice'    => $row['payment'],
-                    'status'        => $row['status'],
-                    'pay_method'    => $row['pay_method'], 
+                    'pay_price'     => $row[5], 
+                    'quantity'      => $row[6],
+                    'totalprice'    => $row[7],
+                    'status'        => $row[8],
+                    'pay_method'    => $row[9], 
                     'stud_id'       => $student->stud_id,
-                    'product_id'    => $row['product_id'],
-                    'package_id'    => $row['package_id'],
-                    'offer_id'      => $row['offer_id'], 
-                    'user_id'      => $row['user_id'],
+                    'product_id'    => $row[10],
+                    'package_id'    => $row[11],
+                    'offer_id'      => $row[12], 
+                    'user_id'      => $row[13],
                 ]);
 
             }else{
 
                 Student::create([
                     'stud_id'    => $stud_id,
-                    'first_name' => $row['first_name'],
-                    'last_name'  => $row['last_name'], 
-                    'ic'         => $row['ic'],
-                    'email'      => $row['email'],
-                    'phoneno'    => '+' . $row['phoneno'],
+                    'first_name' => $row[0],
+                    'last_name'  => $row[1], 
+                    'ic'         => $row[2],
+                    'email'      => $row[3],
+                    'phoneno'    => '+' . $row[4],
                 ]);
 
                 Payment::create([
                     'payment_id'    => $payment_id,
-                    'pay_price'     => $row['price'], 
-                    'quantity'      => $row['quantity'],
-                    'totalprice'    => $row['payment'],
-                    'status'        => $row['status'],
-                    'pay_method'    => $row['pay_method'], 
+                    'pay_price'     => $row[5], 
+                    'quantity'      => $row[6],
+                    'totalprice'    => $row[7],
+                    'status'        => $row[8],
+                    'pay_method'    => $row[9], 
                     'stud_id'       => $stud_id,
-                    'product_id'    => $row['product_id'],
-                    'package_id'    => $row['package_id'],
-                    'offer_id'      => $row['offer_id'], 
-                    'user_id'      => $row['user_id'],
+                    'product_id'    => $row[10],
+                    'package_id'    => $row[11],
+                    'offer_id'      => $row[12], 
+                    'user_id'      => $row[13],
                 ]);
 
             }
