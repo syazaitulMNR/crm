@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 // class StudentImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue
 // class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
-class StudentImport implements ToCollection
+class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
     // use Importable;
 
