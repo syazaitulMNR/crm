@@ -3,16 +3,78 @@
 namespace App\Imports;
 
 use App\Student;
-use Maatwebsite\Excel\Concerns\ToModel;
+use App\Payment;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+// use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 // use Illuminate\Contracts\Queue\ShouldQueue;
 
 // class StudentImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue
-class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
+// class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
+class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 {
     use Importable;
+
+    public function collection(Collection $rows)
+    {
+        $student = Student::where('ic', $rows['ic'])->first();
+
+        $stud_id = 'MI' . uniqid();
+        $payment_id = 'OD' . uniqid();
+
+        if(Student::where('ic', $rows['ic'])->exists()){
+
+            foreach ($rows as $row) 
+            {
+                Payment::create([
+                    'payment_id'    => $payment_id,
+                    'pay_price'     => $row[5], 
+                    'quantity'      => $row[6],
+                    'totalprice'    => $row[7],
+                    'status'        => $row[8],
+                    'pay_method'    => $row[9], 
+                    'stud_id'       => $student->stud_id,
+                    'product_id'    => $row[10],
+                    'package_id'    => $row[11],
+                    'offer_id'      => $row[12], 
+                    'staff_id'      => $row[13],
+                ]);
+            }
+
+        }else{
+
+            foreach ($rows as $row) 
+            {
+                Student::create([
+                    'stud_id'    => $stud_id,
+                    'first_name' => $row[0],
+                    'last_name'  => $row[1], 
+                    'ic'         => $row[2],
+                    'email'      => $row[3],
+                    'phoneno'    => '+' . $row[4],
+                ]);
+
+                Payment::create([
+                    'payment_id'    => $payment_id,
+                    'pay_price'     => $row[5], 
+                    'quantity'      => $row[6],
+                    'totalprice'    => $row[7],
+                    'status'        => $row[8],
+                    'pay_method'    => $row[9], 
+                    'stud_id'       => $student->stud_id,
+                    'product_id'    => $row[10],
+                    'package_id'    => $row[11],
+                    'offer_id'      => $row[12], 
+                    'staff_id'      => $row[13],
+                ]);
+            }
+            
+        }
+    }
+
     /**
     * @param array $row
     *
@@ -36,16 +98,6 @@ class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
                 'email'      => $row['email'],
                 'phoneno'    => $row['phoneno'],                
             ]);
-
-            // return new Payment([
-            //     // 'stud_id'    => $stud_id,
-            //     'payment_id'    => $row['stud_id'],
-            //     'pay_price'     => $row['first_name'],
-            //     'totalprice'    => $row['last_name'], 
-            //     'quantity'      => $row['ic'],
-            //     'status'        => $row['email'],
-            //     'pay_method'    => $row['phoneno'],                
-            // ]);
         }
         
     }
