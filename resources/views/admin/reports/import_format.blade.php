@@ -11,10 +11,10 @@
             <th>payment</th>
             <th>status</th>
             <th>pay_method</th>
-            <th>product_id</th>
-            <th>package_id</th>
             <th>offer_id</th>
             <th>user_id</th>
+            <th>product_id</th>
+            <th>package_id</th>
         
         </tr>
     </thead>
@@ -30,9 +30,9 @@
             <td>199</td>
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
-            <td>{{ $product->product_id }}</td>
-            <td>{{ $package->package_id }}</td>
             <td>OFF001</td>
             <td>UID001</td>
+            <td>{{ $product->product_id }}</td>
+            <td>{{ $package->package_id }}</td>
         </tr>
 </tbody>
