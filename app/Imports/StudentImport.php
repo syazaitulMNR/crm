@@ -16,6 +16,12 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 // class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
+    private $product_id, $package_id;
+
+    public function __construct($product_id, $package_id){
+        $this->product = $product_id;
+        $this->package = $package_id;
+    }
     // use Importable;
 
     public function collection(Collection $rows)
@@ -41,8 +47,8 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'stud_id'       => $student->stud_id,
                     'offer_id'      => $row['offer_id'], 
                     'user_id'      => $row['user_id'],
-                    'product_id'    => $row['product_id'],
-                    'package_id'    => $row['package_id'],
+                    'product_id'    => $this->product,
+                    'package_id'    => $this->package,
                 ]);
 
             }else{
@@ -66,8 +72,8 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'stud_id'       => $stud_id,
                     'offer_id'      => $row['offer_id'], 
                     'user_id'      => $row['user_id'],
-                    'product_id'    => $row['product_id'],
-                    'package_id'    => $row['package_id'],
+                    'product_id'    => $this->product,
+                    'package_id'    => $this->package,
                 ]);
 
             }

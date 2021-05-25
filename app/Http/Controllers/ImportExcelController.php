@@ -26,9 +26,15 @@ class ImportExcelController extends Controller
         return view('admin.importexcel', compact('data', 'product', 'package'));
     }
 
-    function import()
+    function import($product_id, $package_id)
     {
-        Excel::import(new StudentImport, request()->file('file'));
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+
+        $product_id = $product->product_id;
+        $package_id = $package->package_id;
+
+        Excel::import(new StudentImport($product_id, $package_id), request()->file('file'));
         // (new StudentImport)->toCollection(request()->file('file'));
         // (new StudentImport)->import(request()->file('file'));
         // dd(Excel::import(new StudentImport, request()->file('file')));

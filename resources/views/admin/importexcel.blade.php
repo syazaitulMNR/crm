@@ -103,10 +103,10 @@
                             <th>Quantity</th>
                             <th>Total Payment</th>
                             <th>Pay Method</th>
-                            <th>Product ID</th>
-                            <th>Package ID</th>
                             <th>Offer ID</th>
                             <th>User ID</th>
+                            <th>Product ID</th>
+                            <th>Package ID</th>
                         </tr>
                         <tr>
                             <td>John</td>
@@ -118,10 +118,10 @@
                             <td>1</td>
                             <td>199</td>
                             <td>FPX</td>
-                            <td>PRD001</td>
-                            <td>PKD001</td>
                             <td>OFF001</td>
                             <td>UID001</td>
+                            <td>PRD001</td>
+                            <td>PKD001</td>
                         </tr>
                     </table>
                 </div>
