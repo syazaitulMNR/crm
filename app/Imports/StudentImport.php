@@ -20,7 +20,7 @@ class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
 
     // public function collection(Collection $rows)
     // {
-    //     dump($rows);
+    //     dump($rows[0]);
         // $student = Student::where('ic', $rows['ic'])->first();
 
         // $stud_id = 'MI' . uniqid();
@@ -83,7 +83,7 @@ class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
     */
     public function model(array $row)
     {
-        dump($row);
+        dump($row->ic);
         // $student = Student::orderBy('id','Desc')->first();
 
         // $auto_inc = $student->id + 1;
