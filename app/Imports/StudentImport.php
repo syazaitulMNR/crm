@@ -20,7 +20,7 @@ class StudentImport implements ToCollection
 
     public function collection(Collection $rows)
     {
-        dump($rows);
+        dump($rows[2]);
         // $student = Student::where('ic', $rows['ic'])->first();
 
         // $stud_id = 'MI' . uniqid();
