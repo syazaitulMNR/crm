@@ -4,17 +4,17 @@ namespace App\Imports;
 
 use App\Student;
 use App\Payment;
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
-// use Maatwebsite\Excel\Concerns\ToModel;
+// use Illuminate\Support\Collection;
+// use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 // use Illuminate\Contracts\Queue\ShouldQueue;
 
 // class StudentImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue
-// class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
-class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
+class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
+// class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 {
     // use Importable;
 
