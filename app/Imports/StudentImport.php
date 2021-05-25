@@ -20,7 +20,7 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
 
     public function collection(Collection $rows)
     {
-        dump($rows[0]);
+        dump($rows);
         // $student = Student::where('ic', $rows['ic'])->first();
 
         // $stud_id = 'MI' . uniqid();
