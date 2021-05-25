@@ -30,8 +30,12 @@
             <td>199</td>
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
-            <td>PRD001</td>
-            <td>PKD001</td>
+            <td>{{ $product->product_id }}</td>
+            @foreach ($package as $packages)
+            @if ($packages->product_id == $product->product_id)
+                <td>{{ $packages->package_id }}</td>
+            @endif
+            @endforeach
             <td>OFF001</td>
             <td>UID001</td>
         </tr>
