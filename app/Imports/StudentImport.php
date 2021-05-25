@@ -16,11 +16,11 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 // class StudentImport implements ToModel, WithChunkReading, WithHeadingRow
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
-    private $product_id, $package_id;
+    private $prd_id, $pkd_id;
 
-    public function __construct($product_id, $package_id){
-        $this->product = $product_id;
-        $this->package = $package_id;
+    public function __construct($prd_id, $pkd_id){
+        $this->product = $prd_id;
+        $this->package = $pkd_id;
     }
     // use Importable;
 
