@@ -162,10 +162,9 @@ class ProductController extends Controller
         foreach($package_id as $packages)
         {
             // dd($packages->package_id);
-            if ($product->product_id == $packages->product_id)
-            {
+            
                 $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/' . $packages->package_id;
-            }
+            
         }
 
         return view('admin/viewpackage', compact('feature','product', 'package', 'link'));   
