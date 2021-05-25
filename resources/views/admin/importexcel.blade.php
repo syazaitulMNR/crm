@@ -102,7 +102,6 @@
                             <th>Price (RM)</th>
                             <th>Quantity</th>
                             <th>Total Payment</th>
-                            <th>Status</th>
                             <th>Pay Method</th>
                             <th>Product ID</th>
                             <th>Package ID</th>
