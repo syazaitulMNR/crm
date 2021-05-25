@@ -12,7 +12,7 @@ class StudentExport implements FromView
 {
     public function view(): View
     {
-        return view('reports.import_format');
+        return view('admin.reports.import_format');
     }
 
     // /**
