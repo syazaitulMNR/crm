@@ -85,7 +85,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                         'totalprice'    => $row['payment'],
                         'status'        => $row['status'],
                         'pay_method'    => $row['pay_method'], 
-                        'stud_id'       => $student->stud_id,
+                        'stud_id'       => $stud_id,
                         'product_id'    => $row['product_id'],
                         'package_id'    => $row['package_id'],
                         'offer_id'      => $row['offer_id'], 
