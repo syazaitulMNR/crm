@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Payment;
+use App\Student;
+
+class ClosingController extends Controller
+{
+    public function view()
+    {
+        return view('admin.closing.view');
+    }
+}

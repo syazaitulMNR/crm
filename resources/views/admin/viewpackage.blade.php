@@ -49,7 +49,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Package</th>
+          <th scope="col">Package</th>          
+          <th scope="col">Link</th>
           {{-- <th scope="col">Image</th> --}}
           <th scope="col"><i class="fas fa-cogs"></i></th>
         </tr>
@@ -60,6 +61,7 @@
           <tr>
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
+            <td><input type="text" value="{{ $link }}"></td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
               <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="fas fa-eye"></i></a>
