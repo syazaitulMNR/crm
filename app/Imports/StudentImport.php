@@ -40,7 +40,7 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
                     'product_id'    => $row[10],
                     'package_id'    => $row[11],
                     'offer_id'      => $row[12], 
-                    'staff_id'      => $row[13],
+                    'user_id'      => $row[13],
                 ]);
             }
 
@@ -68,7 +68,7 @@ class StudentImport implements ToCollection, WithHeadingRow, WithChunkReading
                     'product_id'    => $row[10],
                     'package_id'    => $row[11],
                     'offer_id'      => $row[12], 
-                    'staff_id'      => $row[13],
+                    'user_id'      => $row[13],
                 ]);
             }
             

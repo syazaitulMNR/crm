@@ -29,7 +29,7 @@ class CreatePaymentTable extends Migration
             $table->string('offer_id');
             $table->string('stripe_id');
             $table->string('billplz_id');
-            $table->string('staff_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
