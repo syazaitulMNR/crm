@@ -28,7 +28,7 @@ class ImportExcelController extends Controller
 
     function import()
     {
-        Excel::import(new UsersImport, request()->file('file'));
+        Excel::import(new StudentImport, request()->file('file'));
         // (new StudentImport)->toCollection(request()->file('file'));
         // (new StudentImport)->import(request()->file('file'));
 
