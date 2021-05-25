@@ -69,7 +69,7 @@
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->email }}</td>
                 <td>{{ $students->phoneno }}</td> --}}
-                <td>{{ date('d/m/Y', strtotime($payments->date_from)) }} - {{ date('d/m/Y', strtotime($payments->date_to)) }}</td>
+                <td>{{ date('d/m/Y', strtotime($payments->created_at) }}</td>
             </tr>  
             @endif
             {{-- @endforeach   --}}
