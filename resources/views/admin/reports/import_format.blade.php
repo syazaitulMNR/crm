@@ -25,9 +25,9 @@
             <td>912345006789</td>
             <td>example@gmail.com</td>
             <td>+60123456789</td>
-            <td>799</td>
+            <td>199</td>
             <td>1</td>
-            <td>799</td>
+            <td>199</td>
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
             <td>PRD001</td>
