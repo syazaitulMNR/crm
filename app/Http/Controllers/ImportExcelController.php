@@ -38,7 +38,7 @@ class ImportExcelController extends Controller
     public function export($product_id, $package_id)
     {
         $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->get();
+        $package = Package::where('package_id', $package_id)->first();
 
         // return Excel::download(new StudentExport, 'Students.xlsx');
         return Excel::download(new StudentExport($product, $package), 'Customers.xlsx');

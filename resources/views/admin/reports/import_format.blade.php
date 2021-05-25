@@ -31,11 +31,7 @@
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
             <td>{{ $product->product_id }}</td>
-            @foreach ($package as $packages)
-            @if ($packages->product_id == $product->product_id)
-                <td>{{ $packages->package_id }}</td>
-            @endif
-            @endforeach
+            <td>{{ $package->package_id }}</td>
             <td>OFF001</td>
             <td>UID001</td>
         </tr>
