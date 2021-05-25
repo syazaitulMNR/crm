@@ -61,7 +61,7 @@
           <tr>
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
-            <td><input type="text" class="form-control" value="{{ $link }}{{ $package->package_id }}"></td>
+            <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}"></td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
               <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="fas fa-eye"></i></a>
