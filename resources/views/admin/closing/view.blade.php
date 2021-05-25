@@ -71,8 +71,8 @@
                 <td>{{ $students->phoneno }}</td> --}}
                 <td>{{ date('d/m/Y', strtotime($payments->date_from)) }} - {{ date('d/m/Y', strtotime($payments->date_to)) }}</td>
             </tr>  
-            {{-- @endif --}}
-            @endforeach  
+            @endif
+            {{-- @endforeach   --}}
             @endforeach
         </tbody>
       </table>
