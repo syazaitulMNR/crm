@@ -28,9 +28,9 @@ class ImportExcelController extends Controller
 
     function import()
     {
-        // Excel::import(new StudentImport, request()->file('file'));
+        Excel::import(new StudentImport, request()->file('file'));
         // (new StudentImport)->toCollection(request()->file('file'));
-        (new StudentImport)->import(request()->file('file'));
+        // (new StudentImport)->import(request()->file('file'));
 
         return back()->with('success', 'The file has been inserted to queue, it may take a while to successfully import.');
     }
