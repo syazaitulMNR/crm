@@ -11,7 +11,7 @@ class ClosingController extends Controller
     public function view()
     {
         $payment = Payment::orderBy('id','desc')->paginate(15);
-        $student = Student::orderBy('id','desc')->get();
-        return view('admin.closing.view', compact('payment','student'));
+        // $student = Student::orderBy('id','desc')->get();
+        return view('admin.closing.view', compact('payment'));
     }
 }

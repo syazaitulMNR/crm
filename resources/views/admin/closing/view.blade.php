@@ -59,21 +59,21 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($payment as $key => $payments)
-          @foreach ($student as $students)   
-          @if ($payments->user_id == Auth::user()->user_id)            
+            @foreach ($payment as $key => $payments)  
+            {{-- @foreach ($student as $students)      --}}
+            @if ($payments->user_id == Auth::user()->user_id)                 
             <tr>
                 <td>{{ $payment->firstItem() + $key  }}</td>
-                <td>{{ $students->first_name  }}</td>
+                {{-- <td>{{ $students->first_name  }}</td>
                 <td>{{ $students->last_name }}</td>
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->email }}</td>
-                <td>{{ $students->phoneno }}</td>
+                <td>{{ $students->phoneno }}</td> --}}
                 <td>{{ date('d/m/Y', strtotime($payments->created_at)) }}</td>
             </tr>  
-          @endif
-          @endforeach  
-          @endforeach
+            @endif
+            {{-- @endforeach   --}}
+            @endforeach
         </tbody>
       </table>
       @else
