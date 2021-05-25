@@ -35,7 +35,7 @@
         </div>
         @endif
 
-        <form action="{{ url('importExcel') }}" class="row" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('importExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="row" method="POST" enctype="multipart/form-data">
             @csrf
 
             <h5>Import Customer</h5>
