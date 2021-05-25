@@ -94,7 +94,6 @@
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
                         <tr>
-                            <th>#</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>IC No.</th>
@@ -103,9 +102,14 @@
                             <th>Price (RM)</th>
                             <th>Quantity</th>
                             <th>Total Payment</th>
+                            <th>Status</th>
+                            <th>Pay Method</th>
+                            <th>Product ID</th>
+                            <th>Package ID</th>
+                            <th>Offer ID</th>
+                            <th>User ID</th>
                         </tr>
                         <tr>
-                            <td>1</td>
                             <td>John</td>
                             <td>Doe</td>
                             <td>900101014321</td>
@@ -114,6 +118,10 @@
                             <td>199</td>
                             <td>1</td>
                             <td>199</td>
+                            <td>FPX</td>
+                            <td>PRD001</td>
+                            <td>PKD001</td>
+                            <td>UID001</td>
                         </tr>
                     </table>
                 </div>
