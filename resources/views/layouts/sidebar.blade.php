@@ -43,12 +43,12 @@
             </a>            
           </li> --}}
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/database-management">
               <span data-feather="home"></span>
               <i class="fas fa-database" style="margin-right: 29px"></i> Database
             </a>            
-          </li>
+          </li> --}}
 
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/emailblast">
