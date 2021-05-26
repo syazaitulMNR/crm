@@ -204,9 +204,23 @@
   },
 
   xAxis: {
-    accessibility: {
-      rangeDescription: 'Range: 2010 to 2017'
-    }
+    categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ]
+    // accessibility: {
+    //   rangeDescription: 'Range: 2010 to 2017'
+    // }
   },
 
   legend: {
@@ -225,7 +239,7 @@
   },
 
   series: [{
-    name: 'Installation',
+    name: 'Profit',
     data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
   }],
 
