@@ -204,10 +204,15 @@
   },
 
   xAxis: {
-    accessibility: {
-      rangeDescription: 'Range: 2010 to 2017'
-    }
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   },
+
+  // xAxis: {
+  //   accessibility: {
+  //     rangeDescription: 'Range: 2010 to 2017'
+  //   }
+  // },
 
   legend: {
     layout: 'vertical',
@@ -216,12 +221,19 @@
   },
 
   plotOptions: {
-    series: {
-      label: {
-        connectorAllowed: false
-      },
-      pointStart: 2021
+    spline: {
+      marker: {
+        radius: 4,
+        lineColor: '#666666',
+        lineWidth: 1
+      }
     }
+    // series: {
+    //   label: {
+    //     connectorAllowed: false
+    //   },
+    //   pointStart: 2021
+    // }
   },
 
   series: [{
