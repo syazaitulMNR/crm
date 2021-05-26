@@ -51,7 +51,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, anda boleh hubungi di talian - 0108048800</p>
+                          <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a></p>
                         </td>
                     </tr>
                     <tr>
