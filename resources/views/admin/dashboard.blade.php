@@ -199,28 +199,14 @@
 
   yAxis: {
     title: {
-      text: 'Profit (RM)'
+      text: ''
     }
   },
 
   xAxis: {
-    categories: {
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
+    accessibility: {
+      rangeDescription: 'Range: 2010 to 2017'
     }
-    // accessibility: {
-    //   rangeDescription: 'Range: 2010 to 2017'
-    // }
   },
 
   legend: {
@@ -234,12 +220,25 @@
       label: {
         connectorAllowed: false
       },
-      pointStart: 2010
+      pointStart: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ]
     }
   },
 
   series: [{
-    name: 'Profit',
+    name: 'Profit (RM)',
     data: [
             {{$jan}},
             {{$feb}},
