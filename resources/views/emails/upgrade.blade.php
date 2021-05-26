@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
                         <td>
-                          <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a></p>
+                          <p>Sekiranya terdapat sebarang pertanyaan atau perlukan bantuan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
                         </td>
                     </tr>
                     <tr>
