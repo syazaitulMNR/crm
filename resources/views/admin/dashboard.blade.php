@@ -220,7 +220,7 @@
       label: {
         connectorAllowed: false
       },
-      pointStart: 'Jan'
+      pointStart: 2021
     }
   },
 
