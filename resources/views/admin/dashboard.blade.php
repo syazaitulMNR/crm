@@ -107,7 +107,7 @@
 
       <!-- Show data in line graph --------------------------------------------------->
 
-      <figure class="col-md-12 highcharts-figure">
+      <figure class="highcharts-figure" style="width:100%">
         <div id="container"></div>
       </figure>
     
