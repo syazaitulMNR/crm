@@ -102,14 +102,20 @@
 
       <hr class="mb-2">
 
-      <!-- Show data in chart --------------------------------------------------->
-      <div id="chartdata" ></div>
+      <!-- Show data in bar chart --------------------------------------------------->
+      {{-- <div id="chartdata" ></div> --}}
+
+      <!-- Show data in line graph --------------------------------------------------->
+
+      <figure class="highcharts-figure">
+        <div id="container"></div>
+      </figure>
     
     </main>
   </div>
 </div>
 
-<!-- Function to show chart ----------------------------------------------------->
+<!-- Function to show bar chart ----------------------------------------------------->
 <script>
   Highcharts.chart('chartdata', {
     chart: {
@@ -179,4 +185,65 @@
   });
 </script>
 
+<!-- Function to show line graph ----------------------------------------------------->
+<script>
+  Highcharts.chart('container', {
+
+  title: {
+    text: 'Magic Number'
+  },
+
+  subtitle: {
+    text: 'Profit of Momentum Internet'
+  },
+
+  yAxis: {
+    title: {
+      text: 'Profit (RM)'
+    }
+  },
+
+  xAxis: {
+    accessibility: {
+      rangeDescription: 'Range: 2010 to 2017'
+    }
+  },
+
+  legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+  },
+
+  plotOptions: {
+    series: {
+      label: {
+        connectorAllowed: false
+      },
+      pointStart: 2010
+    }
+  },
+
+  series: [{
+    name: 'Installation',
+    data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+  }],
+
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 500
+      },
+      chartOptions: {
+        legend: {
+          layout: 'horizontal',
+          align: 'center',
+          verticalAlign: 'bottom'
+        }
+      }
+    }]
+  }
+
+});
+</script>
 @endsection
