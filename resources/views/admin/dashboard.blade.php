@@ -107,7 +107,7 @@
 
       <!-- Show data in line graph --------------------------------------------------->
 
-      <figure class="highcharts-figure" style="width:100%">
+      <figure class="highcharts-figure">
         <div id="container"></div>
       </figure>
     
@@ -257,7 +257,7 @@
   responsive: {
     rules: [{
       condition: {
-        maxWidth: 500
+        maxWidth: 800
       },
       chartOptions: {
         legend: {
