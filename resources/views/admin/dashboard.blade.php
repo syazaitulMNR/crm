@@ -103,20 +103,20 @@
       <hr class="mb-2">
 
       <!-- Show data in bar chart --------------------------------------------------->
-      {{-- <div id="chartdata" ></div> --}}
+      <div id="chartdata" ></div>
 
       <!-- Show data in line graph --------------------------------------------------->
 
-      <figure class="highcharts-figure">
+      {{-- <figure class="highcharts-figure">
         <div id="container"></div>
-      </figure>
+      </figure> --}}
     
     </main>
   </div>
 </div>
 
 <!-- Function to show bar chart ----------------------------------------------------->
-{{-- <script>
+<script>
   Highcharts.chart('chartdata', {
     chart: {
         type: 'column'
@@ -183,10 +183,10 @@
 
     }]
   });
-</script> --}}
+</script>
 
 <!-- Function to show line graph ----------------------------------------------------->
-<script>
+{{-- <script>
   Highcharts.chart('container', {
 
   title: {
@@ -257,7 +257,7 @@
   responsive: {
     rules: [{
       condition: {
-        maxWidth: 8000
+        maxWidth: 800
       },
       chartOptions: {
         legend: {
@@ -270,5 +270,5 @@
   }
 
 });
-</script>
+</script> --}}
 @endsection
