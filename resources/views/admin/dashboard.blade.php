@@ -204,7 +204,7 @@
   },
 
   xAxis: {
-    categories: [
+    categories: {
             'Jan',
             'Feb',
             'Mar',
@@ -217,7 +217,7 @@
             'Oct',
             'Nov',
             'Dec'
-        ]
+    }
     // accessibility: {
     //   rangeDescription: 'Range: 2010 to 2017'
     // }
