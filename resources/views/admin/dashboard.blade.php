@@ -107,9 +107,9 @@
 
       <!-- Show data in line graph --------------------------------------------------->
 
-      {{-- <figure> --}}
-        <div id="container" class="highcharts-figure"></div>
-      {{-- </figure> --}}
+      <figure class="col-md-12 highcharts-figure">
+        <div id="container"></div>
+      </figure>
     
     </main>
   </div>
