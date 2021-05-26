@@ -108,7 +108,7 @@
       <!-- Show data in line graph --------------------------------------------------->
 
       <figure class="highcharts-figure">
-        <div id="container"></div>
+        {{-- <div id="container"></div> --}}
       </figure>
     
     </main>
@@ -116,7 +116,7 @@
 </div>
 
 <!-- Function to show bar chart ----------------------------------------------------->
-<script>
+{{-- <script>
   Highcharts.chart('chartdata', {
     chart: {
         type: 'column'
@@ -183,7 +183,7 @@
 
     }]
   });
-</script>
+</script> --}}
 
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
