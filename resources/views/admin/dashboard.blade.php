@@ -257,7 +257,7 @@
   responsive: {
     rules: [{
       condition: {
-        maxWidth: 800
+        maxWidth: 8000
       },
       chartOptions: {
         legend: {
