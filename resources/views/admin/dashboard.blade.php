@@ -224,7 +224,7 @@
     spline: {
       marker: {
         radius: 4,
-        lineColor: '#666666',
+        lineColor: '#303030',
         lineWidth: 1
       }
     }
