@@ -58,13 +58,15 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($product as $key => $products)                        
+          @foreach ($product as $key => $products)    
+          @foreach ($offers as $offer)     
+          @if ($products->offer_id == $offer->offer_id)               
             <tr>
                 <td>{{ $product->firstItem() + $key  }}</td>
                 <td>{{ $products->name  }}</td>
                 <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
                 <td>{{ date('h:i a', strtotime($products->time_from)) }} - {{ date('h:i a', strtotime($products->time_to)) }}</td>
-                <td>{{ $products->offer_id }}</td>
+                <td>{{ $offer->name }}</td>
               <td>
                 <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
                 <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="fas fa-edit"></i></a>
@@ -88,7 +90,9 @@
                   </div>
                 </div>
               </td>
-            </tr>    
+            </tr>   
+          @endif
+          @endforeach 
           @endforeach
         </tbody>
       </table>
