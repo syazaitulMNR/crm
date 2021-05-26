@@ -49,11 +49,12 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col" style="width: 10%">#</th>
-            <th scope="col" style="width: 35%">Event Name</th>
-            <th scope="col" style="width: 20%">Date</th>
-            <th scope="col" style="width: 20%">Time</th>
-            <th scope="col" style="width: 15%"><i class="fas fa-cogs"></i></th>
+            <th scope="col">#</th>
+            <th scope="col">Event Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Offer Type</th>
+            <th scope="col"><i class="fas fa-cogs"></i></th>
           </tr>
         </thead>
         <tbody>
@@ -63,6 +64,7 @@
                 <td>{{ $products->name  }}</td>
                 <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
                 <td>{{ date('h:i a', strtotime($products->time_from)) }} - {{ date('h:i a', strtotime($products->time_to)) }}</td>
+                <td>{{ $products->offer_id }}</td>
               <td>
                 <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
                 <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="fas fa-edit"></i></a>
