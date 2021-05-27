@@ -7,7 +7,7 @@ Pendaftaran Pembeli
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 px-2 py-5 text-center">
+        <div class="col-md-12 py-5 text-center">
             <img src="/assets/images/logo.png" style="max-width:200px">
             <h1 class="text-dark pt-3">{{ $product->name }}</h1>
         </div>
