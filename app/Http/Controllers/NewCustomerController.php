@@ -391,7 +391,7 @@ class NewCustomerController extends Controller
         $bill = $billplz->bill();
 
         $response = $bill->create(
-            'dlzmocfv',
+            'ffesmlep',
             $student->email,
             $student->phoneno,
             $student->first_name,
