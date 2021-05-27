@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Student;
 use App\Payment;
+use App\Ticket;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 // use Maatwebsite\Excel\Concerns\ToModel;
@@ -47,9 +48,20 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'pay_method'    => $row['pay_method'], 
                     'stud_id'       => $student->stud_id,
                     'offer_id'      => $row['offer_id'], 
-                    'user_id'      => $row['user_id'],
+                    'user_id'       => $row['user_id'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
+                ]);
+
+                $ticket_id = 'TIK' . uniqid();
+
+                Ticket::create([
+                    'ticket_id'     => $ticket_id,
+                    'ticket_type'   => 'paid',
+                    'ic'            => $row['ic'],
+                    'product_id'    => $this->product,
+                    'package_id'    => $this->package,
+                    'payment_id'    => $payment_id
                 ]);
 
             }else{
@@ -82,6 +94,16 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'package_id'    => $this->package,
                 ]);
 
+                $ticket_id = 'TIK' . uniqid();
+
+                Ticket::create([
+                    'ticket_id'     => $ticket_id,
+                    'ticket_type'   => 'paid',
+                    'ic'            => $row['ic'],
+                    'product_id'    => $this->product,
+                    'package_id'    => $this->package,
+                    'payment_id'    => $payment_id
+                ]);
             }
         }
         
