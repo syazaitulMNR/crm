@@ -174,7 +174,7 @@ Route::get('payment-method/{product_id}/{package_id}', 'NewCustomerController@pa
 Route::get('maklumat-kad/{product_id}/{package_id}', 'NewCustomerController@card_payment');
 Route::post('storeCard/{product_id}/{package_id}', 'NewCustomerController@postCardMethod');
 Route::get('data-fpx/{product_id}/{package_id}', 'NewCustomerController@pay_billplz');
-Route::get('redirect-payment', 'NewCustomerController@redirect_payment');
+Route::get('redirect-payment/{product_id}/{package_id}', 'NewCustomerController@redirect_payment');
 // Route::get('fpx-bank/{product_id}/{package_id}', 'NewCustomerController@fpx_payment');
 // Route::get('storeFpx/{product_id}/{package_id}', 'NewCustomerController@postFpxMethod');
 // Route::get('regnewstudent/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@newstudent');
@@ -192,7 +192,7 @@ Route::get('pay-method/{product_id}/{package_id}/{stud_id}', 'ExistCustomerContr
 Route::get('data-stripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stripe_payment');
 Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStripeMethod');
 Route::get('data-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@billplz_payment');
-Route::get('redirect-billplz', 'ExistCustomerController@redirect_billplz');
+Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerController@redirect_billplz');
 // Route::get('data-fpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@fpx_payment');
 // Route::get('saveFpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveFpxMethod');
 // Route::get('regstudent/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@existedstudent');
