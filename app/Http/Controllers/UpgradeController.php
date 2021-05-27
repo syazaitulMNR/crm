@@ -253,9 +253,9 @@ class UpgradeController extends Controller
             $student->phoneno,
             $student->first_name,
             \Duit\MYR::given($new_package->totalprice * 100),
-            'https://mims.momentuminternet.my/redirect-pay',
+            'https://mims.momentuminternet.my/redirect-pay/'.  $product_id . '/' . $package_id,,
             $product->name . ' - ' . $package->name,
-            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-pay']
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-pay/'.  $product_id . '/' . $package_id]
         );
 
         $pay_data = $response->toArray();
@@ -272,7 +272,7 @@ class UpgradeController extends Controller
         return redirect($pay_data['url']);
     }
 
-    public function redirect_pay(Request $request)
+    public function redirect_pay($product_id, $package_id, Request $request)
     {
         $new_package = $request->session()->get('payment');
 
