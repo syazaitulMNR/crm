@@ -37,17 +37,17 @@ Pendaftaran Pembeli
                             <input type="hidden" value="{{ $student->stud_id }}" class="form-control" name="stud_id" readonly/>
                             <input type="hidden" value="{{ $product->offer_id }}" class="form-control" name="offer_id" readonly/>
 
-                            <div class="col-md-6 pb-2">
+                            <div class="col-xs-6 pb-2">
                                 <label for="package">Pakej:</label>
                                 <input type="text"  value="{{ $package->name }}" class="form-control" readonly/>
                             </div>
-                            <div class="col-md-6 pb-2">
+                            <div class="col-xs-6 pb-2">
                                 <label for="price">Harga:</label>
                                 <input type="text" value="{{ $package->price }}" class="form-control" readonly/>
                                 <input type="hidden" id="price" name="price" value="{{ $package->price }}" readonly>
                                 <input type="hidden" name="pay_price" value="{{ $package->price }}" readonly>
                             </div>
-                            <div class="col-md-6 pb-2">
+                            <div class="col-xs-6 pb-2">
                                 <label for="quantity">Kuantiti:</label>
                                 <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required>
                                     <option value="" disabled selected>-- Tiket --</option>
@@ -55,7 +55,7 @@ Pendaftaran Pembeli
                                     <option value="1">1 (Free 1 {{ $package->name }})</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 pb-2">
+                            <div class="col-xs-6 pb-2">
                                 <label for="totalprice">Jumlah Harga (RM)</label><br>
                                 <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
                             </div>
@@ -64,7 +64,7 @@ Pendaftaran Pembeli
                     </div>
                     
                     <div class="card-footer">
-                        <div class="col-md-12">
+                        <div class="col-xs-12">
                             <div class="pull-left">
                                 <a href="{{ url('langkah-pertama') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
