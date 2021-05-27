@@ -298,14 +298,6 @@ class UpgradeController extends Controller
             $package = Package::where('package_id', $package_id)->first();
             $student = Student::where('stud_id', $stud_id)->first();
 
-            // $send_mail = $student->email;
-            // $product_name = $product->name;        
-            // $package_name = $package->name;
-            // $packageId = $package_id;
-            // $payment_id = $payment_id;
-            // $productId = $product_id;        
-            // $student_id = $student->stud_id;
-
             $send_mail = $student->email;
             $product_name = $product->name;        
             $date_from = $product->date_from;
