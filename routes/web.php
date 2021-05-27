@@ -131,7 +131,7 @@ Route::get('send-bulk-mail', 'BlastingController@sendBulkMail');
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbypackage');
-Route::get('delete/{payment_id}', 'ReportsController@destroy');
+Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
 
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');

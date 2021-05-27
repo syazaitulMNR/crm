@@ -88,15 +88,16 @@ class ReportsController extends Controller
         return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel'));
     }
 
-    public function destroy($payment_id) 
+    public function destroy($payment_id, $product_id, $package_id) 
     {
-        $payment = Payment::where('payment_id', $payment_id);
-        $ticket = Ticket::where('payment_id', $payment_id);
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
+        $ticket = Ticket::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
+        dd($payment);
 
-        $payment->delete();
-        $ticket->delete();
+        // $payment->delete();
+        // $ticket->delete();
 
-        return back()->with('deletepayment', 'Payment Successfully Deleted');
+        // return back()->with('deletepayment', 'Payment Successfully Deleted');
     }
 
     public function save_customer($product_id, $package_id, Request $request)
