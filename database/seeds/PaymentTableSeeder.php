@@ -20,9 +20,11 @@ class PaymentTableSeeder extends Seeder
             'status' => 'succeeded',
             'upgrade_count' => '',
             'update_count' => '',
+            'pay_method' => 'FPX',
             'stud_id' => 'MI001',
             'product_id' => 'PRD001',
             'package_id' => 'PKD001',
+            'offer_id' => 'OFF001',
             'stripe_id' => 'cus_001',
         ]);
     }

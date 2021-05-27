@@ -20,6 +20,7 @@ class ProductTableSeeder extends Seeder
             'date_to' => '2020-02-02',
             'time_from' => '00:00',
             'time_to' => '00:00',
+            'offer_id' => 'OFF001'
         ]);
     }
 }
