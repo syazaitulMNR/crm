@@ -92,12 +92,12 @@ class ReportsController extends Controller
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
         $ticket = Ticket::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        dd($payment);
+        // dd($payment);
 
-        // $payment->delete();
-        // $ticket->delete();
+        $payment->delete();
+        $ticket->delete();
 
-        // return back()->with('deletepayment', 'Payment Successfully Deleted');
+        return back()->with('deletepayment', 'Payment Successfully Deleted');
     }
 
     public function save_customer($product_id, $package_id, Request $request)
