@@ -35,12 +35,12 @@ E-Certificate
                             <input type="text"  value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" disabled/>
                         </div>
                         
-                        <div class="col-md-6 pb-2">
+                        <div class="col-md-6 pb-4">
                             <label for="description">Emel:</label><br>
                             <input type="tel"  value="{{ $student->email }}" class="form-control" disabled/>
                         </div>
 
-                        <div class="col-md-12 text-center border-top border-bottom pt-3 pb-0">
+                        <div class="col-md-12 text-center border-top border-bottom pt- pb-0">
                             <p>Sekiranya perlukan pembetulan butiran peribadi, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
                         </div>
                     </div>
