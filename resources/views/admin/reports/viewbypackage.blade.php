@@ -155,6 +155,13 @@
             </div>
             @endif
 
+            @if ($message = Session::get('importsuccess'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             @if ($message = Session::get('updatepayment'))
             <div class="alert alert-info alert-block">
                 <button type="button" class="close" data-bs-dismiss="alert">×</button>	

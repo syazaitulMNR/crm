@@ -36,7 +36,7 @@ class ImportExcelController extends Controller
 
         Excel::import(new StudentImport($prd_id, $pkd_id), request()->file('file'));
 
-        return back()->with('success', 'The file has been inserted to queue, it may take a while to successfully import.');
+        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
     }
 
     public function export()
