@@ -40,10 +40,8 @@ E-Certificate
                             <input type="tel"  value="{{ $student->email }}" class="form-control" disabled/>
                         </div>
 
-                        <div class="px-2"> 
-                            <div class="col-md-12 text-center border-top border-bottom">
-                                <p>Sekiranya perlukan pembetulan maklumat, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
-                            </div>
+                        <div class="col-md-12 text-center border-top border-bottom">
+                            <p>Sekiranya perlukan pembetulan maklumat, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
                         </div>
                     </div>
                         
