@@ -39,6 +39,12 @@ E-Certificate
                             <label for="description">Emel:</label><br>
                             <input type="tel"  value="{{ $student->email }}" class="form-control" disabled/>
                         </div>
+
+                        <hr>
+                        
+                        <p>Sekiranya perlukan pembetulan maklumat, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
+
+                        <hr>
                     </div>
                         
                 </div>
