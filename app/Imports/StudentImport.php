@@ -27,14 +27,16 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
     {
         // dump($rows[2]);
 
-        $stud_id = 'MI' . uniqid();
-        $payment_id = 'OD' . uniqid();
+        // $stud_id = 'MI' . uniqid();
+        // $payment_id = 'OD' . uniqid();
 
         foreach ($rows as $row) 
         {
             $student = Student::where('ic', $row['ic'])->first();
 
             if(Student::where('ic', $row['ic'])->exists()){
+
+                $payment_id = 'OD' . uniqid();
 
                 Payment::create([
                     'payment_id'    => $payment_id,
@@ -52,6 +54,9 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             }else{
 
+                
+                $stud_id = 'MI' . uniqid();
+
                 Student::create([
                     'stud_id'    => $stud_id,
                     'first_name' => $row['first_name'],
@@ -60,6 +65,8 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'email'      => $row['email'],
                     'phoneno'    => '+' . $row['phoneno'],
                 ]);
+
+                $payment_id = 'OD' . uniqid();
 
                 Payment::create([
                     'payment_id'    => $payment_id,
