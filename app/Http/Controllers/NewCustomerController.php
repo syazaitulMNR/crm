@@ -396,9 +396,9 @@ class NewCustomerController extends Controller
             $student->phoneno,
             $student->first_name,
             \Duit\MYR::given($payment->totalprice * 100),
-            'https://mims.momentuminternet.my/redirect-payment',
+            'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id,
             $product->name . ' - ' . $package->name,
-            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-payment']
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id]
         );
 
         $pay_data = $response->toArray();
@@ -414,7 +414,7 @@ class NewCustomerController extends Controller
         return redirect($pay_data['url']);
     }
 
-    public function redirect_payment(Request $request)
+    public function redirect_payment($product_id, $package_id, Request $request)
     {
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
