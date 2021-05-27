@@ -41,9 +41,9 @@ E-Certificate
                         </div>
 
                         <hr>
-                        
-                        <p>Sekiranya perlukan pembetulan maklumat, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
-
+                        <div class="col-md-12">
+                            <p>Sekiranya perlukan pembetulan maklumat, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
+                        </div>
                         <hr>
                     </div>
                         
