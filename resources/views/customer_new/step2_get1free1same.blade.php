@@ -9,7 +9,7 @@ Pendaftaran Pembeli
     <div class="row">
         <div class="col-md-12 px-2 py-5 text-center">
             <img src="/assets/images/logo.png" style="max-width:200px">
-            <h1 class="display-4 text-dark pt-3">{{ $product->name }}</h1>
+            <h1 class="text-dark pt-3">{{ $product->name }}</h1>
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">
