@@ -18,8 +18,6 @@ class PaymentTableSeeder extends Seeder
             'totalprice' => '999',
             'quantity' => '1',
             'status' => 'succeeded',
-            'upgrade_count' => '',
-            'update_count' => '',
             'pay_method' => 'FPX',
             'stud_id' => 'MI001',
             'product_id' => 'PRD001',
