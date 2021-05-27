@@ -192,7 +192,8 @@
                   @foreach ($payment as $key => $payments)
                   @foreach ($student as $students)   
                   @if ($payments->stud_id == $students->stud_id)
-                  @if ($payments->product_id == $product->product_id)  
+                  @if ($payments->product_id == $product->product_id)                    
+                  @if ($package->product_id == $product->product_id)  
                   <tr>
                       <td>{{ $payment->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
@@ -233,6 +234,7 @@
                         @endif
                       </td>
                   </tr>
+                  @endif
                   @endif
                   @endif
                   @endforeach
