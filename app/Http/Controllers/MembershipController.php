@@ -76,4 +76,12 @@ class MembershipController extends Controller
         
         return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total'));
     }
+
+    public function import($membership_id, $level_id)
+    {
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+
+        return view('admin.membership.import', compact('membership', 'membership_level'));
+    }
 }
