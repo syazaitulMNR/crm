@@ -49,7 +49,7 @@ class MembershipController extends Controller
 
     public function view_level($membership_id)
     {
-        $student = Student::orderBy('id', 'desc')->paginate(15);
+        $student = Student::where('membership_id', $membership_id)->paginate(15);
         $membership = Membership::where('membership_id', $membership_id)->first();
 
         // $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
