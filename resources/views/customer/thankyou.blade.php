@@ -21,11 +21,11 @@
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
         
-        <div class="mx-auto py-4">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" style="width:50%" src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        {{-- <div class="mx-auto py-4"> --}}
+          <div class="embed-responsive embed-responsive-1by1">
+            <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
-        </div>
+        {{-- </div> --}}
  
         <hr>
         
