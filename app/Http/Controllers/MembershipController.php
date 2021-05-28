@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Membership;
+use App\Membership_Level;
 use App\Student;
 
 class MembershipController extends Controller
 {
+    public function view_level()
+    {
+        $membership = Membership::orderBy('id','desc')->paginate(15);
+        
+        return view('admin.membership.view', compact('membership'));
+    }
+
     public function view()
     {
         $student = Student::orderBy('id','desc')->paginate(15);
