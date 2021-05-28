@@ -30,9 +30,13 @@
         </p>
 
         <div class="col-md-12">
-          <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="400px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
   </div>
 </div>
+
+<footer class="text-center px-4 py-5">
+  <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
+</footer>
 @endsection
