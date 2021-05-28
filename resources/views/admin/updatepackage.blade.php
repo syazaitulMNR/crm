@@ -65,8 +65,8 @@
                     </div>
                     @endforeach
 
-                    <div id="newRow"></div>
-                    <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
+                    {{-- <div id="newRow"></div>
+                    <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button> --}}
                 </div>
                     
                 <div class='col-md-8 pt-3'>
