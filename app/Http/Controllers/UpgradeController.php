@@ -221,11 +221,11 @@ class UpgradeController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
+        $new_package->save();
+
         dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
-
-        $new_package->save();
   
         $request->session()->forget('package');
         $request->session()->forget('payment');
@@ -309,16 +309,17 @@ class UpgradeController extends Controller
             $productId = $product_id;        
             $student_id = $student->stud_id;
 
+            $new_package->save();
+
             dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $stud_id));
             
             /*-- End Email -----------------------------------------------------------*/
-
-            $new_package->save();
     
             $request->session()->forget('student');
             $request->session()->forget('payment');
 
             return redirect('naik-taraf-berjaya');  
+
         } else {
 
             $new_package->save();
@@ -326,7 +327,8 @@ class UpgradeController extends Controller
             $request->session()->forget('student');
             $request->session()->forget('payment');
 
-            return view('customer/failed_payment');
+            return redirect('pendaftaran-tidak-berjaya');
+            
         }
         
     }
