@@ -16,7 +16,7 @@
   <div class="col-md-12 px-5 py-4">
     <div class="text-center">
         <h3 class="display-4">Terima Kasih!</h3>
-        <p class="lead">Pembelian anda telah berjaya.</p>
+        <p class="lead">Pembelian anda telah berjaya. Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
         {{-- <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
