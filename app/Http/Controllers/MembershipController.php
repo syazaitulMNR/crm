@@ -9,7 +9,7 @@ class MembershipController extends Controller
 {
     public function view()
     {
-        $student = Student::orderBy('id','desc')->get();
+        $student = Student::orderBy('id','desc')->paginate(15);
 
         // $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
