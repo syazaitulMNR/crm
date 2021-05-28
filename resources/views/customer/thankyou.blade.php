@@ -19,7 +19,10 @@
     @media screen and (max-width: 600px) {
   /* For mobile phones: */
     .center {
+      margin: auto;
       width: 100%;
+      padding: 10px;
+      text-align: center;
     }
 }
 
