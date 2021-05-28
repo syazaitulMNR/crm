@@ -9,7 +9,7 @@ use App\Student;
 
 class MembershipController extends Controller
 {
-    public function view_level()
+    public function view_membership()
     {
         $membership = Membership::orderBy('id','desc')->paginate(15);
         
@@ -47,7 +47,7 @@ class MembershipController extends Controller
         return redirect('membership')->with('success', 'Membership Successfully Created'); 
     }
 
-    public function view()
+    public function view_level($membership_id)
     {
         $student = Student::orderBy('id','desc')->paginate(15);
 

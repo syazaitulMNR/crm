@@ -147,8 +147,9 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 | Membership programme
 |--------------------------------------------------------------------------
 */
-Route::get('membership','MembershipController@view_level');
+Route::get('membership','MembershipController@view_membership');
 Route::post('membership/save','MembershipController@store_membership');
+Route::get('membership/{membership_id}','MembershipController@view_level');
 
 /*
 |--------------------------------------------------------------------------
