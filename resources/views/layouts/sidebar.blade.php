@@ -59,7 +59,7 @@
           @endif
           <div class="nav-link" style="color: #ABB2B9">Membership Programme</div>
           <li class="nav-item">
-            <a class="nav-link text-white bg-dark " href="">
+            <a class="nav-link text-white bg-dark " href="/ultimate">
               <span data-feather="home"></span>
               <i class="fas fa-gem" style="margin-right: 29px"></i> Ultimate 
             </a>            
