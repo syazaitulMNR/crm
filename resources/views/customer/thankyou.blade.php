@@ -12,7 +12,7 @@
   
   .center-iframe {
       margin: auto;
-      width: 560px;
+      width: 70%;
       padding: 10px;
       text-align: center;
       }
