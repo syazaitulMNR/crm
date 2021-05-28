@@ -9,6 +9,11 @@ use App\Student;
 
 class MembershipController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function view_membership()
     {
         $membership = Membership::orderBy('id','desc')->paginate(15);
