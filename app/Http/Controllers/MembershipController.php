@@ -13,7 +13,7 @@ class MembershipController extends Controller
     {
         $membership = Membership::orderBy('id','desc')->paginate(15);
         
-        return view('admin.membership.level', compact('membership'));
+        return view('admin.membership.membership', compact('membership'));
     }
 
     public function store_membership(Request $request)
@@ -49,9 +49,21 @@ class MembershipController extends Controller
 
     public function view_level($membership_id)
     {
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->paginate(15);
+
+        $total = Student::where('membership_id', $membership_id)->count();
+        // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        // $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        
+        return view('admin.membership.level', compact('membership', 'membership_level', 'total'));
+    }
+
+    public function view($membership_id, $level_id)
+    {
         $student = Student::where('membership_id', $membership_id)->paginate(15);
         $membership = Membership::where('membership_id', $membership_id)->first();
-        $membership_level = Membership_Level::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('level_id', $level_id)->first();
 
         $total = Student::where('membership_id', $membership_id)->count();
         // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
