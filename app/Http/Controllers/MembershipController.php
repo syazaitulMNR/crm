@@ -66,7 +66,7 @@ class MembershipController extends Controller
 
     public function view($membership_id, $level_id)
     {
-        $student = Student::where('membership_id', $membership_id)->paginate(15);
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->paginate(15);
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
