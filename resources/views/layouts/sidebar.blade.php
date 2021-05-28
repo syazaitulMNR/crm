@@ -57,6 +57,20 @@
             </a>            
           </li>         --}}
           @endif
+          <div class="nav-link" style="color: #ABB2B9">Membership</div>
+          <li class="nav-item pb-3">
+            <a class="nav-link text-white bg-dark " href="">
+              <span data-feather="home"></span>
+              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Ultimate 
+            </a>            
+          </li>
+
+          <li class="nav-item pb-3">
+            <a class="nav-link text-white bg-dark " href="">
+              <span data-feather="home"></span>
+              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Platinum 
+            </a>            
+          </li>
           
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
           {{-- <li class="nav-item">
