@@ -17,8 +17,12 @@
     <div class="text-center">
         <h3 class="display-4">Terima Kasih!</h3>
         <h3 class="display-4">Pembelian anda telah berjaya.</h3>
-        <div class="py-3" style="font-size: 24px; color: green;">
+        {{-- <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
+        </div> --}}
+        
+        <div class="py-3">
+          <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
  
         <hr>
@@ -29,9 +33,6 @@
           {{-- <a class="btn btn-dark py-3 px-4" href="{{ url('updateform')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}" role="button">Kemaskini</a> --}}
         </p>
 
-        <div class="col-md-12">
-          <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </div>
     </div>
   </div>
 </div>
