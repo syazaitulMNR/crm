@@ -9,6 +9,22 @@
     background-color:rgb(233, 233, 233)!important ; 
   }
 
+  
+  .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 35px;
+      height: 0;
+      overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 
 @section('content')
@@ -22,8 +38,8 @@
         </div> --}}
         
         {{-- <div class="mx-auto py-4"> --}}
-          <div class="py-4"style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
-            <iframe class="embed-responsive-item"style="position:absolute; top:0; left: 0" src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          <div class="video-container py-4">
+            <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         {{-- </div> --}}
  
