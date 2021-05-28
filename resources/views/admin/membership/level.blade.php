@@ -48,10 +48,10 @@
                                 <button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
                             </div>
                         </div>
-                    </div>
         
-                    <div id="newRow"></div>
-                    <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
+                        <div id="newRow"></div>
+                        <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
+                    </div>
                   </div>
                                     
                   <div class='col-md-12 text-right px-4'>
@@ -140,12 +140,10 @@
     // add row
     $("#addRow").click(function () {
         var html = '';
-        html += '<div class="col-sm-8 text-end" id="inputFormRow">';
         html += '<div class="input-group mb-3">';
         html += '<input type="text" name="level[]" class="form-control" autocomplete="off" required>';
         html += '<div class="input-group-append">';
         html += '<button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>';
-        html += '</div>';
         html += '</div>';
 
         $('#newRow').append(html);
