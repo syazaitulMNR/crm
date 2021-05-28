@@ -155,7 +155,7 @@ class UpgradeController extends Controller
 
         /*-- Stripe ---------------------------------------------------------*/
         //Make Payment
-        $stripe = Stripe\Stripe::setApiKey('sk_test_3hkk4U4iBvTAO5Y5yV9YisD600VdfR6nrR');
+        $stripe = Stripe\Stripe::setApiKey('sk_live_B9VWddnqzpICNS9gsPBI4jSc00v60OUVak');
 
         try {
 
