@@ -101,7 +101,7 @@
                 <td>{{ $membership->firstItem() + $key  }}</td>
                 <td>{{ $memberships->name  }}</td>
               <td>
-                <a class="btn btn-dark" href="{{ url('view-membership') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
+                <a class="btn btn-dark" href="{{ url('membership') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
                 {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
                 {{-- <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
                 <!-- Modal -->
