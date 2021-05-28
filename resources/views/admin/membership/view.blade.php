@@ -189,7 +189,7 @@
                 </thead>
                 <tbody> 
                   @foreach ($student as $key => $students)   
-                  @if ($students->membership_id == $membership->membership_id)
+                  @if ($students->level_id == $membership->level_id)
                   <tr>
                       <td>{{ $student->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
