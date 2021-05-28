@@ -451,17 +451,18 @@ class NewCustomerController extends Controller
             $productId = $product_id;        
             $student_id = $student->stud_id;
 
+            $student->save();
+            $payment->save();
+
             dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
             
             /*-- End Email -----------------------------------------------------------*/
             
-            $student->save();
-            $payment->save();
-    
             $request->session()->forget('student');
             $request->session()->forget('payment');
 
-            return view('customer/thankyou');  
+            return redirect('pendaftaran-berjaya');
+
         } else {
 
             $student->save();
