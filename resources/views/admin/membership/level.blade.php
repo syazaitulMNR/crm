@@ -17,8 +17,49 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Membership</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group mr-2">
-            <a href="addproduct" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> Add New Membership</a>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
+            <i class="fas fa-plus pr-1"></i> New Customer
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                  <h5 class="modal-title" id="exampleModalLabel">Add New Customer</h5>
+                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="{{ url('membership/save') }}" method="POST"> 
+                @csrf
+                  <div class="form-group row px-4">
+                      <label class="col-sm-4 col-form-label">Membership Name</label>
+                      <div class="col-sm-8">
+                      <input type="text" class="form-control" name="name" required>
+                      </div>
+                  </div>
+                  <div class="form-group row px-4">
+                    <label class="col-sm-4 col-form-label">Level</label>
+                    <div id="inputFormRow">
+                        <div class="input-group mb-3">
+                            <input type="text" name="level[]" class="form-control" autocomplete="off" required>
+                            <div class="input-group-append">                
+                                <button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div id="newRow"></div>
+                    <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
+                  </div>
+                                    
+                  <div class='col-md-12 text-right px-4'>
+                      <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -92,4 +133,27 @@
     </main>
   </div>
 </div>
+
+
+<!-- Enable function to add row ------------------------------------------>
+<script type="text/javascript">
+    // add row
+    $("#addRow").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow">';
+        html += '<div class="input-group mb-3">';
+        html += '<input type="text" name="level[]" class="form-control" autocomplete="off" required>';
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>';
+        html += '</div>';
+        html += '</div>';
+
+        $('#newRow').append(html);
+    });
+
+    // remove row
+    $(document).on('click', '#removeRow', function () {
+        $(this).closest('#inputFormRow').remove();
+    });
+</script>
 @endsection
