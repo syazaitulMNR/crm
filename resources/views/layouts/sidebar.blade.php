@@ -61,14 +61,14 @@
           <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="">
               <span data-feather="home"></span>
-              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Ultimate 
+              <i class="fas fa-gem" style="margin-right: 29px"></i> Ultimate 
             </a>            
           </li>
 
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="">
               <span data-feather="home"></span>
-              <i class="fas fa-user-tie" style="margin-right: 29px"></i> Platinum 
+              <i class="far fa-gem" style="margin-right: 29px"></i> Platinum 
             </a>            
           </li>
           
