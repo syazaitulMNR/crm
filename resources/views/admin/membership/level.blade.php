@@ -39,13 +39,13 @@
 <div class="row py-4">     
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-          <a href="/trackprogram"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/trackprogram">Customer</a> / <b>{{ $product->name }}</b>
+          <a href="/trackprogram"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>{{ $membership->name }}</b>
         </div>
   
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">{{ $product->name }}</h1>
+            <h1 class="h2">{{ $membership->name }}</h1>
 
-            <a class="btn btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
+            <a class="btn btn-outline-warning" href="{{ url('export-membership') }}/{{ $membership->name }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
         </div>
 
         <div class="row">
