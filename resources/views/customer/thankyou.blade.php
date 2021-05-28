@@ -21,8 +21,8 @@
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
         
-        <div class="py-3">
-          <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="320" height="180" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="py-5">
+          <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="420" height="280" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
  
         <hr>
@@ -36,8 +36,4 @@
     </div>
   </div>
 </div>
-
-<footer class="text-center px-4 py-5">
-  <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
-</footer>
 @endsection
