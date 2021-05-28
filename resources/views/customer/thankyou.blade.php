@@ -21,7 +21,7 @@
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
         
-        <div class="py-5">
+        <div class="py-3">
           <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="320" height="180" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
  
