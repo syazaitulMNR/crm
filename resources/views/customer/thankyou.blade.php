@@ -17,7 +17,7 @@
     } */
 
     .video-size{
-      width: 60%;
+      width: 500px;
     }
 
     @media screen and (max-width: 600px) {
