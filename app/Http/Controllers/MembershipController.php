@@ -37,7 +37,7 @@ class MembershipController extends Controller
             $level_id = 'MB' . 0 . 0 . $auto_inc_mbl;
                     
             Membership_Level::create(array(
-                'feat_id'=> $level_id,
+                'level_id'=> $level_id,
                 'name'=> $values,
                 'membership_id'=> $membership_id
             ));
