@@ -22,8 +22,8 @@
         </div> --}}
         
         {{-- <div class="mx-auto py-4"> --}}
-          <div class="row d-flex justify-content-center py-4">
-            <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="640" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          <div class="row d-flex justify-content-center py-4" style="width: 400px">
+            <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         {{-- </div> --}}
  
