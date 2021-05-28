@@ -13,7 +13,7 @@ class MembershipController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function view_membership()
     {
         $membership = Membership::orderBy('id','desc')->paginate(15);
@@ -68,7 +68,7 @@ class MembershipController extends Controller
     {
         $student = Student::where('membership_id', $membership_id)->paginate(15);
         $membership = Membership::where('membership_id', $membership_id)->first();
-        $membership_level = Membership_Level::where('level_id', $level_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
         $total = Student::where('membership_id', $membership_id)->count();
         // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
