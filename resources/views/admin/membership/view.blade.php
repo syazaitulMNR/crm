@@ -180,7 +180,7 @@
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
-                  {{-- <th>#</th> --}}
+                  <th>#</th>
                   <th>IC No.</th>
                   <th>Name</th>
                   {{-- <th>Status</th> --}}
@@ -191,7 +191,7 @@
                   @foreach ($student as $key => $students)   
                   @if ($students->membership_id == $membership->membership_id)
                   <tr>
-                      {{-- <td>{{ $payment->firstItem() + $key }}</td> --}}
+                      <td>{{ $student->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
                       <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                       {{-- <td>
