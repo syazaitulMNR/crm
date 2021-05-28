@@ -55,7 +55,7 @@
 
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
-              {{-- <div class="col-xl-3 col-lg-6">
+              <div class="col-xl-3 col-lg-6">
                 <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
@@ -66,7 +66,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-3 col-lg-6">
+             {{--  <div class="col-xl-3 col-lg-6">
                 <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
