@@ -188,9 +188,8 @@
                 </tr>
                 </thead>
                 <tbody> 
-                  {{-- @foreach ($payment as $key => $payments) --}}
-                  @foreach ($student as $students)   
-                  {{-- @if ($payments->stud_id == $students->stud_id) --}}
+                  @foreach ($student as $key => $students)   
+                  @if ($students->membership_id == $membership->membership_id)
                   <tr>
                       {{-- <td>{{ $payment->firstItem() + $key }}</td> --}}
                       <td>{{ $students->ic }}</td>
@@ -231,9 +230,7 @@
                         @endif
                       </td>
                   </tr>
-                  {{-- @endif
                   @endif
-                  @endforeach --}}
                   @endforeach
                 {{-- @foreach ($payment as $key => $payments)    
                 @if ($product->product_id == $payments->product_id)  
