@@ -57,20 +57,6 @@
             </a>            
           </li>         --}}
           @endif
-          <div class="nav-link" style="color: #ABB2B9">Membership Programme</div>
-          <li class="nav-item">
-            <a class="nav-link text-white bg-dark " href="/ultimate">
-              <span data-feather="home"></span>
-              <i class="fas fa-gem" style="margin-right: 29px"></i> Ultimate 
-            </a>            
-          </li>
-
-          <li class="nav-item pb-3">
-            <a class="nav-link text-white bg-dark " href="">
-              <span data-feather="home"></span>
-              <i class="far fa-gem" style="margin-right: 29px"></i> Platinum 
-            </a>            
-          </li>
           
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
           {{-- <li class="nav-item">
@@ -88,7 +74,7 @@
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/membership">
               <span data-feather="home"></span>
-              <i class="fas fa-gem" style="margin-right: 29px"></i> Ultimate 
+              <i class="fas fa-gem" style="margin-right: 29px"></i> Membership 
             </a>            
           </li>
           {{-- <li class="nav-item"> 
