@@ -16,7 +16,7 @@
     text-align: center;
     } */
 
-    @media only screen and (max-width: 768px) {
+    @media screen and (max-width: 600px) {
   /* For mobile phones: */
     .center {
       width: 100%;
