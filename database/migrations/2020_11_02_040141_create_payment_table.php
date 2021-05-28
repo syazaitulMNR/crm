@@ -27,6 +27,8 @@ class CreatePaymentTable extends Migration
             $table->string('product_id');
             $table->string('package_id');
             $table->string('offer_id');
+            $table->string('membership_id');
+            $table->string('level_id');
             $table->string('stripe_id');
             $table->string('billplz_id');
             $table->string('user_id');
