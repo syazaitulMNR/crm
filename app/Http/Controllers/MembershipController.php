@@ -33,8 +33,8 @@ class MembershipController extends Controller
 
         foreach($request->level as $keys => $values) {
 
-            $auto_inc_mbl = $membership_level->id + 1;
-            $level_id = 'MB' . 0 . 0 . $auto_inc_mbl;
+            // $auto_inc_mbl = $membership_level->id + 1;
+            $level_id = 'MBL' . uniqid();
                     
             Membership_Level::create(array(
                 'level_id'=> $level_id,
