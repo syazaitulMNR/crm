@@ -231,9 +231,9 @@
                         @endif
                       </td>
                   </tr>
+                  {{-- @endif
                   @endif
-                  @endif
-                  @endforeach
+                  @endforeach --}}
                   @endforeach
                 {{-- @foreach ($payment as $key => $payments)    
                 @if ($product->product_id == $payments->product_id)  
