@@ -13,7 +13,7 @@ class MembershipController extends Controller
     {
         $membership = Membership::orderBy('id','desc')->paginate(15);
         
-        return view('admin.membership.view', compact('membership'));
+        return view('admin.membership.level', compact('membership'));
     }
 
     public function view()
