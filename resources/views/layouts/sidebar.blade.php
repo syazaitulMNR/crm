@@ -57,7 +57,7 @@
             </a>            
           </li>         --}}
           @endif
-          <div class="nav-link" style="color: #ABB2B9">Membership</div>
+          <div class="nav-link" style="color: #ABB2B9">Membership Programme</div>
           <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="">
               <span data-feather="home"></span>
