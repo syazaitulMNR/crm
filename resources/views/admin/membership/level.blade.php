@@ -140,7 +140,7 @@
     // add row
     $("#addRow").click(function () {
         var html = '';
-        html += '<div class="col-sm-8" id="inputFormRow">';
+        html += '<div class="col-sm-8 pull-right" id="inputFormRow">';
         html += '<div class="input-group mb-3">';
         html += '<input type="text" name="level[]" class="form-control" autocomplete="off" required>';
         html += '<div class="input-group-append">';
