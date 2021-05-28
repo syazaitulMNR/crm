@@ -99,7 +99,7 @@
                     <div class="form-group row px-4">
                       <label for="ic" class="col-sm-4 col-form-label">Price (RM)</label>
                       <div class="col-sm-8">
-                      <input type="text" class="form-control" name="pay_price" id="price" value="{{ $package->price }}" required>   
+                      <input type="text" class="form-control" name="pay_price" id="price" required>   
                       </div>
                     </div>
                     <div class="form-group row px-4">
