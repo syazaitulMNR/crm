@@ -17,7 +17,7 @@
     } */
 
     .video-size{
-      width: 500px;
+      width: 600px;
     }
 
     @media screen and (max-width: 600px) {
@@ -47,7 +47,7 @@
         </div> --}}
         
         {{-- <div class="mx-auto py-4"> --}}
-          <div class="text-center mx-auto">
+          <div class="text-center mx-auto my-0">
             <iframe class="video-size" src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" height="315" width="560" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         {{-- </div> --}}
