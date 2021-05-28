@@ -57,6 +57,6 @@ class MembershipController extends Controller
         // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         // $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.membership.view', compact('student', 'membership', 'membership_level'));
+        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total'));
     }
 }
