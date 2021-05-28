@@ -16,16 +16,15 @@
   <div class="col-md-12 px-5 py-4">
     <div class="text-center">
         <h3 class="display-4">Terima Kasih!</h3>
-
+        <h3 class="display-4">Pembelian anda telah berjaya.</h3>
         <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div>
-
-        <h3 class="display-4">Pembelian anda telah berjaya.</h3>
-                
+ 
+        <hr>
+        
         <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 
-        <hr>
         <p class="lead"> Pengesahan pembelian akan dihantar kepada emel yang telah didaftarkan dalam masa 48 Jam. Terima kasih kerana menunggu. </p>
         <p class="lead py-3">
           Jika terdapat sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/" class="link-primary">hubungi kami.</a><br><br>
