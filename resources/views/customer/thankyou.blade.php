@@ -9,21 +9,19 @@
     background-color:rgb(233, 233, 233)!important ; 
   }
 
-  
-  .video-container {
+  .wrapper {
     position: relative;
-    overflow: hidden;
-    padding-top: 56.25%;
-  }
-
-  .video-container iframe {
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: 0;
-  }
+}
 </style>
 
 @section('content')
@@ -37,7 +35,7 @@
         </div> --}}
         
         {{-- <div class="mx-auto py-4"> --}}
-          <div class="py-4">
+          <div class="wrapper py-4">
             <iframe src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" height="315" width="560" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         {{-- </div> --}}
