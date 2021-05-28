@@ -471,7 +471,7 @@ class NewCustomerController extends Controller
             $request->session()->forget('student');
             $request->session()->forget('payment');
 
-            return view('customer/failed_payment');
+            return redirect('pendaftaran-tidak-berjaya');
         }
         
     }

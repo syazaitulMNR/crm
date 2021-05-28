@@ -200,6 +200,7 @@ Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 
 // Thank you page
 Route::get('pendaftaran-berjaya','HomeController@thankyou');
+Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
 
 
 /*
