@@ -18,15 +18,15 @@
         <h1 class="h2">Membership</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
-            <i class="fas fa-plus pr-1"></i> New Customer
+          <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newmembership">
+            <i class="fas fa-plus pr-1"></i> New Membership
           </button>
           <!-- Modal -->
-          <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
+          <div class="modal fade" id="newmembership" tabindex="-1" role="dialog" aria-labelledby="newmembershipLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header border-bottom-0">
-                  <h5 class="modal-title" id="exampleModalLabel">Add New Customer</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Add New Membership</h5>
                   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
