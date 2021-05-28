@@ -128,7 +128,7 @@
             @else
             <p>There are no package yet.</p>
             @endif
-            <div class="float-right pt-3">{{$membership->links()}}</div>
+            <div class="float-right pt-3">{{$membership_level->links()}}</div>
             
           </div>
           
