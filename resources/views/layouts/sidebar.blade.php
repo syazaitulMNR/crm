@@ -58,7 +58,7 @@
           </li>         --}}
           @endif
           <div class="nav-link" style="color: #ABB2B9">Membership</div>
-          <li class="nav-item pb-3">
+          <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="">
               <span data-feather="home"></span>
               <i class="fas fa-user-tie" style="margin-right: 29px"></i> Ultimate 
