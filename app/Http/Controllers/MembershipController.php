@@ -44,7 +44,7 @@ class MembershipController extends Controller
         }
 
        // dd($package->package_image);
-        return redirect('ultimate')->with('success', 'Membership Successfully Created'); 
+        return redirect('membership')->with('success', 'Membership Successfully Created'); 
     }
 
     public function view()
