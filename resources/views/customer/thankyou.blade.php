@@ -16,6 +16,10 @@
     text-align: center;
     } */
 
+    .video-size{
+      width: 60%;
+    }
+
     @media screen and (max-width: 600px) {
   /* For mobile phones: */
     .center {
@@ -23,6 +27,10 @@
       width: 100%;
       padding: 10px;
       text-align: center;
+    }
+
+    .video-size{
+      width: 100%;
     }
 }
 
