@@ -16,6 +16,37 @@ class MembershipController extends Controller
         return view('admin.membership.level', compact('membership'));
     }
 
+    public function store_membership(Request $request)
+    {
+        $membership = Membership::orderBy('id','desc')->first();
+        $membership_level = Membership_Level::orderBy('id','desc')->first();
+
+        $auto_inc_mb = $membership->id + 1;
+        $membership_id = 'MB' . 0 . 0 . $auto_inc_mb;
+              
+        Membership::create(array(
+
+            'membership_id'=> $membership_id,
+            'name' => $request->name
+
+        ));  
+
+        foreach($request->level as $keys => $values) {
+
+            $auto_inc_mbl = $membership_level->id + 1;
+            $level_id = 'MB' . 0 . 0 . $auto_inc_mbl;
+                    
+            Feature::create(array(
+                'feat_id'=> $level_id,
+                'name'=> $values,
+                'membership_id'=> $membership_id
+            ));
+        }
+
+       // dd($package->package_image);
+        return redirect('ultimate')->with('success', 'Membership Successfully Created'); 
+    }
+
     public function view()
     {
         $student = Student::orderBy('id','desc')->paginate(15);
