@@ -41,7 +41,7 @@
                   </div>
                   <div class="form-group row px-4">
                     <label class="col-sm-4 col-form-label">Level</label>
-                    <div class="col-sm-8" id="inputFormRow">
+                    <div class="col-sm-8 float-end" id="inputFormRow">
                         <div class="input-group mb-3">
                             <input type="text" name="level[]" class="form-control" autocomplete="off" required>
                             <div class="input-group-append">                
