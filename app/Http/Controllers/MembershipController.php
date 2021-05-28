@@ -51,11 +51,12 @@ class MembershipController extends Controller
     {
         $student = Student::where('membership_id', $membership_id)->paginate(15);
         $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->first();
 
-        // $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $total = Student::where('membership_id', $membership_id)->count();
         // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         // $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.membership.view', compact('student', 'membership'));
+        return view('admin.membership.view', compact('student', 'membership', 'membership_level'));
     }
 }
