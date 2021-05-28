@@ -16,7 +16,7 @@
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Membership</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
+        {{-- <div class="btn-toolbar mb-2 mb-md-0">
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newmembership">
             <i class="fas fa-plus pr-1"></i> New Membership
@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
       
       @if ($message = Session::get('success'))
@@ -101,9 +101,9 @@
                 <td>{{ $membership->firstItem() + $key  }}</td>
                 <td>{{ $memberships->name  }}</td>
               <td>
-                <a class="btn btn-dark" href="{{ url('package') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
-                <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
+                <a class="btn btn-dark" href="{{ url('view-membership') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
+                {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
+                {{-- <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal{{ $memberships->membership_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
@@ -113,7 +113,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        Are you sure you want to delete this event ?
+                        Are you sure you want to delete this membership ?
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -121,7 +121,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
               </td>
             </tr>   
           @endforeach
