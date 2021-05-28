@@ -21,8 +21,8 @@
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
         
-        <div class="embed-responsive embed-responsive-16by9 py-4">
-          <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="320" height="180" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="embed-responsive embed-responsive-16by9 py-4" width="80%">
+          <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/531964255?color=ffffff&title=0&byline=0&portrait=0&badge=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
  
         <hr>
