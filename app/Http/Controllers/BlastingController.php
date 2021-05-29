@@ -21,13 +21,9 @@ class BlastingController extends Controller
     
     public function emailblast()
     {
-        $student = Student::orderBy('id','desc')->get();
-        $product = Product::orderBy('id','asc')->paginate(15);
-        $package = Package::orderBy('id','asc')->get(); 
-
-        // $totalcust = Student::count();
+        $product = Product::orderBy('id','desc')->paginate(15);
         
-        return view('admin.emailblast', compact('student','product','package'));
+        return view('admin.emailblast', compact('product'));
     }
 
     public function package($product_id) 
