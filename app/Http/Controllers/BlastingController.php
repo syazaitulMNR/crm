@@ -51,18 +51,26 @@ class BlastingController extends Controller
 
     
     //testing
-    public function sendBulkMail(Request $request)
+    public function sendBulkMail()
     {
+        $data = array('name'=>"Virat Gandhi");
+   
+        Mail::send(['text'=>'mail'], $data, function($message) {
+            $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
+                ('Laravel Basic Testing Mail');
+            $message->from('xyz@gmail.com','Virat Gandhi');
+        });
+        echo "Basic Email Sent. Check your inbox.";
 
-    	$details = [
-    		'subject' => 'Pengesahan Pembelian'
-    	];
+    	// $details = [
+    	// 	'subject' => 'Pengesahan Pembelian'
+    	// ];
 
-    	// send all mail in the queue.
-        $job = (new BlastQueueEmail($details))->delay(now()->addSeconds(2)); 
+    	// // send all mail in the queue.
+        // $job = (new BlastQueueEmail($details))->delay(now()->addSeconds(2)); 
 
-        dispatch($job);
+        // dispatch($job);
 
-        echo "Bulk mail send successfully in the background...";
+        // echo "Bulk mail send successfully in the background...";
     }
 }
