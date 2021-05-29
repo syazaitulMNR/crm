@@ -125,7 +125,7 @@ class ReportsController extends Controller
 
             Ticket::create([
                 'ticket_id'     => $ticket_id,
-                'ticket_type'   => 'paid',
+                'ticket_type'   => $request->ticket_type,
                 'ic'            => $request->ic,
                 'product_id'    => $product_id,
                 'package_id'    => $package_id,
@@ -164,7 +164,7 @@ class ReportsController extends Controller
 
             Ticket::create([
                 'ticket_id'     => $ticket_id,
-                'ticket_type'   => 'paid',
+                'ticket_type'   => $request->ticket_type,
                 'ic'            => $request->ic,
                 'product_id'    => $product_id,
                 'package_id'    => $package_id,
