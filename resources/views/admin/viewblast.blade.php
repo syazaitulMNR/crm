@@ -37,7 +37,7 @@
               <th>#</th>
               <th>IC No.</th>
               <th>Name</th>
-              <th>Status</th>
+              <th>Email</th>
               <th><i class="fas fa-cogs"></i></th>
             </tr>
           </thead>
@@ -50,15 +50,7 @@
                 <td>{{ $payment->firstItem() + $key }}</td>
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                <td>
-                  @if ($payments->status == 'paid')
-                    <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                  @elseif ($payments->status == 'due')
-                    <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                  @else
-                    <p>NULL</p>
-                  @endif
-                </td>
+                <td>{{ $students->email }}</td>
                 <td>
                   <a class="btn btn-dark" href="{{ url('view-student') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                   {{-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#emailModal"><i class="fas fa-paper-plane"></i></button>
