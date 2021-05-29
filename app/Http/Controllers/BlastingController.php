@@ -32,7 +32,7 @@ class BlastingController extends Controller
 
     public function show($product_id)
     {
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->paginate(15);
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('offer_id', 'Import')->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
