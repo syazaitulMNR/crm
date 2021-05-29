@@ -30,11 +30,19 @@ class BlastingController extends Controller
         return view('admin.emailblast', compact('product'));
     }
 
-    public function show($product_id)
+    public function package($product_id) 
     {
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('offer_id', 'Import')->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
+        $package = Package::where('product_id', $product_id)->paginate(15);
+
+        return view('admin.blasting_email.package', compact('product', 'package'))
+    }
+
+    public function show($product_id, $package_id)
+    {
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Import')->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
         // $product = Product::where('product_id', $product_id)->get();
@@ -46,9 +54,13 @@ class BlastingController extends Controller
         $totalcust = Student::orderBy('id','desc')->count();
         
         // dd($student);
-        return view('admin.viewblast', compact('student', 'product', 'payment', 'totalcust'));
+        return view('admin.viewblast', compact('student', 'product', 'package', 'payment', 'totalcust'));
     }
+    
+    public function send_mail()
+    {
 
+    }
     
     //testing
     public function sendBulkMail()
