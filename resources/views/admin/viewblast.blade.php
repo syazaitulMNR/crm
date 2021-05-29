@@ -18,8 +18,6 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">{{ $package->name }}</h1>
     </div>
-
-    <br>
     
     <div class="row">
       <div class="col-md-9 "> 
@@ -32,6 +30,8 @@
 
         <!-- Search box ---------------------------------------------------------->
         <input type="text" id="searchInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
+
+        <br>
 
         @if(count($payment) > 0)
         <table class="table table-hover" id="searchTable">
