@@ -10,6 +10,8 @@ use App\Payment;
 use App\Ticket;
 use App\Exports\ProgramExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Jobs\PengesahanJob;
+use App\Jobs\TiketJob;
 
 class ReportsController extends Controller
 {
