@@ -48,7 +48,7 @@
             <h1 class="h2">Customer Information</h1>
         </div> 
 
-        {{-- <div class="row">            
+        <div class="row">            
                     
             <div class="col-md-12">
 
@@ -149,7 +149,7 @@
                 </form>
 
             </div>
-        </div> --}}
+        </div>
     </main>
 </div>
 
