@@ -145,7 +145,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <button type="submit" class="btn btn-success"><i class="fas fa-save pr-1"></i> Save </button>
+                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
                             </div>
                         </div>
                             {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
