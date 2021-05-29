@@ -31,14 +31,30 @@
       </tr>
       </thead>
       <tbody>
-        @foreach ($student as $key => $students)
-        {{-- @if ($product->product_id == $students->product_id) --}}
+        @foreach ($payment as $key => $payments)
+        @foreach ($student as $students)   
+        @if ($payments->stud_id == $students->stud_id)
+        @if ($product->product_id == $payments->product_id)  
         <tr>
-          <td>{{ $student->firstItem() + $key }}</td>
-          <td>{{ $students->first_name  }}</td>
-          {{-- <td>{{ $payment->status  }}</td> --}}
+            <td>{{ $payment->firstItem() + $key }}</td>
+            <td>{{ $students->ic }}</td>
+            <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+            <td>
+              @if ($payments->status == 'paid')
+                <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
+              @elseif ($payments->status == 'due')
+                <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
+              @else
+                <p>NULL</p>
+              @endif
+            </td>
+            <td>
+              x
+            </td>
         </tr>
-        {{-- @endif --}}
+        @endif
+        @endif
+        @endforeach
         @endforeach
       </tbody>
     </table>
