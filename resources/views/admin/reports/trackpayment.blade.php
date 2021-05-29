@@ -77,8 +77,8 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2">Name</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="first_name" value="{{ $student->first_name }}">
-                                    <input type="text" class="form-control" name="last_name" value="{{ $student->last_name }}">
+                                    <input type="text" class="form-control" name="first_name" value="{{ $student->first_name }}" placeholder="First Name">
+                                    <input type="text" class="form-control" name="last_name" value="{{ $student->last_name }}" placeholder="Last Name">
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->first_name }}&nbsp;{{ $student->last_name }}</p> --}}
                                 </div>
 
