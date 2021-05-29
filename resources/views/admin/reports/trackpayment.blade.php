@@ -146,11 +146,11 @@
                             </div>
                             <div class="col-sm-6">
                                 <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
-                                <a class="btn btn-sm btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                <a class="btn btn-sm btn-outline-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
                                     <i class="far fa-envelope pr-1"></i> Purchased Confirmation Mail
                                 </a>
-                                <a class="btn btn-sm btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                    <i class="far fa-envelope pr-1"></i> Updated Confirmation Mail
+                                <a class="btn btn-sm btn-outline-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                    <i class="fas fa-paper-plane pr-1"></i> Updated Confirmation Mail
                                 </a>
                             </div>
                         </div>
