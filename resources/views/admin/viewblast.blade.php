@@ -66,7 +66,7 @@
                       </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <a class="btn btn-primary" href="">Confirm</a>
+                          <a class="btn btn-primary" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}">Confirm</a>
                       </div>
                       </div>
                   </div>
