@@ -60,7 +60,7 @@
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-primary" href="{{ url('view-student') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}">Confirm</a>
+                  <a class="btn btn-dark" href="{{ url('view-student') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                   {{-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#emailModal"><i class="fas fa-paper-plane"></i></button>
                   <!-- Modal -->
                   <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
