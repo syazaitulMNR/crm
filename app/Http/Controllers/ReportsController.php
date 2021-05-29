@@ -196,11 +196,18 @@ class ReportsController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
 
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+        $student->save();
+
         $payment->status = $request->status;
         $payment->save();
 
         // dd($request->status);
-        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Payment Status Successfully Updated!');
+        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
     }
 
     public function exportProgram($product_id)
