@@ -127,18 +127,16 @@
 
                     <hr>
 
-                    <div class="form-group row px-4">
+                    {{-- <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Ticket Type</label>
                       <div class="col-sm-8">
-                        {{-- <input type="hidden" class="form-control" name="quantity" value="1" readonly> --}}
-                        {{-- <label class="col-form-label">1</label> --}}
                         <select name="ticket_type" class="form-select" required>
                           <option value="" disabled selected>-- Please Choose --</option>
                           <option value="paid">Paid</option>
                           <option value="free">Free</option>
                         </select>
                       </div>
-                    </div>
+                    </div> --}}
 
                     <div class='col-md-12 text-right px-4'>
                         <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
