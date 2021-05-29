@@ -22,7 +22,7 @@ class BlastingController extends Controller
     public function emailblast()
     {
         $student = Student::orderBy('id','desc')->get();
-        $product = Product::orderBy('id','asc')->paginate(15);
+        $product = Product::orderBy('id','desc')->paginate(15);
         $package = Package::orderBy('id','asc')->get(); 
 
         // $totalcust = Student::count();
@@ -32,7 +32,7 @@ class BlastingController extends Controller
 
     public function show($product_id)
     {
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->paginate(15);
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('offer_id', 'Import')->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         // $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -51,18 +51,26 @@ class BlastingController extends Controller
 
     
     //testing
-    public function sendBulkMail(Request $request)
+    public function sendBulkMail()
     {
+        $data = array('name'=>"Virat Gandhi");
+   
+        Mail::send(['text'=>'mail'], $data, function($message) {
+            $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
+                ('Laravel Basic Testing Mail');
+            $message->from('xyz@gmail.com','Virat Gandhi');
+        });
+        echo "Basic Email Sent. Check your inbox.";
 
-    	$details = [
-    		'subject' => 'Pengesahan Pembelian'
-    	];
+    	// $details = [
+    	// 	'subject' => 'Pengesahan Pembelian'
+    	// ];
 
-    	// send all mail in the queue.
-        $job = (new BlastQueueEmail($details))->delay(now()->addSeconds(2)); 
+    	// // send all mail in the queue.
+        // $job = (new BlastQueueEmail($details))->delay(now()->addSeconds(2)); 
 
-        dispatch($job);
+        // dispatch($job);
 
-        echo "Bulk mail send successfully in the background...";
+        // echo "Bulk mail send successfully in the background...";
     }
 }
