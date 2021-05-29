@@ -95,8 +95,22 @@
                             <td>1</td>
                             <td>199</td>
                             <td>FPX</td>
-                            <td>free</td>
+                            <td>paid</td>
                             <td>OFF001</td>
+                            <td>UID001</td>
+                        </tr>
+                        <tr>
+                            <td>Mohd</td>
+                            <td>Ilyas</td>
+                            <td>900101011234</td>
+                            <td>example@gmail.com</td>
+                            <td>+60123456789</td>
+                            <td>199</td>
+                            <td>1</td>
+                            <td>199</td>
+                            <td>FPX</td>
+                            <td>free</td>
+                            <td>OFF002</td>
                             <td>UID001</td>
                         </tr>
                     </table>
