@@ -64,14 +64,14 @@ class BlastingController extends Controller
         return view('admin.blasting_email.view_customer', compact('paginate', 'product', 'package', 'payment', 'student'));
     }
     
-    public function send_mail($product_id, $package_id)
+    public function send_mail($product_id, $package_id, $payment_id, $student_id)
     {
         /*-- Manage Email ---------------------------------------------------*/
 
         $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Import')->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
-        $student = Student::orderBy('id','desc')->get();
+        $student = Student::where('stud_id', $stud_id)->first();
 
         $send_mail = $student->email;
         $product_name = $product->name;        
@@ -84,10 +84,11 @@ class BlastingController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        $student->save();
-        $payment->save();
+        echo 'sent email';
+        // $student->save();
+        // $payment->save();
 
-        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
     }
     
     //testing

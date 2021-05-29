@@ -121,7 +121,7 @@ Route::get('emailblast', 'BlastingController@emailblast');
 Route::get('view/{product_id}', 'BlastingController@package');
 Route::get('view-event/{product_id}/{package_id}', 'BlastingController@show');
 Route::get('view-student/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_student');
-Route::get('send-mail/{product_id}/{package_id}', 'BlastingController@send_mail');
+Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 
 Route::get('send-bulk-mail', 'BlastingController@sendBulkMail');
 
