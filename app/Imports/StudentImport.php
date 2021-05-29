@@ -53,16 +53,16 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'package_id'    => $this->package,
                 ]);
 
-                $ticket_id = 'TIK' . uniqid();
+                // $ticket_id = 'TIK' . uniqid();
 
-                Ticket::create([
-                    'ticket_id'     => $ticket_id,
-                    'ticket_type'   => $row['ticket_type'],
-                    'ic'            => $row['ic'],
-                    'product_id'    => $this->product,
-                    'package_id'    => $this->package,
-                    'payment_id'    => $payment_id
-                ]);
+                // Ticket::create([
+                //     'ticket_id'     => $ticket_id,
+                //     'ticket_type'   => $row['ticket_type'],
+                //     'ic'            => $row['ic'],
+                //     'product_id'    => $this->product,
+                //     'package_id'    => $this->package,
+                //     'payment_id'    => $payment_id
+                // ]);
 
             }else{
 
@@ -94,16 +94,16 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'package_id'    => $this->package,
                 ]);
 
-                $ticket_id = 'TIK' . uniqid();
+                // $ticket_id = 'TIK' . uniqid();
 
-                Ticket::create([
-                    'ticket_id'     => $ticket_id,
-                    'ticket_type'   => $row['ticket_type'],
-                    'ic'            => $row['ic'],
-                    'product_id'    => $this->product,
-                    'package_id'    => $this->package,
-                    'payment_id'    => $payment_id
-                ]);
+                // Ticket::create([
+                //     'ticket_id'     => $ticket_id,
+                //     'ticket_type'   => $row['ticket_type'],
+                //     'ic'            => $row['ic'],
+                //     'product_id'    => $this->product,
+                //     'package_id'    => $this->package,
+                //     'payment_id'    => $payment_id
+                // ]);
             }
         }
         

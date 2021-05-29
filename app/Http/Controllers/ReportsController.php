@@ -123,16 +123,16 @@ class ReportsController extends Controller
                 'offer_id' => 'Import'
             ));
 
-            $ticket_id = 'TIK' . uniqid();
+            // $ticket_id = 'TIK' . uniqid();
 
-            Ticket::create([
-                'ticket_id'     => $ticket_id,
-                'ticket_type'   => $request->ticket_type,
-                'ic'            => $request->ic,
-                'product_id'    => $product_id,
-                'package_id'    => $package_id,
-                'payment_id'    => $payment_id
-            ]);
+            // Ticket::create([
+            //     'ticket_id'     => $ticket_id,
+            //     'ticket_type'   => $request->ticket_type,
+            //     'ic'            => $request->ic,
+            //     'product_id'    => $product_id,
+            //     'package_id'    => $package_id,
+            //     'payment_id'    => $payment_id
+            // ]);
 
         }else{
 
@@ -162,16 +162,16 @@ class ReportsController extends Controller
                 'offer_id' => 'Import'
             ));
 
-            $ticket_id = 'TIK' . uniqid();
+            // $ticket_id = 'TIK' . uniqid();
 
-            Ticket::create([
-                'ticket_id'     => $ticket_id,
-                'ticket_type'   => $request->ticket_type,
-                'ic'            => $request->ic,
-                'product_id'    => $product_id,
-                'package_id'    => $package_id,
-                'payment_id'    => $payment_id
-            ]);
+            // Ticket::create([
+            //     'ticket_id'     => $ticket_id,
+            //     'ticket_type'   => $request->ticket_type,
+            //     'ic'            => $request->ic,
+            //     'product_id'    => $product_id,
+            //     'package_id'    => $package_id,
+            //     'payment_id'    => $payment_id
+            // ]);
         }
 
         return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
