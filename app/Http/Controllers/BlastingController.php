@@ -73,7 +73,7 @@ class BlastingController extends Controller
         // $productId = $product_id;        
         // $student_id = $student->stud_id;
 
-        dd($student);
+        dd($student->name);
 
         // $student->save();
         // $payment->save();
