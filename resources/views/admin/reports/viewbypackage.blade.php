@@ -124,7 +124,9 @@
                           <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: #fff;" readonly>
                         </div>
                     </div>
-                              
+
+                    <hr>
+
                     <div class="form-group row px-4">
                       <label for="name" class="col-sm-4 col-form-label">Ticket Type</label>
                       <div class="col-sm-8">
