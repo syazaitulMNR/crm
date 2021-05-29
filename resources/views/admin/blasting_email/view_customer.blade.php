@@ -141,15 +141,15 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
+                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button><!-- Send email button -->
+                                <a class="btn btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                    <i class="far fa-envelope"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Send email button -->
-                        <a class="btn btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                            <i class="far fa-envelope"></i>
-                        </a>
+                    
                 </form>
 
             </div>
