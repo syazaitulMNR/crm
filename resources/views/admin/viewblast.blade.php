@@ -18,7 +18,55 @@
       <h1 class="h2">Individually Blast</h1>
     </div>
 
-    {{--r {{$totalcust}} --}}
+    <!-- Show data in cards --------------------------------------------------->
+    <div class="row mb-3">
+      <div class="col-xl-3 col-lg-6">
+        <div class="card bg-light card-inverse shadow">
+          <div class="card-block">
+            <div class="rotate">
+              <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
+            </div>
+            <h6 class="lead pt-3 pl-3">Imported Customer</h6>
+            <h3 class="pb-1 pl-3">{{$total}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6">
+        <div class="card bg-light card-inverse shadow">
+          <div class="card-block">
+            <div class="rotate">
+              <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
+            </div>
+            <h6 class="lead pt-3 pl-3">Due</h6>
+            {{-- <h3 class="pb-1 pl-3">{{$totalcancel}}</h3> --}}
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6">
+        <div class="card bg-light card-inverse shadow">
+          <div class="card-block">
+            <div class="rotate">
+              <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
+            </div>
+            <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
+            {{-- <h3 class="pb-1 pl-3">{{$paidticket}}</h3> --}}
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6">
+        <div class="card bg-light card-inverse shadow">
+          <div class="card-block">
+            <div class="rotate">
+              <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
+            </div>
+            <h6 class="lead pt-3 pl-3">Free Ticket</h6>
+            {{-- <h3 class="pb-1 pl-3">{{$freeticket}}</h3> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
 
     <div class="float-right pt-3">{{$payment->links()}}</div>
     @if(count($payment) > 0)
@@ -81,61 +129,6 @@
       </tbody>
     </table>
 
-
-    {{-- <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col" style="width: 10%">#</th>
-          <th scope="col">ID</th>
-          <th scope="col">Student Name</th>
-          <th scope="col">Package</th>
-          <th scope="col">Payment Status</th>
-          <th scope="col">Blast Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($student as $key => $students)
-        @foreach ($package as $value)  
-        @foreach ($payment as $payments)  
-        @if ($product->product_id == $students->product_id) 
-        @if ($students->package_id == $value->package_id)  
-        @if ($students->stud_id == $payments->stud_id)                 
-          <tr>
-            <td>{{ $student->firstItem() + $key }}</td>
-            <td>{{ $students->stud_id  }}</td>
-            <td>{{ $students->first_name  }}&nbsp;{{ $students->last_name  }}</td>
-            <td>{{ $value->name  }}</td>
-            <td>{{ $payments->status  }}</td>
-            <td>
-              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-paper-plane"></i></button>
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Blast Confirmation</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure you want to blast the email to this participant ?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <a class="btn btn-primary" href="">Confirm</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>  
-        @endif
-        @endif
-        @endif 
-        @endforeach
-        @endforeach 
-        @endforeach
-      </tbody>
-    </table> --}}
     @else
       <p>Purchased confirmation email has been sent to all imported customer</p>
     @endif
