@@ -30,8 +30,11 @@
         </div>
         @endif
 
+        <!-- Search box ---------------------------------------------------------->
+        <input type="text" id="searchInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
+
         @if(count($payment) > 0)
-        <table class="table table-hover">
+        <table class="table table-hover" id="searchTable">
           <thead>
             <tr>
               <th>#</th>
@@ -124,6 +127,33 @@
     </div>
   </main>
 </div>
+
+<!-- Enable function for search payment ------------------------------------->
+<script>
+  function successFunction() 
+  {
+    var input, filter, table, tr, td, i, txtValue;
+
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("searchTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) 
+    {
+      td = tr[i].getElementsByTagName("td")[1];
+      
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+</script>
 @endsection
 
 
