@@ -34,6 +34,7 @@
         @foreach ($student as $key => $students)
         {{-- @if ($product->product_id == $students->product_id) --}}
         <tr>
+          <td>{{ $student->firstItem() + $key }}</td>
           <td>{{ $students->first_name  }}</td>
           {{-- <td>{{ $payment->status  }}</td> --}}
         </tr>
