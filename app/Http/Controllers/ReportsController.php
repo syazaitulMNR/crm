@@ -120,7 +120,7 @@ class ReportsController extends Controller
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => 'Import'
+                'offer_id' => 'ImportNoOffer'
             ));
 
             // $ticket_id = 'TIK' . uniqid();
@@ -159,7 +159,7 @@ class ReportsController extends Controller
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => 'Import'
+                'offer_id' => 'ImportNoOffer'
             ));
 
             // $ticket_id = 'TIK' . uniqid();
