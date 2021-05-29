@@ -34,7 +34,7 @@
             </a>            
           </li> 
           
-          {{-- <div class="nav-link" style="color: #ABB2B9">Configuration</div>
+          <div class="nav-link" style="color: #ABB2B9">Configuration</div>
 
           {{-- <li class="nav-item">
             <a class="nav-link text-white bg-dark " href="/viewstudents">
@@ -48,14 +48,14 @@
               <span data-feather="home"></span>
               <i class="fas fa-database" style="margin-right: 29px"></i> Database
             </a>            
-          </li>
+          </li>   --}}
 
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/emailblast">
               <span data-feather="home"></span>
               <i class="fas fa-mail-bulk" style="margin-right: 25px"></i> Email Blasting
             </a>            
-          </li>         --}}
+          </li>      
           @endif
           
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
