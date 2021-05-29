@@ -12,6 +12,7 @@
     <th>Status</th>
     <th>Payment Method</th>
     <th>Package</th>
+    <th>Purchased At</th>
 
 </tr>
 </thead>
@@ -33,6 +34,7 @@
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
         <td>{{ $packages->name }}</td>
+        <td>{{  date('d-m-Y h:i a', strtotime($payments->created_at))  }}</td>
     </tr>
 @endif
 @endif
