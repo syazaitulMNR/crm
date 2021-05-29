@@ -71,7 +71,7 @@ class BlastingController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Import')->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
 
         $send_mail = $student->email;
         $product_name = $product->name;        
