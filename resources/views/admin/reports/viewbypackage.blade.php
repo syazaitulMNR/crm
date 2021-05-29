@@ -215,6 +215,7 @@
                   <th>IC No.</th>
                   <th>Name</th>
                   <th>Status</th>
+                  <th>Participant Form</th>
                   <th><i class="fas fa-cogs"></i></th>
                     {{-- <th>#</th>
                     <th>Order ID</th>
@@ -239,6 +240,17 @@
                           <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
                         @elseif ($payments->status == 'due')
                           <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                        @else
+                          <p>NULL</p>
+                        @endif
+                      </td>
+                      <td>
+                        @if ($payments->update_count == 1)
+                          Updated
+                          {{-- <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span> --}}
+                        @elseif ($payments->update_count == Null)
+                          Not Yet
+                          {{-- <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span> --}}
                         @else
                           <p>NULL</p>
                         @endif
