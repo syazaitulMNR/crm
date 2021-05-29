@@ -121,6 +121,17 @@ class ReportsController extends Controller
                 'offer_id' => 'OFF001'
             ));
 
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => 'paid',
+                'ic'            => $request->ic,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id,
+                'payment_id'    => $payment_id
+            ]);
+
         }else{
 
             $stud_id = 'MI'.uniqid();
@@ -148,6 +159,17 @@ class ReportsController extends Controller
                 'package_id' => $package_id,
                 'offer_id' => 'OFF001'
             ));
+
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => 'paid',
+                'ic'            => $request->ic,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id,
+                'payment_id'    => $payment_id
+            ]);
         }
 
         return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
