@@ -160,6 +160,20 @@
 
             <!-- Search box ---------------------------------------------------------->
             <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
+            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+            @else
+              <div class="col-md-12">
+                <form action="{{ url('customer/search') }}" method="GET" class="needs-validation" novalidate>
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search Customer" name="search" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            @endif
             
             <br>
             
@@ -331,6 +345,26 @@
   </div>
 </div>
 
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>
 
 <!-- Enable function for search payment ------------------------------------->
 <script>

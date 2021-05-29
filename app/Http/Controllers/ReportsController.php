@@ -212,4 +212,21 @@ class ReportsController extends Controller
 
         return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
     }
+
+    public function search(Request $request)
+    {   
+        $count = 1;
+        $student = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
+
+        if(count($student) > 0)
+        {
+
+            return view('admin.reports.viewbypackage', compact('users','count'));
+
+        }else{
+
+            return redirect()->back()->with('error', 'Users not found!');
+
+        }
+    }
 }

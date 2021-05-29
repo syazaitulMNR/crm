@@ -143,6 +143,8 @@ Route::get('import-customer/{product_id}/{package_id}','ImportExcelController@in
 Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
 Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
 
+Route::get('customer/search', 'ReportsController@search');
+
 /*
 |--------------------------------------------------------------------------
 | Membership programme
