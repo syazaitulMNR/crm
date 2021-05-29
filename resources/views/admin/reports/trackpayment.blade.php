@@ -135,7 +135,7 @@
 
                     <div class="card bg-light">
 
-                        <div class="row py-3 px-4">
+                        <div class="row py-2 px-4">
                             <label class="col-sm-2"><b>Update Payment Status</b></label>
                             <div class="col-sm-4">
                                 <select class="form-select form-control-sm" name="status" aria-label="Default select example">
