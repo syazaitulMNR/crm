@@ -146,6 +146,10 @@
                         </div>
                     </div>
 
+                    <!-- Send email button -->
+                        <a class="btn btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}">
+                            <i class="far fa-envelope"></i>
+                        </a>
                 </form>
 
             </div>
