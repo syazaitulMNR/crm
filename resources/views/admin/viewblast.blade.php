@@ -68,6 +68,13 @@
 
     <br>
 
+    @if ($message = Session::get('sent-success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
+
     <div class="float-right pt-3">{{$payment->links()}}</div>
     @if(count($payment) > 0)
 
