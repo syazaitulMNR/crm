@@ -52,6 +52,17 @@ class BlastingController extends Controller
         // dd($student);
         return view('admin.viewblast', compact('student', 'product', 'package', 'payment', 'totalcust'));
     }
+
+    public function view_student($product_id, $package_id, $payment_id, $student_id)
+    {
+        $paginate = Payment::where('product_id', $product_id)->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+        
+        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
+    }
     
     public function send_mail($product_id, $package_id)
     {
@@ -62,23 +73,21 @@ class BlastingController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
-        // $send_mail = $student->email;
-        // $product_name = $product->name;        
-        // $date_from = $product->date_from;
-        // $date_to = $product->date_to;
-        // $time_from = $product->time_from;
-        // $time_to = $product->time_to;
-        // $packageId = $package_id;
-        // $payment_id = $payment->payment_id;
-        // $productId = $product_id;        
-        // $student_id = $student->stud_id;
+        $send_mail = $student->email;
+        $product_name = $product->name;        
+        $date_from = $product->date_from;
+        $date_to = $product->date_to;
+        $time_from = $product->time_from;
+        $time_to = $product->time_to;
+        $packageId = $package_id;
+        $payment_id = $payment->payment_id;
+        $productId = $product_id;        
+        $student_id = $student->stud_id;
 
-        dd($student->name);
+        $student->save();
+        $payment->save();
 
-        // $student->save();
-        // $payment->save();
-
-        // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
     }
     
     //testing

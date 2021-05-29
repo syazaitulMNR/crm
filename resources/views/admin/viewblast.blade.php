@@ -52,7 +52,8 @@
               @endif
             </td>
             <td>
-              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#emailModal"><i class="fas fa-paper-plane"></i></button>
+              <a class="btn btn-primary" href="{{ url('view-student') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}">Confirm</a>
+              {{-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#emailModal"><i class="fas fa-paper-plane"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
@@ -70,7 +71,7 @@
                       </div>
                       </div>
                   </div>
-              </div>
+              </div> --}}
             </td>
         </tr>
         @endif
