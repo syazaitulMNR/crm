@@ -247,7 +247,7 @@ class ReportsController extends Controller
         }
     }
 
-    public function purchased_mail ($product_id, $package_id, $payment_id, $student_id)
+    public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
     {
         /*-- Manage Email ---------------------------------------------------*/
 
@@ -272,7 +272,7 @@ class ReportsController extends Controller
         return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
 
-    public function updated_mail ($product_id, $package_id, $payment_id, $student_id)
+    public function updated_mail($product_id, $package_id, $payment_id, $student_id)
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
