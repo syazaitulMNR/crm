@@ -34,7 +34,7 @@
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
         <td>{{ $packages->name }}</td>
-        <td>{{  date('d-m-Y h:i a', strtotime($payments->created_at), 'Asia/Kuala_Lumpur')  }}</td>
+        <td>{{  date('d-m-Y h:i a', strtotime($payments->created_at), 'UTC')  }}</td>
     </tr>
 @endif
 @endif
