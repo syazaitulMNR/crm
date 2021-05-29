@@ -137,7 +137,7 @@
       </tbody>
     </table> --}}
     @else
-      <p>Purchased email has been sent to all imported customer</p>
+      <p>Purchased confirmation email has been sent to all imported customer</p>
     @endif
 
   </main>
