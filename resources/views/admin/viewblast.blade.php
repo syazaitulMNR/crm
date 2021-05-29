@@ -20,8 +20,8 @@
 
     {{--r {{$totalcust}} --}}
 
-    <div class="float-right pt-3">{{$student->links()}}</div>
-    @if(count($student) > 0)
+    <div class="float-right pt-3">{{$payment->links()}}</div>
+    @if(count($payment) > 0)
 
     <table class="table table-hover">
       <thead>
