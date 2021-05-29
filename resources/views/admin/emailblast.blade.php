@@ -11,19 +11,11 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
       <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="/dashboard">Dashboard</a> / Email Blasting
+        <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Email Blasting</b>
       </div>
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Email Blasting</h1>
-        @if(Auth::user()->role_id == '5f97695f34dad' )
-        @else
-        <!--<div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group mr-2">
-            <a href="addstudent" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> Add New Customer</a>
-          </div>
-        </div>-->
-        @endif
       </div>
 
         <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
