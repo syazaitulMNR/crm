@@ -20,7 +20,7 @@
 
     {{--r {{$totalcust}} --}}
 
-    Showing {{$payment->count()}} of {{$payment->total()}}<div class="float-right pt-3">{{$payment->links()}}</div>
+    <div class="float-right pt-3">Showing {{$payment->count()}} of {{$payment->total()}} {{$payment->links()}}</div>
     @if(count($payment) > 0)
 
     <table class="table table-hover">
