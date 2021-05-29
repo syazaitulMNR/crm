@@ -244,7 +244,7 @@
                           <p>NULL</p>
                         @endif
                       </td>
-                      <td>
+                      <td class="text-center">
                         @if ($payments->update_count == 1)
                           <i class="fas fa-check" style="color:green"></i>
                         @elseif ($payments->update_count == Null)
