@@ -52,7 +52,7 @@
                 {{-- <td class="text-center">{{$totalcust}}</td> --}}
                 <td>
                     <a class="btn btn-light" href="{{ url('view') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
-                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-paper-plane"></i></button>
+                    {{-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-paper-plane"></i></button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -70,7 +70,7 @@
                             </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </td>
             </tr>
             @endforeach
