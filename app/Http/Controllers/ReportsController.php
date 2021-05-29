@@ -215,13 +215,12 @@ class ReportsController extends Controller
 
     public function search(Request $request)
     {   
-        $count = 1;
         $student = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
 
         if(count($student) > 0)
         {
 
-            return view('admin.reports.viewbypackage', compact('student','count'));
+            return view('admin.reports.viewbypackage', compact('student'));
 
         }else{
 
