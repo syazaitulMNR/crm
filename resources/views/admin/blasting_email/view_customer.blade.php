@@ -38,17 +38,17 @@
 <div class="row py-4">
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">   
         
-        <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
+        {{-- <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
             <a href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> 
             / <a href="/trackprogram">Customer</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}">{{ $product->name }}</a> 
             / <a href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $package->package_id }}">{{ $package->name }}</a> / <b>{{ $student->first_name }}</b>
-        </div>
+        </div> --}}
                 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Customer Information</h1>
         </div> 
 
-        <div class="row">            
+        {{-- <div class="row">            
                     
             <div class="col-md-12">
 
@@ -65,13 +65,11 @@
                                 <label class="col-sm-2">IC No.</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" name="ic" value="{{ $student->ic }}">
-                                    {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->ic }}</p> --}}
                                 </div>
 
                                 <label class="col-sm-2">Phone No.</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" name="phoneno" value="{{ $student->phoneno }}">
-                                    {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->phoneno }}</p> --}}
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -79,13 +77,11 @@
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" name="first_name" value="{{ $student->first_name }}" placeholder="First Name">
                                     <input type="text" class="form-control" name="last_name" value="{{ $student->last_name }}" placeholder="Last Name">
-                                    {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->first_name }}&nbsp;{{ $student->last_name }}</p> --}}
                                 </div>
 
                                 <label class="col-sm-2">Email Address</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" name="email" value="{{ $student->email }}">
-                                    {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                 </div>
                             </div>
 
@@ -148,21 +144,12 @@
                                 <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
                             </div>
                         </div>
-                            {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div> --}}
-                        
-
-                        <!-- Send email button -->
-                        {{-- <a class="btn btn-dark" href="{{ url('sendmail') }}/{{ $student->stud_id }}/{{ $payment->payment_id }}">
-                            <i class="far fa-envelope"></i>
-                        </a> --}}
                     </div>
 
                 </form>
 
             </div>
-        </div>
+        </div> --}}
     </main>
 </div>
 
