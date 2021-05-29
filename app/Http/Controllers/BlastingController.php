@@ -30,6 +30,11 @@ class BlastingController extends Controller
         return view('admin.emailblast', compact('product'));
     }
 
+    public function package() 
+    {
+        
+    }
+
     public function show($product_id)
     {
         $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('offer_id', 'Import')->paginate(15);
@@ -51,7 +56,7 @@ class BlastingController extends Controller
     
     public function send_mail()
     {
-        
+
     }
     
     //testing
