@@ -30,9 +30,9 @@ class BlastingController extends Controller
         return view('admin.emailblast', compact('product'));
     }
 
-    public function package() 
+    public function package($product_id) 
     {
-        
+
     }
 
     public function show($product_id)
