@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jobs\BlastQueueEmail;
-use App\Jobs\PengesahanJob;
 use App\Student;
 use App\Product;
 use App\Package;
@@ -85,9 +84,8 @@ class BlastingController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        echo 'Send Email';
-        // $payment->offer_id = NULL;
-        // dd($payment);
+        echo 'sent email';
+        // $student->save();
         // $payment->save();
 
         // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
