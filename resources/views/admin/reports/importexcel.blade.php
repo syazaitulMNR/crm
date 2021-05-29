@@ -81,6 +81,7 @@
                             <th>Quantity</th>
                             <th>Total Payment</th>
                             <th>Pay Method</th>
+                            <th>Ticket Type</th>
                             <th>Offer ID</th>
                             <th>User ID</th>
                         </tr>
@@ -94,6 +95,7 @@
                             <td>1</td>
                             <td>199</td>
                             <td>FPX</td>
+                            <td>free</td>
                             <td>OFF001</td>
                             <td>UID001</td>
                         </tr>
