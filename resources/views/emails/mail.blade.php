@@ -35,7 +35,7 @@
                               <td>                                
                                 <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Anda <b style="color: red">WAJIB</b>  klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois:</p>
+                                <p>1. Anda <b style="color: red">WAJIB</b> klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois:</p>
                               </td>
                             </tr>
                             <tr>
