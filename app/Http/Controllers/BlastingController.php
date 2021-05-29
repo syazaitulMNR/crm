@@ -86,9 +86,10 @@ class BlastingController extends Controller
         $student_id = $student->stud_id;
 
         $payment->offer_id = NULL;
-        $payment->save();
+        dd($payment->offer_id);
+        // $payment->save();
 
-        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
     }
     
     //testing
