@@ -61,7 +61,7 @@ class BlastingController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
         
-        return view('admin.blasting_email.view_customer', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
+        return view('admin.blasting_email.view_customer', compact('paginate', 'product', 'package', 'payment', 'student'));
     }
     
     public function send_mail($product_id, $package_id)
