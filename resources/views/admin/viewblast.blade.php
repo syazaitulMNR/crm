@@ -52,7 +52,25 @@
               @endif
             </td>
             <td>
-              x
+              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#emailModal"><i class="fas fa-paper-plane"></i></button>
+              <!-- Modal -->
+              <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Blast Confirmation</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          Are you sure you want to blast the email to this participant in this event ?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <a class="btn btn-primary" href="">Confirm</a>
+                      </div>
+                      </div>
+                  </div>
+              </div>
             </td>
         </tr>
         @endif
