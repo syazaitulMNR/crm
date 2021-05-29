@@ -29,9 +29,7 @@
         </div>
         @endif
 
-        <div class="float-right pt-3">{{$payment->links()}}</div>
         @if(count($payment) > 0)
-
         <table class="table table-hover">
           <thead>
             <tr>
@@ -93,6 +91,7 @@
         @else
           <p>Purchased confirmation email has been sent to all imported customer</p>
         @endif
+        <div class="float-right pt-3">{{$payment->links()}}</div>
 
       </div>
 
