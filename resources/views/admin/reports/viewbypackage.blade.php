@@ -246,11 +246,9 @@
                       </td>
                       <td>
                         @if ($payments->update_count == 1)
-                          Updated
-                          {{-- <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span> --}}
+                          <i class="fas fa-check" style="color:green"></i>
                         @elseif ($payments->update_count == Null)
-                          Not Yet
-                          {{-- <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span> --}}
+                          <i class="fas fa-times" style="color:red"></i>
                         @else
                           <p>NULL</p>
                         @endif
