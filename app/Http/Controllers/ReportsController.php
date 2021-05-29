@@ -221,7 +221,7 @@ class ReportsController extends Controller
         if(count($student) > 0)
         {
 
-            return view('admin.reports.viewbypackage', compact('users','count'));
+            return view('admin.reports.viewbypackage', compact('student','count'));
 
         }else{
 
