@@ -26,9 +26,12 @@
     <table class="table table-hover">
       <thead>
         <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Student Name</th>
-      </tr>
+          <th>#</th>
+          <th>IC No.</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th><i class="fas fa-cogs"></i></th>
+        </tr>
       </thead>
       <tbody>
         @foreach ($payment as $key => $payments)
