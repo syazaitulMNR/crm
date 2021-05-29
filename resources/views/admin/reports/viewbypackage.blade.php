@@ -215,7 +215,7 @@
                   <th>IC No.</th>
                   <th>Name</th>
                   <th>Status</th>
-                  <th>Update Participant</th>
+                  <th class="text-center">Update Participant</th>
                   <th><i class="fas fa-cogs"></i></th>
                     {{-- <th>#</th>
                     <th>Order ID</th>
