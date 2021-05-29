@@ -50,7 +50,7 @@ class BlastingController extends Controller
         $totalcust = Student::orderBy('id','desc')->count();
         
         // dd($student);
-        return view('admin.viewblast', compact('student', 'product', 'package', 'payment', 'totalcust'));
+        return view('admin.blasting_email.view_customer', compact('student', 'product', 'package', 'payment', 'totalcust'));
     }
 
     public function view_student($product_id, $package_id, $payment_id, $student_id)
@@ -60,7 +60,7 @@ class BlastingController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
-        
+
         return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
     }
     
