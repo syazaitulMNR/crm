@@ -57,7 +57,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
                 Ticket::create([
                     'ticket_id'     => $ticket_id,
-                    'ticket_type'   => 'paid',
+                    'ticket_type'   => $row['ticket_type'],
                     'ic'            => $row['ic'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
@@ -98,7 +98,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
                 Ticket::create([
                     'ticket_id'     => $ticket_id,
-                    'ticket_type'   => 'paid',
+                    'ticket_type'   => $row['ticket_type'],
                     'ic'            => $row['ic'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
