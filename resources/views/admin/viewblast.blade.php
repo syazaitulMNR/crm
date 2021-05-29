@@ -12,7 +12,7 @@
     
     <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
       <a href="{{ url('view')}}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/emailblast">Email Blasting</a> 
-      / <a href="{{ url('view')}}/{{ $product->product_id }}"> {{ $product->name }} </a> <b>{{ $package->name }}</b>
+      / <a href="{{ url('view')}}/{{ $product->product_id }}"> {{ $product->name }} </a> / <b>{{ $package->name }}</b>
     </div>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
