@@ -21,25 +21,28 @@ class BlastingController extends Controller
     
     public function emailblast()
     {
-        // $student = Student::orderBy('id','desc')->get();
-        $product = Product::orderBy('id','desc')->paginate(15);
-        // $package = Package::orderBy('id','asc')->get(); 
+        $student = Student::orderBy('id','desc')->get();
+        $product = Product::orderBy('id','asc')->paginate(15);
+        $package = Package::orderBy('id','asc')->get(); 
 
         // $totalcust = Student::count();
         
-        return view('admin.emailblast', compact('product'));
+        return view('admin.emailblast', compact('student','product','package'));
     }
 
     public function package($product_id) 
     {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->paginate(15);
 
+        return view('admin.blasting_email.package', compact('product', 'package'));
     }
 
-    public function show($product_id)
+    public function show($product_id, $package_id)
     {
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('offer_id', 'Import')->paginate(15);
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Import')->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
         // $product = Product::where('product_id', $product_id)->get();
@@ -51,13 +54,13 @@ class BlastingController extends Controller
         $totalcust = Student::orderBy('id','desc')->count();
         
         // dd($student);
-        return view('admin.viewblast', compact('student', 'product', 'payment', 'totalcust'));
+        return view('admin.viewblast', compact('student', 'product', 'package', 'payment', 'totalcust'));
     }
     
-    public function send_mail()
-    {
+    // public function send_mail()
+    // {
 
-    }
+    // }
     
     //testing
     public function sendBulkMail()
