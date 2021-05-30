@@ -275,29 +275,7 @@
                 <h6 class="lead pb-2 pl-3">Total {{ $membership_level->name }}</h6>
               </div>
             </div>
-
-            <div class="card bg-light py-4 mb-4 text-center shadow">
-              <div class="card-block text-dark">
-                <div class="rotate">
-                  <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
-                </div>
-                {{-- <h3 class="pt-3 pl-3">{{$totalsuccess}}</h3> --}}
-                <h6 class="lead pb-2 pl-3">Paid</h6>
-              </div>
-            </div>
-
-            <div class="card bg-light py-4 mb-4 text-center shadow">
-              <div class="card-block text-dark">
-                <div class="rotate">
-                  <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
-                </div>
-                {{-- <h3 class="pt-3 pl-3">{{$totalcancel}}</h3> --}}
-                <h6 class="lead pb-2 pl-3">Due</h6>
-              </div>
-            </div>
-          
-          </div>
-          
+                    
         </div>
         
     </main>

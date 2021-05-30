@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Event
+    Membership
 @endsection
 
 @include('layouts.navbar')
