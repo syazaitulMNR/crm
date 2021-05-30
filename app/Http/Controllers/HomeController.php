@@ -51,8 +51,8 @@ class HomeController extends Controller
         $product = Product::where('product_id', $product_id)->first();
 
         // // return view('customer/main', compact('product', 'package')); bukan yg ni taw!!!
-        return view('customer_new/check_ic', compact('product', 'package'));
-        // abort(404);
+        // return view('customer_new/check_ic', compact('product', 'package'));
+        abort(404);
     }
 
     public function detailsic($product_id, $package_id, Request $request)
