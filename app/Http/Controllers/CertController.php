@@ -21,9 +21,11 @@ class CertController extends Controller
     public function checking_ic($product_id, Request $request)
     {
         $student = Student::where('ic', $request->ic)->first();
+        $ultimate = Student::where('membership_id', 'MB001');
+        $platinum = Student::where('membership_id', 'MB002');
         // $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
-        if(Student::where('ic', $request->ic)->exists() || Student::where('membership_id', 'MB001') || Student::where('membership_id', 'MB002')){
+        if(Student::where('ic', $request->ic)->exists()){
 
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
             $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
@@ -41,6 +43,14 @@ class CertController extends Controller
 
             }
 
+        }else if($ultimate)){
+
+            return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
+            
+        }else if($platinum)){
+
+            return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
+            
         }else{
 
             return view('certificate.not_found');
