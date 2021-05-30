@@ -17,9 +17,9 @@
             / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}">{{ $membership_level->name }}</a> / <b>Import Members</b>
         </div>
 
-        {{-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Import Customer</h1>
-        </div> --}}
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Import {{ $membership_level->name }}</h1>
+        </div>
 
         @if ($message = Session::get('failed'))
         <div class="alert alert-danger alert-block">
@@ -30,8 +30,6 @@
 
         <form action="{{ url('store-import') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" class="row" method="POST" enctype="multipart/form-data">
             @csrf
-
-            <h5>Import {{ $membership_level->name }}</h5>
 
             <div class="input-group p-3">
                 <input type="file" name="file" class="form-control" required>
