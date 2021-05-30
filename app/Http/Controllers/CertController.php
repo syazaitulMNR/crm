@@ -32,17 +32,17 @@ class CertController extends Controller
             $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
             
             // Check if ic exist
-            if($check_payment->isEmpty()){
+            if($ultimate->membership_id == 'MB001'){
                 
-                return view('certificate.not_found');
-
-            }else if($ultimate->membership_id == 'MB001'){
-
-                return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
+                return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
 
             }else if($platinum->membership_id == 'MB002'){
 
-                return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
+                return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
+
+            }else if($check_payment->isEmpty()){
+
+                return view('certificate.not_found');
 
             }else{
 
