@@ -84,4 +84,15 @@ class MembershipController extends Controller
 
         return view('admin.membership.import', compact('membership', 'membership_level'));
     }
+
+    public function store_import($membership_id, $level_id)
+    {
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+
+        $mb_id = $membership->membership_id;
+        $mbl_id = $membership_level->level_id;
+
+        Excel::import(new MembershipImport($mb_id, $mbl_id), request()->file('file'));
+    }
 }
