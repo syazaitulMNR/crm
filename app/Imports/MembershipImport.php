@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
+class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
     private $membership_id, $level_id;
 
