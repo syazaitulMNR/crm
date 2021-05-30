@@ -93,6 +93,9 @@ class MembershipController extends Controller
         // $membership_id = $membership->membership_id;
         // $level_id = $membership_level->level_id;
 
-        Excel::import(new MembershipImport($membership_id, $level_id), request()->file('file'));
+        Excel::import(new MembershipImport($membership_id, $level_id), request()->file('file'));    
+        
+        return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
+
     }
 }
