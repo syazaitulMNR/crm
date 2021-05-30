@@ -43,11 +43,11 @@ class CertController extends Controller
 
             }
 
-        }else if($ultimate)){
+        }else if($ultimate){
 
             return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
             
-        }else if($platinum)){
+        }else if($platinum){
 
             return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
             
