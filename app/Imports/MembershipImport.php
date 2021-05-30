@@ -28,9 +28,9 @@ class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             if(Student::where('ic', $row['ic'])->exists()){
 
-                // $student->membership_id = $this->membership_id;
-                // $student->level_id      = $this->level_id;
-                // $student->save();
+                $student->membership_id = $this->membership_id;
+                $student->level_id      = $this->level_id;
+                $student->save();
 
             }else{
 
