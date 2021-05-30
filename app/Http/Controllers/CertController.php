@@ -25,38 +25,38 @@ class CertController extends Controller
         $platinum = Student::where('ic', $request->ic)->first();
         // $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
-        dd($ultimate);
-        // if(Student::where('ic', $request->ic)->exists()){
+        // dd($ultimate);
+        if(Student::where('ic', $request->ic)->exists()){
 
-        //     $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
-        //     $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
+            $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
+            $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
             
-        //     // Check if ic exist
-        //     if($check_payment->isEmpty()){
+            // Check if ic exist
+            if($check_payment->isEmpty()){
                 
-        //         return view('certificate.not_found');
+                return view('certificate.not_found');
 
-        //     }else if($ultimate){
+            }else if($ultimate->membership_id == 'MB001'){
 
-        //         return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
+                return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
 
-        //     }else if($platinum){
+            }else if($platinum->membership_id == 'MB002'){
 
-        //         return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
+                return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
 
-        //     }else{
+            }else{
 
-        //         if ($student->stud_id == $payment->stud_id){
-        //             return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
-        //         }
+                if ($student->stud_id == $payment->stud_id){
+                    return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
+                }
 
-        //     }
+            }
             
-        // }else{
+        }else{
 
-        //     return view('certificate.not_found');
+            return view('certificate.not_found');
 
-        // }
+        }
     }
 
     public function checking_cert($product_id, $stud_id)
