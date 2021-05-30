@@ -12,6 +12,8 @@
     <th>Status</th>
     <th>Payment Method</th>
     <th>Package</th>
+    <th>Offer ID</th>
+    <th>Update Participant</th>
     <th>Purchased At</th>
 
 </tr>
@@ -34,6 +36,16 @@
         <td>{{ $payments->status }}</td>
         <td>{{ $payments->pay_method }}</td>
         <td>{{ $packages->name }}</td>
+        <td>{{ $payments->offer_id }}</td>
+        <td>
+            @if ($payments->update_count == 1)
+                <p>Updated</p>
+            @elseif ($payments->update_count == Null)
+                <p>Pending</p>
+            @else
+                <p>NULL</p>
+            @endif
+        </td>
         <td>{{  date('d-m-Y h:i a', strtotime($payments->created_at))  }}</td>
     </tr>
 @endif
