@@ -20,7 +20,9 @@ class CreateStudentTable extends Migration
             $table->string('last_name');
             $table->string('ic');            
             $table->string('email');
-            $table->string('phoneno');
+            $table->string('phoneno');       
+            $table->string('membership_id');
+            $table->string('level_id');
             $table->timestamps();
         });
     }
