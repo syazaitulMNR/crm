@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         // // return view('customer/main', compact('product', 'package')); bukan yg ni taw!!!
         // return view('customer_new/check_ic', compact('product', 'package'));
-        abort(404);
+        abort(404); 
     }
 
     public function detailsic($product_id, $package_id, Request $request)
