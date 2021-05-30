@@ -23,7 +23,7 @@ class CertController extends Controller
         $student = Student::where('ic', $request->ic)->first();
         // $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
-        if(Student::where('ic', $request->ic)->exists()){
+        if(Student::where('ic', $request->ic)->exists() || Student::where('membership_id', 'MB001') || Student::where('membership_id', 'MB002')){
 
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
             $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
