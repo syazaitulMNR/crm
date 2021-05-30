@@ -90,9 +90,9 @@ class MembershipController extends Controller
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
-        $mb_id = $membership->membership_id;
-        $mbl_id = $membership_level->level_id;
+        // $membership_id = $membership->membership_id;
+        // $level_id = $membership_level->level_id;
 
-        Excel::import(new MembershipImport($mb_id, $mbl_id), request()->file('file'));
+        Excel::import(new MembershipImport($membership_id, $level_id), request()->file('file'));
     }
 }
