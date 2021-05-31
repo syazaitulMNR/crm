@@ -98,10 +98,6 @@
         </div>
       </div>
         
-      <br>
-
-      <hr class="mb-2">
-
       <!-- Show data in bar chart --------------------------------------------------->
       <div id="chartdata" ></div>
 
