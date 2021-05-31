@@ -98,6 +98,8 @@
         </div>
       </div>
         
+      <br>
+
       <!-- Show data in bar chart --------------------------------------------------->
       <div id="chartdata" ></div>
 
