@@ -262,7 +262,7 @@
             @endif
 
             <!-- Show success payment in table ----------------------------------------------->
-            <div class="float-right">{{$payment->links()}}</div>   
+            {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
             @if(isset($details))
               <table class="table table-hover" id="successTable">
                   <thead>
