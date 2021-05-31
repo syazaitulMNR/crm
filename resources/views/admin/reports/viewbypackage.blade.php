@@ -270,8 +270,9 @@
                     <th>#</th>
                     <th>IC No.</th>
                     <th>Name</th>
-                    <th>Status</th>
-                    <th class="text-center">Update Participant</th>
+                    <th>Email</th>
+                    {{-- <th>Status</th>
+                    <th class="text-center">Update Participant</th> --}}
                     <th><i class="fas fa-cogs"></i></th>
                       {{-- <th>#</th>
                       <th>Order ID</th>
@@ -291,6 +292,7 @@
                         <td>{{ $count++ }}</td>
                         <td>{{ $students->ic }}</td>
                         <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                        <td>{{ $students->email }}</td>
                         <td>
                           @if ($payments->status == 'paid')
                             <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
@@ -300,7 +302,7 @@
                             <p>NULL</p>
                           @endif
                         </td>
-                        <td class="text-center">
+                        {{-- <td class="text-center">
                           @if ($payments->update_count == 1)
                             <i class="fas fa-check" style="color:green"></i>
                           @elseif ($payments->update_count == Null)
@@ -334,7 +336,7 @@
                               </div>
                             </div>
                           @endif
-                        </td>
+                        </td> --}}
                     </tr>
                     @endif
                     @endif
