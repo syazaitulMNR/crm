@@ -243,11 +243,11 @@ class ReportsController extends Controller
 
         $student_id = Student::where('ic', $request->search)->first();
 
-        dd($student_id);
-        // $stud_id = $student_id->stud_id;
+        $stud_id = $student_id->stud_id;
 
         // $pay_data = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
 
+        dd($stud_id);
         // // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
         // // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
 
