@@ -263,7 +263,6 @@
             <!-- Show success payment in table ----------------------------------------------->
             <div class="float-right">{{$payment->links()}}</div>   
             @if(isset($pay_data))
-              @if(count($payment) > 0)
               <table class="table table-hover" id="successTable">
                   <thead>
                   <tr class="header">
@@ -345,7 +344,6 @@
               </table>  
               @else
               <p>There are no any payment yet.</p>
-              @endif
             @endif
 
             @if(count($payment) > 0)
