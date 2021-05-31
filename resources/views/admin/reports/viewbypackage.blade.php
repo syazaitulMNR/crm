@@ -263,7 +263,7 @@
 
             <!-- Show success payment in table ----------------------------------------------->
             <div class="float-right">{{$payment->links()}}</div>   
-            @if(isset($pay_data))
+            @if(isset($payment))
               <table class="table table-hover" id="successTable">
                   <thead>
                   <tr class="header">
