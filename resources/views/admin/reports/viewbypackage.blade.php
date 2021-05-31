@@ -206,21 +206,22 @@
             <br>
 
             <!-- Search box ---------------------------------------------------------->
-            <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
+            
+            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+              <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
 
-              @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-              @else
-                <div class="col-md-12">
-                  <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
-                      @csrf
-                      <div class="input-group mb-3">
-                          <input type="text" class="form-control" placeholder="Search Customer" name="search" required>
-                          <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="submit">Search</button>
-                          </div>
-                      </div>
-                  </form>
-                </div>
+            @else
+              <div class="col-md-12">
+                <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search Customer" name="search" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+              </div>
               @endif
             <!-- End Search box ---------------------------------------------------------->
             <br>
