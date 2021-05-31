@@ -288,7 +288,7 @@
                     @if ($payments->stud_id == $students->stud_id)
                     @if ($product->product_id == $payments->product_id)  
                     <tr>
-                        {{-- <td>{{ $payment->firstItem() + $key }}</td> --}}
+                        <td>{{ $count++ }}</td>
                         <td>{{ $students->ic }}</td>
                         <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                         <td>
@@ -369,7 +369,7 @@
                   @if ($payments->stud_id == $students->stud_id)
                   @if ($product->product_id == $payments->product_id)  
                   <tr>
-                      {{-- <td>{{ $payment->firstItem() + $key }}</td> --}}
+                      <td>{{ $count++ }}</td>
                       <td>{{ $students->ic }}</td>
                       <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                       <td>
