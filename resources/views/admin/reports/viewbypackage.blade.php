@@ -362,7 +362,7 @@
                   <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
                 </div>
                 <h3 class="pt-3 pl-3">{{$freeticket}}</h3>
-                <h6 class="lead pb-2 pl-3">Due Ticket</h6>
+                <h6 class="lead pb-2 pl-3">Free Ticket</h6>
               </div>
             </div>
           
