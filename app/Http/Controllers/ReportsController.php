@@ -258,7 +258,7 @@ class ReportsController extends Controller
 
         }else{
 
-            return redirect()->back()->with('search-error', 'Users not found!');
+            return redirect()->back()->with('search-error', 'Customer not found!');
 
         }
     }
