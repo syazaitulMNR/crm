@@ -48,7 +48,6 @@
       </div>
       @endif
 
-      <hr class="my-3">
       <br>
 
       <!-- Show data in cards --------------------------------------------------->
@@ -100,6 +99,8 @@
       </div>
         
       <br>
+
+      <hr class="my-3">
 
       <!-- Show data in bar chart --------------------------------------------------->
       <div id="chartdata" ></div>
