@@ -155,59 +155,55 @@
 
         {{-- <div class="row">
           <div class="col-md-9 ">  --}}
-            <div class="row">
-
-              <div class="card bg-light py-2 mb-2 text-center shadow">
-                <div class="card-block text-dark">
-                  <div class="rotate">
-                  <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 229, 255, 0.3)"></i>
+            <!-- Show data in cards --------------------------------------------------->
+            <div class="row mb-3">
+              <div class="col-xl-3 col-lg-6">
+                <div class="card bg-light card-inverse shadow">
+                  <div class="card-block">
+                    <div class="rotate">
+                      <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
+                    </div>
+                    <h6 class="lead pt-3 pl-3">Paid</h6>
+                    <h3 class="pb-1 pl-3">{{$totalsuccess}}</h3>
                   </div>
-                  <h3 class="pt-3 pl-3">{{$total}}</h3>
-                  <h6 class="lead pb-2 pl-3">Total Purchased</h6>
                 </div>
               </div>
-  
-              <div class="card bg-light py-2 mb-2 text-center shadow">
-                <div class="card-block text-dark">
-                  <div class="rotate">
-                    <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
+              <div class="col-xl-3 col-lg-6">
+                <div class="card bg-light card-inverse shadow">
+                  <div class="card-block">
+                    <div class="rotate">
+                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
+                    </div>
+                    <h6 class="lead pt-3 pl-3">Due</h6>
+                    <h3 class="pb-1 pl-3">{{$totalcancel}}</h3>
                   </div>
-                  <h3 class="pt-3 pl-3">{{$totalsuccess}}</h3>
-                  <h6 class="lead pb-2 pl-3">Success Payment</h6>
                 </div>
               </div>
-  
-              <div class="card bg-light py-2 mb-2 text-center shadow">
-                <div class="card-block text-dark">
-                  <div class="rotate">
-                    <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
+              <div class="col-xl-3 col-lg-6">
+                <div class="card bg-light card-inverse shadow">
+                  <div class="card-block">
+                    <div class="rotate">
+                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
+                    </div>
+                    <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
+                    <h3 class="pb-1 pl-3">{{$paidticket}}</h3>
                   </div>
-                  <h3 class="pt-3 pl-3">{{$totalcancel}}</h3>
-                  <h6 class="lead pb-2 pl-3">Due Payment</h6>
                 </div>
               </div>
-  
-              <div class="card bg-light py-2 mb-2 text-center shadow">
-                <div class="card-block text-dark">
-                  <div class="rotate">
-                    <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
+              <div class="col-xl-3 col-lg-6">
+                <div class="card bg-light card-inverse shadow">
+                  <div class="card-block">
+                    <div class="rotate">
+                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
+                    </div>
+                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
+                    <h3 class="pb-1 pl-3">{{$freeticket}}</h3>
                   </div>
-                  <h3 class="pt-3 pl-3">{{$paidticket}}</h3>
-                  <h6 class="lead pb-2 pl-3">Paid Ticket</h6>
                 </div>
               </div>
-  
-              <div class="card bg-light py-2 mb-2 text-center shadow">
-                <div class="card-block text-dark">
-                  <div class="rotate">
-                    <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
-                  </div>
-                  <h3 class="pt-3 pl-3">{{$freeticket}}</h3>
-                  <h6 class="lead pb-2 pl-3">Free Ticket</h6>
-                </div>
-              </div>
-            
             </div>
+
+            <br>
 
             <!-- Search box ---------------------------------------------------------->
             <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
