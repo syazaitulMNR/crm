@@ -242,22 +242,24 @@ class ReportsController extends Controller
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $student_id = Student::where('ic', $request->search)->first();
-        $stud_id = $student_id->stud_id;
 
-        $pay_data = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
+        dd($student_id);
+        // $stud_id = $student_id->stud_id;
 
-        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+        // $pay_data = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
 
-        if(count($pay_data) > 0)
-        {
-            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+        // // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
+        // // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
 
-        }else{
+        // if(count($pay_data) > 0)
+        // {
+        //     return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
-            return redirect()->back()->with('search-error', 'Users not found!');
+        // }else{
 
-        }
+        //     return redirect()->back()->with('search-error', 'Users not found!');
+
+        // }
     }
 
     public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
