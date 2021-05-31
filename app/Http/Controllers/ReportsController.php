@@ -78,11 +78,13 @@ class ReportsController extends Controller
 
     public function viewbypackage($product_id, $package_id)
     {
+        //Get the details
         $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
+        //Count the data
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
@@ -225,24 +227,31 @@ class ReportsController extends Controller
     }
 
     // search method
-    public function search(Request $request)
+    public function search($product_id, $package_id, Request $request)
     {   
         $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
+        //Count the data
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
-        // $student = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        $payment = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+        $student_id = Student::where('ic', $request->search)->first();
+        $stud_id = $student_id->stud_id;
 
-        if(count($student) > 0)
+        $pay_data = Payment::where('student_id','LIKE','%'. $stud_id.'%')->get();
+
+        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
+        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+
+        if(count($pay_data) > 0)
         {
-
-            return view('admin.reports.viewbypackage', compact('payment'));
+            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
         }else{
 

@@ -211,7 +211,7 @@
               @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
               @else
                 <div class="col-md-12">
-                  <form action="{{ url('customer/search') }}" method="GET" class="needs-validation" novalidate>
+                  <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
                       @csrf
                       <div class="input-group mb-3">
                           <input type="text" class="form-control" placeholder="Search Customer" name="search" required>
@@ -255,112 +255,175 @@
 
             <!-- Show success payment in table ----------------------------------------------->
             <div class="float-right">{{$payment->links()}}</div>   
-            @if(count($payment) > 0)
-            <table class="table table-hover" id="successTable">
-                <thead>
-                <tr class="header">
-                  <th>#</th>
-                  <th>IC No.</th>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th class="text-center">Update Participant</th>
-                  <th><i class="fas fa-cogs"></i></th>
-                    {{-- <th>#</th>
-                    <th>Order ID</th>
-                    <th>Customer ID</th>
-                    <th>Payment (RM)</th>
+            @if(isset($pay_data))
+              @if(count($payment) > 0)
+              <table class="table table-hover" id="successTable">
+                  <thead>
+                  <tr class="header">
+                    <th>#</th>
+                    <th>IC No.</th>
+                    <th>Name</th>
                     <th>Status</th>
-                    <th>Purchase Date</th>
-                    <th><i class="fas fa-cogs"></i></th> --}}
-                </tr>
-                </thead>
-                <tbody> 
-                  @foreach ($payment as $key => $payments)
-                  @foreach ($student as $students)   
-                  @if ($payments->stud_id == $students->stud_id)
-                  @if ($product->product_id == $payments->product_id)  
-                  <tr>
-                      <td>{{ $payment->firstItem() + $key }}</td>
-                      <td>{{ $students->ic }}</td>
-                      <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                      <td>
-                        @if ($payments->status == 'paid')
-                          <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                        @elseif ($payments->status == 'due')
-                          <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                        @else
-                          <p>NULL</p>
-                        @endif
-                      </td>
-                      <td class="text-center">
-                        @if ($payments->update_count == 1)
-                          <i class="fas fa-check" style="color:green"></i>
-                        @elseif ($payments->update_count == Null)
-                          <i class="fas fa-times" style="color:red"></i>
-                        @else
-                          <p>NULL</p>
-                        @endif
-                      </td>
-                      <td>
-                        <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                    <th class="text-center">Update Participant</th>
+                    <th><i class="fas fa-cogs"></i></th>
+                      {{-- <th>#</th>
+                      <th>Order ID</th>
+                      <th>Customer ID</th>
+                      <th>Payment (RM)</th>
+                      <th>Status</th>
+                      <th>Purchase Date</th>
+                      <th><i class="fas fa-cogs"></i></th> --}}
+                  </tr>
+                  </thead>
+                  <tbody> 
+                    @foreach ($payment as $key => $payments)
+                    @foreach ($student as $students)   
+                    @if ($payments->stud_id == $students->stud_id)
+                    @if ($product->product_id == $payments->product_id)  
+                    <tr>
+                        <td>{{ $payment->firstItem() + $key }}</td>
+                        <td>{{ $students->ic }}</td>
+                        <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                        <td>
+                          @if ($payments->status == 'paid')
+                            <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                          @elseif ($payments->status == 'due')
+                            <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                          @else
+                            <p>NULL</p>
+                          @endif
+                        </td>
+                        <td class="text-center">
+                          @if ($payments->update_count == 1)
+                            <i class="fas fa-check" style="color:green"></i>
+                          @elseif ($payments->update_count == Null)
+                            <i class="fas fa-times" style="color:red"></i>
+                          @else
+                            <p>NULL</p>
+                          @endif
+                        </td>
+                        <td>
+                          <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
-                        @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                        @else
-                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
-                          <!-- Modal -->
-                          <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  Are you sure you want to delete this payment ?
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                          @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                          @else
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure you want to delete this payment ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        @endif
-                      </td>
-                  </tr>
-                  @endif
-                  @endif
-                  @endforeach
-                  @endforeach
-                {{-- @foreach ($payment as $key => $payments)    
-                @if ($product->product_id == $payments->product_id)  
-                <tr>
-                    <td>{{ $payment->firstItem() + $key }}</td>
-                    <td>{{ $payments->payment_id }}</td>
-                    <td>{{ $payments->stud_id }}</td>
-                    <td>RM {{ $payments->totalprice }}</td>
-                    <td>
-                      @if ($payments->status == 'paid')
-                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                      @elseif ($payments->status == 'due')
-                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                      @else
-                        <p>NULL</p>
-                      @endif
-                    </td>
-                    <td>{{ date('d/m/Y', strtotime($payments->created_at)) }}</td>
-                    <td>
-                      <a class="btn btn-primary" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-edit"></i></a>
-                    </td>
-                </tr>
-                @endif
-                @endforeach --}}
-                </tbody>
-            </table>  
-            @else
-            <p>There are no any payment yet.</p>
+                          @endif
+                        </td>
+                    </tr>
+                    @endif
+                    @endif
+                    @endforeach
+                    @endforeach
+                  
+                  </tbody>
+              </table>  
+              @else
+              <p>There are no any payment yet.</p>
+              @endif
             @endif
-            
+
+            @if(count($payment) > 0)
+              <table class="table table-hover" id="successTable">
+                  <thead>
+                  <tr class="header">
+                    <th>#</th>
+                    <th>IC No.</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th class="text-center">Update Participant</th>
+                    <th><i class="fas fa-cogs"></i></th>
+                      {{-- <th>#</th>
+                      <th>Order ID</th>
+                      <th>Customer ID</th>
+                      <th>Payment (RM)</th>
+                      <th>Status</th>
+                      <th>Purchase Date</th>
+                      <th><i class="fas fa-cogs"></i></th> --}}
+                  </tr>
+                  </thead>
+                  <tbody> 
+                    @foreach ($payment as $key => $payments)
+                    @foreach ($student as $students)   
+                    @if ($payments->stud_id == $students->stud_id)
+                    @if ($product->product_id == $payments->product_id)  
+                    <tr>
+                        <td>{{ $payment->firstItem() + $key }}</td>
+                        <td>{{ $students->ic }}</td>
+                        <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                        <td>
+                          @if ($payments->status == 'paid')
+                            <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                          @elseif ($payments->status == 'due')
+                            <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                          @else
+                            <p>NULL</p>
+                          @endif
+                        </td>
+                        <td class="text-center">
+                          @if ($payments->update_count == 1)
+                            <i class="fas fa-check" style="color:green"></i>
+                          @elseif ($payments->update_count == Null)
+                            <i class="fas fa-times" style="color:red"></i>
+                          @else
+                            <p>NULL</p>
+                          @endif
+                        </td>
+                        <td>
+                          <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+
+                          @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                          @else
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure you want to delete this payment ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          @endif
+                        </td>
+                    </tr>
+                    @endif
+                    @endif
+                    @endforeach
+                    @endforeach
+                  
+                  </tbody>
+              </table>  
+              @else
+              <p>There are no any payment yet.</p>
+              @endif
           {{-- </div> --}}
                     
         {{-- </div> --}}
