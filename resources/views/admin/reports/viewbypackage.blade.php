@@ -326,7 +326,7 @@
               </div>
             </div>
 
-            <div class="card bg-light py-4 mb-4 text-center shadow">
+            <div class="card bg-light py-2 mb-2 text-center shadow">
               <div class="card-block text-dark">
                 <div class="rotate">
                   <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
@@ -336,7 +336,7 @@
               </div>
             </div>
 
-            <div class="card bg-light py-4 mb-4 text-center shadow">
+            <div class="card bg-light py-2 mb-2 text-center shadow">
               <div class="card-block text-dark">
                 <div class="rotate">
                   <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
@@ -346,7 +346,7 @@
               </div>
             </div>
 
-            <div class="card bg-light py-4 mb-4 text-center shadow">
+            <div class="card bg-light py-2 mb-2 text-center shadow">
               <div class="card-block text-dark">
                 <div class="rotate">
                   <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
@@ -356,7 +356,7 @@
               </div>
             </div>
 
-            <div class="card bg-light py-4 mb-4 text-center shadow">
+            <div class="card bg-light py-2 mb-2 text-center shadow">
               <div class="card-block text-dark">
                 <div class="rotate">
                   <i class="fa fas fa-dollar-sign fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
