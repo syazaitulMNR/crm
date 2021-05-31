@@ -86,8 +86,10 @@ class ReportsController extends Controller
         $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel'));
+        return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
     public function destroy($payment_id, $product_id, $package_id) 
