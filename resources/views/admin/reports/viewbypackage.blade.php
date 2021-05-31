@@ -153,8 +153,8 @@
             
         </div>
 
-        <div class="row">
-          <div class="col-md-9 "> 
+        {{-- <div class="row">
+          <div class="col-md-9 ">  --}}
 
             <!-- Search box ---------------------------------------------------------->
             <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
@@ -312,9 +312,9 @@
             <p>There are no any payment yet.</p>
             @endif
             
-          </div>
+          {{-- </div> --}}
           
-          <div class="col-md-3">
+          {{-- <div class="col-md-3"> --}}
 
             <div class="card bg-light py-2 mb-2 text-center shadow">
               <div class="card-block text-dark">
@@ -366,9 +366,9 @@
               </div>
             </div>
           
-          </div>
+          {{-- </div> --}}
           
-        </div>
+        {{-- </div> --}}
         
     </main>
   </div>
