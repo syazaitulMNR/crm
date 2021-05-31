@@ -243,7 +243,7 @@ class ReportsController extends Controller
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         //get details from search
-        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->first();
+        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         $stud_id = $student_id->stud_id;
 
         $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
