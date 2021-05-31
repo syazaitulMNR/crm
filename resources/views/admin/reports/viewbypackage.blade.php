@@ -253,6 +253,13 @@
             </div>
             @endif
 
+            @if ($message = Session::get('search-error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             <!-- Show success payment in table ----------------------------------------------->
             <div class="float-right">{{$payment->links()}}</div>   
             @if(isset($pay_data))
