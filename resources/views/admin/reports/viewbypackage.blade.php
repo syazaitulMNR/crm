@@ -316,7 +316,7 @@
           
           <div class="col-md-3">
 
-            <div class="card bg-light py-4 mb-4 text-center shadow">
+            <div class="card bg-light py-2 mb-2 text-center shadow">
               <div class="card-block text-dark">
                 <div class="rotate">
                 <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 229, 255, 0.3)"></i>
