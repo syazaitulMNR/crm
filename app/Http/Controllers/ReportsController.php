@@ -251,7 +251,7 @@ class ReportsController extends Controller
 
         if(count($pay_data) > 0)
         {
-            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'))->with('search-error','Search Error!');
+            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
         }else{
 
