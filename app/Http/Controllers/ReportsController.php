@@ -229,7 +229,7 @@ class ReportsController extends Controller
     // search method
     public function search($product_id, $package_id, Request $request)
     {   
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
+        // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -245,9 +245,9 @@ class ReportsController extends Controller
 
         $stud_id = $student_id->stud_id;
 
-        $pay_data = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
+        $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
 
-        dd($pay_data);
+        dd($payment);
         // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
         // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
 
