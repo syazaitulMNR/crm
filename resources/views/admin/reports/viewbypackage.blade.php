@@ -296,6 +296,29 @@
                         </td> --}}
                         <td>
                           <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+
+                          @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                          @else
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure you want to delete this payment ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          @endif
                         </td>
                     </tr>
                     @endif
@@ -329,6 +352,29 @@
                     <td>{{ $students->email }}</td>
                     <td>
                       <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+
+                      @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                      @else
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                Are you sure you want to delete this payment ?
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      @endif
                     </td>
                 </tr>
                 @endif
