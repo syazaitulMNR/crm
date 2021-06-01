@@ -283,11 +283,12 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
+        dd($send_mail);
         // echo 'sent mail';
 
-        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
-        return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
+        // return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
 
     public function updated_mail($product_id, $package_id, $payment_id, $student_id, Request $request)
