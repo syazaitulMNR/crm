@@ -256,7 +256,7 @@ class ReportsController extends Controller
         {
             return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
-        }else if ($student_id->isEmpty()){
+        }else if ($stud_id->isEmpty()){
 
             return redirect()->back()->with('search-error', 'Customer not found!');
 
