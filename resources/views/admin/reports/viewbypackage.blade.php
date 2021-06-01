@@ -284,7 +284,7 @@
                           @else
                             <p>NULL</p>
                           @endif
-                        </td>
+                        </td> --}}
                         <td class="text-center">
                           @if ($payments->update_count == 1)
                             <i class="fas fa-check" style="color:green"></i>
@@ -293,7 +293,7 @@
                           @else
                             <p>NULL</p>
                           @endif
-                        </td> --}}
+                        </td>
                         <td>
                           <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                         </td>
@@ -327,6 +327,15 @@
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                     <td>{{ $students->email }}</td>
+                    <td class="text-center">
+                      @if ($payments->update_count == 1)
+                        <i class="fas fa-check" style="color:green"></i>
+                      @elseif ($payments->update_count == Null)
+                        <i class="fas fa-times" style="color:red"></i>
+                      @else
+                        <p>NULL</p>
+                      @endif
+                    </td>
                     <td>
                       <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                     </td>
