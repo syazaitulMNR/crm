@@ -113,7 +113,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to send 'Pengesahan Pembelian Tiket' to this customer? ?
+                                                Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer? ?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -136,7 +136,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to send 'Pengesahan Pendaftaran Peserta' to this customer? ?
+                                                Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer? ?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
