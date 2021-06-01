@@ -98,11 +98,11 @@
 
                                 <label class="col-sm-2">Email Address</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="email" value="{{ $student->email }}">
+                                    <input type="text" class="form-control pb-1" name="email" value="{{ $student->email }}">
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                                                                      
                                     <!-- Purchased Modal Button -->
-                                    <button type="button" class="btn btn-sm btn-outline-dark pt-1" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
+                                    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
                                     <!-- Purchased Modal Triggered -->
                                     <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
