@@ -263,7 +263,7 @@ class ReportsController extends Controller
         }
     }
 
-    public function purchased_mail($product_id, $package_id, $payment_id, $student_id, Request $request)
+    public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
     {
         /*-- Manage Email ---------------------------------------------------*/
 
@@ -272,7 +272,7 @@ class ReportsController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
 
-        $send_mail = $request->email;
+        $send_mail = $student->email;
         $product_name = $product->name;        
         $date_from = $product->date_from;
         $date_to = $product->date_to;
@@ -291,14 +291,14 @@ class ReportsController extends Controller
         // return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
 
-    public function updated_mail($product_id, $package_id, $payment_id, $student_id, Request $request)
+    public function updated_mail($product_id, $package_id, $payment_id, $student_id)
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
 
-        $email = $request->email; 
+        $email = $student->email; 
         $product_name = $product->name;
         $date_from = $product->date_from;
         $date_to = $product->date_to;
