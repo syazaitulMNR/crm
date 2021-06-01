@@ -100,6 +100,8 @@
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" name="email" value="{{ $student->email }}">
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
+                                    <br>
+                                    
                                     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                                     @else
                                     
