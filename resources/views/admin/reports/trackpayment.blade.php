@@ -163,7 +163,7 @@
                                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                                 @else
                                 
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -185,7 +185,7 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
