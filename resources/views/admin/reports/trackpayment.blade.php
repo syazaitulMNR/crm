@@ -162,12 +162,50 @@
                                 <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
                                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                                 @else
-                                <a class="btn btn-sm btn-outline-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                    <i class="fas fa-paper-plane pr-1"></i> Purchased Confirmation Mail
-                                </a>
-                                <a class="btn btn-sm btn-outline-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                    <i class="fas fa-paper-plane pr-1"></i> Updated Confirmation Mail
-                                </a>
+                                
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to send 'Pengesahan Pembelian Tiket' to this customer? ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <a class="btn btn-sm btn-outline-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                                <i class="fas fa-paper-plane pr-1"></i> Send
+                                            </a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to send 'Pengesahan Pendaftaran Peserta' to this customer? ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <a class="btn btn-sm btn-outline-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                                <i class="fas fa-paper-plane pr-1"></i> Participant Confirmation Mail
+                                            </a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endif
                             </div>
                         </div>
