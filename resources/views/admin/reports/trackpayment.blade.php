@@ -102,7 +102,7 @@
                                     <input type="text" class="form-control" name="email" value="{{ $student->email }}">
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                     
-                                    <hr>
+                                    <br>
                                                  
                                     <!-- Purchased Modal Button -->
                                     <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
