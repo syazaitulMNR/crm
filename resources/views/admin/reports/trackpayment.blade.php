@@ -50,21 +50,21 @@
 
         <div class="row">      
 
-            @if ($message = Session::get('purchased-sent'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-            </div>
-            @endif 
-            
-            @if ($message = Session::get('updated-sent'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-            </div>
-            @endif
-
             <div class="col-md-12">
+
+                @if ($message = Session::get('purchased-sent'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif 
+                
+                @if ($message = Session::get('updated-sent'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
 
                 <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
                     @csrf
