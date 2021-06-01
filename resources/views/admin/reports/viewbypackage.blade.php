@@ -261,8 +261,8 @@
                     <th>IC No.</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {{-- <th>Status</th>
-                    <th class="text-center">Update Participant</th> --}}
+                    {{-- <th>Status</th> --}}
+                    <th class="text-center">Update Participant</th>
                     <th><i class="fas fa-cogs"></i></th>
                   </tr>
                   </thead>
@@ -314,6 +314,7 @@
                 <th>IC No.</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th class="text-center">Update Participant</th>
                 <th><i class="fas fa-cogs"></i></th>
               </tr>
               </thead>
