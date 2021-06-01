@@ -245,7 +245,7 @@ class ReportsController extends Controller
         //get details from search
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         
-        if ($student_id->isEmpty()){
+        if ($student_id = NULL){
 
             return redirect()->back()->with('search-error', 'Customer not found!');
 
