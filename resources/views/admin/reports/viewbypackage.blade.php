@@ -261,8 +261,8 @@
                     <th>IC No.</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {{-- <th>Status</th> --}}
-                    <th class="text-center">Update Participant</th>
+                    {{-- <th>Status</th>
+                    <th class="text-center">Update Participant</th> --}}
                     <th><i class="fas fa-cogs"></i></th>
                   </tr>
                   </thead>
@@ -284,7 +284,7 @@
                           @else
                             <p>NULL</p>
                           @endif
-                        </td> --}}
+                        </td>
                         <td class="text-center">
                           @if ($payments->update_count == 1)
                             <i class="fas fa-check" style="color:green"></i>
@@ -293,7 +293,7 @@
                           @else
                             <p>NULL</p>
                           @endif
-                        </td>
+                        </td> --}}
                         <td>
                           <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                         </td>
@@ -314,7 +314,6 @@
                 <th>IC No.</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th class="text-center">Update Participant</th>
                 <th><i class="fas fa-cogs"></i></th>
               </tr>
               </thead>
@@ -328,15 +327,6 @@
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                     <td>{{ $students->email }}</td>
-                    <td class="text-center">
-                      @if ($payments->update_count == 1)
-                        <i class="fas fa-check" style="color:green"></i>
-                      @elseif ($payments->update_count == Null)
-                        <i class="fas fa-times" style="color:red"></i>
-                      @else
-                        <p>NULL</p>
-                      @endif
-                    </td>
                     <td>
                       <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                     </td>
