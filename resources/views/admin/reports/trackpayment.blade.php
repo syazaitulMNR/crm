@@ -101,10 +101,7 @@
                                     <input type="text" class="form-control" name="email" value="{{ $student->email }}">
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                     <br>
-                                    
-                                    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                                    @else
-                                    
+                                                                        
                                     <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
@@ -148,7 +145,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
+                                    
                                 </div>
                             </div>
 
