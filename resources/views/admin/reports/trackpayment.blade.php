@@ -149,11 +149,34 @@
                                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                                 @else
                                 <a class="btn btn-sm btn-outline-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                    <i class="fas fa-paper-plane pr-1"></i> Purchased Confirmation Mail
+                                    <i class="fas fa-paper-plane pr-1"></i> Purchased Email
                                 </a>
                                 <a class="btn btn-sm btn-outline-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                    <i class="fas fa-paper-plane pr-1"></i> Updated Confirmation Mail
+                                    <i class="fas fa-paper-plane pr-1"></i> Updated Email
                                 </a>
+                                @endif
+                                
+                                @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                                @else
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this payment ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <a class="btn btn-danger" href="{{ url('delete') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">Delete</a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
                                 @endif
                             </div>
                         </div>

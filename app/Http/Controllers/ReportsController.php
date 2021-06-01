@@ -95,18 +95,6 @@ class ReportsController extends Controller
         return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
-    public function destroy($payment_id, $product_id, $package_id) 
-    {
-        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        $ticket = Ticket::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        // dd($payment);
-
-        $payment->delete();
-        $ticket->delete();
-
-        return back()->with('deletepayment', 'Payment Successfully Deleted');
-    }
-
     public function save_customer($product_id, $package_id, Request $request)
     { 
         $student = Student::where('ic', $request->ic)->first();
@@ -214,6 +202,17 @@ class ReportsController extends Controller
         $payment->save();
 
         return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
+    }
+
+    public function destroy($payment_id, $product_id, $package_id, $student_id) 
+    {
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $student_id);
+        $ticket = Ticket::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
+
+        $payment->delete();
+        $ticket->delete();
+
+        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
     public function exportProgram($product_id)

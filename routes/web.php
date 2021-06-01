@@ -134,10 +134,9 @@ Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Blasti
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbypackage');
-Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
-
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
+Route::get('delete/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@destroy');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 
