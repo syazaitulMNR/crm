@@ -244,7 +244,7 @@
             <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search customer" name="search" required>
+                    <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">Search</button>
                     </div>
