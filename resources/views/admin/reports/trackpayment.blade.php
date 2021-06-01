@@ -48,8 +48,22 @@
             <h1 class="h2">Customer Information</h1>
         </div> 
 
-        <div class="row">            
-                    
+        <div class="row">      
+
+            @if ($message = Session::get('purchased-sent'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif 
+            
+            @if ($message = Session::get('updated-sent'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             <div class="col-md-12">
 
                 <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
