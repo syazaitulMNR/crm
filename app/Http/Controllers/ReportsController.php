@@ -246,24 +246,23 @@ class ReportsController extends Controller
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         $stud_id = $student_id->stud_id;
 
-        $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
-
-        // dd($stud_id);
-        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
-
-        if(count($payment) > 0)
-        {
-            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
-
-        }else if ($stud_id->isEmpty()){
+        if ($stud_id->isEmpty()){
 
             return redirect()->back()->with('search-error', 'Customer not found!');
 
         }else{
+            
+            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->get();
 
-            return redirect()->back()->with('search-error', 'Customer not found!');
+            if(count($payment) > 0)
+            {
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
+            }else{
+
+                return redirect()->back()->with('search-error', 'Customer not found!');
+
+            }
         }
     }
 
