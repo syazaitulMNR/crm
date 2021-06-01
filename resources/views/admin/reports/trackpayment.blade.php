@@ -101,9 +101,10 @@
                                     <input type="text" class="form-control" name="email" value="{{ $student->email }}">
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                     <br>
-                                                                        
+                                                 
+                                    <!-- Purchased Modal Button -->
                                     <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
-                                    <!-- Modal -->
+                                    <!-- Purchased Modal Triggered -->
                                     <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -124,8 +125,9 @@
                                         </div>
                                     </div>
 
+                                    <!-- Participant Modal Button -->
                                     <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
-                                    <!-- Modal -->
+                                    <!-- Participant Modal Triggered -->
                                     <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
