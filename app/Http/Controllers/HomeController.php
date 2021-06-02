@@ -157,6 +157,9 @@ class HomeController extends Controller
                             // Check if the ic at looping form exist
                             if(Student::where('ic', $value)->exists())
                             {    
+                                $participant = Student::where('ic', $value)->first();
+                                $participant_id = $participant->stud_id;
+
                                 // Process for Paid Ticket form
                                 $ticket = Ticket::orderBy('id','Desc')->first();
                                 $auto_inc_tik = $ticket->id + 1;
@@ -167,6 +170,7 @@ class HomeController extends Controller
                                     'ticket_type' => 'paid',
                                     'ic' => $value,
                                     'pay_price' => $payment->pay_price,
+                                    'stud_id' => $participant_id,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
                                     'payment_id' => $payment_id
@@ -185,9 +189,9 @@ class HomeController extends Controller
                                 $packageId = $package_id;
                                 $payment_id = $payment->payment_id;
                                 $productId = $product_id;        
-                                $student_id = $student->stud_id;
+                                $student_id = $participant_id;
                                 
-                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                                 
                                 continue;
                             }
@@ -218,6 +222,7 @@ class HomeController extends Controller
                                 'ticket_type' => 'paid',
                                 'ic' => $value,
                                 'pay_price' => $payment->pay_price,
+                                'stud_id' => $stud_id_looping,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
                                 'payment_id' => $payment_id
@@ -238,10 +243,13 @@ class HomeController extends Controller
                             $productId = $product_id;        
                             $student_id = $stud_id_looping;
                             
-                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                             
                         }
                     }
+
+                    $participant = Student::where('ic', $request->ic)->first();
+                    $participant_id = $participant->stud_id;
 
                     // Process for Paid Ticket form
                     $ticket = Ticket::orderBy('id','Desc')->first();
@@ -253,6 +261,7 @@ class HomeController extends Controller
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
                         'pay_price' => $payment->pay_price,
+                        'stud_id' => $participant_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -271,9 +280,9 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $payment_id = $payment->payment_id;
                     $productId = $product_id;        
-                    $student_id = $student->stud_id;
+                    $student_id = $participant_id;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)); 
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id)); 
 
                 }else{
 
@@ -303,6 +312,7 @@ class HomeController extends Controller
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
                         'pay_price' => $payment->pay_price,
+                        'stud_id' => $stud_id_single,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -323,7 +333,7 @@ class HomeController extends Controller
                     $productId = $product_id;        
                     $student_id = $stud_id_single;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                     // Mail::to($email_buyer2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                 
                     // If quantity = 1
@@ -337,6 +347,9 @@ class HomeController extends Controller
                             // If the ic at looping form exist
                             if(Student::where('ic', $value)->exists())
                             {
+                                $participant = Student::where('ic', $value)->first();
+                                $participant_id = $participant->stud_id;
+                                
                                 // Process for Paid Ticket form
                                 $ticket = Ticket::orderBy('id','Desc')->first();
                                 $auto_inc_tik = $ticket->id + 1;
@@ -347,6 +360,7 @@ class HomeController extends Controller
                                     'ticket_type' => 'paid',
                                     'ic' => $value,
                                     'pay_price' => $payment->pay_price,
+                                    'stud_id' => $participant_id,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
                                     'payment_id' => $payment_id
@@ -365,9 +379,9 @@ class HomeController extends Controller
                                 $packageId = $package_id;
                                 $payment_id = $payment->payment_id;
                                 $productId = $product_id;        
-                                $student_id = $student->stud_id;
+                                $student_id = $participant_id;
                                 
-                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                                 
                                 continue;
                             }
@@ -398,6 +412,7 @@ class HomeController extends Controller
                                 'ticket_type' => 'paid',
                                 'ic' => $value,
                                 'pay_price' => $payment->pay_price,
+                                'stud_id' => $stud_id_looping,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
                                 'payment_id' => $payment_id
@@ -418,7 +433,7 @@ class HomeController extends Controller
                             $productId = $product_id;        
                             $student_id = $stud_id_looping;
                             
-                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                             // Mail::to($email_participant4)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                             
                         }
@@ -451,6 +466,9 @@ class HomeController extends Controller
                 
                 if(Student::where('ic', $request->ic)->exists())
                 {
+                    $participant = Student::where('ic', $request->ic)->first();
+                    $participant_id = $participant->stud_id;
+
                     // If the ic at paid ticket form exist
                     // Process for Paid Ticket form
                     $ticket = Ticket::orderBy('id','Desc')->first();
@@ -462,6 +480,7 @@ class HomeController extends Controller
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
                         'pay_price' => $payment->pay_price,
+                        'stud_id' => $participant_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -480,14 +499,17 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $payment_id = $payment->payment_id;
                     $productId = $product_id;        
-                    $student_id = $student->stud_id;
+                    $student_id = $participant_id;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                         
                     // Process for free ticket form
                     // Check if the ic at free ticket form exist
                     if(Student::where('ic', $request->ic_free1)->exists())
                     {    
+                        $participant = Student::where('ic', $request->ic_free1)->first();
+                        $participant_id = $participant->stud_id;
+
                         $ticket = Ticket::orderBy('id','Desc')->first();
                         $auto_inc_tik = $ticket->id + 1;
                         $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
@@ -497,6 +519,7 @@ class HomeController extends Controller
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
                             'pay_price' => $payment->pay_price,
+                            'stud_id' => $participant_id,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -515,9 +538,9 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $payment_id = $payment->payment_id;
                         $productId = $product_id;        
-                        $student_id = $student->stud_id;
+                        $student_id = $participant_id;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                         // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                         
                         // continue;
@@ -549,6 +572,7 @@ class HomeController extends Controller
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
                             'pay_price' => $payment->pay_price,
+                            'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -569,7 +593,7 @@ class HomeController extends Controller
                         $productId = $product_id;        
                         $student_id = $stud_id_free;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));                            
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));                            
                         // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                     }
 
@@ -601,6 +625,7 @@ class HomeController extends Controller
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
                         'pay_price' => $payment->pay_price,
+                        'stud_id' => $stud_id_paid,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -621,12 +646,15 @@ class HomeController extends Controller
                     $productId = $product_id;        
                     $student_id = $stud_id_paid;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));        
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));        
                 
                     // Process for free ticket form
                     // If the ic at free ticket form exist
                     if(Student::where('ic', $request->ic_free1)->exists())
                     {
+                        $participant = Student::where('ic', $request->ic_free1)->first();
+                        $participant_id = $participant->stud_id;
+
                         $ticket = Ticket::orderBy('id','Desc')->first();
                         $auto_inc_tik = $ticket->id + 1;
                         $ticket_id = 'TIK' . 0 . 0 . $auto_inc_tik;
@@ -636,6 +664,7 @@ class HomeController extends Controller
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
                             'pay_price' => $payment->pay_price,
+                            'stud_id' => $participant_id,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -654,9 +683,9 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $payment_id = $payment->payment_id;
                         $productId = $product_id;        
-                        $student_id = $student->stud_id;
+                        $student_id = $participant_id;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));          
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));          
 
                         // continue;
                     } else {
@@ -686,6 +715,7 @@ class HomeController extends Controller
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
                             'pay_price' => $payment->pay_price,
+                            'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -706,7 +736,7 @@ class HomeController extends Controller
                         $productId = $product_id;        
                         $student_id = $stud_id_free;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id));
                         
                     }
                 }
