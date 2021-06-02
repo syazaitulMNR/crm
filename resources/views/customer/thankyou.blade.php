@@ -42,6 +42,7 @@
     <div class="text-center">
         <h3 class="display-4">Terima Kasih!</h3>
         <p class="lead">Pembelian anda telah berjaya. Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
+        <p class="lead">Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
         {{-- <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
@@ -54,8 +55,8 @@
  
         <hr>
         
-        <p class="lead"> Sila klik pada butang kemaskini di bawah untuk mengisi borang pendaftaran nama peserta.
-          <br><br><a class="btn btn-dark py-3 px-4" href="{{ url('updateform')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}" role="button">Kemaskini</a>
+        <p class="lead"> Pengesahan pembelian tiket akan dihantar kepada emel yang telah didaftarkan dalam masa 48 Jam. Terima kasih kerana menunggu.
+          {{-- <br><br><a class="btn btn-dark py-3 px-4" href="{{ url('updateform')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}" role="button">Kemaskini</a> --}}
         </p>
         <p class="lead">
           Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet" class="link-primary">hubungi kami.</a>
