@@ -117,7 +117,7 @@ class UpgradeController extends Controller
         $student = Student::where('stud_id', $stud_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
   
         // dd($new_package);
         //Check the payment method
