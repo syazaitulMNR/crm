@@ -224,8 +224,18 @@
                     </div>
 
                 </form>
-
+                
             </div>
+
+            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+            @else
+            <div class="col-md-12">
+                <form action="{{ url('updateticket') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
+                    <table class="table table-hover">
+                    </table>
+                </form>
+            </div>
+            @endif
         </div>
     </main>
 </div>
