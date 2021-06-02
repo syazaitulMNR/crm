@@ -229,7 +229,6 @@ class UpgradeController extends Controller
         $time_to = $product->time_to;
         $packageId = $new_package->package_id;
         // $payment_id = $payment->payment_id;
-        $ticket_id = $ticket->ticket_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
@@ -245,15 +244,16 @@ class UpgradeController extends Controller
         return redirect('naik-taraf-berjaya');
     }
 
-    public function billplz_option($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    public function billplz_option($product_id, $package_id, $stud_id, $ticket_id, Request $request)
     {        
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
@@ -264,10 +264,10 @@ class UpgradeController extends Controller
             $student->email,
             $student->phoneno,
             $student->first_name,
-            \Duit\MYR::given($new_package->totalprice * 100),
-            'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id,
-            $product->name . ' - ' . $package->name,
-            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id]
+            \Duit\MYR::given($new_package->pay_price * 100),
+            'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id,
+            $product->name . ' - ' . '(Upgrade Package)',
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id]
         );
 
         $pay_data = $response->toArray();
@@ -284,9 +284,9 @@ class UpgradeController extends Controller
         return redirect($pay_data['url']);
     }
 
-    public function redirect_page($product_id, $package_id, $stud_id, $payment_id,Request $request)
+    public function redirect_page($product_id, $package_id, $stud_id, $ticket_id, Request $request)
     {
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
@@ -300,7 +300,7 @@ class UpgradeController extends Controller
         );
 
         $new_package->fill($addData);
-        $request->session()->put('payment', $new_package);
+        $request->session()->put('ticket', $new_package);
 
         if ($new_package->status == 'paid')
         {
@@ -317,13 +317,13 @@ class UpgradeController extends Controller
             $time_from = $product->time_from;
             $time_to = $product->time_to;
             $packageId = $package_id;
-            $payment_id = $payment_id;
+            // $payment_id = $payment_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
 
             $new_package->save();
 
-            dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $stud_id));
+            dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id));
             
             /*-- End Email -----------------------------------------------------------*/
     

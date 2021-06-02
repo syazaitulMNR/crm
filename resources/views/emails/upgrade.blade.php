@@ -27,7 +27,7 @@
                                 <td>
                                   <b>Tarikh</b> : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
                                   <b>Masa</b> : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br>
-                                  <b>Order ID</b> : {{ $payment_id }}
+                                  <b>Order ID</b> : {{ $ticket_id }}
                                 </td>
                             </tr>
                             <hr>
@@ -35,14 +35,16 @@
                               <td>                                
                                 <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Anda <b style="color: red">WAJIB</b> klik pada butang di bawah untuk kemaskini maklumat peserta dan mendapatkan resit/invois:</p>
+                                <p>1. Sila jawab soalan kaji selidik ini supaya anda dapat perolehi maklumat terkini program:</p>
                               </td>
                             </tr>
                             <tr>
-                              <td class="align-center">
-                                <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
-                              </td>
+                                <td class="align-center">
+                                  <a href="https://www.research.net/r/rpmcw2021"> Soalan kaji selidik</a>
+                                </td>
                             </tr>
+                            <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+
                             <hr>
                           </tbody>
                         </table>

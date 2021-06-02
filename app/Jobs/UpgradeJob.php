@@ -13,14 +13,14 @@ use Mail;
 class UpgradeJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id;
+    protected $send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id)
+    public function __construct($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id)
     {
         $this->send_mail = $send_mail;
         $this->product_name = $product_name;        
@@ -29,7 +29,7 @@ class UpgradeJob implements ShouldQueue
         $this->time_from = $time_from;        
         $this->time_to = $time_to;
         $this->packageId = $packageId;
-        $this->payment_id = $payment_id;
+        $this->ticket_id = $ticket_id;
         $this->productId = $productId;
         $this->student_id = $student_id;
     }
