@@ -76,8 +76,8 @@ class UpgradeController extends Controller
         $new_package->fill($validatedData);
         $request->session()->put('ticket', $new_package);
 
-        dd($new_package->pay_price);
-        // return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        // dd($new_package->pay_price);
+        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
     public function upgrade_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
@@ -92,8 +92,8 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('ticket');
         $stripe = 'Debit/Credit Card';
         $billplz = 'FPX';
-        dd($new_package);
-        // return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
+        // dd($new_package);
+        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
     }
 
     public function store_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
@@ -105,8 +105,8 @@ class UpgradeController extends Controller
         $new_package->fill($validatedData);
         $request->session()->put('ticket', $new_package);
 
-        dd($new_package);
-        // return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        // dd($new_package);
+        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
     public function payment_option($product_id, $package_id, $stud_id, $ticket_id, Request $request)
@@ -120,22 +120,22 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('ticket');
   
-        dd($new_package);
+        // dd($new_package);
         //Check the payment method
-        // if($new_package->pay_method == 'Debit/Credit Card'){
+        if($new_package->pay_method == 'Debit/Credit Card'){
 
-        //     return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
+            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
 
-        // }else if($new_package->pay_method == 'FPX'){
+        }else if($new_package->pay_method == 'FPX'){
 
-        //     return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
+            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
 
-        // }else{
+        }else{
 
-        //     echo 'error';
-        //     // abort(404);
+            echo 'error';
+            // abort(404);
 
-        // }
+        }
     }
 
     public function card_option($product_id, $package_id, $stud_id, $ticket_id, Request $request){
