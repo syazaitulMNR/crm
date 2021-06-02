@@ -40,9 +40,9 @@
 <div class="row">
   <div class="col-md-12 px-3 py-4">
     <div class="text-center">
-        <h3 class="display-4">Terima Kasih!</h3>
-        <p class="lead">Pembelian anda telah berjaya. Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
-        <p class="lead">Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
+        <h3 class="display-4">Pembelian anda telah berjaya!</h3>
+        <p class="lead">1) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
+        <p class="lead">2) Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
         {{-- <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
