@@ -124,11 +124,11 @@ class UpgradeController extends Controller
         //Check the payment method
         if($new_package->pay_method == 'Debit/Credit Card'){
 
-            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
+            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
 
         }else if($new_package->pay_method == 'FPX'){
 
-            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
+            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
 
         }else{
 
