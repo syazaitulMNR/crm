@@ -25,7 +25,7 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('payment');
 
-        return view('upgrade.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
+        return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
     }
 
     public function store_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -44,7 +44,7 @@ class UpgradeController extends Controller
             $request->session()->put('payment', $new_package);
         }
 
-        return redirect('upgrade-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('ticket-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function ticket_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -58,7 +58,7 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('payment');
 
         // dd($new_package);
-        return view('upgrade.details_upgrade', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
+        return view('upgrade_ticket.details', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
     }
 
     public function store_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -73,7 +73,7 @@ class UpgradeController extends Controller
         $request->session()->put('payment', $new_package);
 
         // dd($new_package->pay_price);
-        return redirect('pay-upgrade/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function upgrade_payment($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -88,7 +88,7 @@ class UpgradeController extends Controller
         $stripe = 'Debit/Credit Card';
         $billplz = 'FPX';
         // dd($new_package);
-        return view('upgrade.pay_upgrade', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package', 'stripe', 'billplz'));
+        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package', 'stripe', 'billplz'));
     }
 
     public function store_payment($product_id, $package_id, $stud_id, $payment_id, Request $request){
@@ -101,7 +101,7 @@ class UpgradeController extends Controller
         $request->session()->put('payment', $new_package);
 
         // dd($new_package);
-        return redirect('choose-method/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
     }
 
     public function payment_option($product_id, $package_id, $stud_id, $payment_id, Request $request)
@@ -118,14 +118,16 @@ class UpgradeController extends Controller
         //Check the payment method
         if($new_package->pay_method == 'Debit/Credit Card'){
 
-            return redirect('card-method/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
+            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
 
         }else if($new_package->pay_method == 'FPX'){
 
-            return redirect('pay-billplz/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
+            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id );
 
         }else{
-            echo 'Error 404';
+
+            abort(404);
+            
         }
     }
 
@@ -140,7 +142,7 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('payment');
 
         // dd($new_package);
-        return view('upgrade.use_card', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
+        return view('upgrade_ticket.use_card', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
     }
 
     public function store_stripe($product_id, $package_id, $stud_id, $payment_id, Request $request)
@@ -253,9 +255,9 @@ class UpgradeController extends Controller
             $student->phoneno,
             $student->first_name,
             \Duit\MYR::given($new_package->totalprice * 100),
-            'https://mims.momentuminternet.my/redirect-pay/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id,
+            'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id,
             $product->name . ' - ' . $package->name,
-            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-pay/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id]
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id]
         );
 
         $pay_data = $response->toArray();
