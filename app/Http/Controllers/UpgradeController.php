@@ -26,11 +26,10 @@ class UpgradeController extends Controller
         $student = Student::where('ic', $ticket->ic)->first();
         // $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
-        dd($student);
         // $new_package = $request->session()->get('payment');
-        // $new_package = $request->session()->get('ticket');
+        $new_package = $request->session()->get('ticket');
 
-        // return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
+        return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
     }
 
     public function store_package($product_id, $package_id, $stud_id, $ticket_id, Request $request){
