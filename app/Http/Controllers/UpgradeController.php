@@ -208,7 +208,7 @@ class UpgradeController extends Controller
             }
 
             $addData = array(
-                // 'status' => 'paid',
+                'status' => 'paid',
                 'upgrade_count' => '1',
                 'stripe_id' => $customer->id
             );
