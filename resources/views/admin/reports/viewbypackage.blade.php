@@ -267,10 +267,10 @@
                   </tr>
                   </thead>
                   <tbody> 
-                    @foreach ($payment as $key => $payments)
+                    @foreach ($ticket as $key => $tickets)
                     @foreach ($student as $students)   
-                    @if ($payments->stud_id == $students->stud_id)
-                    @if ($product->product_id == $payments->product_id)  
+                    @if ($tickets->stud_id == $students->stud_id)
+                    @if ($product->product_id == $tickets->product_id)  
                     <tr>
                         <td>{{ $count++ }}</td>
                         <td>{{ $students->ic }}</td>
@@ -295,13 +295,13 @@
                           @endif
                         </td> --}}
                         <td>
-                          <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                          <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
                           @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                           @else
-                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -313,7 +313,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                                    <a class="btn btn-danger" href="{{ url('delete') }}/{{ $tickets->payment_id }}/{{ $product->product_id }}/{{ $tickets->package_id }}">Delete</a>
                                   </div>
                                 </div>
                               </div>
@@ -341,23 +341,23 @@
               </tr>
               </thead>
               <tbody> 
-                @foreach ($payment as $key => $payments)
+                @foreach ($ticket as $key => $tickets)
                 @foreach ($student as $students)   
-                @if ($payments->stud_id == $students->stud_id)
-                @if ($product->product_id == $payments->product_id)  
+                @if ($tickets->stud_id == $students->stud_id)
+                @if ($product->product_id == $tickets->product_id)  
                 <tr>
                     <td>{{ $count++ }}</td>
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                     <td>{{ $students->email }}</td>
                     <td>
-                      <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                      <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
                       @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                       @else
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -369,7 +369,7 @@
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                                <a class="btn btn-danger" href="{{ url('delete') }}/{{ $tickets->payment_id }}/{{ $product->product_id }}/{{ $tickets->package_id }}">Delete</a>
                               </div>
                             </div>
                           </div>
