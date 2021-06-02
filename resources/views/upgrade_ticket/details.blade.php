@@ -183,7 +183,7 @@ Upgrade Pakej
     console.log(z);
 </script>
 
-<script>
+{{-- <script>
     var a = document.getElementById("quantity").value;
     var b = document.getElementById("new_price").value;
     var c = b * a;
@@ -204,5 +204,5 @@ Upgrade Pakej
 
 //     console.log(newamount);
 // }
-</script>
+</script> --}}
 @endsection
