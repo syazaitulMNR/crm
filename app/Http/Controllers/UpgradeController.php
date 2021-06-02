@@ -67,9 +67,9 @@ class UpgradeController extends Controller
 
     public function store_details($product_id, $package_id, $stud_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
-            'pay_price' => 'required|numeric',
-            'quantity' => 'required|numeric',
-            'totalprice'=> 'required|numeric'
+            'pay_price' => 'required|numeric'
+            // 'quantity' => 'required|numeric',
+            // 'totalprice'=> 'required|numeric'
         ]);
 
         $new_package = $request->session()->get('ticket');
