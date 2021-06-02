@@ -39,7 +39,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">
-            <form action="{{ url('store-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
+            <form action="{{ url('store-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id }}" method="POST">
                 @csrf
   
                 <div class="card w-100 shadow">
@@ -60,19 +60,19 @@ Upgrade Pakej
                                 <td>:</td>
                                 <td>
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
+                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td >Kuantiti</td>
                                 <td>:</td>
-                                <td><input type="text" id="quantity" name="quantity" value="{{ $payment->quantity ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
+                                <td><input type="text" id="quantity" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly></td>
                             </tr>
                             <tr class="border-bottom border-top">
                                 <td >Jumlah Bayaran</td>
                                 <td>:</td>
-                                <td>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->totalprice ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
-                            </tr>
+                                <td>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
+                            </tr> --}}
                         </table> 
                         @endif  
                         @endforeach 
@@ -81,7 +81,7 @@ Upgrade Pakej
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{$payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                                <a href="{{ url('upgrade-package') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{$ticket->ticket_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>

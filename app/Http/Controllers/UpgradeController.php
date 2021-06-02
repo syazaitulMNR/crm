@@ -31,52 +31,53 @@ class UpgradeController extends Controller
         return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
     }
 
-    public function store_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function store_package($product_id, $package_id, $stud_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
             'product_id' => 'required',
             'package_id' => 'required'
         ]);
 
-        if(empty($request->session()->get('payment'))){
-            $new_package = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first(); //Upgrade new package payment
+        if(empty($request->session()->get('ticket'))){
+            $new_package = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first(); //Update new package upgrade
             $new_package->fill($validatedData);
-            $request->session()->put('payment', $new_package);
+            $request->session()->put('ticket', $new_package);
         }else{
-            $new_package = $request->session()->get('payment');
+            $new_package = $request->session()->get('ticket');
             $new_package->fill($validatedData);
-            $request->session()->put('payment', $new_package);
+            $request->session()->put('ticket', $new_package);
         }
 
-        return redirect('ticket-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('ticket-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
-    public function ticket_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function ticket_details($product_id, $package_id, $stud_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
 
         // dd($new_package);
-        return view('upgrade_ticket.details', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
+        return view('upgrade_ticket.details', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package'));
     }
 
-    public function store_details($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function store_details($product_id, $package_id, $stud_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
             'pay_price' => 'required|numeric',
             'quantity' => 'required|numeric',
             'totalprice'=> 'required|numeric'
         ]);
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
         $new_package->fill($validatedData);
-        $request->session()->put('payment', $new_package);
+        $request->session()->put('ticket', $new_package);
 
         // dd($new_package->pay_price);
-        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
     public function upgrade_payment($product_id, $package_id, $stud_id, $payment_id, Request $request){
