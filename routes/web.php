@@ -220,7 +220,7 @@ Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 // Route::post('register/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@updatestd');
 
 // Thank you page
-Route::get('pendaftaran-berjaya','HomeController@thankyou');
+Route::get('pendaftaran-berjaya/{product_id}/{package_id}/{stud_id}','HomeController@thankyou');
 Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
 
 
