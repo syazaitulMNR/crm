@@ -75,7 +75,7 @@ Upgrade Pakej
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('upgrade-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                                <a href="{{ url('ticket-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                         </div>
                     </div>
