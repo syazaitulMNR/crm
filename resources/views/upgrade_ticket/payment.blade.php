@@ -39,7 +39,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">
-            <form action="{{ url('save-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
+            <form action="{{ url('store-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
                 @csrf
 
                 <div class="card w-100 shadow">
