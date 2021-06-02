@@ -120,22 +120,22 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('ticket');
   
-        // dd($new_package);
+        dd($new_package);
         //Check the payment method
-        if($new_package->pay_method == 'Debit/Credit Card'){
+        // if($new_package->pay_method == 'Debit/Credit Card'){
 
-            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
+        //     return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
 
-        }else if($new_package->pay_method == 'FPX'){
+        // }else if($new_package->pay_method == 'FPX'){
 
-            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
+        //     return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
 
-        }else{
+        // }else{
 
-            echo 'error';
-            // abort(404);
+        //     echo 'error';
+        //     // abort(404);
 
-        }
+        // }
     }
 
     public function card_option($product_id, $package_id, $stud_id, $ticket_id, Request $request){
