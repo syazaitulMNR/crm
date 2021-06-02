@@ -109,7 +109,7 @@ class UpgradeController extends Controller
         return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
-    public function payment_option($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    public function payment_option($product_id, $package_id, $stud_id, $ticket_id, Request $request)
     {
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
