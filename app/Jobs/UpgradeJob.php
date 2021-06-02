@@ -47,7 +47,7 @@ class UpgradeJob implements ShouldQueue
                                                             $this->time_from,
                                                             $this->time_to,
                                                             $this->packageId,
-                                                            $this->payment_id,
+                                                            $this->ticket_id,
                                                             $this->productId,
                                                             $this->student_id ));
     }
