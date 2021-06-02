@@ -15,7 +15,7 @@ use App\Jobs\UpgradeJob;
 
 class UpgradeController extends Controller
 {
-    public function upgrade_ticket($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function upgrade_ticket($product_id, $package_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get(); //Show all package
