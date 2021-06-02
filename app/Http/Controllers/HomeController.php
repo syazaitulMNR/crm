@@ -166,6 +166,7 @@ class HomeController extends Controller
                                     'ticket_id' => $ticket_id,
                                     'ticket_type' => 'paid',
                                     'ic' => $value,
+                                    'pay_price' => $payment->pay_price,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
                                     'payment_id' => $payment_id
@@ -216,6 +217,7 @@ class HomeController extends Controller
                                 'ticket_id' => $ticket_id,
                                 'ticket_type' => 'paid',
                                 'ic' => $value,
+                                'pay_price' => $payment->pay_price,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
                                 'payment_id' => $payment_id
@@ -250,6 +252,7 @@ class HomeController extends Controller
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
+                        'pay_price' => $payment->pay_price,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -299,6 +302,7 @@ class HomeController extends Controller
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
+                        'pay_price' => $payment->pay_price,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -342,6 +346,7 @@ class HomeController extends Controller
                                     'ticket_id' => $ticket_id,
                                     'ticket_type' => 'paid',
                                     'ic' => $value,
+                                    'pay_price' => $payment->pay_price,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
                                     'payment_id' => $payment_id
@@ -392,6 +397,7 @@ class HomeController extends Controller
                                 'ticket_id' => $ticket_id,
                                 'ticket_type' => 'paid',
                                 'ic' => $value,
+                                'pay_price' => $payment->pay_price,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
                                 'payment_id' => $payment_id
@@ -455,6 +461,7 @@ class HomeController extends Controller
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
+                        'pay_price' => $payment->pay_price,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -489,6 +496,7 @@ class HomeController extends Controller
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
+                            'pay_price' => $payment->pay_price,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -524,6 +532,7 @@ class HomeController extends Controller
                             'first_name' => $request->firstname_free1,
                             'last_name' => $request->lastname_free1,
                             'ic' => $request->ic_free1,
+                            'pay_price' => $payment->pay_price,
                             'email' => $request->email_free1,
                             'phoneno' => $request->phoneno_free1,
                             'product_id' => $product_id,
@@ -539,6 +548,7 @@ class HomeController extends Controller
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
+                            'pay_price' => $payment->pay_price,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -590,6 +600,7 @@ class HomeController extends Controller
                         'ticket_id' => $ticket_id,
                         'ticket_type' => 'paid',
                         'ic' => $request->ic,
+                        'pay_price' => $payment->pay_price,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
                         'payment_id' => $payment_id
@@ -624,6 +635,7 @@ class HomeController extends Controller
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
+                            'pay_price' => $payment->pay_price,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
@@ -673,6 +685,7 @@ class HomeController extends Controller
                             'ticket_id' => $ticket_id,
                             'ticket_type' => 'free',
                             'ic' => $request->ic_free1,
+                            'pay_price' => $payment->pay_price,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
                             'payment_id' => $payment_id
