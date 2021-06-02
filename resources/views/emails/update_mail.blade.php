@@ -27,7 +27,7 @@
                                 <td>
                                   <b>Tarikh</b> : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
                                   <b>Masa</b> : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br>
-                                  <b>Order ID</b> : {{ $payment_id }}
+                                  <b>Ticket ID</b> : {{ $ticket_id }}
                                 </td>
                             </tr>
                             <hr>
@@ -44,6 +44,20 @@
                                 </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+
+                            {{-- For upgrade by ticket --}}
+                            {{-- <tr>
+                              <td>
+                                <br>
+                                <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="align-center">
+                                <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $ticket_id }}">Naik Taraf</a>
+                              </td>
+                            </tr> --}}
+
                             <hr>
                           </tbody>
                         </table>
