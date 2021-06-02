@@ -105,8 +105,8 @@ class UpgradeController extends Controller
         $new_package->fill($validatedData);
         $request->session()->put('ticket', $new_package);
 
-        // dd($new_package);
-        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        dd($new_package);
+        // return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
     public function payment_option($product_id, $package_id, $stud_id, $ticket_id, Request $request)
