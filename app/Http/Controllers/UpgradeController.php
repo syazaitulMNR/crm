@@ -92,8 +92,8 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('ticket');
         $stripe = 'Debit/Credit Card';
         $billplz = 'FPX';
-        // dd($new_package);
-        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
+        dd($new_package);
+        // return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
     }
 
     public function store_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
