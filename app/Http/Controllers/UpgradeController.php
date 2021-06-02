@@ -8,24 +8,27 @@ use App\Package;
 use App\Student;
 use App\Payment;
 use App\Feature;
+use App\Ticket;
 use Stripe;
 use Billplz\Client;
 use App\Jobs\UpgradeJob;
 
 class UpgradeController extends Controller
 {
-    public function upgrade_ticket($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function upgrade_ticket($product_id, $package_id, $stud_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get(); //Show all package
         $current_package = Package::where('package_id', $package_id)->first(); //Package registered
         $student = Student::where('stud_id', $stud_id)->first();
         $feature = Feature::orderBy('id','asc')->get();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        // $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
 
-        return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'payment', 'new_package'));
+        return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
     }
 
     public function store_package($product_id, $package_id, $stud_id, $payment_id, Request $request){
