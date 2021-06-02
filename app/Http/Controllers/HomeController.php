@@ -71,8 +71,13 @@ class HomeController extends Controller
         }
     }
 
-    public function thankyou() 
+    public function thankyou($product_id, $package_id, $stud_id, $payment_id) 
     {
+        $student = Student::where('stud_id', $stud_id)->first();
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('stud_id', $stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->where('payment_id',$payment_id)->first();
+        
         return view('customer/thankyou');
     }
 
