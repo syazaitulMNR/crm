@@ -39,7 +39,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">
-            <form action="{{ url('store-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST">
+            <form action="{{ url('store-payment') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id }}" method="POST">
                 @csrf
 
                 <div class="card w-100 shadow">
@@ -75,7 +75,7 @@ Upgrade Pakej
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('upgrade-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                                <a href="{{ url('upgrade-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                         </div>
                     </div>

@@ -80,32 +80,33 @@ class UpgradeController extends Controller
         return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
-    public function upgrade_payment($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function upgrade_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
         $stripe = 'Debit/Credit Card';
         $billplz = 'FPX';
         // dd($new_package);
-        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package', 'stripe', 'billplz'));
+        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
     }
 
-    public function store_payment($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function store_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
             'pay_method' => 'required',
         ]);
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
         $new_package->fill($validatedData);
-        $request->session()->put('payment', $new_package);
+        $request->session()->put('ticket', $new_package);
 
         // dd($new_package);
-        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id);
+        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
     public function payment_option($product_id, $package_id, $stud_id, $payment_id, Request $request)
