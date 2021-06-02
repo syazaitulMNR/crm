@@ -28,7 +28,7 @@ Upgrade Pakej
         </div>
 
         <div class="col-md-12 d-flex justify-content-center pb-5">
-            <form action="{{ url('store-stripe') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_live_lNl5S8TossaoQYO0qKwSM5pr004b28isKu">
+            <form action="{{ url('store-stripe') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id }}" method="POST" onsubmit="return checkForm(this);" data-stripe-publishable-key="pk_live_lNl5S8TossaoQYO0qKwSM5pr004b28isKu">
                 @csrf
 
                 <div class="card w-100 shadow">
@@ -137,7 +137,7 @@ Upgrade Pakej
                     <div class="card-footer">
                         <div class="col-md-12">
                             <div class="pull-left">
-                                <a href="{{ url('pay-upgrade') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                                <a href="{{ url('upgrade-payment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $ticket->ticket_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
                             <div class="pull-right">
                                 <button type="submit" name="myButton" class="btn btn-circle btn-lg btn-success"><i class="fas fa-check py-1"></i></button>

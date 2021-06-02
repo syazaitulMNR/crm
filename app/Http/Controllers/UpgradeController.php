@@ -115,7 +115,8 @@ class UpgradeController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
         $new_package = $request->session()->get('ticket');
   
@@ -136,29 +137,31 @@ class UpgradeController extends Controller
         }
     }
 
-    public function card_option($product_id, $package_id, $stud_id, $payment_id, Request $request){
+    public function card_option($product_id, $package_id, $stud_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
 
         // dd($new_package);
-        return view('upgrade_ticket.use_card', compact('product', 'package', 'current_package', 'student', 'payment', 'new_package'));
+        return view('upgrade_ticket.use_card', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package'));
     }
 
-    public function store_stripe($product_id, $package_id, $stud_id, $payment_id, Request $request)
+    public function store_stripe($product_id, $package_id, $stud_id, $ticket_id, Request $request)
     {        
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        // $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
 
-        $new_package = $request->session()->get('payment');
+        $new_package = $request->session()->get('ticket');
 
         /*-- Stripe ---------------------------------------------------------*/
         //Make Payment
@@ -197,18 +200,18 @@ class UpgradeController extends Controller
                     "currency" => "myr",
                     "description" => "MIMS - ".$package->name,
                     "customer" => $customer->id,
-                    "amount" => $new_package->totalprice * 100,
+                    "amount" => $new_package->pay_price * 100,
                 ]);
             }
 
             $addData = array(
-                'status' => 'paid',
+                // 'status' => 'paid',
                 'upgrade_count' => '1',
                 'stripe_id' => $customer->id
             );
 
             $new_package->fill($addData);
-            $request->session()->put('payment', $new_package);
+            $request->session()->put('ticket', $new_package);
 
         } catch (\Exception $ex) {
             return redirect()->back()->with('error', $ex->getMessage());
@@ -224,18 +227,19 @@ class UpgradeController extends Controller
         $time_from = $product->time_from;
         $time_to = $product->time_to;
         $packageId = $new_package->package_id;
-        $payment_id = $payment->payment_id;
+        // $payment_id = $payment->payment_id;
+        $ticket_id = $ticket->ticket_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
         $new_package->save();
 
-        dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
   
         $request->session()->forget('package');
-        $request->session()->forget('payment');
+        $request->session()->forget('ticket');
         
         return redirect('naik-taraf-berjaya');
     }
