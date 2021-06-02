@@ -57,7 +57,7 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
 
@@ -87,7 +87,7 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
         $stripe = 'Debit/Credit Card';
@@ -116,7 +116,7 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
   
@@ -145,7 +145,7 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
 
@@ -160,7 +160,7 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
 
@@ -251,7 +251,7 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
 
