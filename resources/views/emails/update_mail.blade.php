@@ -35,7 +35,7 @@
                               <td>                                
                                 <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Sila jawab soalan kaji selidik ini supaya anda dapat perolehi maklumat terkini program:</p>
+                                <p>1. Anda perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke platform zoom:</p>
                               </td>
                             </tr>
                             <tr>
@@ -46,7 +46,7 @@
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
 
                             {{-- For upgrade by ticket --}}
-                            {{-- <tr>
+                            <tr>
                               <td>
                                 <br>
                                 <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
@@ -54,9 +54,9 @@
                             </tr>
                             <tr>
                               <td class="align-center">
-                                <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $ticket_id }}">Naik Taraf</a>
+                                <a href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a>
                               </td>
-                            </tr> --}}
+                            </tr>
 
                             <hr>
                           </tbody>

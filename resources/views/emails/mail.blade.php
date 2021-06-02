@@ -43,7 +43,7 @@
                                 <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
                               </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                               <td>
                                 <br>
                                 <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
@@ -54,7 +54,7 @@
                                 <a href="{{ url('upgrade-package') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Naik Taraf</a>
                               </td>
                             </tr>
-                            <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p>
+                            <p style="font-size: 10px; color:red">*Naik taraf pakej hanya dibenarkan sebelum melakukan pengemaskinian maklumat peserta.</p> --}}
                             <hr>
                             {{-- <tr>
                               <td class="align-center">
