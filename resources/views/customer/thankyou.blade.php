@@ -41,7 +41,8 @@
   <div class="col-md-12 px-3 py-4">
     <div class="text-center">
         <h3 class="display-4">Pembelian anda telah berjaya!</h3>
-        <p class="lead pt-2">1) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
+        <p class="lead pt-2">1) Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
+        <p class="lead">2) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
         {{-- <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div> --}}
@@ -51,8 +52,6 @@
             <iframe class="video-size" src="https://player.vimeo.com/video/556461041" height="315" width="560" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div>
         {{-- </div> --}}
-
-        <p class="lead py-2">2) Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
  
         <hr>
         
