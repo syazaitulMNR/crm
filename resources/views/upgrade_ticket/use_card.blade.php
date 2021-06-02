@@ -90,7 +90,7 @@ Upgrade Pakej
                                 <div class="field py-3">
                                     <input class="form-control" type="number" name="cvc" placeholder="CVC Code" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3" required>
                                 </div>
-                                <input type="hidden" name="jumlah" class="col-sm-6 text-left pt-2" value="{{ $payment->totalprice }}" readonly >
+                                <input type="hidden" name="jumlah" class="col-sm-6 text-left pt-2" value="{{ $ticket->pay_price }}" readonly >
                             </div>
                         </div>
 
