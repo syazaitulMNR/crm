@@ -76,8 +76,8 @@ class UpgradeController extends Controller
         $new_package->fill($validatedData);
         $request->session()->put('ticket', $new_package);
 
-        // dd($new_package->pay_price);
-        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        dd($new_package->pay_price);
+        // return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
     }
 
     public function upgrade_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
