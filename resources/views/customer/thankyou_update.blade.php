@@ -21,7 +21,7 @@
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div>
         <hr>
-        <p class="lead">Pengesahan pengemaskinian akan dihantar kepada emel yang telah didaftarkan dalam masa 48 Jam. Terima kasih kerana menunggu.</p>
+        <p class="lead">Pengesahan pengemaskinian akan dihantar kepada emel yang telah didaftarkan dalam tempoh 48 Jam. Terima kasih kerana menunggu.</p>
         <p class="lead py-3">Jika terdapat sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/" class="link-primary">hubungi kami.</a></p>
     </div>
   </div>
