@@ -510,6 +510,8 @@ class UpgradeController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
 
         $new_package = $request->session()->get('payment');
+        $get_package = $new_package->package_id; //get package name
+        $package_name = Package::where('package_id', $get_package)->first();
 
         /*-- Stripe ---------------------------------------------------------*/
         //Make Payment
@@ -546,7 +548,7 @@ class UpgradeController extends Controller
                 // Make a Payment
                 Stripe\Charge::create([
                     "currency" => "myr",
-                    "description" => "MIMS - ".$package->name,
+                    "description" => "MIMS - ".$package_name->name,
                     "customer" => $customer->id,
                     "amount" => $new_package->totalprice * 100,
                 ]);
@@ -600,6 +602,8 @@ class UpgradeController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
 
         $new_package = $request->session()->get('payment');
+        $get_package = $new_package->package_id; //get package name
+        $package_name = Package::where('package_id', $get_package)->first();
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
@@ -612,7 +616,7 @@ class UpgradeController extends Controller
             $student->first_name,
             \Duit\MYR::given($new_package->totalprice * 100),
             'https://mims.momentuminternet.my/redirect-pay/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id,
-            $product->name . ' - ' . $package->name,
+            $product->name . ' - ' . $package_name->name,
             ['redirect_url' => 'https://mims.momentuminternet.my/redirect-pay/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $payment_id]
         );
 
