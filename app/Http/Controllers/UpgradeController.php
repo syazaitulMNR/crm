@@ -201,7 +201,7 @@ class UpgradeController extends Controller
                 // Make a Payment
                 Stripe\Charge::create([
                     "currency" => "myr",
-                    "description" => "MIMS - " . $package_name,
+                    "description" => "MIMS - " . $package_name->name,
                     "customer" => $customer->id,
                     "amount" => $new_package->pay_price * 100,
                 ]);
@@ -256,6 +256,8 @@ class UpgradeController extends Controller
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
 
         $new_package = $request->session()->get('ticket');
+        $get_package = $new_package->package_id; //get package name
+        $package_name = Package::where('package_id', $get_package)->first();
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
@@ -268,7 +270,7 @@ class UpgradeController extends Controller
             $student->first_name,
             \Duit\MYR::given($new_package->pay_price * 100),
             'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id,
-            $product->name . ' - ' . '(Upgrade Package)',
+            $product->name . ' - ' . $package_name->name,
             ['redirect_url' => 'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id]
         );
 
