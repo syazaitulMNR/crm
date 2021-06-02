@@ -32,14 +32,14 @@ class UpgradeController extends Controller
         return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
     }
 
-    public function store_package($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function store_package($product_id, $package_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
             'product_id' => 'required',
             'package_id' => 'required'
         ]);
 
         if(empty($request->session()->get('ticket'))){
-            $new_package = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first(); //Update new package upgrade
+            $new_package = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first(); //Update new package upgrade
             $new_package->fill($validatedData);
             $request->session()->put('ticket', $new_package);
         }else{
@@ -48,17 +48,18 @@ class UpgradeController extends Controller
             $request->session()->put('ticket', $new_package);
         }
 
-        return redirect('ticket-details/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        return redirect('ticket-details/'.  $product_id . '/' . $package_id . '/' . $ticket_id);
     }
 
-    public function ticket_details($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function ticket_details($product_id, $package_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
 
@@ -66,7 +67,7 @@ class UpgradeController extends Controller
         return view('upgrade_ticket.details', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package'));
     }
 
-    public function store_details($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function store_details($product_id, $package_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
             'pay_price' => 'required|numeric'
             // 'quantity' => 'required|numeric',
@@ -78,17 +79,18 @@ class UpgradeController extends Controller
         $request->session()->put('ticket', $new_package);
 
         // dd($new_package->pay_price);
-        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $ticket_id);
     }
 
-    public function upgrade_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function upgrade_payment($product_id, $package_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
         $stripe = 'Debit/Credit Card';
@@ -97,7 +99,7 @@ class UpgradeController extends Controller
         return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
     }
 
-    public function store_payment($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function store_payment($product_id, $package_id, $ticket_id, Request $request){
         $validatedData = $request->validate([
             'pay_method' => 'required',
         ]);
@@ -107,17 +109,18 @@ class UpgradeController extends Controller
         $request->session()->put('ticket', $new_package);
 
         // dd($new_package);
-        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id);
+        return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id);
     }
 
-    public function payment_option($product_id, $package_id, $stud_id, $ticket_id, Request $request)
+    public function payment_option($product_id, $package_id, $ticket_id, Request $request)
     {
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
   
@@ -125,11 +128,11 @@ class UpgradeController extends Controller
         //Check the payment method
         if($new_package->pay_method == 'Debit/Credit Card'){
 
-            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
+            return redirect('card-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id );
 
         }else if($new_package->pay_method == 'FPX'){
 
-            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id );
+            return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id );
 
         }else{
 
@@ -139,14 +142,15 @@ class UpgradeController extends Controller
         }
     }
 
-    public function card_option($product_id, $package_id, $stud_id, $ticket_id, Request $request){
+    public function card_option($product_id, $package_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
 
@@ -154,14 +158,15 @@ class UpgradeController extends Controller
         return view('upgrade_ticket.use_card', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package'));
     }
 
-    public function store_stripe($product_id, $package_id, $stud_id, $ticket_id, Request $request)
+    public function store_stripe($product_id, $package_id, $ticket_id, Request $request)
     {        
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
         $get_package = $new_package->package_id; //get package name
@@ -247,14 +252,15 @@ class UpgradeController extends Controller
         return redirect('naik-taraf-berjaya');
     }
 
-    public function billplz_option($product_id, $package_id, $stud_id, $ticket_id, Request $request)
+    public function billplz_option($product_id, $package_id, $ticket_id, Request $request)
     {        
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $stud_id)->first();
+        // $student = Student::where('stud_id', $stud_id)->first();
         // $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('stud_id', $stud_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
         $get_package = $new_package->package_id; //get package name
@@ -270,9 +276,9 @@ class UpgradeController extends Controller
             $student->phoneno,
             $student->first_name,
             \Duit\MYR::given($new_package->pay_price * 100),
-            'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id,
+            'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $ticket_id,
             $product->name . ' - ' . $package_name->name,
-            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $stud_id . '/' . $ticket_id]
+            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-page/'.  $product_id . '/' . $package_id . '/' . $ticket_id]
         );
 
         $pay_data = $response->toArray();
@@ -289,7 +295,7 @@ class UpgradeController extends Controller
         return redirect($pay_data['url']);
     }
 
-    public function redirect_page($product_id, $package_id, $stud_id, $ticket_id, Request $request)
+    public function redirect_page($product_id, $package_id, $ticket_id, Request $request)
     {
         $new_package = $request->session()->get('ticket');
 
@@ -313,7 +319,9 @@ class UpgradeController extends Controller
 
             $product = Product::where('product_id', $product_id)->first();
             $package = Package::where('package_id', $package_id)->first();
-            $student = Student::where('stud_id', $stud_id)->first();
+            // $student = Student::where('stud_id', $stud_id)->first();
+            $student = Student::where('ic', $ticket->ic)->first();  
+            
 
             $send_mail = $student->email;
             $product_name = $product->name;        

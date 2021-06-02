@@ -267,7 +267,7 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 | Upgrade Package by ticket
 |--------------------------------------------------------------------------
 */
-Route::get('upgrade-ticket/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@upgrade_ticket');
+Route::get('upgrade-ticket/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@upgrade_ticket'); //kalau adjust ni jgn lupa adjust kat email jugak
 Route::post('store-upgrade/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@store_package');
 Route::get('ticket-details/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@ticket_details');
 Route::post('store-details/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@store_details');
