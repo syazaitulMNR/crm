@@ -35,7 +35,7 @@
                               <td>                                
                                 <p class="align-center">PENTING!</p>
                                 <br>
-                                <p>1. Sila jawab soalan kaji selidik ini supaya anda dapat perolehi maklumat terkini program:</p>
+                                <p>1. Sila jawab soalan kaji selidik ini untuk dapatkan akses ke platform zoom:</p>
                               </td>
                             </tr>
                             <tr>
