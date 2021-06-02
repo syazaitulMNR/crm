@@ -29,7 +29,15 @@ class UpgradeController extends Controller
         // $new_package = $request->session()->get('payment');
         $new_package = $request->session()->get('ticket');
 
-        return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
+        if($ticket->ticket_type == 'paid'){
+
+            return view('upgrade_ticket.choose_package', compact('product', 'package', 'current_package', 'student', 'feature', 'ticket', 'new_package'));
+
+        }else{
+
+            return view('upgrade_ticket.no_access');
+
+        }
     }
 
     public function store_package($product_id, $package_id, $ticket_id, Request $request){
