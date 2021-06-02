@@ -268,16 +268,16 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 |--------------------------------------------------------------------------
 */
 Route::get('upgrade-ticket/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@upgrade_ticket'); //kalau adjust ni jgn lupa adjust kat email jugak
-Route::post('store-upgrade/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@store_package');
-Route::get('ticket-details/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@ticket_details');
-Route::post('store-details/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@store_details');
-Route::get('upgrade-payment/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@upgrade_payment');
-Route::post('store-payment/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@store_payment');
-Route::get('payment-option/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@payment_option');
-Route::get('card-option/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@card_option');
-Route::post('store-stripe/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@store_stripe');
-Route::get('billplz-option/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@billplz_option');
-Route::get('redirect-page/{product_id}/{package_id}/{stud_id}/{ticket_id}', 'UpgradeController@redirect_page');
+Route::post('store-upgrade/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@store_package');
+Route::get('ticket-details/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@ticket_details');
+Route::post('store-details/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@store_details');
+Route::get('upgrade-payment/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@upgrade_payment');
+Route::post('store-payment/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@store_payment');
+Route::get('payment-option/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@payment_option');
+Route::get('card-option/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@card_option');
+Route::post('store-stripe/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@store_stripe');
+Route::get('billplz-option/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@billplz_option');
+Route::get('redirect-page/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@redirect_page');
 Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 
 /*
