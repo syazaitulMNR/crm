@@ -132,7 +132,8 @@ class UpgradeController extends Controller
 
         }else{
 
-            abort(404);
+            echo 'error';
+            // abort(404);
 
         }
     }
