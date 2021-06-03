@@ -23,6 +23,7 @@ class CreatePaymentTable extends Migration
             $table->integer('upgrade_count');
             $table->integer('update_count');
             $table->string('pay_method');
+            $table->string('email_status');
             $table->string('stud_id');
             $table->string('product_id');
             $table->string('package_id');
