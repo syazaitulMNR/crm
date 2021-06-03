@@ -59,7 +59,7 @@
                 <i class="fa fa-users fa-6x" style="color:rgba(93, 0, 255, 0.3)"></i>
               </div>
               <h6 class="lead pt-3 pl-3">Total Customers</h6>
-              <h3 class="pb-1 pl-3">{{$student}}</h3>
+              <h3 class="pb-1 pl-3">{{ number_format($student,2) }}</h3>
             </div>
           </div>
         </div>
