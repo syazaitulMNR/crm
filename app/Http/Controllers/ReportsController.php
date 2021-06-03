@@ -194,7 +194,8 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
         
-        return view('admin.reports.paidticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        dd($ticket);
+        // return view('admin.reports.paidticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
     public function track_paid($product_id, $package_id, $ticket_id)
