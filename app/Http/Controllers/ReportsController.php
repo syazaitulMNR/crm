@@ -123,10 +123,11 @@ class ReportsController extends Controller
                 'quantity' => $request->quantity,
                 'status' => 'paid',
                 'pay_method' => 'FPX',
+                'email_status'  => 'Hold',
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => 'Import'
+                'offer_id' => $request->offer_id
             ));
 
             // $ticket_id = 'TIK' . uniqid();
@@ -162,10 +163,11 @@ class ReportsController extends Controller
                 'quantity' => $request->quantity,
                 'status' => 'paid',
                 'pay_method' => 'FPX',
+                'email_status'  => 'Hold',
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => 'Import'
+                'offer_id' => $request->offer_id
             ));
 
             // $ticket_id = 'TIK' . uniqid();

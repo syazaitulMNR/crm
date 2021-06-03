@@ -127,16 +127,17 @@
 
                     <hr>
 
-                    {{-- <div class="form-group row px-4">
-                      <label for="name" class="col-sm-4 col-form-label">Ticket Type</label>
+                    <div class="form-group row px-4">
+                      <label for="name" class="col-sm-4 col-form-label">Offer Type</label>
                       <div class="col-sm-8">
-                        <select name="ticket_type" class="form-select" required>
+                        <select name="offer_id" class="form-select" required>
                           <option value="" disabled selected>-- Please Choose --</option>
-                          <option value="paid">Paid</option>
-                          <option value="free">Free</option>
+                          <option value="OFF001">No Offer</option>
+                          <option value="OFF002">Buy 1 Free 1 (Same Ticket)</option>
+                          <option value="OFF003">Bulk Offer</option>
                         </select>
                       </div>
-                    </div> --}}
+                    </div>
 
                     <div class='col-md-12 text-right px-4'>
                         <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>

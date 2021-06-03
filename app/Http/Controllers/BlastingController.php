@@ -69,7 +69,7 @@ class BlastingController extends Controller
     {
         /*-- Manage Email ---------------------------------------------------*/
 
-        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Import')->first();
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
@@ -86,8 +86,8 @@ class BlastingController extends Controller
         $student_id = $student->stud_id;
 
         // echo 'sent email';
-        $payment->offer_id = 'OFF002'; //buy1free1
-        $payment->save();
+        // $payment->offer_id = 'OFF002'; //buy1free1
+        // $payment->save();
 
         dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
