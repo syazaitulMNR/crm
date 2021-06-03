@@ -197,7 +197,7 @@
                         </div>
                     </div>
 
-                    <div class="card bg-light">
+                    {{-- <div class="card bg-light">
 
                         <div class="row py-2 px-4">
                             <label class="col-sm-2"><b>Update Payment Status</b></label>
@@ -220,32 +220,13 @@
                         <!-- Send email button -->
                         {{-- <a class="btn btn-dark" href="{{ url('sendmail') }}/{{ $student->stud_id }}/{{ $payment->payment_id }}">
                             <i class="far fa-envelope"></i>
-                        </a> --}}
-                    </div>
+                        </a> 
+                    </div> --}}
 
                 </form>
                 
             </div>
 
-            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-            @else
-            <div class="col-md-12 pt-2">
-                <form action="{{ url('updateticket') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="header">
-                              <th>#</th>
-                              <th>IC No.</th>
-                              <th>Name</th>
-                              <th>Email</th>
-                              <th class="text-center">Ticket Type</th> 
-                              <th><i class="fas fa-cogs"></i></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </form>
-            </div>
-            @endif
         </div>
     </main>
 </div>
