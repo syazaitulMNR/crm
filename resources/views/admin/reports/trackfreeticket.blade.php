@@ -66,7 +66,7 @@
                 </div>
                 @endif
 
-                <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
+                <form action="{{ url('paid-ticket/update') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
                     @csrf
                 
                     <div class="card mb-4">
@@ -103,30 +103,7 @@
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                     
                                     <br>
-                                                 
-                                    <!-- Purchased Modal Button -->
-                                    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
-                                    <!-- Purchased Modal Triggered -->
-                                    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer? ?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-sm btn-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                                    <i class="fas fa-paper-plane pr-1"></i> Send
-                                                </a>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                      
                                     <!-- Participant Modal Button -->
                                     <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
                                     <!-- Participant Modal Triggered -->
@@ -142,7 +119,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                                <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
                                                     <i class="fas fa-paper-plane pr-1"></i> Send
                                                 </a>
                                             </div>
@@ -158,7 +135,7 @@
 
                     <div class="card mb-4">
                         <div class="card-header">
-                        <b>Payment Details</b>
+                        <b>Ticket Details</b>
                         </div>
                         <div class="pt-3 px-4">
 
@@ -170,16 +147,16 @@
 
                                 <label class="col-sm-2">Date Purchase</label>
                                 <div class="col-sm-4">
-                                    <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
+                                    <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($ticket->created_at)) }}</p>
                                 </div>
                             </div>
-                            <div class="mb-3 row">
+                            {{-- <div class="mb-3 row">
                                 <label class="col-sm-2">Quantity</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
                                 </div>
 
-                                <label class="col-sm-2">Payment Status</label>
+                                <label class="col-sm-2">Ticket Status</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; 
                                         RM {{ $payment->totalprice }}.00 &nbsp;
@@ -192,60 +169,19 @@
                                         @endif
                                     </p>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
 
-                    <div class="card bg-light">
-
-                        <div class="row py-2 px-4">
-                            <label class="col-sm-2"><b>Update Payment Status</b></label>
-                            <div class="col-sm-4">
-                                <select class="form-select form-control-sm" name="status" aria-label="Default select example">
-                                    <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
-                                    <option value="paid">paid</option>
-                                    <option value="due">due</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
-                            </div>
-                        </div>
-                            {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div> --}}
-                        
-
-                        <!-- Send email button -->
-                        {{-- <a class="btn btn-dark" href="{{ url('sendmail') }}/{{ $student->stud_id }}/{{ $payment->payment_id }}">
-                            <i class="far fa-envelope"></i>
-                        </a> --}}
+                    <div class="row-fluid text-right">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save pr-1"></i> Save Changes</button>
                     </div>
 
                 </form>
                 
             </div>
 
-            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-            @else
-            <div class="col-md-12 pt-2">
-                <form action="{{ url('updateticket') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="header">
-                              <th>#</th>
-                              <th>IC No.</th>
-                              <th>Name</th>
-                              <th>Email</th>
-                              <th class="text-center">Ticket Type</th> 
-                              <th><i class="fas fa-cogs"></i></th>
-                            </tr>
-                        </thead>
-                    </table>
-                </form>
-            </div>
-            @endif
         </div>
     </main>
 </div>
