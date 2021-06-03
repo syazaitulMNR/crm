@@ -103,30 +103,7 @@
                                     {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->email }}</p> --}}
                                     
                                     <br>
-                                                 
-                                    <!-- Purchased Modal Button -->
-                                    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
-                                    <!-- Purchased Modal Triggered -->
-                                    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer? ?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-sm btn-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
-                                                    <i class="fas fa-paper-plane pr-1"></i> Send
-                                                </a>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                      
                                     <!-- Participant Modal Button -->
                                     <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
                                     <!-- Participant Modal Triggered -->
