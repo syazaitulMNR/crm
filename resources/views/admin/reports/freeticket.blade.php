@@ -146,9 +146,9 @@
             </div>
         </form> --}}
 
-        <!-- Show success payment in table ----------------------------------------------->
+         <!-- Show success payment in table ----------------------------------------------->
         {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
-        @if(isset($details))
+        {{--@if(isset($details))
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
@@ -156,8 +156,6 @@
                 <th>IC No.</th>
                 <th>Name</th>
                 <th>Email</th>
-                {{-- <th>Status</th>
-                <th class="text-center">Update Participant</th> --}}
                 <th><i class="fas fa-cogs"></i></th>
                 </tr>
                 </thead>
@@ -171,24 +169,6 @@
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                     <td>{{ $students->email }}</td>
-                    {{-- <td>
-                        @if ($payments->status == 'paid')
-                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                        @elseif ($payments->status == 'due')
-                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                        @else
-                        <p>NULL</p>
-                        @endif
-                    </td>
-                    <td class="text-center">
-                        @if ($payments->update_count == 1)
-                        <i class="fas fa-check" style="color:green"></i>
-                        @elseif ($payments->update_count == Null)
-                        <i class="fas fa-times" style="color:red"></i>
-                        @else
-                        <p>NULL</p>
-                        @endif
-                    </td> --}}
                     <td>
                         <a class="btn btn-dark" href="{{ url('view-free') }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
@@ -223,7 +203,7 @@
                 
                 </tbody>
             </table>  
-        @endif
+        @endif --}}
 
         <div class="float-right pt-3">{{$ticket->links()}}</div>
         <table class="table table-hover" id="successTable">
@@ -311,7 +291,7 @@
   {
     var input, filter, table, tr, td, i, txtValue;
 
-    input = document.getElementById("successInput");
+    input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("successTable");
     tr = table.getElementsByTagName("tr");
