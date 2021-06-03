@@ -37,7 +37,7 @@ class BlastingController extends Controller
 
     public function show($product_id, $package_id)
     {
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Hold')->paginate(15);
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -48,7 +48,7 @@ class BlastingController extends Controller
         // $package = Package::where('product_id', $product_id)->get(); 
         // $payment = Payment::where('product_id', $product_id)->get();
 
-        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('offer_id', 'Hold')->count();
+        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
         
         // dd($student);
         return view('admin.viewblast', compact('student', 'product', 'package', 'payment', 'total'));
