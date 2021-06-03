@@ -189,7 +189,7 @@
                         @endif
                     </td> --}}
                     <td>
-                        <a class="btn btn-dark" href="{{ url('view-free) }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                        <a class="btn btn-dark" href="{{ url('view-free') }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else
