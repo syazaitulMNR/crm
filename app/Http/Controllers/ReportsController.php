@@ -278,7 +278,7 @@ class ReportsController extends Controller
         // dd($student_id);
         $student->save();
 
-        return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
+        return redirect('free-ticket/'.$product_id.'/'.$package_id)->with('update-free','Customer Successfully Updated!');
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
