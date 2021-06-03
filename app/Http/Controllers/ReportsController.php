@@ -225,10 +225,10 @@ class ReportsController extends Controller
         $student->last_name = $request->last_name;
         $student->email = $request->email;
 
-        dd($student_id);
-        // $student->save();
+        // dd($student_id);
+        $student->save();
 
-        // return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
+        return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
     }
 
     public function free_ticket($product_id, $package_id)
@@ -275,10 +275,10 @@ class ReportsController extends Controller
         $student->last_name = $request->last_name;
         $student->email = $request->email;
 
-        dd($student_id);
-        // $student->save();
+        // dd($student_id);
+        $student->save();
 
-        // return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
+        return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
