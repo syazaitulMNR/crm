@@ -227,7 +227,7 @@
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                 <td>{{ $students->email }}</td>
                 <td>
-                    <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                    <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
 
                     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                     @else
@@ -245,7 +245,7 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-danger" href="{{ url('delete') }}/{{ $tickets->payment_id }}/{{ $product->product_id }}/{{ $tickets->package_id }}">Delete</a>
+                            <a class="btn btn-danger" href="{{ url('delete-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}">Delete</a>
                             </div>
                         </div>
                         </div>
