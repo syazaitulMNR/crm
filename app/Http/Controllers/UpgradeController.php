@@ -666,7 +666,7 @@ class UpgradeController extends Controller
             $date_to = $product->date_to;
             $time_from = $product->time_from;
             $time_to = $product->time_to;
-            $packageId = $package_id;
+            $packageId = $new_package->package_id;
             $payment_id = $payment_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
