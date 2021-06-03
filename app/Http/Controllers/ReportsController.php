@@ -183,6 +183,20 @@ class ReportsController extends Controller
         return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
     }
 
+    public function paid_ticket($product_id, $package_id)
+    {
+        //Get the details
+        $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+
+        //Count the data
+        $count = 1;
+        
+        return view('admin.reports.viewbypackage', compact('ticket', 'product', 'package', 'payment', 'student', 'count'));
+    }
+
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
     {
         $paginate = Payment::where('product_id', $product_id)->paginate(15);
