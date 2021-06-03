@@ -186,7 +186,7 @@ Route::get('closing-list','ClosingController@view');
 */
 Route::get('/', 'HomeController@viewproduct');
 Route::get('showpackage/{id}', 'HomeController@view');
-Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
+// Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
 Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic');
 
 // Newstudent
