@@ -408,10 +408,10 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
         
-        echo 'sent mail';
+        // echo 'sent mail';
         
-        // dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
         
-        // return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
+        return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
     }
 }
