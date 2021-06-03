@@ -66,7 +66,7 @@
                 </div>
                 @endif
 
-                <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
+                <form action="{{ url('paid-ticket/update') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
                     @csrf
                 
                     <div class="card mb-4">
@@ -119,7 +119,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-sm btn-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                                <a class="btn btn-sm btn-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
                                                     <i class="fas fa-paper-plane pr-1"></i> Send
                                                 </a>
                                             </div>
@@ -142,7 +142,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                                <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
                                                     <i class="fas fa-paper-plane pr-1"></i> Send
                                                 </a>
                                             </div>
@@ -170,16 +170,16 @@
 
                                 <label class="col-sm-2">Date Purchase</label>
                                 <div class="col-sm-4">
-                                    <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
+                                    <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($ticket->created_at)) }}</p>
                                 </div>
                             </div>
-                            <div class="mb-3 row">
+                            {{-- <div class="mb-3 row">
                                 <label class="col-sm-2">Quantity</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
                                 </div>
 
-                                <label class="col-sm-2">Payment Status</label>
+                                <label class="col-sm-2">Ticket Status</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; 
                                         RM {{ $payment->totalprice }}.00 &nbsp;
@@ -192,7 +192,7 @@
                                         @endif
                                     </p>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
