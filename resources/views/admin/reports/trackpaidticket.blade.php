@@ -175,7 +175,7 @@
                     </div>
 
                     <div class="row-fluid text-right">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-save pr-1"></i> Save Changes</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save pr-1"></i> Save</button>
                     </div>
 
                 </form>
