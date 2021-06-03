@@ -390,9 +390,9 @@ class ReportsController extends Controller
         return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
 
-    public function updated_mail($product_id, $package_id, $payment_id, $student_id)
+    public function updated_mail($product_id, $package_id, $ticket_id, $student_id)
     {
-        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
@@ -404,7 +404,7 @@ class ReportsController extends Controller
         $time_from = $product->time_from;
         $time_to = $product->time_to;
         $packageId = $package_id;
-        $payment_id = $payment->payment_id;
+        $payment_id = $ticket->ticket_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
         
