@@ -86,8 +86,8 @@ class BlastingController extends Controller
         $student_id = $student->stud_id;
 
         // echo 'sent email';
-        // $payment->offer_id = 'OFF002'; //buy1free1
-        // $payment->save();
+        $payment->email_status = 'Sent'; //buy1free1
+        $payment->save();
 
         dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
