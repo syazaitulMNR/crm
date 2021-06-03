@@ -158,7 +158,7 @@
 
                     <div class="card mb-4">
                         <div class="card-header">
-                        <b>Payment Details</b>
+                        <b>Ticket Details</b>
                         </div>
                         <div class="pt-3 px-4">
 
