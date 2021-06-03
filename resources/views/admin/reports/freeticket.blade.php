@@ -135,7 +135,7 @@
         @endif
 
         <!-- Search box ---------------------------------------------------------->
-        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC " title="Type in a name">
+        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name">
         {{-- <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
             @csrf
             <div class="input-group mb-3">
@@ -287,7 +287,7 @@
 
 <!-- Enable function for search payment ------------------------------------->
 <script>
-  function successFunction() 
+  function myFunction() 
   {
     var input, filter, table, tr, td, i, txtValue;
 
