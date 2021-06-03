@@ -238,7 +238,7 @@
             <tbody> 
             @foreach ($ticket as $key => $tickets)
             @foreach ($student as $students)   
-            @if ($tickets->stud_id == $students->stud_id)
+            @if ($tickets->ic == $students->ic)
             @if ($product->product_id == $tickets->product_id)  
             <tr>
                 <td>{{ $count++ }}</td>
