@@ -191,7 +191,7 @@
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
+                <a href="" class="card bg-light card-inverse shadow" style="text-decoration: none">
                   <div class="card-block">
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
@@ -199,7 +199,7 @@
                     <h6 class="lead pt-3 pl-3">Free Ticket</h6>
                     <h3 class="pb-1 pl-3">{{$freeticket}}</h3>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
 
