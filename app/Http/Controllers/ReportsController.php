@@ -200,7 +200,7 @@ class ReportsController extends Controller
     public function track_paid($product_id, $package_id, $ticket_id)
     {
         //Get the details
-        $ticket = Ticket::where('ticket', $ticket_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
