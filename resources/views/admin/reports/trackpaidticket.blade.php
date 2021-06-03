@@ -197,7 +197,7 @@
                         </div>
                     </div>
 
-                    <div class="card bg-light mb-4 text-right">
+                    <div class="col-md-12 text-right">
                         <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
                     </div>
 
