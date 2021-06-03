@@ -115,7 +115,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer? ?
+                                                Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -145,7 +145,7 @@
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
                                 </div>
 
-                                <label class="col-sm-2">Date Purchase</label>
+                                <label class="col-sm-2">Date Registered</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($ticket->created_at)) }}</p>
                                 </div>
