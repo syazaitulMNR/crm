@@ -135,7 +135,8 @@
         @endif
 
         <!-- Search box ---------------------------------------------------------->
-        <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name">
+        {{-- <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
             @csrf
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
@@ -143,11 +144,11 @@
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
             </div>
-        </form>
+        </form> --}}
 
         <!-- Show success payment in table ----------------------------------------------->
         {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
-        @if(isset($details))
+        {{-- @if(isset($details))
             <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
@@ -155,8 +156,6 @@
                 <th>IC No.</th>
                 <th>Name</th>
                 <th>Email</th>
-                {{-- <th>Status</th>
-                <th class="text-center">Update Participant</th> --}}
                 <th><i class="fas fa-cogs"></i></th>
                 </tr>
                 </thead>
@@ -170,24 +169,6 @@
                     <td>{{ $students->ic }}</td>
                     <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                     <td>{{ $students->email }}</td>
-                    {{-- <td>
-                        @if ($payments->status == 'paid')
-                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                        @elseif ($payments->status == 'due')
-                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                        @else
-                        <p>NULL</p>
-                        @endif
-                    </td>
-                    <td class="text-center">
-                        @if ($payments->update_count == 1)
-                        <i class="fas fa-check" style="color:green"></i>
-                        @elseif ($payments->update_count == Null)
-                        <i class="fas fa-times" style="color:red"></i>
-                        @else
-                        <p>NULL</p>
-                        @endif
-                    </td> --}}
                     <td>
                         <a class="btn btn-dark" href="{{ url('view-paid') }}/{{ $product->product_id }}/{{ $tickets->package_id }}/{{ $tickets->payment_id }}/{{ $tickets->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
@@ -222,7 +203,7 @@
                 
                 </tbody>
             </table>  
-        @endif
+        @endif --}}
 
         <table class="table table-hover" id="successTable">
             <thead>
@@ -305,11 +286,11 @@
 
 <!-- Enable function for search payment ------------------------------------->
 <script>
-  function successFunction() 
+  function myFunction() 
   {
     var input, filter, table, tr, td, i, txtValue;
 
-    input = document.getElementById("successInput");
+    input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("successTable");
     tr = table.getElementsByTagName("tr");
