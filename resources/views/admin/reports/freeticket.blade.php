@@ -135,7 +135,7 @@
         @endif
 
         <!-- Search box ---------------------------------------------------------->
-        <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+        {{-- <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
             @csrf
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
@@ -143,7 +143,7 @@
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
             </div>
-        </form>
+        </form> --}}
 
         <!-- Show success payment in table ----------------------------------------------->
         {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
@@ -224,6 +224,7 @@
             </table>  
         @endif
 
+        <div class="float-right pt-3">{{$ticket->links()}}</div>
         <table class="table table-hover" id="successTable">
             <thead>
             <tr class="header">
