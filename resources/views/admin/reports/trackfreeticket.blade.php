@@ -66,7 +66,7 @@
                 </div>
                 @endif
 
-                <form action="{{ url('paid-ticket/update') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
+                <form action="{{ url('free-ticket/update') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
                     @csrf
                 
                     <div class="card mb-4">

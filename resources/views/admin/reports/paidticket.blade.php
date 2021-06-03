@@ -99,36 +99,15 @@
 
         <br>       
         
-        @if ($message = Session::get('addsuccess'))
+        @if ($message = Session::get('update-paid'))
         <div class="alert alert-success alert-block">
             <button type="button" class="close" data-bs-dismiss="alert">×</button>	
             <strong>{{ $message }}</strong>
         </div>
         @endif
 
-        @if ($message = Session::get('importsuccess'))
+        @if ($message = Session::get('update-free'))
         <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-
-        @if ($message = Session::get('updatepayment'))
-        <div class="alert alert-info alert-block">
-            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-
-        @if ($message = Session::get('deletepayment'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-
-        @if ($message = Session::get('search-error'))
-        <div class="alert alert-danger alert-block">
             <button type="button" class="close" data-bs-dismiss="alert">×</button>	
             <strong>{{ $message }}</strong>
         </div>

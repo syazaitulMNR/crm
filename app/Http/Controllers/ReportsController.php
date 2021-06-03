@@ -211,6 +211,26 @@ class ReportsController extends Controller
         return view('admin.reports.trackpaidticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
+    public function update_paid($product_id, $package_id, $ticket_id, $student_id, Request $request)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+
+        dd($student_id);
+        // $student->save();
+
+        // return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
+    }
+
     public function free_ticket($product_id, $package_id)
     {
         //Get the details
@@ -239,6 +259,26 @@ class ReportsController extends Controller
         
         // dd($ticket);
         return view('admin.reports.trackfreeticket', compact('ticket', 'product', 'package', 'student', 'count'));
+    }
+
+    public function update_free($product_id, $package_id, $ticket_id, $student_id, Request $request)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+
+        dd($student_id);
+        // $student->save();
+
+        // return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
