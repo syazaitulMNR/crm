@@ -154,7 +154,7 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 
 
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
-Route::get('updated-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@updated_mail');
+Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 
