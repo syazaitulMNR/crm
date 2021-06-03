@@ -197,6 +197,21 @@ class ReportsController extends Controller
         return view('admin.reports.paidticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
+    public function track_paid($product_id, $package_id, $ticket_id)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+
+        //Count the data
+        $count = 1;
+        
+        // dd($ticket);
+        return view('admin.reports.trackpaidticket', compact('ticket', 'product', 'package', 'student', 'count'));
+    }
+
     public function free_ticket($product_id, $package_id)
     {
         //Get the details
@@ -210,6 +225,21 @@ class ReportsController extends Controller
         
         // dd($ticket);
         return view('admin.reports.freeticket', compact('ticket', 'product', 'package', 'student', 'count'));
+    }
+
+    public function track_free($product_id, $package_id, $ticket_id)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+
+        //Count the data
+        $count = 1;
+        
+        // dd($ticket);
+        return view('admin.reports.trackfreeticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
