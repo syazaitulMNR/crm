@@ -191,7 +191,7 @@
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="" class="card bg-light card-inverse shadow" style="text-decoration: none">
+                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card bg-light card-inverse shadow" style="text-decoration: none">
                   <div class="card-block">
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
