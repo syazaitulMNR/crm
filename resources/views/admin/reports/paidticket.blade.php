@@ -205,6 +205,7 @@
             </table>  
         @endif --}}
 
+        <div class="float-right pt-3">{{$ticket->links()}}</div>
         <table class="table table-hover" id="successTable">
             <thead>
             <tr class="header">
