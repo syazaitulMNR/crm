@@ -137,9 +137,9 @@ Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbyp
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
 
 Route::get('paid-ticket/{product_id}/{package_id}', 'ReportsController@paid_ticket');
-Route::get('paid-ticket/view/{product_id}/{package_id}', 'ReportsController@track_paid');
+Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
 Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
-Route::get('free-ticket/view/{product_id}/{package_id}', 'ReportsController@track_free');
+Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
 
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
