@@ -87,10 +87,10 @@ class BlastingController extends Controller
 
         // echo 'sent email';
         $payment->email_status = 'Sent';
-        $payment->offer_id = 'OFF002'; //buy1free1
+        // $payment->offer_id = 'OFF002'; //buy1free1
 
         dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-        
+
         $payment->save();
 
         return redirect('view-event/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;

@@ -87,10 +87,10 @@ Pendaftaran Pembeli
 
         var total;
         var package_name = '{{ $package->name }}';
-        var package1 = 'General';
-        var package2 = 'Gold';
-        var package3 = 'Diamond';
-        var error = 'No such package id';
+        var package1 = 'Solidariti';
+        var package2 = 'Sustain';
+        var package3 = 'Growth';
+        var error = 'No such package';
 
         if (package_name == package1) {
             
