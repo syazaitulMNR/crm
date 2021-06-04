@@ -40,7 +40,7 @@
 <div class="row">
   <div class="col-md-12 px-3 py-4">
     <div class="text-center">
-        <h3 class="display-4">Pembelian anda telah berjaya!</h3>
+        <h3 class="display-4">Pendaftaran anda telah berjaya!</h3>
         <p class="lead pt-3">1) Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
         <p class="lead">2) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p>
         {{-- <div class="py-3" style="font-size: 24px; color: green;">
