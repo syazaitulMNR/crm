@@ -20,8 +20,9 @@
                           <tbody>
                             <tr>
                                 <td>Assalamualaikum & Salam Sejahtera Tuan/Puan,<br><br>
-                                Tahniah kerana sudah mendaftar ke Program {{ $product_name }}.
-                                Program ini akan berlangsung pada:</td>
+                                  Tahniah kerana anda sudah mendaftar ke program {{ $product_name }} dan pendaftaran anda telah kami terima.<br><br>
+                                  Bimbingan 30 Hari anda bermula dari 3 Jun hingga 3 Julai 2021.<br><br>
+                                  Dan program kemuncak, {{ $product_name }} akan berlangsung pada :</td>
                             </tr>
                             <tr>
                                 <td>
