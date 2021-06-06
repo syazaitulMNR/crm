@@ -82,6 +82,31 @@ class HomeController extends Controller
     }
 
     /*-- Participant Registration ------------------------------------------*/
+    public function check_ic($product_id,$package_id)
+    {
+        $package = Package::where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+
+        // // return view('customer/main', compact('product', 'package')); bukan yg ni taw!!!
+        return view('customer_new/check_ic', compact('product', 'package'));
+        // abort(404); 
+    }
+
+    public function verify_ic($product_id, $package_id, Request $request)
+    {
+        // Check if ic exist
+        if(Student::where('ic', $request->ic)->exists()){
+            
+            $student = Student::where('ic', $request->ic)->first();
+            return redirect('updateform/' . $product_id . '/' . $package_id .'/'.$student->stud_id);
+
+        }else{
+
+            return view('certificate.not_found');
+
+        }
+    }
+
     public function participant_form($product_id, $package_id, $stud_id, $payment_id)
     {
         $student = Student::where('stud_id', $stud_id)->first();

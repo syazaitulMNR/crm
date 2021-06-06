@@ -236,6 +236,9 @@ Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
 | Update Participant
 |--------------------------------------------------------------------------
 */
+Route::get('pendaftaran-peserta/{product_id}/{package_id}', 'HomeController@check_ic');
+Route::get('pendaftaran-peserta/verify/{product_id}/{package_id}', 'HomeController@verify_ic');
+
 Route::get('updateform/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@participant_form');
 // If no offer/bulk ticket
 Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_bulk');
