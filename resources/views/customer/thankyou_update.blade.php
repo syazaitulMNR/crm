@@ -22,7 +22,7 @@
         </div>
         <hr>
         <p class="lead">Pengesahan pengemaskinian akan dihantar kepada emel yang telah didaftarkan dalam tempoh 48 Jam. Terima kasih kerana menunggu.</p>
-        <p class="lead py-3">Jika terdapat sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/" class="link-primary">hubungi kami.</a></p>
+        <p class="lead py-3">Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet" class="link-primary">hubungi kami.</a></p>
     </div>
   </div>
 </div>
