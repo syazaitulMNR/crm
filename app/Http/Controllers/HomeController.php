@@ -84,7 +84,7 @@ class HomeController extends Controller
     /*-- Participant Registration ------------------------------------------*/
     public function check_ic($product_id)
     {
-        $package = Package::where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
 
         return view('customer.update_participant', compact('product'));
     }
