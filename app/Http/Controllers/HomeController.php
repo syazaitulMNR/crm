@@ -95,10 +95,10 @@ class HomeController extends Controller
         if(Student::where('ic', $request->ic)->exists()){
             
             $student = Student::where('ic', $request->ic)->first();
-            $payment_paid = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
+            $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
             // $payment_due = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'due')->first();
 
-            if ($payment_paid) {
+            if ($payment) {
 
                 return redirect('updateform/' . $product_id . '/' . $payment->package_id . '/' . $student->stud_id . '/' . $payment->payment_id);
 
