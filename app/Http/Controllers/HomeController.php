@@ -100,16 +100,19 @@ class HomeController extends Controller
 
             if ($payment) {
 
+                //if payment success
                 return redirect('updateform/' . $product_id . '/' . $payment->package_id . '/' . $student->stud_id . '/' . $payment->payment_id);
 
             }else{
 
+                //if payment failed
                 return view('certificate.not_found');
 
             }
 
         }else{
 
+            //if customer not found in database
             return view('certificate.not_found');
 
         }
