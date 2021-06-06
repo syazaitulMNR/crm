@@ -1,7 +1,7 @@
 @extends('layouts.temp')
 
 @section('title')
-{{ $package->name }}
+Kemaskini Peserta
 @endsection
 
 @section('content')
@@ -13,8 +13,8 @@
     
     <div class="col-md-12 d-flex justify-content-center">
         <div class="card px-4 py-4 w-75 shadow">
-            <p class="lead px-3">Sila isikan No. Kad Pengenalan/Passport untuk mengemaskini peserta</p>
-            <form action="{{ url('pendaftaran-peserta/verify') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
+            <p class="lead px-3">Sila isikan No. Kad Pengenalan/Passport untuk kemaskini peserta</p>
+            <form action="{{ url('pendaftaran-peserta/verify') }}/{{ $product->product_id }}" method="get">
                 @csrf
                 <div class="col-md-12 pb-3">
                     <input type="text" class="form-control" name="ic" placeholder="tanpa '-' .Cth: 91042409**** / A********" maxlength="12" required="" >
