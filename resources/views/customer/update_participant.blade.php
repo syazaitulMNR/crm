@@ -14,7 +14,7 @@
     <div class="col-md-12 d-flex justify-content-center">
         <div class="card px-4 py-4 w-75 shadow">
             <p class="lead px-3">No. Kad Pengenalan / Passport</p>
-            <form action="{{ url('verification') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
+            <form action="{{ url('pendaftaran-peserta/verify') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
                 @csrf
                 <div class="col-md-12 pb-3">
                     <input type="text" class="form-control" name="ic" placeholder="tanpa '-' .Cth: 91042409**** / A********" maxlength="12" required="" >
