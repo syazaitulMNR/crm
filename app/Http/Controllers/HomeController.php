@@ -96,7 +96,6 @@ class HomeController extends Controller
             
             $student = Student::where('ic', $request->ic)->first();
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
-            // $payment_due = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'due')->first();
 
             if ($payment) {
 
