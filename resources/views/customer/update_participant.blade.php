@@ -13,7 +13,7 @@ Kemaskini Peserta
     
     <div class="col-md-12 d-flex justify-content-center">
         <div class="card px-4 py-4 w-75 shadow">
-            <p class="lead px-3">Sila isikan No. Kad Pengenalan/Passport untuk kemaskini peserta</p>
+            <p class="lead px-3">No. Kad Pengenalan / Passport</p>
             <form action="{{ url('pendaftaran-peserta/verify') }}/{{ $product->product_id }}" method="get">
                 @csrf
                 <div class="col-md-12 pb-3">
