@@ -19,7 +19,7 @@
       <div class="py-3" style="font-size: 24px; color: green;">
         <i class="far fa-check-circle fa-6x text-center"></i>
       </div>
-      <p class="lead py-2">Anda perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+      <p class="lead py-2">Peserta perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
       
       <a class="btn btn-lg btn-primary" href="https://www.research.net/r/rpmcw2021"> Soalan kaji selidik</a>
 
