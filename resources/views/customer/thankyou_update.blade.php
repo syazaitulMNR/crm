@@ -23,7 +23,7 @@
       
       <a class="btn btn-lg btn-primary" href="https://www.research.net/r/rpmcw2021"> Soalan kaji selidik</a>
 
-      <hr class="my-3">
+      <hr class="my-5">
       {{-- <p class="lead">Pengesahan pengemaskinian akan dihantar kepada emel yang telah didaftarkan dalam tempoh 48 Jam. Terima kasih kerana menunggu.</p> --}}
       <p class="lead">Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet" class="link-primary">hubungi kami.</a></p>
     </div>
