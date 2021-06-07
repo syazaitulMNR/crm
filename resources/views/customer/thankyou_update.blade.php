@@ -17,7 +17,7 @@
     <div class="text-center">
       <h3 class="display-4">Maklumat telah berjaya dikemaskini.</h3>
       <div class="py-3" style="font-size: 24px; color: green;">
-        <i class="far fa-check-circle fa-8x text-center"></i>
+        <i class="far fa-check-circle fa-6x text-center"></i>
       </div>
       <p class="lead py-2">Anda perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
       
