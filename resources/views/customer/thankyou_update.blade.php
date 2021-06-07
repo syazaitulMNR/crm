@@ -15,12 +15,12 @@
 <div class="row">
   <div class="col-md-12 px-5 py-4">
     <div class="text-center">
-      <h3 class="display-4">Maklumat telah berjaya dikemaskini.</h3>
+      <h3 class="display-4 pb-5">Maklumat telah berjaya dikemaskini.</h3>
       {{-- <div class="py-3" style="font-size: 24px; color: green;">
         <i class="far fa-check-circle fa-8x text-center"></i>
       </div> --}}
       <a class="btn btn-lg btn-primary" href="https://www.research.net/r/rpmcw2021"> Soalan kaji selidik</a>
-      <p class="lead">Anda perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
+      <p class="lead pt-5">Anda perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
       <hr>
       {{-- <p class="lead">Pengesahan pengemaskinian akan dihantar kepada emel yang telah didaftarkan dalam tempoh 48 Jam. Terima kasih kerana menunggu.</p> --}}
       <p class="lead py-3">Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet" class="link-primary">hubungi kami.</a></p>
