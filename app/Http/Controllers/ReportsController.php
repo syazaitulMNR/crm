@@ -249,7 +249,7 @@ class ReportsController extends Controller
         // $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         // $stud_id = $student_id->stud_id;
 
-        $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->get();
+        $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
 
         // dd($stud_id);
         // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
