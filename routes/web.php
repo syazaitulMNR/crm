@@ -157,6 +157,7 @@ Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'R
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
+Route::get('paid-ticket/search/{product_id}/{package_id}', 'ReportsController@search_paid');
 
 /*
 |--------------------------------------------------------------------------
