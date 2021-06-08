@@ -158,6 +158,7 @@ Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'Repo
 
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 Route::get('paid-ticket/search/{product_id}/{package_id}', 'ReportsController@search_paid');
+Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@search_free');
 
 /*
 |--------------------------------------------------------------------------

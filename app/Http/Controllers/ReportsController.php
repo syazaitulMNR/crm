@@ -316,11 +316,11 @@ class ReportsController extends Controller
         return redirect('free-ticket/'.$product_id.'/'.$package_id)->with('update-free','Customer Successfully Updated!');
     }
 
-    // search paid participant
-    public function search_paid($product_id, $package_id, Request $request)
+    // search free participant
+    public function search_free($product_id, $package_id, Request $request)
     {   
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(100);
+        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
