@@ -105,6 +105,13 @@
             <strong>{{ $message }}</strong>
         </div>
         @endif
+        
+        @if ($message = Session::get('search-error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
 
         <!-- Search box ---------------------------------------------------------->
         {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name"> --}}

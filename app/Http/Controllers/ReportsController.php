@@ -316,6 +316,39 @@ class ReportsController extends Controller
         return redirect('free-ticket/'.$product_id.'/'.$package_id)->with('update-free','Customer Successfully Updated!');
     }
 
+    // search paid participant
+    public function search_paid($product_id, $package_id, Request $request)
+    {   
+        //Get the details
+        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(100);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+
+        //Count the data
+        $count = 1;
+
+        //get details from search
+        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
+        $stud_id = $student_id->stud_id;
+
+        $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+
+        // dd($stud_id);
+        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
+        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+
+        if(count($ticket) > 0)
+        {
+            return view('admin.reports.freeticket', compact('ticket', 'product', 'package', 'student', 'count'));
+
+        }else{
+
+            return redirect()->back()->with('search-error', 'Customer not found!');
+
+        }
+    }
+
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
     {
         $paginate = Payment::where('product_id', $product_id)->paginate(15);
