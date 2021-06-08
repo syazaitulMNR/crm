@@ -334,19 +334,17 @@ class ReportsController extends Controller
 
         $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->get();
 
-        // dd($stud_id);
-        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+        dd($ticket);
 
-        if(count($ticket) > 0)
-        {
-            return view('admin.reports.freeticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        // if(count($ticket) > 0)
+        // {
+        //     return view('admin.reports.freeticket', compact('ticket', 'product', 'package', 'student', 'count'));
 
-        }else{
+        // }else{
 
-            return redirect()->back()->with('search-error', 'Customer not found!');
+        //     return redirect()->back()->with('search-error', 'Customer not found!');
 
-        }
+        // }
     }
 
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
