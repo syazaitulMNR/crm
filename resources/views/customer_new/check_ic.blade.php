@@ -24,7 +24,9 @@
                 </div>
             </form>
         </div>
+    </div>
 
+    <div class="col-md-12 text-center">
         <a href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
     </div>
 </div>
