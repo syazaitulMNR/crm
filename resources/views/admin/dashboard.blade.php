@@ -51,7 +51,7 @@
       <br>
 
       <!-- Show data in cards --------------------------------------------------->
-      <div class="row px-3 mb-1">
+      <div class="row mb-1">
         <div class="col-xl-3 col-lg-6">
           <div class="card bg-light card-inverse shadow">
             <div class="card-block">
@@ -103,21 +103,8 @@
       <hr class="my-3">
 
       <div class="row">
-          <!-- Show data in bar chart --------------------------------------------------->
-        <div class="col-md-4">
-          <div class="card bg-white shadow px-2 py-2">
-            <div id="chartdata" ></div>
-          </div>
-        </div>
-
-        <!-- Show data in line graph --------------------------------------------------->
-
-        {{-- <figure class="highcharts-figure">
-          <div id="container"></div>
-        </figure> --}}
-
         <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Title</h5>
@@ -142,6 +129,20 @@
             </tfoot>
           </table> --}}
         </div>
+
+        <!-- Show data in bar chart --------------------------------------------------->
+        <div class="col-md-4">
+          <div class="card bg-white shadow px-2 py-2">
+            <div id="chartdata" ></div>
+          </div>
+        </div>
+
+        <!-- Show data in line graph --------------------------------------------------->
+
+        {{-- <figure class="highcharts-figure">
+          <div id="container"></div>
+        </figure> --}}
+
       </div>
       
     </main>
