@@ -870,7 +870,7 @@ class HomeController extends Controller
 
         
         echo date('Y-m-d H:i:s', strtotime('-2 hours', strtotime('2021-06-09 08:00:00')));
-        echo date('Y-m-d H:i:s', strtotime('-2 hours'));
+        echo date('Y-m-d H:i:s', strtotime('+8 hours'));
 
     }
 
