@@ -105,7 +105,7 @@
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-7">
-          <div class="card bg-light shadow">
+          <div class="card bg-light shadow px-2 py-2">
             <table class="table">
               <thead class="thead">
                 <tr>
