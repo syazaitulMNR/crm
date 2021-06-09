@@ -341,11 +341,6 @@ Highcharts.chart('container', {
                   name: "Internet Explorer",
                   y: 7.23,
                   drilldown: "Internet Explorer"
-              },
-              {
-                  name: "Other",
-                  y: 7.62,
-                  drilldown: null
               }
           ]
       }
