@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row">
-    <a href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
+    <a class="text-right" href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
 </div>
 <div class="row">
     <div class="col-md-12 px-2 py-5 text-center">
