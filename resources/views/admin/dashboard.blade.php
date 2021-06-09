@@ -104,8 +104,8 @@
 
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-7">
-          <div class="card bg-white shadow px-4 py-4">
+        <div class="col-md-5">
+          <div class="card bg-white shadow px-4">
 
             <figure class="highcharts-figure">
               <div id="container"></div>
@@ -157,7 +157,7 @@
         </div>
 
         <!-- Show data in bar chart --------------------------------------------------->
-        <div class="col-md-5">
+        <div class="col-md-7">
           <div class="card bg-white shadow px-2 py-2">
             <div id="chartdata" ></div>
           </div>
