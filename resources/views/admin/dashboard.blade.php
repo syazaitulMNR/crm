@@ -107,7 +107,7 @@
         <div class="col-md-7">
           <div class="card bg-white shadow px-4 py-4">
 
-            <h5 class="card-title text-center py-2">Roket Pemasaran Momentum Copywriting 2021</h5>
+            <h5 class="card-title text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
 
             <table class="table text-center">
               <thead class="thead">
