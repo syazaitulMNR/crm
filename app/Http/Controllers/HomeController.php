@@ -869,9 +869,7 @@ class HomeController extends Controller
         // }
 
         
-        $DateTime = date("h:i:s");
-        $DateTime->modify('-2 hours');
-        dd($DateTime);
+        echo date('Y-m-dTH:i:s', strtotime('-2 hours', strtotime('2016-07-15T06:20:00')));
 
     }
 
