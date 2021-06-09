@@ -112,7 +112,7 @@
             <table class="table text-center">
               <thead class="thead">
                 <tr>
-                  <th>Package</th>
+                  <th class="text-left">Package</th>
                   <th>Registration</th>
                   <th>Paid Ticket</th>
                   <th>Free Ticket</th>
@@ -120,19 +120,19 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Solidariti</td>
+                  <td class="text-left">Solidariti</td>
                   <td>14,343</td>
                   <td>14,343</td>
                   <td>8,569</td>
                 </tr>
                 <tr>
-                  <td>Sustain</td>
+                  <td class="text-left">Sustain</td>
                   <td>14,343</td>
                   <td>14,343</td>
                   <td>8,569</td>
                 </tr>
                 <tr>
-                  <td>Growth</td>
+                  <td class="text-left">Growth</td>
                   <td>14,343</td>
                   <td>14,343</td>
                   <td>8,569</td>
@@ -140,7 +140,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>Grand Total</th>
+                  <th class="text-left">Grand Total</th>
                   <th>25,000</th>
                   <th colspan="2">25,000</th>
                 </tr>
