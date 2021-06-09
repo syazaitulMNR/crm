@@ -110,8 +110,6 @@
             <figure class="highcharts-figure">
               <div id="container"></div>
               <p class="highcharts-description">
-                  Pie chart where the individual slices can be clicked to expose more
-                  detailed data.
               </p>
             </figure>
             {{-- <h5 class="card-title text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
