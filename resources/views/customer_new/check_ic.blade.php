@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="row pull-right">
+<div class="row pull-right px-2 pt-1">
     <a href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
 </div>
 <div class="row">
