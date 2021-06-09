@@ -104,8 +104,8 @@
 
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-12 px-4 py-4">
-          {{-- <div class="card bg-white shadow px-4 py-4"> --}}
+        <div class="col-md-12">
+          <div class="card bg-white shadow px-4 py-4">
 
             <h5 class="text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
 
@@ -146,7 +146,7 @@
                 </tr>
               </tfoot>
             </table>
-          {{-- </div> --}}
+          </div>
         </div>
 
         <!-- Show data in bar chart --------------------------------------------------->
