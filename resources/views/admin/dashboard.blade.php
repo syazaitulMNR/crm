@@ -343,21 +343,6 @@ Highcharts.chart('container', {
                   drilldown: "Internet Explorer"
               },
               {
-                  name: "Safari",
-                  y: 5.58,
-                  drilldown: "Safari"
-              },
-              {
-                  name: "Edge",
-                  y: 4.02,
-                  drilldown: "Edge"
-              },
-              {
-                  name: "Opera",
-                  y: 1.92,
-                  drilldown: "Opera"
-              },
-              {
                   name: "Other",
                   y: 7.62,
                   drilldown: null
@@ -510,76 +495,6 @@ Highcharts.chart('container', {
                   [
                       "v8.0",
                       0.47
-                  ]
-              ]
-          },
-          {
-              name: "Safari",
-              id: "Safari",
-              data: [
-                  [
-                      "v11.0",
-                      3.39
-                  ],
-                  [
-                      "v10.1",
-                      0.96
-                  ],
-                  [
-                      "v10.0",
-                      0.36
-                  ],
-                  [
-                      "v9.1",
-                      0.54
-                  ],
-                  [
-                      "v9.0",
-                      0.13
-                  ],
-                  [
-                      "v5.1",
-                      0.2
-                  ]
-              ]
-          },
-          {
-              name: "Edge",
-              id: "Edge",
-              data: [
-                  [
-                      "v16",
-                      2.6
-                  ],
-                  [
-                      "v15",
-                      0.92
-                  ],
-                  [
-                      "v14",
-                      0.4
-                  ],
-                  [
-                      "v13",
-                      0.1
-                  ]
-              ]
-          },
-          {
-              name: "Opera",
-              id: "Opera",
-              data: [
-                  [
-                      "v50.0",
-                      0.96
-                  ],
-                  [
-                      "v49.0",
-                      0.82
-                  ],
-                  [
-                      "v12.1",
-                      0.14
                   ]
               ]
           }
