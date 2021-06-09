@@ -106,11 +106,9 @@
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-7">
           <div class="card bg-white shadow px-2 py-2">
-            <div class="card">
-              <div class="card-header">
-                RPM CW 2021
-              </div>
-            </div>
+
+            <h5 class="card-title">Roket Pemasaran Momentum Copywriting 2021</h5>
+
             <table class="table">
               <thead class="thead">
                 <tr>
