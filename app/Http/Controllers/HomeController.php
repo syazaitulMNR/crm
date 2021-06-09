@@ -870,8 +870,8 @@ class HomeController extends Controller
 
         
         $DateTime = date("h:i:s");
-        $DateTime->modify('-2 hours');
-        echo $DateTime;
+        // $DateTime->modify('-2 hours');
+        dd($DateTime);
 
     }
 
