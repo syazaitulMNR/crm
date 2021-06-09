@@ -104,7 +104,7 @@
 
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-7">
+        <div class="col-md-12">
           <div class="card bg-white shadow px-4 py-4">
 
             <h5 class="card-title text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
@@ -150,11 +150,11 @@
         </div>
 
         <!-- Show data in bar chart --------------------------------------------------->
-        <div class="col-md-5">
+        {{-- <div class="col-md-5">
           <div class="card bg-white shadow px-2 py-2">
             <div id="chartdata" ></div>
           </div>
-        </div>
+        </div> --}}
 
         <!-- Show data in line graph --------------------------------------------------->
 
@@ -169,7 +169,7 @@
 </div>
 
 <!-- Function to show bar chart ----------------------------------------------------->
-<script>
+{{-- <script>
   Highcharts.chart('chartdata', {
     chart: {
         type: 'column'
@@ -236,7 +236,7 @@
 
     }]
   });
-</script>
+</script> --}}
 
 <!-- Function to show line graph ----------------------------------------------------->
 {{-- <script>
