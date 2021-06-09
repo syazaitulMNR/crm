@@ -846,28 +846,34 @@ class HomeController extends Controller
 
     public function try()
     {
-        $apikey = env('MAIL_PASSWORD');
-        $sendgrid = new \SendGrid($apikey);
+        // $apikey = env('MAIL_PASSWORD');
+        // $sendgrid = new \SendGrid($apikey);
             
-        $email = new \SendGrid\Mail\Mail(); 
-        $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
-        $email->setSubject("DANIAL LIHAT EMEL INI SEKARANG!");
-        $email->addTo("zarina4.11@gmail.com", "Danial Sangat Hensem");
-        $email->addContent("text/html", "Danial sangatlah hensem sangat, terima kasih!");
+        // $email = new \SendGrid\Mail\Mail(); 
+        // $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
+        // $email->setSubject("DANIAL LIHAT EMEL INI SEKARANG!");
+        // $email->addTo("zarina4.11@gmail.com", "Danial Sangat Hensem");
+        // $email->addContent("text/html", "Danial sangatlah hensem sangat, terima kasih!");
                 
-        try {
+        // try {
 
-            $response = $sendgrid->send($email);
-            //print $response->statusCode() . "\n";
-            //print_r($response->headers());
-            //print $response->body() . "\n";
+        //     $response = $sendgrid->send($email);
+        //     //print $response->statusCode() . "\n";
+        //     //print_r($response->headers());
+        //     //print $response->body() . "\n";
 
-        } catch (Exception $e) {
+        // } catch (Exception $e) {
 
-            echo 'Caught exception: '. $e->getMessage() ."\n";
+        //     echo 'Caught exception: '. $e->getMessage() ."\n";
 
-        }
+        // }
+
+        
+        $DateTime = new DateTime();
+        $DateTime->modify('-2 hours');
+        echo $DateTime->format("Y-m-dTH:i:s");
     }
+
     public function tryemail()
     {
         // Manage email (for new ic in single form)                    
