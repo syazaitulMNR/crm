@@ -104,7 +104,7 @@
 
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-8">
+        <div class="col-md-7">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Title</h5>
@@ -131,7 +131,7 @@
         </div>
 
         <!-- Show data in bar chart --------------------------------------------------->
-        <div class="col-md-4">
+        <div class="col-md-5">
           <div class="card bg-white shadow px-2 py-2">
             <div id="chartdata" ></div>
           </div>
