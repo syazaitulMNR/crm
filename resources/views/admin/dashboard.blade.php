@@ -103,7 +103,7 @@
       <hr class="my-3">
 
       <!-- Show data in bar chart --------------------------------------------------->
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="card bg-white shadow px-2 py-2">
           <div id="chartdata" ></div>
         </div>
@@ -114,6 +114,25 @@
       {{-- <figure class="highcharts-figure">
         <div id="container"></div>
       </figure> --}}
+      <div class="col-md-6">
+        <table class="table table-light">
+          <thead class="thead-light">
+            <tr>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>#</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     
     </main>
   </div>
