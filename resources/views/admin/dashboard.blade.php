@@ -165,17 +165,12 @@
         <div class="col-md-5">
           <div class="row">
             <div class="card bg-white shadow px-2 py-2">
-              <div id="chartregistration" ></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="card bg-white shadow px-2 py-2">
-              <div id="chartregistration" ></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="card bg-white shadow px-2 py-2">
-              <div id="chartregistration" ></div>
+              <figure class="highcharts-figure">
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    Bar chart showing horizontal columns.
+                </p>
+            </figure>
             </div>
           </div>
         </div>
@@ -263,52 +258,69 @@
 </script>
 
 <script>
-  Highcharts.chart('chartregistration', {
+  Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'bar'
     },
     title: {
-        text: 'Registration'
+        text: 'Historic World Population by Region'
     },
     subtitle: {
-        text: 'Roket Pemasaran Momentum Copywriting 2021'
+        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
     },
     xAxis: {
-        categories: [
-            'Solidariti',
-            'Sustain',
-            'Growth'
-        ],
-        crosshair: true
+        categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+        title: {
+            text: null
+        }
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Total Registration'
+            text: 'Population (millions)',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
         }
     },
     tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="padding:3">RM </td>' +
-            '<td style="padding:3"><b> {point.y:.2f} </b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
+        valueSuffix: ' millions'
     },
     plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
         }
     },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
     series: [{
-        name: 'Month',
-        data: [
-            {{$jan}},
-            {{$feb}},
-            {{$mar}}
-          ]
-
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40]
     }]
   });
 </script>
