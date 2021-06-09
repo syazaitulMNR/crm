@@ -252,7 +252,7 @@ Highcharts.chart('container', {
       type: 'pie'
   },
   title: {
-      text: 'Browser market shares. January, 2018'
+      text: 'Registration'
   },
   subtitle: {
       text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
