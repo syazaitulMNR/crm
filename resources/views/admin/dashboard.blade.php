@@ -104,15 +104,15 @@
 
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-5">
-          <div class="card bg-white shadow px-4">
+        {{-- <div class="col-md-5">
+          <div class="card bg-white shadow px-4"> --}}
 
-            <figure class="highcharts-figure">
+            {{-- <figure class="highcharts-figure">
               <div id="container"></div>
               <p class="highcharts-description">
                 Registration
               </p>
-            </figure>
+            </figure> --}}
             {{-- <h5 class="card-title text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
 
             <table class="table text-center">
@@ -152,11 +152,11 @@
                 </tr>
               </tfoot>
             </table> --}}
-          </div>
-        </div>
+          {{-- </div>
+        </div> --}}
 
         <!-- Show data in bar chart --------------------------------------------------->
-        <div class="col-md-7">
+        <div class="col-md-12">
           <div class="card bg-white shadow px-2 py-2">
             <div id="chartdata" ></div>
           </div>
@@ -245,14 +245,14 @@
 </script>
 
 <!-- Function to show line graph ----------------------------------------------------->
-<script>
+{{-- <script>
 Highcharts.chart('container', {
   chart: {
       type: 'pie'
   },
-  // title: {
-  //     text: 'Registration'
-  // },
+  title: {
+      text: 'Registration'
+  },
   // subtitle: {
   //     text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
   // },
@@ -454,7 +454,7 @@ Highcharts.chart('container', {
       ]
   }
 });
-</script>
+</script> --}}
 
 <!-- Function to show line graph ----------------------------------------------------->
 {{-- <script>
