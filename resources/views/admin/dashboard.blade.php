@@ -103,8 +103,10 @@
       <hr class="my-3">
 
       <!-- Show data in bar chart --------------------------------------------------->
-      <div class="card bg-white card-inverse shadow px-2 py-2">
-        <div id="chartdata" ></div>
+      <div class="col-md-12">
+        <div class="card bg-white shadow px-2 py-2">
+          <div id="chartdata" ></div>
+        </div>
       </div>
 
       <!-- Show data in line graph --------------------------------------------------->
