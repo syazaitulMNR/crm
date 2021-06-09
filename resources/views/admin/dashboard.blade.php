@@ -109,10 +109,10 @@
 
             <figure class="highcharts-figure">
               <div id="container"></div>
-              {{-- <p class="highcharts-description">
+              <p class="highcharts-description">
                   Pie chart where the individual slices can be clicked to expose more
                   detailed data.
-              </p> --}}
+              </p>
             </figure>
             {{-- <h5 class="card-title text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
 
@@ -254,9 +254,9 @@ Highcharts.chart('container', {
   title: {
       text: 'Registration'
   },
-  subtitle: {
-      text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
-  },
+  // subtitle: {
+  //     text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+  // },
 
   accessibility: {
       announceNewData: {
