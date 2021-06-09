@@ -163,8 +163,20 @@
         </div>
 
         <div class="col-md-5">
-          <div class="card bg-white shadow px-2 py-2">
-            <div id="chartregistration" ></div>
+          <div class="row">
+            <div class="card bg-white shadow px-2 py-2">
+              <div id="chartregistration" ></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card bg-white shadow px-2 py-2">
+              <div id="chartregistration" ></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card bg-white shadow px-2 py-2">
+              <div id="chartregistration" ></div>
+            </div>
           </div>
         </div>
 
