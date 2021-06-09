@@ -102,38 +102,48 @@
 
       <hr class="my-3">
 
-      <!-- Show data in bar chart --------------------------------------------------->
-      <div class="col-md-4">
-        <div class="card bg-white shadow px-2 py-2">
-          <div id="chartdata" ></div>
+      <div class="row">
+          <!-- Show data in bar chart --------------------------------------------------->
+        <div class="col-md-4">
+          <div class="card bg-white shadow px-2 py-2">
+            <div id="chartdata" ></div>
+          </div>
+        </div>
+
+        <!-- Show data in line graph --------------------------------------------------->
+
+        {{-- <figure class="highcharts-figure">
+          <div id="container"></div>
+        </figure> --}}
+
+        <!-- Show data in table --------------------------------------------------->
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Title</h5>
+              <p class="card-text">Content</p>
+            </div>
+          </div>
+          {{-- <table class="table table-light">
+            <thead class="thead-light">
+              <tr>
+                <th>#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>#</th>
+              </tr>
+            </tfoot>
+          </table> --}}
         </div>
       </div>
-
-      <!-- Show data in line graph --------------------------------------------------->
-
-      {{-- <figure class="highcharts-figure">
-        <div id="container"></div>
-      </figure> --}}
-      <div class="col-md-6">
-        <table class="table table-light">
-          <thead class="thead-light">
-            <tr>
-              <th>#</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>#</th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    
+      
     </main>
   </div>
 </div>
