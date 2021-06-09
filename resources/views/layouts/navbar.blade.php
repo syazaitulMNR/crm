@@ -27,11 +27,11 @@
                     <li class="nav-item">
                       <a class="dropdown-item" href="/dashboard"><i class="fas fa-home pr-3"></i> Dashboard</a>
                     </li>
-                    <li class="nav-item">
-                        {{-- <a class="dropdown-item" href="/manageprofile"><i class="fas fa-address-card pr-3"></i> Manage Profile</a> --}}
+                    {{-- <li class="nav-item">
+                        {{-- <a class="dropdown-item" href="/manageprofile"><i class="fas fa-address-card pr-3"></i> Manage Profile</a> 
                         <!-- Button trigger modal -->
                         <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#passwordModal"><i class="fas fa-address-card pr-3"></i> Change Password</a>
-                    </li>
+                    </li> --}}
                     <div class="dropdown-divider"></div>
                     <li class="nav-item">
                         <a class="dropdown-item" href="/logout"
@@ -51,7 +51,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -86,5 +86,5 @@
         </form>
     </div>
     </div>
-</div>
+</div> --}}
 
