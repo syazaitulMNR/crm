@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-<div class="row text-end px-2 pt-1">
-    <a href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
-</div>
 <div class="row">
     <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:200px">
@@ -27,6 +24,8 @@
                 </div>
             </form>
         </div>
+
+        <a href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
     </div>
 </div>
 
