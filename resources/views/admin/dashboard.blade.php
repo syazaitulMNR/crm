@@ -254,9 +254,9 @@ Highcharts.chart('container', {
   title: {
       text: 'Registration'
   },
-  // subtitle: {
-  //     text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
-  // },
+  subtitle: {
+      text: 'Click the slices to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+  },
 
   accessibility: {
       announceNewData: {
