@@ -109,12 +109,21 @@
             <table class="table">
               <thead class="thead">
                 <tr>
-                  <th>#</th>
+                  <th>Package</th>
+                  <th>Registration</th>
+                  <th>Paid Ticket</th>
+                  <th>Free Ticket</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>Solidariti</td>
+                </tr>
+                <tr>
+                  <td>Sustain</td>
+                </tr>
+                <tr>
+                  <td>Growth</td>
                 </tr>
               </tbody>
               <tfoot>
