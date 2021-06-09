@@ -141,82 +141,37 @@
             <p>There are no package yet.</p>
             @endif
             <div class="float-right pt-3">{{$package->links()}}</div>
-
-            {{-- @if(count($student) > 0)
-            <table class="table table-hover" id="successTable">
-                <thead>
-                <tr class="header">
-                    <th>#</th>
-                    <th>IC No.</th>
-                    <th>Name</th>
-                    {{-- <th>Payment (RM)</th> 
-                    <th>Status</th>
-                    <th>Purchase Date</th>
-                    <th><i class="fas fa-cogs"></i></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($student as $students)    
-                @foreach ($payment as $payments)
-                @if ($payments->stud_id == $students->stud_id)
-                @if ($product->product_id == $payments->product_id)  
-                <tr>
-                    <td>{{ $students->stud_id }}</td>
-                    <td>{{ $students->ic }}</td>
-                    <td>{{ $students->first_name }}</td>
-                    {{-- <td>RM {{ $payments->totalprice }}</td> 
-                    <td>
-                      @if ($payments->status == 'paid')
-                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                      @elseif ($payments->status == 'due')
-                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
-                      @else
-                        <p>NULL</p>
-                      @endif
-                    </td>
-                    <td>{{ date('d/m/Y', strtotime($payments->created_at)) }}</td>
-                    <td>
-                      <a class="btn btn-primary" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-edit"></i></a>
-                    </td>
-                </tr>
-                @endif
-                @endif
-                @endforeach
-                @endforeach
-                </tbody>
-            </table>  
-            @else
-            <p>There are no any success payment yet.</p>
-            @endif
-            <div class="float-right pt-3">{{$student->links()}}</div>    --}}
             
           </div>
           
-          {{-- <div class="col-md-3">
-
-            <div class="card mb-4 text-center">
-              <div class="card-body pt-4">
-                <i class="far fa-check-circle fa-3x" style="color:rgb(69, 139, 95)"></i>
-                <h3 class="pt-4">{{$totalsuccess}}</h3>
-              </div>
-              <div class="card-footer">
-                <h6>Total Paid</h6>
-              </div>
-            </div>
-    
-            <div class="card mb-4 text-center">
-              <div class="card-body pt-4">
-                <i class="far fa-times-circle fa-3x" style="color:rgb(240, 0, 0)"></i>
-                <h3 class="pt-4">{{$totalcancel}}</h3>
-              </div>
-              <div class="card-footer">
-                <h6>Total Due</h6>
-              </div>
-            </div>
-          
-          </div> --}}
           
         </div>
+
+        @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+        @else
+        <table class="table table-hover" id="successTable">
+          <thead>
+          <tr class="header">
+              <th>Package Name</th>
+              <th>Registration</th>
+              <th>Paid Ticket</th>
+              <th>Free Ticket</th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach ($package as $packages)    
+          @if ($product->product_id == $packages->product_id)   
+          <tr>
+            <td>{{ $packages->name  }}</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+          @endif
+          @endforeach
+          </tbody>
+        </table>
+        @endif
         
     </main>
   </div>
