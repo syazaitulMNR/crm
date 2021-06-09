@@ -103,7 +103,7 @@
       <hr class="my-3">
 
       <!-- Show data in bar chart --------------------------------------------------->
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="card bg-white shadow px-2 py-2">
           <div id="chartdata" ></div>
         </div>
