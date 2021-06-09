@@ -144,34 +144,7 @@
             
           </div>
           
-          
         </div>
-
-        @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-        @else
-        <table class="table table-hover" id="successTable">
-          <thead>
-          <tr class="header">
-              <th>Package Name</th>
-              <th>Registration</th>
-              <th>Paid Ticket</th>
-              <th>Free Ticket</th>
-          </tr>
-          </thead>
-          <tbody>
-          @foreach ($package as $packages)    
-          @if ($product->product_id == $packages->product_id)   
-          <tr>
-            <td>{{ $packages->name  }}</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-          </tr>
-          @endif
-          @endforeach
-          </tbody>
-        </table>
-        @endif
         
     </main>
   </div>
