@@ -140,7 +140,9 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>#</th>
+                  <th>Grand Total</th>
+                  <th>25,000</th>
+                  <th colspan="2">25,000</th>
                 </tr>
               </tfoot>
             </table>
