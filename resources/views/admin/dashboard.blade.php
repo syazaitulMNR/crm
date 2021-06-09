@@ -105,7 +105,7 @@
       <div class="row">
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-7">
-          <div class="card bg-white shadow px-4 py-2">
+          <div class="card bg-white shadow px-4 py-4">
 
             <h5 class="card-title text-center py-2">Roket Pemasaran Momentum Copywriting 2021</h5>
 
