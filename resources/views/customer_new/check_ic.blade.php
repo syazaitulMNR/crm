@@ -6,6 +6,9 @@
 
 @section('content')
 <div class="row">
+    <a href="https://momentuminternet.com/privacy-policy/">Privacy & Policy</a>
+</div>
+<div class="row">
     <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:200px">
         <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
