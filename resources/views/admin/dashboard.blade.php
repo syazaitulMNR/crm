@@ -109,7 +109,7 @@
 
             <h5 class="text-center pb-4">Roket Pemasaran Momentum Copywriting 2021</h5>
 
-            <table class="table table-bordered text-center">
+            <table class="table text-center">
               <thead class="thead">
                 <tr>
                   <th class="text-left">Package</th>
