@@ -156,9 +156,15 @@
         </div> --}}
 
         <!-- Show data in bar chart --------------------------------------------------->
-        <div class="col-md-12">
+        <div class="col-md-7">
           <div class="card bg-white shadow px-2 py-2">
             <div id="chartdata" ></div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="card bg-white shadow px-2 py-2">
+            <div id="chartregistration" ></div>
           </div>
         </div>
 
@@ -238,6 +244,57 @@
             {{$oct}},
             {{$nov}},
             {{$dec}}
+          ]
+
+    }]
+  });
+</script>
+
+<script>
+  Highcharts.chart('chartregistration', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Registration'
+    },
+    subtitle: {
+        text: 'Roket Pemasaran Momentum Copywriting 2021'
+    },
+    xAxis: {
+        categories: [
+            'Solidariti',
+            'Sustain',
+            'Growth'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total Registration'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="padding:3">RM </td>' +
+            '<td style="padding:3"><b> {point.y:.2f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Month',
+        data: [
+            {{$jan}},
+            {{$feb}},
+            {{$mar}}
           ]
 
     }]
