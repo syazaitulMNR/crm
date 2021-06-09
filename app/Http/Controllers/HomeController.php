@@ -869,9 +869,10 @@ class HomeController extends Controller
         // }
 
         
-        $DateTime = new DateTime();
+        $DateTime = date("h:i:s");
         $DateTime->modify('-2 hours');
-        echo $DateTime->format("Y-m-dTH:i:s");
+        echo $DateTime;
+
     }
 
     public function tryemail()
