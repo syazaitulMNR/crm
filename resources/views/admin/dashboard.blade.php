@@ -121,12 +121,21 @@
               <tbody>
                 <tr>
                   <td>Solidariti</td>
+                  <td>14,343</td>
+                  <td>14,343</td>
+                  <td>8,569</td>
                 </tr>
                 <tr>
                   <td>Sustain</td>
+                  <td>14,343</td>
+                  <td>14,343</td>
+                  <td>8,569</td>
                 </tr>
                 <tr>
                   <td>Growth</td>
+                  <td>14,343</td>
+                  <td>14,343</td>
+                  <td>8,569</td>
                 </tr>
               </tbody>
               <tfoot>
