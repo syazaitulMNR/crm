@@ -106,28 +106,24 @@
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-7">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Title</h5>
-              <p class="card-text">Content</p>
-            </div>
+            <table class="table table-light">
+              <thead class="thead-light">
+                <tr>
+                  <th>#</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>#</th>
+                </tr>
+              </tfoot>
+            </table>
           </div>
-          {{-- <table class="table table-light">
-            <thead class="thead-light">
-              <tr>
-                <th>#</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>#</th>
-              </tr>
-            </tfoot>
-          </table> --}}
         </div>
 
         <!-- Show data in bar chart --------------------------------------------------->
