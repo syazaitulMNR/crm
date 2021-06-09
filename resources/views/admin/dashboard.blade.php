@@ -109,7 +109,7 @@
 
             <h5 class="card-title text-center py-2">Roket Pemasaran Momentum Copywriting 2021</h5>
 
-            <table class="table">
+            <table class="table text-center">
               <thead class="thead">
                 <tr>
                   <th>Package</th>
@@ -142,7 +142,7 @@
                 <tr>
                   <th>Grand Total</th>
                   <th>25,000</th>
-                  <th colspan="2" class="text-center">25,000</th>
+                  <th colspan="2">25,000</th>
                 </tr>
               </tfoot>
             </table>
