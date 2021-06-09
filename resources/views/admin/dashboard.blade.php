@@ -102,7 +102,7 @@
 
       <hr class="my-3">
 
-      <div class="row">
+      <div class="row pt-1">
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-12">
           <div class="card bg-white px-4 py-4">
