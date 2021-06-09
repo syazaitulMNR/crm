@@ -52,7 +52,7 @@ class AdminController extends Controller
 
         $greetings = "";       
         $time = date("H"); /* This sets the $time variable to the current hour in the 24 hour clock format */     
-        $times = date("h:i"); /* This sets the $time variable to the current hour in the 12 hour clock format */
+        $times = date("h:i:s"); /* This sets the $time variable to the current hour in the 12 hour clock format */
         $timezone = date("e"); /* Set the $timezone variable to become the current timezone */
         
         if ($timezone < "12") {
