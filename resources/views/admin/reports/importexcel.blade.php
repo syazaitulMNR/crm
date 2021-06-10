@@ -75,7 +75,7 @@
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm" id="myTable">
-                                <tr>
+                                <tr class="table-active">
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>IC No.</th>
@@ -123,7 +123,7 @@
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm">
-                                <tr>
+                                <tr class="table-active">
                                     <th>#</th>
                                     <th>Offer ID</th>
                                     <th>Description</th>
