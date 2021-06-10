@@ -57,7 +57,7 @@
             <p>1) Please download this format before import to database.</p>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card bg-light">
+                    {{-- <div class="card bg-light"> --}}
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm" id="myTable">
@@ -91,7 +91,7 @@
                                 </tr>
                             </table>
                         </div>
-                    </div>
+                    {{-- </div> --}}
     
                     <div class="row float-right pt-3">
                         <div class="col-auto pt-1">
@@ -105,7 +105,7 @@
             <p>2) Just refer to this table for Offer ID column.</p>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card bg-light">
+                    {{-- <div class="card bg-light"> --}}
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm">
@@ -131,7 +131,7 @@
                                 </tr>
                             </table>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
                 
             </div>
