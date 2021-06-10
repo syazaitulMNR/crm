@@ -31,7 +31,7 @@
         <form action="{{ url('importExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="row" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <h5>Import Customer</h5>
+            <h5 class="pt-3">Import Customer</h5>
 
             <div class="input-group p-3">
                 <input type="file" name="file" class="form-control" required>
