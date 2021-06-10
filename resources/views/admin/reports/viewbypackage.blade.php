@@ -377,8 +377,12 @@
                               </div>
                               <div class="modal-body">
                                 <p>This action will remove the details from the table :</p>
-                                <p>&bull; Payment</p>
-                                <p>&bull; Payment</p>
+                                <ul>
+                                  <li>Payment</li>
+                                  <li>Ticket</li>
+                                </ul>
+                                {{-- <p>&bull; Payment</p>
+                                <p>&bull; Ticket</p> --}}
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
