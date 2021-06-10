@@ -115,7 +115,11 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?
+                                                <p>Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?</p>
+                                                <p>Example: </p>
+                                                <div class="text-center">
+                                                    <img src="{{ asset('assets/images/pengesahan_peserta.jpg') }}" style="max-width:300px">
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
