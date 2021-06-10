@@ -71,8 +71,8 @@
             
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card bg-light shadow">
-                        <div class="table-responsive">
+                    <div class="card shadow">
+                        <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm" id="myTable">
                                 <tr>
@@ -119,7 +119,7 @@
             <p class="py-1">2) Just refer this ID for Offer ID column.</p>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card bg-light shadow">
+                    <div class="card shadow">
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm">
