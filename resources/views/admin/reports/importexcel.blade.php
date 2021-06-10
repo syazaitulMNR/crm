@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-md-12">
                     {{-- <div class="card bg-light"> --}}
-                        <div class="table-responsive px-3 py-3">
+                        <div class="table-responsive">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm" id="myTable">
                                 <tr class="table-active">
@@ -93,7 +93,7 @@
                         </div>
                     {{-- </div> --}}
     
-                    <div class="row-fluid float-right pt-3">
+                    <div class="row-fluid float-right pt-1">
                         <div class="col-auto pt-1">
                             <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
                         </div>
@@ -106,7 +106,7 @@
             <div class="row">
                 <div class="col-md-12">
                     {{-- <div class="card bg-light"> --}}
-                        <div class="table-responsive px-3 py-3">
+                        <div class="table-responsive">
                             <!-- Show details in table ----------------------------------------------->
                             <table class="table table-bordered table-sm">
                                 <tr class="table-active">
