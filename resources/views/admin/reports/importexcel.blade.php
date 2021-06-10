@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-4 pt-1">
+                <div class="col-md-4">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
                 </div>
                 
