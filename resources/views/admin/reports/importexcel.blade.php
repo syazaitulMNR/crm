@@ -67,7 +67,7 @@
             
             <br>  
 
-            <div class="panel-body">
+            <div class="card shadow">
                 <p class="py-1">1) Please download this format before import to database.</p>
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
