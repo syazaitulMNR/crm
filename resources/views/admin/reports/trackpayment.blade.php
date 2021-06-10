@@ -117,7 +117,9 @@
                                             <div class="modal-body">
                                                 <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
 
-                                                <img class="text-center" src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:200px">
+                                                <div class="text-center">
+                                                    <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
