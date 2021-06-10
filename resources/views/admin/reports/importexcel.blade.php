@@ -74,7 +74,7 @@
                     <div class="card bg-light shadow">
                         <div class="table-responsive">
                             <!-- Show details in table ----------------------------------------------->
-                            <table class="table-bordered table-sm" id="myTable">
+                            <table class="table table-bordered table-sm" id="myTable">
                                 <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
@@ -122,7 +122,7 @@
                     <div class="card bg-light shadow">
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
-                            <table class="table-bordered table-sm">
+                            <table class="table table-bordered table-sm">
                                 <tr>
                                     <th>#</th>
                                     <th>Offer ID</th>
