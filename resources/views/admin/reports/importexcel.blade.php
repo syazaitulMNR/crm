@@ -70,76 +70,81 @@
             <p class="py-1">1) Please download this format before import to database.</p>
             
             <div class="row">
-                <div class="card bg-light shadow">
-                    <div class="table-responsive">
-                        <!-- Show details in table ----------------------------------------------->
-                        <table class="table table-hover" id="myTable">
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>IC No.</th>
-                                <th>Email</th>
-                                <th>Phone No</th>
-                                <th>Price (RM)</th>
-                                <th>Quantity</th>
-                                <th>Total Payment</th>
-                                <th>Pay Method</th>
-                                {{-- <th>Ticket Type</th> --}}
-                                <th>Offer ID</th>
-                                <th>User ID</th>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>900101014321</td>
-                                <td>example@gmail.com</td>
-                                <td>+60123456789</td>
-                                <td>199</td>
-                                <td>1</td>
-                                <td>199</td>
-                                <td>FPX</td>
-                                {{-- <td>free</td> --}}
-                                <td>OFF001</td>
-                                <td>UID001</td>
-                            </tr>
-                        </table>
+                <div class="col-md-12">
+                    <div class="card bg-light shadow">
+                        <div class="table-responsive">
+                            <!-- Show details in table ----------------------------------------------->
+                            <table class="table table-hover" id="myTable">
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>IC No.</th>
+                                    <th>Email</th>
+                                    <th>Phone No</th>
+                                    <th>Price (RM)</th>
+                                    <th>Quantity</th>
+                                    <th>Total Payment</th>
+                                    <th>Pay Method</th>
+                                    {{-- <th>Ticket Type</th> --}}
+                                    <th>Offer ID</th>
+                                    <th>User ID</th>
+                                </tr>
+                                <tr>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>900101014321</td>
+                                    <td>example@gmail.com</td>
+                                    <td>+60123456789</td>
+                                    <td>199</td>
+                                    <td>1</td>
+                                    <td>199</td>
+                                    <td>FPX</td>
+                                    {{-- <td>free</td> --}}
+                                    <td>OFF001</td>
+                                    <td>UID001</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+    
+                    <div class="row float-right pt-3">
+                        <div class="col-auto pt-1">
+                            <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
+                        </div>
                     </div>
                 </div>
-
-                <div class="row float-right pt-3">
-                    <div class="col-auto pt-1">
-                        <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
-                    </div>
-                </div>
+                
             </div>
             
             <p class="py-1">2) Just refer this ID for Offer ID column.</p>
             <div class="row">
-                <div class="card bg-light shadow">
-                    <div class="table-responsive px-3 py-3">
-                        <!-- Show details in table ----------------------------------------------->
-                        <table class="table table-sm">
-                            <tr>
-                                <th>#</th>
-                                <th>Offer ID</th>
-                                <th>Description</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>OFF001</td>
-                                <td>No Offer</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>OFF002</td>
-                                <td>Buy 1 Free 1</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>OFF003</td>
-                                <td>Bulk Offer</td>
-                            </tr>
-                        </table>
+                <div class="col-md-12">
+                    <div class="card bg-light shadow">
+                        <div class="table-responsive px-3 py-3">
+                            <!-- Show details in table ----------------------------------------------->
+                            <table class="table table-sm">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Offer ID</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>OFF001</td>
+                                    <td>No Offer</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>OFF002</td>
+                                    <td>Buy 1 Free 1</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>OFF003</td>
+                                    <td>Bulk Offer</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 
