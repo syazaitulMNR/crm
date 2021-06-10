@@ -115,7 +115,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?
+                                                <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
 
                                                 <img src="{{ asset('assets/images/pengesahan tiket.jpg') }}" style="max-width:150px">
                                             </div>
