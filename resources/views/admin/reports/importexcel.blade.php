@@ -43,9 +43,7 @@
            
         <div class="panel panel-default">
 
-            <h5>How To Import ?</h5>
-              
-            <br>
+            <h5 class="pt-2 pb-1">How To Import ?</h5>
 
             <p>1) Please download this format before import to database.</p>
             <div class="row">
