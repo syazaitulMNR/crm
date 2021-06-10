@@ -381,8 +381,6 @@
                                   <li>Payment</li>
                                   <li>Ticket</li>
                                 </ul>
-                                {{-- <p>&bull; Payment</p>
-                                <p>&bull; Ticket</p> --}}
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
