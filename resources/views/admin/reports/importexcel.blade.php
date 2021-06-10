@@ -68,7 +68,7 @@
             <br>  
 
             <p class="py-1">1) Please download this format before import to database.</p>
-            <div class="card shadow">
+            <div class="card bg-light shadow">
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
@@ -110,38 +110,36 @@
                 </div>
             </div>
 
-            {{-- <div class="panel-body">
-                <div class="table-responsive">
+            
+            <p class="py-1">2) Just refer this ID for Offer ID column.</p>
+            <div class="card bg-light shadow">
+                <div class="table-responsive px-3 py-3">
                     <!-- Show details in table ----------------------------------------------->
-                    @if(count($data) > 0)
-                    <table class="table table-hover" id="myTable">
+                    <table class="table table-sm">
                         <tr>
                             <th>#</th>
-                            {{-- <th>ID</th> 
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>IC No.</th>
-                            <th>Email</th>
-                            <th>Phone No</th>
+                            <th>Offer ID</th>
+                            <th>Description</th>
                         </tr>
-                        @foreach($data as $key => $row)
                         <tr>
-                            <td>{{ $data->firstItem() + $key  }}</td>
-                            {{-- <td>{{ $row->stud_id }}</td> 
-                            <td>{{ $row->first_name }}</td>
-                            <td>{{ $row->last_name }}</td>
-                            <td>{{ $row->ic }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->phoneno }}</td>
+                            <td>1</td>
+                            <td>OFF001</td>
+                            <td>No Offer</td>
                         </tr>
-                        @endforeach
+                        <tr>
+                            <td>2</td>
+                            <td>OFF002</td>
+                            <td>Buy 1 Free 1</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>OFF003</td>
+                            <td>Bulk Offer</td>
+                        </tr>
                     </table>
-                    {{-- <div class="float-right pt-3">{{$data->links()}}</div> 
-                    @else
-                    <p>There are no customer to display.</p>
-                    @endif
                 </div>
-            </div> --}}
+            </div>
+                
         </div>
     </main>
 </div>
