@@ -113,6 +113,40 @@
                 
             </div>
 
+            <p class="py-1">2) Refer this ID for Offer ID column.</p>
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="card bg-light shadow">
+                        <div class="table-responsive px-3 py-3">
+                            <!-- Show details in table ----------------------------------------------->
+                            <table class="table table-hover" id="myTable">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Offer ID</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>OFF001</td>
+                                    <td>No Offer</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>OFF002</td>
+                                    <td>Buy 1 Free 1</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>OFF003</td>
+                                    <td>Bulk Offer</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
             {{-- <div class="panel-body">
                 <div class="table-responsive">
                     <!-- Show details in table ----------------------------------------------->
