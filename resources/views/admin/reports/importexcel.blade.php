@@ -44,13 +44,7 @@
         <br>
         <div class="panel panel-default">
 
-            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                <!-- create campaign -->
-                <div class="btn-group" role="group" aria-label="First group">
-                    <h5>How To Import ?</h5>
-                </div>
-                
-            </div>
+            <h5>How To Import ?</h5>  
 
             <p>1) Please download this format before import to database.</p>
             <div class="row">
