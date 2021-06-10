@@ -41,7 +41,6 @@
 
         </form>
            
-        <br>
         <div class="panel panel-default">
 
             <h5>How To Import ?</h5>  
