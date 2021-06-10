@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
-
+                                                <p>Email example: </p>
                                                 <div class="text-center">
                                                     <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
                                                 </div>
