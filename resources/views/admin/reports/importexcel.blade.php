@@ -108,7 +108,7 @@
                 </div>
                 
                 <div class="col-md-1">
-                    <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i></a>
+                    <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download py-1"></i></a>
                 </div>
                 
             </div>
