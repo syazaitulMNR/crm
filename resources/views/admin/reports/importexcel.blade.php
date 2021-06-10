@@ -122,12 +122,12 @@
                                 <tr>
                                     <td>2</td>
                                     <td>OFF002</td>
-                                    <td>Buy 1 Free 1</td>
+                                    <td>Buy 1 Free 1 (Same Ticket)</td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>OFF003</td>
-                                    <td>Bulk Offer</td>
+                                    <td>Bulk Ticket</td>
                                 </tr>
                             </table>
                         </div>
