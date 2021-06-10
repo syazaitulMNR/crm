@@ -69,7 +69,7 @@
 
             <p class="py-1">1) Please download this format before import to database.</p>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="card bg-light shadow">
                         <div class="table-responsive px-3 py-3">
                             <!-- Show details in table ----------------------------------------------->
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
                 </div>
                 
