@@ -68,47 +68,48 @@
             <br>  
 
             <p class="py-1">1) Please download this format before import to database.</p>
-            <div class="card bg-light shadow">
-                <div class="table-responsive px-3 py-3">
-                    <!-- Show details in table ----------------------------------------------->
-                    <table class="table table-hover" id="myTable">
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>IC No.</th>
-                            <th>Email</th>
-                            <th>Phone No</th>
-                            <th>Price (RM)</th>
-                            <th>Quantity</th>
-                            <th>Total Payment</th>
-                            <th>Pay Method</th>
-                            {{-- <th>Ticket Type</th> --}}
-                            <th>Offer ID</th>
-                            <th>User ID</th>
-                        </tr>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>900101014321</td>
-                            <td>example@gmail.com</td>
-                            <td>+60123456789</td>
-                            <td>199</td>
-                            <td>1</td>
-                            <td>199</td>
-                            <td>FPX</td>
-                            {{-- <td>free</td> --}}
-                            <td>OFF001</td>
-                            <td>UID001</td>
-                        </tr>
-                    </table>
+            <div class="col-md-8">
+                <div class="card bg-light shadow">
+                    <div class="table-responsive px-3 py-3">
+                        <!-- Show details in table ----------------------------------------------->
+                        <table class="table table-hover" id="myTable">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>IC No.</th>
+                                <th>Email</th>
+                                <th>Phone No</th>
+                                <th>Price (RM)</th>
+                                <th>Quantity</th>
+                                <th>Total Payment</th>
+                                <th>Pay Method</th>
+                                {{-- <th>Ticket Type</th> --}}
+                                <th>Offer ID</th>
+                                <th>User ID</th>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>900101014321</td>
+                                <td>example@gmail.com</td>
+                                <td>+60123456789</td>
+                                <td>199</td>
+                                <td>1</td>
+                                <td>199</td>
+                                <td>FPX</td>
+                                {{-- <td>free</td> --}}
+                                <td>OFF001</td>
+                                <td>UID001</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-            <div class="row float-right pt-3">
-                <div class="col-auto pt-1">
-                    <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
-                </div>
+            
+            <div class="col-md-4 pt-1">
+                <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
             </div>
+            
 
             {{-- <div class="panel-body">
                 <div class="table-responsive">
