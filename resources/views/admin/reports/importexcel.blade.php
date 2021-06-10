@@ -36,14 +36,14 @@
             <div class="input-group p-3">
                 <input type="file" name="file" class="form-control" required>
                 <button class="btn btn-dark"><i class="fas fa-upload pt-1"></i></button>
+                <em>Maximum upload file size: 8MB</em>
             </div>
-            <em>Maximum upload file size: 8MB</em>
 
         </form>
            
         <div class="panel panel-default">
 
-            <h5 class="py-2">How To Import ?</h5>
+            <h5 class="pt-3 pb-2">How To Import ?</h5>
 
             <p>1) Please download this format before import to database.</p>
             <div class="row">
