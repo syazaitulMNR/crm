@@ -116,7 +116,7 @@
                 
             </div>
             
-            <p class="py-1">2) Just refer this ID for Offer ID column.</p>
+            <p>2) Just refer this ID for Offer ID column.</p>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card shadow">
