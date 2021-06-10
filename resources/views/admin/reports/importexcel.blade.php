@@ -93,7 +93,7 @@
                         </div>
                     {{-- </div> --}}
     
-                    <div class="row float-right pt-3">
+                    <div class="row-fluid float-right pt-3">
                         <div class="col-auto pt-1">
                             <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
                         </div>
