@@ -67,9 +67,9 @@
             
             <br>  
 
+            <p class="py-1">1) Please download this format before import to database.</p>
             <div class="card shadow">
-                <p class="py-1">1) Please download this format before import to database.</p>
-                <div class="table-responsive">
+                <div class="table-responsive px-3 py-3">
                     <!-- Show details in table ----------------------------------------------->
                     <table class="table table-hover" id="myTable">
                         <tr>
