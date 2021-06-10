@@ -51,8 +51,6 @@
                 </div>
                 
             </div>
-            
-            <br>  
 
             <p>1) Please download this format before import to database.</p>
             <div class="row">
