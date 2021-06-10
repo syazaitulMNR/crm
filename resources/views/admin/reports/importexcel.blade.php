@@ -68,7 +68,7 @@
             <br>  
 
             <p class="py-1">1) Please download this format before import to database.</p>
-            <div class="row">
+            <div class="row pb-3">
                 <div class="col-md-11">
                     <div class="card bg-light shadow">
                         <div class="table-responsive px-3 py-3">
