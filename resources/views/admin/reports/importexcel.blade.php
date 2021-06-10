@@ -37,7 +37,7 @@
                 <input type="file" name="file" class="form-control" required>
                 <button class="btn btn-dark"><i class="fas fa-upload pt-1"></i></button>
             </div>
-            <em>Maximum upload file size: 256MB</em>
+            <em>Maximum upload file size: 8MB</em>
 
         </form>
            
