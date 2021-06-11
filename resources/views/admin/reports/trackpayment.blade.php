@@ -210,7 +210,7 @@
                                 </select>
                             </div> --}}
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-success float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
+                                <button type="submit" class="btn btn-success btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                             </div>
                         {{-- </div> --}}
                             {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
