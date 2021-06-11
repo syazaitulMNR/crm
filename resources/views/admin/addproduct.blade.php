@@ -79,26 +79,28 @@
                     </div>
                 </div>
 
-                <br>
-                
-                <div class='col-md-4'>         
-                    <div class="form-group">
-                        <label for="name">Survey Form Link</label>
-                        <input name="survey_form" type="text" class="form-control" required>
+                <div class="row-fluid">
+                    <div class='col-md-4'>         
+                        <div class="form-group">
+                            <label for="name">Survey Form Link</label>
+                            <input name="survey_form" type="text" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class='col-md-4'>         
+                        <div class="form-group">
+                            <label for="name">BillPlz Collection ID</label>
+                            <select class="form-select" name="collection_id" required>
+                                <option disabled selected>-- Please Select One --</option>
+                                @foreach($offers as $offer)
+                                <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <div class='col-md-4'>         
-                    <div class="form-group">
-                        <label for="name">BillPlz Collection ID</label>
-                        <select class="form-select" name="collection_id" required>
-                            <option disabled selected>-- Please Select One --</option>
-                            @foreach($offers as $offer)
-                            <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                
 
                 <div class="col-md-8">                         
                     <div class="form-group">
