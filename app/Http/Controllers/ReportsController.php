@@ -376,6 +376,7 @@ class ReportsController extends Controller
         $student->save();
 
         $payment->status = $request->status;
+        $payment->offer_id = $request->offer_id;
         $payment->save();
 
         return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
