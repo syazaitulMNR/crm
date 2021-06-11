@@ -112,7 +112,7 @@
             <table class="table text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left" style="width:15%">Package</th>
+                  <th class="text-left">Package</th>
                   <th>Registration</th>
                   <th>Paid Ticket</th>
                   <th>Free Ticket</th>
@@ -130,10 +130,10 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th class="text-left">Total Registration</th>
-                  <th><h3>{{ $registration }}</h3></th>
-                  <th>Total Ticket Sold</th>
-                  <th><h3>{{ $ticket }}</h3></th>
+                  <th class="text-left">Grand Total</th>
+                  <th>{{ $registration }}</th>
+                  <th>{{ $paidticket }}</th>
+                  <th>{{ $freeticket }}</th>
                 </tr>
               </tfoot>
             </table>

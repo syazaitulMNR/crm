@@ -76,10 +76,11 @@ class AdminController extends Controller
 
         $package = Package::where('product_id', $product_id)->get();
         $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        $ticket = Ticket::where('product_id', $product_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         
         // dd($ticket);
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'registration', 'ticket'));
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'registration', 'paidticket', 'freeticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
