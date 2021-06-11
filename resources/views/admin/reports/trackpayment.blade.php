@@ -177,17 +177,18 @@
                             <div class="mb-3 row">
                                 <label class="col-sm-2">Offer Type</label>
                                 <div class="col-sm-4">
-                                    <select class="form-select form-control-sm" name="status" aria-label="Default select example">
+                                    <select class="form-select form-control-sm" name="offer_id" aria-label="Default select example">
                                         <option value="{{ $payment->offer_id }}" readonly selected>-- {{ $payment->offer_id }} --</option>
-                                        <option value="paid">paid</option>
-                                        <option value="due">due</option>
+                                        <option value="OFF001">No Offer</option>
+                                        <option value="OFF002">Buy 1 Free 1 (Same Ticket)</option>                                        
+                                        <option value="OFF003">Bulk Ticket</option>
                                     </select>
                                 </div>
 
                                 <label class="col-sm-2">Payment Status</label>
                                 <div class="col-sm-4">
                                     <select class="form-select form-control-sm" name="status" aria-label="Default select example">
-                                        <option value="{{ $payment->offer_id }}" readonly selected>-- {{ $payment->offer_id }} --</option>
+                                        <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
                                         <option value="paid">paid</option>
                                         <option value="due">due</option>
                                     </select>
