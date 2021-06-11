@@ -160,7 +160,7 @@
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
                                 </div>
 
-                                <label class="col-sm-2">Payment Status</label>
+                                <label class="col-sm-2">Payment</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; 
                                         RM {{ $payment->totalprice }}.00 &nbsp;
@@ -183,6 +183,15 @@
                                         <option value="due">due</option>
                                     </select>
                                 </div>
+
+                                <label class="col-sm-2">Payment Status</label>
+                                <div class="col-sm-4">
+                                    <select class="form-select form-control-sm" name="status" aria-label="Default select example">
+                                        <option value="{{ $payment->offer_id }}" readonly selected>-- {{ $payment->offer_id }} --</option>
+                                        <option value="paid">paid</option>
+                                        <option value="due">due</option>
+                                    </select>
+                                </div>
                             </div>
 
                         </div>
@@ -191,14 +200,14 @@
                     <div class="card bg-light">
 
                         <div class="row py-2 px-4">
-                            <label class="col-sm-2"><b>Update Payment Status</b></label>
+                            {{-- <label class="col-sm-2"><b>Update Payment Status</b></label>
                             <div class="col-sm-4">
                                 <select class="form-select form-control-sm" name="status" aria-label="Default select example">
                                     <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
                                     <option value="paid">paid</option>
                                     <option value="due">due</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-6">
                                 <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
                             </div>
