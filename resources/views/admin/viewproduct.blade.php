@@ -63,7 +63,13 @@
           @if ($products->offer_id == $offer->offer_id)               
             <tr>
                 <td>{{ $product->firstItem() + $key  }}</td>
-                <td>{{ $products->name  }}</td>
+                <td>
+                  {{ $products->name  }} 
+                  @if ($products->status == 'active')
+                      <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
+                  @else
+                  @endif
+                </td>
                 <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
                 {{-- <td>{{ date('h:i a', strtotime($products->time_from)) }} - {{ date('h:i a', strtotime($products->time_to)) }}</td> --}}
                 <td>{{ $offer->name }}</td>
