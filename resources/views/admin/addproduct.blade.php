@@ -52,20 +52,20 @@
 
             <div class="col-md-6">
                 <label class="form-label">Date From</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <input type="text" name="date1" id="date1" class="form-control" placeholder="Date From" required/>
             </div>
             <div class="col-md-6">
                 <label for="inputAddress2" class="form-label">Date To</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                <input type="text" name="date2" id="date2" class="form-control" placeholder="Date To" required/>
             </div>
 
             <div class="col-md-6">
                 <label class="form-label">Time From</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <input type="time" name="time1" class="form-control" required/>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Time To</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                <input type="time" name="time2" class="form-control" required/>
             </div>
 
             <div class="col-md-6">
@@ -89,7 +89,7 @@
             </div>
 
             <div class="col-12">
-                <button type="submit" class="btn btn-primary float-right">Sign in</button>
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
             </div>
 
             {{-- <div class="row pt-3" style="padding-left: 8%">
