@@ -121,7 +121,10 @@
               <tbody>
               @foreach ($package as $packages)
                 <tr>
-                  <td class="text-left">{{ $packages->name }}</td>
+                  <td class="text-left">
+                    <input type="text" name="package[]" class="form-control" value="{{ $packages->name }}" >
+                    <input type="text" name="package_id[]" value="{{ $packages->package_id }}" />
+                  </td>
                   <td>14,343</td>
                   <td>14,343</td>
                   <td>8,569</td>
