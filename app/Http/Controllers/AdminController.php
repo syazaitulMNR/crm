@@ -74,7 +74,7 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product->product_id)->get();
         $package_id = $package->data[0]->package_id;
         
-        dd($package_id);
+        dd($package);
         // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package'));
     }
 
