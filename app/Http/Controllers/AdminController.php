@@ -79,7 +79,7 @@ class AdminController extends Controller
         {
             $package_id = Package::where('product_id', $product_id)->where('package_id', $request->package_id[$key])->first();
         }
-        dd($package_id);
+        dd($request->package);
 
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
         // $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
