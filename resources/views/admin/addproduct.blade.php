@@ -32,7 +32,7 @@
         @endif
 
         <!-- Add product form --------------------------------------------------->
-        <form action="{{ url('new-product/save') }}" method="POST" enctype="multipart/form-data"> 
+        <form class="row g-3" action="{{ url('new-product/save') }}" method="POST" enctype="multipart/form-data"> 
         @csrf
 
             <div class="col-md-6">
