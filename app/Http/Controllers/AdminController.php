@@ -12,6 +12,7 @@ use App\Student;
 use App\Payment;
 use App\Product;
 use App\Package;
+use App\Ticket;
 
 class AdminController extends Controller
 {
@@ -77,8 +78,8 @@ class AdminController extends Controller
         $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $ticket = Ticket::where('product_id', $product_id)->count();
         
-        dd($ticket);
-        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'registration', 'ticket'));
+        // dd($ticket);
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'registration', 'ticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
