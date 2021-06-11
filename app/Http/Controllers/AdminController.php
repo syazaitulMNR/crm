@@ -10,6 +10,8 @@ use App\Role;
 use App\Permission;
 use App\Student;
 use App\Payment;
+use App\Product;
+use App\Package;
 
 class AdminController extends Controller
 {
@@ -69,7 +71,7 @@ class AdminController extends Controller
 
         // Report Table
         $product = Product::where('status', 'active')->first();
-        $package = Package::where('product_id', $product->product_id)->first();
+        $package = Package::where('product_id', $product->product_id)->get();
         
         // dd($times);
         return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package'));
