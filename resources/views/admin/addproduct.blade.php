@@ -51,20 +51,20 @@
             </div>
 
             <div class="col-md-6">
-                <label class="form-label">Date</label>
+                <label class="form-label">Date From</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
             </div>
             <div class="col-md-6">
-                <label for="inputAddress2" class="form-label"></label>
+                <label for="inputAddress2" class="form-label">Date To</label>
                 <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
             </div>
 
             <div class="col-md-6">
-                <label class="form-label">Time</label>
+                <label class="form-label">Time From</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
             </div>
             <div class="col-md-6">
-                <label for="inputAddress2" class="form-label"></label>
+                <label class="form-label">Time To</label>
                 <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
             </div>
 
