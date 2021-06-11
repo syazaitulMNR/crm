@@ -131,14 +131,14 @@
               <tfoot>
                 <tr>
                   <th class="text-left">Grand Total</th>
-                  <th>{{ $registration }}</th>
-                  <th>{{ $paidticket }}</th>
-                  <th>{{ $freeticket }}</th>
+                  <th>{{ $totalregister }}</th>
+                  <th>{{ $totalpaid }}</th>
+                  <th>{{ $totalfree }}</th>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="text-right">Total Ticket Sold</th>
-                  <th class="table-active" colspan="2">{{ $ticket }}</th>
+                  <th class="table-active" colspan="2">{{ $totalticket }}</th>
                 </tr>
               </tfoot>
             </table>
