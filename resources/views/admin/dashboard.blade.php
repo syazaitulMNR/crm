@@ -112,7 +112,7 @@
             <table class="table text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left" style="width:10%">Package</th>
+                  <th class="text-left" style="width:15%">Package</th>
                   <th>Registration</th>
                   <th>Paid Ticket</th>
                   <th>Free Ticket</th>
