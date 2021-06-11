@@ -74,19 +74,13 @@ class AdminController extends Controller
         $product = Product::where('status', 'active')->first();
         $product_id = $product->product_id;
         $package = Package::where('product_id', $product_id)->get();
-        
-        foreach($request->package as $key => $packages)
-        {
-            $package_id = Package::where('product_id', $product_id)->where('package_id', $request->package_id[$key])->first();
-        }
-        dd($request->package);
 
-        // $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        // $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        // $ticket = Ticket::where('product_id', $product_id)->count();
+        $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
+        $ticket = Ticket::where('product_id', $product_id)->count();
         
-        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'package_id', 'registration', 'paidticket', 'freeticket', 'ticket'));
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'registration', 'paidticket', 'freeticket', 'ticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
