@@ -25,7 +25,7 @@
           <h1 class="h2">Update Product</h1>
         </div>
         
-        <form action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
+        <form class="row g-3 px-5" action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
         @csrf
 
             <div class="col-md-6">
