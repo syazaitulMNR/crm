@@ -80,14 +80,14 @@
                 </div>
 
                 <div class="row">
-                    <div class='col-md-4'>         
+                    <div class='col-auto'>         
                         <div class="form-group">
                             <label for="name">Survey Form Link</label>
                             <input name="survey_form" type="text" class="form-control" required>
                         </div>
                     </div>
 
-                    <div class='col-md-4'>         
+                    <div class='col-auto'>         
                         <div class="form-group">
                             <label for="name">BillPlz Collection ID</label>
                             <select class="form-select" name="collection_id" required>
