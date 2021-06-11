@@ -95,11 +95,11 @@ Pendaftaran Pembeli
         if (package_name == package1) {
             
             if (val == 1) {
-                total = 10;
-            } else if (val == 2) {
                 total = 20;
+            } else if (val == 2) {
+                total = 40;
             } else {
-                total = 30;
+                total = 50;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
