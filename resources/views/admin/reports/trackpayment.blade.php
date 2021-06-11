@@ -143,7 +143,7 @@
                         </div>
                         <div class="pt-3 px-4">
 
-                            <div class="mb-3 row">
+                            <div class="mb-3 row-fluid">
                                 <label class="col-sm-2">Package Name</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
@@ -154,7 +154,7 @@
                                     <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
                                 </div>
                             </div>
-                            <div class="mb-3 row">
+                            <div class="mb-3 row-fluid">
                                 <label class="col-sm-2">Quantity</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
@@ -174,7 +174,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="mb-3 row">
+                            <div class="mb-3 row-fluid">
                                 <label class="col-sm-2">Offer ID</label>
                                 <div class="col-sm-4">
                                     <select class="form-select form-control-sm" name="offer_id" aria-label="Default select example">
@@ -198,31 +198,9 @@
                         </div>
                     </div>
 
-                    {{-- <div class="card bg-light">
-
-                        <div class="row py-2 px-4"> --}}
-                            {{-- <label class="col-sm-2"><b>Update Payment Status</b></label>
-                            <div class="col-sm-4">
-                                <select class="form-select form-control-sm" name="status" aria-label="Default select example">
-                                    <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
-                                    <option value="paid">paid</option>
-                                    <option value="due">due</option>
-                                </select>
-                            </div> --}}
-                            <div class="col-sm-12">
-                                <button type="submit" class="btn btn-success btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
-                            </div>
-                        {{-- </div> --}}
-                            {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div> --}}
-                        
-
-                        <!-- Send email button -->
-                        {{-- <a class="btn btn-dark" href="{{ url('sendmail') }}/{{ $student->stud_id }}/{{ $payment->payment_id }}">
-                            <i class="far fa-envelope"></i>
-                        </a> --}}
-                    {{-- </div> --}}
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-success btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
+                    </div>
 
                 </form>
                 
