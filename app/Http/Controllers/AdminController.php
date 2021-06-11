@@ -72,10 +72,9 @@ class AdminController extends Controller
         // Report Table
         $product = Product::where('status', 'active')->first();
         $package = Package::where('product_id', $product->product_id)->get();
-        $package_id = $package->items[1];
         
-        dd($package_id);
-        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package'));
+        // dd($times);
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
