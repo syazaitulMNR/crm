@@ -34,7 +34,65 @@
         <!-- Add product form --------------------------------------------------->
         <form action="{{ url('new-product/save') }}" method="POST" enctype="multipart/form-data"> 
         @csrf
-            <div class="row pt-3" style="padding-left: 8%">
+
+            <div class="col-md-6">
+                <label class="form-label">Event Name</label>
+                <input name="prodname" type="text" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Offer Provided</label>
+                <select class="form-select" aria-label="Default select example" name="offer_id" required>
+                    <option disabled selected>-- Please Select One --</option>
+                    @foreach($offers as $offer)
+                    <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Date</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress2" class="form-label"></label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Time</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress2" class="form-label"></label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Certificate Image</label>
+                <input class="form-control" type="file" id="formFile" name="cert_image">
+                <em>*Please ignore this part if there is no certificate provided for the event</em>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">BillPlz Collection ID</label>
+                <select class="form-select" name="collection_id" required>
+                    <option disabled selected>-- Please Select One --</option>
+                    @foreach($offers as $offer)
+                    <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Survey Form Link</label>
+                <input name="survey_form" type="text" class="form-control" required>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary float-righ">Sign in</button>
+            </div>
+
+            {{-- <div class="row pt-3" style="padding-left: 8%">
                 <div class='col-md-4'>         
                     <div class="form-group">
                         <label for="name">Event Name</label>
@@ -59,7 +117,7 @@
                         <label for="name">Description</label>
                         <textarea name="description" type="text" class="form-control" required></textarea>
                     </div>
-                </div> --}}
+                </div> 
 
                 <div class="row">
                         
@@ -113,7 +171,7 @@
                 <div class='col-md-8 pt-3'>
                     <button type='submit' class='btn btn-primary float-right'> Submit </button>
                 </div>
-            </div>
+            </div> --}}
         </form>
 
     </main>
