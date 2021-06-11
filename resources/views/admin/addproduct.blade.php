@@ -54,6 +54,25 @@
                     </div>
                 </div>
 
+                <div class='col-md-4'>         
+                    <div class="form-group">
+                        <label for="name">Survey Form Link</label>
+                        <input name="survey_form" type="text" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class='col-md-4'>         
+                    <div class="form-group">
+                        <label for="name">BillPlz Collection ID</label>
+                        <select class="form-select" name="collection_id" required>
+                            <option disabled selected>-- Please Select One --</option>
+                            @foreach($offers as $offer)
+                            <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 {{-- <div class='col-md-8'>         
                     <div class="form-group">
                         <label for="name">Description</label>
@@ -61,12 +80,12 @@
                     </div>
                 </div> --}}
 
-                <div class='col-auto'>     
+                <div class='col-md-8'>     
                     <label for="name">Date</label>
                     <div class="form-group row pl-3">
-                        <input type="text" name="date1" id="date1" class="form-control" placeholder="Date From" required/>
+                        <input type="text" name="date1" id="date1" class="form-control" style="width:46%" placeholder="Date From" required/>
                         &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
-                        <input type="text" name="date2" id="date2" class="form-control" placeholder="Date To" required/>
+                        <input type="text" name="date2" id="date2" class="form-control" style="width:46%" placeholder="Date To" required/>
                     </div>
                 </div>
 
@@ -78,29 +97,6 @@
                         <input type="time" name="time2" class="form-control" style="width:46%" required/>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class='col-auto'>         
-                        <div class="form-group">
-                            <label for="name">Survey Form Link</label>
-                            <input name="survey_form" type="text" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class='col-auto'>         
-                        <div class="form-group">
-                            <label for="name">BillPlz Collection ID</label>
-                            <select class="form-select" name="collection_id" required>
-                                <option disabled selected>-- Please Select One --</option>
-                                @foreach($offers as $offer)
-                                <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                
 
                 <div class="col-md-8">                         
                     <div class="form-group">
