@@ -17,13 +17,15 @@ class CreateProductTable extends Migration
             $table->id();
             $table->string('product_id');
             $table->string('name');
-            $table->string('description');
+            $table->string('status');
             $table->string('date_from');
             $table->string('date_to');
             $table->string('time_from');
             $table->string('time_to');            
             $table->string('cert_image');      
-            $table->string('offer_id');
+            $table->string('offer_id');     
+            $table->string('collection_id');     
+            $table->string('survey_form');
             $table->timestamps();
         });
     }

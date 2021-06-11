@@ -61,7 +61,9 @@ class ProductController extends Controller
                 'date_to' => $request->date2,
                 'time_from' => $request->time1,
                 'time_to' => $request->time2,
-                'offer_id' => $request->offer_id
+                'offer_id' => $request->offer_id,
+                'collection_id' => $request->collection_id,
+                'survey_form' => $request->survey_form
             ]);
 
         } else {
@@ -110,6 +112,8 @@ class ProductController extends Controller
             $product->time_from = $request->time1;
             $product->time_to = $request->time2;
             $product->offer_id = $request->offer_id;
+            $product->collection_id = $request->collection_id;
+            $product->survey_form = $request->survey_form;
             $product->save();
 
         } else {
