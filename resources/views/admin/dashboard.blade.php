@@ -109,6 +109,7 @@
 
             <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
+            @foreach ($package as $packages)
             <table class="table text-center">
               <thead class="thead">
                 <tr>
@@ -120,19 +121,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-left">Solidariti</td>
-                  <td>14,343</td>
-                  <td>14,343</td>
-                  <td>8,569</td>
-                </tr>
-                <tr>
-                  <td class="text-left">Sustain</td>
-                  <td>14,343</td>
-                  <td>14,343</td>
-                  <td>8,569</td>
-                </tr>
-                <tr>
-                  <td class="text-left">Growth</td>
+                  <td class="text-left">{{ $packages->name }}</td>
                   <td>14,343</td>
                   <td>14,343</td>
                   <td>8,569</td>
@@ -146,6 +135,7 @@
                 </tr>
               </tfoot>
             </table>
+            @endforeach
           </div>
         </div>
 
