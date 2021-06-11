@@ -143,7 +143,7 @@
                         </div>
                         <div class="pt-3 px-4">
 
-                            <div class="mb-3 row-fluid">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2">Package Name</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
@@ -154,7 +154,7 @@
                                     <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
                                 </div>
                             </div>
-                            <div class="mb-3 row-fluid">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2">Quantity</label>
                                 <div class="col-sm-4">
                                     <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
@@ -174,7 +174,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="mb-3 row-fluid">
+                            <div class="mb-3 row">
                                 <label class="col-sm-2">Offer ID</label>
                                 <div class="col-sm-4">
                                     <select class="form-select form-control-sm" name="offer_id" aria-label="Default select example">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12">
+                    <div class="mb-3 row">
                         <button type="submit" class="btn btn-success btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                     </div>
 
