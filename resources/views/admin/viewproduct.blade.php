@@ -66,7 +66,7 @@
                 <td>
                   {{ $products->name  }} 
                   @if ($products->status == 'active')
-                      <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
+                      <span class="badge rounded-pill bg-success text-right"> &nbsp;On Going&nbsp; </span>
                   @else
                   @endif
                 </td>
