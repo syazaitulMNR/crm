@@ -209,7 +209,7 @@
                                     <option value="due">due</option>
                                 </select>
                             </div> --}}
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <button type="submit" class="btn btn-success float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                             </div>
                         {{-- </div> --}}
