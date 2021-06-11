@@ -200,7 +200,7 @@
 
                     <div class="mb-3 row">
                         <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
+                            <button type="submit" class="btn btn-primary btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                         </div>
                     </div>
 
