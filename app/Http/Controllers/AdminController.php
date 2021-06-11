@@ -74,10 +74,10 @@ class AdminController extends Controller
         $product_id = $product->product_id;
 
         $package = Package::where('product_id', $product_id)->get();
-        // $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $registration = Payment::where('status','paid')->where('product_id', $product_id)->count();
         // $ticket = Ticket::where('product_id', $product_id)->count();
         
-        dd($package);
+        dd($registration);
         // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'registration', 'ticket'));
     }
 
