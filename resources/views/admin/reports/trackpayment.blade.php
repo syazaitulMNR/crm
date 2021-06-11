@@ -198,9 +198,9 @@
                         </div>
                     </div>
 
-                    <div class="card bg-light">
+                    {{-- <div class="card bg-light">
 
-                        <div class="row py-2 px-4">
+                        <div class="row py-2 px-4"> --}}
                             {{-- <label class="col-sm-2"><b>Update Payment Status</b></label>
                             <div class="col-sm-4">
                                 <select class="form-select form-control-sm" name="status" aria-label="Default select example">
@@ -210,9 +210,9 @@
                                 </select>
                             </div> --}}
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save </button>
+                                <button type="submit" class="btn btn-success float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                             </div>
-                        </div>
+                        {{-- </div> --}}
                             {{-- <div class="modal-footer border-top-0 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div> --}}
@@ -222,7 +222,7 @@
                         {{-- <a class="btn btn-dark" href="{{ url('sendmail') }}/{{ $student->stud_id }}/{{ $payment->payment_id }}">
                             <i class="far fa-envelope"></i>
                         </a> --}}
-                    </div>
+                    {{-- </div> --}}
 
                 </form>
                 
