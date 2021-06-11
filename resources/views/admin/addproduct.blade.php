@@ -61,22 +61,26 @@
                     </div>
                 </div> --}}
 
-                <div class='col-md-8'>     
-                    <label for="name">Date</label>
-                    <div class="form-group row pl-3">
-                        <input type="text" name="date1" id="date1" class="form-control" style="width:46%" placeholder="Date From" required/>
-                        &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
-                        <input type="text" name="date2" id="date2" class="form-control" style="width:46%" placeholder="Date To" required/>
+                <div class="row">
+                        
+                    <div class='col-md-8'>     
+                        <label for="name">Date</label>
+                        <div class="form-group row pl-3">
+                            <input type="text" name="date1" id="date1" class="form-control" style="width:46%" placeholder="Date From" required/>
+                            &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="date2" id="date2" class="form-control" style="width:46%" placeholder="Date To" required/>
+                        </div>
                     </div>
-                </div>
 
-                <div class='col-md-8'>     
-                    <label for="name">Time</label>
-                    <div class="form-group row pl-3">
-                        <input type="time" name="time1" class="form-control" style="width:46%" required/>
-                        &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
-                        <input type="time" name="time2" class="form-control" style="width:46%" required/>
+                    <div class='col-md-8'>     
+                        <label for="name">Time</label>
+                        <div class="form-group row pl-3">
+                            <input type="time" name="time1" class="form-control" style="width:46%" required/>
+                            &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
+                            <input type="time" name="time2" class="form-control" style="width:46%" required/>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class='col-md-4'>         
