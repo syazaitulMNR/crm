@@ -131,9 +131,9 @@
               <tfoot>
                 <tr>
                   <th class="text-left">Total Registration</th>
-                  <th>{{ $registration }}</th>
+                  <th><h3>{{ $registration }}</h3></th>
                   <th>Total Ticket</th>
-                  <th>{{ $ticket }}</th>
+                  <th><h3>{{ $ticket }}</h3></th>
                 </tr>
               </tfoot>
             </table>
