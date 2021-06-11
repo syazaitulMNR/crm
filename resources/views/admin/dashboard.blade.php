@@ -138,7 +138,7 @@
                 <tr>
                   <th></th>
                   <th class="text-right">Total Ticket Sold</th>
-                  <th colspan="2">{{ $ticket }}</th>
+                  <th class="table-active" colspan="2">{{ $ticket }}</th>
                 </tr>
               </tfoot>
             </table>
