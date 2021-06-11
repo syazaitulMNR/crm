@@ -66,9 +66,13 @@ class AdminController extends Controller
         } else {
             $greetings = "Hi";
         }
+
+        // Report Table
+        $product = Product::where('status', 'active')->first();
+        $package = Package::where('product_id', $product->product_id)->first();
         
         // dd($times);
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
