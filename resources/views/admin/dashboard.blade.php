@@ -132,7 +132,7 @@
                 <tr>
                   <th class="text-left">Total Registration</th>
                   <th>{{ $registration }}</th>
-                  <th class="text-left">Total Ticket</th>
+                  <th>Total Ticket</th>
                   <th>{{ $ticket }}</th>
                 </tr>
               </tfoot>
