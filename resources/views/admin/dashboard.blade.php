@@ -135,6 +135,10 @@
                   <th>{{ $paidticket }}</th>
                   <th>{{ $freeticket }}</th>
                 </tr>
+                <tr>
+                  <th>Total Ticket Sold</th>
+                  <th>{{ $freeticket }}</th>
+                </tr>
               </tfoot>
             </table>
           </div>
