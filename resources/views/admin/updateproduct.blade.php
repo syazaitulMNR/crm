@@ -27,7 +27,65 @@
         
         <form action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
         @csrf
-            <div class="row py-3" style="padding-left: 8%">
+
+            <div class="col-md-6">
+                <label class="form-label">Event Name</label>
+                <input name="prodname" type="text" class="form-control" value="{{ $product->name }}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Offer Provided</label>
+                <select class="form-select" aria-label="Default select example" name="offer_id" required>
+                    <option disabled selected>-- Please Select One --</option>
+                    @foreach($offers as $offer)
+                    <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Date From</label>
+                <input type="text" name="date1" id="date1" class="form-control" value="{{ $product->date_from }}" required/>
+            </div>
+            <div class="col-md-6">
+                <label for="inputAddress2" class="form-label">Date To</label>
+                <input type="text" name="date2" id="date2" class="form-control" value="{{ $product->date_to }}" required/>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Time From</label>
+                <input type="time" name="time1" class="form-control" value="{{ $product->time_from }}" required/>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Time To</label>
+                <input type="time" name="time2" class="form-control" value="{{ $product->time_to }}" required/>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Certificate Image</label>
+                <input class="form-control" type="file" id="formFile" name="cert_image">
+                <em>*Please ignore this part if there is no certificate provided for the event</em>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">BillPlz Collection ID</label>
+                <select class="form-select" name="collection_id" required>
+                    <option disabled selected>-- Please Select One --</option>
+                    @foreach($offers as $offer)
+                    <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Survey Form Link</label>
+                <input name="survey_form" type="text" class="form-control" value="{{ $product->survey_form }}" required>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
+            </div>
+
+            {{-- <div class="row py-3" style="padding-left: 8%">
                 <div class='col-md-4'>         
                     <div class="form-group">
                         <label for="name">Product</label>
@@ -52,7 +110,7 @@
                         <label for="description">Description</label>
                         <textarea name="description" type="text" class="form-control" required>{{ $product->description }}</textarea>
                     </div>
-                </div> --}}
+                </div>
 
                 <div class='col-md-8'>     
                     <label for="name">Date</label>
@@ -84,7 +142,7 @@
                     <button type='submit' class='btn btn-primary float-right'> Update </button>
                 </div>
             
-            </div>
+            </div> --}}
                     
         </form>
 
