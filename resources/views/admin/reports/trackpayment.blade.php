@@ -174,6 +174,16 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Offer Type</label>
+                                <div class="col-sm-4">
+                                    <select class="form-select form-control-sm" name="status" aria-label="Default select example">
+                                        <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
+                                        <option value="paid">paid</option>
+                                        <option value="due">due</option>
+                                    </select>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
