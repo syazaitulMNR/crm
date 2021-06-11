@@ -89,7 +89,7 @@
             </div>
 
             <div class="col-12">
-                <button type="submit" class="btn btn-primary float-righ">Sign in</button>
+                <button type="submit" class="btn btn-primary float-right">Sign in</button>
             </div>
 
             {{-- <div class="row pt-3" style="padding-left: 8%">
