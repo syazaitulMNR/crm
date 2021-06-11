@@ -131,8 +131,8 @@
               <tfoot>
                 <tr>
                   <th class="text-left">Grand Total</th>
-                  <th>25,000</th>
-                  <th colspan="2">25,000</th>
+                  <th>{{ $registration }}</th>
+                  <th colspan="2">{{ $ticket }}</th>
                 </tr>
               </tfoot>
             </table>
