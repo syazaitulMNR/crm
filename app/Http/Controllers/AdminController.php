@@ -74,7 +74,7 @@ class AdminController extends Controller
         $product = Product::where('status', 'active')->first();
         $product_id = $product->product_id;
         $package = Package::where('product_id', $product_id)->get();
-        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
