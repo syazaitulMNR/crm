@@ -110,6 +110,7 @@
             <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
             <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+            <form method="get">
             <table class="table text-center">
               <thead class="thead">
                 <tr>
@@ -147,6 +148,7 @@
                 </tr>
               </tfoot>
             </table>
+            </form>
           </div>
         </div>
 
