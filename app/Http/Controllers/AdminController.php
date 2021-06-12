@@ -142,7 +142,7 @@ class AdminController extends Controller
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
         // dd($package_id[0]);
-        dd($package_id[]);
+        dd($package_id[$key]);
         // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'registration', 'paidticket', 'freeticket', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
