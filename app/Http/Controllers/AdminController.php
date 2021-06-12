@@ -77,7 +77,7 @@ class AdminController extends Controller
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
-        $current_time = date('H', strtotime('+8 hours'));
+        $current_time = date('h', strtotime('+8 hours'));
 
         if ($current_time < "8") {
 
