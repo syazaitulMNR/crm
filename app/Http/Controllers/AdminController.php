@@ -123,7 +123,7 @@ class AdminController extends Controller
 
         }
 
-        $package_id = Package::where('product_id', $product_id)->pluck('package_id');
+        $package_id = $package->pluck('package_id');
         $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
