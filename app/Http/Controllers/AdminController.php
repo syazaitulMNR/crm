@@ -79,17 +79,17 @@ class AdminController extends Controller
 
         $date_today = date('d-m-Y');
         // $tz = Carbon::now('Asia/Kuala_Lumpur'); 
-        $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i');
+        $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h');
 
-        if ($current_time < "8") {
+        if ($current_time < 8) {
 
             $duration = "12 am - 8 am"; 
 
-        } elseif ($current_time >= "8" && $current_time < "10") {
+        } elseif ($current_time >= 8 && $current_time < 10) {
 
             $duration = "8 am - 10 am"; 
 
-        } elseif ($current_time >= "10" && $current_time < "12") {
+        } elseif ($current_time >= 10 && $current_time < 12) {
 
             $duration = "10 am - 12 pm"; 
 
