@@ -129,7 +129,7 @@ class AdminController extends Controller
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
 
         $registration = Payment::whereIn('package_id', $package_id)->count();
-        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereIn('package_id', $package_id)->count();
+        $paidticket = Ticket::whereIn('package_id', $package_id)->where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereIn('package_id', $package_id)->count();
 
         // get the grand total
