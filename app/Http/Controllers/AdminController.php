@@ -79,7 +79,7 @@ class AdminController extends Controller
 
         $date_today = date('d-m-Y');
         // $tz = Carbon::now('Asia/Kuala_Lumpur'); 
-        $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i');
+        $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('h');
         
 
