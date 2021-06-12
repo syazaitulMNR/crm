@@ -95,27 +95,27 @@ class AdminController extends Controller
 
             $duration = "10 am - 12 pm"; 
 
-        } elseif ($time >= "12" && $time < "14") {
+        } elseif ($time >= 12 && $time < 14) {
 
             $duration = "12 pm - 2 pm"; 
 
-        } elseif ($time >= "14" && $time < "16") {
+        } elseif ($time >= 14 && $time < 16) {
 
             $duration = "2 pm - 4 pm"; 
 
-        } elseif ($time >= "16" && $time < "18") {
+        } elseif ($time >= 16 && $time < 18) {
 
             $duration = "4 pm - 6 pm"; 
 
-        } elseif ($time >= "18" && $time < "20") {
+        } elseif ($time >= 18 && $time < 20) {
 
             $duration = "6 pm - 8 pm"; 
             
-        } elseif ($time >= "20" && $time < "22") {
+        } elseif ($time >= 20 && $time < 22) {
 
             $duration = "8 pm - 10 pm"; 
 
-        } elseif ($time >= "22" && $time <= "24") {
+        } elseif ($time >= 22 && $time <= 24) {
 
             $duration = "10 pm - 12 am";
 
