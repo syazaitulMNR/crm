@@ -74,7 +74,6 @@ class AdminController extends Controller
         // Report Table
         $product = Product::where('status', 'active')->first();
         $product_id = $product->product_id;
-        $package = Package::where('product_id', $product_id)->get();
 
         $date_today = date('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
@@ -123,8 +122,9 @@ class AdminController extends Controller
 
         }
 
-        $package_id = $package->pluck('package_id');
-        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $package = Package::where('product_id', $product_id)->get();
+        $package_id = Package::where('product_id', $product_id)->pluck('package_id');
+        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->flatten()->unique()->count();
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
