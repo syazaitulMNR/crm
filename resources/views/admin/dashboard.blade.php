@@ -123,10 +123,10 @@
               @foreach ($package as $packages)
               {{-- @foreach ($registration as $key => $register) --}}
                 <tr>
-                  <td class="text-left">{{ $packages->name }}</td>
+                  <td class="text-left"><input name="package_name[]" type="text" class="form-control" value="{{ $packages->name }}" ></td>
                   <td>
                     {{ number_format($registration) }}
-                    <input name="packageId" type="hidden" class="form-control" value="{{ $packages->package_id }}">
+                    <input name="packageId[]" type="hidden" class="form-control" value="{{ $packages->package_id }}">
                   </td>
                   <td>{{ number_format($paidticket) }}</td>
                   <td>{{ number_format($freeticket) }}</td>
