@@ -78,7 +78,7 @@ class AdminController extends Controller
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
-        $current_time = Carbon::now('Asia/Kuala_Lumpur')->toDateTimeString();
+        $current_time = Carbon::createFromFormat('Y-m-d H','Asia/Kuala_Lumpur')->toDateTimeString();
 
         if ($current_time < "8") {
 
