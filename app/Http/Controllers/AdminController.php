@@ -35,7 +35,7 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function dashboard(){      
+    public function dashboard(Request $request){      
         $student = Student::count();
         $today = Payment::whereBetween('created_at', [date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')])->sum('totalprice');
         $monthly = Payment::whereBetween('created_at', [date('Y-m-01 00:00:00'), date('Y-m-31 23:59:59')])->sum('totalprice');
