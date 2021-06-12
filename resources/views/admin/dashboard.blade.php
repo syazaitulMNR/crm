@@ -109,8 +109,8 @@
 
             <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
-            <p>{{ $date_today }}</p>
-            <p>{{ $current_time }}</p>
+            <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b></p>
+            <p></p>
             <table class="table text-center">
               <thead class="thead">
                 <tr>
