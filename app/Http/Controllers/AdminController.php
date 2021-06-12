@@ -75,7 +75,6 @@ class AdminController extends Controller
         $product = Product::where('status', 'active')->first();
         $product_id = $product->product_id;
         $package = Package::where('product_id', $product_id)->get();
-        // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
@@ -124,14 +123,17 @@ class AdminController extends Controller
 
         }
 
+        $package_id = Package::where('product_id', $product_id)->pluck('package_id');
+        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
-        $allPermissions = Package::where('product_id', $product_id)->pluck('package_id');
-        // dd($allPermissions[0]);
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
+        // dd($package_id[0]);
+        dd($registration);
+        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
