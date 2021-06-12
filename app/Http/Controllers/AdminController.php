@@ -76,13 +76,14 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
-        $current_time = date('Y-m-d H:i a', strtotime('+8 hours'));
+        $date_today = date('Y-m-d');
+        $current_time = date('H:i a', strtotime('+8 hours'));
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'current_time', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
