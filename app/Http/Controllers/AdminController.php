@@ -126,10 +126,10 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
 
-        foreach($package_id as $key => $value)
-        {
-            $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id[$key])->count();
-        }
+        // foreach($request->package_id as $key => $value)
+        // {
+            $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $request->package_id)->count();
+        // }
 
         
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
