@@ -109,6 +109,7 @@
 
             <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
+            <p>{{ $current_time }}</p>
             <table class="table text-center">
               <thead class="thead">
                 <tr>
