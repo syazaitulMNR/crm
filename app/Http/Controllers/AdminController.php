@@ -78,7 +78,7 @@ class AdminController extends Controller
 
         $date_today = date('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
-        $time = Carbon::now('Asia/Kuala_Lumpur')->format('h');
+        $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
         // show the duration of current 2 hours
         if ($time < 8) {
