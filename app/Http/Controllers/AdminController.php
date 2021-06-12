@@ -78,11 +78,10 @@ class AdminController extends Controller
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
-        // $tz = Carbon::now('Asia/Kuala_Lumpur'); 
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('h');
         
-
+        // show the duration of current 2 hours
         if ($time < 8) {
 
             $duration = "12 am - 8 am"; 
@@ -130,8 +129,9 @@ class AdminController extends Controller
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
-        // dd($duration);
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
+        $allPermissions = Payment::pluck('id');
+        dd($allPermissions);
+        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
