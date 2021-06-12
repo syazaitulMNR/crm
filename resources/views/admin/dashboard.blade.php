@@ -124,8 +124,8 @@
                 <tr>
                   <td class="text-left">{{ $packages->name }}</td>
                   <td>{{ $registration }}</td>
-                  <td>14,343</td>
-                  <td>8,569</td>
+                  <td>{{ $paidticket }}</td>
+                  <td>{{ $freeticket }}</td>
                 </tr>
               @endforeach
               </tbody>
