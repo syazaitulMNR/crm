@@ -123,7 +123,7 @@
               @foreach ($package as $packages)
                 <tr>
                   <td class="text-left">{{ $packages->name }}</td>
-                  <td>14,343</td>
+                  <td>{{ $registration }}</td>
                   <td>14,343</td>
                   <td>8,569</td>
                 </tr>
