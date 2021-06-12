@@ -124,7 +124,7 @@ class AdminController extends Controller
         }
 
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
-        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id[])->count();
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
