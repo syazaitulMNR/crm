@@ -122,12 +122,20 @@ class AdminController extends Controller
 
         }
 
+        // get the total by package
         $package = Package::where('product_id', $product_id)->get();
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
-        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+
+        foreach($package_id as $key => $value)
+        {
+            $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id[$key])->count();
+        }
+
+        
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
+        // get the grand total
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
