@@ -79,41 +79,43 @@ class AdminController extends Controller
 
         $date_today = date('d-m-Y');
         // $tz = Carbon::now('Asia/Kuala_Lumpur'); 
-        $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h');
+        $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i');
+        $time = Carbon::now('Asia/Kuala_Lumpur')->format('h');
+        
 
-        if ($current_time < 8) {
+        if ($time < 8) {
 
             $duration = "12 am - 8 am"; 
 
-        } elseif ($current_time >= 8 && $current_time < 10) {
+        } elseif ($time >= 8 && $time < 10) {
 
             $duration = "8 am - 10 am"; 
 
-        } elseif ($current_time >= 10 && $current_time < 12) {
+        } elseif ($time >= 10 && $time < 12) {
 
             $duration = "10 am - 12 pm"; 
 
-        } elseif ($current_time >= "12" && $current_time < "14") {
+        } elseif ($time >= "12" && $time < "14") {
 
             $duration = "12 pm - 2 pm"; 
 
-        } elseif ($current_time >= "14" && $current_time < "16") {
+        } elseif ($time >= "14" && $time < "16") {
 
             $duration = "2 pm - 4 pm"; 
 
-        } elseif ($current_time >= "16" && $current_time < "18") {
+        } elseif ($time >= "16" && $time < "18") {
 
             $duration = "4 pm - 6 pm"; 
 
-        } elseif ($current_time >= "18" && $current_time < "20") {
+        } elseif ($time >= "18" && $time < "20") {
 
             $duration = "6 pm - 8 pm"; 
             
-        } elseif ($current_time >= "20" && $current_time < "22") {
+        } elseif ($time >= "20" && $time < "22") {
 
             $duration = "8 pm - 10 pm"; 
 
-        } elseif ($current_time >= "22" && $current_time <= "24") {
+        } elseif ($time >= "22" && $time <= "24") {
 
             $duration = "10 pm - 12 am";
 
