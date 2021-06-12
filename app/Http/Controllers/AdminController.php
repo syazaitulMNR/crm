@@ -77,41 +77,41 @@ class AdminController extends Controller
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
-        $current_time = date('H:i', strtotime('+8 hours'));
+        $current_time = date('H', strtotime('+8 hours'));
 
-        if ($current_time < "8:00") {
+        if ($current_time < "8") {
 
             $duration = "12 am - 8 am"; 
 
-        } elseif ($current_time >= "8:00" && $current_time < "10:00") {
+        } elseif ($current_time >= "8" && $current_time < "10") {
 
             $duration = "8 am - 10 am"; 
 
-        } elseif ($current_time >= "10:00" && $current_time < "12:00") {
+        } elseif ($current_time >= "10" && $current_time < "12") {
 
             $duration = "10 am - 12 pm"; 
 
-        } elseif ($current_time >= "12:00" && $current_time < "14:00") {
+        } elseif ($current_time >= "12" && $current_time < "14") {
 
             $duration = "12 pm - 2 pm"; 
 
-        } elseif ($current_time >= "14:00" && $current_time < "16:00") {
+        } elseif ($current_time >= "14" && $current_time < "16") {
 
             $duration = "2 pm - 4 pm"; 
 
-        } elseif ($current_time >= "16:00" && $current_time < "18:00") {
+        } elseif ($current_time >= "16" && $current_time < "18") {
 
             $duration = "4 pm - 6 pm"; 
 
-        } elseif ($current_time >= "18:00" && $current_time < "20:00") {
+        } elseif ($current_time >= "18" && $current_time < "20") {
 
             $duration = "6 pm - 8 pm"; 
             
-        } elseif ($current_time >= "20:00" && $current_time < "22:00") {
+        } elseif ($current_time >= "20" && $current_time < "22") {
 
             $duration = "8 pm - 10 pm"; 
 
-        } elseif ($current_time >= "22:00" && $current_time <= "23:59") {
+        } elseif ($current_time >= "22" && $current_time <= "24") {
 
             $duration = "10 pm - 12 am";
 
