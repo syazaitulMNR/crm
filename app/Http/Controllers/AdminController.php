@@ -76,7 +76,7 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
-        $date_today = date('Y-m-d');
+        $date_today = date('d-m-Y');
         $current_time = date('H:i a', strtotime('+8 hours'));
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
