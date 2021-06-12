@@ -78,57 +78,57 @@ class AdminController extends Controller
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
-        $current_time = Payment::where('created_at', '<', Carbon::parse('-2 hours'));
+        $current_time = Carbon::now('Asia/Kuala_Lumpur')->toTimeString();
 
-        // if ($current_time < "8") {
+        if ($current_time < "8") {
 
-        //     $duration = "12 am - 8 am"; 
+            $duration = "12 am - 8 am"; 
 
-        // } elseif ($current_time >= "8" && $current_time < "10") {
+        } elseif ($current_time >= "8" && $current_time < "10") {
 
-        //     $duration = "8 am - 10 am"; 
+            $duration = "8 am - 10 am"; 
 
-        // } elseif ($current_time >= "10" && $current_time < "12") {
+        } elseif ($current_time >= "10" && $current_time < "12") {
 
-        //     $duration = "10 am - 12 pm"; 
+            $duration = "10 am - 12 pm"; 
 
-        // } elseif ($current_time >= "12" && $current_time < "14") {
+        } elseif ($current_time >= "12" && $current_time < "14") {
 
-        //     $duration = "12 pm - 2 pm"; 
+            $duration = "12 pm - 2 pm"; 
 
-        // } elseif ($current_time >= "14" && $current_time < "16") {
+        } elseif ($current_time >= "14" && $current_time < "16") {
 
-        //     $duration = "2 pm - 4 pm"; 
+            $duration = "2 pm - 4 pm"; 
 
-        // } elseif ($current_time >= "16" && $current_time < "18") {
+        } elseif ($current_time >= "16" && $current_time < "18") {
 
-        //     $duration = "4 pm - 6 pm"; 
+            $duration = "4 pm - 6 pm"; 
 
-        // } elseif ($current_time >= "18" && $current_time < "20") {
+        } elseif ($current_time >= "18" && $current_time < "20") {
 
-        //     $duration = "6 pm - 8 pm"; 
+            $duration = "6 pm - 8 pm"; 
             
-        // } elseif ($current_time >= "20" && $current_time < "22") {
+        } elseif ($current_time >= "20" && $current_time < "22") {
 
-        //     $duration = "8 pm - 10 pm"; 
+            $duration = "8 pm - 10 pm"; 
 
-        // } elseif ($current_time >= "22" && $current_time <= "24") {
+        } elseif ($current_time >= "22" && $current_time <= "24") {
 
-        //     $duration = "10 pm - 12 am";
+            $duration = "10 pm - 12 am";
 
-        // } else {
+        } else {
 
-        //     $duration = "undefined";
+            $duration = "undefined";
 
-        // }
+        }
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
-        // dd($current_time);
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
+        // dd($duration);
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
