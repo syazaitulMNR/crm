@@ -121,12 +121,14 @@
               </thead>
               <tbody>
               @foreach ($package as $packages)
+              @foreach ($registration as $register)
                 <tr>
                   <td class="text-left">{{ $packages->name }}</td>
-                  <td>{{ $registration }}</td>
+                  <td>{{ $register }}</td>
                   <td>14,343</td>
                   <td>8,569</td>
                 </tr>
+              @endforeach
               @endforeach
               </tbody>
               <tfoot>
