@@ -128,9 +128,9 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
 
-        $registration = Payment::whereIn('package_id', $package_id)->where('status','paid')->count();
-        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereIn('package_id', $package_id)->count();
-        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereIn('package_id', $package_id)->count();
+        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->sizeof();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         // get the grand total
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
@@ -139,7 +139,7 @@ class AdminController extends Controller
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
         // dd($package_id[0]);
-        // dd($registration);
+        // dd($request->package_id);
         return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'duration', 'registration', 'paidticket', 'freeticket', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
