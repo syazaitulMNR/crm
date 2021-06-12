@@ -123,23 +123,23 @@
               @foreach ($package as $packages)
                 <tr>
                   <td class="text-left">{{ $packages->name }}</td>
-                  <td>{{ $registration }}</td>
-                  <td>{{ $paidticket }}</td>
-                  <td>{{ $freeticket }}</td>
+                  <td>{{ number_format($registration) }}</td>
+                  <td>{{ number_format($paidticket) }}</td>
+                  <td>{{ number_format($freeticket) }}</td>
                 </tr>
               @endforeach
               </tbody>
               <tfoot>
                 <tr>
                   <th class="text-left">Grand Total</th>
-                  <th>{{ $totalregister }}</th>
-                  <th>{{ $totalpaid }}</th>
-                  <th>{{ $totalfree }}</th>
+                  <th>{{ number_format($totalregister) }}</th>
+                  <th>{{ number_format($totalpaid) }}</th>
+                  <th>{{ number_format($totalfree) }}</th>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="text-right">Total Ticket Sold</th>
-                  <th class="table-active" colspan="2">{{ $totalticket }}</th>
+                  <th class="table-active" colspan="2">{{ number_format($totalticket) }}</th>
                 </tr>
               </tfoot>
             </table>
