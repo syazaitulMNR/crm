@@ -13,6 +13,7 @@ use App\Payment;
 use App\Product;
 use App\Package;
 use App\Ticket;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -77,7 +78,7 @@ class AdminController extends Controller
         // $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         $date_today = date('d-m-Y');
-        $current_time = date('h', strtotime('+8 hours'));
+        $current_time = Carbon::now();
 
         if ($current_time < "8") {
 
