@@ -54,9 +54,13 @@
                 <form class="row g-3 px-5" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
                     @csrf
                 
-                    <div class="col-md-6">
-                        <label class="form-label">IC No.</label>
-                        <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
+                    <div class="row">
+                            
+                        <div class="col-md-6">
+                            <label class="form-label">IC No.</label>
+                            <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
+                        </div>
+
                     </div>
 
                     <div class="row">
@@ -72,14 +76,18 @@
 
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label">Email</label>
-                        <input type="text" name="email" value="{{ $student->email }}" class="form-control" required>
-                    </div>
+                    <div class="row">
+                            
+                        <div class="col-md-3">
+                            <label class="form-label">Email</label>
+                            <input type="text" name="email" value="{{ $student->email }}" class="form-control" required>
+                        </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label">Phone No.</label>
-                        <input type="text" name="phoneno" value="{{ $student->phoneno }}" class="form-control" required>
+                        <div class="col-md-3">
+                            <label class="form-label">Phone No.</label>
+                            <input type="text" name="phoneno" value="{{ $student->phoneno }}" class="form-control" required>
+                        </div>
+
                     </div>
 
                     <div class="col-12">
