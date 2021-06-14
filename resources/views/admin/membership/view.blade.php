@@ -151,7 +151,7 @@
                       <td>{{ $students->ic }}</td>
                       <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                       <td>
-                        <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                        <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else
