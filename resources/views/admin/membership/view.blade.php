@@ -133,7 +133,7 @@
 
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($student) > 0)
-            <table class="table table-sm table-hover" id="successTable">
+            <table class="table table-hover" id="successTable">
                 <thead>
                 <tr class="header">
                   <th>#</th>
@@ -151,11 +151,11 @@
                       <td>{{ $students->ic }}</td>
                       <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                       <td>
-                        <a class="btn btn-sm btn-dark" href="{{ url('viewpayment') }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                        <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
 
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else
-                          <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $students->stud_id }}"><i class="fas fa-trash-alt"></i></button>
+                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $students->stud_id }}"><i class="fas fa-trash-alt"></i></button>
                           <!-- Modal -->
                           <div class="modal fade" id="exampleModal{{ $students->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
