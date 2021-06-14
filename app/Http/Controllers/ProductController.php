@@ -260,26 +260,25 @@ class ProductController extends Controller
 
         if ($request->features == null)
         {
-            echo 'null value';
+
         }else{
 
-            echo 'editted value';
-            // foreach($request->features as $keys => $values) 
-            // {        
-            //     $feature = Feature::orderBy('id','desc')->first(); 
+            foreach($request->features as $keys => $values) 
+            {        
+                $feature = Feature::orderBy('id','desc')->first(); 
                 
-            //     $featureId = 'FID' . uniqid();
+                $featureId = 'FID' . uniqid();
 
-            //     Feature::create(array(
-            //         'feat_id'=> $featureId,
-            //         'name'=> $values,
-            //         'product_id'=> $productId,
-            //         'package_id'=> $packageId
-            //     ));
-            // }
+                Feature::create(array(
+                    'feat_id'=> $featureId,
+                    'name'=> $values,
+                    'product_id'=> $productId,
+                    'package_id'=> $packageId
+                ));
+            }
         }
 
-        // return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
+        return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
     }
     
     public function destroypack($packageId)
