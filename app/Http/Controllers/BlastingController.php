@@ -64,6 +64,25 @@ class BlastingController extends Controller
         
         return view('admin.blasting_email.view_customer', compact('paginate', 'product', 'package', 'payment', 'student'));
     }
+
+    public function update_mail($product_id, $package_id, $payment_id, $student_id, Request $request)
+    {
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+
+        dd($student->email);
+        // $student->save();
+
+        // return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer Successfully Updated!');
+    }
     
     public function send_mail($product_id, $package_id, $payment_id, $student_id)
     {
