@@ -78,10 +78,9 @@ class BlastingController extends Controller
         $student->last_name = $request->last_name;
         $student->email = $request->email;
 
-        dd($student->email);
-        // $student->save();
+        $student->save();
 
-        // return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer Successfully Updated!');
+        return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer Successfully Updated!');
     }
     
     public function send_mail($product_id, $package_id, $payment_id, $student_id)
