@@ -51,8 +51,6 @@
         <div class="row">
           <div class="col-md-9 "> 
                       
-            <br>
-
             <!-- Show package in table ----------------------------------------------->
             @if(count($membership_level) > 0)
             <table class="table table-hover" id="successTable">
