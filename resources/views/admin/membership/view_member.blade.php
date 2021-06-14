@@ -59,13 +59,17 @@
                         <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label">First Name</label>
-                        <input type="text" name="first_name" value="{{ $student->first_name }}" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" name="last_name" value="{{ $student->last_name }}" class="form-control" required>
+                    <div class="row-fluid">
+                            
+                        <div class="col-md-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" name="first_name" value="{{ $student->first_name }}" class="form-control" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" name="last_name" value="{{ $student->last_name }}" class="form-control" required>
+                        </div>
+
                     </div>
 
                     <div class="col-md-6">
