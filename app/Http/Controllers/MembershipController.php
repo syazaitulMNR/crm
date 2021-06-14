@@ -81,7 +81,7 @@ class MembershipController extends Controller
 
     public function track_members($membership_id, $level_id, $student_id)
     {
-        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
