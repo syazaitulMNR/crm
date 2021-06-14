@@ -249,13 +249,13 @@ class ProductController extends Controller
         //     $package->package_image = $imagename;
         // }
 
-        // $package->save();
+        $package->save();
 
         foreach($request->feature as $key => $value)
         {
             $feature = Feature::where('package_id', $packageId)->where('feat_id', $request->feat_id[$key])->first();
             $feature->name = $value;
-            // $feature->save();
+            $feature->save();
         }
 
         if ($request->features == null)
