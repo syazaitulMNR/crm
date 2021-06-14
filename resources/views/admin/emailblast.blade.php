@@ -40,7 +40,13 @@
             <tr>
                 <td>{{ $product->firstItem() + $key }}</td>
                 <td>{{ date('d/m/Y', strtotime($products->created_at)) }}</td>
-                <td>{{ $products->name }}</td>
+                <td>
+                  {{ $products->name }}
+                  @if ($products->status == 'active')
+                      <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
+                  @else
+                  @endif
+                </td>
                 {{-- <td class="text-center">{{$totalcust}}</td> --}}
                 <td>
                     <a class="btn btn-dark" href="{{ url('view') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
