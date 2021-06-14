@@ -138,8 +138,10 @@ Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbyp
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
 
 Route::get('paid-ticket/{product_id}/{package_id}', 'ReportsController@paid_ticket');
+Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
 Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
 Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');
+
 Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
 Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
 Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
