@@ -95,7 +95,7 @@ class BlastingController extends Controller
         // change email status
         $payment->email_status = 'Sent';
 
-        dd($student->email);
+        dd($send_mail);
         // // send the email
         // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
