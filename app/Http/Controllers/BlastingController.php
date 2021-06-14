@@ -67,13 +67,20 @@ class BlastingController extends Controller
     
     public function send_mail($product_id, $package_id, $payment_id, $student_id)
     {
-        /*-- Manage Email ---------------------------------------------------*/
-
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
 
+        // update customer details
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+        $student->save();
+
+        // Email content
         $send_mail = $student->email;
         $product_name = $product->name;        
         $date_from = $product->date_from;
@@ -85,10 +92,10 @@ class BlastingController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        // echo 'sent email';
+        // change email status
         $payment->email_status = 'Sent';
-        // $payment->offer_id = 'OFF002'; //buy1free1
 
+        // send the email
         dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
         $payment->save();

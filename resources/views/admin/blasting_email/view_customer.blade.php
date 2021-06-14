@@ -141,7 +141,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-4">
-                                <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-save pr-1"></i> Save Changes</button><!-- Send email button -->
+                                <!-- Send email button -->
                                 <a class="btn btn-sm btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
                                     <i class="far fa-envelope pr-1"></i> Send Email
                                 </a>
