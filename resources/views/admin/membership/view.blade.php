@@ -39,8 +39,8 @@
 <div class="row py-4">     
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-          <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> 
-          / <b>Membership</b> 
+          <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a>  / <a href="/membership">Membership</a>
+           / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}">{{ $membership->name }}</a> / <b>{{ $membership_level->name }}</b>
         </div>
   
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
