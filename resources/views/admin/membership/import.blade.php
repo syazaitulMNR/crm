@@ -73,6 +73,8 @@
                 </div>
                 
             </div>
+
+            <p>2) Please make sure that you import the details to the correct location.</p>
             
         </div>
     </main>
