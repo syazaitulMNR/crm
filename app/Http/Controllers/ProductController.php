@@ -249,30 +249,31 @@ class ProductController extends Controller
         //     $package->package_image = $imagename;
         // }
 
-        $package->save();
+        // $package->save();
 
         foreach($request->feature as $key => $value)
         {
             $feature = Feature::where('package_id', $packageId)->where('feat_id', $request->feat_id[$key])->first();
             $feature->name = $value;
-            $feature->save();
+            // $feature->save();
         }
 
-        foreach($request->features as $keys => $values) 
-        {        
-            $feature = Feature::orderBy('id','desc')->first(); 
+        dd($request->features);
+        // foreach($request->features as $keys => $values) 
+        // {        
+        //     $feature = Feature::orderBy('id','desc')->first(); 
             
-            $featureId = 'FID' . uniqid();
+        //     $featureId = 'FID' . uniqid();
 
-            Feature::create(array(
-                'feat_id'=> $featureId,
-                'name'=> $values,
-                'product_id'=> $productId,
-                'package_id'=> $packageId
-             ));
-        }
+        //     Feature::create(array(
+        //         'feat_id'=> $featureId,
+        //         'name'=> $values,
+        //         'product_id'=> $productId,
+        //         'package_id'=> $packageId
+        //     ));
+        // }
 
-        return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
+        // return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
     }
     
     public function destroypack($packageId)
