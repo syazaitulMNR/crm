@@ -72,14 +72,6 @@ class BlastingController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
 
-        // update customer details
-        $student->ic = $request->ic;
-        $student->phoneno = $request->phoneno;
-        $student->first_name = $request->first_name;
-        $student->last_name = $request->last_name;
-        $student->email = $request->email;
-        // $student->save();
-
         // Email content
         $send_mail = $student->email;
         $product_name = $product->name;        
@@ -95,13 +87,12 @@ class BlastingController extends Controller
         // change email status
         $payment->email_status = 'Sent';
 
-        dd($send_mail);
-        // // send the email
-        // dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        // send the email
+        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
-        // $payment->save();
+        $payment->save();
 
-        // return redirect('view-event/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;
+        return redirect('view-event/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;
     }
     
     //testing
