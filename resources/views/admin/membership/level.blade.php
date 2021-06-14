@@ -39,7 +39,7 @@
 <div class="row py-4">     
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-          <a href="/trackprogram"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>{{ $membership->name }}</b>
+          <a href="/membership"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a>  / Membership / <b>{{ $membership->name }}</b>
         </div>
   
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -66,39 +66,6 @@
                   </div>
                 </div>
               </div>
-             {{--  <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <div class="rotate">
-                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
-                    </div>
-                    <h6 class="lead pt-3 pl-3">Due</h6>
-                    {{-- <h3 class="pb-1 pl-3">{{$totalcancel}}</h3> 
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <div class="rotate">
-                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
-                    </div>
-                    <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
-                    {{-- <h3 class="pb-1 pl-3">{{$paidticket}}</h3> --
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <div class="rotate">
-                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
-                    </div>
-                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                    {{-- <h3 class="pb-1 pl-3">{{$freeticket}}</h3> --
-                  </div>
-                </div>
-              </div> --}}
             </div>
 
             <br>
