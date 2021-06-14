@@ -133,7 +133,7 @@ class MembershipController extends Controller
 
         }
 
-        dd($request->ic);
+        dd($request->level_id);
         // return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('add-success', 'Customer successfully added');
 
     }
