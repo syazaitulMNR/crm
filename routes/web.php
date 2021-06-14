@@ -172,6 +172,7 @@ Route::get('membership/level/{membership_id}','MembershipController@view_level')
 Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
 Route::get('import-members/{membership_id}/{level_id}','MembershipController@import');
 Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
+Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 
 /*
 |--------------------------------------------------------------------------

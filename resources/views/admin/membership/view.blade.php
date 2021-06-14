@@ -61,7 +61,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="{{ url('membership/save') }}" method="POST"> 
+                  <form action="{{ url('store-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" method="POST"> 
                   @csrf
                     <div class="form-group row px-4">
                         <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
