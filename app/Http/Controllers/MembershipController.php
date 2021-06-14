@@ -114,7 +114,7 @@ class MembershipController extends Controller
             $student->email = $request->email;
             $student->membership_id = $membership_id;
             $student->level_id = $level_id;
-            // $student->save();
+            $student->save();
 
         }else{
 
@@ -133,8 +133,7 @@ class MembershipController extends Controller
 
         }
 
-        dd($request->level_id);
-        // return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('add-success', 'Customer successfully added');
+        return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('add-success', 'Customer successfully added');
 
     }
 }
