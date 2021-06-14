@@ -59,7 +59,7 @@
                         <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
                     </div>
 
-                    <div class="row-fluid">
+                    <div class="row">
                             
                         <div class="col-md-3">
                             <label class="form-label">First Name</label>
