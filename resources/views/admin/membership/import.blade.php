@@ -42,7 +42,7 @@
 
             <h5 class="pt-3 pb-2">How To Import ?</h5>
 
-            <p>1) Use this format or you can simply download it before importing to database.</p>
+            <p>1) Download this format before importing to database.</p>
             <div class="row">
                 <div class="col-md-12">
                     {{-- <div class="card bg-light"> --}}
@@ -66,7 +66,7 @@
                             </table>
                         </div>
 
-                        <em>*Please make sure that you import the details to the correct location.</em>
+                        <em>*Please make sure that the details will be imported to the correct location.</em>
                     {{-- </div> --}}
     
                     <div class="row-fluid float-right pt-1">
