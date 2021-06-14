@@ -131,20 +131,6 @@
             </div>
             @endif
 
-            @if ($message = Session::get('updatepayment'))
-            <div class="alert alert-info alert-block">
-                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-            </div>
-            @endif
-
-            @if ($message = Session::get('deletepayment'))
-            <div class="alert alert-danger alert-block">
-                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-            </div>
-            @endif
-
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($student) > 0)
             <table class="table table-hover" id="successTable">
