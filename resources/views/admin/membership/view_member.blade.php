@@ -51,7 +51,7 @@
 
             <div class="col-md-12">
 
-                <form action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
+                <form class="px-5" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
                     @csrf
                 
                     <div class="row py-2">
@@ -90,7 +90,7 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 py-2">
                         <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </div>
 
