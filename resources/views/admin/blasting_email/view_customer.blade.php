@@ -52,7 +52,7 @@
                     
             <div class="col-md-12">
                 
-                @if ($message = Session::get('updated-mail'))
+                @if ($message = Session::get('update-mail'))
                 <div class="alert alert-success alert-block">
                     <button type="button" class="close" data-bs-dismiss="alert">×</button>	
                     <strong>{{ $message }}</strong>
