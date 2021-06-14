@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Import Customer
+    Import Members
 @endsection
 
 @include('layouts.navbar')
@@ -38,7 +38,6 @@
 
         </form>
            
-        <br>
         <div class="panel panel-default">
 
             <h5 class="pt-3 pb-2">How To Import ?</h5>
