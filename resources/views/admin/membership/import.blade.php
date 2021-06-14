@@ -42,7 +42,7 @@
 
             <h5 class="pt-3 pb-2">How To Import ?</h5>
 
-            <p>1) Download this format before importing to database.</p>
+            <p>1) Download and use this format before importing to database.</p>
             <div class="row">
                 <div class="col-md-12">
                     {{-- <div class="card bg-light"> --}}
