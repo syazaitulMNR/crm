@@ -49,25 +49,8 @@
         </div>
 
         <div class="row">
-          <div class="col-md-12 "> 
-                        
-            <br>
-
-            <!-- Show data in cards --------------------------------------------------->
-            <div class="row mb-3">
-              <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <div class="rotate">
-                      <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
-                    </div>
-                    <h6 class="lead pt-3 pl-3">Total {{ $membership->name }}</h6>
-                    <h3 class="pb-1 pl-3">{{$total}}</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          <div class="col-md-9 "> 
+                      
             <br>
 
             <!-- Show package in table ----------------------------------------------->
@@ -99,6 +82,20 @@
             
           </div>
           
+           
+          <div class="col-md-3">
+
+            <div class="card bg-light py-4 mb-4 text-center shadow">
+              <div class="card-block text-dark">
+                <div class="rotate">
+                <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 229, 255, 0.3)"></i>
+                </div>
+                <h3 class="pt-3 pl-3">{{$total}}</h3>
+                <h6 class="lead pb-2 pl-3">Total {{ $membership->name }}</h6>
+              </div>
+            </div>
+                    
+          </div>
           
         </div>
         
