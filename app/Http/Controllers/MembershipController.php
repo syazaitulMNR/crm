@@ -100,4 +100,37 @@ class MembershipController extends Controller
         return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
 
     }
+
+    public function store_members($membership_id, $level_id, Request $request)
+    {
+        $student = Student::where('ic', $request->ic)->first();
+        
+        if(Student::where('ic', $request->ic)->exists()){
+
+            $student->ic = $request->ic;
+            $student->phoneno = $request->phoneno;
+            $student->first_name = $request->first_name;
+            $student->last_name = $request->last_name;
+            $student->email = $request->email;
+            $student->membership = $membership_id;
+            $student->level = $level_id;
+            $student->save();
+
+        }else{
+
+            $stud_id = 'MI'.uniqid();
+            
+            Student::create(array(
+                'stud_id'=> $stud_id,
+                'first_name'=> $request->first_name,
+                'last_name'=> $request->last_name,
+                'ic' => $request->ic,
+                'phoneno' => $request->phoneno,
+                'email' => $request->email,
+                'membership_id' => $request->membership_id,
+                'level_id' => $request->level_id
+            ));
+
+        }
+    }
 }
