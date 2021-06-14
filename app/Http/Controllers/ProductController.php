@@ -258,20 +258,26 @@ class ProductController extends Controller
             // $feature->save();
         }
 
-        dd($request->features);
-        // foreach($request->features as $keys => $values) 
-        // {        
-        //     $feature = Feature::orderBy('id','desc')->first(); 
-            
-        //     $featureId = 'FID' . uniqid();
+        if ($request->features == null)
+        {
+            echo 'null value';
+        }else{
 
-        //     Feature::create(array(
-        //         'feat_id'=> $featureId,
-        //         'name'=> $values,
-        //         'product_id'=> $productId,
-        //         'package_id'=> $packageId
-        //     ));
-        // }
+            echo 'editted value';
+            // foreach($request->features as $keys => $values) 
+            // {        
+            //     $feature = Feature::orderBy('id','desc')->first(); 
+                
+            //     $featureId = 'FID' . uniqid();
+
+            //     Feature::create(array(
+            //         'feat_id'=> $featureId,
+            //         'name'=> $values,
+            //         'product_id'=> $productId,
+            //         'package_id'=> $packageId
+            //     ));
+            // }
+        }
 
         // return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
     }
