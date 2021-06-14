@@ -52,7 +52,7 @@
                     
             <div class="col-md-12">
 
-                <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
+                <form action="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
                     @csrf
                 
                     <div class="card mb-4">
