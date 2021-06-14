@@ -90,7 +90,7 @@
 
                     </div>
 
-                    <div class="col-md-6 py-2">
+                    <div class="col-md-6 py-3">
                         <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </div>
 
