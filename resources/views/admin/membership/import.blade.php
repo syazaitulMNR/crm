@@ -65,6 +65,8 @@
                                 </tr>
                             </table>
                         </div>
+
+                        <em>*Please make sure that you import the details to the correct location.</em>
                     {{-- </div> --}}
     
                     <div class="row-fluid float-right pt-1">
@@ -73,8 +75,6 @@
                 </div>
                 
             </div>
-
-            <p>2) Please make sure that you import the details to the correct location.</p>
             
         </div>
     </main>
