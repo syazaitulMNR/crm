@@ -133,7 +133,7 @@
 
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($student) > 0)
-            <table class="table table-hover" id="successTable">
+            <table class="table table-sm table-hover" id="successTable">
                 <thead>
                 <tr class="header">
                   <th>#</th>
