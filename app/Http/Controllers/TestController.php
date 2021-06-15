@@ -20,7 +20,7 @@ class TestController extends Controller
          return [
              'Email' => $user->ticket_id,
              'First Name' => $user->ic,
-             'Last Name' => strtoupper($user->status),
+             'Last Name' => $user->status,
          ];
       });
    }
