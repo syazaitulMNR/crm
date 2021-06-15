@@ -17,7 +17,7 @@ class TestController extends Controller
       $users = User::all();
 
       // Export all users
-      return (new FastExcel($users))->export('file.xlsx');
+      return (new FastExcel($users))->download('file.xlsx');
    }
 
    public function basic_email() {
