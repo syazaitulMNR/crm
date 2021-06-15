@@ -9,6 +9,7 @@ use App\Package;
 use App\Payment;
 use App\Ticket;
 use App\Exports\ProgramExport;
+use App\Exports\PaidTicket_Export;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Jobs\PengesahanJob;
 use App\Jobs\TiketJob;
