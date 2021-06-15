@@ -10,6 +10,7 @@ use App\Payment;
 use App\Ticket;
 use App\Exports\ProgramExport;
 use App\Exports\PaidTicket_Export;
+use App\Exports\FreeTicket_Export;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Jobs\PengesahanJob;
 use App\Jobs\TiketJob;
@@ -291,6 +292,17 @@ class ReportsController extends Controller
         
         // dd($ticket);
         return view('admin.reports.freeticket', compact('ticket', 'product', 'package', 'student', 'count'));
+    }
+
+    public function export_free($product_id, $package_id)
+    {
+        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type','free')->get();
+        $student = Student::orderBy('id','desc')->get();
+        $product = Product::where('product_id', $product_id)->first();
+        $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
+
+        return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
     }
 
     public function track_free($product_id, $package_id, $ticket_id)

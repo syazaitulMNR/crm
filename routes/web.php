@@ -143,6 +143,7 @@ Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsCon
 Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');
 
 Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
+Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
 Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
 Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
 

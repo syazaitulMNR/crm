@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
 
-class PaidTicket_Export implements FromView
+class FreeTicket_Export implements FromView
 {
     use Exportable;
 
