@@ -203,14 +203,14 @@ class ReportsController extends Controller
 
     public function export_paid($product_id, $package_id)
     {
-        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type','paid')->limit(100)->get();
+        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type','paid')->paginate(100)->get();
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-        // dd($ticket);
-        return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
+        dd($ticket);
+        // return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
     }
 
     public function track_paid($product_id, $package_id, $ticket_id)

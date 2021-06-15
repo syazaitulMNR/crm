@@ -21,12 +21,11 @@ class PaidTicket_Export implements FromView
 
     public function view(): View
     {
-        dump($ticket);
-        // return view('admin.reports.export_ticket', [
-        //     'ticket' => $this->ticket,
-        //     'student' => $this->student,
-        //     'package' => $this->package,
-        // ]);
+        return view('admin.reports.export_ticket', [
+            'ticket' => $this->ticket,
+            'student' => $this->student,
+            'package' => $this->package,
+        ]);
     }
 
 }
