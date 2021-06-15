@@ -16,7 +16,7 @@ class TestController extends Controller
       // Load users
       $users = User::all();
 
-      (new FastExcel(User::all()))->export('paid.xlsx', function ($user) {
+      return (new FastExcel(User::all()))->export('paid.xlsx', function ($user) {
          return [
              'Email' => $user->email,
              'First Name' => $user->firstname,
