@@ -322,6 +322,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
+Route::get('try-export', 'TestController@export');
 Route::get('try','HomeController@try');
 Route::get('sendmail', 'HomeController@tryemail');
 Route::get('sendbasicemail','TestController@basic_email');

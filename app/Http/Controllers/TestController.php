@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Mail;
 use Billplz\Client;
+use Rap2hpoutre\FastExcel\FastExcel;
+use App\User;
 
 class TestController extends Controller
 {
+
+   public function export()
+   { 
+      $users = User::all();
+      
+      (new FastExcel($users))->export('file.xlsx');
+
+      echo 'done';
+   }
+
    public function basic_email() {
       $data = array('name'=>"Virat Gandhi");
    
