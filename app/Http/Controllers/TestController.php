@@ -6,18 +6,14 @@ use Illuminate\Http\Request;
 use Mail;
 use Billplz\Client;
 use Rap2hpoutre\FastExcel\FastExcel;
-use App\User;
+use App\Student;
 
 class TestController extends Controller
 {
 
    public function export()
-   { 
-      $users = User::all();
-      
-      (new FastExcel($users))->download('file.xlsx');
-
-      echo 'done';
+   {       
+      return (new FastExcel(Student::all()))->download('file.xlsx');
    }
 
    public function basic_email() {
