@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Mail;
 use Billplz\Client;
 use Rap2hpoutre\FastExcel\FastExcel;
-use App\Student;
+use App\User;
 
 class TestController extends Controller
 {
