@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Mail;
 use Billplz\Client;
 use Rap2hpoutre\FastExcel\FastExcel;
-use App\User;
+use App\Ticket;
 
 class TestController extends Controller
 {
@@ -14,13 +14,13 @@ class TestController extends Controller
    public function export()
    {       
       // Load users
-      $users = User::all();
+      // $users = User::all();
 
-      (new FastExcel(User::all()))->download('paid.xlsx', function ($user) {
+      return (new FastExcel(Ticket::all()))->download('paid.xlsx', function ($user) {
          return [
-             'Email' => $user->email,
-             'First Name' => $user->firstname,
-             'Last Name' => strtoupper($user->lastname),
+             'Email' => $user->ticket_id,
+             'First Name' => $user->ic,
+             'Last Name' => strtoupper($user->status),
          ];
       });
    }
