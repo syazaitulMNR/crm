@@ -11,12 +11,12 @@ class PaidTicket_Export implements FromView
 {
     use Exportable;
 
-    private $ticket = [], $students = [];
+    private $ticket = [], $students = [], $package = [];
 
-    public function __construct($ticket_list, $student_list){
+    public function __construct($ticket_list, $student_list, $package_list){
         $this->ticket = $ticket_list;
         $this->student = $student_list;
-        // $this->package = $package_list;
+        $this->package = $package_list;
     }
 
     public function view(): View
@@ -24,7 +24,7 @@ class PaidTicket_Export implements FromView
         return view('admin.reports.paid_ticket_export', [
             'ticket' => $this->ticket,
             'student' => $this->student,
-            // 'package' => $this->package,
+            'package' => $this->package,
         ]);
     }
 
