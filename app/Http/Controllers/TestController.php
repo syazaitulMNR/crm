@@ -13,12 +13,11 @@ class TestController extends Controller
 
    public function export()
    {       
-      $list = collect([
-         [ 'id' => 1, 'name' => 'Jane' ],
-         [ 'id' => 2, 'name' => 'John' ],
-     ]);
-     
-     return (new FastExcel($list))->download('file.xlsx');
+      // Load users
+      $users = User::all();
+
+      // Export all users
+      return (new FastExcel($users))->download('file.xlsx');
    }
 
    public function basic_email() {
