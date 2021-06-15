@@ -203,7 +203,7 @@ class ReportsController extends Controller
 
     public function export_paid($product_id, $package_id)
     {
-        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type','paid')->paginate(100);
+        $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type','paid')->take(100)->get();
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
