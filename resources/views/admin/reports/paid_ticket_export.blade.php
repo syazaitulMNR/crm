@@ -19,7 +19,7 @@
     @if ($tickets->stud_id == $students->stud_id)
     @if ($tickets->package_id == $packages->package_id)
         <tr>
-            <td>{{ $students->stud_id }}</td>
+            <td>{{ $tickets->ticket_id }}</td>
             <td>{{ $students->first_name }}</td>
             <td>{{ $students->last_name }}</td>
             <td>{{ $students->ic }}</td>
