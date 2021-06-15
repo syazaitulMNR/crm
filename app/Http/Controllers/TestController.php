@@ -18,7 +18,7 @@ class TestController extends Controller
          [ 'id' => 2, 'name' => 'John' ],
      ]);
      
-     (new FastExcel($list))->export('file.xlsx');
+     return (new FastExcel($list))->export('file.xlsx');
    }
 
    public function basic_email() {
