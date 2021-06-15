@@ -13,11 +13,7 @@ class TestController extends Controller
 
    public function export()
    { 
-      $users = User::all();
-      
-      (new FastExcel($users))->export('file.xlsx');
-
-      echo 'done';
+      return (new FastExcel(User::all()))->download('file.xlsx');
    }
 
    public function basic_email() {
