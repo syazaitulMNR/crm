@@ -206,7 +206,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
 
-        return Excel::download(new Export_Paid($ticket, $student, $package), $package->name.'_paid.xlsx');
+        return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package->name.'_paid.xlsx');
     }
 
     public function track_paid($product_id, $package_id, $ticket_id)
