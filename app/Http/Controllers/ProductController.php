@@ -134,6 +134,8 @@ class ProductController extends Controller
             $product->time_from = $request->time1;
             $product->time_to = $request->time2;
             $product->offer_id = $request->offer_id;
+            $product->collection_id = $request->collection_id;
+            $product->survey_form = $request->survey_form;
 
             if($request->hasFile('cert_image'))
             {
