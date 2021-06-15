@@ -81,7 +81,9 @@ class ProductController extends Controller
                 'time_from' => $request->time1,
                 'time_to' => $request->time2,
                 'cert_image' => $cert_image,
-                'offer_id' => $request->offer_id
+                'offer_id' => $request->offer_id,
+                'collection_id' => $request->collection_id,
+                'survey_form' => $request->survey_form
             ]);
         }
 

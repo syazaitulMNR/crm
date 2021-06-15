@@ -76,11 +76,11 @@
 
             <div class="col-md-4">
                 <label class="form-label">Survey Form Link</label>
-                <input name="survey_form" type="text" class="form-control" required>
+                <input name="survey_form" type="text" class="form-control">
             </div>
             <div class="col-md-3">
                 <label class="form-label">BillPlz Collection ID</label>
-                <select class="form-select" name="collection_id" required>
+                <select class="form-select" name="collection_id">
                     <option disabled selected>-- Please Select One --</option>
                     @foreach($offers as $offer)
                     <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
