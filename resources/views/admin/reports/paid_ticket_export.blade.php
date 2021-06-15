@@ -16,7 +16,7 @@
     @foreach($student as $students) 
     @foreach($ticket as $tickets)
     @foreach($package as $packages)
-    @if ($tickets->stud_id == $students->stud_id)
+    @if ($tickets->ic == $students->ic)
     @if ($tickets->package_id == $packages->package_id)
         <tr>
             <td>{{ $tickets->ticket_id }}</td>
