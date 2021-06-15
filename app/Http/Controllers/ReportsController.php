@@ -210,7 +210,7 @@ class ReportsController extends Controller
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-        return (new FastExcel($users))->download('paid.xlsx');
+        return (new FastExcel($ticket, $student, $product, $package))->download('paid.xlsx');
         // return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
     }
 
