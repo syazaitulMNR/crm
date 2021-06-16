@@ -114,7 +114,7 @@
                     <div class="rotate">
                       <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
                     </div>
-                    <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
+                    <h6 class="lead pt-3 pl-3">Updated Participant</h6>
                     <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
                   </div>
                 </div>
