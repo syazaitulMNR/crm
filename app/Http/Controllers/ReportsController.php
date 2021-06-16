@@ -363,7 +363,7 @@ class ReportsController extends Controller
         // return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
-        $fileName = $package_name->name.'_paid.csv';
+        $fileName = $package_name->name.'_free.csv';
         $columnNames = [
             'Ticket ID',
             'First Name',
