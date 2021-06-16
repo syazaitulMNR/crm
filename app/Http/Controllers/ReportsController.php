@@ -216,7 +216,7 @@ class ReportsController extends Controller
         // return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
-        $fileName = $package_name.'_paid.csv';
+        $fileName = $package_name->name.'_paid.csv';
         $columnNames = [
             'Ticket ID',
             'First Name',
