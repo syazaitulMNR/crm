@@ -224,7 +224,7 @@ class ReportsController extends Controller
             'Email'
         ];
         
-        $file = fopen('public/export/' . $fileName, 'w');
+        $file = fopen(public_path('export/') . $fileName, 'w');
         fputcsv($file, $columnNames);
         
         // foreach ($student as $students) {
