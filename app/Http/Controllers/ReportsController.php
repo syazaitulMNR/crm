@@ -210,8 +210,44 @@ class ReportsController extends Controller
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-        // return (new FastExcel($ticket, $student, $product, $package))->download('paid.xlsx');
-        return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
+        // // return (new FastExcel($ticket, $student, $product, $package))->download('paid.xlsx');
+        // return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
+
+        /*-- Manage Email ---------------------------------------------------*/
+        // $reports = User::all()->get();
+        $fileName = 'file.csv';
+        $columnNames = [
+            'ID',
+            'First Name',
+            'Last Name',
+            'Phone No',
+            'Email'
+        ];
+        
+        $file = fopen('public/export/' . $fileName, 'w');
+        fputcsv($file, $columnNames);
+        
+        foreach ($student as $students) {
+            fputcsv($file, [
+                $students->stud_id,
+                $students->first_name,
+                $students->last_name,
+                $students->phoneno,
+                $students->email,
+            ]);
+        }
+        
+        fclose($file);
+
+        
+        Mail::send('test', [], function($message) use ($fileName)
+        {
+            $message->to('nrz.work@gmail.com')->subject('CSV email');
+            $message->attach('public/export/' . $fileName);
+        });
+
+        echo 'The email has been sent successfully';
+
     }
 
     public function track_paid($product_id, $package_id, $ticket_id)
