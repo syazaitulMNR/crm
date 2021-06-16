@@ -50,7 +50,7 @@
                 {{-- <a href="managerole" type="button" class="btn btn-sm btn-outline-primary"><i class="fas fa-users pr-3"></i> Manage Role</a>
                 <a href="create" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus pr-1"></i> Add New User</a> --}}
                 <a class="btn btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Buyer</a>
-                <a class="btn btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Buyer</a>
+                <a class="btn btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Participant</a>
               </div>
             </div>
         </div>        
