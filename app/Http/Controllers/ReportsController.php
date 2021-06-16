@@ -81,6 +81,78 @@ class ReportsController extends Controller
         return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
+    public function exportProgram($product_id)
+    {
+        $payment = Payment::where('product_id', $product_id)->get();
+        $student = Student::orderBy('id','desc')->get();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->get();
+
+        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+        /*-- Manage Email ---------------------------------------------------*/
+        $fileName = $product->name.'.csv';
+        $columnNames = [
+            'Customer ID',
+            'First Name',
+            'Last Name',
+            'IC No',
+            'Phone No',
+            'Email',
+            'Quantity',
+            'Payment',
+            'Status',
+            'Payment Method',
+            'Package',
+            'Offer ID',
+            'Update Participant',
+            'Purchased At'
+        ];
+        
+        $file = fopen(public_path('export/') . $fileName, 'w');
+        fputcsv($file, $columnNames);
+        
+        foreach ($student as $students) {
+            foreach($payment as $payments){
+                foreach($package as $packages){
+                    if($payments->stud_id == $students->stud_id){
+                        if($payments->package_id == $packages->package_id){
+
+                            fputcsv($file, [
+                                $payments->payment_id,
+                                $students->first_name,
+                                $students->last_name,
+                                $students->ic,
+                                $students->phoneno,
+                                $students->email,
+                                $payments->quantity,
+                                $payments->totalprice,
+                                $payments->status,
+                                $payments->pay_method,
+                                $packages->name,
+                                $payments->offer_id,
+                                $payments->created_at,
+                            ]);
+
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        fclose($file);
+
+        
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        {
+            $message->to(Auth::user()->email)->subject('ATTACHMENT OF BUYER DETAILS');
+            $message->attach(public_path('export/') . $fileName);
+        });
+
+        return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
+
+    }
+
     public function viewbypackage($product_id, $package_id)
     {
         //Get the details
@@ -516,16 +588,6 @@ class ReportsController extends Controller
         $payment->save();
 
         return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
-    }
-
-    public function exportProgram($product_id)
-    {
-        $payment = Payment::where('product_id', $product_id)->get();
-        $student = Student::orderBy('id','desc')->get();
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->get();
-
-        return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
     }
 
     // search payment

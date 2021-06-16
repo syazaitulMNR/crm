@@ -46,7 +46,14 @@
             <h1 class="h2">{{ $product->name }}</h1>
 
             <a class="btn btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
+        </div>        
+
+        @if ($message = Session::get('export-buyer'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
         </div>
+        @endif
 
         <div class="row">
           <div class="col-md-12 "> 
