@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <h2>{{ $product->name }} - {{ $package_name->name }}</h2>
+    <p>Hello,</p>
+    <p>Attachment below is the participant data.</p>
+    <p>Thank you!</p>
   </body>
 </html>
