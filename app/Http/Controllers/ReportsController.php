@@ -215,7 +215,6 @@ class ReportsController extends Controller
         // return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
-        // $reports = User::all()->get();
         $fileName = $package_name.'_paid.csv';
         $columnNames = [
             'Ticket ID',
@@ -260,7 +259,7 @@ class ReportsController extends Controller
         fclose($file);
 
         
-        Mail::send('test', [], function($message) use ($fileName)
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
             $message->to(Auth::user()->email)->subject('Participant of'.$product->name);
             $message->attach(public_path('export/') . $fileName);
