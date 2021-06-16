@@ -218,24 +218,41 @@ class ReportsController extends Controller
         // $reports = User::all()->get();
         $fileName = 'file.csv';
         $columnNames = [
-            'ID',
+            'Ticket ID',
             'First Name',
             'Last Name',
+            'IC No',
             'Phone No',
-            'Email'
+            'Email',
+            'Package',
+            'Registered At'
         ];
         
         $file = fopen(public_path('export/') . $fileName, 'w');
         fputcsv($file, $columnNames);
         
         foreach ($student as $students) {
-            fputcsv($file, [
-                $students->stud_id,
-                $students->first_name,
-                $students->last_name,
-                $students->phoneno,
-                $students->email,
-            ]);
+            foreach($ticket as $tickets){
+                foreach($package as $packages){
+                    if($tickets->ic == $students->ic){
+                        if($tickets->package_id == $packages->package_id){
+
+                            fputcsv($file, [
+                                $tickets->ticket_id,
+                                $students->first_name,
+                                $students->last_name,
+                                $students->ic,
+                                $students->phoneno,
+                                $students->email,
+                                $packages->name,
+                                $tickets->ticket_type,
+                            ]);
+                            
+                        }
+                    }
+                }
+            }
+            
         }
         
         fclose($file);
