@@ -227,15 +227,15 @@ class ReportsController extends Controller
         $file = fopen('public/export/' . $fileName, 'w');
         fputcsv($file, $columnNames);
         
-        foreach ($student as $students) {
+        // foreach ($student as $students) {
             fputcsv($file, [
-                $students->stud_id,
-                $students->first_name,
-                $students->last_name,
-                $students->phoneno,
-                $students->email,
+                '1',
+                'First',
+                'Last',
+                '0123456',
+                'asd@gmail.com',
             ]);
-        }
+        // }
         
         fclose($file);
 
