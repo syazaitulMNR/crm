@@ -216,7 +216,7 @@ class ReportsController extends Controller
 
         /*-- Manage Email ---------------------------------------------------*/
         // $reports = User::all()->get();
-        $fileName = 'file.csv';
+        $fileName = 'file.xlsx';
         $columnNames = [
             'ID',
             'First Name',
@@ -228,15 +228,15 @@ class ReportsController extends Controller
         $file = fopen(public_path('export/') . $fileName, 'w');
         fputcsv($file, $columnNames);
         
-        // foreach ($student as $students) {
+        foreach ($student as $students) {
             fputcsv($file, [
-                '1',
-                'First',
-                'Last',
-                '0123456',
-                'asd@gmail.com',
+                $students->stud_id,
+                $students->first_name,
+                $students->last_name,
+                $students->phoneno,
+                $students->email,
             ]);
-        // }
+        }
         
         fclose($file);
 
