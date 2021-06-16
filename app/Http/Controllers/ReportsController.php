@@ -262,7 +262,7 @@ class ReportsController extends Controller
         
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
-            $message->to(Auth::user()->email)->subject('ATTACHMENT OF PARTICIPANT');
+            $message->to(Auth::user()->email)->subject('ATTACHMENT OF CUSTOMER DETAILS');
             $message->attach(public_path('export/') . $fileName);
         });
 
