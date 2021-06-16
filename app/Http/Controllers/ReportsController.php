@@ -266,7 +266,7 @@ class ReportsController extends Controller
             $message->attach(public_path('export/') . $fileName);
         });
 
-        echo 'The email has been sent successfully';
+        return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('export-paid','The data will be sent to your email. It may take a few minutes to receive.');
 
     }
 
