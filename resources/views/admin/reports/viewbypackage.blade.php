@@ -175,7 +175,7 @@
                     <div class="rotate">
                       <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
                     </div>
-                    <h6 class="lead pt-3 pl-3">Due Payment</h6>
+                    <h6 class="lead pt-3 pl-3">Pending Payment</h6>
                     <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
                   </div>
                 </div>
