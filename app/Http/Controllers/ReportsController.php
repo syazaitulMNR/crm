@@ -216,7 +216,7 @@ class ReportsController extends Controller
 
         /*-- Manage Email ---------------------------------------------------*/
         // $reports = User::all()->get();
-        $fileName = 'file.xlsx';
+        $fileName = 'file.csv';
         $columnNames = [
             'ID',
             'First Name',
