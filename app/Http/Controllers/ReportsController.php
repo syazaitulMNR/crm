@@ -244,7 +244,7 @@ class ReportsController extends Controller
         Mail::send('test', [], function($message) use ($fileName)
         {
             $message->to('nrz.work@gmail.com')->subject('CSV email');
-            $message->attach('public/export/' . $fileName);
+            $message->attach(public_path('export/') . $fileName);
         });
 
         echo 'The email has been sent successfully';
