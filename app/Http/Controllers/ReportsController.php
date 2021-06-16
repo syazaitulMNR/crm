@@ -225,6 +225,7 @@ class ReportsController extends Controller
             'Phone No',
             'Email',
             'Package',
+            'Ticket Type',
             'Registered At'
         ];
         
@@ -246,8 +247,9 @@ class ReportsController extends Controller
                                 $students->email,
                                 $packages->name,
                                 $tickets->ticket_type,
+                                $tickets->created_at,
                             ]);
-                            
+
                         }
                     }
                 }
