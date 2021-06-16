@@ -15,6 +15,7 @@ use Rap2hpoutre\FastExcel\FastExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Jobs\PengesahanJob;
 use App\Jobs\TiketJob;
+use Mail;
 
 class ReportsController extends Controller
 {
