@@ -216,7 +216,7 @@ class ReportsController extends Controller
 
         /*-- Manage Email ---------------------------------------------------*/
         // $reports = User::all()->get();
-        $fileName = 'file.csv';
+        $fileName = $package_name.'_paid.csv';
         $columnNames = [
             'Ticket ID',
             'First Name',
@@ -262,7 +262,7 @@ class ReportsController extends Controller
         
         Mail::send('test', [], function($message) use ($fileName)
         {
-            $message->to('nrz.work@gmail.com')->subject('CSV email');
+            $message->to(Auth::user()->email)->subject('Participant of'.$product->name);
             $message->attach(public_path('export/') . $fileName);
         });
 
