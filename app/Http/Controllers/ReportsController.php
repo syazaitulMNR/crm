@@ -360,7 +360,61 @@ class ReportsController extends Controller
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-        return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
+        // return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
+
+        /*-- Manage Email ---------------------------------------------------*/
+        $fileName = $package_name->name.'_paid.csv';
+        $columnNames = [
+            'Ticket ID',
+            'First Name',
+            'Last Name',
+            'IC No',
+            'Phone No',
+            'Email',
+            'Package',
+            'Ticket Type',
+            'Registered At'
+        ];
+        
+        $file = fopen(public_path('export/') . $fileName, 'w');
+        fputcsv($file, $columnNames);
+        
+        foreach ($student as $students) {
+            foreach($ticket as $tickets){
+                foreach($package as $packages){
+                    if($tickets->ic == $students->ic){
+                        if($tickets->package_id == $packages->package_id){
+
+                            fputcsv($file, [
+                                $tickets->ticket_id,
+                                $students->first_name,
+                                $students->last_name,
+                                $students->ic,
+                                $students->phoneno,
+                                $students->email,
+                                $packages->name,
+                                $tickets->ticket_type,
+                                $tickets->created_at,
+                            ]);
+
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        fclose($file);
+
+        
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        {
+            $message->to(Auth::user()->email)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+            $message->attach(public_path('export/') . $fileName);
+        });
+
+        return redirect('free-ticket/'.$product_id.'/'.$package_id)->with('export-free','The data will be sent to your email. It may take a few minutes to successfully received.');
+
     }
 
     public function track_free($product_id, $package_id, $ticket_id)
