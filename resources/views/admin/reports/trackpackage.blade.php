@@ -45,10 +45,24 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">{{ $product->name }}</h1>
 
-            <a class="btn btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group">
+                {{-- <a href="managerole" type="button" class="btn btn-sm btn-outline-primary"><i class="fas fa-users pr-3"></i> Manage Role</a>
+                <a href="create" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus pr-1"></i> Add New User</a> --}}
+                <a class="btn btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Buyer</a>
+                <a class="btn btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Buyer</a>
+              </div>
+            </div>
         </div>        
 
         @if ($message = Session::get('export-buyer'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
+        </div>
+        @endif
+
+        @if ($message = Session::get('export-participant'))
         <div class="alert alert-success alert-block">
             <button type="button" class="close" data-bs-dismiss="alert">×</button>	
             <strong>{{ $message }}</strong>

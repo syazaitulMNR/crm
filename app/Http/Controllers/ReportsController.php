@@ -153,6 +153,69 @@ class ReportsController extends Controller
 
     }
 
+    public function exportParticipant($product_id)
+    {
+        $ticket = Ticket::where('product_id', $product_id)->get();
+        $student = Student::orderBy('id','desc')->get();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product_id)->get();
+
+        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+        /*-- Manage Email ---------------------------------------------------*/
+        $fileName = $product->name.'_participant.csv';
+        $columnNames = [
+            'Ticket ID',
+            'First Name',
+            'Last Name',
+            'IC No',
+            'Phone No',
+            'Email',
+            'Package',
+            'Ticket Type',
+            'Registered At'
+        ];
+        
+        $file = fopen(public_path('export/') . $fileName, 'w');
+        fputcsv($file, $columnNames);
+        
+        foreach ($student as $students) {
+            foreach($ticket as $tickets){
+                foreach($package as $packages){
+                    if($tickets->ic == $students->ic){
+                        if($tickets->package_id == $packages->package_id){
+
+                            fputcsv($file, [
+                                $tickets->ticket_id,
+                                $students->first_name,
+                                $students->last_name,
+                                $students->ic,
+                                $students->phoneno,
+                                $students->email,
+                                $packages->name,
+                                $tickets->ticket_type,
+                                $tickets->created_at,
+                            ]);
+
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        fclose($file);
+
+        
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        {
+            $message->to(Auth::user()->email)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+            $message->attach(public_path('export/') . $fileName);
+        });
+
+        return redirect('trackpackage/'.$product_id)->with('export-participant','The data will be sent to your email. It may take a few minutes to successfully received.');
+
+    }
+
     public function viewbypackage($product_id, $package_id)
     {
         //Get the details

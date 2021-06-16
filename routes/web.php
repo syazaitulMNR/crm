@@ -151,6 +151,7 @@ Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@sa
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
+Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
 
 Route::get('import-customer/{product_id}/{package_id}','ImportExcelController@index');
 Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
