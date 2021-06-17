@@ -93,7 +93,7 @@ class MembershipController extends Controller
         
         foreach ($student as $students) {
             foreach($level as $levels){
-                if($membership->membership_id == $students->membership_id){
+                if($students->membership_id == $membership->membership_id){
                     // if($membership->membership_id == $levels->membership_id){
 
                         fputcsv($file, [
