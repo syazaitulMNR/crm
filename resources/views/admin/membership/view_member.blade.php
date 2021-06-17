@@ -93,9 +93,9 @@
                     <div class="col-md-6 py-3">
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else
-                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $students->stud_id }}"><i class="fas fa-trash-alt"></i> Delete</button>
+                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="fas fa-trash-alt"></i> Delete</button>
                           <!-- Modal -->
-                          <div class="modal fade" id="exampleModal{{ $students->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content">
                                 <div class="modal-header">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}">Delete</a>
+                                  <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
                                 </div>
                               </div>
                             </div>
