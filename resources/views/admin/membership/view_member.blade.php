@@ -63,7 +63,7 @@
 
                         <div class="col-md-3">
                           <label class="form-label">Status</label>
-                          <select class="form-select form-control-sm" name="status">
+                          <select class="form-select form-control" name="status">
                             <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
                             <option value="active">Active</option>
                             <option value="deactive">Deactive</option>
