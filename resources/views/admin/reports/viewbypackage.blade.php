@@ -36,16 +36,14 @@
   .gradient-2
   {
     background-image: linear-gradient(to bottom right, #ff9482, #7d77ff);
-    text-decoration: none;
   }
   .gradient-3
   {
     background-image: linear-gradient(to bottom right, #6ee2f5, #6454f0);
-    text-decoration: none;
   }
   .gradient-4
   {
-    background-image: linear-gradient(to bottom right, #3499ff, #3a3985);
+    background-image: linear-gradient(to bottom right, #ffcda5, #ee4d5f);
   }
 
   
@@ -183,13 +181,13 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-2 shadow">
+                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-2 shadow" style="text-decoration: none">
                   <h6 class="lead pt-3 pl-3">Free Ticket</h6>
                   <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-3 shadow">
+                <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-3 shadow" style="text-decoration: none">
                   <h6 class="lead pt-3 pl-3">Updated Participant</h6>
                   <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
                 </a>
