@@ -8,6 +8,8 @@ use App\Membership_Level;
 use App\Student;
 use App\Imports\MembershipImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Mail;
+use Auth;
 
 class MembershipController extends Controller
 {
