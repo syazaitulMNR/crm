@@ -31,11 +31,11 @@
   }
   .gradient-1
   {
-    background-image: linear-gradient(to bottom right, #ff6cab, #7366ff);
+    background-image: linear-gradient(to bottom right, #ff9482, #7d77ff);
   }
   .gradient-2
   {
-    background-image: linear-gradient(to bottom right, #ff9482, #7d77ff);
+    background-image: linear-gradient(to bottom right, #82e4ff, #ff77e6);
   }
   .gradient-3
   {
