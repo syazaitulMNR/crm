@@ -92,7 +92,7 @@
                     <div class="rotate">
                       <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
                     </div>
-                    <h6 class="lead pt-3 pl-3">Success Payment</h6>
+                    <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
                     <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
                   </div>
                 </div>
@@ -101,10 +101,10 @@
                 <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
+                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
                     </div>
-                    <h6 class="lead pt-3 pl-3">Pending Payment</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
+                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
+                    <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
                   </div>
                 </div>
               </div>
@@ -123,10 +123,10 @@
                 <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
+                      <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
                     </div>
-                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
+                    <h6 class="lead pt-3 pl-3">Pending Payment</h6>
+                    <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
                   </div>
                 </div>
               </div>
