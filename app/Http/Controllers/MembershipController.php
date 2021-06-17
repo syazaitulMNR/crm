@@ -85,6 +85,7 @@ class MembershipController extends Controller
             'Phone No',
             'Email',
             'Membership',
+            'Status',
             'Registered At'
         ];
         
@@ -104,6 +105,7 @@ class MembershipController extends Controller
                             $students->phoneno,
                             $students->email,
                             $levels->name,
+                            $students->status,
                             $students->created_at,
                         ]);
 
