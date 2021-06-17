@@ -5,32 +5,23 @@
 @endsection
 
 <style>
-  .card {
-    overflow: hidden;
+  .gradient-1
+  {
+    background-image: linear-gradient(to bottom right, #9c46cb, #77c6ff);
+  }
+  .gradient-2
+  {
+    background-image: linear-gradient(to bottom right, #82e4ff, #77ffbd);
+  }
+  .gradient-3
+  {
+    background-image: linear-gradient(to bottom right, #6ef5ab, #c6f054);
+  }
+  .gradient-4
+  {
+    background-image: linear-gradient(to bottom right, #ffcda5, #ee4d5f);
   }
 
-  .card-block .rotate {
-    z-index: 8;
-    float: right;
-    height: 100%;
-  }
-
-  .card-block .rotate i {
-    color: rgba(20, 20, 20, 0.15);
-    position: absolute;
-    left: 0;
-    left: auto;
-    right: -10px;
-    bottom: 0;
-    display: block;
-    -webkit-transform: rotate(-44deg);
-    -moz-transform: rotate(-44deg);
-    -o-transform: rotate(-44deg);
-    -ms-transform: rotate(-44deg);
-    transform: rotate(-44deg);
-  }
-
-  
 </style>
 
 @include('layouts.navbar')
@@ -87,35 +78,27 @@
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
-                  </div>
+                <div class="card border-0 gradient-1 shadow">
+                  <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
-                  </div>
+                <div class="card border-0 gradient-2 shadow">
+                  <h6 class="lead pt-3 pl-3">Free Ticket</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Updated Participant</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
-                  </div>
+                <div class="card border-0 gradient-3 shadow">
+                  <h6 class="lead pt-3 pl-3">Updated Participant</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Pending Payment</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
-                  </div>
+                <div class="card border-0 gradient-4 shadow">
+                  <h6 class="lead pt-3 pl-3">Pending Payment</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
                 </div>
               </div>
             </div>

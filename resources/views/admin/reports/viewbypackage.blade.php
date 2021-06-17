@@ -22,7 +22,6 @@
     background-image: linear-gradient(to bottom right, #ffcda5, #ee4d5f);
   }
 
-  
 </style>
 
 @include('layouts.navbar')
