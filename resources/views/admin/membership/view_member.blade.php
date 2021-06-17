@@ -90,7 +90,7 @@
 
                     </div>
 
-                    <div class="col-md-6 py-3">
+                    <div class="col-md-6 py-3 text-end">
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else
                           <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="fas fa-trash-alt"></i> Delete</button>
@@ -118,7 +118,7 @@
                             </div>
                           </div>
                         @endif
-                        <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                     </div>
 
                 </form>
