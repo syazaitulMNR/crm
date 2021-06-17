@@ -49,7 +49,14 @@
         </div>
 
         <div class="row">
-          <div class="col-md-9 "> 
+          <div class="col-md-9 ">            
+            
+            @if ($message = Session::get('export-members'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
                       
             <!-- Show package in table ----------------------------------------------->
             @if(count($membership_level) > 0)

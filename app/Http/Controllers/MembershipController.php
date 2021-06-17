@@ -66,6 +66,66 @@ class MembershipController extends Controller
         return view('admin.membership.level', compact('membership', 'membership_level', 'total'));
     }
 
+    public function export_members($membership_id)
+    {
+        $student = Student::where('membership_id', $membership_id)->get();
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $level = Membership_Level::where('membership_id', $membership_id)->get();
+
+        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+        /*-- Manage Email ---------------------------------------------------*/
+        $fileName = $membership->name.'.csv';
+        $columnNames = [
+            'Customer ID',
+            'First Name',
+            'Last Name',
+            'IC No',
+            'Phone No',
+            'Email',
+            'Membership',
+            'Level',
+            'Registered At'
+        ];
+        
+        $file = fopen(public_path('export/') . $fileName, 'w');
+        fputcsv($file, $columnNames);
+        
+        foreach ($student as $students) {
+            foreach($level as $levels){
+                if($students->membership_id == $membership->membership_id){
+                    if($levels->membership_id == $membership->membership_id){
+
+                        fputcsv($file, [
+                            $students->stud_id,
+                            $students->first_name,
+                            $students->last_name,
+                            $students->ic,
+                            $students->phoneno,
+                            $students->email,
+                            $membership->name,
+                            $levels->name,
+                            $students->created_at,
+                        ]);
+
+                    }
+                }
+            }
+            
+        }
+        
+        fclose($file);
+
+        
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        {
+            $message->to(Auth::user()->email)->subject('ATTACHMENT OF MEMBERSHIP DETAILS');
+            $message->attach(public_path('export/') . $fileName);
+        });
+
+        return redirect('membership/level/'.$membership_id)->with('export-members','The data will be sent to your email. It may take a few minutes to successfully received.');
+
+    }
+
     public function view($membership_id, $level_id)
     {
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->paginate(50);
@@ -78,7 +138,6 @@ class MembershipController extends Controller
         
         return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total'));
     }
-
     public function track_members($membership_id, $level_id, $student_id)
     {
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
