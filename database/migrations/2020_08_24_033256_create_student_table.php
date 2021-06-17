@@ -23,6 +23,7 @@ class CreateStudentTable extends Migration
             $table->string('phoneno');       
             $table->string('membership_id');
             $table->string('level_id');
+            $table->string('status');
             $table->timestamps();
         });
     }
