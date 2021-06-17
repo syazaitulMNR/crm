@@ -85,7 +85,7 @@ class MembershipController extends Controller
             'Phone No',
             'Email',
             // 'Membership',
-            'Registered At'
+            // 'Registered At'
         ];
         
         $file = fopen(public_path('export/') . $fileName, 'w');
@@ -104,7 +104,7 @@ class MembershipController extends Controller
                             $students->phoneno,
                             $students->email,
                             // $levels->name,
-                            $students->created_at,
+                            // $students->created_at,
                         ]);
 
                     // }
