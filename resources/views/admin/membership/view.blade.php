@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <a class="btn btn-danger" href="{{ url('delete') }}/{{ $students->stud_id }}">Delete</a>
+                                  <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $students->stud_id }}">Delete</a>
                                 </div>
                               </div>
                             </div>
