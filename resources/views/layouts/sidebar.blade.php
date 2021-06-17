@@ -56,13 +56,6 @@
               <i class="fas fa-mail-bulk" style="margin-right: 25px"></i> Email Blasting
             </a>            
           </li>      
-          
-          <li class="nav-item pb-3">
-            <a class="nav-link text-white bg-dark " href="/membership">
-              <span data-feather="home"></span>
-              <i class="fas fa-gem" style="margin-right: 28px"></i> Membership 
-            </a>            
-          </li>
           @endif
           
           <div class="nav-link" style="color: #ABB2B9">Sales Tracking</div>
@@ -76,6 +69,13 @@
             <a class="nav-link text-white bg-dark " href="/trackprogram">
               <span data-feather="home"></span>
               <i class="fas fa-user-tie" style="margin-right: 30px"></i> Customer 
+            </a>            
+          </li>
+          
+          <li class="nav-item pb-3">
+            <a class="nav-link text-white bg-dark " href="/membership">
+              <span data-feather="home"></span>
+              <i class="fas fa-gem" style="margin-right: 28px"></i> Membership 
             </a>            
           </li>
           {{-- <li class="nav-item"> 
