@@ -70,7 +70,7 @@ class MembershipController extends Controller
 
     public function export_members($membership_id)
     {
-        $student = Student::where('membership_id', $membership_id)->get();
+        $student = Student::where('membership_id', $membership_id)->first();
         $membership = Membership::where('membership_id', $membership_id)->first();
         $level = Membership_Level::where('membership_id', $membership_id)->get();
 
