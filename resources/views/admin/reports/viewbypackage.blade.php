@@ -35,7 +35,7 @@
   }
   .gradient-2
   {
-    background-image: linear-gradient(to bottom right, #82e4ff, #ff77e6);
+    background-image: linear-gradient(to bottom right, #82e4ff, #77ffbd);
   }
   .gradient-3
   {
