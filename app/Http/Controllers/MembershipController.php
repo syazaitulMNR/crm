@@ -84,8 +84,8 @@ class MembershipController extends Controller
             'IC No',
             'Phone No',
             'Email',
-            // 'Membership',
-            // 'Registered At'
+            'Membership',
+            'Registered At'
         ];
         
         $file = fopen(public_path('export/') . $fileName, 'w');
@@ -93,8 +93,8 @@ class MembershipController extends Controller
         
         foreach ($student as $students) {
             foreach($level as $levels){
-                if($students->membership_id == $membership->membership_id){
-                    // if($membership->membership_id == $levels->membership_id){
+                if($membership->membership_id == $students->membership_id){
+                    if($levels->level_id == $students->level_id){
 
                         fputcsv($file, [
                             $students->stud_id,
@@ -103,11 +103,11 @@ class MembershipController extends Controller
                             $students->ic,
                             $students->phoneno,
                             $students->email,
-                            // $levels->name,
-                            // $students->created_at,
+                            $levels->name,
+                            $students->created_at,
                         ]);
 
-                    // }
+                    }
                 }
             }
             
