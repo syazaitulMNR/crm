@@ -65,8 +65,8 @@
                           <label class="form-label">Status</label>
                           <select class="form-select form-control" name="status">
                             <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
-                            <option value="active">Active</option>
-                            <option value="deactive">Deactive</option>
+                            <option value="Active">Active</option>
+                            <option value="Deactive">Deactive</option>
                           </select>
                         </div>
 
