@@ -181,7 +181,7 @@ class MembershipController extends Controller
         $payment->delete();
         $ticket->delete();
 
-        return back()->with('delete-member', 'Customer successfully deleted');
+        return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('delete-member', 'Customer successfully deleted');
     }
 
     public function import($membership_id, $level_id)
