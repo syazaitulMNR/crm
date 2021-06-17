@@ -197,7 +197,7 @@
                 <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 255, 38, 0.3)"></i>
                 </div>
                 <h3 class="pt-3 pl-3">{{$totalactive}}</h3>
-                <h6 class="lead pb-2 pl-3">Active</h6>
+                <h6 class="lead pb-2 pl-3">Active Members</h6>
               </div>
             </div>
 
@@ -207,7 +207,7 @@
                 <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
                 </div>
                 <h3 class="pt-3 pl-3">{{$totaldeactive}}</h3>
-                <h6 class="lead pb-2 pl-3">Deactive</h6>
+                <h6 class="lead pb-2 pl-3">Deactive Members</h6>
               </div>
             </div>
         </div>
