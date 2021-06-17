@@ -153,7 +153,6 @@
                   <th>#</th>
                   <th>IC No.</th>
                   <th>Name</th>
-                  <th>Status</th>
                   <th><i class="fas fa-cogs"></i></th>
                 </tr>
                 </thead>
