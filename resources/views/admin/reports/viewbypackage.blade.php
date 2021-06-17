@@ -159,7 +159,7 @@
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
-                <div class="card shadow" style="background-image: linear-gradient(to bottom right, #ff6cab, #7366ff);">
+                <div class="card border-0 shadow" style="background-image: linear-gradient(to bottom right, #ff6cab, #7366ff);">
                   <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
                   <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
                 </div>
