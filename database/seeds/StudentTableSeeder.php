@@ -18,7 +18,10 @@ class StudentTableSeeder extends Seeder
             'last_name' => 'Zakaria',
             'ic' => '912345678900',
             'email' => 'example@gmail.com',
-            'phoneno' => '+60198765432'
+            'phoneno' => '+60198765432',
+            'membership_id' => 'MB001',
+            'level_id' => 'MBL001',
+            'status' => 'active'
         ]);
     }
 }
