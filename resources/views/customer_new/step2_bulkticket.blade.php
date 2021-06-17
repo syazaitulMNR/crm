@@ -95,11 +95,11 @@ Pendaftaran Pembeli
         if (package_name == package1) {
             
             if (val == 1) {
-                total = 20;
+                total = 30;
             } else if (val == 2) {
-                total = 40;
+                total = 60;
             } else {
-                total = 50;
+                total = 80;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
@@ -107,11 +107,11 @@ Pendaftaran Pembeli
         } else if (package_name == package2) {
 
             if (val == 1) {
-                total = 169;
+                total = 219;
             } else if (val == 2) {
-                total = 338;
+                total = 438;
             } else {
-                total = 399;
+                total = 599;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
@@ -119,11 +119,11 @@ Pendaftaran Pembeli
         } else if (package_name == package3) {
 
             if (val == 1) {
-                total = 269;
+                total = 319;
             } else if (val == 2) {
-                total = 538;
+                total = 638;
             } else {
-                total = 699;
+                total = 799;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
