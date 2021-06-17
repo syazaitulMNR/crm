@@ -84,21 +84,21 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card border-0 gradient-2 shadow">
+                <div class="card border-0 gradient-2 shadow text-center">
                   <h6 class="lead pt-3 pl-3">Free Ticket</h6>
                   <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card border-0 gradient-3 shadow">
-                  <h6 class="lead pt-3 pl-3">Updated Participant</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
+                <div class="card border-0 gradient-3 shadow text-center">
+                  <h6 class="lead pt-3">Updated Participant</h6>
+                  <h3 class="pb-1">{{ number_format($paidticket) }}</h3>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card border-0 gradient-4 shadow">
-                  <h6 class="lead pt-3 pl-3">Pending Payment</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
+                <div class="card border-0 gradient-4 shadow text-center">
+                  <h6 class="lead pt-3">Pending Payment</h6>
+                  <h3 class="pb-1">{{ number_format($totalcancel) }}</h3>
                 </div>
               </div>
             </div>
