@@ -72,8 +72,6 @@
               </div>
               @endforeach
             </div> --}}
-            
-            <br>
 
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
@@ -95,7 +93,7 @@
                   <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
                 </div>
               </div>
-              <div class="col-xl-3 col-lg-6 py-1">
+              <div class="col-xl-3 col-lg-6 pb-2">
                 <div class="card border-0 gradient-4 shadow text-center">
                   <h6 class="pt-3">Pending Payment</h6>
                   <b class="display-6 pb-3">{{ number_format($totalcancel) }}</b>
