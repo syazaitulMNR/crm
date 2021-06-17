@@ -79,26 +79,26 @@
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
                 <div class="card border-0 gradient-1 shadow text-center">
-                  <h6 class="pt-3">Paid Ticket</h6>
-                  <h3 class="lead pb-1">{{ number_format($totalsuccess) }}</h3>
+                  <h3 class="pt-3">Paid Ticket</h3>
+                  <b class="lead pb-1">{{ number_format($totalsuccess) }}</b>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
                 <div class="card border-0 gradient-2 shadow text-center">
-                  <h6 class="pt-3">Free Ticket</h6>
-                  <h3 class="lead pb-1">{{ number_format($freeticket) }}</h3>
+                  <h3 class="pt-3">Free Ticket</h3>
+                  <b class="lead pb-1">{{ number_format($freeticket) }}</b>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
                 <div class="card border-0 gradient-3 shadow text-center">
-                  <h6 class="pt-3">Updated Participant</h6>
-                  <h3 class="lead pb-1">{{ number_format($paidticket) }}</h3>
+                  <h3 class="pt-3">Updated Participant</h3>
+                  <b class="lead pb-1">{{ number_format($paidticket) }}</b>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
                 <div class="card border-0 gradient-4 shadow text-center">
-                  <h6 class="pt-3">Pending Payment</h6>
-                  <h3 class="lead pb-1">{{ number_format($totalcancel) }}</h3>
+                  <h3 class="pt-3">Pending Payment</h3>
+                  <b class="lead pb-1">{{ number_format($totalcancel) }}</b>
                 </div>
               </div>
             </div>
