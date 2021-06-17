@@ -39,7 +39,7 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">   
         
         <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-            <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/membership">Membership</a>
+            <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/membership">Membership</a>
             / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}">{{ $membership->name }}</a> / <b>{{ $membership_level->name }}</b>
         </div>
                 
