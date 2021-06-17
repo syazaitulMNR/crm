@@ -159,6 +159,7 @@ class MembershipController extends Controller
         $student->first_name = $request->first_name;
         $student->last_name = $request->last_name;
         $student->email = $request->email;
+        $student->status = $request->status;
         $student->save();
 
         return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('updatesuccess', 'Customer successfully updated');
