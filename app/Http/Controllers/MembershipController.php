@@ -138,7 +138,7 @@ class MembershipController extends Controller
         $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         
-        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total'));
+        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
     }
     public function track_members($membership_id, $level_id, $student_id)
     {
