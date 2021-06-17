@@ -152,7 +152,7 @@
                 <tr class="header">
                   <th>#</th>
                   <th>IC No.</th>
-                  <th>Name</th>
+                  <th colspan="2">Name</th>
                   <th><i class="fas fa-cogs"></i></th>
                 </tr>
                 </thead>
