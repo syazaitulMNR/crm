@@ -217,6 +217,7 @@ class MembershipController extends Controller
             $student->email = $request->email;
             $student->membership_id = $membership_id;
             $student->level_id = $level_id;
+            $student->status = 'Active';
             $student->save();
 
         }else{
@@ -231,7 +232,8 @@ class MembershipController extends Controller
                 'phoneno' => $request->phoneno,
                 'email' => $request->email,
                 'membership_id' => $membership_id,
-                'level_id' => $level_id
+                'level_id' => $level_id,
+                'status' => 'Active'
             ));
 
         }
