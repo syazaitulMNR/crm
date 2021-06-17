@@ -162,7 +162,7 @@
                 <div class="card bg-light card-inverse shadow">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
+                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
                     </div>
                     <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
                     <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
@@ -184,7 +184,7 @@
                 <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card bg-light card-inverse shadow" style="text-decoration: none">
                   <div class="card-block">
                     <div class="rotate">
-                      <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
+                      <i class="fas fa-check fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
                     </div>
                     <h6 class="lead pt-3 pl-3">Updated Participant</h6>
                     <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
