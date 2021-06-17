@@ -130,6 +130,7 @@ class ReportsController extends Controller
                                 $payments->pay_method,
                                 $packages->name,
                                 $payments->offer_id,
+                                $payments->update_count,
                                 $payments->created_at,
                             ]);
 
