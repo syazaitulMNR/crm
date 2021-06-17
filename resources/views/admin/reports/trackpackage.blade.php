@@ -79,8 +79,8 @@
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
                 <div class="card border-0 gradient-1 shadow text-center">
-                  <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
+                  <h6 class="lead pt-3">Paid Ticket</h6>
+                  <h3 class="pb-1">{{ number_format($totalsuccess) }}</h3>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
