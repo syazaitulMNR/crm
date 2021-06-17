@@ -135,8 +135,8 @@ class MembershipController extends Controller
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
         $total = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->count();
-        $totalactive = Payment::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
-        $totaldeactive = Payment::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         
         return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total'));
     }
