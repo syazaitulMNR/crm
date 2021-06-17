@@ -33,6 +33,20 @@
   {
     background-image: linear-gradient(to bottom right, #ff6cab, #7366ff);
   }
+  .gradient-2
+  {
+    background-image: linear-gradient(to bottom right, #ff9482, #7d77ff);
+    text-decoration: none;
+  }
+  .gradient-3
+  {
+    background-image: linear-gradient(to bottom right, #6ee2f5, #6454f0);
+    text-decoration: none;
+  }
+  .gradient-4
+  {
+    background-image: linear-gradient(to bottom right, #3499ff, #3a3985);
+  }
 
   
 </style>
@@ -169,27 +183,21 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 shadow" style="text-decoration: none">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
-                  </div>
+                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-2 shadow">
+                  <h6 class="lead pt-3 pl-3">Free Ticket</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card bg-light card-inverse shadow" style="background-image: linear-gradient(to bottom right, #ff6cab, #7366ff); text-decoration: none">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Updated Participant</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
-                  </div>
+                <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-3 shadow">
+                  <h6 class="lead pt-3 pl-3">Updated Participant</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card bg-light card-inverse shadow">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Pending Payment</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
-                  </div>
+                <div class="card border-0 gradient-4 shadow">
+                  <h6 class="lead pt-3 pl-3">Pending Payment</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
                 </div>
               </div>
             </div>
