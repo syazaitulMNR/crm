@@ -138,7 +138,7 @@
               </div>
             </div>
 
-            <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" type="button" class="btn btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Customer</a>
+            <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Customer</a>
           </div>
           {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
           
