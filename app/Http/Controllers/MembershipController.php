@@ -72,7 +72,7 @@ class MembershipController extends Controller
     {
         $student = Student::where('membership_id', $membership_id)->get();
         $membership = Membership::where('membership_id', $membership_id)->first();
-        $level = Membership_Level::where('membership_id', $membership_id)->orderBy('id','desc')->get();
+        $level = Membership_Level::where('membership_id', $membership_id)->get();
 
         // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
         /*-- Manage Email ---------------------------------------------------*/
