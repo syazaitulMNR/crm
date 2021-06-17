@@ -150,27 +150,27 @@
             <!-- Show data in cards --------------------------------------------------->
             <div class="row mb-3">
               <div class="col-xl-3 col-lg-6">
-                <div class="card border-0 gradient-1 shadow">
-                  <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($totalsuccess) }}</h3>
+                <div class="card border-0 gradient-1 shadow text-center">
+                  <h6 class="pt-3">Paid Ticket</h6>
+                  <b class="display-6 pb-3">{{ number_format($totalsuccess) }}</b>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-2 shadow" style="text-decoration: none">
-                  <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
+                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-2 shadow text-center">
+                  <h6 class="pt-3">Free Ticket</h6>
+                  <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-3 shadow" style="text-decoration: none">
-                  <h6 class="lead pt-3 pl-3">Updated Participant</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($paidticket) }}</h3>
+                <a href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 gradient-3 shadow text-center">
+                  <h6 class="pt-3">Updated Participant</h6>
+                  <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <div class="card border-0 gradient-4 shadow">
-                  <h6 class="lead pt-3 pl-3">Pending Payment</h6>
-                  <h3 class="pb-1 pl-3">{{ number_format($totalcancel) }}</h3>
+                <div class="card border-0 gradient-4 shadow text-center">
+                  <h6 class="pt-3">Pending Payment</h6>
+                  <b class="display-6 pb-3">{{ number_format($totalcancel) }}</b>
                 </div>
               </div>
             </div>
