@@ -74,55 +74,56 @@ class MembershipController extends Controller
         $membership = Membership::where('membership_id', $membership_id)->first();
         $level = Membership_Level::where('membership_id', $membership_id)->get();
 
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
-        /*-- Manage Email ---------------------------------------------------*/
-        $fileName = $membership->name.'.csv';
-        $columnNames = [
-            'Customer ID',
-            'First Name',
-            'Last Name',
-            'IC No',
-            'Phone No',
-            'Email',
-            // 'Membership',
-            'Registered At'
-        ];
+        dd($student);
+        // // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+        // /*-- Manage Email ---------------------------------------------------*/
+        // $fileName = $membership->name.'.csv';
+        // $columnNames = [
+        //     'Customer ID',
+        //     'First Name',
+        //     'Last Name',
+        //     'IC No',
+        //     'Phone No',
+        //     'Email',
+        //     // 'Membership',
+        //     'Registered At'
+        // ];
         
-        $file = fopen(public_path('export/') . $fileName, 'w');
-        fputcsv($file, $columnNames);
+        // $file = fopen(public_path('export/') . $fileName, 'w');
+        // fputcsv($file, $columnNames);
         
-        foreach ($student as $students) {
-            foreach($level as $levels){
-                if($membership->membership_id == $students->membership_id){
-                    // if($membership->membership_id == $levels->membership_id){
+        // foreach ($student as $students) {
+        //     foreach($level as $levels){
+        //         if($membership->membership_id == $students->membership_id){
+        //             // if($membership->membership_id == $levels->membership_id){
 
-                        fputcsv($file, [
-                            $students->stud_id,
-                            $students->first_name,
-                            $students->last_name,
-                            $students->ic,
-                            $students->phoneno,
-                            $students->email,
-                            // $levels->name,
-                            $students->created_at,
-                        ]);
+        //                 fputcsv($file, [
+        //                     $students->stud_id,
+        //                     $students->first_name,
+        //                     $students->last_name,
+        //                     $students->ic,
+        //                     $students->phoneno,
+        //                     $students->email,
+        //                     // $levels->name,
+        //                     $students->created_at,
+        //                 ]);
 
-                    // }
-                }
-            }
+        //             // }
+        //         }
+        //     }
             
-        }
+        // }
         
-        fclose($file);
+        // fclose($file);
 
         
-        Mail::send('emails.export_mail', [], function($message) use ($fileName)
-        {
-            $message->to(Auth::user()->email)->subject('ATTACHMENT OF MEMBERSHIP DETAILS');
-            $message->attach(public_path('export/') . $fileName);
-        });
+        // Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        // {
+        //     $message->to(Auth::user()->email)->subject('ATTACHMENT OF MEMBERSHIP DETAILS');
+        //     $message->attach(public_path('export/') . $fileName);
+        // });
 
-        return redirect('membership/level/'.$membership_id)->with('export-members','The data will be sent to your email. It may take a few minutes to successfully received.');
+        // return redirect('membership/level/'.$membership_id)->with('export-members','The data will be sent to your email. It may take a few minutes to successfully received.');
 
     }
 
