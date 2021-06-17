@@ -56,9 +56,18 @@
                 
                     <div class="row py-2">
                             
-                        <div class="col-md-6">
-                            <label class="form-label">IC No.</label>
-                            <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
+                        <div class="col-md-3">
+                          <label class="form-label">IC No.</label>
+                          <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-3">
+                          <label class="form-label">Status</label>
+                          <select class="form-select form-control-sm" name="status">
+                            <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
+                            <option value="active">Active</option>
+                            <option value="deactive">Deactive</option>
+                          </select>
                         </div>
 
                     </div>
