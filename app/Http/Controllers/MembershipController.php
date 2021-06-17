@@ -89,6 +89,23 @@ class MembershipController extends Controller
 
     }
 
+    public function update_members($membership_id, $level_id, $student_id, Request $request)
+    {
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+        $student->save();
+
+        return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('updatesuccess', 'Customer successfully updated');
+
+    }
+
     public function import($membership_id, $level_id)
     {
         $membership = Membership::where('membership_id', $membership_id)->first();
@@ -137,8 +154,8 @@ class MembershipController extends Controller
                 'ic' => $request->ic,
                 'phoneno' => $request->phoneno,
                 'email' => $request->email,
-                'membership_id' => $request->membership_id,
-                'level_id' => $request->level_id
+                'membership_id' => $membership_id,
+                'level_id' => $level_id
             ));
 
         }
