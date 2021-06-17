@@ -40,7 +40,7 @@
 
           <div class="btn-group">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
+            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
               <i class="fas fa-plus pr-1"></i> New Customer
             </button>
             <!-- Modal -->
@@ -138,7 +138,7 @@
               </div>
             </div>
 
-            <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Customer</a>
+            <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Customer</a>
           </div>
           {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
           
