@@ -165,11 +165,9 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-6">
-                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card bg-light card-inverse shadow" style="text-decoration: none">
-                  <div class="card-block">
-                    <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                    <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
-                  </div>
+                <a href="{{ url('free-ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="card border-0 shadow" style="background-image: linear-gradient(to bottom right, #ff6cab, #7366ff); text-decoration: none">
+                  <h6 class="lead pt-3 pl-3">Free Ticket</h6>
+                  <h3 class="pb-1 pl-3">{{ number_format($freeticket) }}</h3>
                 </a>
               </div>
               <div class="col-xl-3 col-lg-6">
