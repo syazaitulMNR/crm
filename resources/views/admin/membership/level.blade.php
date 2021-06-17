@@ -45,7 +45,7 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">{{ $membership->name }}</h1>
 
-            <a class="btn btn-outline-warning" href="{{ url('export-membership') }}/{{ $membership->name }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
+            <a class="btn btn-outline-warning" href="{{ url('export-members') }}/{{ $membership->membership_id }}/{{ $membership_levels->level_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
         </div>
 
         <div class="row">
