@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="col-md-6 py-3">
-                        <button type="submit" class="btn btn-primary float-right">Submit</button>
+                        <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
                     </div>
 
                 </form>
