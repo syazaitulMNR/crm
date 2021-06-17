@@ -153,7 +153,7 @@
                   <th>#</th>
                   <th>IC No.</th>
                   <th>Name</th>
-                  {{-- <th>Status</th> --}}
+                  <th>Status</th>
                   <th><i class="fas fa-cogs"></i></th>
                 </tr>
                 </thead>
@@ -164,6 +164,13 @@
                       <td>{{ $student->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
                       <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                      <td class="text-center">
+                        @if ($students->status == 'Deactive')
+                          <span class="badge rounded-pill bg-danger"> &nbsp;{{ $students->status }}&nbsp; </span>
+                        @else
+                          <span class="badge rounded-pill bg-success"> &nbsp;Active&nbsp; </span>
+                        @endif
+                      </td>
                       <td>
                         <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
                       </td>
