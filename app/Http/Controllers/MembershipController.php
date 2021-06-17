@@ -106,6 +106,20 @@ class MembershipController extends Controller
 
     }
 
+    public function destroy($membership_id, $level_id, $student_id) 
+    {
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id);
+        $payment = Payment::where('stud_id', $student_id);
+        $ticket = Ticket::where('stud_id', $student_id);
+        // dd($payment);
+
+        $student->delete();
+        $payment->delete();
+        $ticket->delete();
+
+        return back()->with('delete-member', 'Customer successfully deleted');
+    }
+
     public function import($membership_id, $level_id)
     {
         $membership = Membership::where('membership_id', $membership_id)->first();

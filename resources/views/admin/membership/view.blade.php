@@ -138,6 +138,13 @@
             </div>
             @endif
 
+            @if ($message = Session::get('delete-member'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             <!-- Show success payment in table ----------------------------------------------->
             @if(count($student) > 0)
             <table class="table table-hover" id="successTable">
@@ -181,7 +188,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $students->stud_id }}">Delete</a>
+                                  <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}">Delete</a>
                                 </div>
                               </div>
                             </div>
