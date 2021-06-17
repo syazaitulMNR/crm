@@ -173,8 +173,8 @@ Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@se
 Route::get('membership','MembershipController@view_membership');
 Route::post('membership/save','MembershipController@store_membership');
 Route::get('membership/level/{membership_id}','MembershipController@view_level');
+Route::get('export-members/{membership_id}', 'MembershipController@export_members');
 Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
-Route::get('export-members/{membership_id}/{level_id}', 'MembershipController@export_members');
 Route::get('view/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@track_members');
 Route::post('update/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@update_members');
 Route::get('import-members/{membership_id}/{level_id}','MembershipController@import');
