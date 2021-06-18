@@ -329,7 +329,8 @@ class ReportsController extends Controller
     public function paid_ticket($product_id, $package_id)
     {
         //Get the details
-        $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(15);
+        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(15);
+        $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -337,7 +338,7 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
         
-        return view('admin.reports.paidticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        return view('admin.reports.participant', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
     public function export_paid($product_id, $package_id)
