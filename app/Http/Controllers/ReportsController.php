@@ -409,6 +409,39 @@ class ReportsController extends Controller
 
     }
 
+    public function track_ticket($product_id, $package_id, $ticket_id)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+
+        //Count the data
+        $count = 1;
+        
+        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'count'));
+    }
+
+    public function update_ticket($product_id, $package_id, $ticket_id, $student_id, Request $request)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+
+        $student->save();
+
+        return redirect('view/participant/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
+    }
+
     public function track_paid($product_id, $package_id, $ticket_id)
     {
         //Get the details
