@@ -4,6 +4,18 @@
     Sales Tracking
 @endsection
 
+<style>
+    .gradient-1
+    {
+      background-image: linear-gradient(to bottom right, #9c46cb, #77c6ff);
+    }
+    .gradient-2
+    {
+      background-image: linear-gradient(to bottom right, #82e4ff, #77ffbd);
+    }
+  
+  </style>
+  
 @include('layouts.navbar')
 @section('content')
 @include('layouts.sidebar')
