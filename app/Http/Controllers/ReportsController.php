@@ -461,9 +461,7 @@ class ReportsController extends Controller
     {
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
-        $data = Student::orderBy('id','desc')->paginate(15);
-
-        return view('admin.reports.importexcel', compact('data', 'product', 'package'));
+        return view('admin.reports.import_participant', compact('product', 'package'));
     }
 
     function store_participant($product_id, $package_id)
