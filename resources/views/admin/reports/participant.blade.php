@@ -199,6 +199,7 @@
             <th>IC No.</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Ticket Type</th>
             <th><i class="fas fa-cogs"></i></th>
             </tr>
             </thead>
@@ -212,6 +213,7 @@
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                 <td>{{ $students->email }}</td>
+                <td>{{ $tickets->ticket_type }}</td>
                 <td>
                     <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
 
