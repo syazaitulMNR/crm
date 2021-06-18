@@ -10,6 +10,7 @@ use App\Payment;
 use App\Ticket;
 use App\Imports\ParticipantImport;
 use App\Exports\ProgramExport;
+use App\Exports\ParticipantFormat;
 use App\Exports\PaidTicket_Export;
 use App\Exports\FreeTicket_Export;
 use Rap2hpoutre\FastExcel\FastExcel;
