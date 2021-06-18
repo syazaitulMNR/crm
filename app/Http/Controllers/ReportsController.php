@@ -489,6 +489,14 @@ class ReportsController extends Controller
         return redirect('view/participant/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
     }
 
+    public function destroy_ticket($ticket_id, $product_id, $package_id) 
+    {
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id);
+        $ticket->delete();
+
+        return redirect('view/participant/'.$product_id.'/'.$package_id)->with('deleteticket', 'Participant successfully deleted');
+    }
+
     public function track_paid($product_id, $package_id, $ticket_id)
     {
         //Get the details

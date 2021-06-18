@@ -120,6 +120,13 @@
                 </div>
                 @endif
 
+                @if ($message = Session::get('deleteticket'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+
                 <!-- Search box ---------------------------------------------------------->
                 {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name"> --}}
                 <form action="{{ url('paid-ticket/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
