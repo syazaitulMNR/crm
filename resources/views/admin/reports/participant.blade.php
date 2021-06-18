@@ -50,8 +50,6 @@
           <a class="btn btn-outline-warning" href="{{ url('export-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Participant</a>
         </div>
 
-        <br>       
-        
         <div class="row">
             <div class="col-md-9">
                 
