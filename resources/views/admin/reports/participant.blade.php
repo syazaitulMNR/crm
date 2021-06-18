@@ -32,7 +32,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="{{ url('new-particpant/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
+                  <form action="{{ url('new-participant/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
                   @csrf
                     <div class="form-group row px-4">
                         <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
