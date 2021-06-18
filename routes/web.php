@@ -144,8 +144,8 @@ Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsController@destroy_ticket');
 
-Route::get('import-participant/{product_id}/{package_id}','ReportsController@import');
-Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
+Route::get('import-participant/{product_id}/{package_id}','ReportsController@import_participant');
+Route::post('import/store-participant/{product_id}/{package_id}','ReportsController@store_participant');
 Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
 
 

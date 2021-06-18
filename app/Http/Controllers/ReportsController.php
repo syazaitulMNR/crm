@@ -8,6 +8,7 @@ use App\Product;
 use App\Package;
 use App\Payment;
 use App\Ticket;
+use App\Imports\ParticipantImport;
 use App\Exports\ProgramExport;
 use App\Exports\PaidTicket_Export;
 use App\Exports\FreeTicket_Export;
@@ -454,6 +455,28 @@ class ReportsController extends Controller
         }
 
         return redirect('view/participant/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
+    }
+
+    public function import_participant($product_id, $package_id)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $data = Student::orderBy('id','desc')->paginate(15);
+
+        return view('admin.reports.importexcel', compact('data', 'product', 'package'));
+    }
+
+    function store_participant($product_id, $package_id)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+
+        $prd_id = $product->product_id;
+        $pkd_id = $package->package_id;
+
+        Excel::import(new ParticipantImport($prd_id, $pkd_id), request()->file('file'));
+
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
     }
 
     public function track_ticket($product_id, $package_id, $ticket_id)
