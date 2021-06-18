@@ -140,6 +140,14 @@ Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@d
 Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
 Route::get('view/ticket/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_ticket');
 Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 'ReportsController@update_ticket');
+Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
+Route::post('new-participant/save/{product_id}/{package_id}', 'ReportsController@save_customer');
+
+Route::get('import-participant/{product_id}/{package_id}','ImportExcelController@index');
+Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
+Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
+
+
 
 Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
 Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
@@ -162,8 +170,6 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 
 
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
-Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
-
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 Route::get('paid-ticket/search/{product_id}/{package_id}', 'ReportsController@search_paid');
 Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@search_free');
