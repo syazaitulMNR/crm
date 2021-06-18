@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Participant
+    Sales Tracking
 @endsection
 
 @include('layouts.navbar')
