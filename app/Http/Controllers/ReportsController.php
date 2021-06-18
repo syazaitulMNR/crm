@@ -464,6 +464,11 @@ class ReportsController extends Controller
         return view('admin.reports.import_participant', compact('product', 'package'));
     }
 
+    public function participant_format($product_id, $package_id)
+    {
+        return Excel::download(new ParticipantFormat, 'Participant.xlsx');
+    }
+
     function store_participant($product_id, $package_id)
     {
         $product = Product::where('product_id', $product_id)->first();

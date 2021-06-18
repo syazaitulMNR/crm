@@ -146,7 +146,7 @@ Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsContro
 
 Route::get('import-participant/{product_id}/{package_id}','ReportsController@import_participant');
 Route::post('import/store-participant/{product_id}/{package_id}','ReportsController@store_participant');
-Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
+Route::get('exportExcel/{product_id}/{package_id}', 'ReportsController@participant_format');
 
 
 
