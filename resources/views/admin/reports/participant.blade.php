@@ -50,172 +50,173 @@
           <a class="btn btn-outline-warning" href="{{ url('export-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Participant</a>
         </div>
 
-        <!-- Show data in cards --------------------------------------------------->
-        <div class="row mb-3">
-            <div class="col-xl-3 col-lg-6 py-2">
-              <div class="card border-0 gradient-1 shadow text-center">
-                <h6 class="pt-3">Paid Ticket</h6>
-                <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 py-2">
-              <div class="card border-0 gradient-2 shadow text-center" style="text-decoration: none">
-                <h6 class="pt-3">Free Ticket</h6>
-                <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
-              </div>
-            </div>
-        </div> 
-
         <br>       
         
-        @if ($message = Session::get('update-paid'))
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-        
-        @if ($message = Session::get('search-error'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-
-        @if ($message = Session::get('export-paid'))
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-
-        <!-- Search box ---------------------------------------------------------->
-        {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name"> --}}
-        <form action="{{ url('paid-ticket/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
-            @csrf
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <div class="row">
+            <div class="col-md-9">
+                
+                @if ($message = Session::get('update-paid'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
                 </div>
+                @endif
+                
+                @if ($message = Session::get('search-error'))
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+
+                @if ($message = Session::get('export-paid'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+
+                <!-- Search box ---------------------------------------------------------->
+                {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name"> --}}
+                <form action="{{ url('paid-ticket/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Show success payment in table ----------------------------------------------->
+                {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
+                @if(isset($details))
+                <table class="table table-hover" id="successTable">
+                    <thead>
+                    <tr class="header">
+                        <th>#</th>
+                        <th>IC No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th><i class="fas fa-cogs"></i></th>
+                    </tr>
+                    </thead>
+                    <tbody> 
+                    @foreach ($ticket as $key => $tickets)
+                    @foreach ($student as $students)   
+                    @if ($tickets->ic == $students->ic)
+                    @if ($product->product_id == $tickets->product_id)  
+                    <tr>
+                        <td>{{ $count++ }}</td>
+                        <td>{{ $students->ic }}</td>
+                        <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                        <td>{{ $students->email }}</td>
+                        <td>
+                            <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
+
+                            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                            @else
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure you want to delete this payment ?
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a class="btn btn-danger" href="{{ url('delete-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}">Delete</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            @endif
+                        </td>
+                    </tr>
+                    @endif
+                    @endif
+                    @endforeach
+                    @endforeach
+                    </tbody>
+                </table>
+                @endif
+
+                {{-- <div class="float-right pt-3">{{$ticket->links()}}</div> --}}
+                <table class="table table-hover" id="successTable">
+                    <thead>
+                    <tr class="header">
+                    <th>#</th>
+                    <th>IC No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Ticket Type</th>
+                    <th><i class="fas fa-cogs"></i></th>
+                    </tr>
+                    </thead>
+                    <tbody> 
+                    @foreach ($ticket as $key => $tickets)
+                    @foreach ($student as $students)   
+                    @if ($tickets->ic == $students->ic)
+                    @if ($product->product_id == $tickets->product_id)  
+                    <tr>
+                        <td>{{ $count++ }}</td>
+                        <td>{{ $students->ic }}</td>
+                        <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                        <td>{{ $students->email }}</td>
+                        <td>{{ $tickets->ticket_type }}</td>
+                        <td>
+                            <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
+
+                            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                            @else
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure you want to delete this payment ?
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a class="btn btn-danger" href="{{ url('delete-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}">Delete</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            @endif
+                        </td>
+                    </tr>
+                    @endif
+                    @endif
+                    @endforeach
+                    @endforeach
+                    </tbody>
+                </table>  
             </div>
-        </form>
-
-        <!-- Show success payment in table ----------------------------------------------->
-        {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
-        @if(isset($details))
-          <table class="table table-hover" id="successTable">
-            <thead>
-              <tr class="header">
-                <th>#</th>
-                <th>IC No.</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th><i class="fas fa-cogs"></i></th>
-              </tr>
-            </thead>
-            <tbody> 
-            @foreach ($ticket as $key => $tickets)
-            @foreach ($student as $students)   
-            @if ($tickets->ic == $students->ic)
-            @if ($product->product_id == $tickets->product_id)  
-              <tr>
-                <td>{{ $count++ }}</td>
-                <td>{{ $students->ic }}</td>
-                <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                <td>{{ $students->email }}</td>
-                <td>
-                    <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
-
-                    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                    @else
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            Are you sure you want to delete this payment ?
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-danger" href="{{ url('delete-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}">Delete</a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    @endif
-                </td>
-              </tr>
-            @endif
-            @endif
-            @endforeach
-            @endforeach
-            </tbody>
-          </table>
-        @endif
-
-        {{-- <div class="float-right pt-3">{{$ticket->links()}}</div> --}}
-        <table class="table table-hover" id="successTable">
-            <thead>
-            <tr class="header">
-            <th>#</th>
-            <th>IC No.</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Ticket Type</th>
-            <th><i class="fas fa-cogs"></i></th>
-            </tr>
-            </thead>
-            <tbody> 
-            @foreach ($ticket as $key => $tickets)
-            @foreach ($student as $students)   
-            @if ($tickets->ic == $students->ic)
-            @if ($product->product_id == $tickets->product_id)  
-            <tr>
-                <td>{{ $count++ }}</td>
-                <td>{{ $students->ic }}</td>
-                <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                <td>{{ $students->email }}</td>
-                <td>{{ $tickets->ticket_type }}</td>
-                <td>
-                    <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
-
-                    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                    @else
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            Are you sure you want to delete this payment ?
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-danger" href="{{ url('delete-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}">Delete</a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    @endif
-                </td>
-            </tr>
-            @endif
-            @endif
-            @endforeach
-            @endforeach
-            </tbody>
-        </table>  
+            
+            <!-- Show data in cards --------------------------------------------------->
+            <div class="col-md-3">
+                <div class="card border-0 gradient-1 shadow text-center">
+                    <h6 class="pt-3">Paid Ticket</h6>
+                    <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
+                </div>
+                <div class="card border-0 gradient-2 shadow text-center" style="text-decoration: none">
+                    <h6 class="pt-3">Free Ticket</h6>
+                    <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
+                </div>
+            </div> 
         
+        </div>
     </main>
   </div>
 </div>
