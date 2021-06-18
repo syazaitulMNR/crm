@@ -23,7 +23,8 @@ class CreateTicketTable extends Migration
             $table->string('pay_method');       
             $table->string('status');        
             $table->string('stripe_id');          
-            $table->string('billplz_id');          
+            $table->string('billplz_id');         
+            $table->string('email_status');          
             $table->string('stud_id');          
             $table->string('product_id');
             $table->string('package_id');
