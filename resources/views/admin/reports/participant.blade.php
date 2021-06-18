@@ -206,13 +206,18 @@
             
             <!-- Show data in cards --------------------------------------------------->
             <div class="col-md-3">
-                <div class="card border-0 gradient-1 shadow text-center py-2">
-                    <h6 class="pt-3">Paid Ticket</h6>
-                    <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
+                <div class="py-2">
+                    <div class="card border-0 gradient-1 shadow text-center">
+                        <h6 class="pt-3">Paid Ticket</h6>
+                        <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
+                    </div>
                 </div>
-                <div class="card border-0 gradient-2 shadow text-center py-2">
-                    <h6 class="pt-3">Free Ticket</h6>
-                    <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
+                
+                <div class="py-2">
+                    <div class="card border-0 gradient-2 shadow text-center">
+                        <h6 class="pt-3">Free Ticket</h6>
+                        <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
+                    </div>
                 </div>
             </div> 
         
