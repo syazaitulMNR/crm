@@ -336,9 +336,11 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
 
         //Count the data
-        $count = 1;
+        $count = 1;        
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.reports.participant', compact('ticket', 'product', 'package', 'student', 'count'));
+        return view('admin.reports.participant', compact('ticket', 'product', 'package', 'student', 'count', 'paidticket', 'freeticket'));
     }
 
     public function export_paid($product_id, $package_id)
@@ -451,21 +453,21 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
 
         //Count the data
-        $count = 1;
+        $count = 1;        
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         //get details from search
         // $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         // $stud_id = $student_id->stud_id;
 
-        $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
-
-        // dd($stud_id);
-        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+        // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
+        $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
         if(count($ticket) > 0)
         {
-            return view('admin.reports.paidticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        
+            return view('admin.reports.participant', compact('ticket', 'product', 'package', 'student', 'count', 'paidticket', 'freeticket'));
 
         }else{
 
