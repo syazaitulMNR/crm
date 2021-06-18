@@ -159,13 +159,13 @@
                 <div class="card border-0 gradient-2 shadow text-center">
                   <h6 class="pt-3">Free Ticket</h6>
                   <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
-                </a>
+                </div>
               </div>
               <div class="col-xl-3 col-lg-6 py-2">
                 <div class="card border-0 gradient-3 shadow text-center">
                   <h6 class="pt-3">Updated Participant</h6>
                   <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
-                </a>
+                </div>
               </div>
               <div class="col-xl-3 col-lg-6 py-2">
                 <div class="card border-0 gradient-4 shadow text-center">
