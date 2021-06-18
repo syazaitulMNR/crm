@@ -453,7 +453,7 @@ class ReportsController extends Controller
             ]);
         }
 
-        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
+        return redirect('view/participant/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
     }
 
     public function track_ticket($product_id, $package_id, $ticket_id)

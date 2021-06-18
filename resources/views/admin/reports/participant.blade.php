@@ -92,6 +92,13 @@
         <div class="row">
             <div class="col-md-9">
                 
+                @if ($message = Session::get('addsuccess'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+
                 @if ($message = Session::get('update-paid'))
                 <div class="alert alert-success alert-block">
                     <button type="button" class="close" data-bs-dismiss="alert">×</button>	
