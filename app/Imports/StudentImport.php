@@ -37,35 +37,33 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             if(Student::where('ic', $row['ic'])->exists()){
 
-                // $payment_id = 'OD' . uniqid();
+                $payment_id = 'OD' . uniqid();
 
-                // Payment::create([
-                //     'payment_id'    => $payment_id,
-                //     'pay_price'     => $row['price'], 
-                //     'quantity'      => $row['quantity'],
-                //     'totalprice'    => $row['payment'],
-                //     'status'        => $row['status'],
-                //     'pay_method'    => $row['pay_method'], 
-                //     'email_status'  => 'Hold',
-                //     'stud_id'       => $student->stud_id,
-                //     'offer_id'      => $row['offer_id'], 
-                //     'user_id'       => $row['user_id'],
-                //     'product_id'    => $this->product,
-                //     'package_id'    => $this->package,
-                // ]);
-
-                $ticket_id = 'TIK' . uniqid();
-
-                Ticket::create([
-                    'ticket_id'     => $ticket_id,
-                    'ticket_type'   => $row['ticket_type'],
-                    'ic'            => $row['ic'],
+                Payment::create([
+                    'payment_id'    => $payment_id,
+                    'pay_price'     => $row['price'], 
+                    'quantity'      => $row['quantity'],
+                    'totalprice'    => $row['payment'],
+                    'status'        => $row['status'],
+                    'pay_method'    => $row['pay_method'], 
                     'email_status'  => 'Hold',
                     'stud_id'       => $student->stud_id,
+                    'offer_id'      => $row['offer_id'], 
+                    'user_id'       => $row['user_id'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
-                    // 'payment_id'    => $payment_id
                 ]);
+
+                // $ticket_id = 'TIK' . uniqid();
+
+                // Ticket::create([
+                //     'ticket_id'     => $ticket_id,
+                //     'ticket_type'   => $row['ticket_type'],
+                //     'ic'            => $row['ic'],
+                //     'product_id'    => $this->product,
+                //     'package_id'    => $this->package,
+                //     'payment_id'    => $payment_id
+                // ]);
 
             }else{
 
@@ -81,35 +79,33 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'phoneno'    => '+' . $row['phoneno'],
                 ]);
 
-                // $payment_id = 'OD' . uniqid();
+                $payment_id = 'OD' . uniqid();
 
-                // Payment::create([
-                //     'payment_id'    => $payment_id,
-                //     'pay_price'     => $row['price'], 
-                //     'quantity'      => $row['quantity'],
-                //     'totalprice'    => $row['payment'],
-                //     'status'        => $row['status'],
-                //     'pay_method'    => $row['pay_method'], 
-                //     'email_status'  => 'Hold',
-                //     'stud_id'       => $stud_id,
-                //     'offer_id'      => $row['offer_id'], 
-                //     'user_id'      => $row['user_id'],
-                //     'product_id'    => $this->product,
-                //     'package_id'    => $this->package,
-                // ]);
-
-                $ticket_id = 'TIK' . uniqid();
-
-                Ticket::create([
-                    'ticket_id'     => $ticket_id,
-                    'ticket_type'   => $row['ticket_type'],
-                    'ic'            => $row['ic'],
+                Payment::create([
+                    'payment_id'    => $payment_id,
+                    'pay_price'     => $row['price'], 
+                    'quantity'      => $row['quantity'],
+                    'totalprice'    => $row['payment'],
+                    'status'        => $row['status'],
+                    'pay_method'    => $row['pay_method'], 
                     'email_status'  => 'Hold',
                     'stud_id'       => $stud_id,
+                    'offer_id'      => $row['offer_id'], 
+                    'user_id'      => $row['user_id'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
-                    // 'payment_id'    => $payment_id
                 ]);
+
+                // $ticket_id = 'TIK' . uniqid();
+
+                // Ticket::create([
+                //     'ticket_id'     => $ticket_id,
+                //     'ticket_type'   => $row['ticket_type'],
+                //     'ic'            => $row['ic'],
+                //     'product_id'    => $this->product,
+                //     'package_id'    => $this->package,
+                //     'payment_id'    => $payment_id
+                // ]);
             }
         }
         
