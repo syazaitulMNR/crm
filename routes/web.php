@@ -134,10 +134,10 @@ Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Blasti
 // Route::get('trackcustomer', 'ReportsController@trackcustomer');
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
-Route::get('viewbypackage/{product_id}/{package_id}', 'ReportsController@viewbypackage');
+Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
 
-Route::get('paid-ticket/{product_id}/{package_id}', 'ReportsController@paid_ticket');
+Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
 Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
 Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
 Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');

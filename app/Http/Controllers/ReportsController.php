@@ -323,7 +323,7 @@ class ReportsController extends Controller
             // ]);
         }
 
-        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
     }
 
     public function paid_ticket($product_id, $package_id)
@@ -402,7 +402,7 @@ class ReportsController extends Controller
             $message->attach(public_path('export/') . $fileName);
         });
 
-        return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('export-paid','The data will be sent to your email. It may take a few minutes to successfully received.');
+        return redirect('view/participant/'.$product_id.'/'.$package_id)->with('export-paid','The data will be sent to your email. It may take a few minutes to successfully received.');
 
     }
 
@@ -437,7 +437,7 @@ class ReportsController extends Controller
         // dd($student_id);
         $student->save();
 
-        return redirect('paid-ticket/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
+        return redirect('view/participant/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
     }
 
     // search paid participant
@@ -651,7 +651,7 @@ class ReportsController extends Controller
         $payment->offer_id = $request->offer_id;
         $payment->save();
 
-        return redirect('viewbypackage/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
     }
 
     // search payment

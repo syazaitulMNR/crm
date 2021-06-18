@@ -119,8 +119,8 @@
                   <td>{{ $package->firstItem() + $key }}</td>
                   <td>{{ $packages->name  }}</td>
                   <td>
-                    <a class="btn btn-sm btn-dark" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                    
-                    <a class="btn btn-sm btn-dark" href="{{ url('paid-ticket') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
+                    <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                    
+                    <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
                   </td>
                 </tr>
                 @endif
