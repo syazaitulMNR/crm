@@ -141,7 +141,7 @@ Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid
 Route::get('view/ticket/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_ticket');
 Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 'ReportsController@update_ticket');
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
-Route::post('new-participant/save/{product_id}/{package_id}', 'ReportsController@save_customer');
+Route::post('new-participant/save/{product_id}/{package_id}', 'ReportsController@save_participant');
 
 Route::get('import-participant/{product_id}/{package_id}','ImportExcelController@index');
 Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');

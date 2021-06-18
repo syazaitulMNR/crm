@@ -409,6 +409,53 @@ class ReportsController extends Controller
 
     }
 
+    public function save_participant($product_id, $package_id, Request $request)
+    { 
+        $student = Student::where('ic', $request->ic)->first();
+        
+        if(Student::where('ic', $request->ic)->exists()){
+
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => $request->ticket_type,
+                'ic'            => $request->ic,
+                'email_status'  => 'Hold',
+                'stud_id'       => $student->stud_id,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id
+            ]);
+
+        }else{
+
+            $stud_id = 'MI'.uniqid();
+            
+            Student::create(array(
+                'stud_id'=> $stud_id,
+                'first_name'=> $request->first_name,
+                'last_name'=> $request->last_name,
+                'ic' => $request->ic,
+                'phoneno' => $request->phoneno,
+                'email' => $request->email
+            ));
+
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => $request->ticket_type,
+                'ic'            => $request->ic,
+                'email_status'  => 'Hold',
+                'stud_id'       => $stud_id,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id
+            ]);
+        }
+
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
+    }
+
     public function track_ticket($product_id, $package_id, $ticket_id)
     {
         //Get the details
