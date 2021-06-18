@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Student;
-use App\Payment;
 use App\Ticket;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
