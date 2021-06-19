@@ -76,10 +76,10 @@ Email Blasting
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
+                                                <p>Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?</p>
                                                 <p>Example: </p>
                                                 <div class="text-center">
-                                                    <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
+                                                    <img src="{{ asset('assets/images/pengesahan_peserta.jpg') }}" style="max-width:300px">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
