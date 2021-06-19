@@ -28,7 +28,7 @@
                 <tr class="header">
                     <th>#</th>
                     <th>Package Name</th>
-                    <th><i class="fas fa-cogs"></i></th>
+                    <th class="w-25"><i class="fas fa-cogs"></i></th>
                 </tr>
                 </thead>
                 <tbody>
