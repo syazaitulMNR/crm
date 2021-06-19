@@ -124,10 +124,8 @@ Email Blasting
                         </div>
                     </div>
 
-                    <div class="row text-end py-2">
-                        <div class="col-sm-4">
-                            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save pr-1"></i> Save Changes</button>
-                        </div>
+                    <div class="col-sm-12 text-end">
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save pr-1"></i> Save Changes</button>
                     </div>
 
                     
