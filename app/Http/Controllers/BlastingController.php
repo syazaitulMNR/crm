@@ -83,7 +83,7 @@ class BlastingController extends Controller
 
         $payment->save();
 
-        return redirect('view-event/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;
+        return redirect('view-event/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
     }
 
     public function update_mail($product_id, $package_id, $payment_id, $student_id, Request $request)
@@ -101,7 +101,7 @@ class BlastingController extends Controller
 
         $student->save();
 
-        return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer Successfully Updated!');
+        return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer details successfully updated');
     }
     
     public function blast_participant($product_id, $package_id)
@@ -145,14 +145,14 @@ class BlastingController extends Controller
         $student_id = $student->stud_id;
 
         // change email status
-        // $ticket->email_status = 'Sent';
+        $ticket->email_status = 'Sent';
 
         // send the email
         dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
 
-        // $ticket->save();
+        $ticket->save();
 
-        return redirect('blast-participant/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased confirmation email successfully sent') ;
+        return redirect('blast-participant/' . $product_id . '/' . $package_id)->with('sent-success', 'Participant confirmation email has been sent successfully') ;
     }
 
     public function update_participant_mail($product_id, $package_id, $ticket_id, $student_id, Request $request)
