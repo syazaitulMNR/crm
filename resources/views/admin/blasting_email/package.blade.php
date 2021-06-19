@@ -38,7 +38,8 @@
                   <td>{{ $package->firstItem() + $key }}</td>
                   <td>{{ $packages->name  }}</td>
                   <td class="text-center">
-                    <a class="btn btn-dark" href="{{ url('view-event') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-chevron-right"></i></a>
+                    <a class="btn btn-sm btn-dark" href="{{ url('view-event') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                   
+                    <a class="btn btn-sm btn-dark" href="{{ url('blast-participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
                   </td>
                 </tr>
                 @endif
