@@ -144,14 +144,14 @@ class BlastingController extends Controller
         $student_id = $student->stud_id;
 
         // change email status
-        $ticket->email_status = 'Sent';
+        // $ticket->email_status = 'Sent';
 
         // send the email
         dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
 
-        $ticket->save();
+        // $ticket->save();
 
-        return redirect('view-event/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;
+        return redirect('blast-participant/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;
     }
 
     
