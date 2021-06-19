@@ -134,7 +134,7 @@ class BlastingController extends Controller
         $student = Student::where('stud_id', $student_id)->first();
 
         // Email content
-        $send_mail = $student->email;
+        $email = $student->email;
         $product_name = $product->name;        
         $date_from = $product->date_from;
         $date_to = $product->date_to;
