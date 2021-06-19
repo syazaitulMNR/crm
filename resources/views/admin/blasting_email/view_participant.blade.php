@@ -84,7 +84,7 @@ Email Blasting
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-sm btn-dark" href="{{ url('send-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                                                <a class="btn btn-sm btn-dark" href="{{ url('participant-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
                                                     <i class="fas fa-paper-plane pr-1"></i> Send
                                                 </a>
                                             </div>
