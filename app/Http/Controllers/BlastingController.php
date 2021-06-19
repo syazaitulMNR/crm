@@ -45,6 +45,16 @@ class BlastingController extends Controller
         return view('admin.blasting_email.viewblast', compact('student', 'product', 'package', 'payment', 'total'));
     }
 
+    public function view_student($product_id, $package_id, $payment_id, $student_id)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+        
+        return view('admin.blasting_email.view_customer', compact('product', 'package', 'payment', 'student'));
+    }
+
     public function blast_participant($product_id, $package_id)
     {
         $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
@@ -56,16 +66,15 @@ class BlastingController extends Controller
         
         return view('admin.blasting_email.blast_participant', compact('student', 'product', 'package', 'ticket', 'total'));
     }
-
-    public function view_student($product_id, $package_id, $payment_id, $student_id)
+    
+    public function view_participant($product_id, $package_id, $ticket_id, $student_id)
     {
-        $paginate = Payment::where('product_id', $product_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
         $student = Student::where('stud_id', $student_id)->first();
         
-        return view('admin.blasting_email.view_customer', compact('paginate', 'product', 'package', 'payment', 'student'));
+        return view('admin.blasting_email.view_participant', compact('product', 'package', 'ticket', 'student'));
     }
 
     public function update_mail($product_id, $package_id, $payment_id, $student_id, Request $request)

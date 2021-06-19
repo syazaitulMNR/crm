@@ -122,6 +122,7 @@ Route::get('view/{product_id}', 'BlastingController@package');
 Route::get('view-event/{product_id}/{package_id}', 'BlastingController@show');
 Route::get('blast-participant/{product_id}/{package_id}', 'BlastingController@blast_participant');
 Route::get('view-student/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_student');
+Route::get('view-participant/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_participant');
 Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_mail');
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 
