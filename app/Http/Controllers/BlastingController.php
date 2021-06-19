@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Jobs\BlastQueueEmail;
 use App\Jobs\PengesahanJob;
+use App\Jobs\TiketJob;
 use App\Student;
 use App\Product;
 use App\Package;
