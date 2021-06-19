@@ -52,14 +52,14 @@ class CertController extends Controller
 
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
 
-                }else if ($student->ic == $ticket->ic){
+                }else if ($student->stud_id == $ticket->stud_id){
 
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
 
                 }else{
                     
                     return view('certificate.not_found');
-                    
+
                 }
 
             }
