@@ -52,7 +52,7 @@ class BlastingController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
-        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
+        $total = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
         
         return view('admin.blasting_email.blast_participant', compact('student', 'product', 'package', 'ticket', 'total'));
     }
