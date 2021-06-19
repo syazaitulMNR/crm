@@ -42,10 +42,6 @@ class CertController extends Controller
 
                 return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
 
-            }else if ($student->stud_id == $ticket->stud_id){
-
-                return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
-
             }else if($check_payment->isEmpty()){
 
                 return view('certificate.not_found');
@@ -53,9 +49,7 @@ class CertController extends Controller
             }else{
 
                 if ($student->stud_id == $payment->stud_id){
-
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
-
                 }
 
             }
