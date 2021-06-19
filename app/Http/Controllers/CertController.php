@@ -48,7 +48,7 @@ class CertController extends Controller
 
             }else{
 
-                if ($student->stud_id == $payment->stud_id){
+                if ($student->stud_id == $payment->stud_id || $ticket->ticket_id){
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
                 }
 
