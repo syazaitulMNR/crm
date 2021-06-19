@@ -9,9 +9,7 @@ use App\Student;
 use App\Product;
 use App\Package;
 use App\Payment;
-
-// use Session;
-// use Stripe;
+use App\Ticket;
 
 class BlastingController extends Controller
 {
@@ -24,7 +22,7 @@ class BlastingController extends Controller
     {
         $product = Product::orderBy('id','desc')->paginate(15);
         
-        return view('admin.emailblast', compact('product'));
+        return view('admin.blasting_email.emailblast', compact('product'));
     }
 
     public function package($product_id) 
@@ -42,16 +40,21 @@ class BlastingController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
 
-        // $product = Product::where('product_id', $product_id)->get();
-        // $student = Student::orderBy('id','desc')->paginate(15);
-        // // $student = Student::where('product_id', $product_id)->get();
-        // $package = Package::where('product_id', $product_id)->get(); 
-        // $payment = Payment::where('product_id', $product_id)->get();
+        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
+        
+        return view('admin.blasting_email.viewblast', compact('student', 'product', 'package', 'payment', 'total'));
+    }
+
+    public function blast_participant($product_id, $package_id)
+    {
+        $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
 
         $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
         
-        // dd($student);
-        return view('admin.viewblast', compact('student', 'product', 'package', 'payment', 'total'));
+        return view('admin.blasting_email.blast_participant', compact('student', 'product', 'package', 'payment', 'total'));
     }
 
     public function view_student($product_id, $package_id, $payment_id, $student_id)
