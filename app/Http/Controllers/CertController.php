@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Student;
 use App\Payment;
+use App\Ticket;
 use PDF;
 
 class CertController extends Controller
@@ -30,6 +31,7 @@ class CertController extends Controller
 
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
             $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
+            $ticket = Ticket::where('ic', $student->ic)->where('product_id', $product_id)->first();
             
             // Check if ic exist
             if($ultimate->membership_id == 'MB001'){
@@ -47,7 +49,17 @@ class CertController extends Controller
             }else{
 
                 if ($student->stud_id == $payment->stud_id){
+
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
+
+                }else if ($student->ic == $ticket->ic){
+
+                    return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
+
+                }else{
+                    
+                    return view('certificate.not_found');
+                    
                 }
 
             }
