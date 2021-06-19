@@ -124,7 +124,7 @@ Email Blasting
                         </div>
                     </div>
 
-                    <div class="row py-2 px-4">
+                    <div class="row text-end py-2">
                         <div class="col-sm-4">
                             <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save pr-1"></i> Save Changes</button>
                         </div>
