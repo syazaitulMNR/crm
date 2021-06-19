@@ -54,7 +54,7 @@ class BlastingController extends Controller
 
         $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
         
-        return view('admin.blasting_email.blast_participant', compact('student', 'product', 'package', 'payment', 'total'));
+        return view('admin.blasting_email.blast_participant', compact('student', 'product', 'package', 'ticket', 'total'));
     }
 
     public function view_student($product_id, $package_id, $payment_id, $student_id)
