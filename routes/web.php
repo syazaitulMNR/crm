@@ -125,6 +125,7 @@ Route::get('view-student/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Bla
 Route::get('view-participant/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_participant');
 Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_mail');
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
+Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 
 // Route::get('send-bulk-mail', 'BlastingController@sendBulkMail');
 
