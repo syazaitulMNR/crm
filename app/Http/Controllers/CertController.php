@@ -69,7 +69,7 @@ class CertController extends Controller
 
         //     return view('certificate.not_found');
 
-        // }
+        }
     }
 
     public function checking_cert($product_id, $stud_id)
