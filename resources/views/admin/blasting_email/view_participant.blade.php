@@ -32,7 +32,7 @@ Email Blasting
                 </div>
                 @endif
 
-                <form action="{{ url('update-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
+                <form action="{{ url('update-participant-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
                     @csrf
                 
                     <div class="card mb-4">

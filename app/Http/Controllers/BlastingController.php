@@ -151,9 +151,26 @@ class BlastingController extends Controller
 
         // $ticket->save();
 
-        return redirect('blast-participant/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased Confirmation Email Successfully Sent') ;
+        return redirect('blast-participant/' . $product_id . '/' . $package_id)->with('sent-success', 'Purchased confirmation email successfully sent') ;
     }
 
+    public function update_participant_mail($product_id, $package_id, $ticket_id, $student_id, Request $request)
+    {
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+
+        $student->save();
+
+        return redirect('view-participant/' . $product_id . '/' . $package_id. '/' . $ticket_id . '/' . $student_id)->with('update-mail','Participant details successfully updated');
+    }
     
     //testing
     // public function sendBulkMail()
