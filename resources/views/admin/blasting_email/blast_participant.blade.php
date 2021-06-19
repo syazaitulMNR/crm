@@ -99,7 +99,7 @@
             <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 229, 255, 0.3)"></i>
             </div>
             <h3 class="pt-3 pl-3">{{$total}}</h3>
-            <h6 class="lead pb-2 pl-3">Imported Customer</h6>
+            <h6 class="lead pb-2 pl-3">Imported Free Ticket</h6>
           </div>
         </div>
 
