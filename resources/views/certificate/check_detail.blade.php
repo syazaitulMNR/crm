@@ -41,7 +41,7 @@ E-Certificate
                         </div>
 
                         <div class="col-md-12 text-center border-top border-bottom pt-2 pb-0">
-                            <p>Sekiranya perlukan pembetulan butiran peribadi, sila <a href="http://bit.ly/arbmay2021">hubungi kami</a>.</p>
+                            <p>Sekiranya perlukan pembetulan butiran peribadi, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami</a>.</p>
                         </div>
                     </div>
                         
