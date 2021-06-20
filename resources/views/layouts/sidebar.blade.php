@@ -71,7 +71,8 @@
               <i class="fas fa-user-tie" style="margin-right: 30px"></i> Customer 
             </a>            
           </li>
-          
+          @if(Auth::user()->user_id == 'UID001' || Auth::user()->user_id == 'UID005' || Auth::user()->user_id == 'UID006')
+          @else          
           <li class="nav-item pb-3">
             <a class="nav-link text-white bg-dark " href="/membership">
               <span data-feather="home"></span>
