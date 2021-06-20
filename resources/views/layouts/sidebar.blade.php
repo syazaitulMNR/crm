@@ -65,21 +65,20 @@
               <i class="fas fa-user-tie" style="margin-right: 29px"></i> Manage Customer 
             </a>            
           </li> --}}
-          @if(Auth::user()->user_id == 'UID001' || Auth::user()->user_id == 'UID005' || Auth::user()->user_id == 'UID006')
-                 
-            <li class="nav-item pb-3">
-              <a class="nav-link text-white bg-dark " href="/membership">
-                <span data-feather="home"></span>
-                <i class="fas fa-gem" style="margin-right: 28px"></i> Membership 
-              </a>            
-            </li>
-            @else   
-            <li class="nav-item">
-              <a class="nav-link text-white bg-dark " href="/trackprogram">
-                <span data-feather="home"></span>
-                <i class="fas fa-user-tie" style="margin-right: 30px"></i> Customer 
-              </a>            
-            </li>
+          <li class="nav-item">
+            <a class="nav-link text-white bg-dark " href="/trackprogram">
+              <span data-feather="home"></span>
+              <i class="fas fa-user-tie" style="margin-right: 30px"></i> Customer 
+            </a>            
+          </li>
+          @if(Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004' || Auth::user()->user_id == 'UID005')
+          @else          
+          <li class="nav-item pb-3">
+            <a class="nav-link text-white bg-dark " href="/membership">
+              <span data-feather="home"></span>
+              <i class="fas fa-gem" style="margin-right: 28px"></i> Membership 
+            </a>            
+          </li>
           @endif
           {{-- <li class="nav-item"> 
             <a class="nav-link dropdown-toggle text-white bg-dark active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
