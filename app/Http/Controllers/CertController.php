@@ -31,7 +31,7 @@ class CertController extends Controller
 
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
             $check_payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
-            $ticket = Ticket::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
+            $ticket = Ticket::where('ic', $student->ic)->where('product_id', $product_id)->first();
             
             // Check if ic exist
             if($ultimate->membership_id == 'MB001'){
@@ -48,7 +48,7 @@ class CertController extends Controller
 
             }else{
 
-                if ($student->stud_id == $payment->stud_id || $student->stud_id == $ticket->ticket_id){
+                if ($student->stud_id == $ticket->ticket_id || $payment->stud_id){
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
                 }
 
