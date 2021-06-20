@@ -53,7 +53,7 @@ class CertController extends Controller
             //     }
 
             // }
-            return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
+            return redirect('check-cert/' . $product_id . '/' . $student->stud_id); //erase
             
         }else{
 
