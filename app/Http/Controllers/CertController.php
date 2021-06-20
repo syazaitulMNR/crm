@@ -34,25 +34,25 @@ class CertController extends Controller
             $ticket = Ticket::where('ic', $student->ic)->where('product_id', $product_id)->first();
             
             // Check if ic exist
-            // if($ultimate->membership_id == 'MB001'){
+            if($ultimate->membership_id == 'MB001'){
                 
-            //     return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
+                return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
 
-            // }else if($platinum->membership_id == 'MB002'){
+            }else if($platinum->membership_id == 'MB002'){
 
-            //     return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
+                return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
 
-            // }else if($check_payment->isEmpty()){
+            }else if($check_payment->isEmpty()){
 
-            //     return view('certificate.not_found');
+                return view('certificate.not_found');
 
-            // }else{
+            }else{
 
-                if ($student->stud_id == $ticket->ticket_id){
+                if ($student->stud_id == $payment->stud_id || $ticket->ticket_id){
                     return redirect('check-cert/' . $product_id . '/' . $student->stud_id);
                 }
 
-            // }
+            }
             
         }else{
 
