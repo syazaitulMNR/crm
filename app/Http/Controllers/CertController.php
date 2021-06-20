@@ -22,8 +22,8 @@ class CertController extends Controller
     public function checking_ic($product_id, Request $request)
     {
         $student = Student::where('ic', $request->ic)->first();
-        // $ultimate = Student::where('ic', $request->ic)->first();
-        // $platinum = Student::where('ic', $request->ic)->first();
+        $ultimate = Student::where('ic', $request->ic)->first();
+        $platinum = Student::where('ic', $request->ic)->first();
         // $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
         // dd($ultimate);
@@ -34,11 +34,11 @@ class CertController extends Controller
             $ticket = Ticket::where('ic', $student->ic)->where('product_id', $product_id)->first();
             
             // Check if ic exist
-            if($student->membership_id == 'MB001'){
+            if($ultimate->membership_id == 'MB001'){
                 
                 return redirect('check-cert/' . $product_id . '/' . $platinum->stud_id);
 
-            }else if($student->membership_id == 'MB002'){
+            }else if($platinum->membership_id == 'MB002'){
 
                 return redirect('check-cert/' . $product_id . '/' . $ultimate->stud_id);
 
