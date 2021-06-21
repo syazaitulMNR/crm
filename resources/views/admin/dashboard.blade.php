@@ -57,6 +57,7 @@
 
             <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
             
+            <div class="table-responsive">
             <table class="table text-center">
               <thead class="thead">
                 <tr>
@@ -132,7 +133,7 @@
                 </tr>
               </tfoot>
             </table>
-            
+            </div>
           </div>
         </div>
 
