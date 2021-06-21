@@ -45,8 +45,8 @@ class AdminController extends Controller
         // show the duration of current 2 hours
         if ($time < 8) {
 
-            $from = date('Y-m-d 16:00:00', strtotime('-1 day'));
-            $to = date('Y-m-d 23:59:59', strtotime('-1 day'));
+            $from = date('Y-m-d 16:00:00');
+            $to = date('Y-m-d 23:59:59');
             $duration = "12 am - 8 am"; 
 
         } elseif ($time >= 8 && $time < 10) {
