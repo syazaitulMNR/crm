@@ -40,8 +40,6 @@
         <h1 class="h2">Dashboard</h1>
         {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p>
       </div> --}}
-      
-      <br>
 
       @if ($message = Session::get('updateprofile'))
       <div class="alert alert-info alert-block">
@@ -50,7 +48,7 @@
       </div>
       @endif
 
-      <div class="row pt-1">
+      <div class="row pt-3">
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-12">
           <div class="card bg-white px-4 py-4">
