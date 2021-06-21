@@ -127,8 +127,8 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <th class="text-right">Pending Participant [A-B]</th>
-                  <th class="table-active border-right" colspan="2">{{ number_format($pendingticket) }}</th>
+                  <th class="text-right">Pending Ticket [A-B]</th>
+                  <th class="table-active border-right text-danger" colspan="2">{{ number_format($pendingticket) }}</th>
                 </tr>
               </tfoot>
             </table>
