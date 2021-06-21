@@ -73,63 +73,63 @@ class AdminController extends Controller
 
         // Report Table
 
-        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
+        $date_today = date('Y-m-d 16:00:00',strtotime('-1 day'));
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
         // show the duration of current 2 hours
         if ($time < 8) {
 
-            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 00:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 07:59:59');
+            $from = date('Y-m-d 16:00:00',strtotime('-1 day'));
+            $to = date('Y-m-d 23:59:59');
             $duration = "12 am - 8 am"; 
 
         } elseif ($time >= 8 && $time < 10) {
 
-            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 08:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 09:59:59');
+            $from = date('Y-m-d 00:00:00');
+            $to = date('Y-m-d 01:59:59');
             $duration = "8 am - 10 am"; 
 
         } elseif ($time >= 10 && $time < 12) {
 
-            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 10:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 11:59:59');
+            $from = date('Y-m-d 02:00:00');
+            $to = date('Y-m-d 03:59:59');
             $duration = "10 am - 12 pm"; 
 
         } elseif ($time >= 12 && $time < 14) {
 
-            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 00:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 08:00:00');
+            $from = date('Y-m-d 04:00:00');
+            $to = date('Y-m-d 05:59:59');
             $duration = "12 pm - 2 pm"; 
 
         } elseif ($time >= 14 && $time < 16) {
 
-            $from = date('Y-m-d 04:30:00');
-            $to = date('Y-m-d 06:30:00');
+            $from = date('Y-m-d 06:00:00');
+            $to = date('Y-m-d 07:59:59');
             $duration = "2 pm - 4 pm"; 
 
         } elseif ($time >= 16 && $time < 18) {
 
-            $from = '16';
-            $to = '18';
+            $from = date('Y-m-d 08:00:00');
+            $to = date('Y-m-d 09:59:59');
             $duration = "4 pm - 6 pm"; 
 
         } elseif ($time >= 18 && $time < 20) {
 
-            $from = '18';
-            $to = '20';
+            $from = date('Y-m-d 10:00:00');
+            $to = date('Y-m-d 11:59:59');
             $duration = "6 pm - 8 pm"; 
             
         } elseif ($time >= 20 && $time < 22) {
 
-            $from = '20';
-            $to = '22';
+            $from = date('Y-m-d 12:00:00');
+            $to = date('Y-m-d 13:59:59');
             $duration = "8 pm - 10 pm"; 
 
         } elseif ($time >= 22 && $time <= 24) {
 
-            $from = '22';
-            $to = '00';
+            $from = date('Y-m-d 14:00:00');
+            $to = date('Y-m-d 15:59:59');
             $duration = "10 pm - 12 am";
 
         } else {
