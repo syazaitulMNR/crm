@@ -73,7 +73,7 @@ class AdminController extends Controller
 
         // Report Table
 
-        $date_today = date('d-m-Y');
+        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
@@ -146,9 +146,7 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
 
-        $froms = date('Y-m-d 00:00:00');
-        $tos = date('Y-m-d 23:00:00');
-        $registration = Payment::whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:00:00') ])->count();
+        $registration = Payment::whereBetween('created_at', [ $from , $to ])->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
