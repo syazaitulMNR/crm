@@ -40,6 +40,8 @@
         <h1 class="h2">Dashboard</h1>
         {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p>
       </div> --}}
+      
+      <br>
 
       @if ($message = Session::get('updateprofile'))
       <div class="alert alert-info alert-block">
