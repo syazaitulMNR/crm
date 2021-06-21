@@ -112,17 +112,18 @@
                   <th>{{ number_format($register) }}</th>
                   <th>{{ number_format($paid) }}</th>
                   <th>{{ number_format($free) }}</th>
+                  <th class="border-left">{{ number_format($total) }}</th>
                 </tr>
                 <tr>
                   <th class="text-left">Grand Total</th>
                   <th>{{ number_format($totalregister) }}</th>
                   <th>{{ number_format($totalpaid) }}</th>
-                  <th>{{ number_format($totalfree) }}</th>
+                  <th class="border-right">{{ number_format($totalfree) }}</th>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="text-right">Ticket Sold [B+C]</th>
-                  <th class="table-active" colspan="2">{{ number_format($totalticket) }}</th>
+                  <th class="table-active border-right" colspan="2">{{ number_format($totalticket) }}</th>
                 </tr>
               </tfoot>
             </table>
