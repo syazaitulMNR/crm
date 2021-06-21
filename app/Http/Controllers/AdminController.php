@@ -93,8 +93,8 @@ class AdminController extends Controller
 
         } elseif ($time >= 22 && $time <= 24) {
 
-            $from = date('Y-m-d 12:00:00');
-            $to = date('Y-m-d 13:59:59');
+            $from = date('Y-m-d 14:00:00');
+            $to = date('Y-m-d 15:59:59');
             $duration = "10 pm - 12 am";
 
         } else {
