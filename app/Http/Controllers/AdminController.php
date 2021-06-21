@@ -138,29 +138,27 @@ class AdminController extends Controller
 
         }
 
-        dd($from);
+        // get product id
+        $product = Product::where('status', 'active')->first();
+        $product_id = $product->product_id;
 
-        // // get product id
-        // $product = Product::where('status', 'active')->first();
-        // $product_id = $product->product_id;
+        // get package id
+        $package = Package::where('product_id', $product_id)->get();
+        $package_id = Package::where('product_id', $product_id)->pluck('package_id');
 
-        // // get package id
-        // $package = Package::where('product_id', $product_id)->get();
-        // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
+        $registration = Payment::whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
-        // $registration = Payment::whereBetween('created_at', [ $from , $to ])->count();
-        // $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        // $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-
-        // // get the grand total
-        // $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        // $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        // $totalticket = Ticket::where('product_id', $product_id)->count();
+        // get the grand total
+        $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
+        $totalticket = Ticket::where('product_id', $product_id)->count();
         
-        // // dd($package_id[0]);
-        // // dd($request->package_id);
-        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'registration', 'paidticket', 'freeticket', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
+        // dd($package_id[0]);
+        // dd($request->package_id);
+        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'registration', 'paidticket', 'freeticket', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
