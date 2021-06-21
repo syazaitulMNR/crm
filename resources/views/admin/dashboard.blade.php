@@ -64,7 +64,7 @@
                   <th>Registration</th>
                   <th>Paid Ticket [A]</th>
                   <th>Free Ticket [B]</th>
-
+                  <th class="border-left">Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -85,6 +85,7 @@
                   </td>
                   <td>{{ number_format($paidticket1) }}</td>
                   <td>{{ number_format($freeticket1) }}</td>
+                  <td class="border-left"></td>
                 </tr>
                 <tr>
                   <td class="text-left">Sustain</td>
@@ -93,6 +94,7 @@
                   </td>
                   <td>{{ number_format($paidticket2) }}</td>
                   <td>{{ number_format($freeticket2) }}</td>
+                  <td class="border-left"></td>
                 </tr>
                 <tr>
                   <td class="text-left">Growth</td>
@@ -101,11 +103,12 @@
                   </td>
                   <td>{{ number_format($paidticket3) }}</td>
                   <td>{{ number_format($freeticket3) }}</td>
+                  <td class="border-left"></td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <th class="text-left">Today Collection</th>
+                  <th class="text-left">Today's Collection</th>
                   <th>{{ number_format($register) }}</th>
                   <th>{{ number_format($paid) }}</th>
                   <th>{{ number_format($free) }}</th>
