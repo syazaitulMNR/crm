@@ -159,9 +159,9 @@
               <tfoot>
                 <tr>
                   <th class="text-left">Total</th>
-                  <th>{{ number_format($totalregister) }}</th>
-                  <th>{{ number_format($totalpaid) }}</th>
-                  <th>{{ number_format($totalfree) }}</th>
+                  <th>{{ number_format($register) }}</th>
+                  <th>{{ number_format($paid) }}</th>
+                  <th>{{ number_format($free) }}</th>
                 </tr>
                 <tr>
                   <th class="text-left">Grand Total</th>

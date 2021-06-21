@@ -159,6 +159,11 @@ class AdminController extends Controller
         $paidticket3 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
         $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
 
+        // get the total
+        $register = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $free = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
+
         // get the grand total
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
@@ -168,7 +173,7 @@ class AdminController extends Controller
         // dd($package_id[0]);
         // dd($request->package_id);
         // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
-        return view('admin.dashboard', compact('student','today','monthly','yearly', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3',));
+        return view('admin.dashboard', compact('student','today','monthly','yearly', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3',));
     }
 
     /*-- Manage User --------------------------------------------------------*/
