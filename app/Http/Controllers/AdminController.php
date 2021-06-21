@@ -81,25 +81,25 @@ class AdminController extends Controller
         if ($time < 8) {
 
             $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 00:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 08:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 07:59:59');
             $duration = "12 am - 8 am"; 
 
         } elseif ($time >= 8 && $time < 10) {
 
             $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 08:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 10:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 09:59:59');
             $duration = "8 am - 10 am"; 
 
         } elseif ($time >= 10 && $time < 12) {
 
             $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 10:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 12:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 11:59:59');
             $duration = "10 am - 12 pm"; 
 
         } elseif ($time >= 12 && $time < 14) {
 
-            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-20 00:00:00');
-            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 14:00:00');
+            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 00:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 12:00:00');
             $duration = "12 pm - 2 pm"; 
 
         } elseif ($time >= 14 && $time < 16) {
