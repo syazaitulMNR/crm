@@ -85,7 +85,7 @@
                   </td>
                   <td>{{ number_format($paidticket1) }}</td>
                   <td>{{ number_format($freeticket1) }}</td>
-                  <td class="border-left"></td>
+                  <td class="border-left">{{ number_format($totalpackage1) }}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Sustain</td>
@@ -94,7 +94,7 @@
                   </td>
                   <td>{{ number_format($paidticket2) }}</td>
                   <td>{{ number_format($freeticket2) }}</td>
-                  <td class="border-left"></td>
+                  <td class="border-left">{{ number_format($totalpackage2) }}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Growth</td>
@@ -103,7 +103,7 @@
                   </td>
                   <td>{{ number_format($paidticket3) }}</td>
                   <td>{{ number_format($freeticket3) }}</td>
-                  <td class="border-left"></td>
+                  <td class="border-left">{{ number_format($totalpackage3) }}</td>
                 </tr>
               </tbody>
               <tfoot>
