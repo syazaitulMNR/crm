@@ -61,10 +61,10 @@
               <thead class="thead">
                 <tr>
                   <th class="text-left">Package</th>
-                  <th>Registration</th>
-                  <th>Paid Ticket [A]</th>
-                  <th>Free Ticket [B]</th>
-                  <th class="border-left">Total</th>
+                  <th>Registration [A]</th>
+                  <th>Paid Ticket [B]</th>
+                  <th>Free Ticket [C]</th>
+                  <th class="border-left">Total [A+B+C]</th>
                 </tr>
               </thead>
               <tbody>
@@ -121,7 +121,7 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <th class="text-right">Total Ticket Sold [A+B]</th>
+                  <th class="text-right">Total Ticket Sold [B+C]</th>
                   <th class="table-active" colspan="2">{{ number_format($totalticket) }}</th>
                 </tr>
               </tfoot>
