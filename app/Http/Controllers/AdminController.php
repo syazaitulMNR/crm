@@ -144,21 +144,33 @@ class AdminController extends Controller
 
         // get package id
         $package = Package::where('product_id', $product_id)->get();
-        $package_id = Package::where('product_id', $product_id)->pluck('package_id');
+        // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
+        $package1 = 'PKD004';
+        $package2 = 'PKD005';
+        $package3 = 'PKD006';
 
-        $registration = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket1 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket1 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
+        $registration2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package2)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket2 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package2)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket2 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package2)->whereBetween('created_at', [ $from , $to ])->count();
+        $registration3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket3 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
 
         // get the grand total
-        $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
-        $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
-        $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
-        $totalticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
+        $totalticket = Ticket::where('product_id', $product_id)->count();
         
         // dd($package_id[0]);
         // dd($request->package_id);
-        return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'registration', 'paidticket', 'freeticket', 'totalregister', 'totalpaid', 'totalfree', 'totalticket'));
+        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
+        return view('admin.dashboard', compact('student','today','monthly','yearly', 'product', 'package', 'date_today', 'current_time', 
+        'from', 'to', 'duration', 'registration', 'paidticket', 'freeticket', 'totalregister', 'totalpaid', 'totalfree', 'totalticket',
+        'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3',));
     }
 
     /*-- Manage User --------------------------------------------------------*/
