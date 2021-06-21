@@ -123,6 +123,7 @@
                   <th></th>
                   <th class="text-right">Ticket Sold [B+C]</th>
                   <th class="table-active border-right" colspan="2">{{ number_format($totalticket) }}</th>
+                  <th rowspan="2">{{ $totalticket + $pendingticket}}</th>
                 </tr>
                 <tr>
                   <th></th>
