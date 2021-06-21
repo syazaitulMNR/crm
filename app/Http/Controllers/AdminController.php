@@ -131,7 +131,6 @@ class AdminController extends Controller
         $register = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00', strtotime('-1 day')) , date('Y-m-d 15:59:59') ])->count();
         $paid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00', strtotime('-1 day')) , date('Y-m-d 15:59:59') ])->count();
         $free = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00', strtotime('-1 day')) , date('Y-m-d 15:59:59') ])->count();
-        $total = $register + $paid + $free;
 
         // get the grand total
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
@@ -140,7 +139,7 @@ class AdminController extends Controller
         $totalticket = Ticket::where('product_id', $product_id)->count();
         $pendingticket = $totalregister - $totalpaid;
         
-        return view('admin.dashboard', compact('product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'total', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket'));
+        return view('admin.dashboard', compact('product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
