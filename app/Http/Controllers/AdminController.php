@@ -80,26 +80,26 @@ class AdminController extends Controller
         // show the duration of current 2 hours
         if ($time < 8) {
 
-            $from = '00';
-            $to = '08';
+            $from = date('Y-m-d 00:00:00');
+            $to = date('Y-m-d 08:00:00');
             $duration = "12 am - 8 am"; 
 
         } elseif ($time >= 8 && $time < 10) {
 
-            $from = '08';
-            $to = '10';
+            $from = date('Y-m-d 08:00:00');
+            $to = date('Y-m-d 10:00:00');
             $duration = "8 am - 10 am"; 
 
         } elseif ($time >= 10 && $time < 12) {
 
-            $from = '10';
-            $to = '12';
+            $from = date('Y-m-d 10:00:00');
+            $to = date('Y-m-d 12:00:00');
             $duration = "10 am - 12 pm"; 
 
         } elseif ($time >= 12 && $time < 14) {
 
-            $from = '12';
-            $to = '14';
+            $from = date('Y-m-d 12:00:00');
+            $to = date('Y-m-d 14:00:00');
             $duration = "12 pm - 2 pm"; 
 
         } elseif ($time >= 14 && $time < 16) {
@@ -146,7 +146,7 @@ class AdminController extends Controller
         $package = Package::where('product_id', $product_id)->get();
         $package_id = Package::where('product_id', $product_id)->pluck('package_id');
 
-        $registration = Payment::whereBetween('created_at', [date('Y-06-21 00:00:00'), date('Y-06-21 23:59:59')])->count();
+        $registration = Payment::whereBetween('created_at', [ $from , $to ])->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
