@@ -108,12 +108,12 @@
                 </tr>
               </tbody>
               <tfoot>
-                {{-- <tr>
+                <tr>
                   <th class="text-left">Today's Collection</th>
                   <th>{{ number_format($register) }}</th>
                   <th>{{ number_format($paid) }}</th>
                   <th class="border-right">{{ number_format($free) }}</th>
-                </tr> --}}
+                </tr>
                 <tr>
                   <th class="text-left">Grand Total</th>
                   <th>{{ number_format($totalregister) }}</th>
