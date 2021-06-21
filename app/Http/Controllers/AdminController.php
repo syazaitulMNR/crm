@@ -73,33 +73,33 @@ class AdminController extends Controller
 
         // Report Table
 
-        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y 04:i:s');
+        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
         // show the duration of current 2 hours
         if ($time < 8) {
 
-            $from = date('Y-m-d 00:00:00');
-            $to = date('Y-m-d 08:00:00');
+            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 00:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 08:00:00');
             $duration = "12 am - 8 am"; 
 
         } elseif ($time >= 8 && $time < 10) {
 
-            $from = date('Y-m-d 08:00:00');
-            $to = date('Y-m-d 10:00:00');
+            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 08:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 10:00:00');
             $duration = "8 am - 10 am"; 
 
         } elseif ($time >= 10 && $time < 12) {
 
-            $from = date('Y-m-d 10:00:00');
-            $to = date('Y-m-d 12:00:00');
+            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 10:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 12:00:00');
             $duration = "10 am - 12 pm"; 
 
         } elseif ($time >= 12 && $time < 14) {
 
-            $from = date('Y-m-d 12:00:00');
-            $to = date('Y-m-d 14:00:00');
+            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 12:00:00');
+            $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 14:00:00');
             $duration = "12 pm - 2 pm"; 
 
         } elseif ($time >= 14 && $time < 16) {
