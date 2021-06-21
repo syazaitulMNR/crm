@@ -148,7 +148,7 @@ class AdminController extends Controller
 
         $froms = date('Y-m-d 00:00:00');
         $tos = date('Y-m-d 23:00:00');
-        $registration = Payment::whereBetween('created_at', [ $froms , $tos ])->count();
+        $registration = Payment::whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:00:00') ])->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
