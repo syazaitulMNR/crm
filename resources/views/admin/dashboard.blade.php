@@ -64,6 +64,7 @@
                   <th>Registration</th>
                   <th>Paid Ticket [A]</th>
                   <th>Free Ticket [B]</th>
+
                 </tr>
               </thead>
               <tbody>
@@ -104,7 +105,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th class="text-left">Total</th>
+                  <th class="text-left">Today Collection</th>
                   <th>{{ number_format($register) }}</th>
                   <th>{{ number_format($paid) }}</th>
                   <th>{{ number_format($free) }}</th>
