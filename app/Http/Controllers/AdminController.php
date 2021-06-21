@@ -98,7 +98,7 @@ class AdminController extends Controller
 
         } elseif ($time >= 12 && $time < 14) {
 
-            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 12:00:00');
+            $from = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 00:00:00');
             $to = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d 14:00:00');
             $duration = "12 pm - 2 pm"; 
 
