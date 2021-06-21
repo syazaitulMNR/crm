@@ -73,7 +73,7 @@ class AdminController extends Controller
 
         // Report Table
 
-        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y h:i:s');
+        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y 04:i:s');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
