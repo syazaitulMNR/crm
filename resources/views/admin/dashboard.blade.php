@@ -111,7 +111,7 @@
                   <th class="text-left">Today's Collection</th>
                   <th>{{ number_format($register) }}</th>
                   <th>{{ number_format($paid) }}</th>
-                  <th>{{ number_format($free) }}</th>
+                  <th class="border-right">{{ number_format($free) }}</th>
                 </tr>
                 <tr>
                   <th class="text-left">Grand Total</th>
