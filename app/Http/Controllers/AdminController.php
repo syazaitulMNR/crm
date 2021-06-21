@@ -173,7 +173,7 @@ class AdminController extends Controller
         // dd($package_id[0]);
         // dd($request->package_id);
         // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
-        return view('admin.dashboard', compact('student','today','monthly','yearly', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3',));
+        return view('admin.dashboard', compact('student','today','monthly','yearly', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
