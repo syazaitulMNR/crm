@@ -121,7 +121,7 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <th class="text-right">Total Updated Participant [B+C]</th>
+                  <th class="text-right">Ticket Sold [B+C]</th>
                   <th class="table-active" colspan="2">{{ number_format($totalticket) }}</th>
                 </tr>
               </tfoot>
