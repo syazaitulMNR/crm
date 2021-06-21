@@ -36,41 +36,7 @@ class AdminController extends Controller
     }
 
     public function dashboard(Request $request){      
-        $student = Student::count();
-        $today = Payment::whereBetween('created_at', [date('Y-m-d 00:00:00'), date('Y-m-d 23:59:59')])->sum('totalprice');
-        $monthly = Payment::whereBetween('created_at', [date('Y-m-01 00:00:00'), date('Y-m-31 23:59:59')])->sum('totalprice');
-        $yearly = Payment::whereBetween('created_at', [date('Y-01-01 00:00:00'), date('Y-12-31 23:59:59')])->sum('totalprice');
         
-        // $jan = Payment::whereBetween('created_at', [date('Y-01-01 00:00:00'), date('Y-01-31 23:59:59')])->sum('totalprice');
-        // $feb = Payment::whereBetween('created_at', [date('Y-02-01 00:00:00'), date('Y-02-29 23:59:59')])->sum('totalprice');
-        // $mar = Payment::whereBetween('created_at', [date('Y-03-01 00:00:00'), date('Y-03-31 23:59:59')])->sum('totalprice');
-        // $apr = Payment::whereBetween('created_at', [date('Y-04-01 00:00:00'), date('Y-04-30 23:59:59')])->sum('totalprice');
-        // $may = Payment::whereBetween('created_at', [date('Y-05-01 00:00:00'), date('Y-05-31 23:59:59')])->sum('totalprice');
-        // $jun = Payment::whereBetween('created_at', [date('Y-06-01 00:00:00'), date('Y-06-30 23:59:59')])->sum('totalprice');
-        // $jul = Payment::whereBetween('created_at', [date('Y-07-01 00:00:00'), date('Y-07-31 23:59:59')])->sum('totalprice');
-        // $aug = Payment::whereBetween('created_at', [date('Y-08-01 00:00:00'), date('Y-08-31 23:59:59')])->sum('totalprice');
-        // $sep = Payment::whereBetween('created_at', [date('Y-09-01 00:00:00'), date('Y-09-30 23:59:59')])->sum('totalprice');
-        // $oct = Payment::whereBetween('created_at', [date('Y-10-01 00:00:00'), date('Y-10-31 23:59:59')])->sum('totalprice');
-        // $nov = Payment::whereBetween('created_at', [date('Y-11-01 00:00:00'), date('Y-11-30 23:59:59')])->sum('totalprice');
-        // $dec = Payment::whereBetween('created_at', [date('Y-12-01 00:00:00'), date('Y-12-31 23:59:59')])->sum('totalprice');
-
-        // $greetings = "";       
-        // $time = date("H"); /* This sets the $time variable to the current hour in the 24 hour clock format */     
-        // $times = date("h:i"); /* This sets the $time variable to the current hour in the 12 hour clock format */
-        // $timezone = date("e"); /* Set the $timezone variable to become the current timezone */
-        
-        // if ($timezone < "12") {
-        //     $greetings = "Good morning"; /* If the time is less than 1200 hours, show good morning */
-        // } elseif ($timezone >= "12" && $timezone < "17") {
-        //     $greetings = "Good afternoon"; /* If the time is grater than or equal to 1200 hours, but less than 1700 hours, so good afternoon */
-        // } elseif ($timezone >= "17" && $timezone < "19") {
-        //     $greetings = "Good evening"; /* Should the time be between or equal to 1700 and 1900 hours, show good evening */
-        // } elseif ($timezone >= "19") {
-        //     $greetings = "Good night"; /* Finally, show good night if the time is greater than or equal to 1900 hours */
-        // } else {
-        //     $greetings = "Hi";
-        // }
-
         // Report Table
         $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
@@ -169,10 +135,7 @@ class AdminController extends Controller
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();
         
-        // dd($package_id[0]);
-        // dd($request->package_id);
-        // return view('admin.dashboard', compact('student','today','monthly','yearly','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec','greetings'));
-        return view('admin.dashboard', compact('student','today','monthly','yearly', 'product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3'));
+        return view('admin.dashboard', compact('product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'registration2', 'paidticket2', 'freeticket2', 'registration3', 'paidticket3', 'freeticket3'));
     }
 
     /*-- Manage User --------------------------------------------------------*/

@@ -36,10 +36,10 @@
 @include('layouts.sidebar')
 <div class="row py-4">     
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      {{-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
-        {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p> 
-      </div> --}}
+        {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p> --}}
+      </div>
 
       @if ($message = Session::get('updateprofile'))
       <div class="alert alert-info alert-block">
@@ -47,60 +47,6 @@
           <strong>{{ $message }}</strong>
       </div>
       @endif
-
-      <br>
-
-      <!-- Show data in cards --------------------------------------------------->
-      <div class="row mb-1">
-        <div class="col-xl-3 col-lg-6">
-          <div class="card bg-light card-inverse shadow">
-            <div class="card-block">
-              <div class="rotate">
-                <i class="fa fa-users fa-6x" style="color:rgba(93, 0, 255, 0.3)"></i>
-              </div>
-              <h6 class="lead pt-3 pl-3">Total Customers</h6>
-              <h3 class="pb-1 pl-3">{{ number_format($student) }}</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card bg-light card-inverse shadow">
-            <div class="card-block">
-              <div class="rotate">
-                <i class="fa fa-chart-bar fa-6x" style="color:rgba(13, 255, 0, 0.3)"></i>
-              </div>
-              <h6 class="lead pt-3 pl-3">Today (RM)</h6>
-              <h3 class="pb-1 pl-3">{{ number_format($today,2) }}</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card bg-light card-inverse shadow">
-            <div class="card-block">
-              <div class="rotate">
-                <i class="fa fa-chart-area fa-7x" style="color:rgba(255, 0, 149, 0.3)"></i>
-              </div>
-              <h6 class="lead pt-3 pl-3">Monthly (RM)</h6>
-              <h3 class="pb-1 pl-3">{{ number_format($monthly,2) }}</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card bg-light card-inverse shadow">
-            <div class="card-block">
-              <div class="rotate">
-                <i class="fa fa-chart-line fa-6x" style="color:rgba(0, 255, 217, 0.3)"></i>
-              </div>
-              <h6 class="lead pt-3 pl-3">Yearly (RM)</h6>
-              <h3 class="pb-1 pl-3">{{ number_format($yearly,2) }}</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-        
-      <br>
-
-      <hr class="my-3">
 
       <div class="row pt-1">
         <!-- Show data in table --------------------------------------------------->
