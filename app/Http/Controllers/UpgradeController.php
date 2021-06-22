@@ -15,6 +15,43 @@ use App\Jobs\UpgradeJob;
 
 class UpgradeController extends Controller
 {
+    /*-- Participant Registration ------------------------------------------*/
+    public function check_ic($product_id)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+
+        return view('upgrade_ticket.upgrade_participant', compact('product'));
+    }
+
+    public function verify_ic($product_id, Request $request)
+    {
+        // Check if ic exist
+        if(Student::where('ic', $request->ic)->exists()){
+            
+            $student = Student::where('ic', $request->ic)->first();
+            $ticket = Ticket::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
+            $package_id = $ticket->package_id;
+
+            // if ($ticket) {
+
+            //if payment success
+            return redirect('updateform/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
+
+            // }else{
+
+            //     //if payment failed
+            //     return view('certificate.not_found');
+
+            // }
+
+        }else{
+
+            //if customer not found in database
+            return view('certificate.not_found');
+
+        }
+    }
+
     public function upgrade_ticket($product_id, $package_id, $ticket_id, Request $request){
 
         $product = Product::where('product_id', $product_id)->first();

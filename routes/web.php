@@ -152,8 +152,6 @@ Route::get('import-participant/{product_id}/{package_id}','ReportsController@imp
 Route::post('import/store-participant/{product_id}/{package_id}','ReportsController@store_participant');
 Route::get('participant-format/{product_id}/{package_id}', 'ReportsController@participant_format');
 
-
-
 Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
 Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
 Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');
@@ -304,6 +302,8 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 | Upgrade Package by ticket
 |--------------------------------------------------------------------------
 */
+Route::get('upgrade/{product_id}', 'UpgradeController@check_ic');
+Route::get('upgrade/verify/{product_id}', 'UpgradeController@verify_ic');
 Route::get('upgrade-ticket/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@upgrade_ticket'); //kalau adjust ni jgn lupa adjust kat email jugak
 Route::post('store-upgrade/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@store_package');
 Route::get('ticket-details/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@ticket_details');
