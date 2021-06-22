@@ -192,6 +192,11 @@ class MembershipController extends Controller
         return view('admin.membership.import', compact('membership', 'membership_level'));
     }
 
+    public function export_format($product_id, $package_id)
+    {
+        return Excel::download(new ParticipantFormat, 'Participant.xlsx');
+    }
+
     public function store_import($membership_id, $level_id)
     {
         $membership = Membership::where('membership_id', $membership_id)->first();

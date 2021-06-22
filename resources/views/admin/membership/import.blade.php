@@ -70,7 +70,7 @@
                     {{-- </div> --}}
     
                     <div class="row-fluid float-right pt-1">
-                        <a class="btn btn-warning" href="{{ url('export-format') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}"><i class="fas fa-download pr-2"></i>Download</a>
+                        <a class="btn btn-warning" href="{{ url('members-format') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}"><i class="fas fa-download pr-2"></i>Download</a>
                     </div>
                 </div>
                 

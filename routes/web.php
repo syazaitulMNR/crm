@@ -192,6 +192,7 @@ Route::get('membership/level/{membership_id}/{level_id}','MembershipController@v
 Route::get('view/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@track_members');
 Route::post('update/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@update_members');
 Route::get('import-members/{membership_id}/{level_id}','MembershipController@import');
+Route::get('members-format/{membership_id}/{level_id}','MembershipController@export_format');
 Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');

@@ -6,7 +6,6 @@
             <th>ic</th>
             <th>email</th>
             <th>phoneno</th>
-            <th>ticket_type</th>
         
         </tr>
     </thead>
@@ -17,7 +16,6 @@
             <td>912345006789</td>
             <td>example@gmail.com</td>
             <td>+60123456789</td>
-            <td>paid/free</td>
         </tr>
     </tbody>
 </table>
