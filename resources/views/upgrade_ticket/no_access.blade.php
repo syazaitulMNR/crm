@@ -21,7 +21,7 @@ Harap Maaf!
           <i class="far fa-times-circle fa-8x text-center"></i>
         </div>
         <hr>
-        <p class="lead">Jika ada sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/">hubungi kami.</a></p>
+        <p class="lead">Jika ada sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami.</a></p>
     </div>
   </div>
 </div>
