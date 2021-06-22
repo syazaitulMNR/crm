@@ -128,7 +128,7 @@
                 <tr>
                   <th></th>
                   <th class="text-right">Overall Ticket [A+C]</th>
-                  <th class="table-active border-right text-danger" colspan="2">{{ $totalticket + $pendingticket}}</th>
+                  <th class="table-active border-right" colspan="2">{{ $totalticket + $pendingticket}}</th>
                 </tr>
               </tfoot>
             </table>
