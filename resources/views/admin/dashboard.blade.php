@@ -65,7 +65,6 @@
                   <th>Registration [A]</th>
                   <th>Updated Ticket [B]</th>
                   <th>Free Ticket [C]</th>
-                  <th class="border-left">Total [A+B+C]</th>
                 </tr>
               </thead>
               <tbody>
@@ -86,7 +85,6 @@
                   </td>
                   <td>{{ number_format($paidticket1) }}</td>
                   <td>{{ number_format($freeticket1) }}</td>
-                  <td class="border-left">{{ number_format($totalpackage1) }}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Sustain</td>
@@ -95,7 +93,6 @@
                   </td>
                   <td>{{ number_format($paidticket2) }}</td>
                   <td>{{ number_format($freeticket2) }}</td>
-                  <td class="border-left">{{ number_format($totalpackage2) }}</td>
                 </tr>
                 <tr>
                   <td class="text-left">Growth</td>
@@ -104,7 +101,6 @@
                   </td>
                   <td>{{ number_format($paidticket3) }}</td>
                   <td>{{ number_format($freeticket3) }}</td>
-                  <td class="border-left">{{ number_format($totalpackage3) }}</td>
                 </tr>
               </tbody>
               <tfoot>
@@ -118,7 +114,6 @@
                   <th class="text-left">Grand Total</th>
                   <th>{{ number_format($totalregister) }}</th>
                   <th>{{ number_format($totalpaid) }}</th>
-                  <th class="border-right">{{ number_format($totalfree) }}</th>
                 </tr>
                 <tr>
                   <th></th>
