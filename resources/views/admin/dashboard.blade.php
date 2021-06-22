@@ -63,7 +63,7 @@
                 <tr>
                   <th class="text-left">Package</th>
                   <th>Registration [A]</th>
-                  <th>Paid Ticket [B]</th>
+                  <th>Updated Ticket [B]</th>
                   <th>Free Ticket [C]</th>
                   <th class="border-left">Total [A+B+C]</th>
                 </tr>
