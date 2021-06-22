@@ -195,7 +195,7 @@ class MembershipController extends Controller
 
     public function export_format($product_id, $package_id)
     {
-        return Excel::download(new ParticipantFormat, 'Participant.xlsx');
+        return Excel::download(new MembersFormat, 'Membership.xlsx');
     }
 
     public function store_import($membership_id, $level_id)
