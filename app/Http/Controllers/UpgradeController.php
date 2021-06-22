@@ -28,15 +28,13 @@ class UpgradeController extends Controller
         // Check if ic exist
         if(Student::where('ic', $request->ic)->exists()){
             
-            $student = Student::where('ic', $request->ic)->first();
             $ticket = Ticket::where('ic', $request->ic)->where('product_id', $product_id)->first();
-            // $package_id = $ticket->package_id;
+            $package_id = $ticket->package_id;
 
             // if ($ticket) {
 
             //if payment success
-            dd($ticket);
-            // return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
+            return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
 
             // }else{
 
@@ -48,7 +46,7 @@ class UpgradeController extends Controller
         }else{
 
             //if customer not found in database
-            // return view('certificate.not_found');
+            return view('certificate.not_found');
 
         }
     }
