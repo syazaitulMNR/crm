@@ -35,7 +35,7 @@ class UpgradeController extends Controller
             // if ($ticket) {
 
             //if payment success
-            return redirect('updateform/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
+            return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
 
             // }else{
 
