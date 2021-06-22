@@ -118,17 +118,17 @@
                 <tr>
                   <th></th>
                   <th class="text-right">Ticket Sold [B+C]</th>
-                  <th class="table-active border-right" colspan="2">{{ number_format($totalticket) }}</th>
+                  <th colspan="2">{{ number_format($totalticket) }}</th>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="text-right">Pending Ticket [A-B]</th>
-                  <th class="table-active border-right text-danger" colspan="2">{{ number_format($pendingticket) }}</th>
+                  <th class="text-danger" colspan="2">{{ number_format($pendingticket) }}</th>
                 </tr>
                 <tr>
                   <th></th>
                   <th class="text-right">Overall Ticket [A+C]</th>
-                  <th class="table-active border-right" colspan="2">{{ $totalticket + $pendingticket}}</th>
+                  <th class="table-active" colspan="2">{{ $totalticket + $pendingticket}}</th>
                 </tr>
               </tfoot>
             </table>
