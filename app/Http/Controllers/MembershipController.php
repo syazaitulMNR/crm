@@ -9,6 +9,7 @@ use App\Student;
 use App\Payment;
 use App\Ticket;
 use App\Imports\MembershipImport;
+use App\Exports\MembersFormat;
 use Maatwebsite\Excel\Facades\Excel;
 use Mail;
 use Auth;
