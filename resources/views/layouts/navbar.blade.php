@@ -12,6 +12,8 @@
                 <li class="nav-item ">
                     <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
+                @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                @else
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/manageuser">Manage User</a>
                 </li>
@@ -24,6 +26,7 @@
                       <li><a class="dropdown-item" href="/view-offer">Offer</a></li>
                     </ul>
                 </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Sales Tracking
