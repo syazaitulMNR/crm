@@ -7,9 +7,22 @@
             <img src="{{ asset('assets/images/logo.png') }}" class="custom-logo" width="80" alt="">
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            {{-- left element --}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Manage User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Manage Event</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Sales Tracking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Email Blasting</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -18,6 +31,8 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
+
+            {{-- right element --}}
             <ul class="nav navbar-nav justify-content-end">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
