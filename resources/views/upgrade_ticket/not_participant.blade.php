@@ -21,8 +21,10 @@ Harap Maaf!
             <i class="far fa-times-circle fa-8x text-center"></i>
             </div>
             <hr>
-            <p class="lead">Sila <a href="{{ url('pendaftaran-peserta')}}/{{ $product->product_id }}">kemaskini peserta</a> terlebih dahulu untuk naik taraf pakej.</p>
-            <p class="lead">Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami.</a></p>
+            <p class="lead">
+                Sila <a href="{{ url('pendaftaran-peserta')}}/{{ $product->product_id }}">kemaskini peserta</a> terlebih dahulu untuk naik taraf pakej.
+                Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami.</a>
+            </p>
         </div>
     </div>
 </div>
