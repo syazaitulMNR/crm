@@ -18,6 +18,7 @@
   </div> 
 
   <div class="row">
+    <div class="col-md-12 "> 
         
       <!-- Search box ---------------------------------------------------------->
       <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
@@ -55,5 +56,6 @@
         </tbody>
       </table>     
 
+    </div>
   </div>
 </div>
