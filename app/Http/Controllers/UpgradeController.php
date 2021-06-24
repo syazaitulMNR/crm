@@ -33,15 +33,15 @@ class UpgradeController extends Controller
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
             $package_id = $ticket->package_id;
 
-            if ($ticket) {
-
-                //if participant check in
-                return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
-
-            }else if ($payment) {
-
+            if ($payment) {
                 //if buyer check in
                 return view('upgrade_ticket.not_participant');
+
+               
+
+            }else if ($ticket) {
+                //if participant check in
+                return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
     
             }else{
 
