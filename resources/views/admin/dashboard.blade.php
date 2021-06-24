@@ -8,123 +8,122 @@
 @section('content')
 
 <div class="col-md-12">     
-      <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-        {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p> --}}
-      </div>
-
-      @if ($message = Session::get('updateprofile'))
-      <div class="alert alert-info alert-block">
-          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-          <strong>{{ $message }}</strong>
-      </div>
-      @endif
-
-      <div class="row">
-        <!-- Show data in table --------------------------------------------------->
-        <div class="col-md-12">
-          <div class="card bg-white px-4 py-4">
-
-            <h5 class="text-center pb-4">{{ $product->name }}</h5>
-
-            <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
-            
-            <div class="table-responsive">
-            <table class="table text-center">
-              <thead class="thead">
-                <tr>
-                  <th class="text-left">Package</th>
-                  <th>Registration [A]</th>
-                  <th>Updated Ticket [B]</th>
-                  <th>Free Ticket [C]</th>
-                </tr>
-              </thead>
-              <tbody>
-              {{-- @foreach ($package as $packages) --}}
-                {{-- <tr>
-                  <td class="text-left">{{ $packages->name }}</td>
-                  <td>
-                    {{ number_format($registration) }}
-                  </td>
-                  <td>{{ number_format($paidticket) }}</td>
-                  <td>{{ number_format($freeticket) }}</td>
-                </tr> --}}
-              {{-- @endforeach --}}
-                <tr>
-                  <td class="text-left">Solidariti</td>
-                  <td>
-                    {{ number_format($registration1) }}
-                  </td>
-                  <td>{{ number_format($paidticket1) }}</td>
-                  <td>{{ number_format($freeticket1) }}</td>
-                </tr>
-                <tr>
-                  <td class="text-left">Sustain</td>
-                  <td>
-                    {{ number_format($registration2) }}
-                  </td>
-                  <td>{{ number_format($paidticket2) }}</td>
-                  <td>{{ number_format($freeticket2) }}</td>
-                </tr>
-                <tr>
-                  <td class="text-left">Growth</td>
-                  <td>
-                    {{ number_format($registration3) }}
-                  </td>
-                  <td>{{ number_format($paidticket3) }}</td>
-                  <td>{{ number_format($freeticket3) }}</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                {{-- <tr>
-                  <th class="text-left">Today's Collection</th>
-                  <th>{{ number_format($register) }}</th>
-                  <th>{{ number_format($paid) }}</th>
-                  <th class="border-right">{{ number_format($free) }}</th>
-                </tr> --}}
-                <tr>
-                  <th class="text-left">Grand Total</th>
-                  <th>{{ number_format($totalregister) }}</th>
-                  <th>{{ number_format($totalpaid) }}</th>
-                  <th>{{ number_format($totalfree) }}</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th class="text-right">Ticket Sold [B+C]</th>
-                  <th colspan="2">{{ number_format($totalticket) }}</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th class="text-right">Pending Ticket [A-B]</th>
-                  <th class="text-danger" colspan="2">{{ number_format($pendingticket) }}</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th class="text-right">Overall Ticket [A+C]</th>
-                  <th class="table-active" colspan="2">{{ $totalticket + $pendingticket}}</th>
-                </tr>
-              </tfoot>
-            </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Show data in bar chart --------------------------------------------------->
-        {{-- <div class="col-md-5">
-          <div class="card bg-white shadow px-2 py-2">
-            <div id="chartdata" ></div>
-          </div>
-        </div> --}}
-
-        <!-- Show data in line graph --------------------------------------------------->
-
-        {{-- <figure class="highcharts-figure">
-          <div id="container"></div>
-        </figure> --}}
-
-      </div>
-      
+  <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+    {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p> --}}
   </div>
+
+  @if ($message = Session::get('updateprofile'))
+  <div class="alert alert-info alert-block">
+      <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
+
+  <div class="row">
+    <!-- Show data in table --------------------------------------------------->
+    <div class="col-md-12">
+      <div class="card bg-white px-4 py-4">
+
+        <h5 class="text-center pb-4">{{ $product->name }}</h5>
+
+        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+        
+        <div class="table-responsive">
+        <table class="table text-center">
+          <thead class="thead">
+            <tr>
+              <th class="text-left">Package</th>
+              <th>Registration [A]</th>
+              <th>Updated Ticket [B]</th>
+              <th>Free Ticket [C]</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{-- @foreach ($package as $packages) --}}
+            {{-- <tr>
+              <td class="text-left">{{ $packages->name }}</td>
+              <td>
+                {{ number_format($registration) }}
+              </td>
+              <td>{{ number_format($paidticket) }}</td>
+              <td>{{ number_format($freeticket) }}</td>
+            </tr> --}}
+          {{-- @endforeach --}}
+            <tr>
+              <td class="text-left">Solidariti</td>
+              <td>
+                {{ number_format($registration1) }}
+              </td>
+              <td>{{ number_format($paidticket1) }}</td>
+              <td>{{ number_format($freeticket1) }}</td>
+            </tr>
+            <tr>
+              <td class="text-left">Sustain</td>
+              <td>
+                {{ number_format($registration2) }}
+              </td>
+              <td>{{ number_format($paidticket2) }}</td>
+              <td>{{ number_format($freeticket2) }}</td>
+            </tr>
+            <tr>
+              <td class="text-left">Growth</td>
+              <td>
+                {{ number_format($registration3) }}
+              </td>
+              <td>{{ number_format($paidticket3) }}</td>
+              <td>{{ number_format($freeticket3) }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            {{-- <tr>
+              <th class="text-left">Today's Collection</th>
+              <th>{{ number_format($register) }}</th>
+              <th>{{ number_format($paid) }}</th>
+              <th class="border-right">{{ number_format($free) }}</th>
+            </tr> --}}
+            <tr>
+              <th class="text-left">Grand Total</th>
+              <th>{{ number_format($totalregister) }}</th>
+              <th>{{ number_format($totalpaid) }}</th>
+              <th>{{ number_format($totalfree) }}</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th class="text-right">Ticket Sold [B+C]</th>
+              <th colspan="2">{{ number_format($totalticket) }}</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th class="text-right">Pending Ticket [A-B]</th>
+              <th class="text-danger" colspan="2">{{ number_format($pendingticket) }}</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th class="text-right">Overall Ticket [A+C]</th>
+              <th class="table-active" colspan="2">{{ $totalticket + $pendingticket}}</th>
+            </tr>
+          </tfoot>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show data in bar chart --------------------------------------------------->
+    {{-- <div class="col-md-5">
+      <div class="card bg-white shadow px-2 py-2">
+        <div id="chartdata" ></div>
+      </div>
+    </div> --}}
+
+    <!-- Show data in line graph --------------------------------------------------->
+
+    {{-- <figure class="highcharts-figure">
+      <div id="container"></div>
+    </figure> --}}
+
+  </div>
+      
 </div>
 
 <!-- Function to show bar chart ----------------------------------------------------->
