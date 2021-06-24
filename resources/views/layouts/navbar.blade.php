@@ -10,16 +10,30 @@
             {{-- left element --}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Manage User</a>
+                    <a class="nav-link" aria-current="page" href="/manageuser">Manage User</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Manage Event</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Manage Event
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="/product">Event</a></li>
+                      <li><a class="dropdown-item" href="/view-offer">Offer</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Sales Tracking</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sales Tracking
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="/trackprogram">Customer</a></li>
+                      <li><a class="dropdown-item" href="/membership">Membership</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/emailblast">Email Blasting</a></li>
+                    </ul>
                 </li>
             </ul>
 
