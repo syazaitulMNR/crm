@@ -10,7 +10,7 @@
             {{-- left element --}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link" aria-current="page" href="/dashboard"><i class="fas fa-home"></i> Home</a>
+                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                 @else
@@ -22,8 +22,8 @@
                         Manage Event
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href="/product">Event</a></li>
-                      <li><a class="dropdown-item" href="/view-offer">Offer</a></li>
+                      <li><a class="dropdown-item" href="/product"><i class="fas fa-calendar pr-1"></i> Event</a></li>
+                      <li><a class="dropdown-item" href="/view-offer"><i class="fas fa-tag pr-1"></i> Offer</a></li>
                     </ul>
                 </li>
                 @endif
@@ -32,16 +32,16 @@
                         Sales Tracking
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href="/trackprogram">Customer</a></li>
+                        <li><a class="dropdown-item" href="/trackprogram"><i class="fas fa-user-tie pr-1"></i>Customer</a></li>
                         @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
                         @else 
-                        <li><a class="dropdown-item" href="/membership">Membership</a></li>
+                        <li><a class="dropdown-item" href="/membership"><i class="fas fa-gem pr-1"></i> Membership</a></li>
                         @endif
                         
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else   
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/emailblast">Email Blasting</a></li>
+                        <li><a class="dropdown-item" href="/emailblast"><i class="fas fa-mail-bulk pr-1"></i> Email Blasting</a></li>
                         @endif
                     </ul>
                 </li>
