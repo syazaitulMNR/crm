@@ -22,6 +22,13 @@ class UpgradeController extends Controller
 
         return view('upgrade_ticket.upgrade_participant', compact('product'));
     }
+    
+    public function not_participant($product_id)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+
+        return view('upgrade_ticket.not_participant', compact('product'));
+    }
 
     public function verify_ic($product_id, Request $request)
     {
@@ -47,7 +54,7 @@ class UpgradeController extends Controller
             }else if ($payment){
 
                 //if buyer check in
-                return view('upgrade_ticket.not_participant');
+                return redirect('not-participant/' . $product_id);
 
             }else{
 

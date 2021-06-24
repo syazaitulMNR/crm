@@ -303,6 +303,7 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 |--------------------------------------------------------------------------
 */
 Route::get('upgrade/{product_id}', 'UpgradeController@check_ic');
+Route::get('not-participant/{product_id}', 'UpgradeController@not_participant');
 Route::get('upgrade/verify/{product_id}', 'UpgradeController@verify_ic');
 Route::get('upgrade-ticket/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@upgrade_ticket'); //kalau adjust ni jgn lupa adjust kat email jugak
 Route::post('store-upgrade/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@store_package');
