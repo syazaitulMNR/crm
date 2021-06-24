@@ -32,23 +32,13 @@ class UpgradeController extends Controller
         // Check if ic exist
         if($ticket){
             
+            //if participant check in
             $package_id = $ticket->package_id;
-
-            // if ($ticket) {
-
-            //if payment success
             return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
-
-            // }else{
-
-            //     //if payment failed
-            //     return view('certificate.not_found');
-
-            // }
 
         }else if ($payment){
 
-            //if customer not found in database
+            //if buyer check in
             return view('upgrade_ticket.not_participant');
 
         }else{
