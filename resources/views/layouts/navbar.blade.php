@@ -3,7 +3,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="site-logo-inner" href="#">
+        <a class="site-logo-inner pr-2" href="#">
             <img src="{{ asset('assets/images/logo.png') }}" class="custom-logo" width="70" alt="">
         </a>
         <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
