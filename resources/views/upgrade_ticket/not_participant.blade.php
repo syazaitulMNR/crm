@@ -16,7 +16,7 @@ Harap Maaf!
     <div class="col-md-12 px-5 py-4">
         <div class="text-center">
             <h3 class="display-4">Harap Maaf!</h3>
-            <h3 class="display-4">Anda belum melengkapkan borang kemaskini peserta</h3>
+            <h3 class="display-4">Anda perlu melengkapkan borang kemaskini peserta</h3>
             <div class="py-3" style="font-size: 24px; color: red;">
             <i class="far fa-times-circle fa-8x text-center"></i>
             </div>
