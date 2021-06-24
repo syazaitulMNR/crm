@@ -10,16 +10,16 @@
             {{-- left element --}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Manage User</a>
+                    <a class="nav-link" aria-current="page" href="#">Manage User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Manage Event</a>
+                    <a class="nav-link" aria-current="page" href="#">Manage Event</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Sales Tracking</a>
+                    <a class="nav-link" aria-current="page" href="#">Sales Tracking</a>
                 </li>
             </ul>
 
