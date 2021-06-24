@@ -3,8 +3,8 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #ffffff; padding-top:1%; padding-bottom:1%; box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <a class="navbar-brand" href="#">
-                <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+            <a class="site-logo-inner" href="#">
+                <img src="{{ asset('assets/images/logo.png') }}" class="custom-logo" width="80" alt="">
             </a>
         </button>
         <a class="navbar-brand" href="#">Navbar</a>
