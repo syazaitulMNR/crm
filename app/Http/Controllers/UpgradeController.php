@@ -27,11 +27,11 @@ class UpgradeController extends Controller
     {
         $student = Student::where('ic', $request->ic)->first();
         $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
+        $ticket = Ticket::where('ic', $request->ic)->where('product_id', $product_id)->first();
 
         // Check if ic exist
-        if(Student::where('ic', $request->ic)->exists()){
+        if($ticket){
             
-            $ticket = Ticket::where('ic', $request->ic)->where('product_id', $product_id)->first();
             $package_id = $ticket->package_id;
 
             // if ($ticket) {
