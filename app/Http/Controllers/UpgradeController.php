@@ -27,7 +27,7 @@ class UpgradeController extends Controller
     {
         $student = Student::where('ic', $request->ic)->first();
 
-        if ($student->exists()){
+        if ($student->NULL){
             
             //if customer not found in database
             return view('certificate.not_found');
