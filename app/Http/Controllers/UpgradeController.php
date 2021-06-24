@@ -28,6 +28,12 @@ class UpgradeController extends Controller
         $student = Student::where('ic', $request->ic)->first();
 
         if ($student->exists()){
+            
+            //if customer not found in database
+            return view('certificate.not_found');
+            
+        }else{
+
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
             $ticket = Ticket::where('ic', $request->ic)->where('product_id', $product_id)->first();
 
@@ -50,11 +56,6 @@ class UpgradeController extends Controller
 
             }
 
-        }else{
-
-            //if customer not found in database
-            return view('certificate.not_found');
-            
         }
         
     }
