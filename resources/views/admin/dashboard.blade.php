@@ -47,7 +47,7 @@
       </div>
       @endif
 
-      <div class="row pt-5">
+      <div class="row">
         <!-- Show data in table --------------------------------------------------->
         <div class="col-md-12">
           <div class="card bg-white px-4 py-4">
