@@ -26,27 +26,37 @@ class UpgradeController extends Controller
     public function verify_ic($product_id, Request $request)
     {
         $student = Student::where('ic', $request->ic)->first();
-        $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
-        $ticket = Ticket::where('ic', $request->ic)->where('product_id', $product_id)->first();
 
-        // Check if ic exist
-        if($ticket){
-            
-            //if participant check in
-            $package_id = $ticket->package_id;
-            return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
+        if ($student->exists()){
+            $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->where('status', 'paid')->first();
+            $ticket = Ticket::where('ic', $request->ic)->where('product_id', $product_id)->first();
 
-        }else if ($payment){
+            // Check if ic exist
+            if($ticket){
+                
+                //if participant check in
+                $package_id = $ticket->package_id;
+                return redirect('upgrade-ticket/' . $product_id . '/' . $package_id . '/' . $ticket->ticket_id);
 
-            //if buyer check in
-            return view('upgrade_ticket.not_participant');
+            }else if ($payment){
+
+                //if buyer check in
+                return view('upgrade_ticket.not_participant');
+
+            }else{
+
+                //if customer not found in database
+                return view('certificate.not_found');
+
+            }
 
         }else{
 
             //if customer not found in database
             return view('certificate.not_found');
-
+            
         }
+        
     }
 
     public function upgrade_ticket($product_id, $package_id, $ticket_id, Request $request){
