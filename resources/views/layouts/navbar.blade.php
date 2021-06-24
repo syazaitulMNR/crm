@@ -32,10 +32,17 @@
                         Sales Tracking
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href="/trackprogram">Customer</a></li>
-                      <li><a class="dropdown-item" href="/membership">Membership</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="/emailblast">Email Blasting</a></li>
+                        <li><a class="dropdown-item" href="/trackprogram">Customer</a></li>
+                        @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
+                        @else 
+                        <li><a class="dropdown-item" href="/membership">Membership</a></li>
+                        @endif
+                        
+                        @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                        @else   
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/emailblast">Email Blasting</a></li>
+                        @endif
                     </ul>
                 </li>
             </ul>
