@@ -16,7 +16,7 @@ Harap Maaf!
     <div class="col-md-12 px-5 py-4">
         <div class="text-center">
             <h3 class="display-4">Harap Maaf!</h3>
-            <h3 class="display-4">Sila <a href="{{ url('pendaftaran-peserta')}}/{{ $product_id->product_id }}">kemaskini peserta</a> terlebih dahulu untuk naik taraf pakej.</h3>
+            <h3 class="display-4">Sila <a href="{{ url('pendaftaran-peserta')}}/{{ $product->product_id }}">kemaskini peserta</a> terlebih dahulu untuk naik taraf pakej.</h3>
             <div class="py-3" style="font-size: 24px; color: red;">
             <i class="far fa-times-circle fa-8x text-center"></i>
             </div>
