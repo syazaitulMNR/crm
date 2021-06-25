@@ -31,7 +31,7 @@
         <div class="table-responsive">
           <table class="table table-hover" id="myTable">
             <thead>
-              <tr class="header">
+              <tr>
                 <th>#</th>
                 <th>Event Date</th>
                 <th>Event Name</th>
