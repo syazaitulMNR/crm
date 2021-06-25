@@ -8,16 +8,8 @@
 @section('content')
 
 <div class="col-md-12">    
-  <div class="card-header pt-3" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>Customer</b>
-  </div>
-  
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Customer</h1>
-  </div>
-
-  <div class="row">
-   
+    <h1 class="h2">Dashboard</h1>
   </div>
       
 </div>
