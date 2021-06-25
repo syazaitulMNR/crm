@@ -109,7 +109,7 @@
     </style>
   </head>
   <body class="bg-light">  
-    <div class='container-fluid px-4 py-4'>
+    <div class='container-fluid px-3 py-4'>
       @yield('content')
     </div>
   </body>
