@@ -20,6 +20,8 @@
 
     <div class="row">      
 
+        <div class="col-md-12">
+
             @if ($message = Session::get('purchased-sent'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-bs-dismiss="alert">×</button>	
@@ -36,30 +38,35 @@
 
             <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
                 @csrf
-                <div class="col-md-8">
-                    
+            
+                <div class="card mb-4">
+                    <div class="card-header">
                     <b>Personal Details</b>
+                    </div>
                     <div class="pt-3 px-4">
 
-                            <label>IC No.</label>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">IC No.</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="ic" value="{{ $student->ic }}">
                                 {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->ic }}</p> --}}
                             </div>
 
-                            <label>Phone No.</label>
+                            <label class="col-sm-2">Phone No.</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="phoneno" value="{{ $student->phoneno }}">
                                 {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->phoneno }}</p> --}}
                             </div>
-                            <label>Name</label>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">Name</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="first_name" value="{{ $student->first_name }}" placeholder="First Name">
                                 <input type="text" class="form-control" name="last_name" value="{{ $student->last_name }}" placeholder="Last Name">
                                 {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->first_name }}&nbsp;{{ $student->last_name }}</p> --}}
                             </div>
 
-                            <label>Email Address</label>
+                            <label class="col-sm-2">Email Address</label>
                             <div class="col-sm-4">
                                 
                                 <input type="text" class="form-control" name="email" value="{{ $student->email }}">
@@ -96,72 +103,69 @@
                                 
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <div class="col-md-4">
-
-                    <div class="card mb-4">
-                        <div class="card-header">
-                        <b>Payment Details</b>
-                        </div>
-                        <div class="pt-3 px-4">
-
-                            <div class="mb-3 row">
-                                <label class="col-sm-2">Package Name</label>
-                                <div class="col-sm-4">
-                                    <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
-                                </div>
-
-                                <label class="col-sm-2">Date Purchase</label>
-                                <div class="col-sm-4">
-                                    <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label class="col-sm-2">Quantity</label>
-                                <div class="col-sm-4">
-                                    <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
-                                </div>
-
-                                <label class="col-sm-2">Payment</label>
-                                <div class="col-sm-4">
-                                    <p>: &nbsp;&nbsp;&nbsp; 
-                                        RM {{ $payment->totalprice }}.00 &nbsp;
-                                        @if ($payment->status == 'paid')
-                                            <span class="badge rounded-pill bg-success"> &nbsp;{{ $payment->status }}&nbsp; </span>
-                                        @elseif ($payment->status == 'due')
-                                            <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payment->status }}&nbsp; </span>
-                                        @else
-                                            <p>NULL</p>
-                                        @endif
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label class="col-sm-2">Offer ID</label>
-                                <div class="col-sm-4">
-                                    <select class="form-select form-control-sm" name="offer_id">
-                                        <option value="{{ $payment->offer_id }}" readonly selected>-- {{ $payment->offer_id }} --</option>
-                                        <option value="OFF001">OFF001</option>
-                                        <option value="OFF002">OFF002</option>                                        
-                                        <option value="OFF003">OFF003</option>
-                                    </select>
-                                </div>
-
-                                <label class="col-sm-2">Payment Status</label>
-                                <div class="col-sm-4">
-                                    <select class="form-select form-control-sm" name="status">
-                                        <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
-                                        <option value="paid">paid</option>
-                                        <option value="due">due</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                    <b>Payment Details</b>
                     </div>
+                    <div class="pt-3 px-4">
 
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">Package Name</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
+                            </div>
+
+                            <label class="col-sm-2">Date Purchase</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">Quantity</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $payment->quantity }}</p>
+                            </div>
+
+                            <label class="col-sm-2">Payment</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; 
+                                    RM {{ $payment->totalprice }}.00 &nbsp;
+                                    @if ($payment->status == 'paid')
+                                        <span class="badge rounded-pill bg-success"> &nbsp;{{ $payment->status }}&nbsp; </span>
+                                    @elseif ($payment->status == 'due')
+                                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payment->status }}&nbsp; </span>
+                                    @else
+                                        <p>NULL</p>
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">Offer ID</label>
+                            <div class="col-sm-4">
+                                <select class="form-select form-control-sm" name="offer_id">
+                                    <option value="{{ $payment->offer_id }}" readonly selected>-- {{ $payment->offer_id }} --</option>
+                                    <option value="OFF001">OFF001</option>
+                                    <option value="OFF002">OFF002</option>                                        
+                                    <option value="OFF003">OFF003</option>
+                                </select>
+                            </div>
+
+                            <label class="col-sm-2">Payment Status</label>
+                            <div class="col-sm-4">
+                                <select class="form-select form-control-sm" name="status">
+                                    <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
+                                    <option value="paid">paid</option>
+                                    <option value="due">due</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="mb-3 row">
@@ -171,6 +175,8 @@
                 </div>
 
             </form>
+            
+        </div>
 
     </div>
 </div>
