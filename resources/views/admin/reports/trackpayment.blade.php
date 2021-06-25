@@ -39,13 +39,14 @@
                 <div class="col-md-8">
                     
                     <b>Personal Details</b>
-                    </div>
                     <div class="pt-3 px-4">
 
                         <div class="mb-3 row">
                             <label>IC No.</label>
+                            <div class="col-sm-4">
                                 <input type="text" class="form-control" name="ic" value="{{ $student->ic }}">
                                 {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->ic }}</p> --}}
+                            </div>
 
                             <label>Phone No.</label>
                             <div class="col-sm-4">
