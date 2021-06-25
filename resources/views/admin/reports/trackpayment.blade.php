@@ -39,8 +39,6 @@
             <form action="{{ url('updatepayment') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="post">
                 @csrf
             
-                <div class="card mb-4">
-                    <div class="card-header">
                     <b>Personal Details</b>
                     </div>
                     <div class="pt-3 px-4">
@@ -104,8 +102,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
 
                 <div class="card mb-4">
                     <div class="card-header">
