@@ -6,7 +6,6 @@
 
 @include('layouts.navbar')
 @section('content')
-@include('layouts.sidebar')
 
 <div class="col-md-12 pt-3">
         
