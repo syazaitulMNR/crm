@@ -7,7 +7,7 @@
 @include('layouts.navbar')
 @section('content')
 
-<div class="col-md-12 px-4 py-4">    
+<div class="col-md-12 px-5 py-4">    
      
   <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Customer</h1>
