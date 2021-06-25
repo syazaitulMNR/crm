@@ -95,7 +95,7 @@
     </div>
 
     <div class="col-md-4">
-      <div class="card border-0 gradient-1 shadow text-center" style="height: 100px">
+      <div class="card border-0 gradient-1 shadow text-center" style="height: 400px">
         <h6>Ticket Sold [B+C]</h6>
         <b class="display-6">{{ number_format($totalticket) }}</b>
       </div>
