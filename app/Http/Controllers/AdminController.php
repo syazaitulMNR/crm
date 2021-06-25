@@ -48,54 +48,63 @@ class AdminController extends Controller
             $from = date('Y-m-d 16:00:00');
             $to = date('Y-m-d 23:59:59');
             $duration = "12 am - 8 am"; 
+            $greetings = "Good Morning!";
 
         } elseif ($time >= 8 && $time < 10) {
 
             $from = date('Y-m-d 00:00:00');
             $to = date('Y-m-d 01:59:59');
             $duration = "8 am - 10 am"; 
+            $greetings = "Good Morning!";
 
         } elseif ($time >= 10 && $time < 12) {
 
             $from = date('Y-m-d 02:00:00');
             $to = date('Y-m-d 03:59:59');
             $duration = "10 am - 12 pm"; 
+            $greetings = "Good Morning!";
 
         } elseif ($time >= 12 && $time < 14) {
 
             $from = date('Y-m-d 04:00:00');
             $to = date('Y-m-d 05:59:59');
             $duration = "12 pm - 2 pm"; 
+            $greetings = "Good Afternoon!";
 
         } elseif ($time >= 14 && $time < 16) {
 
             $from = date('Y-m-d 06:00:00');
             $to = date('Y-m-d 07:59:59');
             $duration = "2 pm - 4 pm"; 
+            $greetings = "Good Evening!";
 
         } elseif ($time >= 16 && $time < 18) {
 
             $from = date('Y-m-d 08:00:00');
             $to = date('Y-m-d 09:59:59');
             $duration = "4 pm - 6 pm"; 
+            $greetings = "Good Evening!";
 
         } elseif ($time >= 18 && $time < 20) {
 
             $from = date('Y-m-d 10:00:00');
             $to = date('Y-m-d 11:59:59');
             $duration = "6 pm - 8 pm"; 
+            $greetings = "Good Evening!";
             
         } elseif ($time >= 20 && $time < 22) {
 
             $from = date('Y-m-d 12:00:00');
             $to = date('Y-m-d 13:59:59');
             $duration = "8 pm - 10 pm"; 
+            $greetings = "Good Evening!";
 
         } elseif ($time >= 22 && $time <= 24) {
 
             $from = date('Y-m-d 14:00:00');
             $to = date('Y-m-d 15:59:59');
             $duration = "10 pm - 12 am";
+            $greetings = "Good Evening!";
 
         } else {
 
@@ -139,7 +148,7 @@ class AdminController extends Controller
         $totalticket = Ticket::where('product_id', $product_id)->count();
         $pendingticket = $totalregister - $totalpaid;
         
-        return view('admin.dashboard', compact('product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket'));
+        return view('admin.dashboard', compact('product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/

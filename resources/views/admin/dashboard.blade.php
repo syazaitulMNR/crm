@@ -10,7 +10,7 @@
 <div class="col-md-12">     
   <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>
-    {{-- <p class="lead">{{ $greetings }}, {{ Auth::user()->name }}.</p> --}}
+    <p class="lead">{{ $greetings }}</p>
   </div>
 
   @if ($message = Session::get('updateprofile'))
