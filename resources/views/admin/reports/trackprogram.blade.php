@@ -32,8 +32,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Event Date</th>
-                <th>Event Name</th>
+                <th>Date</th>
+                <th>Event</th>
                 <th class="text-center"><i class="fas fa-cogs"></i></th>
               </tr>
             </thead>
