@@ -88,6 +88,24 @@
       .highcharts-data-table tr:hover {
         background: #f1f7ff;
       }
+
+      .gradient-1
+      {
+        background-image: linear-gradient(to bottom right, #9c46cb, #77c6ff);
+      }
+      .gradient-2
+      {
+        background-image: linear-gradient(to bottom right, #82e4ff, #77ffbd);
+      }
+      .gradient-3
+      {
+        background-image: linear-gradient(to bottom right, #6ef5ab, #c6f054);
+      }
+      .gradient-4
+      {
+        background-image: linear-gradient(to bottom right, #ffcda5, #ee4d5f);
+      }
+
     </style>
   </head>
   <body class="bg-light">  

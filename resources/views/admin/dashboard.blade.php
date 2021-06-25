@@ -110,8 +110,17 @@
     </div>
 
     <div class="col-md-4">
-      <div class="card bg-white shadow">
-
+      <div class="card border-0 gradient-1 shadow text-center">
+        <h6 class="pt-3">Paid Ticket</h6>
+        <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
+      </div>
+      <div class="card border-0 gradient-2 shadow text-center">
+        <h6 class="pt-3">Free Ticket</h6>
+        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
+      </div>
+      <div class="card border-0 gradient-3 shadow text-center">
+        <h6 class="pt-3">Updated Ticket</h6>
+        <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
 
