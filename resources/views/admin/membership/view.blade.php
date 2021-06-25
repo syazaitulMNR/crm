@@ -145,7 +145,8 @@
 
       <!-- Show success payment in table ----------------------------------------------->
       @if(count($student) > 0)
-      <table class="table table-hover" id="successTable">
+      <div class="table-responsive">
+        <table class="table table-hover" id="successTable">
           <thead>
           <tr class="header">
             <th>#</th>
@@ -176,7 +177,8 @@
             @endif
             @endforeach
           </tbody>
-      </table>  
+        </table>  
+      </div>
       @else
       <p>There are no any payment yet.</p>
       @endif
