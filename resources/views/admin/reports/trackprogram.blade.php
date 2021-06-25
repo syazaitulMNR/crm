@@ -7,7 +7,7 @@
 @include('layouts.navbar')
 @section('content')
 
-<div class="col-md-12 px-3 py-4">   
+<div class="col-md-12 px-4 py-4">   
 
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
     <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>Customer</b>
