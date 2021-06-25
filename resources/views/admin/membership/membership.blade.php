@@ -85,46 +85,49 @@
 
   <div class="float-right pt-3">{{$membership->links()}}</div>
   @if(count($membership) > 0)
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Membership Name</th>
-        <th scope="col"><i class="fas fa-cogs"></i></th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($membership as $key => $memberships)                
+  
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
         <tr>
-            <td>{{ $membership->firstItem() + $key  }}</td>
-            <td>{{ $memberships->name  }}</td>
-          <td>
-            <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
-            {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
-            {{-- <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $memberships->membership_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    Are you sure you want to delete this membership ?
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="btn btn-danger" href="{{ url('delete') }}/{{ $memberships->membership_id }}">Delete</a>
+          <th scope="col">#</th>
+          <th scope="col">Membership Name</th>
+          <th scope="col"><i class="fas fa-cogs"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($membership as $key => $memberships)                
+          <tr>
+              <td>{{ $membership->firstItem() + $key  }}</td>
+              <td>{{ $memberships->name  }}</td>
+            <td>
+              <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
+              {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
+              {{-- <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal{{ $memberships->membership_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to delete this membership ?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <a class="btn btn-danger" href="{{ url('delete') }}/{{ $memberships->membership_id }}">Delete</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div> --}}
-          </td>
-        </tr>   
-      @endforeach
-    </tbody>
-  </table>
+              </div> --}}
+            </td>
+          </tr>   
+        @endforeach
+      </tbody>
+    </table>
+  </div>
   @else
     <p>There are no membership to display.</p>
   @endif
