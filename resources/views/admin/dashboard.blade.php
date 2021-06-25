@@ -22,7 +22,7 @@
 
   <div class="row">
     <!-- Show data in table --------------------------------------------------->
-    <div class="col-md-8">
+    <div class="col-md-8 pb-4">
       <div class="card bg-white shadow px-4 py-4">
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
@@ -94,8 +94,6 @@
       </div>
     </div>
 
-    <br>
-    
     <div class="col-md-4">
       <div class="card border-0 gradient-1 shadow text-center" style="height: 117px">
         <h6 class="pt-4">Ticket Sold [B+C]</h6>
