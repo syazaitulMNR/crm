@@ -41,7 +41,6 @@
                     <b>Personal Details</b>
                     <div class="pt-3 px-4">
 
-                        <div class="mb-3 row">
                             <label>IC No.</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="ic" value="{{ $student->ic }}">
@@ -53,8 +52,6 @@
                                 <input type="text" class="form-control" name="phoneno" value="{{ $student->phoneno }}">
                                 {{-- <p>: &nbsp;&nbsp;&nbsp; {{ $student->phoneno }}</p> --}}
                             </div>
-                        </div>
-                        <div class="mb-3 row">
                             <label>Name</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="first_name" value="{{ $student->first_name }}" placeholder="First Name">
