@@ -27,34 +27,36 @@
       <br>
       
       <!-- View event details in table ----------------------------------------->
-      <table class="table table-hover" id="myTable">
-        <thead>
-          <tr class="header">
-            <th>#</th>
-            <th>Event Date</th>
-            <th>Event Name</th>
-            <th class="text-center"><i class="fas fa-cogs"></i></th>
-          </tr>
-        </thead>
-        <tbody> 
-          @foreach ($product as $key => $products)
-          <tr>
-            <td>{{ $product->firstItem() + $key }}</td>
-            <td>{{ date('d/m/Y', strtotime($products->date_from)) }}</td>
-            <td>
-              {{ $products->name }}
-              @if ($products->status == 'active')
-                  <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
-              @else
-              @endif
-            </td>
-            <td class="text-center">
-              <a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>     
+      <div class="table-responsive">
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr class="header">
+              <th>#</th>
+              <th>Event Date</th>
+              <th>Event Name</th>
+              <th class="text-center"><i class="fas fa-cogs"></i></th>
+            </tr>
+          </thead>
+          <tbody> 
+            @foreach ($product as $key => $products)
+            <tr>
+              <td>{{ $product->firstItem() + $key }}</td>
+              <td>{{ date('d/m/Y', strtotime($products->date_from)) }}</td>
+              <td>
+                {{ $products->name }}
+                @if ($products->status == 'active')
+                    <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
+                @else
+                @endif
+              </td>
+              <td class="text-center">
+                <a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>   
+      </div>  
 
     </div>
   </div>

@@ -30,66 +30,66 @@
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
         
         <div class="table-responsive">
-        <table class="table text-center">
-          <thead class="thead">
-            <tr>
-              <th class="text-left">Package</th>
-              <th>Registration [A]</th>
-              <th>Updated Ticket [B]</th>
-              <th>Free Ticket [C]</th>
-            </tr>
-          </thead>
-          <tbody>
-          {{-- @foreach ($package as $packages) --}}
-            {{-- <tr>
-              <td class="text-left">{{ $packages->name }}</td>
-              <td>
-                {{ number_format($registration) }}
-              </td>
-              <td>{{ number_format($paidticket) }}</td>
-              <td>{{ number_format($freeticket) }}</td>
-            </tr> --}}
-          {{-- @endforeach --}}
-            <tr>
-              <td class="text-left">Solidariti</td>
-              <td>
-                {{ number_format($registration1) }}
-              </td>
-              <td>{{ number_format($paidticket1) }}</td>
-              <td>{{ number_format($freeticket1) }}</td>
-            </tr>
-            <tr>
-              <td class="text-left">Sustain</td>
-              <td>
-                {{ number_format($registration2) }}
-              </td>
-              <td>{{ number_format($paidticket2) }}</td>
-              <td>{{ number_format($freeticket2) }}</td>
-            </tr>
-            <tr>
-              <td class="text-left">Growth</td>
-              <td>
-                {{ number_format($registration3) }}
-              </td>
-              <td>{{ number_format($paidticket3) }}</td>
-              <td>{{ number_format($freeticket3) }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            {{-- <tr>
-              <th class="text-left">Today's Collection</th>
-              <th>{{ number_format($register) }}</th>
-              <th>{{ number_format($paid) }}</th>
-              <th class="border-right">{{ number_format($free) }}</th>
-            </tr> --}}
-            <tr>
-              <th class="text-left">Grand Total</th>
-              <th>{{ number_format($totalregister) }}</th>
-              <th>{{ number_format($totalpaid) }}</th>
-              <th>{{ number_format($totalfree) }}</th>
-            </tr>
-          </tfoot>
-        </table>
+          <table class="table text-center">
+            <thead class="thead">
+              <tr>
+                <th class="text-left">Package</th>
+                <th>Registration [A]</th>
+                <th>Updated Ticket [B]</th>
+                <th>Free Ticket [C]</th>
+              </tr>
+            </thead>
+            <tbody>
+            {{-- @foreach ($package as $packages) --}}
+              {{-- <tr>
+                <td class="text-left">{{ $packages->name }}</td>
+                <td>
+                  {{ number_format($registration) }}
+                </td>
+                <td>{{ number_format($paidticket) }}</td>
+                <td>{{ number_format($freeticket) }}</td>
+              </tr> --}}
+            {{-- @endforeach --}}
+              <tr>
+                <td class="text-left">Solidariti</td>
+                <td>
+                  {{ number_format($registration1) }}
+                </td>
+                <td>{{ number_format($paidticket1) }}</td>
+                <td>{{ number_format($freeticket1) }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Sustain</td>
+                <td>
+                  {{ number_format($registration2) }}
+                </td>
+                <td>{{ number_format($paidticket2) }}</td>
+                <td>{{ number_format($freeticket2) }}</td>
+              </tr>
+              <tr>
+                <td class="text-left">Growth</td>
+                <td>
+                  {{ number_format($registration3) }}
+                </td>
+                <td>{{ number_format($paidticket3) }}</td>
+                <td>{{ number_format($freeticket3) }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              {{-- <tr>
+                <th class="text-left">Today's Collection</th>
+                <th>{{ number_format($register) }}</th>
+                <th>{{ number_format($paid) }}</th>
+                <th class="border-right">{{ number_format($free) }}</th>
+              </tr> --}}
+              <tr>
+                <th class="text-left">Grand Total</th>
+                <th>{{ number_format($totalregister) }}</th>
+                <th>{{ number_format($totalpaid) }}</th>
+                <th>{{ number_format($totalfree) }}</th>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>
