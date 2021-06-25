@@ -42,7 +42,7 @@
         <h5 class="pt-3 pb-2">How To Import ?</h5>
 
         <p>1) Please download this format before import to database.</p>
-        <div class="row pb-2">
+        <div class="row pb-3">
             <div class="col-md-12">
                 {{-- <div class="card bg-light"> --}}
                     <div class="table-responsive">
@@ -80,7 +80,7 @@
                     </div>
                 {{-- </div> --}}
 
-                <div class="row-fluid float-right pt-1">
+                <div class="row-fluid float-right">
                     <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
                 </div>
             </div>
