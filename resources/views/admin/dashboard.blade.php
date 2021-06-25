@@ -23,7 +23,7 @@
   <div class="row">
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8">
-      <div class="card bg-white shadow px-4 py-5">
+      <div class="card bg-white shadow px-4 py-4">
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
@@ -96,18 +96,18 @@
 
     <div class="col-md-4">
       <div class="card border-0 gradient-1 shadow text-center">
-        <h6 class="pt-4">Ticket Sold [B+C]</h6>
-        <b class="display-6 pb-4">{{ number_format($totalticket) }}</b>
+        <h6 class="pt-3">Ticket Sold [B+C]</h6>
+        <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
       <div class="card border-0 gradient-4 shadow text-center">
-        <h6 class="pt-4">Pending Ticket [A-B]</h6>
-        <b class="display-6 pb-4">{{ number_format($pendingticket) }}</b>
+        <h6 class="pt-3">Pending Ticket [A-B]</h6>
+        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center">
-        <h6 class="pt-4">Overall Ticket [A+C]</h6>
-        <b class="display-6 pb-4">{{ number_format($totalticket + $pendingticket) }}</b>
+        <h6 class="pt-3">Overall Ticket [A+C]</h6>
+        <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
 
