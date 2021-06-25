@@ -50,7 +50,7 @@
                   @endif
                 </td>
                 <td class="text-center">
-                  <a class="btn btn-dark shadow" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
+                  <a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="fas fa-chevron-right"></i></a>
                 </td>
               </tr>
               @endforeach
