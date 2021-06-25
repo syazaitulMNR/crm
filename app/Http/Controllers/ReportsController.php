@@ -35,17 +35,6 @@ class ReportsController extends Controller
         $this->middleware('auth');
     }
 
-    // public function trackcustomer()
-    // {
-    //     $student = Student::orderBy('id','desc')->paginate(15);
-    //     $product = Product::orderBy('id', 'desc')->get();
-         
-    //     $totalcust = Student::count();
-    //     $totalpay = Payment::count();
-
-    //     return view('admin.reports.trackcustomer', compact('student','product','totalcust','totalpay'));
-    // }
-
     public function trackprogram(Request $request)
     {
         // $q = $request->search;

@@ -135,7 +135,6 @@ Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stu
 | Manage report
 |--------------------------------------------------------------------------
 */
-// Route::get('trackcustomer', 'ReportsController@trackcustomer');
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 
@@ -145,14 +144,19 @@ Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@d
 Route::get('import-customer/{product_id}/{package_id}','ImportExcelController@index');
 Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
 Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
+Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
+Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
+Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
+Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
+Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
 
+//participant
 Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
 Route::post('new-participant/save/{product_id}/{package_id}', 'ReportsController@save_participant');
 Route::get('view/ticket/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_ticket');
 Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 'ReportsController@update_ticket');
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsController@destroy_ticket');
-
 Route::get('import-participant/{product_id}/{package_id}','ReportsController@import_participant');
 Route::post('import/store-participant/{product_id}/{package_id}','ReportsController@store_participant');
 Route::get('participant-format/{product_id}/{package_id}', 'ReportsController@participant_format');
@@ -165,12 +169,6 @@ Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_tick
 Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
 Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
 Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
-
-Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
-Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
-Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
-Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
-Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
 
 
 
