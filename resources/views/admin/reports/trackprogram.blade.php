@@ -26,11 +26,10 @@
       <div class="float-right pt-3">{{$product->links()}}</div>
       <br>
       
-      <div class="card">
-        <div class="card">
+      <div class="card bg-white">
         <!-- View event details in table ----------------------------------------->
         <div class="table-responsive">
-          <table class="table table-hoverx" id="myTable">
+          <table class="table table-hover" id="myTable">
             <thead>
               <tr class="header">
                 <th>#</th>
