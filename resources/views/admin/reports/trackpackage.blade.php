@@ -16,8 +16,6 @@
 
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group">
-            {{-- <a href="managerole" type="button" class="btn btn-sm btn-outline-primary"><i class="fas fa-users pr-3"></i> Manage Role</a>
-            <a href="create" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus pr-1"></i> Add New User</a> --}}
             <a class="btn btn-sm btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Buyer</a>
             <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Participant</a>
           </div>
@@ -41,16 +39,6 @@
     <div class="row">
       <div class="col-md-12 "> 
         
-        {{-- <div class="row">
-          @foreach ($package as $packages)
-          <div class="col-md-4">
-            <a class="btn bg-dark btn-lg text-white text-center" style="width: 100%" href="{{ url('viewbypackage') }}/{{ $product->product_id }}/{{ $packages->package_id }}">
-              <h6 class="pt-3 pb-2">{{$packages->name}}</h6>
-            </a>
-          </div>
-          @endforeach
-        </div> --}}
-
         <!-- Show data in cards --------------------------------------------------->
         <div class="row mb-3">
           <div class="col-xl-3 col-lg-6 py-2">
@@ -114,59 +102,5 @@
     </div>
   </div>
 </div>
-
-
-<!-- Enable function for search payment ------------------------------------->
-<script>
-  function successFunction() 
-  {
-    var input, filter, table, tr, td, i, txtValue;
-
-    input = document.getElementById("successInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("successTable");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) 
-    {
-      td = tr[i].getElementsByTagName("td")[1];
-      
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }
-</script>
-<!-- Enable function for search cancel payment ------------------------------------->
-{{-- <script>
-  function cancelFunction() 
-  {
-    var input, filter, table, tr, td, i, txtValue;
-
-    input = document.getElementById("cancelInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("cancelTable");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) 
-    {
-      td = tr[i].getElementsByTagName("td")[1];
-      
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }
-</script> --}}
 
 @endsection
