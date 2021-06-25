@@ -138,8 +138,13 @@ Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stu
 // Route::get('trackcustomer', 'ReportsController@trackcustomer');
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
+
+//buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
+Route::get('import-customer/{product_id}/{package_id}','ImportExcelController@index');
+Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
+Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
 
 Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
 Route::post('new-participant/save/{product_id}/{package_id}', 'ReportsController@save_participant');
@@ -167,9 +172,6 @@ Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}',
 Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
 
-Route::get('import-customer/{product_id}/{package_id}','ImportExcelController@index');
-Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
-Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
 
 
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
