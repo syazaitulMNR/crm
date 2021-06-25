@@ -110,11 +110,11 @@
     </div>
 
     <!-- Show data in bar chart --------------------------------------------------->
-    {{-- <div class="col-md-5">
+    <div class="col-md-4">
       <div class="card bg-white shadow px-2 py-2">
         <div id="chartdata" ></div>
       </div>
-    </div> --}}
+    </div>
 
     <!-- Show data in line graph --------------------------------------------------->
 
