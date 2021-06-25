@@ -74,8 +74,8 @@
             <thead>
             <tr class="header">
                 <th>#</th>
-                <th>Package Name</th>
-                <th class="w-25"><i class="fas fa-cogs"></i></th>
+                <th>Package</th>
+                <th><i class="fas fa-cogs"></i></th>
             </tr>
             </thead>
             <tbody>
@@ -85,8 +85,8 @@
               <td>{{ $package->firstItem() + $key }}</td>
               <td>{{ $packages->name  }}</td>
               <td>
-                <a class="btn btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-file-invoice-dollar"></i></a>                    
-                <a class="btn btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-ticket-alt"></i></a>
+                <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                    
+                <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
               </td>
             </tr>
             @endif
