@@ -26,7 +26,7 @@
       <div class="float-right pt-3">{{$product->links()}}</div>
       <br>
       
-      <div class="card bg-white px-4 py-4">
+      <div class="card bg-white shadow px-4 py-4">
         <!-- View event details in table ----------------------------------------->
         <div class="table-responsive">
           <table class="table table-hover" id="myTable">
