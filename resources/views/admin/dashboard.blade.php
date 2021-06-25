@@ -23,7 +23,7 @@
   <div class="row">
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8">
-      <div class="card bg-white px-4 py-4">
+      <div class="card bg-white shadow">
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
@@ -109,12 +109,18 @@
       </div>
     </div>
 
-    <!-- Show data in bar chart --------------------------------------------------->
     <div class="col-md-4">
+      <div class="card bg-white shadow">
+
+      </div>
+    </div>
+
+    <!-- Show data in bar chart --------------------------------------------------->
+    {{-- <div class="col-md-5">
       <div class="card bg-white shadow px-2 py-2">
         <div id="chartdata" ></div>
       </div>
-    </div>
+    </div> --}}
 
     <!-- Show data in line graph --------------------------------------------------->
 
