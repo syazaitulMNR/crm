@@ -95,15 +95,15 @@
     </div>
 
     <div class="col-md-4">
-      <div class="card border-0 gradient-1 shadow text-center">
+      <div class="card border-0 gradient-2 shadow text-center pb-2">
         <h6 class="pt-3">Ticket Sold [B+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
-      <div class="card border-0 gradient-4 shadow text-center">
+      <div class="card border-0 gradient-4 shadow text-center pb-2">
         <h6 class="pt-3">Pending Ticket [A-B]</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
-      <div class="card border-0 gradient-3 shadow text-center">
+      <div class="card border-0 gradient-3 shadow text-center pb-2">
         <h6 class="pt-3">Overall Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
