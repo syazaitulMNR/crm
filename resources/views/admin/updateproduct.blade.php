@@ -73,12 +73,13 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label">BillPlz Collection ID</label>
-                <select class="form-select" name="collection_id">
+                <input name="collection_id" type="text" class="form-control" value="{{ $product->collection_id }}">
+                {{-- <select class="form-select" name="collection_id">
                     <option disabled selected>-- Please Select One --</option>
                     @foreach($offers as $offer)
                     <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
                     @endforeach
-                </select>
+                </select> --}}
             </div>
 
             <div class="col-12">
