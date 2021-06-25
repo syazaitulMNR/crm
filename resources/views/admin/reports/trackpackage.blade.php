@@ -6,7 +6,7 @@
 
 @include('layouts.navbar')
 @section('content')
-<div class="col-md-12 pt-2">     
+<div class="col-md-12 pt-3">     
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
       <a href="/trackprogram"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/trackprogram">Customer</a> / <b>{{ $product->name }}</b>
     </div>
