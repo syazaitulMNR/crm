@@ -143,6 +143,7 @@ class MembershipController extends Controller
         
         return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
     }
+    
     public function track_members($membership_id, $level_id, $student_id)
     {
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
