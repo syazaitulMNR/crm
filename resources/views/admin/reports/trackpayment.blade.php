@@ -10,7 +10,7 @@
         
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
         <a href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; 
-        <a href="{{ url('trackpackage') }}/{{ $product->product_id }}">...</a> 
+        <a href="/trackprogram">...</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}">{{ $product->name }}</a> 
         / <a href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}">{{ $package->name }}</a> / <b>{{ $student->first_name }}</b>
     </div>
             
