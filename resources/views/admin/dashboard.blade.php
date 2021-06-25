@@ -30,7 +30,7 @@
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
         
         <div class="table-responsive">
-        <table class="table table-sm text-center">
+        <table class="table text-center">
           <thead class="thead">
             <tr>
               <th class="text-left">Package</th>
@@ -111,15 +111,15 @@
 
     <div class="col-md-4">
       <div class="card border-0 gradient-1 shadow text-center">
-        <h6 class="pt-3">Paid Ticket</h6>
+        <h6 class="pt-3">Ticket Sold [B+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
-      <div class="card border-0 gradient-2 shadow text-center">
-        <h6 class="pt-3">Free Ticket</h6>
+      <div class="card border-0 gradient-4 shadow text-center">
+        <h6 class="pt-3">Pending Ticket [A-B]</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <div class="card border-0 gradient-3 shadow text-center">
-        <h6 class="pt-3">Updated Ticket</h6>
+        <h6 class="pt-3">Overall Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
