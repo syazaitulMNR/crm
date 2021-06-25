@@ -70,29 +70,31 @@
 
         <!-- Show package in table ----------------------------------------------->
         @if(count($package) > 0)
-        <table class="table table-hover" id="successTable">
-            <thead>
-            <tr class="header">
-                <th>#</th>
-                <th>Package</th>
-                <th class="w-25"><i class="fas fa-cogs"></i></th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach ($package as $key => $packages)    
-            @if ($product->product_id == $packages->product_id)   
-            <tr>
-              <td>{{ $package->firstItem() + $key }}</td>
-              <td>{{ $packages->name  }}</td>
-              <td>
-                <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                    
-                <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
-              </td>
-            </tr>
-            @endif
-            @endforeach
-            </tbody>
-        </table>  
+        <div class="table-responsive">
+          <table class="table table-hover">
+              <thead>
+              <tr class="header">
+                  <th>#</th>
+                  <th>Package</th>
+                  <th class="w-25"><i class="fas fa-cogs"></i></th>
+              </tr>
+              </thead>
+              <tbody>
+              @foreach ($package as $key => $packages)    
+              @if ($product->product_id == $packages->product_id)   
+              <tr>
+                <td>{{ $package->firstItem() + $key }}</td>
+                <td>{{ $packages->name  }}</td>
+                <td>
+                  <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                    
+                  <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
+                </td>
+              </tr>
+              @endif
+              @endforeach
+              </tbody>
+          </table>  
+        </div>
         @else
         <p>There are no package yet.</p>
         @endif
