@@ -22,7 +22,7 @@
 
   <div class="row">
     <!-- Show data in table --------------------------------------------------->
-    <div class="col-md-8 pb-1">
+    <div class="col-md-8 pb-2">
       <div class="card bg-white shadow px-4 py-4">
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
