@@ -28,7 +28,7 @@
       
       <!-- View event details in table ----------------------------------------->
       <div class="table-responsive">
-        <table class="table table-hover bg-light" id="myTable">
+        <table class="table table-hover bg-white" id="myTable">
           <thead>
             <tr class="header">
               <th>#</th>
