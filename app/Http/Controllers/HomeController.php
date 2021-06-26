@@ -839,9 +839,10 @@ class HomeController extends Controller
         return $pdf->download('Receipt.pdf');
     }
 
-    public function thankyou_update() 
+    public function thankyou_update($product_id) 
     {
-        return view('customer.thankyou_update');
+        $product = Product::where('product_id', $product_id)->first();
+        return view('customer.thankyou_update', compact('product'));
     }
 
     public function try()
