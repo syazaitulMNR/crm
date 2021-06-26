@@ -290,7 +290,8 @@ class UpgradeController extends Controller
         /*-- Manage Email ---------------------------------------------------*/
                 
         $send_mail = $student->email;
-        $product_name = $product->name;    
+        $product_name = $product->name;   
+        $package_name = $package->name;   
         $date_from = $product->date_from;
         $date_to = $product->date_to;
         $time_from = $product->time_from;
@@ -302,7 +303,7 @@ class UpgradeController extends Controller
 
         $new_package->save();
 
-        dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id));
+        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
   
@@ -384,7 +385,8 @@ class UpgradeController extends Controller
             
 
             $send_mail = $student->email;
-            $product_name = $product->name;        
+            $product_name = $product->name;   
+            $package_name = $package->name;       
             $date_from = $product->date_from;
             $date_to = $product->date_to;
             $time_from = $product->time_from;
@@ -396,7 +398,7 @@ class UpgradeController extends Controller
 
             $new_package->save();
 
-            dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id));
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id));
             
             /*-- End Email -----------------------------------------------------------*/
     
@@ -623,7 +625,8 @@ class UpgradeController extends Controller
         /*-- Manage Email ---------------------------------------------------*/
                 
         $send_mail = $student->email;
-        $product_name = $product->name;    
+        $product_name = $product->name;     
+        $package_name = $package->name; 
         $date_from = $product->date_from;
         $date_to = $product->date_to;
         $time_from = $product->time_from;
@@ -635,7 +638,7 @@ class UpgradeController extends Controller
 
         $new_package->save();
 
-        dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
         
         /*-- End Email -----------------------------------------------------------*/
   
@@ -713,7 +716,8 @@ class UpgradeController extends Controller
             $student = Student::where('stud_id', $stud_id)->first();
 
             $send_mail = $student->email;
-            $product_name = $product->name;        
+            $product_name = $product->name;  
+            $package_name = $package->name;        
             $date_from = $product->date_from;
             $date_to = $product->date_to;
             $time_from = $product->time_from;
@@ -725,7 +729,7 @@ class UpgradeController extends Controller
 
             $new_package->save();
 
-            dispatch(new UpgradeJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $stud_id));
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $stud_id));
             
             /*-- End Email -----------------------------------------------------------*/
     

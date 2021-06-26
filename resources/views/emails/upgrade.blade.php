@@ -27,7 +27,8 @@
                                 <td>
                                   <b>Tarikh</b> : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
                                   <b>Masa</b> : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br>
-                                  <b>Ticket ID</b> : {{ $ticket_id }}
+                                  <b>Tiket ID</b> : {{ $ticket_id }}<br>
+                                  <b>Pakej</b> : {{ $package_name }}
                                 </td>
                             </tr>
                             <hr>
