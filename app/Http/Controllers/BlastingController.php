@@ -143,12 +143,13 @@ class BlastingController extends Controller
         $packageId = $package_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
+        $survey_form = $product->survey_form;
 
         // change email status
         $ticket->email_status = 'Sent';
 
         // send the email
-        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
         $ticket->save();
 
