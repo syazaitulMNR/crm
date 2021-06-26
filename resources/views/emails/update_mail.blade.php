@@ -40,7 +40,7 @@
                             </tr>
                             <tr>
                                 <td class="align-center">
-                                  <a href="https://www.research.net/r/rpmcw2021"> Soalan kaji selidik</a>
+                                  <a href="{{ $survey_form }}"> Soalan kaji selidik</a>
                                 </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>

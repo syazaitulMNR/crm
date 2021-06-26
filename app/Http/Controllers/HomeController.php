@@ -224,8 +224,9 @@ class HomeController extends Controller
                                 $packageId = $package_id;
                                 $productId = $product_id;        
                                 $student_id = $participant_id;
+                                $survey_form = $product->survey_form;
                                 
-                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                                 
                                 continue;
                             }
@@ -275,8 +276,9 @@ class HomeController extends Controller
                             $packageId = $package_id;
                             $productId = $product_id;        
                             $student_id = $stud_id_looping;
+                            $survey_form = $product->survey_form;
                             
-                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                             
                         }
                     }
@@ -313,8 +315,9 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $productId = $product_id;        
                     $student_id = $participant_id;
+                    $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id)); 
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form)); 
 
                 }else{
 
@@ -363,8 +366,9 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $productId = $product_id;        
                     $student_id = $stud_id_single;
+                    $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                     // Mail::to($email_buyer2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                 
                     // If quantity = 1
@@ -410,8 +414,9 @@ class HomeController extends Controller
                                 $packageId = $package_id;
                                 $productId = $product_id;        
                                 $student_id = $participant_id;
+                                $survey_form = $product->survey_form;
                                 
-                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                                dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                                 
                                 continue;
                             }
@@ -461,8 +466,9 @@ class HomeController extends Controller
                             $packageId = $package_id;
                             $productId = $product_id;        
                             $student_id = $stud_id_looping;
+                            $survey_form = $product->survey_form;
                             
-                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                            dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                             // Mail::to($email_participant4)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                             
                         }
@@ -528,8 +534,9 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $productId = $product_id;        
                     $student_id = $participant_id;
+                    $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                         
                     // Process for free ticket form
                     // Check if the ic at free ticket form exist
@@ -566,8 +573,9 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $productId = $product_id;        
                         $student_id = $participant_id;
+                        $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                         // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                         
                         // continue;
@@ -618,8 +626,9 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $productId = $product_id;        
                         $student_id = $stud_id_free;
+                        $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));                            
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));                            
                         // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                     }
 
@@ -670,8 +679,9 @@ class HomeController extends Controller
                     $packageId = $package_id;
                     $productId = $product_id;        
                     $student_id = $stud_id_paid;
+                    $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));        
+                    dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));        
                 
                     // Process for free ticket form
                     // If the ic at free ticket form exist
@@ -708,8 +718,9 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $productId = $product_id;        
                         $student_id = $participant_id;
+                        $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));          
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));          
 
                         // continue;
                     } else {
@@ -758,8 +769,9 @@ class HomeController extends Controller
                         $packageId = $package_id;
                         $productId = $product_id;        
                         $student_id = $stud_id_free;
+                        $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id));
+                        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                         
                     }
                 }
