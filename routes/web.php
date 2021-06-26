@@ -273,7 +273,7 @@ Route::post('get1free1same/{product_id}/{package_id}/{stud_id}/{payment_id}', 'H
 Route::get('exportInvoice/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportInvoice');
 Route::get('exportReceipt/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportReceipt');
 // Thank you page
-Route::get('thankyou-update','HomeController@thankyou_update');
+Route::get('thankyou-update/{product_id}','HomeController@thankyou_update');
 // Exceed limit page 
 Route::get('exceedlimit','HomeController@participant_form');
 

@@ -475,7 +475,7 @@ class HomeController extends Controller
                     }
                 }
 
-                return redirect('thankyou-update');
+                return redirect('thankyou-update/' . $product_id );
             }
         }
 
@@ -776,7 +776,7 @@ class HomeController extends Controller
                     }
                 }
 
-                return redirect('thankyou-update');
+                return redirect('thankyou-update/' . $product_id );
             }
         }
 
