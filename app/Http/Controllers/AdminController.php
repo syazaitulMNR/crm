@@ -123,17 +123,17 @@ class AdminController extends Controller
         $package2 = Package::where('package_id', 'PKD0011')->first();
         $package3 = Package::where('package_id', 'PKD0012')->first();
 
-        $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
-        $paidticket1 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
-        $freeticket1 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
+        $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package1->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket1 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package1->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket1 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package1->package_id)->whereBetween('created_at', [ $from , $to ])->count();
         $totalpackage1 = $registration1 + $paidticket1 + $freeticket1;
-        $registration2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package2)->whereBetween('created_at', [ $from , $to ])->count();
-        $paidticket2 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package2)->whereBetween('created_at', [ $from , $to ])->count();
-        $freeticket2 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package2)->whereBetween('created_at', [ $from , $to ])->count();
+        $registration2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package2->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket2 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package2->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket2 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package2->package_id)->whereBetween('created_at', [ $from , $to ])->count();
         $totalpackage2 = $registration2 + $paidticket2 + $freeticket2;
-        $registration3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
-        $paidticket3 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
-        $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package3)->whereBetween('created_at', [ $from , $to ])->count();
+        $registration3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package3->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket3 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package3->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package3->package_id)->whereBetween('created_at', [ $from , $to ])->count();
         $totalpackage3 = $registration3 + $paidticket3 + $freeticket3;
 
         // get the total
