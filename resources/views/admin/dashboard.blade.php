@@ -51,7 +51,7 @@
               </tr> --}}
             {{-- @endforeach --}}
               <tr>
-                <td class="text-left">Solidariti</td>
+                <td class="text-left">{{ $package1->name }}</td>
                 <td>
                   {{ number_format($registration1) }}
                 </td>
@@ -59,7 +59,7 @@
                 <td>{{ number_format($freeticket1) }}</td>
               </tr>
               <tr>
-                <td class="text-left">Sustain</td>
+                <td class="text-left">{{ $package2->name }}</td>
                 <td>
                   {{ number_format($registration2) }}
                 </td>
@@ -67,7 +67,7 @@
                 <td>{{ number_format($freeticket2) }}</td>
               </tr>
               <tr>
-                <td class="text-left">Growth</td>
+                <td class="text-left">{{ $package3->name }}</td>
                 <td>
                   {{ number_format($registration3) }}
                 </td>

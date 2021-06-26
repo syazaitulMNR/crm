@@ -119,9 +119,9 @@ class AdminController extends Controller
         // get package id
         $package = Package::where('product_id', $product_id)->get();
         // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
-        $package1 = 'PKD004';
-        $package2 = 'PKD005';
-        $package3 = 'PKD006';
+        $package1 = 'PKD009';
+        $package2 = 'PKD0011';
+        $package3 = 'PKD0012';
 
         $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
         $paidticket1 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package1)->whereBetween('created_at', [ $from , $to ])->count();
@@ -148,7 +148,7 @@ class AdminController extends Controller
         $totalticket = Ticket::where('product_id', $product_id)->count();
         $pendingticket = $totalregister - $totalpaid;
         
-        return view('admin.dashboard', compact('product', 'package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket'));
+        return view('admin.dashboard', compact('product', 'package', 'package1', 'package2', 'package3', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
