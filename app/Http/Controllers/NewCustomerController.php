@@ -356,7 +356,8 @@ class NewCustomerController extends Controller
         // });
 
         $send_mail = $student->email;
-        $product_name = $product->name;        
+        $product_name = $product->name;  
+        $package_name = $package->name;        
         $date_from = $product->date_from;
         $date_to = $product->date_to;
         $time_from = $product->time_from;
@@ -369,7 +370,7 @@ class NewCustomerController extends Controller
         $student->save();
         $payment->save();
 
-        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
         /*-- End Email -----------------------------------------------------------*/
   
@@ -441,7 +442,8 @@ class NewCustomerController extends Controller
             $package = Package::where('package_id', $package_id)->first();
 
             $send_mail = $student->email;
-            $product_name = $product->name;        
+            $product_name = $product->name;   
+            $package_name = $package->name;       
             $date_from = $product->date_from;
             $date_to = $product->date_to;
             $time_from = $product->time_from;
@@ -454,7 +456,7 @@ class NewCustomerController extends Controller
             $student->save();
             $payment->save();
 
-            dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
             
             /*-- End Email -----------------------------------------------------------*/
             
