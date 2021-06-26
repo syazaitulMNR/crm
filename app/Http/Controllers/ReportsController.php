@@ -836,6 +836,7 @@ class ReportsController extends Controller
 
         $email = $student->email; 
         $product_name = $product->name;
+        $package_name = $package->name; 
         $date_from = $product->date_from;
         $date_to = $product->date_to;
         $time_from = $product->time_from;
@@ -848,7 +849,7 @@ class ReportsController extends Controller
         
         // echo 'sent mail';
         
-        dispatch(new TiketJob($email, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id, $survey_form));
+        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id, $survey_form));
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
     }
