@@ -65,7 +65,8 @@ class BlastingController extends Controller
 
         // Email content
         $send_mail = $student->email;
-        $product_name = $product->name;        
+        $product_name = $product->name;    
+        $package_name = $package->name;      
         $date_from = $product->date_from;
         $date_to = $product->date_to;
         $time_from = $product->time_from;
@@ -79,7 +80,7 @@ class BlastingController extends Controller
         $payment->email_status = 'Sent';
 
         // send the email
-        dispatch(new PengesahanJob($send_mail, $product_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
         $payment->save();
 
