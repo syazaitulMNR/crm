@@ -50,10 +50,10 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Event Name</th>
+          <th scope="col">Event</th>
           <th scope="col">Date</th>
           {{-- <th scope="col">Time</th> --}}
-          <th scope="col">Offer Type</th>
+          <th scope="col">Offer</th>
           <th scope="col"><i class="fas fa-cogs"></i></th>
         </tr>
       </thead>
