@@ -133,6 +133,8 @@
 
   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
   @else
+  <h2 class="border-bottom">Dashboard</h2>
+
   <div class="row">
     <div class="col-md-3">
       <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
