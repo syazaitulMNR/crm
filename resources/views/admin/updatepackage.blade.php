@@ -10,7 +10,7 @@
 <div class="col-md-12 pt-3">
 
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="{{ url('package')}}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/product">Event</a> / <a href="{{ url('package')}}/{{ $product->product_id }}">Package</a> / <b>Update Package</b>
+        <a href="{{ url('package')}}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">...</a> / <a href="/product">Event</a> / <a href="{{ url('package')}}/{{ $product->product_id }}">Package</a> / <b>Update Package</b>
     </div>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
