@@ -133,7 +133,7 @@
 
   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
   @else
-  <h2 class="border-bottom">Dashboard</h2>
+  <h3 class="border-bottom pb-2">Dashboard</h3>
 
   <div class="row">
     <div class="col-md-3">
