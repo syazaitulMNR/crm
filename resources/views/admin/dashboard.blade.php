@@ -134,20 +134,28 @@
   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
   @else
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3">
       <div class="card border-0 gradient-1 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package1->name }}</h6>
-        <b class="display-6 pb-3">{{ number_format($collection1) }}</b>
+        <b class="display-6 pb-3">RM {{ number_format($collection1) }}</b>
       </div>
-      <br>
+    </div>
+    <div class="col-md-3">
       <div class="card border-0 gradient-4 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package2->name }}</h6>
-        <b class="display-6 pb-3">{{ number_format($collection2) }}</b>
+        <b class="display-6 pb-3">RM {{ number_format($collection2) }}</b>
       </div>
-      <br>
+    </div>
+    <div class="col-md-3">
       <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package3->name }}</h6>
-        <b class="display-6 pb-3">{{ number_format($collection3) }}</b>
+        <b class="display-6 pb-3">RM {{ number_format($collection3) }}</b>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
+        <h6 class="pt-4">Total Collection</h6>
+        <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b>
       </div>
     </div>
   </div>
