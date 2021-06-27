@@ -31,8 +31,9 @@
     </div>
     
     <!-- Add package form ---------------------------------------------------->
-    <form class="row g-3 px-3" action="{{ url('storepack') }}/{{ $product->product_id }}" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
+    <form action="{{ url('storepack') }}/{{ $product->product_id }}" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
     @csrf
+        <div class="row pt-3" style="padding-left: 8%">
             <div class='col-md-8'>
                 <div class='row'>
                     <div class='col-md-9'>         
@@ -76,6 +77,7 @@
             <div class='col-md-8 pt-3'>
                 <button type='submit' class='btn btn-primary float-right'> Submit </button>
             </div>
+        </div>
         
     </form>
 </div>
