@@ -9,37 +9,38 @@
 
 <div class="col-md-12 pt-3">    
 
-        <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-            <a href="/manageuser"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/manageuser">Manage User</a> / <b>Manage Role</b>
-        </div>
-      
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Manage Role</h1>
-        </div>
-      
-        @if ($message = Session::get('rolesuccess'))
-        <div class="alert alert-success alert-block">
+    <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
+        <a href="/manageuser"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/manageuser">Manage User</a> / <b>Manage Role</b>
+    </div>
+    
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Manage Role</h1>
+    </div>
+    
+    @if ($message = Session::get('rolesuccess'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
+
+    @if ($message = Session::get('updatesuccess'))
+        <div class="alert alert-info alert-block">
             <button type="button" class="close" data-bs-dismiss="alert">×</button>	
             <strong>{{ $message }}</strong>
         </div>
-        @endif
+    @endif
 
-        @if ($message = Session::get('updatesuccess'))
-            <div class="alert alert-info alert-block">
-                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-            </div>
-        @endif
+    @if ($message = Session::get('deletesuccess'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
 
-        @if ($message = Session::get('deletesuccess'))
-            <div class="alert alert-danger alert-block">
-                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-            </div>
-        @endif
-
-        <form class="row g-3 px-3" action="{{ url('addrole') }}" method="POST"> 
-        @csrf                
+    <form action="{{ url('addrole') }}" method="POST"> 
+    @csrf
+        <div class="row">                  
             <div class='col-md-3 pr-0'>
                 <div class="form-group">
                     <input name="name" type="text" class="form-control" placeholder="Add Role" required>
@@ -74,20 +75,21 @@
                 </div>
                 </div>
             </div>
-        </form>
-        
-        <div>             
-          <!-- Put content here-->
-          @if(count($roles) > 0)
-          <table class="table">
-              <thead>
+        </div>
+    </form>
+                
+    <!-- Put content here-->
+    @if(count($roles) > 0)
+    <div class="table-responsive"> 
+        <table class="table">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>Role Name</th>
                     <th><i class="fas fa-cogs"></i></th>
                 </tr>
-              </thead>
-              <tbody>
+            </thead>
+            <tbody>
                 @foreach ($roles as $key => $role)                        
                     <tr>
                         <td>{{ $roles->firstItem() + $key  }}</td>
@@ -117,13 +119,10 @@
                     </tr>    
                 @endforeach
             </tbody>
-            </table>
-            @else
-            <p>There are no role to display.</p>
-            @endif
-        </div>
-      
-    </main>
-  </div>
+        </table>
+    </div>
+    @else
+    <p>There are no role to display.</p>
+    @endif
 </div>
 @endsection
