@@ -6,45 +6,45 @@
 
 @include('layouts.navbar')
 @section('content')
-@include('layouts.sidebar')
-<div class="row py-4">   
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-    
-    <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-      <a href="/product"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/product">Event</a> / <b>Package</b>
-    </div>
 
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">Package</h1>
-      <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group mr-2">
-          <a href="{{ url('addpackage') }}/{{ $product->product_id }}" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> New Package</a>
-        </div>
+<div class="col-md-12 pt-3">   
+    
+  <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
+    <a href="/product"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/product">Event</a> / <b>Package</b>
+  </div>
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Package</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <a href="{{ url('addpackage') }}/{{ $product->product_id }}" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> New Package</a>
       </div>
     </div>
-    
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
+  </div>
+  
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
 
-    @if ($message = Session::get('updatesuccess'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
+  @if ($message = Session::get('updatesuccess'))
+  <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
 
-    @if ($message = Session::get('delete'))
-    <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
+  @if ($message = Session::get('delete'))
+  <div class="alert alert-danger alert-block">
+      <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+      <strong>{{ $message }}</strong>
+  </div>
+  @endif
 
-    @if(count($package) > 0)
+  @if(count($package) > 0)
+  <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -90,11 +90,11 @@
         @endforeach
       </tbody>
     </table>
-    @else
-      <p>There are no package to display.</p>
-    @endif
+  </div>
+  @else
+    <p>There are no package to display.</p>
+  @endif
 
-  </main>
 </div>
 @endsection
 
