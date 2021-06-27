@@ -133,8 +133,8 @@
 
   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
   @else
-  <h3 class="border-bottom pb-4">Total Collection</h3>
-
+  <h3 class="border-bottom">Total Collection</h3>
+  <br>
   <div class="row">
     <div class="col-md-3">
       <div class="card border-0 shadow text-center" style="height: 117px">
