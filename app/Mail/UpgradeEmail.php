@@ -10,14 +10,14 @@ use Illuminate\Queue\SerializesModels;
 class UpgradeEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id;
+    protected $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id, $survey_form;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id)
+    public function __construct($product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id, $survey_form)
     {
         $this->product_name = $product_name;   
         $this->package_name = $package_name;    
@@ -29,6 +29,7 @@ class UpgradeEmail extends Mailable
         $this->ticket_id = $ticket_id;
         $this->productId = $productId;
         $this->student_id = $student_id;
+        $this->survey_form = $survey_form;
     }
 
     /**
@@ -52,6 +53,7 @@ class UpgradeEmail extends Mailable
                     'ticket_id' => $this->ticket_id,
                     'productId' => $this->productId,
                     'student_id' => $this->student_id,
+                    'survey_form' => $this->survey_form,
                 ]);
     }
 }

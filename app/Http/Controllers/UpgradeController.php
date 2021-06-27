@@ -300,10 +300,11 @@ class UpgradeController extends Controller
         // $payment_id = $payment->payment_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
+        $survey_form = $product->survey_form;
 
         $new_package->save();
 
-        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id));
+        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $student_id, $survey_form));
         
         /*-- End Email -----------------------------------------------------------*/
   
@@ -395,10 +396,11 @@ class UpgradeController extends Controller
             // $payment_id = $payment_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
+            $survey_form = $product->survey_form;
 
             $new_package->save();
 
-            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id));
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
             
             /*-- End Email -----------------------------------------------------------*/
     
@@ -635,10 +637,11 @@ class UpgradeController extends Controller
         $payment_id = $payment->payment_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
+        $survey_form = $product->survey_form;
 
         $new_package->save();
 
-        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+        dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $survey_form));
         
         /*-- End Email -----------------------------------------------------------*/
   
@@ -726,10 +729,11 @@ class UpgradeController extends Controller
             $payment_id = $payment_id;
             $productId = $new_package->product_id;        
             $student_id = $stud_id;
+            $survey_form = $product->survey_form;
 
             $new_package->save();
 
-            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $stud_id));
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $stud_id, $survey_form));
             
             /*-- End Email -----------------------------------------------------------*/
     
