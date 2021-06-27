@@ -22,7 +22,7 @@
         <h1 class="h2">Update Product</h1>
     </div>
     
-    <form class="row g-3 px-5" action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
+    <form class="row g-3 px-3" action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
     @csrf
 
         <div class="col-md-6">
@@ -82,65 +82,6 @@
         <div class="col-12">
             <button type="submit" class="btn btn-primary float-right">Submit</button>
         </div>
-
-        {{-- <div class="row py-3" style="padding-left: 8%">
-            <div class='col-md-4'>         
-                <div class="form-group">
-                    <label for="name">Product</label>
-                    <input name="prodname" type="text" class="form-control" value="{{ $product->name }}" required>
-                </div>
-            </div>
-
-            <div class='col-md-4'>         
-                <div class="form-group">
-                    <label for="name">Offer Provided</label>
-                    <select class="form-select" aria-label="Default select example" name="offer_id" required>
-                        <option disabled selected>-- Please Select One --</option>
-                        @foreach($offers as $offer)
-                        <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            {{-- <div class='col-md-8'>         
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea name="description" type="text" class="form-control" required>{{ $product->description }}</textarea>
-                </div>
-            </div>
-
-            <div class='col-md-8'>     
-                <label for="name">Date</label>
-                <div class="form-group row pl-3">
-                    <input type="text" name="date1" id="date1" class="form-control" value="{{ $product->date_from }}" placeholder="From" style="width:46.5%" required/>
-                    &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
-                    <input type="text" name="date2" id="date2" class="form-control" value="{{ $product->date_to }}" placeholder="To" style="width:46.5%" required/>
-                </div>
-            </div>
-
-            <div class='col-md-8'>     
-                <label for="name">Time</label>
-                <div class="form-group row pl-3">
-                    <input type="time" name="time1" class="form-control" value="{{ $product->time_from }}" style="width:46.5%"/>
-                    &nbsp;&nbsp;&nbsp; To &nbsp;&nbsp;&nbsp;
-                    <input type="time" name="time2" class="form-control" value="{{ $product->time_to }}" style="width:46.5%"/>
-                </div>
-            </div>
-
-            <div class="col-md-8">                         
-                <div class="form-group">
-                    <label for="formFile" class="form-label">Certificate Image</label>
-                    <input class="form-control" type="file" id="formFile" name="cert_image">
-                    <em>*Please ignore this part if there is no certificate provided for the event</em>
-                </div>
-            </div>
-
-            <div class='col-md-8 pt-3'>
-                <button type='submit' class='btn btn-primary float-right'> Update </button>
-            </div>
-        
-        </div> --}}
                 
     </form>
 
