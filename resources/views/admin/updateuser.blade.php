@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="row">                    
+            <div class="row-fluid">                    
                 <div style="width:387px">
                     <div class="form-group">
                         <label for="password">Password</label>
