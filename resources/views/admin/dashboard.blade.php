@@ -37,6 +37,7 @@
                 <th>Registration [A]</th>
                 <th>Updated Ticket [B]</th>
                 <th>Free Ticket [C]</th>
+                <th>Cumulative Total</th>
               </tr>
             </thead>
             <tbody>
@@ -57,6 +58,7 @@
                 </td>
                 <td>{{ number_format($paidticket1) }}</td>
                 <td>{{ number_format($freeticket1) }}</td>
+                <td>{{ number_format($totalpackage1) }}</td>
               </tr>
               <tr>
                 <td class="text-left">{{ $package2->name }}</td>
@@ -65,6 +67,7 @@
                 </td>
                 <td>{{ number_format($paidticket2) }}</td>
                 <td>{{ number_format($freeticket2) }}</td>
+                <td>{{ number_format($totalpackage2) }}</td>
               </tr>
               <tr>
                 <td class="text-left">{{ $package3->name }}</td>
@@ -73,6 +76,7 @@
                 </td>
                 <td>{{ number_format($paidticket3) }}</td>
                 <td>{{ number_format($freeticket3) }}</td>
+                <td>{{ number_format($totalpackage3) }}</td>
               </tr>
             </tbody>
             <tfoot>
