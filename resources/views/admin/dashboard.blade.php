@@ -133,9 +133,9 @@
 
   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
   @else
-  <h3 class="border-bottom">Total Collection</h3>
-  <br>
-  <div class="row">
+  <h3 class="border-bottom pb-2">Total Collection</h3>
+
+  <div class="row pt-2">
     <div class="col-md-3">
       <div class="card border-0 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package1->name }}</h6>
