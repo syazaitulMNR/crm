@@ -107,6 +107,5 @@
     <p>There are no event to display.</p>
   @endif
     
-  </div>
 </div>
 @endsection
