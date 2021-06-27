@@ -9,7 +9,7 @@
 
 <div class="col-md-12 pt-3">     
       
-  <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
+  <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
     <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Event</b>
   </div>
 
