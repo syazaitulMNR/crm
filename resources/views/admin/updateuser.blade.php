@@ -58,8 +58,8 @@
                 </div>
             </div>
 
-            <div class="row-fluid">                    
-                <div class='col-md-4'>
+            <div class="row">                    
+                <div style="width:387px">
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $users->password }}" required autocomplete="new-password">
@@ -70,6 +70,9 @@
                             </span>
                         @enderror
                     </div>
+                </div>
+
+                <div style="width:387px">
                     <div class="form-group">
                         <label for="password-confirm">Confirm Password</label>
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ $users->password }}" required autocomplete="new-password">
