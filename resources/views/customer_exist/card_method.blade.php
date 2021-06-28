@@ -93,44 +93,6 @@ Pendaftaran Pembeli
                             </div>
                         </div>
 
-                        <div class="inline field px-2 pb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Saya telah membaca dan bersetuju dengan <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" >Terma & Syarat</a> yang telah ditetapkan.
-                                </label>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">TERMA & SYARAT</h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="px-4">
-                                                    <li class="text-justify py-2">Segala pembayaran yang telah dibuat kepada pihak penganjur untuk tujuan penyertaan program yang 
-                                                        telah didaftarkan <b>TIDAK AKAN DIKEMBALIKAN</b>.</li>
-
-                                                    <li class="text-justify py-2">Bayaran penuh yuran penyertaan program mestilah diselesaikan 7 hari sebelum program bermula. Kegagalan 
-                                                        menjelaskan baki bayaran yuran penyertaan anda sebelum program akan mengakibatkan penyertaan anda dibatalkan.</li>
-
-                                                    <li class="text-justify py-2">Sekiranya anda telah menjelaskan bayaran penuh bagi pakej yang ditawarkan, anda dibenarkan untuk menunda 
-                                                        ke program dan pakej yang sama pada tarikh yang akan datang dalam tempoh 6 bulan. Anda <b>MESTI</b> memaklumkan pihak 
-                                                        penganjur untuk tujuan ini secara bertulis.</li>
-
-                                                    <li class="text-justify py-2">Akan tetapi, sekiranya anda menunda program yang telah didaftarkan dan bayaran penuh masih belum dijelaskan, 
-                                                        jumlah yuran penyertaan program baru akan dikenakan mengikut harga dan pakej semasa. Perlu dijelaskan bahawa 
-                                                        anda tidak lagi berpeluang mendapatkan harga promosi yang ditawarkan pada tarikh borang ini ditandatangani.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
                     </div>
 
                     <div class="card-footer">
