@@ -24,11 +24,6 @@ Route::get('/addpack', function () {
     return view('admin.addpackage');
 });
 
-Route::get('/addstudent', function () {
-    return view('students.adddetails');
-});
-
-
 /*
 |--------------------------------------------------------------------------
 | Manage profile
@@ -189,12 +184,6 @@ Route::post('store-import/{membership_id}/{level_id}','MembershipController@stor
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
 
-/*
-|--------------------------------------------------------------------------
-| Closing Tracker
-|--------------------------------------------------------------------------
-*/
-Route::get('closing-list','ClosingController@view');
 
 //---------------------------------------------- Customer Part -------------------------------------------------//
 
