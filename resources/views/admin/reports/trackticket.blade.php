@@ -78,7 +78,7 @@
                                 <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
                                 <!-- Participant Modal Triggered -->
                                 <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-dialog modal-dialog-scrollable">
                                         <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
