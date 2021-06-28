@@ -43,9 +43,9 @@
         <h3 class="display-4">Pendaftaran anda telah berjaya!</h3>
         <p class="lead pt-3">Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p>
         {{-- <p class="lead">2) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p> --}}
-        {{-- <div class="py-3" style="font-size: 24px; color: green;">
+        <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
-        </div> --}}
+        </div>
         
         {{-- <div class="mx-auto py-4"> --}}
           {{-- <div class="text-center mx-auto py-1">
