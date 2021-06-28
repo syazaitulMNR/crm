@@ -292,15 +292,6 @@ class AdminController extends Controller
             
 
         }
-        /*foreach($request->permission as $key => $value){
-
-        $roles = Role::where('role_id', $id)->first();
-
-        $roles->name = $request->name;
-        $roles->description = $request->description;
-        $roles->permission = $value;
-        $roles->save();
-        }*/
 
         return redirect('managerole')->with('updatesuccess','Role Successfully Updated!');
     }
@@ -315,9 +306,6 @@ class AdminController extends Controller
     /*-- Manage Profile --------------------------------------------------------*/
     public function profile()
     {
-        // $users = User::where('user_id', $id)->first();
-        // $roles = Role::orderBy('id','asc')->get();
-
         return view('admin.updateprofile');
     }
 
