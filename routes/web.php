@@ -20,10 +20,6 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-// Route::get('/addproduct', function () {
-//     return view('admin.addproduct');
-// });
-
 Route::get('/addpack', function () {
     return view('admin.addpackage');
 });
@@ -47,7 +43,6 @@ Route::post('updateprofile/{id}','AdminController@manageprofile');
 |--------------------------------------------------------------------------
 */
 Route::get('dashboard', 'AdminController@dashboard');
-// Route::get('/superadmin', 'AdminController@index');
 Route::get('manageuser', 'AdminController@manage');
 Route::get('managerole', 'AdminController@managerole');
 Route::post('addrole', 'AdminController@addrole');
@@ -128,7 +123,6 @@ Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Blasti
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
 
-// Route::get('send-bulk-mail', 'BlastingController@sendBulkMail');
 
 /*
 |--------------------------------------------------------------------------
@@ -220,7 +214,6 @@ Route::post('store1/{product_id}/{package_id}', 'NewCustomerController@postCreat
 Route::get('maklumat-tiket/{product_id}/{package_id}', 'NewCustomerController@createStepTwo');
 Route::post('store2/{product_id}/{package_id}', 'NewCustomerController@postCreateStepTwo');
 Route::get('pengesahan-pembelian/{product_id}/{package_id}', 'NewCustomerController@createStepThree');
-// Route::post('store3/{product_id}/{package_id}', 'NewCustomerController@postCreateStepThree');
 Route::get('jenis-pembayaran/{product_id}/{package_id}', 'NewCustomerController@createStepFour');
 Route::post('store4/{product_id}/{package_id}', 'NewCustomerController@postCreateStepFour');
 Route::get('payment-method/{product_id}/{package_id}', 'NewCustomerController@payment_method');
@@ -263,25 +256,17 @@ Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
 */
 Route::get('pendaftaran-peserta/{product_id}', 'HomeController@check_ic');
 Route::get('pendaftaran-peserta/verify/{product_id}', 'HomeController@verify_ic');
-
 Route::get('updateform/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@participant_form');
-// If no offer/bulk ticket
-Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_bulk');
-// If get 1 free 1 same ticket
-Route::post('get1free1same/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_get1free1same');
-
+Route::post('updateforms/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_bulk'); // If no offer/bulk ticket
+Route::post('get1free1same/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@register_get1free1same'); // If get 1 free 1 same ticket
 Route::get('exportInvoice/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportInvoice');
 Route::get('exportReceipt/{product_id}/{package_id}/{stud_id}/{payment_id}', 'HomeController@exportReceipt');
-// Thank you page
-Route::get('thankyou-update/{product_id}','HomeController@thankyou_update');
-// Exceed limit page 
-Route::get('exceedlimit','HomeController@participant_form');
-
-Route::get('products/{product_id}/{package_id}', 'NewRegisterController@index')->name('products.index');
+Route::get('thankyou-update/{product_id}','HomeController@thankyou_update'); // Thank you page
+Route::get('exceedlimit','HomeController@participant_form');// Exceed update limit page 
 
 /*
 |--------------------------------------------------------------------------
-| Upgrade Package
+| Upgrade Package by buyer
 |--------------------------------------------------------------------------
 */
 Route::get('upgrade-package/{product_id}/{package_id}/{stud_id}/{payment_id}', 'UpgradeController@choose_package');
