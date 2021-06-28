@@ -19,9 +19,9 @@ class AdminController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Admin Panel
+    | AdminController
     |--------------------------------------------------------------------------
-    |   This controller is for managing Admin Panel
+    |   This controller is for managing user, role and dashboard
     | 
     */
 
@@ -30,14 +30,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        return view('admin.dashboard');
-    }
-
+    /*-- Dashboard --------------------------------------------------------*/
     public function dashboard(Request $request){      
         
-        // Report Table
+        // get date and time
         $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
