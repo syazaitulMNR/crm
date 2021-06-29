@@ -171,7 +171,7 @@
         </tr>
         <tr>
           <th class="text-left">Registration [A]</th>
-            {{ number_format($registration1) }}
+            <td>{{ number_format($registration1) }}</td>
         </tr>
         <tr>
           <th class="text-left">Updated Paid Ticket [B]</th>
