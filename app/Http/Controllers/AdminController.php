@@ -144,7 +144,7 @@ class AdminController extends Controller
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        $totalticket = Ticket::where('product_id', $product_id)->where('ticket_type','paid')->count();
+        $totalticket = Ticket::where('product_id', $product_id)->count();
         $pendingticket = $totalregister - $totalpaid;
 
         // get total collection
