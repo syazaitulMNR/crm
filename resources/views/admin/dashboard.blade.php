@@ -165,36 +165,45 @@
 
   <div class="table-responsive">
     <table class="table text-center">
+      <thead>
         <tr>
           <th class="text-left">Package</th>
           <th>{{ $package1->name }}</th>
           <th>{{ $package2->name }}</th>
           <th>{{ $package3->name }}</th>
+          <th>Grand Total</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
           <th class="text-left">Registration [A]</th>
           <td>{{ number_format($registration1) }}</td>
           <td>{{ number_format($registration2) }}</td>
           <td>{{ number_format($registration3) }}</td>
+          <td>{{ number_format($totalregister) }}</td>
         </tr>
         <tr>
           <th class="text-left">Updated Paid Ticket [B]</th>
           <td>{{ number_format($paidticket1) }}</td>
           <td>{{ number_format($paidticket2) }}</td>
           <td>{{ number_format($paidticket3) }}</td>
+          <td>{{ number_format($totalpaid) }}</td>
         </tr>
         <tr>
           <th class="text-left">Updated Free Ticket [C]</th>
           <td>{{ number_format($freeticket1) }}</td>
           <td>{{ number_format($freeticket2) }}</td>
           <td>{{ number_format($freeticket3) }}</td>
+          <td>{{ number_format($totalfree) }}</td>
         </tr>
         <tr>
           <th class="text-left">Cumulative Total Registration</th>
           <td>{{ number_format($totalpackage1) }}</td>
           <td>{{ number_format($totalpackage2) }}</td>
           <td>{{ number_format($totalpackage3) }}</td>
+          <td>{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</td>
         </tr>
+      </tbody>
       {{-- @foreach ($package as $packages) --}}
         {{-- <tr>
           <td class="text-left">{{ $packages->name }}</td>
@@ -206,24 +215,6 @@
         </tr> --}}
       {{-- @endforeach --}}
         
-        {{-- <tr>
-          <td class="text-left">{{ $package2->name }}</td>
-          <td>
-            {{ number_format($registration2) }}
-          </td>
-          <td>{{ number_format($paidticket2) }}</td>
-          <td>{{ number_format($freeticket2) }}</td>
-          <td>{{ number_format($totalpackage2) }}</td>
-        </tr>
-        <tr>
-          <td class="text-left">{{ $package3->name }}</td>
-          <td>
-            {{ number_format($registration3) }}
-          </td>
-          <td>{{ number_format($paidticket3) }}</td>
-          <td>{{ number_format($freeticket3) }}</td>
-          <td>{{ number_format($totalpackage3) }}</td>
-        </tr> --}}
       <tfoot>
         {{-- <tr>
           <th class="text-left">Today's Collection</th>
