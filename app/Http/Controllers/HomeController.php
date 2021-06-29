@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-// use App\Mail\SendMailable;
 use App\Jobs\TiketJob;
-// use App\Mail\TestMail;
 use App\Product;
 use App\Feature;
 use App\Package;
@@ -50,7 +48,6 @@ class HomeController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
 
-        // // return view('customer/main', compact('product', 'package')); bukan yg ni taw!!!
         return view('customer_new/check_ic', compact('product', 'package'));
         // abort(404); 
     }
@@ -65,7 +62,6 @@ class HomeController extends Controller
 
         }else{
 
-            // return redirect('regnewstudent/'. $product_id . '/' . $package_id . '/' . $request->ic);
             return redirect('maklumat-pembeli/'. $product_id . '/' . $package_id . '/' . $request->ic);
 
         }
@@ -135,17 +131,18 @@ class HomeController extends Controller
         }else{
 
             if($payment->offer_id == 'OFF001') {
+
                 //for no offer ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
             } else if($payment->offer_id == 'OFF002') {
+
                 //for Buy 1 Get 1 (Same Ticket)
-                
                 return view('customer.get1free1same', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
             } else if($payment->offer_id == 'OFF003') {
-                //For No Offer or Bulk Ticket
-                
+
+                //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
     
             } else {
@@ -153,7 +150,6 @@ class HomeController extends Controller
                 echo 'No Such Offer';
     
             }
-
 
         }
     }
@@ -177,11 +173,10 @@ class HomeController extends Controller
                 $payment->update_count = 1;
                 $payment->save();
                 
-                if(Student::where('ic', $request->ic)->exists())
+                if(Student::where('ic', $request->ic)->exists())  //If the ic at single form exist
                 {
-                    // If the ic at single form exist
-
                     if ($payment->quantity == 1){
+
                         // Can access single form
 
                     }else{
@@ -373,10 +368,8 @@ class HomeController extends Controller
                     $survey_form = $product->survey_form;
                     
                     dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-                    // Mail::to($email_buyer2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-                
-                    // If quantity = 1
-                    if ($payment->quantity == 1){
+             
+                    if ($payment->quantity == 1){ //If quantity = 1
                         // Can access single form
                     }else{
 
@@ -475,7 +468,6 @@ class HomeController extends Controller
                             $survey_form = $product->survey_form;
                             
                             dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-                            // Mail::to($email_participant4)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
                             
                         }
                     }
@@ -487,6 +479,7 @@ class HomeController extends Controller
 
     }
 
+    //For buy 1 free 1
     public function register_get1free1same($product_id, $package_id, $stud_id, $payment_id, Request $request)
     {
         if($request->myButton == 'Simpan'){
@@ -505,12 +498,11 @@ class HomeController extends Controller
                 $payment->update_count = 1;
                 $payment->save();
                 
-                if(Student::where('ic', $request->ic)->exists())
+                if(Student::where('ic', $request->ic)->exists()) // If the ic at paid ticket form exist
                 {
                     $participant = Student::where('ic', $request->ic)->first();
                     $participant_id = $participant->stud_id;
 
-                    // If the ic at paid ticket form exist
                     // Process for Paid Ticket form
                     $ticket = Ticket::orderBy('id','Desc')->first();
                     $auto_inc_tik = $ticket->id + 1;
@@ -546,8 +538,7 @@ class HomeController extends Controller
                     dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                         
                     // Process for free ticket form
-                    // Check if the ic at free ticket form exist
-                    if(Student::where('ic', $request->ic_free1)->exists())
+                    if(Student::where('ic', $request->ic_free1)->exists()) // Check if the ic at free ticket form exist
                     {    
                         $participant = Student::where('ic', $request->ic_free1)->first();
                         $participant_id = $participant->stud_id;
@@ -584,9 +575,7 @@ class HomeController extends Controller
                         $survey_form = $product->survey_form;
                         
                         dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-                        // Mail::to($email_participant1)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-                        
-                        // continue;
+
                     } else {
 
                         // If ic at free ticket form not exist
@@ -637,14 +626,12 @@ class HomeController extends Controller
                         $student_id = $stud_id_free;
                         $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));                            
-                        // Mail::to($email_participant2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
+                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));     
                     }
 
                 }else{
 
                     // If the ic at paid ticket form not exist
-
                     $stud_id_paid = 'MI'.uniqid();
 
                     Student::create(array(
@@ -694,8 +681,7 @@ class HomeController extends Controller
                     dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));        
                 
                     // Process for free ticket form
-                    // If the ic at free ticket form exist
-                    if(Student::where('ic', $request->ic_free1)->exists())
+                    if(Student::where('ic', $request->ic_free1)->exists()) // If the ic at free ticket form exist
                     {
                         $participant = Student::where('ic', $request->ic_free1)->first();
                         $participant_id = $participant->stud_id;
@@ -733,7 +719,6 @@ class HomeController extends Controller
                         
                         dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));          
 
-                        // continue;
                     } else {
 
                         // If the ic at free ticket form not exist
@@ -857,55 +842,6 @@ class HomeController extends Controller
         return view('customer.thankyou_update', compact('product'));
     }
 
-    public function try()
-    {
-        // $apikey = env('MAIL_PASSWORD');
-        // $sendgrid = new \SendGrid($apikey);
-            
-        // $email = new \SendGrid\Mail\Mail(); 
-        // $email->setFrom("noreply@momentuminternet.my", "Momentum Internet Sdn Bhd");
-        // $email->setSubject("DANIAL LIHAT EMEL INI SEKARANG!");
-        // $email->addTo("zarina4.11@gmail.com", "Danial Sangat Hensem");
-        // $email->addContent("text/html", "Danial sangatlah hensem sangat, terima kasih!");
-                
-        // try {
-
-        //     $response = $sendgrid->send($email);
-        //     //print $response->statusCode() . "\n";
-        //     //print_r($response->headers());
-        //     //print $response->body() . "\n";
-
-        // } catch (Exception $e) {
-
-        //     echo 'Caught exception: '. $e->getMessage() ."\n";
-
-        // }
-
-        
-        echo date('Y-m-d H:i:s', strtotime('-2 hours', strtotime('2021-06-09 08:00:00')));
-        echo date('Y-m-d H:i:s', strtotime('+8 hours'));
-
-    }
-
-    public function tryemail()
-    {
-        // Manage email (for new ic in single form)                    
-        $product = 'PRD003';
-        $package = 'PKD007';
-
-        // $from_name = 'noreply@momentuminternet.com';
-        $email_pkg2 = 'zarina4.11@gmail.com'; 
-        
-        $name = 'noreply'; 
-        $products = 'product';
-        $package = 'package';
-        $date_from = '1-1-2021';
-        $date_to = '2-2-2021';
-        $time_from = '04:21AM';
-        $time_to = '05:21AM';
-        
-        Mail::to($email_pkg2)->send(new SendMailable($name, $package, $products, $date_from, $date_to, $time_from, $time_to));
-    }
 }
 
 
