@@ -11,7 +11,6 @@
             <th>payment</th>
             <th>status</th>
             <th>pay_method</th>
-            {{-- <th>ticket_type</th> --}}
             <th>offer_id</th>
             <th>user_id</th>
         
@@ -29,7 +28,6 @@
             <td>199</td>
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
-            {{-- <td>paid/free</td> --}}
             <td>OFF001</td>
             <td>UID001</td>
         </tr>
