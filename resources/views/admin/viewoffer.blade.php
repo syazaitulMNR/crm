@@ -86,10 +86,9 @@
       <tbody>
         @foreach ($offers as $key => $offer)                        
           <tr>
-              <td>{{ $offers->firstItem() + $key  }}</td>
-              <td>{{ $offer->name  }}</td>
+            <td>{{ $offers->firstItem() + $key  }}</td>
+            <td>{{ $offer->name  }}</td>
             <td>
-              {{-- <a class="btn btn-primary" href="{{ url('update-offer') }}/{{ $offer->offer_id }}"><i class="fas fa-edit"></i> Update</a> --}}
               <!-- Update trigger modal -->
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateoffer">
                   <i class="fas fa-edit"></i>
