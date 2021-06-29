@@ -37,7 +37,7 @@
                 <th>Registration [A]</th>
                 <th>Updated Paid Ticket [B]</th>
                 <th>Updated Free Ticket [C]</th>
-                <th>Cumulative Total</th>
+                <th>Cumulative Total Registration</th>
               </tr>
             </thead>
             <tbody>
