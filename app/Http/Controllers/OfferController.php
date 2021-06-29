@@ -46,7 +46,6 @@ class OfferController extends Controller
     public function delete($offer_id)
     {
         $offers = Offer::where('offer_id', $offer_id);
-
         $offers->delete();
 
         return back()->with('delete', 'Offer Successfully Deleted');
