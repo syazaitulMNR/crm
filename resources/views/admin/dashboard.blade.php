@@ -167,23 +167,33 @@
     <table class="table text-center">
         <tr>
           <th class="text-left">Package</th>
-          <td class="text-left">{{ $package1->name }}</td>
+          <th>{{ $package1->name }}</th>
+          <th>{{ $package2->name }}</th>
+          <th>{{ $package3->name }}</th>
         </tr>
         <tr>
           <th class="text-left">Registration [A]</th>
-            <td>{{ number_format($registration1) }}</td>
+          <td>{{ number_format($registration1) }}</td>
+          <td>{{ number_format($registration2) }}</td>
+          <td>{{ number_format($registration3) }}</td>
         </tr>
         <tr>
           <th class="text-left">Updated Paid Ticket [B]</th>
           <td>{{ number_format($paidticket1) }}</td>
+          <td>{{ number_format($paidticket2) }}</td>
+          <td>{{ number_format($paidticket3) }}</td>
         </tr>
         <tr>
           <th class="text-left">Updated Free Ticket [C]</th>
           <td>{{ number_format($freeticket1) }}</td>
+          <td>{{ number_format($freeticket2) }}</td>
+          <td>{{ number_format($freeticket3) }}</td>
         </tr>
         <tr>
           <th class="text-left">Cumulative Total Registration</th>
           <td>{{ number_format($totalpackage1) }}</td>
+          <td>{{ number_format($totalpackage2) }}</td>
+          <td>{{ number_format($totalpackage3) }}</td>
         </tr>
       {{-- @foreach ($package as $packages) --}}
         {{-- <tr>
