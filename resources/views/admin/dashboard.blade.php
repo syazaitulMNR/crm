@@ -165,7 +165,6 @@
 
   <div class="table-responsive">
     <table class="table text-center">
-      <thead class="thead">
         <tr>
           <th class="text-left">Package</th>
         </tr>
@@ -181,8 +180,6 @@
         <tr>
           <th class="text-left">Cumulative Total Registration</th>
         </tr>
-      </thead>
-      <tbody>
       {{-- @foreach ($package as $packages) --}}
         {{-- <tr>
           <td class="text-left">{{ $packages->name }}</td>
@@ -228,7 +225,6 @@
           <td>{{ number_format($freeticket3) }}</td>
           <td>{{ number_format($totalpackage3) }}</td>
         </tr> --}}
-      </tbody>
       <tfoot>
         {{-- <tr>
           <th class="text-left">Today's Collection</th>
