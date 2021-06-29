@@ -21,17 +21,6 @@ Kemaskini Peserta
   }
 </style>
 
-{{-- Phone country code css -----------------------}}
-
-{{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/intlTelInput.css') }}" />
-
-<style>
-    .iti-flag {background-image: url(cover_images/flags.png);}
-
-    @media (-webkit-min-device-pixle-ratio: 2), (min-resolution: 192dpi){
-        .iti-flag {background-image: url(image/flag@2x.png);}
-    }
-</style> --}}
 
 <div class="container">
   <div class="row">
@@ -76,42 +65,6 @@ Kemaskini Peserta
             </div>
             
           </div>
-
-          {{-- <table class="table table-borderless text-left">
-            <tr>
-                <td class="w-50">No. Kad Pengenalan / Passport</td>
-                <td>:</td>
-                <td>
-                  <strong>{{$student->ic}}</strong>
-                  <input type="hidden" id="ic1" name="ic" class="form-control pb-2" value="{{ $student->ic }}" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td class="w-50">Nama Pembeli</td>
-                <td>:</td>
-                <td class="text-break">
-                  <strong>{{$student->first_name }}</strong> <strong>{{$student->last_name}}</strong>
-                  <input type="hidden" id="first_Name1" name="first_name" class="form-control pb-2" value="{{ $student->first_name }}" disabled>
-                  <input type="hidden" id="last_Name1" name="last_name" class="form-control pb-2" value="{{ $student->last_name }}" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td class="w-50">Emel</td>
-                <td>:</td>
-                <td class="text-break">
-                  <strong>{{$student->email }}</strong>
-                  <input type="hidden" id="email1" name="email" class="form-control pb-2" value="{{ $student->email }}" disabled>
-                </td>
-            </tr>
-            <tr>
-                <td class="w-50">No. Telefon</td>
-                <td>:</td>
-                <td>
-                  <strong>{{$student->phoneno}}</strong>
-                  <input type="hidden" id="phoneno1" name="phoneno" class="form-control pb-2" value="{{ $student->phoneno }}" disabled>
-                </td>
-            </tr>
-          </table> --}}
 
           <div class="py-2">
             <a class="btn btn-dark" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="fas fa-download pr-2"></i>Invois</a>
@@ -233,26 +186,6 @@ Kemaskini Peserta
   });
 </script>
 {{-- End Triggered duplicate window -----------------------------------------------------------------------------------------}}
-
-{{-- Phone country code -----------------------------------------------------------------------------------------------------}}
-{{-- <script type="text/javascript" src="{{ URL::asset('assets/js/intlTelInput.js') }}"></script>
-
-<script type="text/javascript" src="{{ URL::asset('assets/js/cleave.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/test.js') }}"></script>
-
-<script>
-    var input = document.querySelector('#input-phone');
-    var iti = window.intlTelInput (input,  {
-        utilsScript:'js/utils.js'
-    }); 
-</script>
-<script>
-    var input2 = document.querySelector("#input-phoneno"."{{ $phonecode++ }}");
-    var iti = window.intlTelInput (input2,  {
-        utilsScript:'js/utils.js'
-    }); 
-</script>  --}}
-{{-- End Phone country code -------------------------------------------------------------------------------------------------}}
 
 {{-- Checkbox copy details --------------------------------------------------------------------------------------------------}}
 <script>
