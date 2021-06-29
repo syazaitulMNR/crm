@@ -50,54 +50,6 @@
           <a class="btn btn-outline-warning" href="{{ url('export-paid') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Participant</a>
         </div>
 
-        <!-- Show data in cards --------------------------------------------------->
-        {{-- <div class="row mb-3">
-            <div class="col-xl-3 col-lg-6">
-            <div class="card bg-light card-inverse shadow">
-                <div class="card-block">
-                <div class="rotate">
-                    <i class="fas fa-dollar-sign fa-6x" style="color:rgba(0, 255, 94, 0.3)"></i>
-                </div>
-                <h6 class="lead pt-3 pl-3">Success Payment</h6>
-                <h3 class="pb-1 pl-3">{{$totalsuccess}}</h3>
-                </div>
-            </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-            <div class="card bg-light card-inverse shadow">
-                <div class="card-block">
-                <div class="rotate">
-                    <i class="fa fas fa-dollar-sign fa-6x" style="color: rgba(255, 0, 0, 0.3)"></i>
-                </div>
-                <h6 class="lead pt-3 pl-3">Due Payment</h6>
-                <h3 class="pb-1 pl-3">{{$totalcancel}}</h3>
-                </div>
-            </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-            <div class="card bg-light card-inverse shadow">
-                <div class="card-block">
-                <div class="rotate">
-                    <i class="fas fa-ticket-alt fa-6x" style="color: rgba(17, 0, 255, 0.3)"></i>
-                </div>
-                <h6 class="lead pt-3 pl-3">Paid Ticket</h6>
-                <h3 class="pb-1 pl-3">{{$paidticket}}</h3>
-                </div>
-            </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-            <div class="card bg-light card-inverse shadow">
-                <div class="card-block">
-                <div class="rotate">
-                    <i class="fas fa-ticket-alt fa-6x" style="color: rgba(0, 221, 255, 0.3)"></i>
-                </div>
-                <h6 class="lead pt-3 pl-3">Free Ticket</h6>
-                <h3 class="pb-1 pl-3">{{$freeticket}}</h3>
-                </div>
-            </div>
-            </div>
-        </div> --}}
-
         <br>       
         
         @if ($message = Session::get('update-paid'))
@@ -122,7 +74,6 @@
         @endif
 
         <!-- Search box ---------------------------------------------------------->
-        {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name"> --}}
         <form action="{{ url('paid-ticket/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
             @csrf
             <div class="input-group mb-3">
@@ -269,33 +220,6 @@
       });
     }, false);
   })();
-</script>
-
-<!-- Enable function for search payment ------------------------------------->
-<script>
-  function myFunction() 
-  {
-    var input, filter, table, tr, td, i, txtValue;
-
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("successTable");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) 
-    {
-      td = tr[i].getElementsByTagName("td")[1];
-      
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }
 </script>
 
 @endsection
