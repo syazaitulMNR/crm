@@ -49,7 +49,6 @@ Pendaftaran Pembeli
                             </div>
                             <div class="col-md-6 pb-2">
                                 <label for="quantity">Kuantiti:</label>
-                                {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> --}}
                                 <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> 
                                     <option value="" disabled selected>-- Tiket --</option>
                                     <option value="1">1</option>
