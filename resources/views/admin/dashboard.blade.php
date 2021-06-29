@@ -35,7 +35,7 @@
               <tr>
                 <th class="text-left">Package</th>
                 <th>Registration [A]</th>
-                <th>Updated Ticket [B]</th>
+                <th>Paid Ticket [B]</th>
                 <th>Free Ticket [C]</th>
                 <th>Cumulative Total</th>
               </tr>
@@ -89,19 +89,20 @@
               <tr>
                 <th class="text-left">Grand Total</th>
                 <th>{{ number_format($totalregister) }}</th>
-                <th>{{ number_format($totalpaid) }}</th>
-                <th>{{ number_format($totalfree) }}</th>
+                <th>*{{ number_format($totalpaid) }}</th>
+                <th>*{{ number_format($totalfree) }}</th>
                 <th>{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
               </tr>
             </tfoot>
           </table>
+          <p>*The total of paid ticket and free ticket is the amount of tickets that has been updated by buyer.</p>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Ticket Sold [B+C]</h6>
+        <h6 class="pt-4">Updated Ticket [B+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
