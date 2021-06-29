@@ -77,12 +77,6 @@ Pendaftaran Pembeli
                     </div>
   
                     <div class="card-footer">
-                        {{-- <div class="col-md-12">
-                            <div class="pull-right">
-                                <button type="submit" class="btn btn-dark">Seterusnya</button>
-                            </div>
-                        </div> --}}
-
                         <div class="col-md-12 pb-3">
                             <div class="pull-right">
                                 <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
