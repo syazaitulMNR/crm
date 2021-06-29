@@ -45,7 +45,6 @@ class MembershipController extends Controller
 
         foreach($request->level as $keys => $values) {
 
-            // $auto_inc_mbl = $membership_level->id + 1;
             $level_id = 'MBL' . uniqid();
                     
             Membership_Level::create(array(
@@ -55,7 +54,6 @@ class MembershipController extends Controller
             ));
         }
 
-       // dd($package->package_image);
         return redirect('membership')->with('success', 'Membership Successfully Created'); 
     }
 
@@ -65,8 +63,6 @@ class MembershipController extends Controller
         $membership_level = Membership_Level::where('membership_id', $membership_id)->paginate(15);
 
         $total = Student::where('membership_id', $membership_id)->count();
-        // $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        // $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
         return view('admin.membership.level', compact('membership', 'membership_level', 'total'));
     }
@@ -177,7 +173,6 @@ class MembershipController extends Controller
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id);
         $payment = Payment::where('stud_id', $student_id);
         $ticket = Ticket::where('stud_id', $student_id);
-        // dd($payment);
 
         $student->delete();
         $payment->delete();
@@ -203,9 +198,6 @@ class MembershipController extends Controller
     {
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
-
-        // $membership_id = $membership->membership_id;
-        // $level_id = $membership_level->level_id;
 
         Excel::import(new MembershipImport($membership_id, $level_id), request()->file('file'));    
         
