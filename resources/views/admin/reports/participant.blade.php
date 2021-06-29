@@ -133,7 +133,6 @@
               @endif
 
               <!-- Search box ---------------------------------------------------------->
-              {{-- <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Enter IC Number" title="Type in a name"> --}}
               <form action="{{ url('paid-ticket/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
                   @csrf
                   <div class="input-group mb-3">
@@ -281,33 +280,6 @@
       });
     }, false);
   })();
-</script>
-
-<!-- Enable function for search payment ------------------------------------->
-<script>
-  function myFunction() 
-  {
-    var input, filter, table, tr, td, i, txtValue;
-
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("successTable");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) 
-    {
-      td = tr[i].getElementsByTagName("td")[1];
-      
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }
 </script>
 
 @endsection
