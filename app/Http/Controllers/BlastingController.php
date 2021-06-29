@@ -34,6 +34,7 @@ class BlastingController extends Controller
         return view('admin.blasting_email.package', compact('product', 'package'));
     }
 
+    /*-- imported buyer --------------------------------------------------------*/
     public function show($product_id, $package_id)
     {
         $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
@@ -105,6 +106,7 @@ class BlastingController extends Controller
         return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer details successfully updated');
     }
     
+    /*-- imported participant --------------------------------------------------------*/
     public function blast_participant($product_id, $package_id)
     {
         $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
@@ -176,27 +178,5 @@ class BlastingController extends Controller
         return redirect('view-participant/' . $product_id . '/' . $package_id. '/' . $ticket_id . '/' . $student_id)->with('update-mail','Participant details successfully updated');
     }
     
-    //testing
-    // public function sendBulkMail()
-    // {
-    //     $data = array('name'=>"Virat Gandhi");
-   
-    //     Mail::send(['text'=>'mail'], $data, function($message) {
-    //         $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
-    //             ('Laravel Basic Testing Mail');
-    //         $message->from('xyz@gmail.com','Virat Gandhi');
-    //     });
-    //     echo "Basic Email Sent. Check your inbox.";
-
-    // 	// $details = [
-    // 	// 	'subject' => 'Pengesahan Pembelian'
-    // 	// ];
-
-    // 	// // send all mail in the queue.
-    //     // $job = (new BlastQueueEmail($details))->delay(now()->addSeconds(2)); 
-
-    //     // dispatch($job);
-
-    //     // echo "Bulk mail send successfully in the background...";
-    // }
+    
 }
