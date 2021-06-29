@@ -14,7 +14,7 @@
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Membership</h1>
-    {{-- <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-toolbar mb-2 mb-md-0">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newmembership">
         <i class="fas fa-plus pr-1"></i> New Membership
@@ -59,7 +59,7 @@
           </div>
         </div>
       </div>
-    </div> --}}
+    </div>
   </div>
   
   @if ($message = Session::get('success'))
