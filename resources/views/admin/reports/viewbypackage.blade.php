@@ -75,8 +75,6 @@
                 <div class="form-group row px-4">
                     <label for="name" class="col-sm-4 col-form-label">Quantity</label>
                     <div class="col-sm-8">
-                      {{-- <input type="hidden" class="form-control" name="quantity" value="1" readonly> --}}
-                      {{-- <label class="col-form-label">1</label> --}}
                       <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
                         <option value="" disabled selected>-- Tiket --</option>
                         <option value="1">1</option>
@@ -88,8 +86,6 @@
                 <div class="form-group row px-4">
                     <label for="name" class="col-sm-4 col-form-label">Total Payment (RM)</label>
                     <div class="col-sm-8">
-                      {{-- <input type="hidden" class="form-control" name="totalprice" value="{{ $package->price }}" readonly> 
-                      <label class="col-form-label">{{$package->price}}</label> --}}
                       <input type="text" id="totalprice" class="form-control" name="totalprice" style="border: none; outline-width: 0; background-color: #fff;" readonly>
                     </div>
                 </div>
@@ -118,8 +114,6 @@
 
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Customer</a>
       </div>
-      {{-- <a href="{{ url('new-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-dark"><i class="fas fa-plus pr-1"></i> New Customer</a> --}}
-      
         
     </div>
 
