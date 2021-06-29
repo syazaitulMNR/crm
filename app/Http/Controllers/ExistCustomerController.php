@@ -45,7 +45,6 @@ class ExistCustomerController extends Controller
             $request->session()->put('student', $stud);
         }
   
-        // echo 'success';
         return redirect('langkah-kedua/'.  $product_id . '/' . $package_id . '/' . $stud_id );
     }
 
@@ -58,24 +57,21 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
 
         //generate id
-        // $count = Payment::orderBy('id','Desc')->first();
-        // $auto_inc = $count->id + 1;
-        // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
 
         if($product->offer_id == 'OFF001') {
-            //for no offer ticket
 
+            //for no offer ticket
             return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else if($product->offer_id == 'OFF002') {
+
             //for Buy 1 Get 1 (Same Ticket)
-            
             return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else if($product->offer_id == 'OFF003') {
+
             //for Bulk Ticket
-            
             return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else {
@@ -114,8 +110,6 @@ class ExistCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-
-        // dd($stud->email);
   
         return view('customer_exist.step3',compact('student', 'stud', 'payment', 'product', 'package'));
     }
@@ -155,7 +149,6 @@ class ExistCustomerController extends Controller
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
   
-        //Check if form has been key in
         if($payment->pay_method == 'Debit/Credit Card'){
 
             return redirect('data-stripe/'.  $product_id . '/' . $package_id . '/' . $stud_id );
@@ -165,7 +158,9 @@ class ExistCustomerController extends Controller
             return redirect('data-billplz/'.  $product_id . '/' . $package_id . '/' . $stud_id );
 
         }else{
+
             echo 'invalid';
+
         }
     }
 
@@ -227,6 +222,7 @@ class ExistCustomerController extends Controller
                 ]);
             }
 
+            //update to database
             $addData = array(
                 'status' => 'paid',
                 'stripe_id' => $customer->id
@@ -241,37 +237,7 @@ class ExistCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
-                
-        // $data['name']=$student->first_name;
-        // $data['ic']=$student->ic;
-        // $data['email']=$student->email;
-        // $data['phoneno']=$student->phoneno;
-        // $data['total']=$payment->item_total;
-        // $data['quantity']=$payment->quantity;
-
-        // $data['product']=$product->name;
-        // $data['package_id']=$package->package_id;
-        // $data['package']=$package->name;
-        // $data['price']=$package->price;
-
-        // $data['date_receive']=date('d-m-Y');
-        // $data['payment_id']=$payment->payment_id;
-        // $data['product_id']=$product->product_id;        
-        // $data['student_id']=$student->stud_id;
-          
-        // // $invoice = PDF::loadView('emails.invoice', $data);
-        // // $receipt = PDF::loadView('emails.receipt', $data);
-
-        // // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $invoice, $receipt)
-        // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
-        // {
-        //     $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
-        //     $message->from('noreply@momentuminternet.my','noreply');
-        //     // $message->attachData($invoice->output(), "Invoice.pdf");
-        //     // $message->attachData($receipt->output(), "Receipt.pdf");
-
-        // });
-
+      
         $send_mail = $student->email;
         $product_name = $product->name;  
         $package_name = $package->name;        
@@ -304,10 +270,11 @@ class ExistCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
+        //billplz API
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
-
         $bill = $billplz->bill();
 
+        //generate token
         $response = $bill->create(
             $product->collection_id,
             $student->email,
@@ -321,6 +288,7 @@ class ExistCustomerController extends Controller
 
         $pay_data = $response->toArray();
         
+        //update to database
         $addData = array(
             'billplz_id' => $pay_data['id']
         );
@@ -328,7 +296,6 @@ class ExistCustomerController extends Controller
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
 
-        // dd($pay_data);
         return redirect($pay_data['url']);
     }
 
@@ -339,11 +306,12 @@ class ExistCustomerController extends Controller
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
+        //get the bill
         $bill = $billplz->bill();
         $response = $bill->get($payment->billplz_id);
-
         $pay_data = $response->toArray();
 
+        //update to database
         $addData = array(
             'status' => $pay_data['state']
         );
