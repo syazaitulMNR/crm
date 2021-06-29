@@ -76,9 +76,6 @@ Pendaftaran Pembeli
                             <div class="pull-left">
                                 <a href="{{ url('pengesahan-pembelian') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                             </div>
-                            {{-- <div class="pull-right">
-                                <button type="submit" class="btn btn-primary">Next</button>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
