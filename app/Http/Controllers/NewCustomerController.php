@@ -36,12 +36,8 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         
         //generate id
-        // $count = Student::orderBy('id','Desc')->first();
-        // $auto_inc = $count->id + 1;
-        // $stud_id = 'MI' . 0 . 0 . $auto_inc;
         $stud_id = 'MI'.uniqid();
   
-        // return view('customer_new.step1',compact('student', 'product', 'package', 'stud_ic', 'count', 'stud_id'));
         return view('customer_new.step1',compact('student', 'product', 'package', 'stud_ic', 'stud_id'));
     }
   
@@ -88,24 +84,21 @@ class NewCustomerController extends Controller
         $payment = $request->session()->get('payment');
 
         //generate id
-        // $count = Payment::orderBy('id','Desc')->first();
-        // $auto_inc = $count->id + 1;
-        // $payment_id = 'OD' . 0 . 0 . $auto_inc;
         $payment_id = 'OD'.uniqid();
   
         if($product->offer_id == 'OFF001') {
-            //for no offer ticket
 
+            //for no offer ticket
             return view('customer_new.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else if($product->offer_id == 'OFF002') {
+
             //for Buy 1 Get 1 (Same Ticket)
-            
             return view('customer_new.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else if($product->offer_id == 'OFF003') {
+
             //for Bulk Ticket
-            
             return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else {
@@ -138,18 +131,6 @@ class NewCustomerController extends Controller
         $payment = new Payment();
         $payment->fill($validatedData);
         $request->session()->put('payment', $payment);
-
-        // if(empty($request->session()->get('payment'))){
-        //     $payment = new Payment();
-        //     $payment->fill($validatedData);
-        //     $request->session()->put('payment', $payment);
-        // }else{
-        //     $payment = $request->session()->get('payment');
-        //     $payment->fill($validatedData);
-        //     $payment->session()->put('payment', $payment);
-        // }
-
-        // dd($validatedData);
   
         return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
     }
@@ -181,8 +162,6 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
-        //dd($payment->quantity);
-
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
   
@@ -203,21 +182,6 @@ class NewCustomerController extends Controller
         $payment = $request->session()->get('payment');
         $payment->fill($validatedData);
         $request->session()->put('payment', $payment);
-        // session(['payment'=>$request->input('pay_method')]);  
-        // $data=session('payment');
-        // dd($data);
-
-        // if(empty($request->session()->get('payment'))){
-        //     $payment = new Payment();
-        //     $payment->fill($validatedData);
-        //     $request->session()->put('payment', $payment);
-        // }else{
-        //     $payment = $request->session()->get('payment');
-        //     $payment->fill($validatedData);
-        //     $payment->session()->put('payment', $payment);
-        // }
-
-        // dd($validatedData);
  
         return redirect('payment-method/'.  $product_id . '/' . $package_id );
     }
@@ -228,8 +192,6 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-
-        //dd($payment->pay_method);
   
         //Check if form has been key in
         if($payment->pay_method == 'Debit/Credit Card'){
@@ -241,7 +203,9 @@ class NewCustomerController extends Controller
             return redirect('data-fpx/'.  $product_id . '/' . $package_id );
 
         }else{
+
             echo 'invalid';
+
         }
     }
 
@@ -251,8 +215,7 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-  
-        //dd($student->stud_id);
+
         return view('customer_new.card_method',compact('product', 'package', 'student', 'payment'));
     }
 
@@ -265,7 +228,6 @@ class NewCustomerController extends Controller
 
         /*-- Stripe ---------------------------------------------------------*/
         //Make Payment
-        // Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
         $stripe = Stripe\Stripe::setApiKey('sk_live_B9VWddnqzpICNS9gsPBI4jSc00v60OUVak');
 
         try {
@@ -319,42 +281,6 @@ class NewCustomerController extends Controller
         /*-- End Stripe -----------------------------------------------------*/
 
         /*-- Manage Email ---------------------------------------------------*/
-        // $product = Product::where('product_id', $product_id)->first();
-        // $package = Package::where('package_id', $package_id)->first();
-
-        // $to_name = 'noreply@momentuminternet.com';
-        // $to_email = $student->email; 
-        
-        // $data['name']=$student->first_name;
-        // $data['ic']=$student->ic;
-        // $data['email']=$student->email;
-        // $data['phoneno']=$student->phoneno;
-        // $data['total']=$payment->item_total;
-        // $data['quantity']=$payment->quantity;
-
-        // $data['product']=$product->name;
-        // $data['package_id']=$package->package_id;
-        // $data['package']=$package->name;
-        // $data['price']=$package->price;
-
-        // $data['date_receive']=date('d-m-Y');
-        // $data['payment_id']=$payment->payment_id;
-        // $data['product_id']=$product->product_id;        
-        // $data['student_id']=$student->stud_id;
-          
-        // // $invoice = PDF::loadView('emails.invoice', $data);
-        // // $receipt = PDF::loadView('emails.receipt', $data);
-
-        // // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $invoice, $receipt)
-        // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
-        // {
-        //     $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
-        //     $message->from('noreply@momentuminternet.my','noreply');
-        //     // $message->attachData($invoice->output(), "Invoice.pdf");
-        //     // $message->attachData($receipt->output(), "Receipt.pdf");
-
-        // });
-
         $send_mail = $student->email;
         $product_name = $product->name;  
         $package_name = $package->name;        
@@ -411,7 +337,6 @@ class NewCustomerController extends Controller
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
 
-        // dd($pay_data);
         return redirect($pay_data['url']);
     }
 
@@ -437,7 +362,6 @@ class NewCustomerController extends Controller
         if ($payment->status == 'paid')
         {
             /*-- Manage Email ---------------------------------------------------*/
-
             $product = Product::where('product_id', $product_id)->first();
             $package = Package::where('package_id', $package_id)->first();
 
@@ -456,8 +380,7 @@ class NewCustomerController extends Controller
             $student->save();
             $payment->save();
 
-            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-            
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));          
             /*-- End Email -----------------------------------------------------------*/
             
             $request->session()->forget('student');
@@ -477,120 +400,5 @@ class NewCustomerController extends Controller
         }
         
     }
-
-
-
-    // public function fpx_payment($product_id, $package_id, Request $request)
-    // {
-    //     $product = Product::where('product_id',$product_id)->first();
-    //     $package = Package::where('package_id', $package_id)->first();
-    //     $student = $request->session()->get('student');
-    //     $payment = $request->session()->get('payment');
-
-    //     $stripe = Stripe\Stripe::setApiKey('sk_live_B9VWddnqzpICNS9gsPBI4jSc00v60OUVak');
-
-    //     // Create a Customer:
-    //     $customer = \Stripe\Customer::create([
-    //         'name' => $student->first_name,
-    //         'email' => $student->email,
-    //     ]);
-
-    //     $intent =\Stripe\PaymentIntent::create([
-    //         'payment_method_types' => ['fpx'],
-    //         'description' => "MIMS - ".$package->name,
-    //         'amount' => $payment->totalprice * 100,
-    //         'customer' => $customer->id,
-    //         'receipt_email' => $student->email,
-    //         'currency' => 'myr',
-    //     ]);
-
-    //     $addData = array(
-    //         'status' => 'succeeded',
-    //         'stripe_id' => $customer->id
-    //     );
-
-    //     // dd($intent);
-    //     $payment->fill($addData);
-    //     $request->session()->put('payment', $payment);
-  
-    //     return view('customer_new.fpx_method', compact('product', 'package', 'student', 'payment', 'intent'));
-    // }
-
-    // public function postFpxMethod($product_id, $package_id, Request $request)
-    // {
-    //     $payment = $request->session()->get('payment');
-    //     $student = $request->session()->get('student');
-    //     $stripe = Stripe\Stripe::setApiKey('sk_live_B9VWddnqzpICNS9gsPBI4jSc00v60OUVak');
-    //     $intent =\Stripe\PaymentIntent::all(['limit' => 1]);
-
-    //     //Check if payment status success or not
-    //     if($intent->data[0]->status == 'succeeded'){
-
-    //         /*-- Manage Email ---------------------------------------------------*/
-    //         // $product = Product::where('product_id', $product_id)->first();
-    //         // $package = Package::where('package_id', $package_id)->first();
-
-    //         // $to_name = 'noreply@momentuminternet.com';
-    //         // $to_email = $student->email; 
-            
-    //         // $data['name']=$student->first_name;
-    //         // $data['ic']=$student->ic;
-    //         // $data['email']=$student->email;
-    //         // $data['phoneno']=$student->phoneno;
-    //         // $data['total']=$payment->item_total;
-    //         // $data['quantity']=$payment->quantity;
-
-    //         // $data['product']=$product->name;
-    //         // $data['package_id']=$package->package_id;
-    //         // $data['package']=$package->name;
-    //         // $data['price']=$package->price;
-
-    //         // $data['date_receive']=date('d-m-Y');
-    //         // $data['payment_id']=$payment->payment_id;
-    //         // $data['product_id']=$product->product_id;        
-    //         // $data['student_id']=$student->stud_id;
-            
-    //         // // $invoice = PDF::loadView('emails.invoice', $data);
-    //         // // $receipt = PDF::loadView('emails.receipt', $data);
-
-    //         // // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email, $invoice, $receipt)
-    //         // Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) 
-    //         // {
-    //         //     $message->to($to_email, $to_name)->subject('Pengesahan Pembelian');
-    //         //     $message->from('noreply@momentuminternet.my','noreply');
-    //         //     // $message->attachData($invoice->output(), "Invoice.pdf");
-    //         //     // $message->attachData($receipt->output(), "Receipt.pdf");
-
-    //         // });
-    //         /*-- End Email -----------------------------------------------------------*/
-
-    //         $student->save();
-    //         $payment->save();
-    
-    //         $request->session()->forget('student');
-    //         $request->session()->forget('payment');
-            
-    //         return redirect('thankyoupage/'.  $product_id . '/' . $package_id . '/' . $student->stud_id . '/' . $payment->payment_id);
-    //     }else{
-    //         // save customer data even payment not completed;  
-            
-    //         $addData = array(
-    //             'status' => 'cancelled'
-    //             // 'stripe_id' => $customer->id
-    //         );
-    
-    //         // dd($intent);
-    //         $payment->fill($addData);
-    //         $request->session()->put('payment', $payment);
-
-    //         $student->save();
-    //         $payment->save();
-    
-    //         $request->session()->forget('student');
-    //         $request->session()->forget('payment');
-
-    //         return view('customer/failed_payment');
-    //     }
-    // }
   
 }
