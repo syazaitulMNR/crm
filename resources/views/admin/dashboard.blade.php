@@ -34,9 +34,17 @@
             <thead class="thead">
               <tr>
                 <th class="text-left">Package</th>
+              </tr>
+              <tr>
                 <th>Registration [A]</th>
+              </tr>
+              <tr>
                 <th>Updated Paid Ticket [B]</th>
+              </tr>
+              <tr>
                 <th>Updated Free Ticket [C]</th>
+              </tr>
+              <tr>
                 <th>Cumulative Total Registration</th>
               </tr>
             </thead>
