@@ -27,16 +27,16 @@
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
-        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b></p>
         
         <div class="table-responsive">
           <table class="table text-center">
             <thead class="thead">
               <tr>
                 <th class="text-left">Package</th>
-                <th>Registration [A]</th>
+                {{-- <th>Registration [A]</th>
                 <th>Updated Ticket [B]</th>
-                <th>Free Ticket [C]</th>
+                <th>Free Ticket [C]</th> --}}
                 <th>Cumulative Total</th>
               </tr>
             </thead>
@@ -53,29 +53,29 @@
             {{-- @endforeach --}}
               <tr>
                 <td class="text-left">{{ $package1->name }}</td>
-                <td>
+                {{-- <td>
                   {{ number_format($registration1) }}
                 </td>
                 <td>{{ number_format($paidticket1) }}</td>
-                <td>{{ number_format($freeticket1) }}</td>
+                <td>{{ number_format($freeticket1) }}</td> --}}
                 <td>{{ number_format($totalpackage1) }}</td>
               </tr>
               <tr>
                 <td class="text-left">{{ $package2->name }}</td>
-                <td>
+                {{-- <td>
                   {{ number_format($registration2) }}
                 </td>
                 <td>{{ number_format($paidticket2) }}</td>
-                <td>{{ number_format($freeticket2) }}</td>
+                <td>{{ number_format($freeticket2) }}</td> --}}
                 <td>{{ number_format($totalpackage2) }}</td>
               </tr>
               <tr>
                 <td class="text-left">{{ $package3->name }}</td>
-                <td>
+                {{-- <td>
                   {{ number_format($registration3) }}
                 </td>
                 <td>{{ number_format($paidticket3) }}</td>
-                <td>{{ number_format($freeticket3) }}</td>
+                <td>{{ number_format($freeticket3) }}</td> --}}
                 <td>{{ number_format($totalpackage3) }}</td>
               </tr>
             </tbody>
@@ -88,9 +88,9 @@
               </tr> --}}
               <tr>
                 <th class="text-left">Grand Total</th>
-                <th>{{ number_format($totalregister) }}</th>
+                {{-- <th>{{ number_format($totalregister) }}</th>
                 <th>{{ number_format($totalpaid) }}</th>
-                <th>{{ number_format($totalfree) }}</th>
+                <th>{{ number_format($totalfree) }}</th> --}}
                 <th>{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
               </tr>
             </tfoot>
@@ -101,17 +101,17 @@
 
     <div class="col-md-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Ticket Sold [B+C]</h6>
+        <h6 class="pt-4">Updated Ticket</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
       <div class="card border-0 shadow text-center text-danger" style="height: 117px">
-        <h6 class="pt-4">Pending Ticket [A-B]</h6>
+        <h6 class="pt-4">Pending Ticket</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Overall Ticket [A+C]</h6>
+        <h6 class="pt-4">Overall Ticket</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
