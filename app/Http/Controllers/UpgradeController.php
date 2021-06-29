@@ -196,7 +196,6 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('ticket');
 
-        // dd($new_package);
         return view('upgrade_ticket.use_card', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package'));
     }
 
