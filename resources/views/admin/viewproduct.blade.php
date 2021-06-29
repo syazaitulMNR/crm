@@ -52,7 +52,6 @@
           <th scope="col">#</th>
           <th scope="col">Event</th>
           <th scope="col">Date</th>
-          {{-- <th scope="col">Time</th> --}}
           <th scope="col">Offer</th>
           <th scope="col"><i class="fas fa-cogs"></i></th>
         </tr>
@@ -71,7 +70,6 @@
                 @endif
               </td>
               <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
-              {{-- <td>{{ date('h:i a', strtotime($products->time_from)) }} - {{ date('h:i a', strtotime($products->time_to)) }}</td> --}}
               <td>{{ $offer->name }}</td>
             <td>
               <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
