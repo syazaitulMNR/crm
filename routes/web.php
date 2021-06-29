@@ -86,21 +86,6 @@ Route::post('new-offer/save', 'OfferController@create');
 Route::post('update-offer/save/{offer_id}', 'OfferController@update');
 Route::get('delete-offer/{offer_id}', 'OfferController@delete');
 
-/*
-|--------------------------------------------------------------------------
-| Manage Customer
-|--------------------------------------------------------------------------
-*/
-Route::get('select-event', 'StudentController@select_event');
-Route::get('select-package/{product_id}', 'StudentController@select_package');
-
-Route::get('new-customer/{product_id}/{package_id}', 'StudentController@add_student');
-
-Route::get('view-customer', 'StudentController@viewstudents');
-Route::get('viewdetails/{id}',  'StudentController@viewdetails');
-Route::get('sendmail/{id}/{payment_id}',  'StudentController@sendEmail');
-Route::post('editdetails/{id}', 'StudentController@editdetails');
-Route::get('deletestudent/{id}', 'StudentController@destroystud');
 
 /*
 |--------------------------------------------------------------------------
@@ -210,10 +195,6 @@ Route::get('maklumat-kad/{product_id}/{package_id}', 'NewCustomerController@card
 Route::post('storeCard/{product_id}/{package_id}', 'NewCustomerController@postCardMethod');
 Route::get('data-fpx/{product_id}/{package_id}', 'NewCustomerController@pay_billplz');
 Route::get('redirect-payment/{product_id}/{package_id}', 'NewCustomerController@redirect_payment');
-// Route::get('fpx-bank/{product_id}/{package_id}', 'NewCustomerController@fpx_payment');
-// Route::get('storeFpx/{product_id}/{package_id}', 'NewCustomerController@postFpxMethod');
-// Route::get('regnewstudent/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@newstudent');
-// Route::post('registernew/{product_id}/{package_id}', 'NewCustomerController@storestd');
 
 // Existedstudent
 Route::get('langkah-pertama/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stepOne');
@@ -228,10 +209,6 @@ Route::get('data-stripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerCont
 Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStripeMethod');
 Route::get('data-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@billplz_payment');
 Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerController@redirect_billplz');
-// Route::get('data-fpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@fpx_payment');
-// Route::get('saveFpx/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveFpxMethod');
-// Route::get('regstudent/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@existedstudent');
-// Route::post('register/{product_id}/{package_id}/{stud_id}', 'ExistStudentController@updatestd');
 
 // Thank you page
 Route::get('pendaftaran-berjaya','HomeController@thankyou');
@@ -316,13 +293,9 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 //---------------------------------------------- Testing Part -------------------------------------------------//
 Route::get('try-export', 'TestController@export');
-Route::get('try','HomeController@try');
-Route::get('sendmail', 'HomeController@tryemail');
 Route::get('sendbasicemail','TestController@basic_email');
-
 Route::get('payment', 'TestController@index');
 Route::post('payment-process', 'TestController@process');
-
 Route::get('test/email', function(){
   
 	$send_mail = 'zarina4.11@gmail.com';
