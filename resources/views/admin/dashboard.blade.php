@@ -35,8 +35,8 @@
               <tr>
                 <th class="text-left">Package</th>
                 <th>Registration [A]</th>
-                <th>Paid Ticket [B]</th>
-                <th>Free Ticket [C]</th>
+                <th>Updated Paid Ticket [B]</th>
+                <th>Updated Free Ticket [C]</th>
                 <th>Cumulative Total</th>
               </tr>
             </thead>
@@ -95,7 +95,7 @@
               </tr>
             </tfoot>
           </table>
-          <p>*The total of paid ticket and free ticket is the amount of tickets that has been updated by buyer.</p>
+          {{-- <p>*The total of paid ticket and free ticket is the amount of tickets that has been updated by buyer.</p> --}}
         </div>
       </div>
     </div>
