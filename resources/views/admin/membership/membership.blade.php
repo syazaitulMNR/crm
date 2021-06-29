@@ -103,7 +103,7 @@
             <td>
               <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
               {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
-              {{-- <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $memberships->membership_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -121,7 +121,7 @@
                     </div>
                   </div>
                 </div>
-              </div> --}}
+              </div>
             </td>
           </tr>   
         @endforeach
