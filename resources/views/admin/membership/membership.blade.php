@@ -14,6 +14,8 @@
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Membership</h1>
+    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+    @else
     <div class="btn-toolbar mb-2 mb-md-0">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newmembership">
@@ -60,6 +62,7 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
   
   @if ($message = Session::get('success'))
@@ -103,6 +106,8 @@
             <td>
               <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $memberships->membership_id }}"><i class="fas fa-eye"></i></a>
               {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
+              @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+              @else
               <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $memberships->membership_id }}"><i class="fas fa-trash-alt"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $memberships->membership_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -122,6 +127,7 @@
                   </div>
                 </div>
               </div>
+              @endif
             </td>
           </tr>   
         @endforeach
