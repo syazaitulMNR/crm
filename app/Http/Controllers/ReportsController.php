@@ -9,11 +9,11 @@ use App\Package;
 use App\Payment;
 use App\Ticket;
 use App\Imports\ParticipantImport;
-use App\Exports\ProgramExport;
+// use App\Exports\ProgramExport;
 use App\Exports\ParticipantFormat;
-use App\Exports\PaidTicket_Export;
-use App\Exports\FreeTicket_Export;
-use Rap2hpoutre\FastExcel\FastExcel;
+// use App\Exports\PaidTicket_Export;
+// use App\Exports\FreeTicket_Export;
+// use Rap2hpoutre\FastExcel\FastExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Jobs\PengesahanJob;
 use App\Jobs\TiketJob;
@@ -37,12 +37,6 @@ class ReportsController extends Controller
 
     public function trackprogram(Request $request)
     {
-        // $q = $request->search;
-        // $product = Product::where('name', 'LIKE', '%' . $q . '%')
-        // ->orWhere('product_id', 'LIKE', '%' . $q . '%')
-        // ->paginate(15);
-        // $product->appends(['search' => $q]);
-
         $student = Student::orderBy('id','desc')->get();
         $product = Product::orderBy('id','desc')->paginate(15);
         $package = Package::orderBy('id','asc')->get();
@@ -66,9 +60,7 @@ class ReportsController extends Controller
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        // $count_package = Payment::where('product_id', $product_id)->count();
         
-        // dd($student);
         return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
@@ -208,6 +200,7 @@ class ReportsController extends Controller
 
     }
 
+    /*-- Buyer ---------------------------------------------------*/
     public function viewbypackage($product_id, $package_id)
     {
         //Get the details
@@ -232,8 +225,7 @@ class ReportsController extends Controller
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
         $ticket = Ticket::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        // dd($payment);
-
+        
         $payment->delete();
         $ticket->delete();
 
@@ -261,17 +253,6 @@ class ReportsController extends Controller
                 'package_id' => $package_id,
                 'offer_id' => $request->offer_id
             ));
-
-            // $ticket_id = 'TIK' . uniqid();
-
-            // Ticket::create([
-            //     'ticket_id'     => $ticket_id,
-            //     'ticket_type'   => $request->ticket_type,
-            //     'ic'            => $request->ic,
-            //     'product_id'    => $product_id,
-            //     'package_id'    => $package_id,
-            //     'payment_id'    => $payment_id
-            // ]);
 
         }else{
 
@@ -302,21 +283,112 @@ class ReportsController extends Controller
                 'offer_id' => $request->offer_id
             ));
 
-            // $ticket_id = 'TIK' . uniqid();
-
-            // Ticket::create([
-            //     'ticket_id'     => $ticket_id,
-            //     'ticket_type'   => $request->ticket_type,
-            //     'ic'            => $request->ic,
-            //     'product_id'    => $product_id,
-            //     'package_id'    => $package_id,
-            //     'payment_id'    => $payment_id
-            // ]);
         }
 
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('addsuccess','Customer Successfully Added!');
     }
+    
+    public function trackpayment($product_id, $package_id, $payment_id, $student_id)
+    {
+        $paginate = Payment::where('product_id', $product_id)->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
 
+        $counter = Student::count();
+        
+        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
+    }
+
+    public function updatepayment($product_id, $package_id, $payment_id, $student_id, Request $request)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $student->ic = $request->ic;
+        $student->phoneno = $request->phoneno;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->email = $request->email;
+        $student->save();
+
+        $payment->status = $request->status;
+        $payment->offer_id = $request->offer_id;
+        $payment->save();
+
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
+    }
+
+    // search payment
+    public function search($product_id, $package_id, Request $request)
+    {   
+        // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+
+        //Count the data
+        $count = 1;
+        $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+
+        //get details from search
+        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
+        $stud_id = $student_id->stud_id;
+
+        $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+
+        // dd($stud_id);
+        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
+        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
+
+        if(count($payment) > 0)
+        {
+            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+
+        }else{
+
+            return redirect()->back()->with('search-error', 'Customer not found!');
+
+        }
+    }
+
+    public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
+    {
+        /*-- Manage Email ---------------------------------------------------*/
+
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        $send_mail = $student->email;
+        $product_name = $product->name;  
+        $package_name = $package->name;        
+        $date_from = $product->date_from;
+        $date_to = $product->date_to;
+        $time_from = $product->time_from;
+        $time_to = $product->time_to;
+        $packageId = $package_id;
+        $payment_id = $payment->payment_id;
+        $productId = $product_id;        
+        $student_id = $student->stud_id;
+
+        // dd($send_mail);
+        // echo 'sent mail';
+
+        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+
+        return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
+    }
+
+    /*-- Participant ---------------------------------------------------*/
     public function paid_ticket($product_id, $package_id)
     {
         //Get the details
@@ -342,7 +414,7 @@ class ReportsController extends Controller
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-        // // return (new FastExcel($ticket, $student, $product, $package))->download('paid.xlsx');
+        // return (new FastExcel($ticket, $student, $product, $package))->download('paid.xlsx');
         // return Excel::download(new PaidTicket_Export($ticket, $student, $package), $package_name->name.'_paid.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
@@ -540,8 +612,6 @@ class ReportsController extends Controller
         $student->first_name = $request->first_name;
         $student->last_name = $request->last_name;
         $student->email = $request->email;
-
-        // dd($student_id);
         $student->save();
 
         return redirect('view/participant/'.$product_id.'/'.$package_id)->with('update-paid','Customer Successfully Updated!');
@@ -591,7 +661,6 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
         
-        // dd($ticket);
         return view('admin.reports.freeticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
@@ -671,7 +740,6 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
         
-        // dd($ticket);
         return view('admin.reports.trackfreeticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
@@ -688,8 +756,6 @@ class ReportsController extends Controller
         $student->first_name = $request->first_name;
         $student->last_name = $request->last_name;
         $student->email = $request->email;
-
-        // dd($student_id);
         $student->save();
 
         return redirect('free-ticket/'.$product_id.'/'.$package_id)->with('update-free','Customer Successfully Updated!');
@@ -726,107 +792,6 @@ class ReportsController extends Controller
         }
     }
 
-    public function trackpayment($product_id, $package_id, $payment_id, $student_id)
-    {
-        $paginate = Payment::where('product_id', $product_id)->paginate(15);
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
-        $student = Student::where('stud_id', $student_id)->first();
-
-        $counter = Student::count();
-        
-        // dd($payment);
-        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
-    }
-
-    public function updatepayment($product_id, $package_id, $payment_id, $student_id, Request $request)
-    {
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $payment = Payment::where('payment_id', $payment_id)->first();
-        $student = Student::where('stud_id', $student_id)->first();
-
-        $student->ic = $request->ic;
-        $student->phoneno = $request->phoneno;
-        $student->first_name = $request->first_name;
-        $student->last_name = $request->last_name;
-        $student->email = $request->email;
-        $student->save();
-
-        $payment->status = $request->status;
-        $payment->offer_id = $request->offer_id;
-        $payment->save();
-
-        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
-    }
-
-    // search payment
-    public function search($product_id, $package_id, Request $request)
-    {   
-        // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $student = Student::orderBy('id','desc')->get();
-
-        //Count the data
-        $count = 1;
-        $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
-
-        //get details from search
-        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
-        $stud_id = $student_id->stud_id;
-
-        $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        // dd($stud_id);
-        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
-
-        if(count($payment) > 0)
-        {
-            return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
-
-        }else{
-
-            return redirect()->back()->with('search-error', 'Customer not found!');
-
-        }
-    }
-
-    public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
-    {
-        /*-- Manage Email ---------------------------------------------------*/
-
-        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $student = Student::where('stud_id', $student_id)->first();
-
-        $send_mail = $student->email;
-        $product_name = $product->name;  
-        $package_name = $package->name;        
-        $date_from = $product->date_from;
-        $date_to = $product->date_to;
-        $time_from = $product->time_from;
-        $time_to = $product->time_to;
-        $packageId = $package_id;
-        $payment_id = $payment->payment_id;
-        $productId = $product_id;        
-        $student_id = $student->stud_id;
-
-        // dd($send_mail);
-        // echo 'sent mail';
-
-        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-
-        return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
-    }
-
     public function updated_mail($product_id, $package_id, $ticket_id, $student_id)
     {
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
@@ -846,9 +811,7 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
         $survey_form = $product->survey_form;
-        
-        // echo 'sent mail';
-        
+                
         dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id, $survey_form));
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
