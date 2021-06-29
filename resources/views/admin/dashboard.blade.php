@@ -36,16 +36,16 @@
                 <th class="text-left">Package</th>
               </tr>
               <tr>
-                <th>Registration [A]</th>
+                <th class="text-left">Registration [A]</th>
               </tr>
               <tr>
-                <th>Updated Paid Ticket [B]</th>
+                <th class="text-left">Updated Paid Ticket [B]</th>
               </tr>
               <tr>
-                <th>Updated Free Ticket [C]</th>
+                <th class="text-left">Updated Free Ticket [C]</th>
               </tr>
               <tr>
-                <th>Cumulative Total Registration</th>
+                <th class="text-left">Cumulative Total Registration</th>
               </tr>
             </thead>
             <tbody>
