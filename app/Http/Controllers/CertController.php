@@ -11,7 +11,6 @@ use PDF;
 
 class CertController extends Controller
 {
-    /*-- Check IC Page -----------------------------------------------*/
     public function ic_check($product_id)
     {
         $product = Product::where('product_id', $product_id)->first();
@@ -26,7 +25,6 @@ class CertController extends Controller
         $platinum = Student::where('ic', $request->ic)->first();
         // $check_student = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->get();
 
-        // dd($ultimate);
         if(Student::where('ic', $request->ic)->exists()){
 
             $payment = Payment::where('stud_id', $student->stud_id)->where('product_id', $product_id)->first();
@@ -66,7 +64,6 @@ class CertController extends Controller
     {
         $product = Product::where('product_id', $product_id)->first();
         $student = Student::where('stud_id', $stud_id)->first();
-        // $payment = Payment::where('product_id', $product_id)->where('stud_id', $stud_id)->first();
 
         return view('certificate.check_detail', compact('product', 'student'));
     }
