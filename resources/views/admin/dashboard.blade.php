@@ -63,7 +63,7 @@
                 <th>{{ number_format($totalfree) }}</th>
               </tr>
               <tr>
-                <th class="text-left">Cumulative Total Registration</th>
+                <th class="text-left">Total Registration</th>
                 <th>{{ number_format($totalpackage1) }}</th>
                 <th>{{ number_format($totalpackage2) }}</th>
                 <th>{{ number_format($totalpackage3) }}</th>
