@@ -67,7 +67,7 @@
                 <th>{{ number_format($totalpackage1) }}</th>
                 <th>{{ number_format($totalpackage2) }}</th>
                 <th>{{ number_format($totalpackage3) }}</th>
-                <th>{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
+                <th class="table-active">{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
               </tr>
             </tbody>
             {{-- @foreach ($package as $packages) --}}
