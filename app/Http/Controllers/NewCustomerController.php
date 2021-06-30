@@ -53,7 +53,7 @@ class NewCustomerController extends Controller
             'stud_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'ic' => 'required|numeric|unique:student',
+            'ic' => 'required',
             'email' => 'required',
             'phoneno' => 'required'
         ]);
