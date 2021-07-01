@@ -15,7 +15,7 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Customer Management
+                        Customer
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                         <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
@@ -38,7 +38,7 @@
                 @else
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Event Management
+                        Event
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                       <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
@@ -48,7 +48,7 @@
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Staff Management
+                        Staff
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                       <li><a class="dropdown-item" href=""><i class="bi bi-calendar4-event pr-2"></i>Staff Profile</a></li>
@@ -57,7 +57,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/manageuser">User Management</a>
+                    <a class="nav-link" aria-current="page" href="/manageuser">User</a>
                 </li>
                 @endif
             </ul>
