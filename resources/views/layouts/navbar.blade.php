@@ -22,8 +22,8 @@
                         Event Management
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href="/product">Event</a></li>
-                      <li><a class="dropdown-item" href="/view-offer">Offer</a></li>
+                      <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
+                      <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Offer</a></li>
                     </ul>
                 </li>
                 @endif
