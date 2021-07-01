@@ -32,7 +32,7 @@
                         Customer Management
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
+                        <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-3"></i>Customer Profile</a></li>
                         @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
                         @else 
                         <li><a class="dropdown-item" href="/membership">Membership Programme</a></li>
