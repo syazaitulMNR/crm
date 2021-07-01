@@ -48,10 +48,10 @@
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Staff
+                        Employee
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href=""><i class="bi bi-calendar4-event pr-2"></i>Staff Profile</a></li>
+                      <li><a class="dropdown-item" href=""><i class="bi bi-calendar4-event pr-2"></i>Employee Profile</a></li>
                       <li><a class="dropdown-item" href=""><i class="bi bi-tags pr-2"></i>Commission</a></li>
                     </ul>
                 </li>
