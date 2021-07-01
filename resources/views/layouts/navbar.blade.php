@@ -10,11 +10,11 @@
             {{-- left element --}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Customer
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -37,7 +37,7 @@
                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                 @else
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Employee
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -47,7 +47,7 @@
                 </li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Event
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -57,7 +57,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/manageuser">User</a>
+                    <a class="nav-link active" aria-current="page" href="/manageuser">User</a>
                 </li>
                 @endif
             </ul>
