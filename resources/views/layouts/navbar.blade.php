@@ -43,6 +43,7 @@
                         @else   
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/emailblast">Email Blasting</a></li>
+                        <li><a class="dropdown-item" href="">SMS Blasting</a></li>
                         @endif
                     </ul>
                 </li>
