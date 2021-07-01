@@ -12,21 +12,7 @@
                 <li class="nav-item ">
                     <a class="nav-link" aria-current="page" href="/dashboard">Home</a>
                 </li>
-                @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                @else
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/manageuser">User Management</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Event Management
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
-                      <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Offer</a></li>
-                    </ul>
-                </li>
-                @endif
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Customer Management
@@ -47,6 +33,33 @@
                         @endif
                     </ul>
                 </li>
+                
+                @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                @else
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Event Management
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
+                      <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Offer</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Staff Management
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
+                      <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Offer</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/manageuser">User Management</a>
+                </li>
+                @endif
             </ul>
 
             {{-- right element --}}
