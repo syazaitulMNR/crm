@@ -15,11 +15,11 @@
                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/manageuser">Manage User</a>
+                    <a class="nav-link" aria-current="page" href="/manageuser">User Management</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Manage Event
+                        Event Management
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                       <li><a class="dropdown-item" href="/product">Event</a></li>
@@ -29,7 +29,7 @@
                 @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Customer
+                        Customer Management
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                         <li><a class="dropdown-item" href="">Customer Profile</a></li>
