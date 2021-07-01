@@ -71,7 +71,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fas fa-user"></i> <span class="caret"></span>
+                            <i class="bi bi-person-circle"></i> <span class="caret"></span>
                         </a>
         
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">  
@@ -84,7 +84,7 @@
                                 <a class="dropdown-item" href="/logout"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                   <i class="fas fa-sign-out-alt pr-3"></i> Logout
+                                   <i class="bi bi-box-arrow-right pr-2"></i> Logout
                                 </a>
         
                                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
