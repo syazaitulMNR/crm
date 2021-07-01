@@ -41,8 +41,8 @@
                         Employee
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href=""><i class="bi bi-calendar4-event pr-2"></i>Employee Profile</a></li>
-                      <li><a class="dropdown-item" href=""><i class="bi bi-tags pr-2"></i>Commission</a></li>
+                      <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Employee Profile</a></li>
+                      <li><a class="dropdown-item" href=""><i class="bi bi-currency-dollar pr-2"></i>Commission</a></li>
                     </ul>
                 </li>
                 
