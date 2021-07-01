@@ -71,7 +71,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i> <span class="caret"></span>
+                            <i class="bi bi-person-circle" style="font-size: 1rem;"></i> <span class="caret"></span>
                         </a>
         
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">  
