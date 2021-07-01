@@ -131,7 +131,7 @@
   </div>
 
   <br>
-  <h3 class="border-bottom pb-3">Total Collection</h3>
+  <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
     <div class="col-md-3 pb-4">
