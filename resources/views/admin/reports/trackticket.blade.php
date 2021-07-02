@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Customer Information
+    Sales Report
 @endsection
   
 @include('layouts.navbar')
@@ -9,7 +9,7 @@
 
 <div class="col-md-12 pt-3">        
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; 
+        <a href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; 
         <a href="/trackprogram">...</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}">{{ $product->name }}</a> 
         / <a href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $package->package_id }}"> Participant </a> / <b>{{ $student->first_name }}</b>
     </div>
@@ -71,7 +71,7 @@
                                 <br>
                                     
                                 <!-- Participant Modal Button -->
-                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="bi bi-envelope pr-2"></i>Participant Email </button>
                                 <!-- Participant Modal Triggered -->
                                 <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -90,7 +90,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
-                                                <i class="fas fa-paper-plane pr-1"></i> Send
+                                                <i class="bi bi-envelope pr-2"></i>Send
                                             </a>
                                         </div>
                                         </div>
