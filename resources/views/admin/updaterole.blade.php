@@ -149,7 +149,7 @@
             </div>
                     
             <div class='col-md-2' style="padding-top:29px">
-                <button type='submit' class='btn btn-primary'> Update </button>
+                <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Save Changes </button>
             </div>
         </form>
 
