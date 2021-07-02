@@ -100,7 +100,7 @@ Membership
         </div>
       </div>
 
-      <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload"></i> Import Customer</a>
+      <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload pr-2"></i> Import Customer</a>
     </div>
     
       
