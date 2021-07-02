@@ -90,7 +90,7 @@ Sales Report
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <a class="btn btn-sm btn-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                                <i class="bi bi-envelope pr-2"></i>Send
+                                                Send
                                             </a>
                                         </div>
                                         </div>

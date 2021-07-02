@@ -90,7 +90,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
-                                                <i class="bi bi-envelope pr-2"></i>Send
+                                                Send
                                             </a>
                                         </div>
                                         </div>
@@ -127,7 +127,7 @@
                 <div class="row-fluid text-right">                        
                     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                     @else
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $ticket->ticket_id }}"><i class="fas fa-trash-alt"></i> Delete</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $ticket->ticket_id }}"><i class="bi bi-trash"></i>Delete</button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $ticket->ticket_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                     @endif
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-save pr-1"></i> Save Changes</button>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save Changes</button>
                 </div>
 
             </form>
