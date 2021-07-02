@@ -70,7 +70,7 @@
                 </div>
     
                 <div id="newRow"></div>
-                <button id="addRow" type='button' class='btn'><i class="fas fa-plus pr-1"></i> Add Row</button>
+                <button id="addRow" type='button' class='btn'><i class="bi bi-plus-lg pr-2"></i>Add Row</button>
             </div>
                 
             <div class='col-md-8 pt-3'>
