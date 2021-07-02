@@ -121,7 +121,7 @@ Sales Report
     <div class="row mb-3">
       <div class="col-xl-3 col-lg-6 py-2">
         <div class="card border-0 gradient-1 shadow text-center">
-          <h6 class="pt-3">Paid Payment</h6>
+          <h6 class="pt-3">Paid Ticket</h6>
           <b class="display-6 pb-3">{{ number_format($totalsuccess) }}</b>
         </div>
       </div>
@@ -236,11 +236,11 @@ Sales Report
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
+                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"></a>
 
                   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                   @else
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="bi bi-trash"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"></button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
