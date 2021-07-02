@@ -10,14 +10,14 @@
 <div class="col-md-12 pt-3">     
       
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Event</b>
+    <a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Event</b>
   </div>
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Event</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
-        <a href="addproduct" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> Add New Event</a>
+        <a href="addproduct" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-lg"></i> Add New Event</a>
       </div>
     </div>
   </div>
@@ -72,9 +72,9 @@
               <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
               <td>{{ $offer->name }}</td>
             <td>
-              <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="fas fa-eye"></i></a>
-              <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="fas fa-edit"></i></a>
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $products->product_id }}"><i class="fas fa-trash-alt"></i></button>
+              <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="bi bi-chevrot-right"></i></a>
+              <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="bi bi-edit"></i></a>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $products->product_id }}"><i class="bi bi-trash"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $products->product_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
