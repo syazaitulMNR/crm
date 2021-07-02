@@ -104,7 +104,7 @@
               <td>{{ $membership->firstItem() + $key  }}</td>
               <td>{{ $memberships->name  }}</td>
             <td>
-              <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $memberships->membership_id }}"><i class="bi bi-arrow-right"></i></a>
+              <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $memberships->membership_id }}"><i class="bi bi-caret-right"></i></a>
               {{-- <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $memberships->membership_id }}"><i class="fas fa-edit"></i></a> --}}
               @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
               @else
