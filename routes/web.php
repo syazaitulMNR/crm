@@ -62,6 +62,7 @@ Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'R
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
+Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 
 //participant
 Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
@@ -74,21 +75,20 @@ Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsController@destroy_ticket');
 Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
-
-
-Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
-Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
-Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');
-Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
-Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
-Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
-Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
-
-
-
-Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 Route::get('paid-ticket/search/{product_id}/{package_id}', 'ReportsController@search_paid');
-Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@search_free');
+
+
+
+// Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@search_free');
+// Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
+// Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
+// Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');
+// Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
+// Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
+// Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
+// Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
+
+
 
 /*
 |--------------------------------------------------------------------------
