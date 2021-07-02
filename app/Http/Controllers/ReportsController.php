@@ -807,12 +807,11 @@ class ReportsController extends Controller
         $time_from = $product->time_from;
         $time_to = $product->time_to;
         $packageId = $package_id;
-        $payment_id = $ticket->ticket_id;
         $productId = $product_id;        
         $student_id = $student->stud_id;
         $survey_form = $product->survey_form;
                 
-        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id, $ticket_id, $survey_form));
+        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
     }
