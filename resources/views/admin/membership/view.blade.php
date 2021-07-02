@@ -47,7 +47,7 @@ Membership
     <div class="btn-group">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
-        <i class="bi bi-plus-lg pr-2"></i> New Customer
+        <i class="bi bi-plus-lg pr-2"></i>New Customer
       </button>
       <!-- Modal -->
       <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
@@ -100,7 +100,7 @@ Membership
         </div>
       </div>
 
-      <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload pr-2"></i> Import Customer</a>
+      <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload pr-2"></i>Import Customer</a>
     </div>
     
       
