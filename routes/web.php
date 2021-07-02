@@ -24,89 +24,28 @@ Route::get('/addpack', function () {
     return view('admin.addpackage');
 });
 
+
 /*
 |--------------------------------------------------------------------------
-| Manage profile
+| Membership programme
 |--------------------------------------------------------------------------
 */
-Route::get('manageprofile','AdminController@profile');
-Route::post('updateprofile/{id}','AdminController@manageprofile');
+Route::get('membership','MembershipController@view_membership');
+Route::post('membership/save','MembershipController@store_membership');
+Route::get('membership/level/{membership_id}','MembershipController@view_level');
+Route::get('export-members/{membership_id}', 'MembershipController@export_members');
+Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
+Route::get('view/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@track_members');
+Route::post('update/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@update_members');
+Route::get('import-members/{membership_id}/{level_id}','MembershipController@import');
+Route::get('members-format/{membership_id}/{level_id}','MembershipController@export_format');
+Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
+Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
+Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
 
 /*
 |--------------------------------------------------------------------------
-| Manage user
-|--------------------------------------------------------------------------
-*/
-Route::get('dashboard', 'AdminController@dashboard');
-Route::get('manageuser', 'AdminController@manage');
-Route::get('managerole', 'AdminController@managerole');
-Route::post('addrole', 'AdminController@addrole');
-Route::get('details/{id}', 'AdminController@details');
-Route::post('updaterole/{id}', 'AdminController@updaterole');
-Route::get('deleterole/{id}', 'AdminController@deleterole');
-Route::get('create', 'AdminController@create');
-Route::post('adduser', 'AdminController@adduser');
-Route::get('update/{id}', 'AdminController@update');
-Route::post('updateuser/{id}', 'AdminController@updateuser');
-Route::get('deleteuser/{id}', 'AdminController@destroy');
-
-/*
-|--------------------------------------------------------------------------
-| Manage event
-|--------------------------------------------------------------------------
-*/
-Route::get('product', 'ProductController@viewproduct');
-Route::get('addproduct', 'ProductController@create');
-Route::post('new-product/save', 'ProductController@store');
-Route::get('edit/{id}', 'ProductController@edit');
-Route::post('update/{id}',  'ProductController@update');
-Route::get('delete/{id}', 'ProductController@destroy');
-
-/*
-|--------------------------------------------------------------------------
-| Manage package
-|--------------------------------------------------------------------------
-*/
-Route::get('addpackage/{id}', 'ProductController@pack');
-Route::post('storepack/{id}', 'ProductController@storepack');
-Route::get('package/{id}', 'ProductController@view');
-Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
-Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
-Route::get('deletepack/{packageId}', 'ProductController@destroypack');
-Route::get('viewpacks/{id}', 'ProductController@show');
-Route::get('feature/{id}', 'ProductController@viewpack');
-
-/*
-|--------------------------------------------------------------------------
-| Manage offer
-|--------------------------------------------------------------------------
-*/
-Route::get('view-offer', 'OfferController@view');
-Route::post('new-offer/save', 'OfferController@create');
-Route::post('update-offer/save/{offer_id}', 'OfferController@update');
-Route::get('delete-offer/{offer_id}', 'OfferController@delete');
-
-
-/*
-|--------------------------------------------------------------------------
-| Blasting Email
-|--------------------------------------------------------------------------
-*/
-Route::get('emailblast', 'BlastingController@emailblast');
-Route::get('view/{product_id}', 'BlastingController@package');
-Route::get('view-event/{product_id}/{package_id}', 'BlastingController@show');
-Route::get('blast-participant/{product_id}/{package_id}', 'BlastingController@blast_participant');
-Route::get('view-student/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_student');
-Route::get('view-participant/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_participant');
-Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_mail');
-Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
-Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
-Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
-
-
-/*
-|--------------------------------------------------------------------------
-| Manage report
+| Sales Report
 |--------------------------------------------------------------------------
 */
 Route::get('trackprogram', 'ReportsController@trackprogram');
@@ -153,21 +92,81 @@ Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@se
 
 /*
 |--------------------------------------------------------------------------
-| Membership programme
+| Blasting Email
 |--------------------------------------------------------------------------
 */
-Route::get('membership','MembershipController@view_membership');
-Route::post('membership/save','MembershipController@store_membership');
-Route::get('membership/level/{membership_id}','MembershipController@view_level');
-Route::get('export-members/{membership_id}', 'MembershipController@export_members');
-Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
-Route::get('view/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@track_members');
-Route::post('update/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@update_members');
-Route::get('import-members/{membership_id}/{level_id}','MembershipController@import');
-Route::get('members-format/{membership_id}/{level_id}','MembershipController@export_format');
-Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
-Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
-Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
+Route::get('emailblast', 'BlastingController@emailblast');
+Route::get('view/{product_id}', 'BlastingController@package');
+Route::get('view-event/{product_id}/{package_id}', 'BlastingController@show');
+Route::get('blast-participant/{product_id}/{package_id}', 'BlastingController@blast_participant');
+Route::get('view-student/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_student');
+Route::get('view-participant/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@view_participant');
+Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_mail');
+Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
+Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
+Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
+
+/*
+|--------------------------------------------------------------------------
+| Manage event
+|--------------------------------------------------------------------------
+*/
+Route::get('product', 'ProductController@viewproduct');
+Route::get('addproduct', 'ProductController@create');
+Route::post('new-product/save', 'ProductController@store');
+Route::get('edit/{id}', 'ProductController@edit');
+Route::post('update/{id}',  'ProductController@update');
+Route::get('delete/{id}', 'ProductController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Manage package
+|--------------------------------------------------------------------------
+*/
+Route::get('addpackage/{id}', 'ProductController@pack');
+Route::post('storepack/{id}', 'ProductController@storepack');
+Route::get('package/{id}', 'ProductController@view');
+Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
+Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
+Route::get('deletepack/{packageId}', 'ProductController@destroypack');
+Route::get('viewpacks/{id}', 'ProductController@show');
+Route::get('feature/{id}', 'ProductController@viewpack');
+
+/*
+|--------------------------------------------------------------------------
+| Manage offer
+|--------------------------------------------------------------------------
+*/
+Route::get('view-offer', 'OfferController@view');
+Route::post('new-offer/save', 'OfferController@create');
+Route::post('update-offer/save/{offer_id}', 'OfferController@update');
+Route::get('delete-offer/{offer_id}', 'OfferController@delete');
+
+/*
+|--------------------------------------------------------------------------
+| Manage profile
+|--------------------------------------------------------------------------
+*/
+Route::get('manageprofile','AdminController@profile');
+Route::post('updateprofile/{id}','AdminController@manageprofile');
+
+/*
+|--------------------------------------------------------------------------
+| Manage user
+|--------------------------------------------------------------------------
+*/
+Route::get('dashboard', 'AdminController@dashboard');
+Route::get('manageuser', 'AdminController@manage');
+Route::get('managerole', 'AdminController@managerole');
+Route::post('addrole', 'AdminController@addrole');
+Route::get('details/{id}', 'AdminController@details');
+Route::post('updaterole/{id}', 'AdminController@updaterole');
+Route::get('deleterole/{id}', 'AdminController@deleterole');
+Route::get('create', 'AdminController@create');
+Route::post('adduser', 'AdminController@adduser');
+Route::get('update/{id}', 'AdminController@update');
+Route::post('updateuser/{id}', 'AdminController@updateuser');
+Route::get('deleteuser/{id}', 'AdminController@destroy');
 
 
 //---------------------------------------------- Customer Part -------------------------------------------------//
