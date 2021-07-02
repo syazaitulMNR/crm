@@ -72,8 +72,8 @@
               <td>{{ date('d/m/Y', strtotime($products->date_from)) }} - {{ date('d/m/Y', strtotime($products->date_to)) }}</td>
               <td>{{ $offer->name }}</td>
             <td>
-              <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="bi bi-chevrot-right"></i></a>
-              <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="bi bi-edit"></i></a>
+              <a class="btn btn-dark" href="{{ url('package') }}/{{ $products->product_id }}"><i class="bi bi-chevron-right"></i></a>
+              <a class="btn btn-outline-primary" href="{{ url('edit') }}/{{ $products->product_id }}"><i class="bi bi-pencil-square"></i></a>
               <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $products->product_id }}"><i class="bi bi-trash"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $products->product_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
