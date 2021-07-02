@@ -53,18 +53,18 @@
 
         <div class='col-md-8'>
             <label for="name">Features</label>
-            @foreach ($feature as $value)
             <div id="inputFormRow">
                 <div class="input-group mb-3">
+                @foreach ($feature as $value)
                     {{-- <input name="feature[]" type="text" class="form-control" value="{{ $value->name }}" > --}}
                     <input name="feat_id[]" type="hidden" class="form-control" value="{{ $value->feat_id }}">
                     <input name="feature[]" type="text" class="form-control" value="{{ $value->name }}">
                     <div class="input-group-append">                
                         <button id="removeRow" type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
                     </div>
+                @endforeach
                 </div>
             </div>
-            @endforeach
 
             <div id="newRow"></div>
             <button id="addRow" type='button' class='btn'><i class="bi bi-plus-lg pr-2"></i>Add Row</button>
