@@ -11,7 +11,7 @@
 <div class="col-md-12 pt-3">     
         
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="/manageuser"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/manageuser">Manage User</a> / <b>Create User</b>
+        <a href="/manageuser"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/manageuser">Manage User</a> / <b>Create User</b>
     </div>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
