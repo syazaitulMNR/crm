@@ -17,7 +17,7 @@
     <h1 class="h2">Package</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
-        <a href="{{ url('addpackage') }}/{{ $product->product_id }}" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i> New Package</a>
+        <a href="{{ url('addpackage') }}/{{ $product->product_id }}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-lg pr-2"></i>New Package</a>
       </div>
     </div>
   </div>
@@ -64,8 +64,8 @@
             <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}/{{ Auth::user()->user_id }}" readonly></td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
-              <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="fas fa-eye"></i></a>
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="fas fa-trash-alt"></i></button>
+              <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="bi bi-chevron-right"></i></a>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="bi bi-trash"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $packages->package_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
