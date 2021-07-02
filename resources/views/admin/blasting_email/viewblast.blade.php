@@ -10,7 +10,7 @@
 <div class="col-md-12 pt-3">   
     
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="{{ url('view')}}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a> / <a href="/emailblast">Email Blasting</a> 
+    <a href="{{ url('view')}}/{{ $product->product_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a> / <a href="/emailblast">Email Blasting</a> 
     / <a href="{{ url('view')}}/{{ $product->product_id }}"> {{ $product->name }} </a> / <b>{{ $package->name }}</b>
   </div>
 
@@ -55,7 +55,7 @@
               <td>{{ $students->first_name }} {{ $students->last_name }}</td>
               <td>{{ $students->email }}</td>
               <td>
-                <a class="btn btn-dark" href="{{ url('view-student') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                <a class="btn btn-dark" href="{{ url('view-student') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payments->payment_id }}/{{ $students->stud_id }}"><i class="bi bi-chevron-right"></i></a>
               </td>
             </tr>
             @endif
