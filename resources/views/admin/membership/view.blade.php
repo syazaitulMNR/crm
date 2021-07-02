@@ -93,7 +93,7 @@ Membership
               </div>
                                 
               <div class='col-md-12 text-right px-4'>
-                  <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                  <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i> Save </button>
               </div>
             </form>
           </div>
@@ -170,7 +170,7 @@ Membership
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="bi bi-arrow-right"></i></a>
+                  <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="bi bi-chevron-right"></i></a>
                 </td>
             </tr>
             @endif

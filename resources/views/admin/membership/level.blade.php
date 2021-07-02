@@ -73,7 +73,7 @@ Membership
               <td>{{ $membership_level->firstItem() + $key }}</td>
               <td>{{ $membership_levels->name  }}</td>
               <td class="text-center">
-                <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_levels->level_id }}"><i class="bi bi-arrow-right"></i></a>
+                <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_levels->level_id }}"><i class="bi bi-chevron-right"></i></a>
               </td>
             </tr>
             @endforeach
