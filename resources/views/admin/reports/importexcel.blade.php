@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('title')
-    Import Customer
+Sales Report
 @endsection
 
 @include('layouts.navbar')
 @section('content')
 <div class="col-md-12 pt-3">        
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"> ... </a> 
+        <a href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/trackprogram">...</a>
+        / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}">{{ $product->name }}</a> 
         / <a href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}">{{ $package->name }}</a> / <b>Import Customer</b>
     </div>
 
@@ -26,7 +27,7 @@
 
         <div class="input-group p-3">
             <input type="file" name="file" class="form-control" required>
-            <button class="btn btn-dark"><i class="fas fa-upload pt-1"></i></button>
+            <button class="btn btn-dark"><i class="bi bi-upload"></i></button>
         </div>
         <em class="pl-3">Maximum upload file size: 8MB</em>
 
@@ -74,7 +75,7 @@
                 </div>
 
                 <div class="row-fluid float-right">
-                    <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-download pr-2"></i>Download</a>
+                    <a class="btn btn-warning" href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="bi bi-download pr-2"></i>Download</a>
                 </div>
             </div>
             
