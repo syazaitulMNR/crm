@@ -8,7 +8,7 @@
 @section('content')
 <div class="col-md-12 pt-3">     
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-      <a href="/trackprogram"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/trackprogram">Customer</a> / <b>{{ $product->name }}</b>
+      <a href="/trackprogram"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/trackprogram">Customer</a> / <b>{{ $product->name }}</b>
     </div>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -16,8 +16,8 @@
 
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group">
-            <a class="btn btn-sm btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Buyer</a>
-            <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Participant</a>
+            <a class="btn btn-sm btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Buyer</a>
+            <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a>
           </div>
         </div>
     </div>        
@@ -86,8 +86,8 @@
                 <td>{{ $package->firstItem() + $key }}</td>
                 <td>{{ $packages->name  }}</td>
                 <td>
-                  <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                    
-                  <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
+                  <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-user pr-2"></i>Buyer</a>                    
+                  <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-users pr-2"></i>Participant</a>
                 </td>
               </tr>
               @endif
