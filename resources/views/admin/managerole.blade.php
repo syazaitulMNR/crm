@@ -10,7 +10,7 @@
 <div class="col-md-12 pt-3">    
 
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="/manageuser"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/manageuser">Manage User</a> / <b>Manage Role</b>
+        <a href="/manageuser"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/manageuser">Manage User</a> / <b>Manage Role</b>
     </div>
     
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -55,7 +55,7 @@
             </div>-->
                 
             <div class='col-md-2 pl-0 pt-1'>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fas fa-plus pr-1"></i></button>
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="bi bi-plus-lg"></i></button>
             </div>
 
             <!-- Modal -->
@@ -95,8 +95,8 @@
                         <td>{{ $roles->firstItem() + $key  }}</td>
                         <td>{{ $role->name  }}</td>
                     <td>
-                        <a class="btn btn-dark" href="{{ url('details') }}/{{ $role->role_id }}"><i class="fas fa-info-circle"></i> </a>
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $role->role_id }}"><i class="fas fa-trash-alt"></i></button>
+                        <a class="btn btn-dark" href="{{ url('details') }}/{{ $role->role_id }}"><i class="bi bi-chevron-right"></i> </a>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $role->role_id }}"><i class="bi bi-trash"></i></button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal{{ $role->role_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
