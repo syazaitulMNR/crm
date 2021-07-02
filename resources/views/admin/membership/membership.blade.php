@@ -19,7 +19,7 @@
     <div class="btn-toolbar mb-2 mb-md-0">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newmembership">
-        <i class="bi bi-plus pr-2"></i> New Membership
+        <i class="bi bi-plus-lg pr-2"></i> New Membership
       </button>
       <!-- Modal -->
       <div class="modal fade" id="newmembership" tabindex="-1" role="dialog" aria-labelledby="newmembershipLabel" aria-hidden="true">
