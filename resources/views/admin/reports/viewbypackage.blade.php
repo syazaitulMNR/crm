@@ -228,19 +228,19 @@ Sales Report
                 </td>
                 <td class="text-center">
                   @if ($payments->update_count == 1)
-                    <i class="fas fa-check" style="color:green"></i>
+                    <i class="bi bi-check" style="color:green"></i>
                   @elseif ($payments->update_count == Null)
-                    <i class="fas fa-times" style="color:red"></i>
+                    <i class="bi bi-times" style="color:red"></i>
                   @else
                     <p>NULL</p>
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"></a>
+                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
 
                   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                   @else
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"></button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="bi bi-trash"></i></button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
