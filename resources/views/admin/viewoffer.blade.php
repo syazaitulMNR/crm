@@ -121,7 +121,7 @@
               </div>
 
               <!-- Delete trigger modal -->
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $offer->offer_id }}"><i class="bi bi-trash pr-2"></i></button>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $offer->offer_id }}"><i class="bi bi-trash"></i></button>
               <!-- Delete Modal -->
               <div class="modal fade" id="delete{{ $offer->offer_id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
