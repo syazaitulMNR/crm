@@ -8,7 +8,7 @@
 @section('content')
 <div class="col-md-12 pt-3">
         <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-          <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a> 
+          <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a> 
           / <a href="/trackprogram">Customer</a> / <a href="{{ url('trackpackage') }}/{{ $product->product_id }}"> {{ $product->name }} </a> / <b>{{ $package->name }}</b>
         </div>
   
@@ -76,14 +76,14 @@
                         </div>
                     </div>
                     <div class='col-md-12 text-right px-4'>
-                        <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                        <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i> Save </button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
 
-            <a href="{{ url('import-participant') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Participant</a>
+            <a href="{{ url('import-participant') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i> Import Participant</a>
           </div>
         </div>
 
@@ -168,11 +168,11 @@
                       <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                       <td>{{ $students->email }}</td>
                       <td>
-                          <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
+                          <a class="btn btn-dark" href="{{ url('paid-ticket/view') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="bi bi-chevron-right"></i></a>
 
                           @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                           @else
-                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tickets->payment_id }}"><i class="bi bi-trash"></i></button>
                           <!-- Modal -->
                           <div class="modal fade" id="exampleModal{{ $tickets->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered">
@@ -228,7 +228,7 @@
                       <td>{{ $students->email }}</td>
                       <td>{{ $tickets->ticket_type }}</td>
                       <td>
-                          <a class="btn btn-dark" href="{{ url('view/ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="fas fa-chevron-right"></i></a>
+                          <a class="btn btn-dark" href="{{ url('view/ticket') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $tickets->ticket_id }}"><i class="bi bi-chevron-right"></i></a>
                       </td>
                   </tr>
                   @endif
