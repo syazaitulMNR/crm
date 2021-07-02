@@ -37,7 +37,7 @@ Membership
 <div class="col-md-12 pt-3">   
         
   <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-      <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/membership">Membership</a>
+      <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/membership">...</a>
       / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}">{{ $membership->name }}</a> / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}">{{ $membership_level->name }}</a>
       / <b>{{ $student->first_name }}</b>
   </div>
