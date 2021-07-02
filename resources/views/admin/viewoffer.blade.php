@@ -10,7 +10,7 @@
 <div class="col-md-12 pt-3">     
       
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Offer</b>
+    <a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Offer</b>
   </div>
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -19,7 +19,7 @@
         <div class="mr-2">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newoffer">
-                <i class="fas fa-plus pr-1"></i> New Offer
+                <i class="bi bi-plus-lg pr-2"></i>New Offer
             </button>
             <!-- Modal -->
             <div class="modal fade" id="newoffer" tabindex="-1" role="dialog" aria-labelledby="newofferLabel" aria-hidden="true">
@@ -41,7 +41,7 @@
                         </div>
                                             
                         <div class='col-md-12 text-right px-4'>
-                            <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                            <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save </button>
                         </div>
                     </form>
                 </div>
@@ -113,7 +113,7 @@
                           </div>
                                               
                           <div class='col-md-12 text-right px-4'>
-                              <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                              <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save </button>
                           </div>
                       </form>
                   </div>
