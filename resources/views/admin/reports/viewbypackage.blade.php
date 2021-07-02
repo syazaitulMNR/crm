@@ -228,9 +228,9 @@ Sales Report
                 </td>
                 <td class="text-center">
                   @if ($payments->update_count == 1)
-                    <i class="bi bi-check-lg pt-1" style="color:green"></i>
+                    <i class="bi bi-check-lg pt-2" style="color:green"></i>
                   @elseif ($payments->update_count == Null)
-                    <i class="bi bi-x-lg pt-1" style="color:red"></i>
+                    <i class="bi bi-x-lg pt-2" style="color:red"></i>
                   @else
                     <p>NULL</p>
                   @endif
@@ -300,9 +300,9 @@ Sales Report
               <td>{{ $students->email }}</td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
-                  <i class="bi bi-check-lg pt-1" style="color:green"></i>
+                  <i class="bi bi-check-lg pt-2" style="color:green"></i>
                 @elseif ($payments->update_count == Null)
-                  <i class="bi bi-x-lg pt-1" style="color:red"></i>
+                  <i class="bi bi-x-lg pt-2" style="color:red"></i>
                 @else
                   <p>NULL</p>
                 @endif
