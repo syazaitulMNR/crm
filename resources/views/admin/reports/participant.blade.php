@@ -18,7 +18,7 @@
           <div class="btn-group">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
-              <i class="bi bi-plus-lg pr-2"></i> New Participant
+              <i class="bi bi-plus-lg pr-2"></i>New Participant
             </button>
             <!-- Modal -->
             <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
