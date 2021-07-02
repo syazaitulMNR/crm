@@ -31,7 +31,7 @@
             <th>#</th>
             <th style="width:12%">Event Date</th>
             <th>Event Name</th>
-            <th><i class="fas fa-cogs"></i></th>
+            <th><i class="bi bi-gear"></i></th>
           </tr>
         </thead>
         <tbody> 
