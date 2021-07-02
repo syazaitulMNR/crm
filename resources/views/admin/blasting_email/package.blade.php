@@ -10,7 +10,7 @@
 <div class="col-md-12 pt-3">     
     
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/emailblast"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/emailblast">Email Blasting</a> / <b>{{ $product->name }}</b>
+    <a href="/emailblast"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <a href="/emailblast">Email Blasting</a> / <b>{{ $product->name }}</b>
   </div>
   
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -38,8 +38,8 @@
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
             <td>
-              <a class="btn btn-sm btn-dark" href="{{ url('view-event') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-user pr-1"></i> Buyer</a>                   
-              <a class="btn btn-sm btn-dark" href="{{ url('blast-participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fas fa-users pr-1"></i> Participant</a>
+              <a class="btn btn-sm btn-dark" href="{{ url('view-event') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-person pr-2"> Buyer</a>                   
+              <a class="btn btn-sm btn-dark" href="{{ url('blast-participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-people pr-2"></i> Participant</a>
             </td>
           </tr>
           @endif
