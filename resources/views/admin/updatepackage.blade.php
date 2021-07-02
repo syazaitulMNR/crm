@@ -87,7 +87,7 @@
         html += '<div class="input-group mb-3">';
         html += '<input type="text" name="features[]" class="form-control" autocomplete="off" required>';
         html += '<div class="input-group-append">';
-        html += '<button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>';
+        html += '<button id="removeRow" type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>';
         html += '</div>';
         html += '</div>';
 
