@@ -148,7 +148,7 @@
                 </table>
             </div>
                     
-            <div class='col-md-2 text-end' style="padding-top:29px">
+            <div class='col-md-12 text-end' style="padding-top:29px">
                 <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Save Changes </button>
             </div>
         </form>
