@@ -80,7 +80,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary float-right">Submit</button>
+            <button type="submit" class="btn btn-primary float-right"><i class="bi bi-save pr-2"></i>Submit</button>
         </div>
                 
     </form>
