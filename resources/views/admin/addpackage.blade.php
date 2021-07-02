@@ -64,7 +64,7 @@
                     <div class="input-group mb-3">
                         <input type="text" name="feature[]" class="form-control" autocomplete="off" required>
                         <div class="input-group-append">                
-                            <button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                            <button id="removeRow" type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
                         </div>
                     </div>
                 </div>
