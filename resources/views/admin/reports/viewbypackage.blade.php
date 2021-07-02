@@ -19,7 +19,7 @@ Sales Report
       <div class="btn-group">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
-          <i class="fas fa-plus pr-1"></i> New Customer
+          <i class="bi bi-plus-lg pr-2"></i>New Customer
         </button>
         <!-- Modal -->
         <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
@@ -105,14 +105,14 @@ Sales Report
                 </div>
 
                 <div class='col-md-12 text-right px-4'>
-                    <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+                    <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
 
-        <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-upload pr-1"></i> Import Customer</a>
+        <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
       </div>
         
     </div>
@@ -236,11 +236,11 @@ Sales Report
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
 
                   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                   @else
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="fas fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payments->payment_id }}"><i class="bi bi-trash"></i></button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $payments->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
