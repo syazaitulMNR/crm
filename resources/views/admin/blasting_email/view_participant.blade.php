@@ -10,7 +10,7 @@ Email Blasting
 <div class="col-md-12 pt-3">
         
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="{{ url('blast-participant')}}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/emailblast">...</a> 
+        <a href="{{ url('blast-participant')}}/{{ $product->product_id }}/{{ $package->package_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/emailblast">...</a> 
         / <a href="{{ url('view')}}/{{ $product->product_id }}"> {{ $product->name }} </a> / <a href="{{ url('blast-participant')}}/{{ $product->product_id }}/{{ $package->package_id }}">{{ $package->name }}</a>
         / <b> {{ $student->first_name }} </b>
     </div>
@@ -64,7 +64,7 @@ Email Blasting
                                 <br>
                                                 
                                 <!-- Purchased Modal Button -->
-                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Participant Email </button>
+                                <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="bi bi-envelope pr-2"></i> Participant Email </button>
                                 <!-- Purchased Modal Triggered -->
                                 <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -83,7 +83,7 @@ Email Blasting
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <a class="btn btn-sm btn-dark" href="{{ url('participant-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
-                                                <i class="fas fa-paper-plane pr-1"></i> Send
+                                                <i class="bi bi-envelope pr-2"></i> Send
                                             </a>
                                         </div>
                                         </div>
@@ -123,7 +123,7 @@ Email Blasting
                 </div>
 
                 <div class="text-end">
-                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save pr-1"></i> Save Changes</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary"><i class="bi bi-save pr-1"></i> Save Changes</button>
                 </div>
 
                 
