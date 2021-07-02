@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Customer Information
+Membership
 @endsection
 
 <style>
