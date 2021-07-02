@@ -10,15 +10,15 @@
 <div class="col-md-12 pt-3">    
 
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/dashboard"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>Manage User</b>
+    <a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>Manage User</b>
   </div>
   
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Manage User</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group">
-        <a href="managerole" class="btn btn-sm btn-outline-primary"><i class="fas fa-users pr-3"></i> Manage Role</a>
-        <a href="create" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus pr-1"></i> Add New User</a>
+        <a href="managerole" class="btn btn-sm btn-outline-primary"><i class="bi bi-person pr-2"></i>Manage Role</a>
+        <a href="create" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-lg pr-2"></i>Add New User</a>
       </div>
     </div>
   </div>
@@ -65,8 +65,8 @@
               <td>{{$user->name}}</td>
               <td>{{$role->name}}</td>
               <td>
-                <a href="{{ url('update') }}/{{ $user->user_id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $user->user_id }}"><i class="fas fa-trash-alt"></i></button>
+                <a href="{{ url('update') }}/{{ $user->user_id }}" class="btn btn-dark"><i class="bi bi-chevron-right"></i></a>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $user->user_id }}"><i class="bi bi-trash"></i></button>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal{{ $user->user_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
