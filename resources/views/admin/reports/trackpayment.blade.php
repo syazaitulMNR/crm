@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Customer Information
+Sales Report
 @endsection
   
 @include('layouts.navbar')
@@ -71,7 +71,7 @@
                                 <br>
                                                 
                                 <!-- Purchased Modal Button -->
-                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="fas fa-paper-plane pr-1"></i> Purchased Email </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="bi bi-envelope pr-2"></i>Purchased Email </button>
                                 <!-- Purchased Modal Triggered -->
                                 <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -90,7 +90,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <a class="btn btn-sm btn-dark" href="{{ url('purchased-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                                                <i class="fas fa-paper-plane pr-1"></i> Send
+                                                <i class="bi bi-envelope pr-2"></i>Send
                                             </a>
                                         </div>
                                         </div>
@@ -166,7 +166,7 @@
 
                 <div class="mb-3 row">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary btn-sm float-right"><i class="fas fa-save pr-1"></i> Save  Changes</button>
+                        <button type="submit" class="btn btn-primary btn-sm float-right"><i class="bi bi-save pr-2"></i> Save  Changes</button>
                     </div>
                 </div>
 
