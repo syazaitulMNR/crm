@@ -45,7 +45,7 @@
                                 </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
-
+                            <p>Jika butang di atas tidak berfungsi, sila gunakan pautan ini --> {{ $survey_form }}</p>
                             {{-- For upgrade by ticket --}}
                             <tr>
                               <td>
