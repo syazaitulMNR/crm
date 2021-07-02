@@ -91,7 +91,7 @@ Email Blasting
                                 <br>
                                                 
                                 <!-- Purchased Modal Button -->
-                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="bi bi-envelope pr-2"></i>Purchased Email </button>
+                                <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="bi bi-envelope pr-2"></i>Purchased Email </button>
                                 <!-- Purchased Modal Triggered -->
                                 <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -175,7 +175,7 @@ Email Blasting
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-sm btn-primary"><i class="bi bi-save pr-2"></i> Save Changes</button>
+                            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="bi bi-save pr-2"></i> Save Changes</button>
                         </div>
                     </div>
                 </div>
