@@ -236,7 +236,7 @@ Sales Report
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"></a>
+                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i>next</a>
 
                   @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                   @else
