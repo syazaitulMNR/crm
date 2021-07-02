@@ -175,7 +175,7 @@ Email Blasting
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-save pr-2"></i> Save Changes</button>
+                            <button type="submit" class="btn btn-sm btn-primary"><i class="bi bi-save pr-2"></i> Save Changes</button>
                         </div>
                     </div>
                 </div>
