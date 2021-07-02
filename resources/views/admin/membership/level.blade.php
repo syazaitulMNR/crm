@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Sales Tracking
+Membership
 @endsection
 
 <style>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Sales Tracking
+Membership
 @endsection
 
 <style>
@@ -37,7 +37,7 @@
 @section('content')
 <div class="col-md-12 pt-3">     
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a>  / <a href="/membership">Membership</a>
+    <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a>  / <a href="/membership">Membership</a>
       / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}">{{ $membership->name }}</a> / <b>{{ $membership_level->name }}</b>
   </div>
 
@@ -47,7 +47,7 @@
     <div class="btn-group">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newcustomer">
-        <i class="fas fa-plus pr-1"></i> New Customer
+        <i class="bi bi-plus-lg pr-2"></i> New Customer
       </button>
       <!-- Modal -->
       <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="fas fa-upload pr-1"></i> Import Customer</a>
+      <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload"></i> Import Customer</a>
     </div>
     
       
@@ -170,7 +170,7 @@
                   @endif
                 </td>
                 <td>
-                  <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="fas fa-chevron-right"></i></a>
+                  <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="bi bi-arrow-right"></i></a>
                 </td>
             </tr>
             @endif
