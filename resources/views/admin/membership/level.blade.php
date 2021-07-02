@@ -37,13 +37,13 @@
 @section('content')
 <div class="col-md-12 pt-3">     
   <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/membership"><i class="fas fa-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a>  / <a href="/membership">Membership</a> / <b>{{ $membership->name }}</b>
+    <a href="/membership"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a>  / <a href="/membership">Membership</a> / <b>{{ $membership->name }}</b>
   </div>
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">{{ $membership->name }}</h1>
 
-      <a class="btn btn-outline-warning" href="{{ url('export-members') }}/{{ $membership->membership_id }}"><i class="fas fa-download pt-1 pr-1"></i> Export Customer</a>
+      <a class="btn btn-outline-warning" href="{{ url('export-members') }}/{{ $membership->membership_id }}"><i class="bi bi-download pr-2"></i> Export Customer</a>
   </div>
 
   <div class="row">
@@ -73,7 +73,7 @@
               <td>{{ $membership_level->firstItem() + $key }}</td>
               <td>{{ $membership_levels->name  }}</td>
               <td class="text-center">
-                <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_levels->level_id }}"><i class="fas fa-chevron-right"></i></a>
+                <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_levels->level_id }}"><i class="bi bi-arrow-right"></i></a>
               </td>
             </tr>
             @endforeach
