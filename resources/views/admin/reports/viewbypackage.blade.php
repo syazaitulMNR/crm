@@ -300,9 +300,9 @@ Sales Report
               <td>{{ $students->email }}</td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
-                  <i class="fas fa-check" style="color:green"></i>
+                  <i class="bi bi-check" style="color:green"></i>
                 @elseif ($payments->update_count == Null)
-                  <i class="fas fa-times" style="color:red"></i>
+                  <i class="bi bi-times" style="color:red"></i>
                 @else
                   <p>NULL</p>
                 @endif
