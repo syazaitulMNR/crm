@@ -100,8 +100,10 @@ class BlastingController extends Controller
         $student->first_name = $request->first_name;
         $student->last_name = $request->last_name;
         $student->email = $request->email;
+        $payment->status = $request->status;
 
         $student->save();
+        $payment->save();
 
         return redirect('view-student/' . $product_id . '/' . $package_id. '/' . $payment_id . '/' . $student_id)->with('update-mail','Customer details successfully updated');
     }
