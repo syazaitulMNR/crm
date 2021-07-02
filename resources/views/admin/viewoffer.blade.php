@@ -90,7 +90,7 @@
             <td>{{ $offer->name  }}</td>
             <td>
               <!-- Update trigger modal -->
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateoffer">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateoffer">
                   <i class="bi bi-pencil-square"></i>
               </button>
               <!-- Update Modal -->
