@@ -38,8 +38,8 @@
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
             <td>
-              <a class="btn btn-sm btn-dark" href="{{ url('view-event') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-person pr-2"></i> Buyer</a>                   
-              <a class="btn btn-sm btn-dark" href="{{ url('blast-participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-people pr-2"></i> Participant</a>
+              <a class="btn btn-sm btn-dark" href="{{ url('view-event') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-person pr-2"></i>Buyer</a>                   
+              <a class="btn btn-sm btn-dark" href="{{ url('blast-participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-people pr-2"></i>Participant</a>
             </td>
           </tr>
           @endif
