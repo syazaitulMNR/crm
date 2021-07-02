@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Sales Tracking
+  Sales Report
 @endsection
 
 @include('layouts.navbar')
