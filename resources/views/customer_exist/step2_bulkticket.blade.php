@@ -110,11 +110,11 @@ Pendaftaran Pembeli
             }else{
             
                 if (val == 1) {
-                    total = 30;
+                    total = price * 1;
                 } else if (val == 2) {
-                    total = 60;
+                    total = price * 2;
                 } else {
-                    total = 75;
+                    total = price * 3;
                 }
                 var totallagi = document.getElementById('jumlahharga');
                 totallagi.value = total;
