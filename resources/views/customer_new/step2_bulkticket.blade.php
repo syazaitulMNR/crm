@@ -95,18 +95,15 @@ Pendaftaran Pembeli
 
         if (package_name == package1) {
             
-            if ( price == 10 )
+            if ( price <= 10 )
             {
 
-                if (val == 1) {
-                    total = 10;
-                } else if (val == 2) {
-                    total = 20;
-                } else {
-                    total = 30;
-                }
-                var totallagi = document.getElementById('jumlahharga');
-                totallagi.value = total;
+                var prices = document.getElementById("price").value;
+                var total_price = val * prices;
+
+                /*display the result*/
+                var divobj = document.getElementById('jumlahharga');
+                divobj.value = total_price;
 
             }else{
             

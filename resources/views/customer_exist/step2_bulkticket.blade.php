@@ -94,18 +94,24 @@ Pendaftaran Pembeli
 
         if (package_name == package1) {
 
-            if ( price == 10 )
+            if ( price <= 10 )
             {
+                var prices = document.getElementById("price").value;
+                var total_price = val * prices;
 
-                if (val == 1) {
-                    total = 10;
-                } else if (val == 2) {
-                    total = 20;
-                } else {
-                    total = 30;
-                }
-                var totallagi = document.getElementById('jumlahharga');
-                totallagi.value = total;
+                /*display the result*/
+                var divobj = document.getElementById('jumlahharga');
+                divobj.value = total_price;
+
+                // if (val == 1) {
+                //     total = 10;
+                // } else if (val == 2) {
+                //     total = 20;
+                // } else {
+                //     total = 30;
+                // }
+                // var totallagi = document.getElementById('jumlahharga');
+                // totallagi.value = total;
 
             }else{
             
@@ -136,11 +142,11 @@ Pendaftaran Pembeli
         } else if (package_name == package3) {
 
             if (val == 1) {
-                total = 280;
+                total = price * 1;
             } else if (val == 2) {
-                total = 560;
+                total = price * 2;
             } else {
-                total = 660;
+                total = price * 3;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
