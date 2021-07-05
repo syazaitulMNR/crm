@@ -96,22 +96,11 @@ Pendaftaran Pembeli
 
             if ( price <= 10 )
             {
-                var prices = document.getElementById("price").value;
-                var total_price = val * prices;
 
-                /*display the result*/
+                total = val * price;
+
                 var divobj = document.getElementById('jumlahharga');
                 divobj.value = total_price;
-
-                // if (val == 1) {
-                //     total = 10;
-                // } else if (val == 2) {
-                //     total = 20;
-                // } else {
-                //     total = 30;
-                // }
-                // var totallagi = document.getElementById('jumlahharga');
-                // totallagi.value = total;
 
             }else{
             
