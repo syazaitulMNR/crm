@@ -96,8 +96,8 @@ Pendaftaran Pembeli
 
             if ( price <= 10 )
             {
-
-                total = val * price;
+                var prices = document.getElementById("price").value;
+                var total_price = val * prices;
 
                 var divobj = document.getElementById('jumlahharga');
                 divobj.value = total_price;
