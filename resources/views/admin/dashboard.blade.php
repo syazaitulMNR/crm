@@ -131,6 +131,8 @@
   </div>
 
   <br>
+  @if(Auth::user()->user_id == 'ROD003' || Auth::user()->user_id == 'ROD004' )
+  @else
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
@@ -159,6 +161,7 @@
       </div>
     </div>
   </div>
+  @endif
       
 </div>
 
