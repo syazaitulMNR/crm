@@ -101,7 +101,6 @@ Pendaftaran Pembeli
                 var prices = document.getElementById("price").value;
                 var total_price = val * prices;
 
-                /*display the result*/
                 var divobj = document.getElementById('jumlahharga');
                 divobj.value = total_price;
 
