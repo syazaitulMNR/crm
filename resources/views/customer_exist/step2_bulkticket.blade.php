@@ -86,22 +86,40 @@ Pendaftaran Pembeli
 
         var total;
         var package_name = '{{ $package->name }}';
+        var price = '{{ $package->price }}';
         var package1 = 'Solidariti';
         var package2 = 'Sustain';
         var package3 = 'Growth';
         var error = 'No such package';
 
         if (package_name == package1) {
+
+            if ( price == 10 )
+            {
+
+                if (val == 1) {
+                    total = 10;
+                } else if (val == 2) {
+                    total = 20;
+                } else {
+                    total = 30;
+                }
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = total;
+
+            }else{
             
-            if (val == 1) {
-                total = 30;
-            } else if (val == 2) {
-                total = 60;
-            } else {
-                total = 75;
+                if (val == 1) {
+                    total = 30;
+                } else if (val == 2) {
+                    total = 60;
+                } else {
+                    total = 75;
+                }
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = total;
+
             }
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
 
         } else if (package_name == package2) {
 
