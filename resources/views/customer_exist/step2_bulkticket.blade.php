@@ -124,11 +124,11 @@ Pendaftaran Pembeli
         } else if (package_name == package2) {
 
             if (val == 1) {
-                total = 220;
+                total = price * 1;
             } else if (val == 2) {
-                total = 440;
+                total = price * 2;
             } else {
-                total = 510;
+                total = price * 3;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
