@@ -11,7 +11,7 @@
         <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
     </div>
     
-    <div class="col-md-12 d-flex justify-content-center">
+    <div class="col-md-6 offset-md-3">
         <div class="card px-4 py-4 w-75 shadow">
             <p class="lead px-3">No. Kad Pengenalan / Passport</p>
             <form action="{{ url('verification') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
