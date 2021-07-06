@@ -21,8 +21,6 @@
       </div>
       <p class="lead py-2">Peserta perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
       
-      <a class="btn btn-lg btn-primary" href="{{ $product->survey_form }}"> Soalan kaji selidik</a>
-
       <hr class="my-4">
       {{-- <p class="lead">Pengesahan pengemaskinian akan dihantar kepada emel yang telah didaftarkan dalam tempoh 48 Jam. Terima kasih kerana menunggu.</p> --}}
       <p class="lead">Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet" class="link-primary">hubungi kami.</a></p>
