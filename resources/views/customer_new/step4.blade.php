@@ -10,7 +10,7 @@ Pendaftaran Pembeli
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 25px 16px;
+    padding: 32px 16px;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
@@ -24,7 +24,7 @@ Pendaftaran Pembeli
     background-color: #f3f3f3;
     color: #202020;
     border: 1px #e7e7e7 solid;
-    width: 250px;
+    width: 200px;
     }
 
     .button4:hover {background-color: #e7e7e7;}
