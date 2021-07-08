@@ -64,7 +64,7 @@ Pendaftaran Pembeli
                         
                             <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
                                 <i class="fas fa-university fa-3x"></i>
-                                <br><br>FPX
+                                <br><br>Billplz
                             </button>
                         </div>
                     </div>
