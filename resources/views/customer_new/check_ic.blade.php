@@ -23,7 +23,6 @@
                     <div class="pull-right">
                         <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                     </div>
-                    {{-- <button type="submit" class="text-white btn btn-block" style="background-color: #202020">Seterusnya &nbsp;<i class="fas fa-arrow-right"></i></button> --}}
                 </div>
             </form>
         </div>
