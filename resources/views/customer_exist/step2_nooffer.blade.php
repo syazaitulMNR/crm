@@ -6,12 +6,12 @@ Pendaftaran Pembeli
 
 @section('content')
 <div class="row">
-    <div class="col-md-12 px-3 py-5 text-center">
+    <div class="col-md-12 pt-5 pb-3 text-center">
         <img src="/assets/images/logo.png" style="max-width:150px">
         <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
     </div>
 
-    <div class="col-md-12 d-flex justify-content-center pb-5">
+    <div class="col-md-6 offset-md-3 pb-5">
         <form action="{{ url('save2') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
             @csrf
             <div class="card px-4 py-4 shadow">
