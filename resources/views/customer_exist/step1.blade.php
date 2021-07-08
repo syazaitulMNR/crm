@@ -21,7 +21,7 @@ Pendaftaran Pembeli
     <div class="col-md-12 px-3 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:150px">
         <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
-        <h6>Hai! Terima kasih kerana masih setia menghadiri program kami. Sila semak butiran peribadi anda.</h6>
+        <p>Hai! Terima kasih kerana masih setia menghadiri program kami. Sila semak butiran peribadi anda.</p>
     </div>
 
     <div class="col-md-6 offset-md-3 pb-5">
