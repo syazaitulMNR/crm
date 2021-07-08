@@ -29,7 +29,7 @@ Pendaftaran Pembeli
             @csrf
 
             <div class="card px-4 py-4 shadow">
-                <div class="card-header bg-dark text-white">Langkah 1/5: Maklumat Pembeli</div>
+                <div class="bg-dark text-white">Langkah 1/5: Maklumat Pembeli</div>
 
                 <div class="card-body">
 
