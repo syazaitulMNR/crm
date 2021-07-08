@@ -10,7 +10,7 @@ Pendaftaran Pembeli
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 32px 16px;
+    padding: 25px 16px;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
