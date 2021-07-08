@@ -51,6 +51,15 @@ Pendaftaran Pembeli
                             <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-select" required>
                                 <option value="" disabled selected>-- Tiket --</option>
                                 <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
                         <div class="col-md-6 pb-2">
@@ -75,4 +84,21 @@ Pendaftaran Pembeli
 
 </div>
 
+<!--
+|--------------------------------------------------------------------------
+| This function is to calculate Total Price
+|--------------------------------------------------------------------------
+-->
+<script>
+    function calculateAmount(val) {
+        
+      var prices = document.getElementById("price").value;
+      var total_price = val * prices;
+  
+      /*display the result*/
+      var divobj = document.getElementById('totalprice');
+      divobj.value = total_price;
+  
+    }
+</script>
 @endsection
