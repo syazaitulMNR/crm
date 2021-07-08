@@ -56,7 +56,7 @@ Pendaftaran Pembeli
                     @endif
 
                     <div class="form-group row">
-                        <div class="col-md-12 text-center px-5">
+                        <div class="col-md-12 text-center">
                             {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
                                 <i class="far fa-credit-card fa-3x"></i>
                                 <br><br>Kad Debit/Kredit
