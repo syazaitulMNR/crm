@@ -13,7 +13,7 @@
     
     <div class="col-md-6 offset-md-3">
         <div class="card px-4 py-4 shadow">
-            <b>No. Kad Pengenalan / Passport</b>
+            <p>No. Kad Pengenalan / Passport</p>
             <form action="{{ url('verification') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
                 @csrf
                 <div class="col-md-12 pb-3">
