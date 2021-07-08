@@ -25,7 +25,7 @@ Pendaftaran Pembeli
             <h6>Hai! Baru pertama kali join program kami ya? Sila isikan butiran yang berikut.</h6>
         </div>
 
-        <div class="col-md-12 d-flex justify-content-center pb-5">
+        <div class="col-md-6 offset-md-3">
             <form action="{{ url('store1') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
                 @csrf
   
