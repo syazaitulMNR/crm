@@ -55,7 +55,7 @@ Pendaftaran Pembeli
                         </div>
                         <div class="col-md-6 pb-2">
                             <label for="totalprice">Jumlah Harga (RM)</label><br>
-                            <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; outline-width: 0;" readonly></h3>
+                            <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none;" readonly></h3>
                         </div>
                     </div>
 
