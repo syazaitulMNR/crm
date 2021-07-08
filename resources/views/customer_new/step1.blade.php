@@ -18,9 +18,9 @@ Pendaftaran Pembeli
 </style>
 
 <div class="row">
-    <div class="col-md-12 px-3 py-5 text-center">
-        <img src="/assets/images/logo.png" style="max-width:200px">
-        <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
+    <div class="col-md-12 px-2 py-5 text-center">
+        <img src="/assets/images/logo.png" style="max-width:150px">
+        <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
         <h6>Hai! Baru pertama kali join program kami ya? Sila isikan butiran yang berikut.</h6>
     </div>
 
@@ -75,11 +75,9 @@ Pendaftaran Pembeli
                         
                 </div>
 
-                <div class="card-footer">
-                    <div class="col-md-12">
-                        <div class="pull-right">
-                            <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
-                        </div>
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                     </div>
                 </div>
             </div>
