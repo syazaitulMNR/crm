@@ -31,56 +31,53 @@ Pendaftaran Pembeli
 </style>
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 px-3 py-5 text-center">
-            <img src="/assets/images/logo.png" style="max-width:200px">
-            <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
-        </div>
+<div class="row">
+    <div class="col-md-12 px-2 py-5 text-center">
+        <img src="/assets/images/logo.png" style="max-width:150px">
+        <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
+    </div>
 
-        <div class="col-md-12 d-flex justify-content-center pb-5">
-            <form action="{{ url('store4') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
-                @csrf
-                <div class="card w-100 shadow">
-                    <div class="card-header bg-dark text-white">Langkah 4/5: Pilih Jenis Pembayaran</div>
-  
-                    <div class="card-body">
-  
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="px-3">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+    <div class="col-md-6 offset-md-3 pb-5">
+        <form action="{{ url('store4') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
+            @csrf
+            <div class="card px-4 py-4 shadow">
+                <div class="bg-dark text-white px-2 py-2">Langkah 4/5: Pilih Jenis Pembayaran</div>
 
-                        <div class="form-group row">
-                            <div class="col-md-12 px-5">
-                                {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
-                                    <i class="far fa-credit-card fa-3x"></i>
-                                    <br><br>Kad Debit/Kredit
-                                </button> --}}
-                            
-                                <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
-                                    <i class="fas fa-university fa-3x"></i>
-                                    <br><br>FPX
-                                </button>
-                            </div>
+                <div class="card-body">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="px-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-  
+                    @endif
+
+                    <div class="form-group row">
+                        <div class="col-md-12 px-5">
+                            {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
+                                <i class="far fa-credit-card fa-3x"></i>
+                                <br><br>Kad Debit/Kredit
+                            </button> --}}
+                        
+                            <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
+                                <i class="fas fa-university fa-3x"></i>
+                                <br><br>FPX
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <div class="col-md-12">
-                            <div class="pull-left">
-                                <a href="{{ url('pengesahan-pembelian') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
-                            </div>
-                        </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <a href="{{ url('pengesahan-pembelian') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                     </div>
                 </div>
-            </form>
-        </div>
+
+            </div>
+        </form>
     </div>
 </div>
 @endsection
