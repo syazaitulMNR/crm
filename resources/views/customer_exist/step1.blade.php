@@ -17,75 +17,71 @@ Pendaftaran Pembeli
     }
 </style>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 px-3 py-5 text-center">
-            <img src="/assets/images/logo.png" style="max-width:200px">
-            <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
-            <h6>Hai! Terima kasih kerana masih setia menghadiri program kami. Sila semak butiran peribadi anda.</h6>
-        </div>
+<div class="row">
+    <div class="col-md-12 px-2 py-5 text-center">
+        <img src="/assets/images/logo.png" style="max-width:150px">
+        <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
+        <h6>Hai! Terima kasih kerana masih setia menghadiri program kami. Sila semak butiran peribadi anda.</h6>
+    </div>
 
-        <div class="col-md-12 d-flex justify-content-center pb-5">
-            <form action="{{ url('save1') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
-                @csrf
-  
-                <div class="card w-100 shadow">
-                    <div class="card-header bg-dark text-white">Langkah 1/5: Maklumat Pembeli</div>
-  
-                    <div class="card-body">
-  
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="px-3">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+    <div class="col-md-6 offset-md-3 pb-5">
+        <form action="{{ url('save1') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
+            @csrf
 
-                        <div class="form-group row">
+            <div class="card px-4 py-4 shadow">
+                <div class="bg-dark text-white px-2 py-2">Langkah 1/5: Maklumat Pembeli</div>
 
-                            <input type="hidden" value="{{ $student->stud_id }}" class="form-control" name="stud_id" readonly/>
+                <div class="card-body">
 
-                            <div class="col-md-12 pb-2">
-                                <label for="description">No. Kad Pengenalan/Passport:</label>
-                                <input type="text"  value="{{ $student->ic ?? '' }}" class="form-control" name="ic" readonly/>
-                            </div>
-
-                            <div class="col-md-6 pb-2">
-                                <label for="title">Nama Pertama:</label>
-                                <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name">
-                            </div>
-                            <div class="col-md-6 pb-2">
-                                <label for="title">Nama Akhir:</label>
-                                <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name">
-                            </div>
-
-                            <div class="col-md-6 pb-2">
-                                <label for="description">Emel:</label>
-                                <input type="text"  value="{{ $student->email ?? '' }}" class="form-control" name="email" placeholder="example@gmail.com"/>
-                            </div>
-                            
-                            <div class="col-md-6 pb-2">
-                                <label for="description">No. Telefon:</label><br>
-                                <input id="input-phone" type="tel" name="phoneno" value="{{ $student->phoneno ?? '' }}" class="form-control" />
-                                <label style="font-size: 10pt;"><em>Sila pilih kod negara Cth: *+60 dan isikan no anda *Cth: 1123456789</em></label>
-                            </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="px-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                          
+                    @endif
+
+                    <div class="form-group row">
+
+                        <input type="hidden" value="{{ $student->stud_id }}" class="form-control" name="stud_id" readonly/>
+
+                        <div class="col-md-12 pb-2">
+                            <label for="description">No. Kad Pengenalan/Passport:</label>
+                            <input type="text"  value="{{ $student->ic ?? '' }}" class="form-control" name="ic" readonly/>
+                        </div>
+
+                        <div class="col-md-6 pb-2">
+                            <label for="title">Nama Pertama:</label>
+                            <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name">
+                        </div>
+                        <div class="col-md-6 pb-2">
+                            <label for="title">Nama Akhir:</label>
+                            <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name">
+                        </div>
+
+                        <div class="col-md-6 pb-2">
+                            <label for="description">Emel:</label>
+                            <input type="text"  value="{{ $student->email ?? '' }}" class="form-control" name="email" placeholder="example@gmail.com"/>
+                        </div>
+                        
+                        <div class="col-md-6 pb-2">
+                            <label for="description">No. Telefon:</label><br>
+                            <input id="input-phone" type="tel" name="phoneno" value="{{ $student->phoneno ?? '' }}" class="form-control" />
+                            <label style="font-size: 10pt;"><em>Sila pilih kod negara Cth: *+60 dan isikan no anda *Cth: 1123456789</em></label>
+                        </div>
                     </div>
-  
-                    <div class="card-footer">
-                        <div class="col-md-12 pb-3">
-                            <div class="pull-right">
-                                <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
-                            </div>
-                        </div>
+                        
+                </div>
+
+                <div class="col-md-12 pb-3">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 
