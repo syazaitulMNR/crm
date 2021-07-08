@@ -10,13 +10,13 @@ Pendaftaran Pembeli
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    /* padding: 32px 16px; */
+    padding: 32px 16px;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 5px;
+    /* margin: 4px 5px; */
     transition-duration: 0.4s;
     cursor: pointer;
     }
