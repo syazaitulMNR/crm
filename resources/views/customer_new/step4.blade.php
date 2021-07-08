@@ -24,7 +24,7 @@ Pendaftaran Pembeli
     background-color: #f3f3f3;
     color: #202020;
     border: 1px #e7e7e7 solid;
-    width: 200px;
+    width: 180px;
     }
 
     .button4:hover {background-color: #e7e7e7;}
