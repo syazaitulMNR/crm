@@ -341,29 +341,28 @@ class ReportsController extends Controller
         //get details from search
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
 
-        dd($student_id);
-        // if ($student_id == NULL)
-        // {
+        if ($student_id == NULL)
+        {
 
-        //     return redirect()->back()->with('search-error', 'Buyer not exist!');
+            return redirect()->back()->with('search-error', 'Buyer not exist!');
 
-        // }else{
+        }else{
             
-        //     $stud_id = $student_id->stud_id;
+            $stud_id = $student_id->stud_id;
 
-        //     $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-        //     if(count($payment) > 0)
-        //     {
-        //         return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+            if(count($payment) > 0)
+            {
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
-        //     }else{
+            }else{
 
-        //         return redirect()->back()->with('search-error', 'Buyer not found!');
+                return redirect()->back()->with('search-error', 'Buyer not found!');
 
-        //     }
+            }
 
-        // }
+        }
         
     }
 
