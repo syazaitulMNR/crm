@@ -625,7 +625,7 @@ class ReportsController extends Controller
     }
 
     // search paid participant
-    public function search_paid($product_id, $package_id, Request $request)
+    public function search_participant($product_id, $package_id, Request $request)
     {   
         //Get the details
         // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(100);
