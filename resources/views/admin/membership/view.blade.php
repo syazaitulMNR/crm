@@ -119,7 +119,7 @@ Membership
       <!-- Search box ---------------------------------------------------------->
       <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
       <!-- Search box ---------------------------------------------------------->
-      <form action="{{ url('membership/search') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" method="GET" class="needs-validation" novalidate>
+      {{-- <form action="{{ url('membership/search') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" method="GET" class="needs-validation" novalidate>
         @csrf
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
@@ -127,7 +127,7 @@ Membership
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
         </div>
-      </form>
+      </form> --}}
       
       <br>
       
