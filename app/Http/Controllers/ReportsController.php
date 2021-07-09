@@ -343,24 +343,27 @@ class ReportsController extends Controller
 
         if ($student_id == NULL)
         {
-            echo 'tiada';
+
+            return redirect()->back()->with('search-error', 'Customer not exist!');
+
         }else{
-            echo 'ada';
+            
+            $stud_id = $student_id->stud_id;
+
+            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+
+            if(count($payment) > 0)
+            {
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+
+            }else{
+
+                return redirect()->back()->with('search-error', 'Customer not found!');
+
+            }
+
         }
-        // $stud_id = $student_id->stud_id;
-
-
-        // $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        // if(count($payment) > 0)
-        // {
-        //     return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
-
-        // }else{
-
-        //     return redirect()->back()->with('search-error', 'Customer not found!');
-
-        // }
+        
     }
 
     public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
