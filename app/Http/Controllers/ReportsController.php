@@ -639,21 +639,30 @@ class ReportsController extends Controller
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
 
         //get details from search
-        // $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
-        // $stud_id = $student_id->stud_id;
-
-        // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
-        $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        if(count($ticket) > 0)
-        {
+        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         
-            return view('admin.reports.participant', compact('ticket', 'product', 'package', 'student', 'count', 'paidticket', 'freeticket'));
+        if ($student_id == NULL)
+        {
+
+            return redirect()->back()->with('search-error', 'Buyer not exist!');
 
         }else{
+            
+            $stud_id = $student_id->stud_id;
 
-            return redirect()->back()->with('search-error', 'Customer not found!');
+            // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
+            $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->orWhere('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
+            if(count($ticket) > 0)
+            {
+            
+                return view('admin.reports.participant', compact('ticket', 'product', 'package', 'student', 'count', 'paidticket', 'freeticket'));
+
+            }else{
+
+                return redirect()->back()->with('search-error', 'Participant not found!');
+
+            }
         }
     }
 
