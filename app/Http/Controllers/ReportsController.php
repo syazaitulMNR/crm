@@ -322,7 +322,7 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('updatepayment','Customer Successfully Updated!');
     }
 
-    // search payment
+    // search buyer
     public function search($product_id, $package_id, Request $request)
     {   
         // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
@@ -343,10 +343,6 @@ class ReportsController extends Controller
         $stud_id = $student_id->stud_id;
 
         $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        // dd($stud_id);
-        // $stud = Student::where('name','LIKE','%'. $request->search.'%')->orWhere('ic','LIKE','%'. $request->search .'%')->get();
-        // $pay = Payment::where('stud_id','LIKE','%'. $request->search.'%')->orWhere('status','LIKE','%'. $request->search .'%')->get();
 
         if(count($payment) > 0)
         {
