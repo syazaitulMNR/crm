@@ -172,7 +172,7 @@ Membership
           </tr>
           </thead>
           <tbody> 
-            @foreach ($members as $key => $students)   
+            @foreach ($student as $key => $students)   
             @if ($students->level_id == $membership_level->level_id)
             <tr>
                 <td>{{ $student->firstItem() + $key }}</td>
@@ -210,7 +210,7 @@ Membership
           </tr>
           </thead>
           <tbody> 
-            @foreach ($members as $key => $students)   
+            @foreach ($student as $key => $students)   
             @if ($students->level_id == $membership_level->level_id)
             <tr>
                 <td>{{ $student->firstItem() + $key }}</td>
