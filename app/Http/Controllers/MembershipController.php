@@ -156,29 +156,28 @@ class MembershipController extends Controller
         //get details from search
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
 
-        dd($student_id);
-        // if ($student_id == NULL)
-        // {
+        if ($student_id == NULL)
+        {
 
-        //     return redirect()->back()->with('search-error', 'Student not exist!');
+            return redirect()->back()->with('search-error', 'Student not exist!');
 
-        // }else{
+        }else{
             
-        //     $stud_id = $student_id->stud_id;
+            $stud_id = $student_id->stud_id;
 
-        //     $members = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
+            $members = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
 
-        //     if(count($members) > 0)
-        //     {
-        //         return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
+            if(count($members) > 0)
+            {
+                return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
 
-        //     }else{
+            }else{
 
-        //         return redirect()->back()->with('search-error', 'Student not found!');
+                return redirect()->back()->with('search-error', 'Student not found!');
 
-        //     }
+            }
 
-        // }
+        }
         
     }
     
