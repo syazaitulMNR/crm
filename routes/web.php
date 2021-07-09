@@ -75,7 +75,7 @@ Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsController@destroy_ticket');
 Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
-Route::get('paid-ticket/search/{product_id}/{package_id}', 'ReportsController@search_paid');
+Route::get('ticket/search/{product_id}/{package_id}', 'ReportsController@search_paid');
 
 
 

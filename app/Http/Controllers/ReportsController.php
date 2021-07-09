@@ -344,7 +344,7 @@ class ReportsController extends Controller
         if ($student_id == NULL)
         {
 
-            return redirect()->back()->with('search-error', 'Customer not exist!');
+            return redirect()->back()->with('search-error', 'Buyer not exist!');
 
         }else{
             
@@ -358,7 +358,7 @@ class ReportsController extends Controller
 
             }else{
 
-                return redirect()->back()->with('search-error', 'Customer not found!');
+                return redirect()->back()->with('search-error', 'Buyer not found!');
 
             }
 
