@@ -35,6 +35,7 @@ Route::post('membership/save','MembershipController@store_membership');
 Route::get('membership/level/{membership_id}','MembershipController@view_level');
 Route::get('export-members/{membership_id}', 'MembershipController@export_members');
 Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
+Route::get('membership/search/{membership_id}/{level_id}', 'MembershipController@search_membership');
 Route::get('view/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@track_members');
 Route::post('update/members/{membership_id}/{level_id}/{student_id}', 'MembershipController@update_members');
 Route::get('import-members/{membership_id}/{level_id}','MembershipController@import');

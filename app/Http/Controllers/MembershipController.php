@@ -139,6 +139,47 @@ class MembershipController extends Controller
         
         return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
     }
+
+    // search buyer
+    public function search_membership($membership_id, $level_id, Request $request)
+    {   
+        // $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->paginate(50);
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+
+        //Count the data
+        $total = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+
+        //get details from search
+        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
+
+        if ($student_id == NULL)
+        {
+
+            return redirect()->back()->with('search-error', 'Student not exist!');
+
+        }else{
+            
+            $stud_id = $student_id->stud_id;
+
+            $members = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
+
+            if(count($members) > 0)
+            {
+                return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
+
+            }else{
+
+                return redirect()->back()->with('search-error', 'Student not found!');
+
+            }
+
+        }
+        
+    }
     
     public function track_members($membership_id, $level_id, $student_id)
     {

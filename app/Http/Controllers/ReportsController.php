@@ -644,7 +644,7 @@ class ReportsController extends Controller
         if ($student_id == NULL)
         {
 
-            return redirect()->back()->with('search-error', 'Buyer not exist!');
+            return redirect()->back()->with('search-error', 'Participant not exist!');
 
         }else{
             
