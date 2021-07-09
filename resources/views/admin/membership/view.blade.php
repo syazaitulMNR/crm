@@ -112,7 +112,7 @@ Membership
       <!-- Search box ---------------------------------------------------------->
       <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
       <!-- Search box ---------------------------------------------------------->
-      <form action="{{ url('participant/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+      <form action="{{ url('membership/search') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" method="GET" class="needs-validation" novalidate>
         @csrf
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
@@ -149,6 +149,43 @@ Membership
       <div class="alert alert-success alert-block">
           <button type="button" class="close" data-bs-dismiss="alert">×</button>	
           <strong>{{ $message }}</strong>
+      </div>
+      @endif
+
+      @if(isset($details))
+      <div class="table-responsive">
+        <table class="table table-hover" id="successTable">
+          <thead>
+          <tr class="header">
+            <th>#</th>
+            <th>IC No.</th>
+            <th>Name</th>
+            <th class="text-center">Status</th>
+            <th><i class="fas fa-cogs"></i></th>
+          </tr>
+          </thead>
+          <tbody> 
+            @foreach ($student as $key => $students)   
+            @if ($students->level_id == $membership_level->level_id)
+            <tr>
+                <td>{{ $student->firstItem() + $key }}</td>
+                <td>{{ $students->ic }}</td>
+                <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                <td class="text-center">
+                  @if ($students->status == 'Deactive')
+                    <span class="badge rounded-pill bg-danger"> &nbsp;{{ $students->status }}&nbsp; </span>
+                  @else
+                    <span class="badge rounded-pill bg-success"> &nbsp;Active&nbsp; </span>
+                  @endif
+                </td>
+                <td>
+                  <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="bi bi-chevron-right"></i></a>
+                </td>
+            </tr>
+            @endif
+            @endforeach
+          </tbody>
+        </table>  
       </div>
       @endif
 
@@ -191,7 +228,7 @@ Membership
       @else
       <p>There are no any payment yet.</p>
       @endif
-      <div class="float-right pt-3">{{$student->links()}}</div>   
+      {{-- <div class="float-right pt-3">{{$student->links()}}</div>    --}}
       
   </div>
     
