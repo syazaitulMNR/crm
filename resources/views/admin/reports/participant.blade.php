@@ -133,7 +133,7 @@
               @endif
 
               <!-- Search box ---------------------------------------------------------->
-              <form action="{{ url('ticket/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+              <form action="{{ url('participant/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
                   @csrf
                   <div class="input-group mb-3">
                       <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
