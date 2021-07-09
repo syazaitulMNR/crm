@@ -341,7 +341,12 @@ class ReportsController extends Controller
         //get details from search
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
 
-        dd($student_id);
+        if ($student_id == NULL)
+        {
+            echo 'tiada';
+        }else{
+            echo 'ada';
+        }
         // $stud_id = $student_id->stud_id;
 
 
