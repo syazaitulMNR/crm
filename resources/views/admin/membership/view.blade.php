@@ -109,6 +109,13 @@ Membership
   <div class="row">
     <div class="col-md-9 "> 
 
+      @if ($message = Session::get('search-error'))
+      <div class="alert alert-danger alert-block">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
+      @endif
+
       <!-- Search box ---------------------------------------------------------->
       <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
       <!-- Search box ---------------------------------------------------------->
