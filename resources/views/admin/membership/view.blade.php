@@ -175,7 +175,7 @@ Membership
             @foreach ($student as $key => $students)   
             @if ($students->level_id == $membership_level->level_id)
             <tr>
-                <td>{{ $student->firstItem() + $key }}</td>
+                <td>{{ $count++ }}</td>
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                 <td class="text-center">
@@ -213,7 +213,7 @@ Membership
             @foreach ($student as $key => $students)   
             @if ($students->level_id == $membership_level->level_id)
             <tr>
-                <td>{{ $student->firstItem() + $key }}</td>
+                <td>{{ $count++ }}</td>
                 <td>{{ $students->ic }}</td>
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
                 <td class="text-center">
