@@ -165,9 +165,9 @@ class MembershipController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            dd($stud_id);
-            // $student = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
+            $student = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
 
+            dd($student);
             // if(count($student) > 0)
             // {
             //     return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
