@@ -133,11 +133,12 @@ class MembershipController extends Controller
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
+        $count = 1; 
         $total = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         
-        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
+        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'count'));
     }
 
     // search buyer
@@ -149,6 +150,7 @@ class MembershipController extends Controller
         $student = Student::orderBy('id','desc')->get();
 
         //Count the data
+        $count = 1; 
         $total = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
@@ -169,7 +171,7 @@ class MembershipController extends Controller
 
             if(count($student) > 0)
             {
-                return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive'));
+                return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'count'));
 
             }else{
 
