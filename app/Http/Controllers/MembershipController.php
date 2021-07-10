@@ -147,7 +147,7 @@ class MembershipController extends Controller
         // $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->paginate(50);
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
-        $student = Student::orderBy('id','desc')->get();
+        // $student = Student::orderBy('id','desc')->get();
 
         //Count the data
         $count = 1; 
@@ -167,7 +167,7 @@ class MembershipController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            // $student = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
+            $student = Student::where('stud_id','LIKE','%'. $stud_id.'%')->where('membership_id', $membership_id)->where('level_id', $level_id)->get();
 
             if(count($student) > 0)
             {
