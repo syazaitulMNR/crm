@@ -52,7 +52,7 @@
                     <div class="form-group row text-center">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-dark">
-                                <i class="bi bi-box-arrow-in-right"></i> {{ __('Login') }}
+                                <i class="bi bi-box-arrow-in-right pr-1"></i> {{ __('Login') }}
                             </button>
                         </div>
 
