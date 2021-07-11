@@ -42,15 +42,19 @@
                     </div>
 
                     <div class="form-group row text-center">
-                        <div class="checkbox">
-                            <label><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/> {{ __('Remember Me') }}</label>
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                <label><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/> {{ __('Remember Me') }}</label>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group row text-center">
-                        <button type="submit" class="btn btn-dark">
-                            <i class="fas fa-sign-in-alt pr-1"></i> {{ __('Login') }}
-                        </button>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-dark">
+                                <i class="bi bi-box-arrow-in-right"></i> {{ __('Login') }}
+                            </button>
+                        </div>
 
                         {{-- <div class="col-md-12">
                             @if (Route::has('password.request'))
