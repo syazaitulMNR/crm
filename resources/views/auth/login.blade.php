@@ -55,7 +55,9 @@
                                 <label><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/> {{ __('Remember Me') }}</label>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="form-group row text-center">
                         <div class="col-md-12 py-2">
                             <button type="submit" class="btn btn-dark">
                                 <i class="fas fa-sign-in-alt pr-1"></i> {{ __('Login') }}
