@@ -11,7 +11,7 @@
         <h2 class="display-5 text-dark px-3 pt-4">Momentum Internet Management System (MIMS)</h2>
     </div>
 
-    <div class="col-md-4 offset-md-5">
+    <div class="col-md-4 offset-md-4">
         
         <div class="card text-center">
             <div class="card-header text-white bg-dark">
