@@ -13,7 +13,7 @@
 
     <div class="col-md-4 offset-md-4">
         
-        <div class="card px-4 py-4 text-center shadow">
+        <div class="card px-4 pt-3 text-center shadow">
             
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
