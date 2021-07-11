@@ -20,14 +20,9 @@
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                             </div>
-                            <input name="" class="form-control" placeholder="Email or login" type="email">
-                        </div> <!-- input-group.// -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
 
                     <div class="form-group row">
