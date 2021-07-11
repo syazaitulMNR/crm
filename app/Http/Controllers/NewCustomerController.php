@@ -79,8 +79,7 @@ class NewCustomerController extends Controller
     public function createStepTwo($product_id, $package_id, Request $request)
     {
         $product = Product::where('product_id',$product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();        
-        $package_name = Package::where('product_id',$product_id)->get();
+        $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
@@ -100,7 +99,7 @@ class NewCustomerController extends Controller
         } else if($product->offer_id == 'OFF003') {
 
             //for Bulk Ticket
-            return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'package_name', 'payment_id'));
+            return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
 
         } else {
 

@@ -88,9 +88,6 @@ Pendaftaran Pembeli
         var package2 = 'Sustain';
         var package3 = 'Growth';
         var error = 'No such package';
-        var package_array = '{{ $package_name->name }}';
-
-        console.log(package_array);
 
         if (package_name == package1) {
             
