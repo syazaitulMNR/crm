@@ -117,8 +117,6 @@ Membership
       @endif
 
       <!-- Search box ---------------------------------------------------------->
-      <input type="text" id="successInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
-      <!-- Search box ---------------------------------------------------------->
       <form action="{{ url('membership/search') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" method="GET" class="needs-validation" novalidate>
         @csrf
         <div class="input-group mb-3">
@@ -274,34 +272,6 @@ Membership
         
   </div>
 </div>
-
-
-<!-- Enable function for search payment ------------------------------------->
-<script>
-  function successFunction() 
-  {
-    var input, filter, table, tr, td, i, txtValue;
-
-    input = document.getElementById("successInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("successTable");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) 
-    {
-      td = tr[i].getElementsByTagName("td")[1];
-      
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }
-</script>
 
 <!--
 |--------------------------------------------------------------------------
