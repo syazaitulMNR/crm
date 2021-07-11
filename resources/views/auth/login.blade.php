@@ -1,4 +1,4 @@
-@extends('layouts.temp')
+@extends('layouts.app')
 
 @section('title')
     Login
