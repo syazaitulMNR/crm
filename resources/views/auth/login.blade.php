@@ -21,13 +21,15 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                        </div>
-                        <input type="text" name="" class="form-control" placeholder="username or email"/>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                             </div>
+                            <input name="" class="form-control" placeholder="Email or login" type="email">
+                        </div> <!-- input-group.// -->
                     </div>
-                    
+
                     <div class="form-group row">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
