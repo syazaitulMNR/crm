@@ -11,7 +11,7 @@
         <h2 class="display-5 text-dark px-3 pt-4">Momentum Internet Management System (MIMS)</h2>
     </div>
 
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-4 offset-md-3">
         
         <div class="card text-center">
             <div class="card-header text-white bg-dark">
@@ -20,6 +20,7 @@
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
+                    
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
