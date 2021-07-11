@@ -6,11 +6,9 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-8">
-        <div class="text-center pb-3">
-            <img src="/assets/images/logo.png" style="max-width:150px">
-            <h2 class="text-dark px-5 py-3">Momentum Internet Management System (MIMS)</h2>
-        </div>
+    <div class="col-md-12 px-2 py-5 text-center">
+        <img src="/assets/images/logo.png" style="max-width:150px">
+        <h2 class="display-5 text-dark px-3 pt-4">Momentum Internet Management System (MIMS)</h2>
     </div>
 
     <div class="col-md-6 offset-md-3 pb-5">
