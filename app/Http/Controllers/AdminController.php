@@ -39,63 +39,63 @@ class AdminController extends Controller
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
         // show the duration of current 2 hours
-        if ($time < 8) {
+        if ($time < 9) {
 
             $from = date('Y-m-d 16:00:00');
             $to = date('Y-m-d 23:59:59');
             $duration = "12 am - 8 am"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= 8 && $time < 10) {
+        } elseif ($time >= 9 && $time < 11) {
 
             $from = date('Y-m-d 00:00:00');
             $to = date('Y-m-d 01:59:59');
             $duration = "8 am - 10 am"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= 10 && $time < 12) {
+        } elseif ($time >= 11 && $time < 13) {
 
             $from = date('Y-m-d 02:00:00');
             $to = date('Y-m-d 03:59:59');
             $duration = "10 am - 12 pm"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= 12 && $time < 14) {
+        } elseif ($time >= 13 && $time < 15) {
 
             $from = date('Y-m-d 04:00:00');
             $to = date('Y-m-d 05:59:59');
             $duration = "12 pm - 2 pm"; 
             $greetings = "Good Afternoon!";
 
-        } elseif ($time >= 14 && $time < 16) {
+        } elseif ($time >= 15 && $time < 17) {
 
             $from = date('Y-m-d 06:00:00');
             $to = date('Y-m-d 07:59:59');
             $duration = "2 pm - 4 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= 16 && $time < 18) {
+        } elseif ($time >= 17 && $time < 19) {
 
             $from = date('Y-m-d 08:00:00');
             $to = date('Y-m-d 09:59:59');
             $duration = "4 pm - 6 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= 18 && $time < 20) {
+        } elseif ($time >= 19 && $time < 21) {
 
             $from = date('Y-m-d 10:00:00');
             $to = date('Y-m-d 11:59:59');
             $duration = "6 pm - 8 pm"; 
             $greetings = "Good Evening!";
             
-        } elseif ($time >= 20 && $time < 22) {
+        } elseif ($time >= 21 && $time < 23) {
 
             $from = date('Y-m-d 12:00:00');
             $to = date('Y-m-d 13:59:59');
             $duration = "8 pm - 10 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= 22 && $time <= 24) {
+        } elseif ($time >= 23 && $time <= 24) {
 
             $from = date('Y-m-d 14:00:00');
             $to = date('Y-m-d 15:59:59');
