@@ -3,7 +3,7 @@ CRM project by Momentum Internet Sdn Bhd
 
 # Project Information
 1. Language: PHP 7.4
-2. Deloyment Server: Apache2 Ubuntu 18.04
+2. Deloyment Server: Nginx Ubuntu 18.04
 3. Database Server: Maria DB (10.2.39)/ MySQL
 4. Framework: Laravel 8
 
