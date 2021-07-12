@@ -39,6 +39,7 @@ class AdminController extends Controller
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
         
         // show the duration of current 2 hours
+        // the $time is +1 hour from the duration
         if ($time < 9) {
 
             $from = date('Y-m-d 16:00:00');
