@@ -61,7 +61,7 @@
           <tr>
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
-            <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}/{{ Auth::user()->user_id }}" readonly></td>
+            <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}" readonly></td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
               <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="bi bi-chevron-right"></i></a>
