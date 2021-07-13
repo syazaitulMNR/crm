@@ -82,7 +82,7 @@ Kemaskini Peserta
           <div class="col-md-12 mx-auto text-end">
             <h4>Tiket {{ $package->name}} #1</h4>
             <div class="checkbox">
-              <label><input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >Sila tandakan ruangan ini jika pembeli adalah peserta</label>
+              <label><input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" > Sila tandakan ruangan ini jika pembeli adalah peserta</label>
             </div>
             <hr>
           </div>
