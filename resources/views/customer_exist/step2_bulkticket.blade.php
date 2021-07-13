@@ -87,7 +87,7 @@ Pendaftaran Pembeli
         var package2 = 'Sustain';
         var package3 = 'Growth';
         var error = 'No such package';        
-        var discount1 = 0.835;
+        var discount1 = 0.833;
         var discount2 = 0.77;
 
         if (package_name == package1) {
