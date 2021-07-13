@@ -114,7 +114,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
-            // $product->save();
+            $product->save();
 
         } else {
 
@@ -140,11 +140,10 @@ class ProductController extends Controller
                 $product->cert_image = $cert_image;
             }
 
-            // $product->save();
+            $product->save();
         }
 
-        dd($product);
-        // return redirect('product')->with('updatesuccess', 'Event Successfully Updated');
+        return redirect('product')->with('updatesuccess', 'Event Successfully Updated');
     }
 
     public function destroy($id)
