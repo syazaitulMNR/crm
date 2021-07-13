@@ -80,12 +80,14 @@ Kemaskini Peserta
         <div class="card-body">
           
           <div class="col-md-12 mx-auto text-end">
+            <div class="col-md-12">
+              <div class="checkbox">
+                  <label><input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/> {{ __('Remember Me') }}</label>
+              </div>
+            </div>
             <h4>Tiket {{ $package->name}} #1</h4>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >
-              <label class="form-check-label" for="flexCheckDefault">
-                Sila tandakan ruangan ini jika pembeli adalah peserta
-              </label>
+            <div class="checkbox">
+              <label><input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >Sila tandakan ruangan ini jika pembeli adalah peserta</label>
             </div>
             <hr>
           </div>
