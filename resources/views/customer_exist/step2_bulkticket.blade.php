@@ -124,7 +124,7 @@ Pendaftaran Pembeli
                 total = (price * 3) * discount1;
             }
             var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
+            totallagi.value = Math.round(total);
 
         } else if (package_name == package3) {
 
