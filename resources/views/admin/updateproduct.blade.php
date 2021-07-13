@@ -33,7 +33,7 @@
         <div class="col-md-6">
             <label class="form-label">Offer Provided</label>
             <select class="form-select" aria-label="Default select example" name="offer_id">
-                <option selected> {{ $product->offer_id }} </option>
+                <option readonly selected> {{ $product->offer_id }} </option>
                 @foreach($offers as $offer)
                 <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
                 @endforeach
