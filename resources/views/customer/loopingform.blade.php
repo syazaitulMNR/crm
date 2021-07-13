@@ -79,7 +79,7 @@ Kemaskini Peserta
   
         <div class="card-body">
           
-          <div class="col-md-12 mx-auto pull-right">
+          <div class="col-md-12 mx-auto text-end">
             <h4>Tiket {{ $package->name}} #1</h4>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >
@@ -119,7 +119,7 @@ Kemaskini Peserta
           @for ($i = 1;  $i < $payment->quantity ; $i++) 
           <br>
 
-          <div class="col-md-12 mx-auto pull-right">
+          <div class="col-md-12 mx-auto text-end">
             <hr>
             <h4>Tiket {{ $package->name}} #{{ $count++ }}</h4>
             <hr>
