@@ -119,7 +119,7 @@ Pendaftaran Pembeli
             } else if (val == 2) {
                 total = price * 2;
             } else {
-                total = (price * 3) / 17%;
+                total = (price * 3) / (17/100);
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
@@ -131,7 +131,7 @@ Pendaftaran Pembeli
             } else if (val == 2) {
                 total = price * 2;
             } else {
-                total = (price * 3) / 23%;
+                total = (price * 3) / (23/100);
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
