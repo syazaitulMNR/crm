@@ -88,8 +88,8 @@ Pendaftaran Pembeli
         var package2 = 'Sustain';
         var package3 = 'Growth';
         var error = 'No such package';
-        var discount1 = 0.83;
-        var discount2 = 0.77;
+        var discount1 = 0.833;
+        var discount2 = 0.777;
 
         if (package_name == package1) {
             
@@ -126,7 +126,7 @@ Pendaftaran Pembeli
                 total = (price * 3) * discount1;
             }
             var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
+            totallagi.value = Math.round(total);
 
         } else if (package_name == package3) {
 
@@ -138,7 +138,7 @@ Pendaftaran Pembeli
                 total = (price * 3) * discount2;
             }
             var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = total;
+            totallagi.value = Math.round(total);
 
         } else {
             
