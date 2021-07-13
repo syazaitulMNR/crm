@@ -154,12 +154,10 @@ Kemaskini Peserta
           
         </div>
 
-        <div class="card-footer">
-          <div class="col-md-12">
-            <div class="pull-right">
-              {{-- <input type="submit" name="myButton" class="btn btn-dark" value="Simpan"/> --}}
-              <input type="submit" name="myButton" class="btn btn-dark" value="Hantar"/>
-            </div>
+        <div class="col-md-12">
+          <div class="pull-right">
+            {{-- <input type="submit" name="myButton" class="btn btn-dark" value="Simpan"/> --}}
+            <input type="submit" name="myButton" class="btn btn-dark" value="Hantar"/>
           </div>
         </div>
       </div>
