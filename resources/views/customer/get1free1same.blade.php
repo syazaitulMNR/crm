@@ -81,7 +81,7 @@ Kemaskini Peserta
   
         <div class="card-body">
           {{-- Start Paid Ticket --}}
-          <div class="col-md-12 mx-auto text-right">
+          <div class="col-md-12 mx-auto text-end">
             <h4>Tiket {{$package->name}} #1</h4>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >
@@ -120,7 +120,7 @@ Kemaskini Peserta
           {{-- End Paid Ticket --}}
 
           {{-- Start Free Ticket --}}
-          <div class="col-md-12 mx-auto text-right">
+          <div class="col-md-12 mx-auto text-end">
             <hr>
             <h4>Tiket {{$package->name}} (Free) #2</h4>
             <hr>
