@@ -29,7 +29,7 @@ Kemaskini Peserta
       <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
     </div>
 
-    <div class="col-md-12 d-flex justify-content-center pb-5">
+    <div class="col-md-6 offset-md-3 pb-5">
       <form id="msform" name="frm" action="{{ url('get1free1same') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="post" onsubmit="return checkForm(this);">
       @csrf
 
