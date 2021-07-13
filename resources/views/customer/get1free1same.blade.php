@@ -33,8 +33,8 @@ Kemaskini Peserta
       <form id="msform" name="frm" action="{{ url('get1free1same') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="post" onsubmit="return checkForm(this);">
       @csrf
 
-      <div class="card w-100">
-        <div class="card-header bg-dark text-white text-center">Maklumat Pembeli</div>
+      <div class="card px-4 py-4 shadow">
+        <div class="bg-dark text-white px-2 py-2">Maklumat Pembeli</div>
   
         <div class="card-body">
 
@@ -76,8 +76,8 @@ Kemaskini Peserta
 
       <br>
 
-      <div class="card w-100">
-        <div class="card-header bg-dark text-white text-center">Maklumat Peserta</div>
+      <div class="card px-4 py-4 shadow">
+        <div class="bg-dark text-white px-2 py-2">Maklumat Peserta</div>
   
         <div class="card-body">
           {{-- Start Paid Ticket --}}
