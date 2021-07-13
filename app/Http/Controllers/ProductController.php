@@ -103,8 +103,6 @@ class ProductController extends Controller
         $product = Product::where('product_id', $id)->first();    
         $check_image = $request->hasFile('cert_image');
         
-        dd($check_image);
-        
         if($check_image == false){
 
             $product->name = $request->prodname;
@@ -145,6 +143,7 @@ class ProductController extends Controller
             // $product->save();
         }
 
+        dd($product);
         // return redirect('product')->with('updatesuccess', 'Event Successfully Updated');
     }
 
