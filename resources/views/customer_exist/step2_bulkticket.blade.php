@@ -86,7 +86,9 @@ Pendaftaran Pembeli
         var package1 = 'Solidariti';
         var package2 = 'Sustain';
         var package3 = 'Growth';
-        var error = 'No such package';
+        var error = 'No such package';        
+        var discount1 = 17/100;
+        var discount2 = 23/100;
 
         if (package_name == package1) {
 
@@ -119,7 +121,7 @@ Pendaftaran Pembeli
             } else if (val == 2) {
                 total = price * 2;
             } else {
-                total = (price * 3) / (17/100);
+                total = (price * 3) / discount1;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
@@ -131,7 +133,7 @@ Pendaftaran Pembeli
             } else if (val == 2) {
                 total = price * 2;
             } else {
-                total = (price * 3) / (23/100);
+                total = (price * 3) / discount2;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = total;
