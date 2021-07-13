@@ -65,8 +65,8 @@ Kemaskini Peserta
           </div>
 
           <div class="py-2">
-            <a class="btn btn-dark" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download pr-1"></i>Invois</a>
-            <a class="btn btn-dark" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download pr-1"></i>Resit</a>
+            <a class="btn btn-dark" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download"></i> Invois</a>
+            <a class="btn btn-dark" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download"></i> Resit</a>
           </div>
         </div>
 
