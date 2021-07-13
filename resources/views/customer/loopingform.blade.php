@@ -80,7 +80,7 @@ Kemaskini Peserta
         <div class="card-body">
           
           <div class="col-md-12 mx-auto text-right">
-            <h4>Tiket #1</h4>
+            <h4>Tiket {{ $package->name}} #1</h4>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >
               <label class="form-check-label" for="flexCheckDefault">
@@ -121,7 +121,7 @@ Kemaskini Peserta
 
           <div class="col-md-12 mx-auto text-right">
             <hr>
-            <h4>Tiket #{{ $count++ }}</h4>
+            <h4>Tiket {{ $package->name}} #{{ $count++ }}</h4>
             <hr>
           </div>
 
