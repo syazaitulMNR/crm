@@ -21,7 +21,7 @@ php artisan migrate
 ```
 4. Untuk run project, guna command 
 ```
-php artisan server
+php artisan serve
 ```
 
 Default port adalah 8000. So boleh pegi kt browser and open link: http://localhost:8000/login
