@@ -19,7 +19,13 @@ composer install
 php artisan key:generate
 php artisan migrate
 ```
-4. Untuk run project, guna command 
+4. Tukar .env.example kepada .env:
+```
+cp .env.example .env
+```
+Kemudia, tukar semua detail database dlm file .env
+
+5. Untuk run project, guna command 
 ```
 php artisan serve
 ```
