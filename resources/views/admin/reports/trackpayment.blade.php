@@ -20,7 +20,7 @@ Sales Report
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group">
             <a class="btn btn-sm btn-outline-warning" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download pr-2"></i>Invoice</a>
-            <a class="btn btn-sm btn-outline-warning" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}">"><i class="bi bi-download pr-2"></i>Receipt</a>
+            <a class="btn btn-sm btn-outline-warning" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download pr-2"></i>Receipt</a>
           </div>
         </div>
     </div>  
