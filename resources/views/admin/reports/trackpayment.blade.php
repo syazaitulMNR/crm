@@ -16,7 +16,14 @@ Sales Report
             
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Customer Information</h1>
-    </div> 
+
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group">
+            <a class="btn btn-sm btn-outline-warning" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download pr-2"></i>Invoice</a>
+            <a class="btn btn-sm btn-outline-warning" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}">"><i class="bi bi-download pr-2"></i>Receipt</a>
+          </div>
+        </div>
+    </div>  
 
     <div class="row">      
 
