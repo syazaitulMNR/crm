@@ -19,9 +19,15 @@ composer install
 php artisan key:generate
 php artisan migrate
 ```
-4. Untuk run project, guna command 
+4. Tukar .env.example kepada .env:
 ```
-php artisan server
+cp .env.example .env
+```
+Kemudia, tukar semua detail database dlm file .env
+
+5. Untuk run project, guna command 
+```
+php artisan serve
 ```
 
 Default port adalah 8000. So boleh pegi kt browser and open link: http://localhost:8000/login
