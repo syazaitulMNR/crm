@@ -87,9 +87,9 @@
               </tr> --}}
               <tr>
                 <th class="text-left">Grand Total</th>
-                <th>{{ number_format($totalregister) }}</th>
+                {{-- <th>{{ number_format($totalregister) }}</th>
                 <th>{{ number_format($totalpaid) }}</th>
-                <th>{{ number_format($totalfree) }}</th>
+                <th>{{ number_format($totalfree) }}</th> --}}
                 <th>{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
               </tr>
             </tfoot>
