@@ -86,7 +86,7 @@
                 <th class="border-right">{{ number_format($free) }}</th>
               </tr> --}}
               <tr>
-                <th colspan="4" class="text-left">Grand Total</th>
+                <th colspan="4" class="text-right">Grand Total</th>
                 {{-- <th>{{ number_format($totalregister) }}</th>
                 <th>{{ number_format($totalpaid) }}</th>
                 <th>{{ number_format($totalfree) }}</th> --}}
