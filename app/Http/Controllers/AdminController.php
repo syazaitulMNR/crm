@@ -136,11 +136,6 @@ class AdminController extends Controller
         $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package3->package_id)->whereBetween('created_at', [ date('2021-07-14 00:00:00') , date('2021-07-15 23:59:59') ])->count();
         $totalpackage3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package3->package_id)->whereBetween('created_at', [ date('2021-07-14 00:00:00') , date('2021-07-15 23:59:59') ])->count();
 
-        // get the total
-        $register = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
-        $paid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
-        $free = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
-
         // get the grand total
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
