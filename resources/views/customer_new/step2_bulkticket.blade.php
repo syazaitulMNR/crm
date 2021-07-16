@@ -87,29 +87,40 @@ Pendaftaran Pembeli
         var package1 = 'Solidariti';
         var package2 = 'Sustain';
         var package3 = 'Growth';
-        var error = 'No such package';
-        var discount1 = 0.833;
-        var discount2 = 0.777;
+        var error = 'No such package';        
+        var discount1 = 60;
+        var discount2 = 120;
 
         if (package_name == package1) {
-            
+
             if ( price <= 10 )
             {
-
                 var prices = document.getElementById("price").value;
                 var total_price = val * prices;
 
                 var divobj = document.getElementById('jumlahharga');
                 divobj.value = total_price;
 
-            }else{
+            } else if ( price > 10 && price < 40 ){
+
+                if (val == 1) {
+                    total = price * 1;
+                } else if (val == 2) {
+                    total = price * 2;
+                } else {
+                    total = (price * 3) - 10;
+                }
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = total;
+
+            } else {
             
                 if (val == 1) {
                     total = price * 1;
                 } else if (val == 2) {
                     total = price * 2;
                 } else {
-                    total = price * 3;
+                    total = (price * 3) - 20;
                 }
                 var totallagi = document.getElementById('jumlahharga');
                 totallagi.value = total;
@@ -123,7 +134,7 @@ Pendaftaran Pembeli
             } else if (val == 2) {
                 total = price * 2;
             } else {
-                total = (price * 3) * discount1;
+                total = (price * 3) - discount1;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = Math.round(total);
@@ -135,7 +146,7 @@ Pendaftaran Pembeli
             } else if (val == 2) {
                 total = price * 2;
             } else {
-                total = (price * 3) * discount2;
+                total = (price * 3) - discount2;
             }
             var totallagi = document.getElementById('jumlahharga');
             totallagi.value = Math.round(total);
