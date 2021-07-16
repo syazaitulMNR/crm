@@ -153,6 +153,7 @@ class AdminController extends Controller
         $collection2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package2->package_id)->sum('totalprice');
         $collection3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package3->package_id)->sum('totalprice');
         
+        // dd("cc");
         return view('admin.dashboard', compact('product', 'package', 'package1', 'package2', 'package3', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket', 'collection1', 'collection2', 'collection3'));
     }
 

@@ -110,7 +110,7 @@
     </style>
   </head>
   <body class="bg-light pb-3">  
-  @include('layouts.navbar')
+    @include('layouts.navbar')
     <div class='container-fluid px-3 py-3'>
       @yield('content')
     </div>

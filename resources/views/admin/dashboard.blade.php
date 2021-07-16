@@ -4,7 +4,6 @@
     Dashboard
 @endsection
 
-
 @section('content')
 
 <div class="col-md-12">     
