@@ -83,7 +83,7 @@ Pendaftaran Pembeli
         var total;
         var package_name = '{{ $package->name }}';
         var price = '{{ $package->price }}';
-        var package1 = '{{ $package_name[0] }}';
+        var package1 = '{{ $package_name[0]->name }}';
         var package2 = 'Sustain';
         var package3 = 'Growth';
         var error = 'No such package';        
