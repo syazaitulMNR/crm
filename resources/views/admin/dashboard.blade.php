@@ -27,7 +27,7 @@
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
-        {{-- <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p> --}}
+        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
         <div class="table-responsive">
           <table class="table text-center">
             <thead class="thead">
@@ -79,6 +79,12 @@
               </tr>
             </tbody>
             <tfoot>
+              {{-- <tr>
+                <th class="text-left">Today's Collection</th>
+                <th>{{ number_format($register) }}</th>
+                <th>{{ number_format($paid) }}</th>
+                <th class="border-right">{{ number_format($free) }}</th>
+              </tr> --}}
               <tr>
                 <th colspan="4" class="text-right">Grand Total</th>
                 {{-- <th>{{ number_format($totalregister) }}</th>
