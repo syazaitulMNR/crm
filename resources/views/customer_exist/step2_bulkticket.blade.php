@@ -156,7 +156,7 @@ Pendaftaran Pembeli
             totallagi.value = error;
 
         }
-
+        console.log(package1);
     }
 </script>
 
