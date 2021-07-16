@@ -79,12 +79,6 @@
               </tr>
             </tbody>
             <tfoot>
-              {{-- <tr>
-                <th class="text-left">Today's Collection</th>
-                <th>{{ number_format($register) }}</th>
-                <th>{{ number_format($paid) }}</th>
-                <th class="border-right">{{ number_format($free) }}</th>
-              </tr> --}}
               <tr>
                 <th colspan="4" class="text-right">Grand Total</th>
                 {{-- <th>{{ number_format($totalregister) }}</th>
