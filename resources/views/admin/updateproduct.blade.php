@@ -81,7 +81,7 @@
         <div class="col-md-2">
             <label class="form-label">Dashboard Report</label>
             <select class="form-select" name="status" required>
-                <option disabled selected>-- Please Select One --</option>
+                <option disabled selected>-- {{ $product->status }} --</option>
                 <option value="active">Active</option>
                 <option value="deactive">Deactive</option>
             </select>
