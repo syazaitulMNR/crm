@@ -146,7 +146,7 @@ Sales Report
                                 <select class="form-select form-control-sm" name="offer_id">
                                     <option value="{{ $payment->offer_id }}" readonly selected>-- {{ $payment->offer_id }} --</option>
                                     <option value="OFF001">OFF001</option>
-                                    <option value="OFF002">OFF002</option>                                        
+                                    <option value="OFF002">OFF002</option>
                                     <option value="OFF003">OFF003</option>
                                 </select>
                             </div>

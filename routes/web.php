@@ -24,7 +24,6 @@ Route::get('/addpack', function () {
     return view('admin.addpackage');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Membership programme
@@ -177,10 +176,20 @@ Route::get('deleteuser/{id}', 'AdminController@destroy');
 | Customer registration
 |--------------------------------------------------------------------------
 */
+
 Route::get('/', 'HomeController@viewproduct');
 Route::get('showpackage/{id}', 'HomeController@view');
 Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
 Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic');
+
+/*
+|--------------------------------------------------------------------------
+| Customer profile
+|--------------------------------------------------------------------------
+*/
+
+Route::get('customer_profiles', 'ExistCustomerController@customerProfiles');
+Route::get('customer_profiles/{id}', 'ExistCustomerController@customerProfile');
 
 // Newstudent
 Route::get('maklumat-pembeli/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@createStepOne');
@@ -325,7 +334,8 @@ Route::delete("/smstemplate/delete/{id}", 'SmsTemplate@remove');
 
 Route::get("/smsblast", 'SmsBulk@index');
 Route::get("/smsblast/add", 'SmsBulk@add');
-Route::post("/smsblast/add", 'SmsBulk@create');
+Route::post("/smsblast/send", 'SmsBulk@create');
+Route::post("/smsblast/send_bulk", 'SmsBulk@create_bulk');
 Route::get("/smsblast/edit/{id}", 'SmsBulk@edit');
 Route::put("/smsblast/edit/{id}", 'SmsBulk@update');
 Route::get("/smsblast/delete/{id}", 'SmsBulk@del');
