@@ -84,9 +84,9 @@ Pendaftaran Pembeli
         var total;
         var package_name = '{{ $package->name }}';
         var price = '{{ $package->price }}';
-        var package1 = 'Solidariti';
-        var package2 = 'Sustain';
-        var package3 = 'Growth';
+        var package1 = '{{ $package_name[0]->name }}';
+        var package2 = '{{ $package_name[1]->name }}';
+        var package3 = '{{ $package_name[2]->name }}';
         var error = 'No such package';        
         var discount1 = 60;
         var discount2 = 120;
