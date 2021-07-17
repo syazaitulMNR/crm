@@ -13,42 +13,69 @@
 			<b>SMS Template</b>
 		</div> 
 
-		<div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h1 class="h2">SMS Template</h1>
+			
+			<div class="btn-toolbar mb-2 mb-md-0">
+				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#add-template">
+					<i class="bi bi-plus-lg pr-2"></i> New Template
+				</button>
+			</div>
 		</div>
 		
-		<input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
-
-		<div class="float-right pt-3">{{$product->links()}}</div>
+		<input type="text" class="form-control" placeholder="Please Enter Event Name" title="Type in a name">
 		<br>
-
+			
+		@if ($message = Session::get('success'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
+			<strong>{{ $message }}</strong>
+		</div>
+		@endif
+		
+		@if ($message = Session::get('error'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
+			<strong>{{ $message }}</strong>
+		</div>
+		@endif
+		
 		<!-- View event details in table ----------------------------------------->
 		<div class="table-responsive">
 			<table class="table table-hover" id="myTable">
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Date</th>
-						<th>Event</th>
-						<th class="text-center"><i class="fas fa-cogs"></i></th>
+						<th>Title</th>
+						<th>Description</th>
+						<th class="text-right"><i class="fas fa-cogs"></i></th>
 					</tr>
 				</thead>
 				
-				<tbody> 
-				@foreach ($product as $key => $products)
+				<tbody>
+				@php
+				$no = 1;
+				@endphp
+				@foreach ($x as $k => $t)
 					<tr>
-						<td>{{ $product->firstItem() + $key }}</td>
-						<td>{{ date('d/m/Y', strtotime($products->date_from)) }}</td>
-						<td>
-						{{ $products->name }}
+						<td>{{ $no++ }}</td>
 						
-						@if ($products->status == 'active')
-							<span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
-						@else
-						@endif
+						<td>
+							{{ $t->title }}
 						</td>
-						<td class="text-center">
-						<a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="bi bi-chevron-right"></i></a>
+						
+						<td>
+							{{ $t->description }}
+						</td>
+						
+						<td class="text-right">
+							<a class="btn btn-dark" href="{{ url('smstemplate') }}/edit/{{ $t->id }}">
+								<i class="bi bi-pencil"></i>
+							</a>
+							
+							<a class="btn btn-danger" href="{{ url('smstemplate') }}/delete/{{ $t->id }}">
+								<i class="bi bi-trash"></i>
+							</a>
 						</td>
 					</tr>
 				@endforeach
@@ -57,4 +84,66 @@
 		</div> 
 	</div>
 </div>
+
+<div class="modal fade" id="add-template">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header border-bottom-0">
+				<h5 class="modal-title">Create New Template</h5>
+				
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body">
+				<form action="{{ url('smstemplate/add') }}" method="POST"> 
+					@csrf
+					Title:
+					<input type="text" name="title" class="form-control" placeholder="Template Title" /><br />
+					
+					Description:
+					<textarea class="form-control" name="description" placeholder="Description"></textarea><br />
+					
+					Content:
+					<textarea class="form-control" name="content" placeholder="Content"></textarea><br />
+					
+					<div class='col-md-12 text-right px-4'>
+						<button type='submit' class='btn btn-success'> 
+							<i class="fas fa-save pr-1"></i> Save 
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
