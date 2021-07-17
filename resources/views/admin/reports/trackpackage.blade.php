@@ -32,14 +32,14 @@ Sales Report
                   </div>
                   <form action="" method="POST"> 
                   @csrf
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
-                        Second default radio
-                      </label>
-                    </div>
-
                     <div class='col-md-12 text-right px-4'>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Second default radio
+                        </label>
+                      </div>
+                      
                         <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
                     </div>
                   </form>
