@@ -325,7 +325,7 @@ Route::delete("/smstemplate/delete/{id}", 'SmsTemplate@remove');
 
 Route::get("/smsblast", 'SmsBulk@index');
 Route::get("/smsblast/add", 'SmsBulk@add');
-Route::post("/smsblast/add", 'SmsBulk@create');
+Route::post("/smsblast/send", 'SmsBulk@create');
 Route::get("/smsblast/edit/{id}", 'SmsBulk@edit');
 Route::put("/smsblast/edit/{id}", 'SmsBulk@update');
 Route::get("/smsblast/delete/{id}", 'SmsBulk@del');

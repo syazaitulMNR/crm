@@ -10,7 +10,7 @@
 		<div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
 			<a href="/smstemplate"><i class="bi bi-arrow-left"></i></a> &nbsp; 
 			<a href="/dashboard">Dashboard</a> / 
-			<a href="/smstemplate">SMS Template</a>
+			<a href="/smstemplate">SMS Template</a> / 
 			<b>Delete SMS Template</b>
 		</div> 
 
