@@ -157,6 +157,8 @@ Pendaftaran Pembeli
 
         }
 
+        console.log({{ $package_name[0]->name }});
+
     }
 </script>
 
