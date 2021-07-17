@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  SMS Template
+  SMS Bulk
 @endsection
 
 @section('content')
@@ -10,15 +10,19 @@
 		<div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
 			<a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; 
 			<a href="/dashboard">Dashboard</a> / 
-			<b>SMS Template</b>
+			<b>SMS Bulk</b>
 		</div> 
 
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-			<h1 class="h2">SMS Template</h1>
+			<h1 class="h2">SMS Bulk</h1>
 			
 			<div class="btn-toolbar mb-2 mb-md-0">
-				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#add-template">
-					<i class="bi bi-plus-lg pr-2"></i> New Template
+				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#new-bulk-sms">
+					<i class="bi bi-plus-lg pr-2"></i> New Bulk SMS
+				</button>&nbsp;
+				
+				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#new-sms">
+					<i class="bi bi-plus-lg pr-2"></i> New SMS
 				</button>
 			</div>
 		</div>
@@ -46,9 +50,9 @@
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>Date</th>
+						<th>Phone</th>
 						<th>Title</th>
-						<th>Description</th>
-						<th class="text-right"><i class="fas fa-cogs"></i></th>
 					</tr>
 				</thead>
 				
@@ -60,22 +64,14 @@
 					<tr>
 						<td>{{ $no++ }}</td>
 						
+						<td>{{ $t->created_at }}</td>
+						
+						<td>
+							{{ $t->phone }}
+						</td>
+						
 						<td>
 							{{ $t->title }}
-						</td>
-						
-						<td>
-							{{ $t->description }}
-						</td>
-						
-						<td class="text-right">
-							<a class="btn btn-dark" href="{{ url('smstemplate') }}/edit/{{ $t->id }}">
-								<i class="bi bi-pencil"></i>
-							</a>
-							
-							<a class="btn btn-danger" href="{{ url('smstemplate') }}/delete/{{ $t->id }}">
-								<i class="bi bi-trash"></i>
-							</a>
 						</td>
 					</tr>
 				@endforeach
@@ -85,11 +81,11 @@
 	</div>
 </div>
 
-<div class="modal fade" id="add-template">
+<div class="modal fade" id="new-sms">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header border-bottom-0">
-				<h5 class="modal-title">Create New Template</h5>
+				<h5 class="modal-title">Send New SMS</h5>
 				
 				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -97,16 +93,52 @@
 			</div>
 			
 			<div class="modal-body">
-				<form action="{{ url('smstemplate/add') }}" method="POST"> 
+				<form action="{{ url('smsblast/send') }}" method="POST"> 
 					@csrf
-					Title:
-					<input type="text" name="title" class="form-control" placeholder="Template Title" /><br />
+					Template:
+					<select class="form-control" name="template">
+					@foreach ($y as $k => $t)
+						<option value="{{ $t->id }}">{{ $t->title }}</option>
+					@endforeach
+					</select><br />
 					
-					Description:
-					<textarea class="form-control" name="description" placeholder="Description"></textarea><br />
+					Phone Number:
+					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
 					
-					Content:
-					<textarea class="form-control" name="content" placeholder="Content"></textarea><br />
+					<div class='col-md-12 text-right px-4'>
+						<button type='submit' class='btn btn-success'> 
+							<i class="fas fa-save pr-1"></i> Save 
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="new-bulk-sms">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header border-bottom-0">
+				<h5 class="modal-title">Send New Bulk SMS</h5>
+				
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body">
+				<form action="{{ url('smsblast/send_bulk') }}" method="POST" enctype="multipart/form-data"> 
+					@csrf
+					Template:
+					<select class="form-control" name="template">
+					@foreach ($y as $k => $t)
+						<option value="{{ $t->id }}">{{ $t->title }}</option>
+					@endforeach
+					</select><br />
+					
+					Excel Phone:
+					<input type="file" /><br />
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
