@@ -16,33 +16,26 @@ Sales Report
 
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group">
-            <!-- Button trigger modal exportProgram -->
-            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exportProgram">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#BuyerModal">
               <i class="bi bi-download pr-2"></i>Export Buyer
             </button>
+
             <!-- Modal -->
-            <div class="modal fade" id="exportProgram" tabindex="-1" role="dialog" aria-labelledby="exportProgramLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal fade" id="BuyerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header border-bottom-0">
+                  <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Export Buyer</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <form action="" method="POST"> 
-                  @csrf
-                    <div class='col-md-12 text-right px-4'>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                          Second default radio
-                        </label>
-                      </div>
-                      
-                        <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
-                    </div>
-                  </form>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
                 </div>
               </div>
             </div>
