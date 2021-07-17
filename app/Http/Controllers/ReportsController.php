@@ -393,7 +393,7 @@ class ReportsController extends Controller
         dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
         $payment->save();
-        
+
         return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
 
@@ -828,8 +828,13 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
         $survey_form = $product->survey_form;
+
+        // change email status
+        $payment->email_status = 'Sent';
                 
         dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+        
+        $payment->save();
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
     }
