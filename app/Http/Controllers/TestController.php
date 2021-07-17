@@ -7,6 +7,7 @@ use Mail;
 use Billplz\Client;
 use Rap2hpoutre\FastExcel\FastExcel;
 use App\Ticket;
+use App\Jobs\TestJobMail;
 
 class TestController extends Controller
 {
@@ -26,14 +27,23 @@ class TestController extends Controller
    }
 
    public function basic_email() {
-      $data = array('name'=>"Virat Gandhi");
+      $emails = ["iqbalkisas6@gmail.com", "iqballokalmunchies@gmail.com", "iqbaldropship@gmail.com", "mhd.iqb98@gmail.com"];
+      dispatch(new TestJobMail($emails));
+
+      // $data = array('name'=>"Virat Gandhi");
    
-      Mail::send('test', $data, function($message) {
-         $message->to('zarina4.11@gmail.com', 'Tutorials Point')->subject
-            ('Laravel Basic Testing Mail');
-         $message->from('noreply@momentuminternet.my','Virat Gandhi');
-      });
-      echo "Basic Email Sent. Check your inbox.";
+      // Mail::send('test', $data, function($message) {
+      //    $message->to('iqbalkisas6@gmail.com', 'Tutorials Point')->subject
+      //       ('Laravel Basic Testing Mail');
+      //    $message->from('noreply@momentuminternet.my','Virat Gandhi');
+      // });
+
+      // Mail::send('test', $data, function($message) {
+      //    $message->to('iqballokalmunchies@gmail.com', 'Tutorials Point')->subject
+      //       ('Laravel Basic Testing Mail');
+      //    $message->from('noreply@momentuminternet.my','Virat Gandhi');
+      // });
+      // echo "Basic Email Sent. Check your inbox.";
    }
 
    /**

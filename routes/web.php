@@ -298,9 +298,11 @@ Route::get('payment', 'TestController@index');
 Route::post('payment-process', 'TestController@process');
 Route::get('test/email', function(){
   
-	$send_mail = 'zarina4.11@gmail.com';
+	$send_mail = 'iqbalkisas6@gmail.com';
   
     dispatch(new App\Jobs\PengesahanJob($send_mail));
   
     dd('send mail successfully !!');
 });
+
+Route::get('/test/bulkmail', 'TestEmailController@testBulkEmails');
