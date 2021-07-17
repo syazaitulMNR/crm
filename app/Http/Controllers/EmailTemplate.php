@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail;
 use Illuminate\Http\Request;
 
 class EmailTemplate extends Controller
@@ -13,7 +14,8 @@ class EmailTemplate extends Controller
      */
     public function index()
     {
-        //
+        $emailsTemplate = Mail::all();
+        return view('emailsTemplate.index', compact('emailsTemplate'));
     }
 
     /**
@@ -21,9 +23,9 @@ class EmailTemplate extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add()
     {
-        //
+        return view('emailsTemplate.create');
     }
 
     /**
@@ -32,7 +34,7 @@ class EmailTemplate extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         //
     }
@@ -77,7 +79,7 @@ class EmailTemplate extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function remove($id)
     {
         //
     }

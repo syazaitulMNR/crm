@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailsTable extends Migration
+class AddColumnNameMailtemplateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateMailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mails', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->longText('content');
-            $table->date('date');
-            $table->timestamps();
+        Schema::table('mails', function (Blueprint $table) {
+            $table->string('name');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateMailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mails');
+        Schema::table('mails', function (Blueprint $table) {
+            $table->dropColumn('name');
+        });
     }
 }
