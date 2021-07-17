@@ -328,24 +328,12 @@ Route::delete("/emailtemplate/delete/{id}", function($id){
 });
 
 Route::get("/emailtemplate", function(){});
-Route::get("/emailtemplate/add", function($id){
-	
-});
-Route::post("/emailtemplate/add", function($id){
-	
-});
-Route::get("/emailtemplate/edit/{id}", function($id){
-	
-});
-Route::put("/emailtemplate/edit/{id}", function($id){
-	
-});
-Route::get("/emailtemplate/delete/{id}", function($id){
-	
-});
-Route::delete("/emailtemplate/delete/{id}", function($id){
-	
-});
+Route::get("/emailtemplate/add", function($id){});
+Route::post("/emailtemplate/add", function($id){});
+Route::get("/emailtemplate/edit/{id}", function($id){});
+Route::put("/emailtemplate/edit/{id}", function($id){});
+Route::get("/emailtemplate/delete/{id}", function($id){});
+Route::delete("/emailtemplate/delete/{id}", function($id){});
 
 
 
