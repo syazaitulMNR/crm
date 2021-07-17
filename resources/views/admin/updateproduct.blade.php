@@ -78,6 +78,14 @@
                 @endforeach
             </select> --}}
         </div>
+        <div class="col-md-3">
+            <label class="form-label">Dashboard Report</label>
+            <select class="form-select" name="status" required>
+                <option disabled selected>-- Please Select One --</option>
+                <option value="active">Active</option>
+                <option value="deactive">Deactive</option>
+            </select>
+        </div>
 
         <div class="col-12">
             <button type="submit" class="btn btn-primary float-right"><i class="bi bi-save pr-2"></i>Submit</button>

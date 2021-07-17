@@ -106,7 +106,6 @@ class ProductController extends Controller
         if($check_image == false){
 
             $product->name = $request->prodname;
-            // $product->description = $request->description;
             $product->date_from = $request->date1;
             $product->date_to = $request->date2;
             $product->time_from = $request->time1;
@@ -114,6 +113,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->status = $request->status;
             $product->save();
 
         } else {
@@ -134,6 +134,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->status = $request->status;
 
             if($request->hasFile('cert_image'))
             {
