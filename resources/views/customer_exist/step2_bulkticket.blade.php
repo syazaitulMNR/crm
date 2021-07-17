@@ -89,6 +89,7 @@ Pendaftaran Pembeli
         var error = 'No such package';        
         var discount1 = 60;
         var discount2 = 120;
+        var pack = '{{ $package_name[0]->name }}';
 
         if (package_name == package1) {
 
@@ -157,7 +158,7 @@ Pendaftaran Pembeli
 
         }
 
-        console.log({{ $package_name[0]->name }});
+        console.log(pack);
 
     }
 </script>
