@@ -16,6 +16,36 @@ Sales Report
 
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group">
+            <!-- Button trigger modal exportProgram -->
+            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exportProgram">
+              <i class="bi bi-download pr-2"></i>Export Buyer
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exportProgram" tabindex="-1" role="dialog" aria-labelledby="exportProgramLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Export Buyer</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="" method="POST"> 
+                  @csrf
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                        Second default radio
+                      </label>
+                    </div>
+
+                    <div class='col-md-12 text-right px-4'>
+                        <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
             <a class="btn btn-sm btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Buyer</a>
             <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a>
           </div>
