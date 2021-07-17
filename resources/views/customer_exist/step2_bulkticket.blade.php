@@ -158,8 +158,6 @@ Pendaftaran Pembeli
 
         }
 
-        console.log(pack);
-
     }
 </script>
 
