@@ -63,7 +63,8 @@ class ProductController extends Controller
                 'time_to' => $request->time2,
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
-                'survey_form' => $request->survey_form
+                'survey_form' => $request->survey_form,
+                'status' => $request->status
             ]);
 
         } else {
@@ -83,7 +84,8 @@ class ProductController extends Controller
                 'cert_image' => $cert_image,
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
-                'survey_form' => $request->survey_form
+                'survey_form' => $request->survey_form,
+                'status' => $request->status
             ]);
         }
 

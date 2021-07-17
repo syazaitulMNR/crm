@@ -72,13 +72,22 @@
             <em>*Please ignore this part if there is no certificate provided for the event</em>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label class="form-label">Survey Form Link</label>
             <input name="survey_form" type="text" class="form-control">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label class="form-label">BillPlz Collection ID</label>
             <input name="collection_id" type="text" class="form-control" required>
+        </div>
+
+        <div class="col-md-2">
+            <label class="form-label">Dashboard Report</label>
+            <select class="form-select" name="status" required>
+                <option disabled selected>-- Please select --</option>
+                <option value="active">Active</option>
+                <option value="deactive">Deactive</option>
+            </select>
         </div>
 
         <div class="col-12">
