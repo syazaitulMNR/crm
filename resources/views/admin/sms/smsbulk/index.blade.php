@@ -38,7 +38,7 @@
 		@endif
 		
 		@if ($message = Session::get('error'))
-		<div class="alert alert-success alert-block">
+		<div class="alert alert-danger alert-block">
 			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
 			<strong>{{ $message }}</strong>
 		</div>
@@ -104,6 +104,41 @@
 					
 					Phone Number:
 					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
+					
+					<div class='col-md-12 text-right px-4'>
+						<button type='submit' class='btn btn-success'> 
+							<i class="fas fa-save pr-1"></i> Save 
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="new-bulk-sms">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header border-bottom-0">
+				<h5 class="modal-title">Send New Bulk SMS</h5>
+				
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			
+			<div class="modal-body">
+				<form action="{{ url('smsblast/send_bulk') }}" method="POST" enctype="multipart/form-data"> 
+					@csrf
+					Template:
+					<select class="form-control" name="template">
+					@foreach ($y as $k => $t)
+						<option value="{{ $t->id }}">{{ $t->title }}</option>
+					@endforeach
+					</select><br />
+					
+					Excel Phone:
+					<input type="file" /><br />
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 

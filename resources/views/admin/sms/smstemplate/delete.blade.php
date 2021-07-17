@@ -29,7 +29,7 @@
 		@endif
 		
 		@if ($message = Session::get('error'))
-		<div class="alert alert-success alert-block">
+		<div class="alert alert-danger alert-block">
 			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
 			<strong>{{ $message }}</strong>
 		</div>
