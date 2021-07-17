@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class SmsTemplate extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +18,7 @@ class SmsTemplate extends Controller
     public function index()
     {
         //
+		return view("admin.sms.smstemplate.index");
     }
 
     /**
