@@ -30,7 +30,7 @@ Sales Report
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="" method="POST"> 
+                  <form action="{{ url('exportProgram') }}/{{ $product->product_id }}" method="POST"> 
                   @csrf
                   
                     <div class='col-md-12 px-4'>
