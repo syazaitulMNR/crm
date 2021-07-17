@@ -231,7 +231,9 @@ class ProductController extends Controller
         $package = Package::where('package_id', $id)->first();
         $feature = Feature::where('package_id', $id)->get();
 
-        return view('admin/updatepackage', compact('product', 'package', 'feature'));        
+        dd($feature);
+
+        // return view('admin/updatepackage', compact('product', 'package', 'feature'));        
     }
 
     public function updatepack($packageId, $productId, Request $request){
