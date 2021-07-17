@@ -89,7 +89,7 @@ Pendaftaran Pembeli
         var error = 'No such package';        
         var discount1 = 60;
         var discount2 = 120;
-        var pack = '{{ $package_name[1]->name }}';
+        var pack = '{{ $package_name[2]->name }}';
 
         if (package_name == package1) {
 
