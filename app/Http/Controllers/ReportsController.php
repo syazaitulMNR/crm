@@ -387,11 +387,13 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        // dd($send_mail);
-        // echo 'sent mail';
+        // change email status
+        $payment->email_status = 'Sent';
 
         dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
 
+        $payment->save();
+        
         return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
 
