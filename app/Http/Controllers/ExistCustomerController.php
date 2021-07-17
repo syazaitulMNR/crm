@@ -14,6 +14,13 @@ use App\Jobs\PengesahanJob;
 
 class ExistCustomerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function stepOne($product_id, $package_id, $stud_id, Request $request){
 
         $student = Student::where('stud_id', $stud_id)->first();
@@ -23,6 +30,18 @@ class ExistCustomerController extends Controller
 
         return view('customer_exist.step1', compact('student','product', 'package', 'stud'));
 
+    }
+
+    public function customerProfiles(Request $request) {
+        $customers = Student::paginate(15);
+        
+        return view('customer.customer_profiles', compact('customers'));
+    }
+
+    public function customerProfile($id, Request $request) {
+        $customer = Student::where('id', $id)->first();
+
+        return view('customer.customer_profile', compact('customer'));
     }
 
     public function saveStepOne($product_id, $package_id, $stud_id, Request $request){
@@ -298,6 +317,7 @@ class ExistCustomerController extends Controller
 
         return redirect($pay_data['url']);
     }
+
 
     public function redirect_billplz($product_id, $package_id, Request $request)
     {

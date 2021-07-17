@@ -272,6 +272,7 @@ Sales Report
             @endforeach
           
           </tbody>
+          {{ $payment->links() }}
       </table> 
     </div> 
     @endif
@@ -343,6 +344,7 @@ Sales Report
           @endforeach
           @endforeach
         </tbody>
+        {{ $payment->links() }}
       </table>  
     </div>
   </div>

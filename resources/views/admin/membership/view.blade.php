@@ -29,8 +29,6 @@ Membership
     -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
   }
-
-  
 </style>
 
 
@@ -99,11 +97,8 @@ Membership
           </div>
         </div>
       </div>
-
       <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload pr-2"></i>Import Customer</a>
     </div>
-    
-      
   </div>
 
   <div class="row">
@@ -228,6 +223,7 @@ Membership
             @endif
             @endforeach
           </tbody>
+          
         </table>  
       </div>
       @else
@@ -272,6 +268,7 @@ Membership
         
   </div>
 </div>
+
 
 <!--
 |--------------------------------------------------------------------------
