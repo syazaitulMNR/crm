@@ -55,7 +55,7 @@ Customer Profiles
             <tbody>
                 @foreach ($customers as $key => $customer)
                 <tr>
-                    <th scope="row">{{ $customer->id }}</th>
+                    <th scope="row">{{ ++$key }}</th>
                     <td>{{ $customer->first_name }} {{ $customer->last_name }}</td>
                     <td>{{ $customer->ic }}</td>
                     <td>

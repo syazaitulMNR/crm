@@ -11,6 +11,7 @@ use Stripe;
 use Mail;
 use Billplz\Client;
 use App\Jobs\PengesahanJob;
+use App\Ticket;
 
 class ExistCustomerController extends Controller
 {
@@ -35,15 +36,29 @@ class ExistCustomerController extends Controller
     public function customerProfiles(Request $request) {
         $customers = Student::paginate(15);
         
+        
         return view('customer.customer_profiles', compact('customers'));
     }
 
     public function customerProfile($id, Request $request) {
         $customer = Student::where('id', $id)->first();
-
-        $payment = Payment::where('stud_id', $customer['stud_id'])->get();
+        $payment = Payment::where('stud_id', $customer['stud_id'])->first();
+        $package = Package::where('package_id', $payment['package_id'])->first();
         
-        return view('customer.customer_profile', compact('customer', 'payment'));
+        $ticket = Ticket::where('ic', $customer['ic'])->get();
+        $data = [];
+        
+        foreach($ticket as $t) {
+            $product = Product::where('product_id', $t->product_id);
+
+            if($product->count() > 0){
+                $product = $product->first();
+                // $t->product = $product;
+                $data[] = $product;
+            }
+        }
+
+        return view('customer.customer_profile', compact('customer', 'package', 'payment', 'data'));
     }
 
     public function saveStepOne($product_id, $package_id, $stud_id, Request $request){
