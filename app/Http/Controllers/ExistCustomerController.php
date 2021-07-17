@@ -58,32 +58,31 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
 
         
-        dd($package_name[0]->name);
 
         //generate id
-        // $payment_id = 'OD'.uniqid();
+        $payment_id = 'OD'.uniqid();
 
-        // if($product->offer_id == 'OFF001') {
+        if($product->offer_id == 'OFF001') {
 
-        //     //for no offer ticket
-        //     return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+            //for no offer ticket
+            return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
-        // } else if($product->offer_id == 'OFF002') {
+        } else if($product->offer_id == 'OFF002') {
 
             
-        //     //for Buy 1 Get 1 (Same Ticket)
-        //     return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+            //for Buy 1 Get 1 (Same Ticket)
+            return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
-        // } else if($product->offer_id == 'OFF003') {
+        } else if($product->offer_id == 'OFF003') {
 
-        //     //for Bulk Ticket
-        //     return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+            //for Bulk Ticket
+            return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
-        // } else {
+        } else {
 
-        //     echo 'No Such Offer';
+            echo 'No Such Offer';
 
-        // }
+        }
   
     }
 
