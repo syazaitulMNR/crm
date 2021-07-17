@@ -29,6 +29,8 @@ Sales Report
                     <h5 class="modal-title" id="exampleModalLabel">Export Buyer</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
+
+                  <p>Please choose data that you want to export :</p>
                   <div class="modal-body">
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
