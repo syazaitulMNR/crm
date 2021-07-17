@@ -166,7 +166,7 @@ class ProductController extends Controller
     public function view($id)
     {
         $product = Product::where('product_id', $id)->first();
-        $package = Package::where('product_id', $id)->paginate(15);
+        $package = Package::where('product_id', $id)->get();
             
         $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/';
         
