@@ -41,7 +41,9 @@ class ExistCustomerController extends Controller
     public function customerProfile($id, Request $request) {
         $customer = Student::where('id', $id)->first();
 
-        return view('customer.customer_profile', compact('customer'));
+        $payment = Payment::where('stud_id', $customer['stud_id'])->get();
+        
+        return view('customer.customer_profile', compact('customer', 'payment'));
     }
 
     public function saveStepOne($product_id, $package_id, $stud_id, Request $request){
