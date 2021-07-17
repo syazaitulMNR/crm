@@ -36,7 +36,23 @@ class EmailTemplate extends Controller
      */
     public function create(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'name' => 'required|min:3',
+            'content' => 'required|min:3',
+            'title' => 'required|min:3',
+            'date' => 'required|date',
+        ]);
+
+        $mail = new Mail();
+        $mail->name = $validated['name'];
+        $mail->content = $validated['content'];
+        $mail->title = $validated['title'];
+        $mail->date = $validated['date'];
+        
+        $todo->save();
+
+        return redirect('/emailtemplate');
     }
 
     /**
@@ -58,7 +74,8 @@ class EmailTemplate extends Controller
      */
     public function edit($id)
     {
-        //
+        $emailTemplate = Mail::where('id', $id)->first();
+        return view('emailsTemplate.edit', compact('emailTemplate'));
     }
 
     /**
@@ -70,7 +87,14 @@ class EmailTemplate extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $emailTemplate = Mail::where('id', $id)->first();
+        $emailTemplate->name = $request->name;
+        $emailTemplate->content = $request->content;
+        $emailTemplate->title = $request->title;
+        $emailTemplate->date = $request->date;
+        $emailTemplate->save();
+
+        return redirect('/emailtemplate');
     }
 
     /**
@@ -81,6 +105,10 @@ class EmailTemplate extends Controller
      */
     public function remove($id)
     {
-        //
+        $mail = Mail::where('id', $id)->first();
+
+        $mail->delete();
+
+        return redirect('/emailtemplate');
     }
 }

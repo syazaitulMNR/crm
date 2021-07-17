@@ -11,8 +11,6 @@
                 <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
                     <a href=""><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">...</a> / <a href="/product">Event</a> / <a href="">Package</a> / <b>Create Email Template</b>
                 </div>
-        
-                
                 
                 <div class="card-body">
 
@@ -20,21 +18,20 @@
                         <h2 class="h2">Create Email Template</h2>
                     </div>
                     <!-- Add package form ---------------------------------------------------->
-                    <form class="row g-3 px-3" action="/emailtemplate/edit/{{$emailTemplate->id}}" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
-                        @method('PUT')
+                    <form class="row g-3 px-3" action="/emailtemplate/add" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
                         @csrf
                         <div class='row my-3'>
                             <div class='col-md-6'>         
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input name="name" type="text" value="{{$emailTemplate->name}}" class="form-control" required>
+                                    <input name="name" type="text" class="form-control" required>
                                 </div>
                             </div>
                     
                             <div class='col-md-6'>
                                 <div class="form-group">
                                     <label for="name">Title</label>
-                                    <input name="title" type="text" value="{{$emailTemplate -> title}}" class="form-control" required>
+                                    <input name="title" type="text" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -43,27 +40,26 @@
                             <div class='col-md-6'>
                                 <div class="form-group">
                                     <label for="name">Date</label>
-                                    <input name="date" type="date" value="{{$emailTemplate -> date}}" class="form-control" required>
+                                    <input name="date" type="date" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class='col-md-6'>
                                 <div class="form-group">
                                     <label for="name">Content</label>
-                                    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3">{{$emailTemplate -> content}}</textarea>
+                                    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
                             
                         <div class='col-md-8 pt-3'>
-                            <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Edit </button>
+                            <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
                         </div>
                         
                     </form>
                 </div>
             </div>
 
-            
         </div>
     </div>
     

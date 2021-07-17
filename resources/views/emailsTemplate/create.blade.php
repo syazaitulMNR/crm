@@ -20,7 +20,7 @@
                         <h2 class="h2">Create Email Template</h2>
                     </div>
                     <!-- Add package form ---------------------------------------------------->
-                    <form class="row g-3 px-3" action="" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
+                    <form class="row g-3 px-3" action="/emailtemplate/add" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
                         @csrf
                         <div class='row my-3'>
                             <div class='col-md-6'>         
@@ -49,7 +49,7 @@
                             <div class='col-md-6'>
                                 <div class="form-group">
                                     <label for="name">Content</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>

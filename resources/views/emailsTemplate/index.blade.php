@@ -37,14 +37,16 @@
                                 </thead>
 
                                 <tbody> 
+                                @foreach ($emailsTemplate as $key => $emailTemplate)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$key + 1}}</td>
+                                        <td>{{$emailTemplate -> name}}</td>
                                         <td>
-                                            <a class="btn btn-dark" href="">Edit<i class="bi bi-chevron-right"></i></a>
-                                            <a class="btn btn-dark" href="">Delete<i class="bi bi-chevron-right"></i></a>
+                                            <a class="btn btn-dark" href="/emailtemplate/edit/{{$emailTemplate->id}}">Edit<i class="bi bi-chevron-right"></i></a>
+                                            <a class="btn btn-dark" href="/emailtemplate/delete/{{$emailTemplate->id}}">Delete<i class="bi bi-chevron-right"></i></a>
                                         </td>
                                     </tr>
+                                @endforeach
                                 </tbody>
                             </table>   
                         </div>  
