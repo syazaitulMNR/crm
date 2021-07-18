@@ -71,69 +71,71 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
 
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
-        /*-- Manage Email ---------------------------------------------------*/
-        $fileName = $product->name.'.csv';
-        $columnNames = [
-            'Customer ID',
-            'First Name',
-            'Last Name',
-            'IC No',
-            'Phone No',
-            'Email',
-            'Quantity',
-            'Payment',
-            'Status',
-            'Payment Method',
-            'Package',
-            'Offer ID',
-            'Update Participant',
-            'Purchased At'
-        ];
-        
-        $file = fopen(public_path('export/') . $fileName, 'w');
-        fputcsv($file, $columnNames);
-        
-        foreach ($student as $students) {
-            foreach($payment as $payments){
-                foreach($package as $packages){
-                    if($payments->stud_id == $students->stud_id){
-                        if($payments->package_id == $packages->package_id){
+        echo 'can';
 
-                            fputcsv($file, [
-                                $payments->payment_id,
-                                $students->first_name,
-                                $students->last_name,
-                                $students->ic,
-                                $students->phoneno,
-                                $students->email,
-                                $payments->quantity,
-                                $payments->totalprice,
-                                $payments->status,
-                                $payments->pay_method,
-                                $packages->name,
-                                $payments->offer_id,
-                                $payments->update_count,
-                                $payments->created_at,
-                            ]);
+        // // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+        // /*-- Manage Email ---------------------------------------------------*/
+        // $fileName = $product->name.'.csv';
+        // $columnNames = [
+        //     'Customer ID',
+        //     'First Name',
+        //     'Last Name',
+        //     'IC No',
+        //     'Phone No',
+        //     'Email',
+        //     'Quantity',
+        //     'Payment',
+        //     'Status',
+        //     'Payment Method',
+        //     'Package',
+        //     'Offer ID',
+        //     'Update Participant',
+        //     'Purchased At'
+        // ];
+        
+        // $file = fopen(public_path('export/') . $fileName, 'w');
+        // fputcsv($file, $columnNames);
+        
+        // foreach ($student as $students) {
+        //     foreach($payment as $payments){
+        //         foreach($package as $packages){
+        //             if($payments->stud_id == $students->stud_id){
+        //                 if($payments->package_id == $packages->package_id){
 
-                        }
-                    }
-                }
-            }
+        //                     fputcsv($file, [
+        //                         $payments->payment_id,
+        //                         $students->first_name,
+        //                         $students->last_name,
+        //                         $students->ic,
+        //                         $students->phoneno,
+        //                         $students->email,
+        //                         $payments->quantity,
+        //                         $payments->totalprice,
+        //                         $payments->status,
+        //                         $payments->pay_method,
+        //                         $packages->name,
+        //                         $payments->offer_id,
+        //                         $payments->update_count,
+        //                         $payments->created_at,
+        //                     ]);
+
+        //                 }
+        //             }
+        //         }
+        //     }
             
-        }
+        // }
         
-        fclose($file);
+        // fclose($file);
 
         
-        Mail::send('emails.export_mail', [], function($message) use ($fileName)
-        {
-            $message->to(Auth::user()->email)->subject('ATTACHMENT OF BUYER DETAILS');
-            $message->attach(public_path('export/') . $fileName);
-        });
+        // Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        // {
+        //     $message->to(Auth::user()->email)->subject('ATTACHMENT OF BUYER DETAILS');
+        //     $message->attach(public_path('export/') . $fileName);
+        // });
 
-        return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
+        // return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
 
     }
 
@@ -387,10 +389,12 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
 
-        // dd($send_mail);
-        // echo 'sent mail';
+        // change email status
+        $payment->email_status = 'Sent';
 
         dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+
+        $payment->save();
 
         return redirect()->back()->with('purchased-sent', 'Purchased confirmation email has been sent successfully') ;
     }
@@ -826,8 +830,13 @@ class ReportsController extends Controller
         $productId = $product_id;        
         $student_id = $student->stud_id;
         $survey_form = $product->survey_form;
+
+        // change email status
+        $payment->email_status = 'Sent';
                 
         dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+        
+        $payment->save();
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
     }

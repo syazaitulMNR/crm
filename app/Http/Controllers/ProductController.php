@@ -63,7 +63,8 @@ class ProductController extends Controller
                 'time_to' => $request->time2,
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
-                'survey_form' => $request->survey_form
+                'survey_form' => $request->survey_form,
+                'status' => $request->status
             ]);
 
         } else {
@@ -83,7 +84,8 @@ class ProductController extends Controller
                 'cert_image' => $cert_image,
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
-                'survey_form' => $request->survey_form
+                'survey_form' => $request->survey_form,
+                'status' => $request->status
             ]);
         }
 
@@ -106,7 +108,6 @@ class ProductController extends Controller
         if($check_image == false){
 
             $product->name = $request->prodname;
-            // $product->description = $request->description;
             $product->date_from = $request->date1;
             $product->date_to = $request->date2;
             $product->time_from = $request->time1;
@@ -114,6 +115,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->status = $request->status;
             $product->save();
 
         } else {
@@ -134,6 +136,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->status = $request->status;
 
             if($request->hasFile('cert_image'))
             {
@@ -162,13 +165,12 @@ class ProductController extends Controller
     /*-- Package -------------------------------------------------------------*/
     public function view($id)
     {
-        $feature = Feature::where('product_id', $id)->get();
         $product = Product::where('product_id', $id)->first();
         $package = Package::where('product_id', $id)->paginate(15);
             
         $link = 'https://mims.momentuminternet.my/pendaftaran/'. $product->product_id . '/';
         
-        return view('admin/viewpackage', compact('feature','product', 'package', 'link'));   
+        return view('admin/viewpackage', compact('product', 'package', 'link'));   
     }
     
     public function pack($id)

@@ -11,29 +11,15 @@ use Stripe;
 use Mail;
 use Billplz\Client;
 use App\Jobs\PengesahanJob;
-use App\Ticket;
 
 class ExistCustomerController extends Controller
 {
-
-    public function __construct()
+	public function __construct()
     {
         $this->middleware('auth');
     }
-
-
-    public function stepOne($product_id, $package_id, $stud_id, Request $request){
-
-        $student = Student::where('stud_id', $stud_id)->first();
-        $product = Product::where('product_id',$product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $stud = $request->session()->get('student');
-
-        return view('customer_exist.step1', compact('student','product', 'package', 'stud'));
-
-    }
-
-    public function customerProfiles(Request $request) {
+	
+	public function customerProfiles(Request $request) {
         $customers = Student::paginate(15);
         
         
@@ -59,6 +45,17 @@ class ExistCustomerController extends Controller
         }
 
         return view('customer.customer_profile', compact('customer', 'package', 'payment', 'data'));
+    }
+	
+    public function stepOne($product_id, $package_id, $stud_id, Request $request){
+
+        $student = Student::where('stud_id', $stud_id)->first();
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $stud = $request->session()->get('student');
+
+        return view('customer_exist.step1', compact('student','product', 'package', 'stud'));
+
     }
 
     public function saveStepOne($product_id, $package_id, $stud_id, Request $request){
@@ -89,6 +86,7 @@ class ExistCustomerController extends Controller
         $student = Student::where('stud_id', $stud_id)->first();
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+        $package_name = Package::where('product_id', $product_id)->get();
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
@@ -98,17 +96,18 @@ class ExistCustomerController extends Controller
         if($product->offer_id == 'OFF001') {
 
             //for no offer ticket
-            return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id'));
+            return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
         } else if($product->offer_id == 'OFF002') {
 
+            
             //for Buy 1 Get 1 (Same Ticket)
-            return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id'));
+            return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
         } else if($product->offer_id == 'OFF003') {
 
             //for Bulk Ticket
-            return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id'));
+            return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
         } else {
 
@@ -334,7 +333,6 @@ class ExistCustomerController extends Controller
 
         return redirect($pay_data['url']);
     }
-
 
     public function redirect_billplz($product_id, $package_id, Request $request)
     {
