@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
   </head>
   <body>
+    <h2>Test Email</h2>
+    {{-- <p>{{ $test_message }}</p>  --}}
     <h1>Hi, {{ $name }}</h1>
-    <p>Sending Mail from MIMS.</p>
+    <p>Sending Mail from Laravel.</p>
 
     {{-- <form action="{{ url('payment-process') }}" method="POST">
       @csrf

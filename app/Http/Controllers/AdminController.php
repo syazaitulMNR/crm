@@ -116,9 +116,9 @@ class AdminController extends Controller
         // get package id
         $package = Package::where('product_id', $product_id)->get();
         // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
-        $package1 = Package::where('package_id', 'PKD009')->first();
-        $package2 = Package::where('package_id', 'PKD0011')->first();
-        $package3 = Package::where('package_id', 'PKD0012')->first();
+        $package1 = Package::where('package_id', 'PKD0018')->first();
+        $package2 = Package::where('package_id', 'PKD0019')->first();
+        $package3 = Package::where('package_id', 'PKD0020')->first();
 
         // get package1 report by 2 hours
         $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package1->package_id)->whereBetween('created_at', [ $from , $to ])->count();
@@ -153,7 +153,6 @@ class AdminController extends Controller
         $collection2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package2->package_id)->sum('totalprice');
         $collection3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package3->package_id)->sum('totalprice');
         
-        // dd("cc");
         return view('admin.dashboard', compact('product', 'package', 'package1', 'package2', 'package3', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket', 'collection1', 'collection2', 'collection3'));
     }
 

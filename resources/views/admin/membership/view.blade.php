@@ -29,9 +29,11 @@ Membership
     -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
   }
+
+  
 </style>
 
-
+@include('layouts.navbar')
 @section('content')
 <div class="col-md-12 pt-3">     
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
@@ -97,8 +99,11 @@ Membership
           </div>
         </div>
       </div>
+
       <a href="{{ url('import-members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" type="button" class="btn btn-outline-primary"><i class="bi bi-upload pr-2"></i>Import Customer</a>
     </div>
+    
+      
   </div>
 
   <div class="row">
@@ -223,7 +228,6 @@ Membership
             @endif
             @endforeach
           </tbody>
-          
         </table>  
       </div>
       @else
@@ -268,7 +272,6 @@ Membership
         
   </div>
 </div>
-
 
 <!--
 |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@
     Offer
 @endsection
 
-
+@include('layouts.navbar')
 @section('content')
 
 <div class="col-md-12 pt-3">     
@@ -31,21 +31,19 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                      <form action="{{ url('new-offer/save') }}" method="POST"> 
-                      @csrf
-                          <div class="form-group row px-4">
-                              <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
-                              <div class="col-sm-8">
-                              <input type="text" class="form-control" name="name" >
-                              </div>
-                          </div>
-                                              
-                          <div class='col-md-12 text-right px-4'>
-                              <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
-                          </div>
-                      </form>
-                    </div>
+                    <form action="{{ url('new-offer/save') }}" method="POST"> 
+                    @csrf
+                        <div class="form-group row px-4">
+                            <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
+                            <div class="col-sm-8">
+                            <input type="text" class="form-control" name="name" >
+                            </div>
+                        </div>
+                                            
+                        <div class='col-md-12 text-right px-4'>
+                            <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
+                        </div>
+                    </form>
                 </div>
                 </div>
             </div>
@@ -105,21 +103,19 @@
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
-                      <div class="modal-body">
-                        <form action="{{ url('update-offer/save') }}/{{ $offer->offer_id }}" method="POST"> 
-                        @csrf
-                            <div class="form-group row px-4">
-                                <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
-                                <div class="col-sm-8">
-                                <input type="text" class="form-control" name="name" value="{{ $offer->name }}">
-                                </div>
-                            </div>
-                                                
-                            <div class='col-md-12 text-right px-4'>
-                                <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
-                            </div>
-                        </form>
-                      </div>
+                      <form action="{{ url('update-offer/save') }}/{{ $offer->offer_id }}" method="POST"> 
+                      @csrf
+                          <div class="form-group row px-4">
+                              <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
+                              <div class="col-sm-8">
+                              <input type="text" class="form-control" name="name" value="{{ $offer->name }}">
+                              </div>
+                          </div>
+                                              
+                          <div class='col-md-12 text-right px-4'>
+                              <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
+                          </div>
+                      </form>
                   </div>
                   </div>
               </div>

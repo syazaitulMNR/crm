@@ -28,12 +28,12 @@ Kemaskini Peserta
       <h1 class="display-4 text-dark px-4 pt-3">{{ $product->name }}</h1>
     </div>
 
-    <div class="col-md-12 d-flex justify-content-center pb-5">
+    <div class="col-md-6 offset-md-3 pb-5">
       <form id="msform" name="frm" action="{{ url('updateforms') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}/{{ $payment->payment_id }}" method="post" onsubmit="return checkForm(this);">
       @csrf
 
-      <div class="card w-100">
-        <div class="card-header bg-dark text-white text-center">Maklumat Pembeli</div>
+      <div class="card px-4 py-4 shadow">
+        <div class="bg-dark text-white px-2 py-2">Maklumat Pembeli</div>
   
         <div class="card-body">
           <div class="form-group row text-left px-4">
@@ -65,8 +65,8 @@ Kemaskini Peserta
           </div>
 
           <div class="py-2">
-            <a class="btn btn-dark" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="fas fa-download pr-2"></i>Invois</a>
-            <a class="btn btn-dark" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="fas fa-download pr-2"></i>Resit</a>
+            <a class="btn btn-dark" href="{{ url('exportInvoice')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download"></i> Invois</a>
+            <a class="btn btn-dark" href="{{ url('exportReceipt')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}"><i class="bi bi-download"></i> Resit</a>
           </div>
         </div>
 
@@ -74,18 +74,15 @@ Kemaskini Peserta
 
       <br>
 
-      <div class="card w-100">
-        <div class="card-header bg-dark text-white text-center">Maklumat Peserta</div>
+      <div class="card px-4 py-4 shadow">
+        <div class="bg-dark text-white px-2 py-2">Maklumat Peserta</div>
   
         <div class="card-body">
           
-          <div class="col-md-12 mx-auto text-right">
-            <h4>Tiket #1</h4>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" >
-              <label class="form-check-label" for="flexCheckDefault">
-                Sila tandakan ruangan ini jika pembeli adalah peserta
-              </label>
+          <div class="col-md-12 mx-auto text-end">
+            <h4>Tiket {{ $package->name}} #1</h4>
+            <div class="checkbox">
+              <label><input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" > Sila tandakan ruangan ini jika pembeli adalah peserta</label>
             </div>
             <hr>
           </div>
@@ -119,9 +116,9 @@ Kemaskini Peserta
           @for ($i = 1;  $i < $payment->quantity ; $i++) 
           <br>
 
-          <div class="col-md-12 mx-auto text-right">
+          <div class="col-md-12 mx-auto text-end">
             <hr>
-            <h4>Tiket #{{ $count++ }}</h4>
+            <h4>Tiket {{ $package->name}} #{{ $count++ }}</h4>
             <hr>
           </div>
 
@@ -154,12 +151,10 @@ Kemaskini Peserta
           
         </div>
 
-        <div class="card-footer">
-          <div class="col-md-12">
-            <div class="pull-right">
-              {{-- <input type="submit" name="myButton" class="btn btn-dark" value="Simpan"/> --}}
-              <input type="submit" name="myButton" class="btn btn-dark" value="Hantar"/>
-            </div>
+        <div class="col-md-12">
+          <div class="pull-right">
+            {{-- <input type="submit" name="myButton" class="btn btn-dark" value="Simpan"/> --}}
+            <input type="submit" name="myButton" class="btn btn-dark" value="Hantar"/>
           </div>
         </div>
       </div>
