@@ -63,7 +63,7 @@ Pendaftaran Pembeli
 
                         <div class="col-md-6 pb-2">
                             <label for="description">Emel:</label>
-                            <input type="text"  value="{{ $student->email ?? '' }}" class="form-control" name="email" placeholder="example@gmail.com"/>
+                            <input type="email"  value="{{ $student->email ?? '' }}" class="form-control" name="email" placeholder="example@gmail.com"/>
                         </div>
                         
                         <div class="col-md-6 pb-2">

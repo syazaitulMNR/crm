@@ -1,5 +1,3 @@
-@if (Auth::guest())
-@else
 <nav class="navbar navbar-expand-lg navbar-light sticky-top px-5" style="background-color: #ffffff; padding-top:1%; padding-bottom:1%; box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,54 +18,56 @@
                         Customer
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href="/customer_profiles"><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
-                        @auth
-                            @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
-                            @else 
-                            <li><a class="dropdown-item" href="/membership"><i class="bi bi-person-badge pr-2"></i>Membership Programme</a></li>
-                            @endif
-                            <li><a class="dropdown-item" href="/trackprogram"><i class="bi bi-graph-up pr-2"></i>Sales Report</a></li>
+                        @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                        @else 
+                        <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
+                        @endif
+                        
+                        @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
+                        @else 
+                        <li><a class="dropdown-item" href="/membership"><i class="bi bi-person-badge pr-2"></i>Membership Programme</a></li>
+                        @endif
+                        <li><a class="dropdown-item" href="/trackprogram"><i class="bi bi-graph-up pr-2"></i>Sales Report</a></li>
 
-                            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                            @else   
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/emailblast"><i class="bi bi-envelope pr-2"></i>Email Blasting</a></li>
-							<li><a class="dropdown-item" href="/emailtemplate"><i class="bi bi-envelope pr-2"></i>Email Template</a></li>
-                            <li><a class="dropdown-item" href="/smsblast"><i class="bi bi-chat-left-text pr-2"></i>SMS Blasting</a></li>
-                            <li><a class="dropdown-item" href="/smstemplate"><i class="bi bi-chat-left-text pr-2"></i>SMS Template</a></li>
-                            @endif
-                        @endauth
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/emailblast"><i class="bi bi-envelope pr-2"></i>Email Blasting</a></li>
+						<li><a class="dropdown-item" href="/emailtemplate"><i class="bi bi-envelope pr-2"></i>Email Template</a></li>
+
+                        @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                        @else   
+                        <li><a class="dropdown-item" href="/smsblast"><i class="bi bi-chat-left-text pr-2"></i>SMS Blasting</a></li>
+						<li><a class="dropdown-item" href="/smstemplate"><i class="bi bi-chat-left-text pr-2"></i>SMS Template</a></li>
+						
+                        @endif
                     </ul>
                 </li>
                 
-                @auth
-                    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-                    @else
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Employee
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Employee Profile</a></li>
-                        <li><a class="dropdown-item" href=""><i class="bi bi-currency-dollar pr-2"></i>Commission</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Event
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
-                        <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Offer</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/manageuser">User</a>
-                    </li>
-                    @endif
-                @endauth
+                @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                @else
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Employee
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Employee Profile</a></li>
+                      <li><a class="dropdown-item" href=""><i class="bi bi-currency-dollar pr-2"></i>Commission</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Event
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Event</a></li>
+                      <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Offer</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/manageuser">User</a>
+                </li>
+                @endif
             </ul>
 
             {{-- right element --}}
@@ -106,7 +106,6 @@
         </div>
     </div>
 </nav>
-@endif
 
 <!-- Modal -->
 {{-- <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
