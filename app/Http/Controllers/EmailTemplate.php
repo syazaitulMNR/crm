@@ -50,20 +50,9 @@ class EmailTemplate extends Controller
         $mail->title = $validated['title'];
         $mail->date = $validated['date'];
         
-        $todo->save();
+        $mail->save();
 
         return redirect('/emailtemplate');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -97,6 +86,13 @@ class EmailTemplate extends Controller
         return redirect('/emailtemplate');
     }
 
+    public function del($id)
+    {
+        $emailTemplate = Mail::where("id", $id)->first();
+		
+		return view("emailsTemplate.delete", compact("emailTemplate"));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -105,10 +101,11 @@ class EmailTemplate extends Controller
      */
     public function remove($id)
     {
+
         $mail = Mail::where('id', $id)->first();
 
         $mail->delete();
 
-        return redirect('/emailtemplate');
+        return redirect("emailtemplate")->with('success', 'Template information has been deleted successfully.');
     }
 }

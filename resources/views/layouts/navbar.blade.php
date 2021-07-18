@@ -1,3 +1,5 @@
+@if (Auth::guest())
+@else
 <nav class="navbar navbar-expand-lg navbar-light sticky-top px-5" style="background-color: #ffffff; padding-top:1%; padding-bottom:1%; box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +22,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else 
-                        <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
+                        <li><a class="dropdown-item" href="/customer_profiles"><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
                         @endif
                         
                         @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
@@ -106,7 +108,7 @@
         </div>
     </div>
 </nav>
-
+@endif
 <!-- Modal -->
 {{-- <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

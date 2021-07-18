@@ -9,7 +9,7 @@
             <div class="card">
             
                 <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-                    <a href=""><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">...</a> / <a href="/product">Event</a> / <a href="">Package</a> / <b>Create Email Template</b>
+                    <a href="/emailtemplate"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/emailtemplate">Email Template</a> / <b>Create Email Template</b>
                 </div>
         
                 

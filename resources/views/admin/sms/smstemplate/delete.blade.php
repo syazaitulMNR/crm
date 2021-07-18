@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  Edit SMS Template
+  Delete SMS Template
 @endsection
 
 @section('content')

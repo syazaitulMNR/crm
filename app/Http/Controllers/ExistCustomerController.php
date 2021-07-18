@@ -7,6 +7,7 @@ use App\Product;
 use App\Package;
 use App\Student;
 use App\Payment;
+use App\Ticket;
 use Stripe;
 use Mail;
 use Billplz\Client;
