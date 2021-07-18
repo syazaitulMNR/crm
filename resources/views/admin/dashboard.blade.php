@@ -51,7 +51,7 @@
               </tr> --}}
             {{-- @endforeach --}}
               <tr>
-                <td class="text-left">{{ $package1->name }}</td>
+                <td class="text-left">{{ $package1 }}</td>
                 <td>
                   {{ number_format($registration1) }}
                 </td>
@@ -60,7 +60,7 @@
                 <td>{{ number_format($totalpackage1) }}</td>
               </tr>
               <tr>
-                <td class="text-left">{{ $package2->name }}</td>
+                <td class="text-left">{{ $package2 }}</td>
                 <td>
                   {{ number_format($registration2) }}
                 </td>
@@ -69,7 +69,7 @@
                 <td>{{ number_format($totalpackage2) }}</td>
               </tr>
               <tr>
-                <td class="text-left">{{ $package3->name }}</td>
+                <td class="text-left">{{ $package3 }}</td>
                 <td>
                   {{ number_format($registration3) }}
                 </td>
