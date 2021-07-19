@@ -103,10 +103,10 @@
 					<input type="text" name="title" class="form-control" placeholder="Template Title" /><br />
 					
 					Description:
-					<textarea class="ckeditor form-control" name="description" placeholder="Description"></textarea><br />
+					<textarea class="form-control" name="description" placeholder="Description"></textarea><br />
 					
 					Content:
-					<textarea class="ckeditor form-control" name="content" placeholder="Content"></textarea><br />
+					<textarea class="form-control" name="content" placeholder="Content"></textarea><br />
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
@@ -119,11 +119,6 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	$(document).ready(function () {
-		$('.ckeditor').ckeditor();
-	});
-</script>
 @endsection
 
 
