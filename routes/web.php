@@ -190,6 +190,7 @@ Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic')
 
 Route::get('customer_profiles', 'ExistCustomerController@customerProfiles');
 Route::get('customer_profiles/{id}', 'ExistCustomerController@customerProfile');
+// Route::get('customers', 'ExistCustomerController@customers');
 
 // Newstudent
 Route::get('maklumat-pembeli/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@createStepOne');

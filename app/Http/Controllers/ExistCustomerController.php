@@ -21,8 +21,15 @@ class ExistCustomerController extends Controller
     }
 	
 	public function customerProfiles(Request $request) {
-        $customers = Student::paginate(15);
-        
+        $search = $request->query('search');
+        if($search) {
+            $customers = Student::where('first_name', 'LIKE', '%'.$search.'%')
+            ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+            ->orWhere('ic', 'LIKE', '%'.$search.'%')
+            ->paginate(10);
+        }else {
+            $customers = Student::paginate(10);
+        }
         
         return view('customer.customer_profiles', compact('customers'));
     }

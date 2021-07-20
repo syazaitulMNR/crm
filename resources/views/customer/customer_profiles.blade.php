@@ -41,8 +41,13 @@ Customer Profiles
         </ol>
     </nav>
 
-    <div class="col-md-12 pt-3">
-        <table class="table">
+    <div class="col-md-12 pt-3 table-responsive">
+        
+        <form action="{{ url('customer_profiles') }}" class="input-group" method="GET">
+            <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search name and IC number">
+        </form>
+        
+        <table class="table table-hover">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -53,7 +58,7 @@ Customer Profiles
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customers as $key => $customer)
+                @forelse ($customers as $key => $customer)
                 <tr>
                     <th scope="row">{{ ++$key }}</th>
                     <td>{{ $customer->first_name }} {{ $customer->last_name }}</td>
@@ -62,19 +67,24 @@ Customer Profiles
                         @if ($customer->status === "Active")
                             <span class="badge rounded-pill bg-success p-2">Active</span>
                         @elseif ($customer->status === "Deactive") 
-                            <span class="badge rounded-pill bg-danger">Deactive</span>
+                            <span class="badge rounded-pill bg-danger p-2">Deactive</span>
                         @else
-                            <span class="badge rounded-pill bg-secondary .capsule">No Status</span>
+                            <span class="badge rounded-pill bg-secondary p-2">No Status</span>
                         @endif
                     </td>
                     <td>
                         <a class="btn btn-dark" href="{{ url('customer_profiles') }}/{{ $customer->id }}"><i class="bi bi-chevron-right"></i></a>
                     </td>
-                </tr>  
-                @endforeach
+                </tr>
+                @empty
+                <tr>
+                    
+                    <td colspan="5" class="text-center">No result founds for query {{ request()->query('search') }}</td>
+                </tr>
+                @endforelse
             </tbody>
-            {{ $customers->links() }}
         </table>
+        {{ $customers->appends(['search' => request()->query('search') ])->links() }}
     </div>
 </div>
 @endsection
