@@ -16,11 +16,6 @@ use Illuminate\Http\Request;
 |
 */
 
-// Try test tengok
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //---------------------------------------------- Administrator Part -------------------------------------------------//
 
 Auth::routes();
