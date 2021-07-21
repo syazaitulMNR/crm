@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 |
 */
 
+// Test Page
+Route::get('/', function () {
+    return view('welcome');
+});
+
 //---------------------------------------------- Administrator Part -------------------------------------------------//
 
 Auth::routes();
