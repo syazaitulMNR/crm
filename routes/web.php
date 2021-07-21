@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 |
 */
 
-// Test Page
+// Try test tengok
 Route::get('/', function () {
     return view('welcome');
 });
