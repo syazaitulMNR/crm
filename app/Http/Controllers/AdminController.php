@@ -128,9 +128,9 @@ class AdminController extends Controller
 
             $collection = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$x]->package_id)->sum('totalprice');
 
+            dd($package_name);
         }
 
-        dd($package_name);
         // // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
         // $package1 = $package[0]->name;
         // $package2 = $package[1]->name;
