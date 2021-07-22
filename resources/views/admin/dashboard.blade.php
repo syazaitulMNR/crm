@@ -71,7 +71,7 @@
             <tfoot>
               <tr>
                 <th colspan="4" class="text-right">Grand Total</th>
-                <th class="table-active">{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
+                <th class="table-active">{{ number_format($totalregister) }}</th>
               </tr>
             </tfoot>
           </table>
