@@ -40,17 +40,18 @@
               </tr>
             </thead>
             <tbody>
-            {{-- @foreach ($package as $packages) --}}
-              {{-- <tr>
+            @foreach ($package as $packages)
+              <tr>
                 <td class="text-left">{{ $packages->name }}</td>
                 <td>
                   {{ number_format($registration) }}
                 </td>
                 <td>{{ number_format($paidticket) }}</td>
                 <td>{{ number_format($freeticket) }}</td>
-              </tr> --}}
-            {{-- @endforeach --}}
-              <tr>
+                <td>{{ number_format($totalpackage) }}</td>
+              </tr>
+            @endforeach
+              {{-- <tr>
                 <td class="text-left">{{ $package1 }}</td>
                 <td>
                   {{ number_format($registration1) }}
@@ -76,7 +77,7 @@
                 <td>{{ number_format($paidticket3) }}</td>
                 <td>{{ number_format($freeticket3) }}</td>
                 <td>{{ number_format($totalpackage3) }}</td>
-              </tr>
+              </tr> --}}
             </tbody>
             <tfoot>
               {{-- <tr>
@@ -90,7 +91,7 @@
                 {{-- <th>{{ number_format($totalregister) }}</th>
                 <th>{{ number_format($totalpaid) }}</th>
                 <th>{{ number_format($totalfree) }}</th> --}}
-                <th class="table-active">{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
+                {{-- <th class="table-active">{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th> --}}
               </tr>
             </tfoot>
           </table>
@@ -135,7 +136,7 @@
   @else --}}
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
-  <div class="row pt-2">
+  {{-- <div class="row pt-2">
     <div class="col-md-3 pb-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package1 }}</h6>
@@ -160,7 +161,7 @@
         <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b>
       </div>
     </div>
-  </div>
+  </div> --}}
   {{-- @endif --}}
       
 </div>
