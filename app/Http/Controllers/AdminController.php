@@ -114,47 +114,47 @@ class AdminController extends Controller
         $product_id = $product->product_id;
 
         // get package
-        $package = Package::where('product_id', $product_id)->count();
-        dd($package);
+        $package = Package::where('product_id', $product_id)->get();
+        $count_package = Package::where('product_id', $product_id)->count();
         // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
-        // $package1 = $package[0]->name;
-        // $package2 = $package[1]->name;
-        // $package3 = $package[2]->name;
+        $package1 = $package[0]->name;
+        $package2 = $package[1]->name;
+        $package3 = $package[2]->name;
 
-        // // get package1 report by 2 hours
-        // $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $paidticket1 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $freeticket1 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $totalpackage1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->count();
-        // // get package2 report by 2 hours
-        // $registration2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $paidticket2 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $freeticket2 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $totalpackage2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->count();
-        // // get package3 report by 2 hours
-        // $registration3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $paidticket3 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // $totalpackage3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->count();
+        // get package1 report by 2 hours
+        $registration1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket1 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket1 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $totalpackage1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->count();
+        // get package2 report by 2 hours
+        $registration2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket2 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket2 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $totalpackage2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->count();
+        // get package3 report by 2 hours
+        $registration3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $paidticket3 = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $freeticket3 = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        $totalpackage3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->count();
 
-        // // get the total
-        // $register = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
-        // $paid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
-        // $free = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
+        // get the total
+        $register = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
+        $paid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
+        $free = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
 
-        // // get the grand total
-        // $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        // $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        // $totalticket = Ticket::where('product_id', $product_id)->count();
-        // $pendingticket = $totalregister - $totalpaid;
+        // get the grand total
+        $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
+        $totalticket = Ticket::where('product_id', $product_id)->count();
+        $pendingticket = $totalregister - $totalpaid;
 
-        // // get total collection
-        // $collection1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->sum('totalprice');
-        // $collection2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->sum('totalprice');
-        // $collection3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->sum('totalprice');
+        // get total collection
+        $collection1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->sum('totalprice');
+        $collection2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->sum('totalprice');
+        $collection3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->sum('totalprice');
         
-        // return view('admin.dashboard', compact('product', 'package', 'package1', 'package2', 'package3', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket', 'collection1', 'collection2', 'collection3'));
+        return view('admin.dashboard', compact('product', 'package', 'package1', 'package2', 'package3', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration1', 'paidticket1', 'freeticket1', 'totalpackage1', 'registration2', 'paidticket2', 'freeticket2', 'totalpackage2', 'registration3', 'paidticket3', 'freeticket3', 'totalpackage3', 'pendingticket', 'collection1', 'collection2', 'collection3'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
