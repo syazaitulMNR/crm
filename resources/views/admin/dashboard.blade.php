@@ -40,16 +40,6 @@
               </tr>
             </thead>
             <tbody>
-            {{-- @foreach ($package as $packages) --}}
-              {{-- <tr>
-                <td class="text-left">{{ $packages->name }}</td>
-                <td>
-                  {{ number_format($registration) }}
-                </td>
-                <td>{{ number_format($paidticket) }}</td>
-                <td>{{ number_format($freeticket) }}</td>
-              </tr> --}}
-            {{-- @endforeach --}}
               <tr>
                 <td class="text-left">{{ $package1 }}</td>
                 <td>
@@ -79,17 +69,8 @@
               </tr>
             </tbody>
             <tfoot>
-              {{-- <tr>
-                <th class="text-left">Today's Collection</th>
-                <th>{{ number_format($register) }}</th>
-                <th>{{ number_format($paid) }}</th>
-                <th class="border-right">{{ number_format($free) }}</th>
-              </tr> --}}
               <tr>
                 <th colspan="4" class="text-right">Grand Total</th>
-                {{-- <th>{{ number_format($totalregister) }}</th>
-                <th>{{ number_format($totalpaid) }}</th>
-                <th>{{ number_format($totalfree) }}</th> --}}
                 <th class="table-active">{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th>
               </tr>
             </tfoot>
@@ -131,8 +112,7 @@
   </div>
 
   <br>
-  {{-- @if(Auth::user()->user_id == 'ROD003' || Auth::user()->user_id == 'ROD004' )
-  @else --}}
+
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
@@ -161,7 +141,6 @@
       </div>
     </div>
   </div>
-  {{-- @endif --}}
       
 </div>
 
