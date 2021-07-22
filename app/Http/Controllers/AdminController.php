@@ -116,6 +116,10 @@ class AdminController extends Controller
         // get package
         $package = Package::where('product_id', $product_id)->get();
         $count_package = Package::where('product_id', $product_id)->count();
+
+        for ($x = 0; $x < $count_package; $x++) {
+            echo "The number is: $package[$x]->name <br>";
+        }
         // $package_id = Package::where('product_id', $product_id)->pluck('package_id');
         $package1 = $package[0]->name;
         $package2 = $package[1]->name;
