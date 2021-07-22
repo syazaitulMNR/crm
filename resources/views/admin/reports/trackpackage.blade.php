@@ -16,8 +16,7 @@ Sales Report
 
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group">
-            @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
-            @else
+            @if(Auth::user()->user_id == 'UID001')
             <!-- Button trigger modal exportProgram -->
             <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exportProgram">
               <i class="bi bi-download pr-2"></i>Export Buyer
@@ -64,6 +63,7 @@ Sales Report
                 </div>
               </div>
             </div>
+            @else
             @endif
             <a class="btn btn-sm btn-outline-warning" href="{{ url('exportProgram') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Buyer</a>
             <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a>
