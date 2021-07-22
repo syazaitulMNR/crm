@@ -91,7 +91,7 @@
                 {{-- <th>{{ number_format($totalregister) }}</th>
                 <th>{{ number_format($totalpaid) }}</th>
                 <th>{{ number_format($totalfree) }}</th> --}}
-                {{-- <th class="table-active">{{ number_format($totalpackage1 + $totalpackage2 + $totalpackage3) }}</th> --}}
+                <th class="table-active">{{ number_format($totalregister) }}</th>
               </tr>
             </tfoot>
           </table>
