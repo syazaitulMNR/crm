@@ -78,7 +78,7 @@ class ReportsController extends Controller
             $payment = Payment::where('product_id', $product_id)->where('status', 'paid')->get();
 
             /*-- Success Payment ---------------------------------------------------*/
-            $fileName = $product->name.'.csv';
+            $fileName = $product->product_id.' - Success_Payment.csv';
             $columnNames = [
                 'Customer ID',
                 'First Name',
@@ -137,7 +137,7 @@ class ReportsController extends Controller
             $payment = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->get();
 
             /*-- Updated Participant ---------------------------------------------------*/
-            $fileName = $product->name.'.csv';
+            $fileName = $product->product_id.' - Updated_Participant.csv';
             $columnNames = [
                 'Customer ID',
                 'First Name',
@@ -196,7 +196,7 @@ class ReportsController extends Controller
             $payment = Payment::where('product_id', $product_id)->get();
             
             /*-- All Buyer ---------------------------------------------------*/
-            $fileName = $product->name.'.csv';
+            $fileName = $product->product_id.' - All_Buyer.csv';
             $columnNames = [
                 'Customer ID',
                 'First Name',
