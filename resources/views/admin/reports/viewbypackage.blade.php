@@ -208,8 +208,8 @@ Sales Report
           </tr>
           </thead>
           <tbody> 
-            @foreach ($payment as $key => $payments)
-            @foreach ($student as $students)   
+            @foreach ($student as $students) 
+            @foreach ($payment as $key => $payments)  
             @if ($payments->stud_id == $students->stud_id)
             {{-- @if ($payments->product_id == $product->product_id)   --}}
             <tr>
@@ -289,8 +289,8 @@ Sales Report
         </tr>
         </thead>
         <tbody> 
-          @foreach ($payment as $key => $payments)
           @foreach ($student as $students)   
+          @foreach ($payment as $key => $payments)
           @if ($payments->stud_id == $students->stud_id)
           {{-- @if ($payments->product_id == $product->product_id)   --}}
           <tr>
