@@ -71,8 +71,21 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
       
-        dd($request->filter_export);
-        echo 'This function is under maintenance';
+        $filter = $request->filter_export;
+
+        if($filter == 'success_payment') {
+
+            echo 'success_payment';
+
+        } elseif ($filter == 'updated_participant') {
+
+            echo 'updated_participant';
+
+        } else {
+            
+            echo 'all';
+
+        }
 
         // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
         /*-- Manage Email ---------------------------------------------------*/
