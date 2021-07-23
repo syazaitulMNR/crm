@@ -37,19 +37,19 @@ Sales Report
                     <div class='col-md-12 px-4'>
                       <p>Please choose data that you want to export :</p>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="success_payment" id="exampleRadios2" value="success_payment">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="success_payment">
                         <label class="form-check-label" for="exampleRadios2">
                           Success Payment Only
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="updated_participant" id="exampleRadios2" value="updated_participant">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="updated_participant">
                         <label class="form-check-label" for="exampleRadios2">
                           Updated Participant Only
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="all_buyer" id="exampleRadios2" value="all_buyer">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_buyer">
                         <label class="form-check-label" for="exampleRadios2">
                           All Buyer
                         </label>
