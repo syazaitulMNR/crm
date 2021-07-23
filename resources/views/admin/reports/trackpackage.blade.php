@@ -56,13 +56,13 @@ Sales Report
                     </div>
 
                     <div class='col-md-12 text-right px-4 pb-4'>
-                      <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
+                      <button type='submit' class='btn btn-success'> <i class="bi bi-download pr-2"></i>Export</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-            
+
             <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a>
           </div>
         </div>
