@@ -37,26 +37,26 @@ Sales Report
                     <div class='col-md-12 px-4'>
                       <p>Please choose data that you want to export :</p>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="success_payment" id="exampleRadios2" value="success_payment">
                         <label class="form-check-label" for="exampleRadios2">
                           Success Payment Only
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="updated_participant" id="exampleRadios2" value="updated_participant">
                         <label class="form-check-label" for="exampleRadios2">
                           Updated Participant Only
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="all_buyer" id="exampleRadios2" value="all_buyer">
                         <label class="form-check-label" for="exampleRadios2">
                           All Buyer
                         </label>
                       </div>
                     </div>
 
-                    <div class='col-md-12 text-right px-4'>
+                    <div class='col-md-12 text-right px-4 pb-4'>
                       <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
                     </div>
                   </form>
