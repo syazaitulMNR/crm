@@ -58,7 +58,7 @@ class ReportsController extends Controller
         $counter = Student::count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
-        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        $paidticket = Payment::where('product_id', $product_id)->where('status', 'paid')->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         
         return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
@@ -193,7 +193,7 @@ class ReportsController extends Controller
         } else {
             
             $payment = Payment::where('product_id', $product_id)->get();
-            
+
             /*-- All Buyer ---------------------------------------------------*/
             $fileName = $product->name.'.csv';
             $columnNames = [
