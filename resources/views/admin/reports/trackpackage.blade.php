@@ -44,7 +44,7 @@ Sales Report
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="updated_participant">
                         <label class="form-check-label" for="exampleRadios2">
-                          Updated Participant Only
+                          Updated Participant Form Only
                         </label>
                       </div>
                       <div class="form-check">
