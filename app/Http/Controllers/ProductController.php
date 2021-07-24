@@ -95,9 +95,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::where('product_id', $id)->first();
-        $offers = Offer::orderBy('id','desc')->get();
 
-        return view('admin/updateproduct', compact('product', 'offers'));        
+        return view('admin/updateproduct', compact('product'));        
     }
 
     public function update($id, Request $request)
