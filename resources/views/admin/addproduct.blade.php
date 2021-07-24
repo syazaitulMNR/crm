@@ -41,7 +41,7 @@
         <div class="col-md-6">
             <label class="form-label">Offer Provided</label>
             <select class="form-select" aria-label="Default select example" name="offer_id" required>
-                <option disabled selected>-- Please Select One --</option>
+                <option disabled selected>-- Please Select --</option>
                 @foreach($offers as $offer)
                 <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
                 @endforeach
