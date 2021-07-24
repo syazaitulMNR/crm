@@ -83,8 +83,8 @@
                 <option value="dlzmocfv">dlzmocfv</option>
                 <option value="7gxypqhq">7gxypqhq</option>
             </select>
+            <em>RPM = <b>dlzmocfv</b>; ARB = <b>7gxypqhq;</b></em>
         </div>
-        <em>RPM = <b>dlzmocfv</b>; ARB = <b>7gxypqhq;</b></em>
 
         <div class="col-md-2">
             <label class="form-label">Dashboard Report</label>
