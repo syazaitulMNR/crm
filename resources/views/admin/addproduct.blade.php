@@ -83,7 +83,6 @@
                 <option value="dlzmocfv">dlzmocfv</option>
                 <option value="7gxypqhq">7gxypqhq</option>
             </select>
-            <em>RPM = <b>dlzmocfv</b>; ARB = <b>7gxypqhq;</b></em>
         </div>
 
         <div class="col-md-2">
