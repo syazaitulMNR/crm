@@ -32,14 +32,12 @@
 
         <div class="col-md-6">
             <label class="form-label">Offer Provided</label>
-            <input name="offer_id" type="text" class="form-control" value="{{ $offer->offer_id }}">
-            <em>* <b>OFF001</b> = No Offer; <b>OFF002</b> = Buy 1 Get 1 (Same Ticket); <b>OFF003</b> = Bulk Ticket</em>
-            {{-- <select class="form-select" aria-label="Default select example" name="offer_id" required>
+            <select class="form-select" aria-label="Default select example" name="offer_id" required>
                 <option disabled selected>-- Please Select --</option>
                 @foreach($offers as $offer)
                 <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
                 @endforeach
-            </select> --}}
+            </select>
         </div>
 
         <div class="col-md-6">
