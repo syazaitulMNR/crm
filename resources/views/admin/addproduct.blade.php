@@ -80,8 +80,8 @@
             <label class="form-label">BillPlz Collection ID</label>
             <select class="form-select" name="collection_id" required>
                 <option disabled selected>-- Please select --</option>
-                <option value="dlzmocfv">dlzmocfv</option>
-                <option value="7gxypqhq">7gxypqhq</option>
+                <option value="dlzmocfv">dlzmocfv (RPM)</option>
+                <option value="7gxypqhq">7gxypqhq (ARB)</option>
             </select>
         </div>
 
