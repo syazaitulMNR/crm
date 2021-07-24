@@ -43,7 +43,7 @@
             <select class="form-select" aria-label="Default select example" name="offer_id" required>
                 <option disabled selected>-- Please Select --</option>
                 @foreach($offers as $offer)
-                <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+                <option value="{{ $offer->offer_id }}">{{ $offer->offer_id }} - {{ $offer->name }}</option>
                 @endforeach
             </select>
         </div>
