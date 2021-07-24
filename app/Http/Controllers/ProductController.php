@@ -38,7 +38,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $offers = Offer::orderBy('id','desc')->get();
+        $offers = Offer::orderBy('id','asc')->get();
 
         return view('admin.addproduct', compact('offers'));
     }
