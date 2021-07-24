@@ -34,7 +34,7 @@ Sales Report
                   @csrf
                   
                     <div class='col-md-12 px-4'>
-                      <p>Please choose data that you want to export :</p>
+                      <p>Please choose the data that you want to export :</p>
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="success_payment">
                         <label class="form-check-label" for="exampleRadios2">
