@@ -780,7 +780,7 @@ class ReportsController extends Controller
             $stud_id = $student_id->stud_id;
 
             // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
-            $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->orWhere('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $ticket = Ticket::Where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
             if(count($ticket) > 0)
             {
