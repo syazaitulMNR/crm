@@ -353,11 +353,10 @@ class ReportsController extends Controller
         $payment = Payment::where('stud_id', $student_id)->where('product_id', $product_id)->where('package_id', $package_id);
         $ticket = Ticket::where('stud_id', $student_id)->where('product_id', $product_id)->where('package_id', $package_id);
         
-        echo 'success delete';
         // $payment->delete();
         // $ticket->delete();
 
-        // return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
     public function save_customer($product_id, $package_id, Request $request)
