@@ -130,8 +130,6 @@ class AdminController extends Controller
             
         }
         
-        echo '{{$i}} <br> System is currently under maintenance. Thank you :)';
-
         // $package1 = $package[0]->name;
         // $package2 = $package[1]->name;
         // $package3 = $package[2]->name;
@@ -169,7 +167,7 @@ class AdminController extends Controller
         // $collection2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->sum('totalprice');
         // $collection3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->sum('totalprice');
         
-        // return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection'));
+        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
