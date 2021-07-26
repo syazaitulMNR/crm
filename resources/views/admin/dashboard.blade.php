@@ -93,13 +93,31 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-left">{{ $package[$i] }}</td>
+                  <td class="text-left">{{ $package1 }}</td>
                   <td>
-                    {{ number_format($registration[$i]) }}
+                    {{ number_format($registration1) }}
                   </td>
-                  <td>{{ number_format($paidticket[$i]) }}</td>
-                  <td>{{ number_format($freeticket[$i]) }}</td>
-                  <td>{{ number_format($totalpackage[$i]) }}</td>
+                  <td>{{ number_format($paidticket1) }}</td>
+                  <td>{{ number_format($freeticket1) }}</td>
+                  <td>{{ number_format($totalpackage1) }}</td>
+                </tr>
+                <tr>
+                  <td class="text-left">{{ $package2 }}</td>
+                  <td>
+                    {{ number_format($registration2) }}
+                  </td>
+                  <td>{{ number_format($paidticket2) }}</td>
+                  <td>{{ number_format($freeticket2) }}</td>
+                  <td>{{ number_format($totalpackage2) }}</td>
+                </tr>
+                <tr>
+                  <td class="text-left">{{ $package3 }}</td>
+                  <td>
+                    {{ number_format($registration3) }}
+                  </td>
+                  <td>{{ number_format($paidticket3) }}</td>
+                  <td>{{ number_format($freeticket3) }}</td>
+                  <td>{{ number_format($totalpackage3) }}</td>
                 </tr>
               </tbody>
               <tfoot>
