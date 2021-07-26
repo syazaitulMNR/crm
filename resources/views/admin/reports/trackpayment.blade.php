@@ -188,7 +188,7 @@ Sales Report
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payments->payment_id }}/{{ $product->product_id }}/{{ $payments->package_id }}">Delete</a>
+                            <a class="btn btn-danger" href="{{ url('delete') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Delete</a>
                             </div>
                         </div>
                         </div>
