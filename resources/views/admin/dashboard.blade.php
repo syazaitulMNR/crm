@@ -80,7 +80,8 @@
 
         @if(Auth::user()->user_id == 'UID001')
           @for ($i = 0; $i < $count_package; $i++)
-          {{ $package[$i]->name }}
+          {{ $package[$i]->name }} <br>
+          {{ number_format($registration[$i]) }}
           {{-- <div class="table-responsive">
             <table class="table text-center">
               <thead class="thead">
