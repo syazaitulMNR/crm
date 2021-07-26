@@ -127,9 +127,10 @@ class AdminController extends Controller
 
             // get total collection
             $collection = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
+            
+            dd($package[$i]->package_id);
         }
         
-        dd($registration);
 
         // $package1 = $package[0]->name;
         // $package2 = $package[1]->name;
