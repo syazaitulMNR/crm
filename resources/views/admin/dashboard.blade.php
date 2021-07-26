@@ -80,7 +80,8 @@
 
         @if(Auth::user()->user_id == 'UID001')
           @for ($i = 0; $i < $count_package; $i++)
-          <div class="table-responsive">
+          {{ $package[$i] }}
+          {{-- <div class="table-responsive">
             <table class="table text-center">
               <thead class="thead">
                 <tr>
@@ -127,7 +128,7 @@
                 </tr>
               </tfoot>
             </table>
-          </div>
+          </div> --}}
           @endfor
         @else
         @endif
