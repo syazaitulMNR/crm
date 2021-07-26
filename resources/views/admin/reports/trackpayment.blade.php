@@ -171,10 +171,30 @@ Sales Report
                     </div>
                 </div>
 
-                <div class="mb-3 row">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary btn-sm float-right"><i class="bi bi-save pr-2"></i> Save  Changes</button>
+                <div class="row-fluid text-right">                        
+                    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+                    @else
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $ticket->ticket_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{ $ticket->ticket_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-start">
+                            Are you sure you want to delete this payment ?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a class="btn btn-danger" href="{{ url('delete/ticket') }}/{{ $ticket->ticket_id }}/{{ $product->product_id }}/{{ $package->package_id }}">Delete</a>
+                            </div>
+                        </div>
+                        </div>
                     </div>
+                    @endif
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save Changes</button>
                 </div>
 
             </form>
