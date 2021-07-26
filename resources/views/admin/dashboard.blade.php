@@ -158,7 +158,7 @@
     @for ($i = 0; $i < $count_package; $i++)
     <div class="col-md-3 pb-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">{{ $package1 }}</h6>
+        <h6 class="pt-4">{{ $package[$i]->name }}</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection[$i]) }}</b>
       </div>
     </div>
