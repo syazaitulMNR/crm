@@ -27,8 +27,9 @@
 
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
-        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Time : <b>{{ $current_time }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
-        <div class="table-responsive">
+        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+
+        {{-- <div class="table-responsive">
           <table class="table text-center">
             <thead class="thead">
               <tr>
@@ -75,7 +76,64 @@
               </tr>
             </tfoot>
           </table>
-        </div>
+        </div> --}}
+
+        @if(Auth::user()->user_id == 'UID001')
+          @for ($i = 0; $i < $count_package; $i++)
+          {{ $package[$i]->name }} <br>
+          {{-- {{ $registration[$i] }} --}}
+          {{-- <div class="table-responsive">
+            <table class="table text-center">
+              <thead class="thead">
+                <tr>
+                  <th class="text-left">Package</th>
+                  <th>Registration [A]</th>
+                  <th>Updated Paid Ticket [B]</th>
+                  <th>Updated Free Ticket [C]</th>
+                  <th>Total Registration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-left">{{ $package1 }}</td>
+                  <td>
+                    {{ number_format($registration1) }}
+                  </td>
+                  <td>{{ number_format($paidticket1) }}</td>
+                  <td>{{ number_format($freeticket1) }}</td>
+                  <td>{{ number_format($totalpackage1) }}</td>
+                </tr>
+                <tr>
+                  <td class="text-left">{{ $package2 }}</td>
+                  <td>
+                    {{ number_format($registration2) }}
+                  </td>
+                  <td>{{ number_format($paidticket2) }}</td>
+                  <td>{{ number_format($freeticket2) }}</td>
+                  <td>{{ number_format($totalpackage2) }}</td>
+                </tr>
+                <tr>
+                  <td class="text-left">{{ $package3 }}</td>
+                  <td>
+                    {{ number_format($registration3) }}
+                  </td>
+                  <td>{{ number_format($paidticket3) }}</td>
+                  <td>{{ number_format($freeticket3) }}</td>
+                  <td>{{ number_format($totalpackage3) }}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="4" class="text-right">Grand Total</th>
+                  <th class="table-active">{{ number_format($totalregister) }}</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div> --}}
+          @endfor
+        @else
+        @endif
+
       </div>
     </div>
 
@@ -116,7 +174,7 @@
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
-    <div class="col-md-3 pb-4">
+    {{-- <div class="col-md-3 pb-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package1 }}</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection1) }}</b>
@@ -139,7 +197,14 @@
         <h6 class="pt-4">Total Collection</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b>
       </div>
-    </div>
+    </div> --}}
+    
+  @if(Auth::user()->user_id == 'UID001')
+    @for ($i = 0; $i < $count_package; $i++)
+    {{-- {{ $collection[$i] }} --}}
+    @endfor
+  @else
+  @endif
   </div>
       
 </div>
