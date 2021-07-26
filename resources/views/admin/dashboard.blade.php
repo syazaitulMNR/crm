@@ -28,6 +28,7 @@
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+
         <div class="table-responsive">
           <table class="table text-center">
             <thead class="thead">
@@ -76,6 +77,43 @@
             </tfoot>
           </table>
         </div>
+
+        @if(Auth::user()->user_id == 'UID001')
+          @for ($i = 0; $i < $count_package; $i++)
+          <div class="table-responsive">
+            <table class="table text-center">
+              <thead class="thead">
+                <tr>
+                  <th class="text-left">Package</th>
+                  <th>Registration [A]</th>
+                  <th>Updated Paid Ticket [B]</th>
+                  <th>Updated Free Ticket [C]</th>
+                  <th>Total Registration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-left">{{ $package[$i] }}</td>
+                  <td>
+                    {{ number_format($registration[$i]) }}
+                  </td>
+                  <td>{{ number_format($paidticket[$i]) }}</td>
+                  <td>{{ number_format($freeticket[$i]) }}</td>
+                  <td>{{ number_format($totalpackage[$i]) }}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="4" class="text-right">Grand Total</th>
+                  <th class="table-active">{{ number_format($totalregister) }}</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          @endfor
+        @else
+        @endif
+
       </div>
     </div>
 
