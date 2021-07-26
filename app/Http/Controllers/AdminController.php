@@ -130,7 +130,7 @@ class AdminController extends Controller
             
         }
         
-        echo '{{$package[$i]->package_id}} <br> System is currently under maintenance. Thank you :)';
+        echo '$package[$i]->package_id <br> System is currently under maintenance. Thank you :)';
 
         // $package1 = $package[0]->name;
         // $package2 = $package[1]->name;
