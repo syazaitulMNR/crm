@@ -80,9 +80,7 @@
 
         @if(Auth::user()->user_id == 'UID001')
           @for ($i = 0; $i < $count_package; $i++)
-          {{ $package[$i]->name }} <br>
-          {{ $registration[$i] }}
-          {{-- <div class="table-responsive">
+          <div class="table-responsive">
             <table class="table text-center">
               <thead class="thead">
                 <tr>
@@ -95,31 +93,13 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-left">{{ $package1 }}</td>
+                  <td class="text-left">{{ $package[$i]->name }}</td>
                   <td>
-                    {{ number_format($registration1) }}
+                    {{ number_format($registration[$i]) }}
                   </td>
-                  <td>{{ number_format($paidticket1) }}</td>
-                  <td>{{ number_format($freeticket1) }}</td>
-                  <td>{{ number_format($totalpackage1) }}</td>
-                </tr>
-                <tr>
-                  <td class="text-left">{{ $package2 }}</td>
-                  <td>
-                    {{ number_format($registration2) }}
-                  </td>
-                  <td>{{ number_format($paidticket2) }}</td>
-                  <td>{{ number_format($freeticket2) }}</td>
-                  <td>{{ number_format($totalpackage2) }}</td>
-                </tr>
-                <tr>
-                  <td class="text-left">{{ $package3 }}</td>
-                  <td>
-                    {{ number_format($registration3) }}
-                  </td>
-                  <td>{{ number_format($paidticket3) }}</td>
-                  <td>{{ number_format($freeticket3) }}</td>
-                  <td>{{ number_format($totalpackage3) }}</td>
+                  <td>{{ number_format($paidticket[$i]) }}</td>
+                  <td>{{ number_format($freeticket[$i]) }}</td>
+                  <td>{{ number_format($totalpackage[$i]) }}</td>
                 </tr>
               </tbody>
               <tfoot>
@@ -129,7 +109,7 @@
                 </tr>
               </tfoot>
             </table>
-          </div> --}}
+          </div>
           @endfor
         @else
         @endif
@@ -174,34 +154,21 @@
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
-    {{-- <div class="col-md-3 pb-4">
+  @if(Auth::user()->user_id == 'UID001')
+    @for ($i = 0; $i < $count_package; $i++)
+    <div class="col-md-3 pb-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package1 }}</h6>
-        <b class="display-6 pb-3">RM {{ number_format($collection1) }}</b>
-      </div>
-    </div>
-    <div class="col-md-3 pb-4">
-      <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">{{ $package2 }}</h6>
-        <b class="display-6 pb-3">RM {{ number_format($collection2) }}</b>
-      </div>
-    </div>
-    <div class="col-md-3 pb-4">
-      <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">{{ $package3 }}</h6>
-        <b class="display-6 pb-3">RM {{ number_format($collection3) }}</b>
+        <b class="display-6 pb-3">RM {{ number_format($collection[$i]) }}</b>
       </div>
     </div>
     <div class="col-md-3 pb-4">
       <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
         <h6 class="pt-4">Total Collection</h6>
-        <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b>
+        {{-- <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b> --}}
       </div>
-    </div> --}}
+    </div>
     
-  @if(Auth::user()->user_id == 'UID001')
-    @for ($i = 0; $i < $count_package; $i++)
-    {{-- {{ $collection[$i] }} --}}
     @endfor
   @else
   @endif
