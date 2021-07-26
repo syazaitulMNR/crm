@@ -79,7 +79,6 @@
         </div> --}}
 
         @if(Auth::user()->user_id == 'UID001')
-          @for ($i = 0; $i < $count_package; $i++)
           <div class="table-responsive">
             <table class="table text-center">
               <thead class="thead">
@@ -92,6 +91,7 @@
                 </tr>
               </thead>
               <tbody>
+                @for ($i = 0; $i < $count_package; $i++)
                 <tr>
                   <td class="text-left">{{ $package[$i]->name }}</td>
                   <td>
@@ -101,6 +101,7 @@
                   <td>{{ number_format($freeticket[$i]) }}</td>
                   <td>{{ number_format($totalpackage[$i]) }}</td>
                 </tr>
+                @endfor
               </tbody>
               <tfoot>
                 <tr>
@@ -110,7 +111,6 @@
               </tfoot>
             </table>
           </div>
-          @endfor
         @else
         @endif
 
@@ -162,14 +162,14 @@
         <b class="display-6 pb-3">RM {{ number_format($collection[$i]) }}</b>
       </div>
     </div>
+    @endfor
+
     <div class="col-md-3 pb-4">
       <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
         <h6 class="pt-4">Total Collection</h6>
         {{-- <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b> --}}
       </div>
     </div>
-    
-    @endfor
   @else
   @endif
   </div>
