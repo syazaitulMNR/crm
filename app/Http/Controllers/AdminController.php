@@ -155,19 +155,20 @@ class AdminController extends Controller
         $paid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
         $free = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 16:00:00') , date('Y-m-d 15:59:59', strtotime('+1 day')) ])->count();
 
-        // get the grand total
+        // get the total
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();
         $pendingticket = $totalregister - $totalpaid;
+        $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
 
         // // get total collection
         // $collection1 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[0]->package_id)->sum('totalprice');
         // $collection2 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[1]->package_id)->sum('totalprice');
         // $collection3 = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[2]->package_id)->sum('totalprice');
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection'));
+        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'register', 'paid', 'free', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
