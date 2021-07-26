@@ -351,7 +351,7 @@ class ReportsController extends Controller
     public function destroy($payment_id, $product_id, $package_id) 
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        // $payment->delete();
+        $payment->delete();
 
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
