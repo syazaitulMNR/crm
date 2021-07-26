@@ -4,7 +4,6 @@
     Dashboard
 @endsection
 
-
 @section('content')
 
 <div class="col-md-12">     
@@ -28,7 +27,7 @@
         <h5 class="text-center pb-4">{{ $product->name }}</h5>
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
-        
+
         <div class="table-responsive">
           <table class="table text-center">
             <thead class="thead">
@@ -82,19 +81,6 @@
       </div>
     </div>
 
-    <!-- Show data in bar chart --------------------------------------------------->
-    {{-- <div class="col-md-5">
-      <div class="card bg-white shadow px-2 py-2">
-        <div id="chartdata" ></div>
-      </div>
-    </div> --}}
-
-    <!-- Show data in line graph --------------------------------------------------->
-
-    {{-- <figure class="highcharts-figure">
-      <div id="container"></div>
-    </figure> --}}
-
   </div>
 
   <br>
@@ -120,6 +106,20 @@
   </div>
       
 </div>
+
+
+<!-- Show data in bar chart --------------------------------------------------->
+{{-- <div class="col-md-5">
+  <div class="card bg-white shadow px-2 py-2">
+    <div id="chartdata" ></div>
+  </div>
+</div> --}}
+
+<!-- Show data in line graph --------------------------------------------------->
+
+{{-- <figure class="highcharts-figure">
+  <div id="container"></div>
+</figure> --}}
 
 <!-- Function to show bar chart ----------------------------------------------------->
 {{-- <script>
