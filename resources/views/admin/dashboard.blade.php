@@ -29,7 +29,7 @@
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
-        <div class="table-responsive">
+        {{-- <div class="table-responsive">
           <table class="table text-center">
             <thead class="thead">
               <tr>
@@ -76,7 +76,7 @@
               </tr>
             </tfoot>
           </table>
-        </div>
+        </div> --}}
 
         @if(Auth::user()->user_id == 'UID001')
           @for ($i = 0; $i < $count_package; $i++)
@@ -174,7 +174,7 @@
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
-    <div class="col-md-3 pb-4">
+    {{-- <div class="col-md-3 pb-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
         <h6 class="pt-4">{{ $package1 }}</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection1) }}</b>
@@ -197,7 +197,14 @@
         <h6 class="pt-4">Total Collection</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection1 + $collection2 + $collection3) }}</b>
       </div>
-    </div>
+    </div> --}}
+    
+  @if(Auth::user()->user_id == 'UID001')
+    @for ($i = 0; $i < $count_package; $i++)
+    {{ $collection[$i] }}
+    @endfor
+  @else
+  @endif
   </div>
       
 </div>
