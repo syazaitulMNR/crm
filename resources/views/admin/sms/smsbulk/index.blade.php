@@ -97,7 +97,7 @@
 						</td>
 						
 						<td>
-							@if ($t->template->title == "")
+							@if (!isset($t->template->title) || $t->template->title == "")
 								NIL
 							@else
 								{{ $t->template->title }}
