@@ -351,12 +351,9 @@ class ReportsController extends Controller
     public function destroy($payment_id, $product_id, $package_id) 
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        $ticket = Ticket::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
-        
         $payment->delete();
-        $ticket->delete();
 
-        return back()->with('deletepayment', 'Payment Successfully Deleted');
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
     public function save_customer($product_id, $package_id, Request $request)
@@ -780,7 +777,7 @@ class ReportsController extends Controller
             $stud_id = $student_id->stud_id;
 
             // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
-            $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->orWhere('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
             if(count($ticket) > 0)
             {
