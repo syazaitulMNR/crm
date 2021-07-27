@@ -14,26 +14,21 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
-    private $prd_id, $pkd_id;
+    private $prd_id, $pkd_id, $email_id, $regex_content;
 
-    public function __construct($prd_id, $pkd_id){
+    public function __construct($prd_id, $pkd_id, $email_id, $regex_content){
         $this->product = $prd_id;
         $this->package = $pkd_id;
+        $this->email_id = $email_id;
+        $this->regex_content = $regex_content;
     }
 
     public function collection(Collection $rows)
     {
-        // dump($rows[2]);
-
-        $emails = array();
-        $names = array();
-
+        
         foreach ($rows as $row) 
         {
             $student = Student::where('ic', $row['ic'])->first();
-
-            array_push($emails, $row['email']);
-            array_push($names, $row['name']);
             
             if(Student::where('ic', $row['ic'])->exists()){
 
@@ -88,7 +83,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
             }
         }
 
-        dispatch(new TestJobMail($emails, $names));
+        dispatch(new TestJobMail($rows, $this->email_id, $this->regex_content));
         
     }
 

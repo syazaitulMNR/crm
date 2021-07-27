@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\TestMail;
 use App\Http\Controllers\PDFController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
+Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
 Route::get('import-customer/{product_id}/{package_id}','ImportExcelController@index');
 Route::post('importExcel/{product_id}/{package_id}','ImportExcelController@import');
 Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@export');
@@ -62,6 +64,7 @@ Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@d
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
+Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 
 //participant
@@ -191,6 +194,10 @@ Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic')
 Route::get('customer_profiles', 'ExistCustomerController@customerProfiles');
 Route::get('customer_profiles/{id}', 'ExistCustomerController@customerProfile');
 // Route::get('customers', 'ExistCustomerController@customers');
+Route::get('customer_profiles', 'customerProfileController@customerProfiles');
+Route::get('customer_profiles/{id}', 'customerProfileController@customerProfile')->name('customerProfile');
+Route::post('update_cust/{id}', 'customerProfileController@customerUpdate');
+Route::post('add_comment/{id}', 'customerProfileController@customerAddComment');
 
 // Newstudent
 Route::get('maklumat-pembeli/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@createStepOne');
@@ -341,6 +348,18 @@ Route::get("/smsblast/edit/{id}", 'SmsBulk@edit');
 Route::put("/smsblast/edit/{id}", 'SmsBulk@update');
 Route::get("/smsblast/delete/{id}", 'SmsBulk@del');
 Route::delete("/smsblast/delete/{id}", 'SmsBulk@remove');
+
+Route::prefix('student')->group(function() {
+	Route::get('/login','StudentAuthController@showLoginForm')->name('student.login');
+	Route::post('/login', 'StudentAuthController@login')->name('student.login.submit');
+	Route::get('logout/', 'StudentAuthController@logout')->name('student.logout');
+	Route::get('/', 'StudentController@index')->name('student.dashboard');
+});
+
+
+Route::get("customer-support", 'CustomerSupport@index');
+
+//Route::get("studentportal", 'StudentPortal@index');
 
 
 

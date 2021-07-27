@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Email;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -10,28 +11,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $name, $email;
+    protected $message;
 
     // public $data;
 
-    public function __construct($name)
+    public function __construct($message)
     {
-        $this->name = $name;
+        $this->message = $message;
     }
 
     public function build()
     {
-        $address = 'noreply@momentuminternet.my';
-        $subject = 'This is a demo!';
-        $name = $this->name;
-        $test = 'cuba test';
-
         return $this->view('test')
-                    ->from($address, $name)
-                    ->cc($address, $name)
-                    ->bcc($address, $name)
-                    ->replyTo($address, $name)
-                    ->subject($subject)
-                    ->with([ 'test_message' => $test, 'name' => $this->name ]);
+                    ->with([ 'content' => $this->message ]);
     }
 }

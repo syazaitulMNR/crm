@@ -2,14 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+// use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Student extends Authenticatable
 {
     protected $table = 'student';
 
     protected $fillable = [
-        'stud_id', 'first_name', 'last_name', 'ic', 'email', 'phoneno', 'membership_id', 'level_id', 'status'
+        'stud_id', 'first_name', 'last_name', 'ic', 'email', 'phoneno', 'membership_id', 'level_id', 'status', 'isSubscribe'
     ];
 
     public function payments()
