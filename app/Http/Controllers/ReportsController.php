@@ -8,6 +8,7 @@ use App\Product;
 use App\Package;
 use App\Payment;
 use App\Ticket;
+use App\Offer;
 use App\Imports\ParticipantImport;
 // use App\Exports\ProgramExport;
 use App\Exports\ParticipantFormat;
