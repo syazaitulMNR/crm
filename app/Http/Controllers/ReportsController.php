@@ -455,6 +455,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
+        $offer = Offer::orderBy('id','desc')->get();
 
         //Count the data
         $count = 1;
@@ -480,7 +481,7 @@ class ReportsController extends Controller
 
             if(count($payment) > 0)
             {
-                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
             }else{
 
