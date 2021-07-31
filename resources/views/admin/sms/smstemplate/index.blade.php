@@ -23,20 +23,19 @@
 			</div>
 		</div>
 		
-		<input type="text" class="form-control" placeholder="Please Enter Event Name" title="Type in a name">
 		<br>
 			
-		@if ($message = Session::get('success'))
+		@if (session('success'))
 		<div class="alert alert-success alert-block">
 			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
-			<strong>{{ $message }}</strong>
+			<strong>{{ session('success') }}</strong>
 		</div>
 		@endif
 		
 		@if (session('error'))
 		<div class="alert alert-danger alert-block">
 			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
-			<strong>{{ $message }}</strong>
+			<strong>{{ session('error') }}</strong>
 		</div>
 		@endif
 		

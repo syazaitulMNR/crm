@@ -11,4 +11,9 @@ class SMSTemplateModel extends Model
 	protected $fillable = [
         'title', 'content', 'description', 'user_id'
     ];
+
+    public function bulks()
+    {
+        return $this->hasMany(SMSBulkModel::class);
+    }
 }

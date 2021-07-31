@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\SMSBulkModel;
 use App\SMSTemplateModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\SMSBulkImport;
 
 use Auth;
 
@@ -14,26 +17,31 @@ class SmsBulk extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $x = SMSBulkModel::orderBy("id", "desc")->get();
-        $y = SMSTemplateModel::orderBy("id", "desc")->get();
+		$y = SMSTemplateModel::orderBy("id", "desc")->get();
 		
-		$data = [];
+		$search = $request->query('search');
 		
-		foreach($x as $d){
-			$t = SMSTemplateModel::where("id", $d->template_id);
-			
-			if($t->count() > 0){
-				$d->title = $t->first()->title;
-				
-				$data[] = $d;
+		if($search) {
+			if($request->query("search_template") !== "0"){
+				$x = SMSBulkModel::where('phone', 'LIKE', '%'.$search.'%')
+				->orWhere('message', 'LIKE', '%'.$search.'%')
+				->where('template_id', '=', $request->query("search_template"))
+				->paginate(10);
+			}else{
+				$x = SMSBulkModel::where('phone', 'LIKE', '%'.$search.'%')
+				->orWhere('message', 'LIKE', '%'.$search.'%')
+				->paginate(10);
 			}
+            
+			return view("admin.sms.smsbulk.index", compact("x", "y"));
+        }else {
+
+            $x = SMSBulkModel::orderBy("id", "desc")->paginate(10);
+			
+			return view("admin.sms.smsbulk.index", compact("x", "y"));
 		}
-		
-		$x = $data;
-		
-		return view("admin.sms.smsbulk.index", compact("x", "y"));
     }
 
     /**
@@ -43,46 +51,45 @@ class SmsBulk extends Controller
      */
     public function create(Request $request)
     {
+		Http::get('http://cloudsms.trio-mobile.com/index.php/api/bulk_mt?api_key='. env("TRIO_KEY") .'&action=send&to='. $request->phone .'&msg='. $request->message .'&sender_id=CLOUDSMS&content_type=1&mode=shortcode');
+		
+		SMSBulkModel::create([
+			"phone"		=> $request->phone,
+			"message"	=> $request->message,
+			"user_id"	=> Auth::user()->id,
+			"template_id" => 0
+		]);
+		
+		return redirect("smsblast")->with('success', 'Message has been sent to '. $request->phone .'.');
+    }
+	
+	public function create_bulk(Request $request)
+    {
         $t = SMSTemplateModel::where("id", $request->template);
 		
 		if($t->count() > 0){
 			$t = $t->first();
 			
-			//NUC130101000036249535fb5accab169524b40e5468bd1de5
+			preg_match_all("/(?<={).*?(?=})/", $t->content, $m);
 			
-			SMSBulkModel::create([
-				"phone"		=> $request->phone,
-				"template_id"	=> $t->id,
-				"user_id"	=> Auth::user()->id
-			]);
+			if(count($m) > 0){
+				if(count($m[0]) > 0){
+					$m = $m[0];
+				}else{
+					$m = [];
+				}
+			}else{
+				$m = [];
+			}
 			
-			return redirect("smsblast")->with('success', 'Message has been sent to '. $request->template .'.');
+			$x = Excel::import(new SMSBulkImport($t->id, $m), request()->file('file'));
+			
+			return redirect("smsblast")->with('success', 'Messages has been qued for sending with template '. $t->title .'.');
 		}else{
 			return redirect("smsblast")->with('error', 'Selected template is not available.');
 		}
-    }
-	
-	public function create_bulk(Request $request)
-    {
-        // $t = SMSTemplateModel::where("id", $request->template);
 		
-		// if($t->count() > 0){
-			// $t = $t->first();
-			
-			// //NUC130101000036249535fb5accab169524b40e5468bd1de5
-			
-			// SMSBulkModel::create([
-				// "phone"		=> $request->phone,
-				// "template_id"	=> $t->id,
-				// "user_id"	=> Auth::user()->id
-			// ]);
-			
-			// return redirect("smsblast")->with('success', 'Message has been sent to '. $request->template .'.');
-		// }else{
-			// return redirect("smsblast")->with('error', 'Selected template is not available.');
-		// }
-		
-		return redirect("smsblast")->with('error', 'SMS Bulk services is not enable yet.');
+		// return redirect("smsblast")->with('error', 'SMS Bulk services is not enable yet.');
     }
 
     /**

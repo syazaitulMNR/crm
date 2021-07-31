@@ -27,20 +27,45 @@
 			</div>
 		</div>
 		
-		<input type="text" class="form-control" placeholder="Please Enter Event Name" title="Type in a name">
+		
+		<form action="{{ url('smsblast') }}" method="GET">
+			<div class="row">
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search keyword">
+				</div>
+				
+				<div class="col-md-3">
+					<select class="form-control" name="search_template">
+						<option value="0">All Template</option>
+					@foreach($y as $t)
+						<option value="{{ $t->id }}" {{ request()->query('search_template') == $t->id ? 'selected' : '' }}>
+							{{ $t->title }}
+						</option>
+					@endforeach
+					</select>
+				</div>
+				
+				<div class="col-md-1">
+					<button class="btn btn-block btn-outline-dark btn-lg">
+						<span class="fas fa-search"></span>
+					</button>
+				</div>
+			</div>
+            
+        </form>
 		<br>
 			
 		@if (session('success'))
 		<div class="alert alert-success alert-block">
 			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
-			<strong>{{ $message }}</strong>
+			<strong>{{ session('success') }}</strong>
 		</div>
 		@endif
 		
 		@if (session('error'))
 		<div class="alert alert-danger alert-block">
 			<button type="button" class="close" data-bs-dismiss="alert">×</button>	
-			<strong>{{ $message }}</strong>
+			<strong>{{ session('error') }}</strong>
 		</div>
 		@endif
 		
@@ -52,17 +77,18 @@
 						<th>#</th>
 						<th>Date</th>
 						<th>Phone</th>
-						<th>Title</th>
+						<th>Template Title</th>
+						<th>Message</th>
 					</tr>
 				</thead>
 				
 				<tbody>
 				@php
-				$no = 1;
+				$no = (10 * ($x->currentPage() - 1));
 				@endphp
 				@foreach ($x as $k => $t)
 					<tr>
-						<td>{{ $no++ }}</td>
+						<td>{{ ++$no }}</td>
 						
 						<td>{{ $t->created_at }}</td>
 						
@@ -71,12 +97,22 @@
 						</td>
 						
 						<td>
-							{{ $t->title }}
+							@if (!isset($t->template->title) || $t->template->title == "")
+								NIL
+							@else
+								{{ $t->template->title }}
+							@endif
+						</td>
+						
+						<td>
+							{{ $t->message }}
 						</td>
 					</tr>
+					
 				@endforeach
 				</tbody>
-			</table>   
+			</table>
+			{{ $x->links() }}
 		</div> 
 	</div>
 </div>
@@ -95,12 +131,8 @@
 			<div class="modal-body">
 				<form action="{{ url('smsblast/send') }}" method="POST"> 
 					@csrf
-					Template:
-					<select class="form-control" name="template">
-					@foreach ($y as $k => $t)
-						<option value="{{ $t->id }}">{{ $t->title }}</option>
-					@endforeach
-					</select><br />
+					Message:
+					<textarea class="form-control" name="message" placeholder="Avoid using '&' in this message."></textarea><br />
 					
 					Phone Number:
 					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
@@ -137,12 +169,12 @@
 					@endforeach
 					</select><br />
 					
-					Excel Phone:
-					<input type="file" /><br />
+					Excel Data:
+					<input type="file" name="file" /><br />
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
-							<i class="fas fa-save pr-1"></i> Save 
+							<i class="fas fa-paper-plane pr-1"></i> Save 
 						</button>
 					</div>
 				</form>
