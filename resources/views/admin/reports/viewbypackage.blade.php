@@ -106,6 +106,7 @@ Sales Report
 
                 <div class='col-md-12 text-right px-4 pb-4'>
                   <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
+                </div>
               </form>
             </div>
           </div>
