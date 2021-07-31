@@ -23,14 +23,37 @@ Sales Report
     <form action="{{ url('importExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="row" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <h5 class="pt-3">Import Customer</h5>
+        <h5 class="py-3">Import Customer</h5>
 
-        <div class="input-group p-3">
-            <input type="file" name="file" class="form-control" required>
-            <button class="btn btn-dark"><i class="bi bi-upload"></i></button>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Emails</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="email" required>
+                        <option value="">--</option>
+                        @foreach ($emails as $email)
+                            <option value="{{$email->id}}">{{$email->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <em class="pl-3">Choose email template</em>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="file" name="file" class="form-control" required>
+                </div>
+                <em class="pl-3">Maximum upload file size: 8MB</em>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row-fluid float-right">
+                    <button class="btn btn-small btn-dark"><i class="bi bi-upload pr-2"></i>Upload</button>
+                </div>
+            </div>
+            
         </div>
-        <em class="pl-3">Maximum upload file size: 8MB</em>
-
     </form>
         
     <div class="panel panel-default">

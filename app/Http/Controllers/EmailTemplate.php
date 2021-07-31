@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail;
+use App\Email;
 use Illuminate\Http\Request;
 
 class EmailTemplate extends Controller
@@ -14,7 +14,7 @@ class EmailTemplate extends Controller
      */
     public function index()
     {
-        $emailsTemplate = Mail::all();
+        $emailsTemplate = Email::all();
         return view('emailsTemplate.index', compact('emailsTemplate'));
     }
 
@@ -44,7 +44,7 @@ class EmailTemplate extends Controller
             'date' => 'required|date',
         ]);
 
-        $mail = new Mail();
+        $mail = new Email();
         $mail->name = $validated['name'];
         $mail->content = $validated['content'];
         $mail->title = $validated['title'];
@@ -63,7 +63,7 @@ class EmailTemplate extends Controller
      */
     public function edit($id)
     {
-        $emailTemplate = Mail::where('id', $id)->first();
+        $emailTemplate = Email::where('id', $id)->first();
         return view('emailsTemplate.edit', compact('emailTemplate'));
     }
 
@@ -76,7 +76,7 @@ class EmailTemplate extends Controller
      */
     public function update(Request $request, $id)
     {
-        $emailTemplate = Mail::where('id', $id)->first();
+        $emailTemplate = Email::where('id', $id)->first();
         $emailTemplate->name = $request->name;
         $emailTemplate->content = $request->content;
         $emailTemplate->title = $request->title;
@@ -88,7 +88,7 @@ class EmailTemplate extends Controller
 
     public function del($id)
     {
-        $emailTemplate = Mail::where("id", $id)->first();
+        $emailTemplate = Email::where("id", $id)->first();
 		
 		return view("emailsTemplate.delete", compact("emailTemplate"));
     }
@@ -102,7 +102,7 @@ class EmailTemplate extends Controller
     public function remove($id)
     {
 
-        $mail = Mail::where('id', $id)->first();
+        $mail = Email::where('id', $id)->first();
 
         $mail->delete();
 
