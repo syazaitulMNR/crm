@@ -97,9 +97,9 @@ Sales Report
                   <div class="col-sm-8">
                     <select name="offer_id" class="form-select" required>
                       <option value="" disabled selected>-- Please Choose --</option>
-                      <option value="OFF001">No Offer</option>
-                      <option value="OFF002">Buy 1 Free 1 (Same Ticket)</option>
-                      <option value="OFF003">Bulk Offer</option>
+                      @foreach($offer as $offers)
+                      <option value="{{ $offers->offer_id }}">{{ $offers->name }}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
