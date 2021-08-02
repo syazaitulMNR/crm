@@ -64,7 +64,7 @@ Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@d
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
-Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
+// Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 
 //participant
