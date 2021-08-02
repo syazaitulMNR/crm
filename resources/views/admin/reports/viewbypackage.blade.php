@@ -111,8 +111,10 @@ Sales Report
             </div>
           </div>
         </div>
-
+        @if(Auth::user()->user_id == 'UID001')
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
+        @else
+        @endif
       </div>
         
     </div>
