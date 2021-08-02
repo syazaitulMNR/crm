@@ -5,7 +5,7 @@ namespace App\Imports;
 use App\Student;
 use App\Payment;
 use App\Ticket;
-use App\Jobs\TestJobMail;
+// use App\Jobs\TestJobMail;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -14,13 +14,15 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
-    private $prd_id, $pkd_id, $email_id, $regex_content;
+    // private $prd_id, $pkd_id, $email_id, $regex_content;
+    private $prd_id, $pkd_id;
 
-    public function __construct($prd_id, $pkd_id, $email_id, $regex_content){
+    // public function __construct($prd_id, $pkd_id, $email_id, $regex_content){
+    public function __construct($prd_id, $pkd_id){
         $this->product = $prd_id;
         $this->package = $pkd_id;
-        $this->email_id = $email_id;
-        $this->regex_content = $regex_content;
+        // $this->email_id = $email_id;
+        // $this->regex_content = $regex_content;
     }
 
     public function collection(Collection $rows)
@@ -50,7 +52,6 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                 ]);
 
             }else{
-
                 
                 $stud_id = 'MI' . uniqid();
 
@@ -83,7 +84,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
             }
         }
 
-        dispatch(new TestJobMail($rows, $this->email_id, $this->regex_content));
+        // dispatch(new TestJobMail($rows, $this->email_id, $this->regex_content));
         
     }
 
