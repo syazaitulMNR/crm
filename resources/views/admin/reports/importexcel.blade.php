@@ -53,7 +53,7 @@ Sales Report
 
             <div class="col-md-12">
                 <div class="row-fluid float-right">
-                    <button class="btn btn-small btn-dark"><i class="bi bi-upload pr-2"></i>Upload</button>
+                    <button type="submit" class="btn btn-small btn-dark"><i class="bi bi-upload pr-2"></i>Upload</button>
                 </div>
             </div>
             
