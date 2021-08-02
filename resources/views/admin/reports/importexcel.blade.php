@@ -26,6 +26,7 @@ Sales Report
         <h5 class="py-3">Import Customer</h5>
 
         <div class="row">
+            @if(Auth::user()->user_id == 'UID001')
             <div class="col-md-6">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -40,7 +41,10 @@ Sales Report
                 </div>
                 <em class="pl-3">Choose email template</em>
             </div>
-            <div class="col-md-6">
+            @else
+            @endif
+            
+            <div class="col-md-12">
                 <div class="input-group">
                     <input type="file" name="file" class="form-control" required>
                 </div>
