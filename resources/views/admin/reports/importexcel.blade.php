@@ -25,7 +25,7 @@ Sales Report
 
         <h5 class="py-3">Import Customer</h5>
 
-        <div class="row-fluid">
+        {{-- <div class="row-fluid"> --}}
             @if(Auth::user()->user_id == 'UID001')
             <div class="col-md-6">
                 <div class="input-group">
@@ -57,7 +57,7 @@ Sales Report
                 </div>
             </div>
             
-        </div>
+        {{-- </div> --}}
     </form>
         
     <div class="panel panel-default">
