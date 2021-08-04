@@ -34,30 +34,33 @@ Sales Report
                   @csrf
                   
                     <div class='col-md-12 px-4'>
-                      <p>Please choose the data that you want to export :</p>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="success_payment">
-                        <label class="form-check-label" for="exampleRadios2">
-                          Success Payment Only
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="updated_participant">
-                        <label class="form-check-label" for="exampleRadios2">
-                          Updated Participant Form Only
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_buyer">
-                        <label class="form-check-label" for="exampleRadios2">
-                          All Buyer
-                        </label>
+                      
+                      <div class="mb-3 row">
+                        <p>Please choose the data that you want to export :</p>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="success_payment">
+                          <label class="form-check-label" for="exampleRadios2">
+                            Success Payment Only
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="updated_participant">
+                          <label class="form-check-label" for="exampleRadios2">
+                            Updated Participant Form Only
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_buyer">
+                          <label class="form-check-label" for="exampleRadios2">
+                            All Buyer
+                          </label>
+                        </div>
                       </div>
 
                       <div class="mb-3 row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Send to</label>
+                        <label class="col-sm-2 col-form-label">Send to</label>
                         <div class="col-sm-10">
-                          <input type="email" name="receipient_mail" placeholder="Receipient email address" value="{{ Auth::user()->email }}" class="form-control" required>
+                          <input type="email" name="receipient_mail" placeholder="Receipient email address" value="{{ Auth::user()->email }}" class="form-control-sm" required>
                         </div>
                       </div>
                     </div>
