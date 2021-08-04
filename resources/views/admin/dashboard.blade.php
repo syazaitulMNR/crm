@@ -24,11 +24,11 @@
     <div class="col-md-8 pb-4">
       <div class="card bg-white shadow px-4 py-4">
 
-        <h5 class="text-center pb-4">{{ $product->name }}</h5>
+        <h5 class="text-center py-4">{{ $product->name }}</h5>
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
-        <div class="table-responsive">
+        <div class="table-responsive pb-4">
           <table class="table text-center">
             <thead class="thead">
               <tr>
