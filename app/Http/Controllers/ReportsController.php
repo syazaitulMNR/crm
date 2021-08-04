@@ -253,15 +253,16 @@ class ReportsController extends Controller
 
         }
 
+        dd($request->receipient_mail);
         // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
                 
-        Mail::send('emails.export_mail', [], function($message) use ($fileName)
-        {
-            $message->to($request->receipient_mail)->subject('ATTACHMENT OF BUYER DETAILS');
-            $message->attach(public_path('export/') . $fileName);
-        });
+        // Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        // {
+        //     $message->to($request->receipient_mail)->subject('ATTACHMENT OF BUYER DETAILS');
+        //     $message->attach(public_path('export/') . $fileName);
+        // });
 
-        return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
+        // return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
 
     }
 
