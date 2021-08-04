@@ -258,7 +258,7 @@ class ReportsController extends Controller
                 
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
-            $message->to($receipient_mail)->subject('ATTACHMENT OF BUYER DETAILS');
+            $message->to($request->receipient_mail)->subject('ATTACHMENT OF BUYER DETAILS');
             $message->attach(public_path('export/') . $fileName);
         });
 
