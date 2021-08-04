@@ -54,8 +54,12 @@ Sales Report
                         </label>
                       </div>
 
-                      <p>Send data to :</p>
-                      <input type="email" name="receipient_mail" placeholder="Receipient email address" value="{{ Auth::user()->email }}">
+                      <div class="mb-3 row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Send data to</label>
+                        <div class="col-sm-10">
+                          <input type="email" name="receipient_mail" placeholder="Receipient email address" value="{{ Auth::user()->email }}" class="form-control" required>
+                        </div>
+                      </div>
                     </div>
 
                     <div class='col-md-12 text-right px-4 pb-4'>
