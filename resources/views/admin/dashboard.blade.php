@@ -77,7 +77,7 @@
 
   <h4 class="border-bottom pb-3">Total Registration</h4>
 
-  <div class="row pt-2">
+  <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
     <div class="col-md-3 pb-4">
       <div class="card border-0 shadow text-center" style="height: 117px">
@@ -94,8 +94,6 @@
       </div>
     </div>
   </div>
-
-  <br>
 
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
