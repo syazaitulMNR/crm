@@ -73,197 +73,196 @@ class ReportsController extends Controller
         $package = Package::where('product_id', $product_id)->get();
       
         $filter = $request->filter_export;
-        
-        dd($request->receipient_mail);
+        $receipient_mail = $request->receipient_mail;
 
-        // if($filter == 'success_payment') {
+        if($filter == 'success_payment') {
 
-        //     $payment = Payment::where('product_id', $product_id)->where('status', 'paid')->get();
+            $payment = Payment::where('product_id', $product_id)->where('status', 'paid')->get();
 
-        //     /*-- Success Payment ---------------------------------------------------*/
-        //     $fileName = $product->product_id.' - Success_Payment.csv';
-        //     $columnNames = [
-        //         'Customer ID',
-        //         'First Name',
-        //         'Last Name',
-        //         'IC No',
-        //         'Phone No',
-        //         'Email',
-        //         'Quantity',
-        //         'Payment',
-        //         'Status',
-        //         'Payment Method',
-        //         'Package',
-        //         'Offer ID',
-        //         'Update Participant',
-        //         'Purchased At'
-        //     ];
+            /*-- Success Payment ---------------------------------------------------*/
+            $fileName = $product->product_id.' - Success_Payment.csv';
+            $columnNames = [
+                'Customer ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Quantity',
+                'Payment',
+                'Status',
+                'Payment Method',
+                'Package',
+                'Offer ID',
+                'Update Participant',
+                'Purchased At'
+            ];
 
             
-        //     $file = fopen(public_path('export/') . $fileName, 'w');
-        //     fputcsv($file, $columnNames);
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
             
-        //     foreach ($student as $students) {
-        //         foreach($payment as $payments){
-        //             foreach($package as $packages){
-        //                 if($payments->stud_id == $students->stud_id){
-        //                     if($payments->package_id == $packages->package_id){
+            foreach ($student as $students) {
+                foreach($payment as $payments){
+                    foreach($package as $packages){
+                        if($payments->stud_id == $students->stud_id){
+                            if($payments->package_id == $packages->package_id){
 
-        //                         fputcsv($file, [
-        //                             $payments->payment_id,
-        //                             $students->first_name,
-        //                             $students->last_name,
-        //                             $students->ic,
-        //                             $students->phoneno,
-        //                             $students->email,
-        //                             $payments->quantity,
-        //                             $payments->totalprice,
-        //                             $payments->status,
-        //                             $payments->pay_method,
-        //                             $packages->name,
-        //                             $payments->offer_id,
-        //                             $payments->update_count,
-        //                             $payments->created_at,
-        //                         ]);
+                                fputcsv($file, [
+                                    $payments->payment_id,
+                                    $students->first_name,
+                                    $students->last_name,
+                                    $students->ic,
+                                    $students->phoneno,
+                                    $students->email,
+                                    $payments->quantity,
+                                    $payments->totalprice,
+                                    $payments->status,
+                                    $payments->pay_method,
+                                    $packages->name,
+                                    $payments->offer_id,
+                                    $payments->update_count,
+                                    $payments->created_at,
+                                ]);
 
-        //                     }
-        //                 }
-        //             }
-        //         }
+                            }
+                        }
+                    }
+                }
                 
-        //     }
+            }
             
-        //     fclose($file);
+            fclose($file);
 
-        // } elseif ($filter == 'updated_participant') {
+        } elseif ($filter == 'updated_participant') {
 
-        //     $payment = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->get();
+            $payment = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->get();
 
-        //     /*-- Updated Participant ---------------------------------------------------*/
-        //     $fileName = $product->product_id.' - Updated_Participant.csv';
-        //     $columnNames = [
-        //         'Customer ID',
-        //         'First Name',
-        //         'Last Name',
-        //         'IC No',
-        //         'Phone No',
-        //         'Email',
-        //         'Quantity',
-        //         'Payment',
-        //         'Status',
-        //         'Payment Method',
-        //         'Package',
-        //         'Offer ID',
-        //         'Update Participant',
-        //         'Purchased At'
-        //     ];
+            /*-- Updated Participant ---------------------------------------------------*/
+            $fileName = $product->product_id.' - Updated_Participant.csv';
+            $columnNames = [
+                'Customer ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Quantity',
+                'Payment',
+                'Status',
+                'Payment Method',
+                'Package',
+                'Offer ID',
+                'Update Participant',
+                'Purchased At'
+            ];
 
             
-        //     $file = fopen(public_path('export/') . $fileName, 'w');
-        //     fputcsv($file, $columnNames);
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
             
-        //     foreach ($student as $students) {
-        //         foreach($payment as $payments){
-        //             foreach($package as $packages){
-        //                 if($payments->stud_id == $students->stud_id){
-        //                     if($payments->package_id == $packages->package_id){
+            foreach ($student as $students) {
+                foreach($payment as $payments){
+                    foreach($package as $packages){
+                        if($payments->stud_id == $students->stud_id){
+                            if($payments->package_id == $packages->package_id){
 
-        //                         fputcsv($file, [
-        //                             $payments->payment_id,
-        //                             $students->first_name,
-        //                             $students->last_name,
-        //                             $students->ic,
-        //                             $students->phoneno,
-        //                             $students->email,
-        //                             $payments->quantity,
-        //                             $payments->totalprice,
-        //                             $payments->status,
-        //                             $payments->pay_method,
-        //                             $packages->name,
-        //                             $payments->offer_id,
-        //                             $payments->update_count,
-        //                             $payments->created_at,
-        //                         ]);
+                                fputcsv($file, [
+                                    $payments->payment_id,
+                                    $students->first_name,
+                                    $students->last_name,
+                                    $students->ic,
+                                    $students->phoneno,
+                                    $students->email,
+                                    $payments->quantity,
+                                    $payments->totalprice,
+                                    $payments->status,
+                                    $payments->pay_method,
+                                    $packages->name,
+                                    $payments->offer_id,
+                                    $payments->update_count,
+                                    $payments->created_at,
+                                ]);
 
-        //                     }
-        //                 }
-        //             }
-        //         }
+                            }
+                        }
+                    }
+                }
                 
-        //     }
+            }
             
-        //     fclose($file);
+            fclose($file);
 
-        // } else {
+        } else {
             
-        //     $payment = Payment::where('product_id', $product_id)->get();
+            $payment = Payment::where('product_id', $product_id)->get();
             
-        //     /*-- All Buyer ---------------------------------------------------*/
-        //     $fileName = $product->product_id.' - All_Buyer.csv';
-        //     $columnNames = [
-        //         'Customer ID',
-        //         'First Name',
-        //         'Last Name',
-        //         'IC No',
-        //         'Phone No',
-        //         'Email',
-        //         'Quantity',
-        //         'Payment',
-        //         'Status',
-        //         'Payment Method',
-        //         'Package',
-        //         'Offer ID',
-        //         'Update Participant',
-        //         'Purchased At'
-        //     ];
+            /*-- All Buyer ---------------------------------------------------*/
+            $fileName = $product->product_id.' - All_Buyer.csv';
+            $columnNames = [
+                'Customer ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Quantity',
+                'Payment',
+                'Status',
+                'Payment Method',
+                'Package',
+                'Offer ID',
+                'Update Participant',
+                'Purchased At'
+            ];
 
             
-        //     $file = fopen(public_path('export/') . $fileName, 'w');
-        //     fputcsv($file, $columnNames);
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
             
-        //     foreach ($student as $students) {
-        //         foreach($payment as $payments){
-        //             foreach($package as $packages){
-        //                 if($payments->stud_id == $students->stud_id){
-        //                     if($payments->package_id == $packages->package_id){
+            foreach ($student as $students) {
+                foreach($payment as $payments){
+                    foreach($package as $packages){
+                        if($payments->stud_id == $students->stud_id){
+                            if($payments->package_id == $packages->package_id){
 
-        //                         fputcsv($file, [
-        //                             $payments->payment_id,
-        //                             $students->first_name,
-        //                             $students->last_name,
-        //                             $students->ic,
-        //                             $students->phoneno,
-        //                             $students->email,
-        //                             $payments->quantity,
-        //                             $payments->totalprice,
-        //                             $payments->status,
-        //                             $payments->pay_method,
-        //                             $packages->name,
-        //                             $payments->offer_id,
-        //                             $payments->update_count,
-        //                             $payments->created_at,
-        //                         ]);
+                                fputcsv($file, [
+                                    $payments->payment_id,
+                                    $students->first_name,
+                                    $students->last_name,
+                                    $students->ic,
+                                    $students->phoneno,
+                                    $students->email,
+                                    $payments->quantity,
+                                    $payments->totalprice,
+                                    $payments->status,
+                                    $payments->pay_method,
+                                    $packages->name,
+                                    $payments->offer_id,
+                                    $payments->update_count,
+                                    $payments->created_at,
+                                ]);
 
-        //                     }
-        //                 }
-        //             }
-        //         }
+                            }
+                        }
+                    }
+                }
                 
-        //     }
+            }
             
-        //     fclose($file);
+            fclose($file);
 
-        // }
+        }
 
         // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
                 
-        // Mail::send('emails.export_mail', [], function($message) use ($fileName)
-        // {
-        //     $message->to($request->receipient_mail)->subject('ATTACHMENT OF BUYER DETAILS');
-        //     $message->attach(public_path('export/') . $fileName);
-        // });
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        {
+            $message->to($receipient_mail)->subject('ATTACHMENT OF BUYER DETAILS');
+            $message->attach(public_path('export/') . $fileName);
+        });
 
-        // return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
+        return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
 
     }
 
