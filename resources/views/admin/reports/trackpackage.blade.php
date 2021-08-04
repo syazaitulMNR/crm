@@ -53,6 +53,9 @@ Sales Report
                           All Buyer
                         </label>
                       </div>
+
+                      <p>Send data to :</p>
+                      <input type="email" name="receipient_mail" placeholder="Receipient email address" value="{{ Auth::user()->email }}">
                     </div>
 
                     <div class='col-md-12 text-right px-4 pb-4'>
