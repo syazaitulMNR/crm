@@ -36,7 +36,6 @@
                 <th>Registration [A]</th>
                 <th>Updated Paid Ticket [B]</th>
                 <th>Updated Free Ticket [C]</th>
-                <th>Total Registration</th>
               </tr>
             </thead>
             <tbody>
@@ -48,16 +47,9 @@
                 </td>
                 <td>{{ number_format($paidticket[$i]) }}</td>
                 <td>{{ number_format($freeticket[$i]) }}</td>
-                <td>{{ number_format($totalpackage[$i]) }}</td>
               </tr>
               @endfor
             </tbody>
-            <tfoot>
-              <tr>
-                <th colspan="4" class="text-right">Grand Total</th>
-                <th class="table-active">{{ number_format($totalregister) }}</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
 
@@ -85,6 +77,28 @@
 
   <br>
 
+  <h4 class="border-bottom pb-3">Total Registration</h4>
+
+  <div class="row pt-2">
+    @for ($i = 0; $i < $count_package; $i++)
+    <div class="col-md-3 pb-4">
+      <div class="card border-0 shadow text-center" style="height: 117px">
+        <h6 class="pt-4">{{ $package[$i]->name }}</h6>
+        <b class="display-6 pb-3">{{ number_format($totalpackage[$i]) }}</b>
+      </div>
+    </div>
+    @endfor
+
+    <div class="col-md-3 pb-4">
+      <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
+        <h6 class="pt-4">Total</h6>
+        <b class="display-6 pb-3">{{ number_format($totalregister) }}</b>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
   <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
@@ -99,7 +113,7 @@
 
     <div class="col-md-3 pb-4">
       <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Total Collection</h6>
+        <h6 class="pt-4">Total</h6>
         <b class="display-6 pb-3">RM {{ number_format($totalcollection) }}</b>
       </div>
     </div>
