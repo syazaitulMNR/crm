@@ -262,7 +262,7 @@ class ReportsController extends Controller
             $message->attach(public_path('export/') . $fileName);
         });
 
-        return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details will be sent to your email. It may take a few minutes to successfully received.');
+        return redirect('trackpackage/'.$product_id)->with('export-buyer','The registration details has been successfully sent to the email given.');
 
     }
 
