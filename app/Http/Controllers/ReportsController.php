@@ -321,11 +321,11 @@ class ReportsController extends Controller
         
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
-            $message->to(Auth::user()->email)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+            $message->to(request()->receipient_mail)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
             $message->attach(public_path('export/') . $fileName);
         });
 
-        return redirect('trackpackage/'.$product_id)->with('export-participant','The data will be sent to your email. It may take a few minutes to successfully received.');
+        return redirect('trackpackage/'.$product_id)->with('export-participant','The participant details has been successfully sent to the email given.');
 
     }
 

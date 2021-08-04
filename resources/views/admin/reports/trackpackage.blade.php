@@ -73,9 +73,45 @@ Sales Report
                 </div>
               </div>
             </div>
+
+            <!-- Button trigger modal export participant -->
+            <button type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exportParticipant">
+              <i class="bi bi-download pr-2"></i>Export Participant
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exportParticipant" tabindex="-1" role="dialog" aria-labelledby="exportParticipantLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header border-bottom-0">
+                    <h5 class="modal-title" id="exampleModalLabel">Export Participan</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="{{ url('export-participant') }}/{{ $product->product_id }}" method="get"> 
+                  @csrf
+                  
+                    <div class='col-md-12 px-4'>
+                      
+                      <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Send to</label>
+                        <div class="col-sm-10">
+                          <input type="email" name="receipient_mail" placeholder="Receipient email address" value="{{ Auth::user()->email }}" class="form-control form-control-sm" required>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class='col-md-12 text-right px-4 pb-4'>
+                      <button type='submit' class='btn btn-success'> <i class="bi bi-download pr-2"></i>Export</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
             @else
             @endif
-            
+
             <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a>
           </div>
         </div>
