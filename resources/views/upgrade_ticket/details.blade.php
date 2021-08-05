@@ -56,7 +56,7 @@ Upgrade Pakej
                             </div>
 
                             <div class="col-md-3">
-                                <p>{{ $packages->name }}</p>
+                                <b>{{ $packages->name }}</b>
                             </div>
                         </div>
 
@@ -67,7 +67,7 @@ Upgrade Pakej
 
                             <div class="col-md-3">
                                 <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
+                                <b>RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly></b>
                             </div>
                         </div>
 
