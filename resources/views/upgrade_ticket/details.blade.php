@@ -46,7 +46,7 @@ Upgrade Pakej
 
                 <div class="card-body px-2">
 
-                    <div class="col-md-6 offset-md-3 pb-3">
+                    <div class="col-md-3 offset-md-1 pb-3">
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
                         
