@@ -71,18 +71,16 @@ Upgrade Pakej
                     </div> 
                 </div>
 
-                <div class="card-footer">
-                    <div class="col-md-12">
-                        <div class="pull-left">
-                            <a href="{{ url('upgrade-ticket') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{$ticket->ticket_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
-                        </div>
-                        <div class="pull-right">
-                            <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
-                        </div>
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <a href="{{ url('upgrade-ticket') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{$ticket->ticket_id}}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
                     </div>
                 </div>
-            </div>
 
+            </div>
                 
         </form>
     </div>
@@ -90,7 +88,7 @@ Upgrade Pakej
 
 
 <script>
-    
+
     var x = document.getElementById("price").value;
     var y = '{{ $current_package->price }}';
     var z = x - y;
