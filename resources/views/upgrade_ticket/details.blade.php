@@ -67,7 +67,7 @@ Upgrade Pakej
                         @endforeach 
                     </div>
 
-                    <div class="alert alert-info-sm text-left" role="alert">
+                    <div class="alert alert-sm alert-info text-left" role="alert">
                         <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
                     </div> 
                 </div>
