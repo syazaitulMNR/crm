@@ -50,22 +50,22 @@ Upgrade Pakej
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
                         
-                        <div class="col-md-12">
-                            <div class="col-md-6">
+                        <div class="row-fluid">
+                            <div class="col-md-3">
                                 <p>Pakej</p>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <p>{{ $packages->name }}</p>
                             </div>
                         </div>
 
-                        <div class="col-md-12">
-                            <div class="col-md-6">
+                        <div class="row-fluid">
+                            <div class="col-md-3">
                                 <p>Harga</p>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                 RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
                             </div>
