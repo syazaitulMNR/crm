@@ -50,17 +50,7 @@ Upgrade Pakej
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
                         
-                        <div class="row-fluid border">
-                            <b>Pakej</b> : {{ $packages->name }}
-                        </div>
-
-                        <div class="row-fluid border">
-                            <b>Harga</b> : 
-                            <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                            RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
-                        </div>
-
-                        {{-- <table class="table">
+                        <table class="table table-borderless">
                             <tr>
                                 <td >Pakej</td>
                                 <td>:</td>
@@ -71,10 +61,10 @@ Upgrade Pakej
                                 <td>:</td>
                                 <td>
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="width: 50px; outline: none;" readonly>
+                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
                                 </td>
                             </tr>
-                        </table>  --}}
+                        </table> 
                         @endif  
                         @endforeach 
                     </div>
