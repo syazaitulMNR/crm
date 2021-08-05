@@ -51,13 +51,13 @@ Upgrade Pakej
                         @if ($new_package->package_id == $packages->package_id)
                         
                         <div class="row-fluid border">
-                                <b>Pakej</b> : <p>{{ $packages->name }}</p>
+                            <b>Pakej</b> : {{ $packages->name }}
                         </div>
 
                         <div class="row-fluid border">
-                                <b>Harga</b> : 
-                                <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
+                            <b>Harga</b> : 
+                            <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
+                            RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
                         </div>
 
                         {{-- <table class="table">
