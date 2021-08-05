@@ -50,7 +50,7 @@ Upgrade Pakej
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
                         
-                        <div class="row-fluid">
+                        <div class="row-fluid border">
                             <div class="col-md-3">
                                 <b>Pakej</b>
                             </div>
@@ -60,7 +60,7 @@ Upgrade Pakej
                             </div>
                         </div>
 
-                        <div class="row-fluid">
+                        <div class="row-fluid border">
                             <div class="col-md-3">
                                 <b>Harga</b>
                             </div>
