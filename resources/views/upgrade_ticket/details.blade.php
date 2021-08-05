@@ -54,12 +54,12 @@ Upgrade Pakej
                             <tr>
                                 <td class="w-25">Pakej</td>
                                 <td>:</td>
-                                <td class="text-break">{{ $packages->name }}</td>
+                                <td class="w-25 text-break">{{ $packages->name }}</td>
                             </tr>
                             <tr>
                                 <td class="w-25">Harga</td>
                                 <td>:</td>
-                                <td>
+                                <td class="w-25">
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
                                     RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
                                 </td>
