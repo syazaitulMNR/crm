@@ -46,26 +46,28 @@ Upgrade Pakej
 
                 <div class="card-body px-2">
 
-                    @foreach ($package as $packages)
-                    @if ($new_package->package_id == $packages->package_id)
-                    
-                    <table class="table table-borderless px-5">
-                        <tr>
-                            <td class="w-25">Pakej</td>
-                            <td>:</td>
-                            <td class="text-break">{{ $packages->name }}</td>
-                        </tr>
-                        <tr>
-                            <td class="w-25">Harga</td>
-                            <td>:</td>
-                            <td>
-                                <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
-                            </td>
-                        </tr>
-                    </table> 
-                    @endif  
-                    @endforeach 
+                    <div class="col-md-6 offset-md-3 pb-5">
+                        @foreach ($package as $packages)
+                        @if ($new_package->package_id == $packages->package_id)
+                        
+                        <table class="table table-borderless px-5">
+                            <tr>
+                                <td class="w-25">Pakej</td>
+                                <td>:</td>
+                                <td class="text-break">{{ $packages->name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="w-25">Harga</td>
+                                <td>:</td>
+                                <td>
+                                    <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
+                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
+                                </td>
+                            </tr>
+                        </table> 
+                        @endif  
+                        @endforeach 
+                    </div>
 
                     <div class="alert alert-info text-left" role="alert">
                         <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
