@@ -46,10 +46,32 @@ Upgrade Pakej
 
                 <div class="card-body px-2">
 
-                    <div class="col-md-6 offset-md-3 pb-5">
+                    <div class="col-md-6 offset-md-3">
                         @foreach ($package as $packages)
                         @if ($new_package->package_id == $packages->package_id)
-                        <table class="table">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Pakej</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p>{{ $packages->name }}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Harga</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
+                                RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="width: 50px; outline: none;" readonly>
+                            </div>
+                        </div>
+
+                        {{-- <table class="table">
                             <tr>
                                 <td >Pakej</td>
                                 <td>:</td>
@@ -60,10 +82,10 @@ Upgrade Pakej
                                 <td>:</td>
                                 <td>
                                     <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
+                                    RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="width: 50px; outline: none;" readonly>
                                 </td>
                             </tr>
-                        </table> 
+                        </table>  --}}
                         @endif  
                         @endforeach 
                     </div>
