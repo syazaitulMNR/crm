@@ -24,7 +24,7 @@ Upgrade Pakej
     background-color: #f3f3f3;
     color: #202020;
     border: 1px #e7e7e7 solid;
-    width: 150px;
+    width: 180px;
     }
 
     .button4:hover {background-color: #e7e7e7;}
@@ -57,7 +57,7 @@ Upgrade Pakej
                         @endif
 
                         <div class="form-group row">
-                            <div class="col-md-12 px-5">
+                            <div class="col-md-12 text-center">
                                 {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
                                     <i class="far fa-credit-card fa-3x"></i>
                                     <br><br>Kad Debit/Kredit
@@ -71,7 +71,7 @@ Upgrade Pakej
                         </div>
 
                 </div>
-                
+
                 <div class="col-md-12">
                     <div class="pull-left">
                         <a href="{{ url('ticket-details') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
