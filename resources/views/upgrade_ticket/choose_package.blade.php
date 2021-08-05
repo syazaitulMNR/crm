@@ -51,7 +51,7 @@ Upgrade Pakej
                         @if($current_package->price >= $packages->price)
                         @else
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
-                            <div class="pricing-item py-4 border">
+                            <div class="pricing-item py-4 border-rounded">
                                 <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
                                 
                                 <div class="pb-2" style="letter-spacing: 2px">
