@@ -50,12 +50,12 @@ Upgrade Pakej
                     @if ($new_package->package_id == $packages->package_id)
                     <table class="table table-borderless">
                         <tr>
-                            <td >Pakej</td>
+                            <td class="w-50">Pakej</td>
                             <td>:</td>
                             <td class="text-break">{{ $packages->name }}</td>
                         </tr>
                         <tr>
-                            <td >Harga</td>
+                            <td class="w-50">Harga</td>
                             <td>:</td>
                             <td>
                                 <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
