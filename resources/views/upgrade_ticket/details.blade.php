@@ -37,14 +37,14 @@ Upgrade Pakej
         <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
     </div>
 
-    <div class="col-md-12 d-flex justify-content-center pb-5">
+    <div class="col-md-6 offset-md-3 pb-5">
         <form action="{{ url('store-details') }}/{{ $product->product_id }}/{{ $current_package->package_id }}/{{ $ticket->ticket_id }}" method="POST">
             @csrf
 
-            <div class="card w-100 shadow">
-                <div class="card-header bg-dark text-white">Maklumat Tiket</div>
+            <div class="card px-4 py-4 shadow">
+                <div class="bg-dark text-white px-2 py-2">Maklumat Tiket</div>
 
-                <div class="card-body px-3">
+                <div class="card-body px-2">
 
                     @foreach ($package as $packages)
                     @if ($new_package->package_id == $packages->package_id)
@@ -62,16 +62,6 @@ Upgrade Pakej
                                 RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly>
                             </td>
                         </tr>
-                        {{-- <tr>
-                            <td >Kuantiti</td>
-                            <td>:</td>
-                            <td><input type="text" id="quantity" name="quantity" value="1" style="border: none; width: 40px; outline: none;" readonly></td>
-                        </tr>
-                        <tr class="border-bottom border-top">
-                            <td >Jumlah Bayaran</td>
-                            <td>:</td>
-                            <td>RM <input type="text" id="new_total" class="text-center" name="totalprice" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 40px; outline: none;" readonly></td>
-                        </tr> --}}
                     </table> 
                     @endif  
                     @endforeach 
@@ -100,6 +90,7 @@ Upgrade Pakej
 
 
 <script>
+    
     var x = document.getElementById("price").value;
     var y = '{{ $current_package->price }}';
     var z = x - y;
