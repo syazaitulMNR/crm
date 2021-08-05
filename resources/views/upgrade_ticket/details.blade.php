@@ -52,22 +52,22 @@ Upgrade Pakej
                         
                         <div class="row-fluid">
                             <div class="col-md-3">
-                                <p>Pakej</p>
+                                <b>Pakej</b>
                             </div>
 
                             <div class="col-md-3">
-                                <b>{{ $packages->name }}</b>
+                                <p>{{ $packages->name }}</p>
                             </div>
                         </div>
 
                         <div class="row-fluid">
                             <div class="col-md-3">
-                                <p>Harga</p>
+                                <b>Harga</b>
                             </div>
 
                             <div class="col-md-3">
                                 <input type="hidden" id="price" value="{{ $packages->price }}" disabled>
-                                <b>RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly></b>
+                                RM <input type="text" id="new_price" name="pay_price" value="{{ $new_package->pay_price ?? '' }}" style="border: none; width: 50px; outline: none;" readonly>
                             </div>
                         </div>
 
