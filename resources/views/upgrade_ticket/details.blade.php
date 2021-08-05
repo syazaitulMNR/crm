@@ -67,8 +67,8 @@ Upgrade Pakej
                         @endforeach 
                     </div>
 
-                    <div class="row-fluid border-top border-bottom my-5">
-                        <i class="fas fa-info-circle pr-1 "></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
+                    <div class="alert alert-info text-left" role="alert">
+                        <i class="fas fa-info-circle pr-1 border-right border-info"></i>  Harga pakej di atas telah ditolak daripada pembayaran pakej sebelum
                     </div> 
                 </div>
 
