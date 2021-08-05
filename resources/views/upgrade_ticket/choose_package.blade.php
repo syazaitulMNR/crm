@@ -20,7 +20,7 @@ Upgrade Pakej
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
-                            <div class="pricing-item bg-white py-4 px-2" style=" box-shadow: 0px 0px 30px -7px rgba(0,0,0,0.29); border-radius: 5px;">
+                            <div class="pricing-item bg-white shadow rounded-3 py-4 px-2">
                                 <div class="pb-2" style="letter-spacing: 2px">
                                     <h4>{{ $current_package->name }}</h4>
                                 </div>
@@ -51,7 +51,7 @@ Upgrade Pakej
                         @if($current_package->price >= $packages->price)
                         @else
                         <div class="col-lg-4 col-md-6 col-sm-10 pb-4 d-block mx-auto">
-                            <div class="pricing-item py-4 border rounded">
+                            <div class="pricing-item py-4 border rounded-3">
                                 <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
                                 
                                 <div class="pb-2" style="letter-spacing: 2px">
