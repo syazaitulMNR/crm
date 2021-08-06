@@ -82,7 +82,6 @@ Sales Report
                             <th>Pay Method</th>
                             {{-- <th>Ticket Type</th> --}}
                             <th>Offer ID</th>
-                            <th>User ID</th>
                         </tr>
                         <tr>
                             <td>John</td>
@@ -96,7 +95,6 @@ Sales Report
                             <td>FPX</td>
                             {{-- <td>free</td> --}}
                             <td>OFF001</td>
-                            <td>UID001</td>
                         </tr>
                     </table>
                 </div>
