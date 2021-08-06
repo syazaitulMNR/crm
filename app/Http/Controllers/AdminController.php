@@ -40,119 +40,119 @@ class AdminController extends Controller
         
         // show the duration of current 2 hours
         // the $time is +1 hour from the duration
-        if ($time < "08:30") {
+        if ($time < "08:10") {
 
             $from = date('Y-m-d 16:00:00');
             $to = date('Y-m-d 23:59:59');
             $duration = "12 am - 8 am"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= "08:30" && $time < "09:30") {
+        } elseif ($time >= "08:10" && $time < "09:10") {
 
             $from = date('Y-m-d 00:00:00');
             $to = date('Y-m-d 00:59:59');
             $duration = "8 am - 9 am"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= "09:30" && $time < "10:30") {
+        } elseif ($time >= "09:10" && $time < "10:10") {
 
             $from = date('Y-m-d 01:00:00');
             $to = date('Y-m-d 01:59:59');
             $duration = "9 am - 10 am"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= "10:30" && $time < "11:08") {
+        } elseif ($time >= "10:10" && $time < "11:10") {
 
             $from = date('Y-m-d 02:00:00');
             $to = date('Y-m-d 02:59:59');
             $duration = "10 am - 11 am"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= "11:08" && $time < "12:30") {
+        } elseif ($time >= "11:10" && $time < "12:10") {
 
             $from = date('Y-m-d 03:00:00');
             $to = date('Y-m-d 03:59:59');
             $duration = "11 am - 12 pm"; 
             $greetings = "Good Morning!";
 
-        } elseif ($time >= "12:30" && $time < "13:30") {
+        } elseif ($time >= "12:10" && $time < "13:10") {
 
             $from = date('Y-m-d 04:00:00');
             $to = date('Y-m-d 04:59:59');
             $duration = "12 pm - 1 pm"; 
             $greetings = "Good Afternoon!";
 
-        } elseif ($time >= "13:30" && $time < "14:30") {
+        } elseif ($time >= "13:10" && $time < "14:10") {
 
             $from = date('Y-m-d 05:00:00');
             $to = date('Y-m-d 05:59:59');
             $duration = "1 pm - 2 pm"; 
             $greetings = "Good Afternoon!";
 
-        } elseif ($time >= "14:30" && $time < "15:30") {
+        } elseif ($time >= "14:10" && $time < "15:10") {
 
             $from = date('Y-m-d 06:00:00');
             $to = date('Y-m-d 06:59:59');
             $duration = "2 pm - 3 pm"; 
             $greetings = "Good Afternoon!";
 
-        } elseif ($time >= "15:30" && $time < "16:30") {
+        } elseif ($time >= "15:10" && $time < "16:10") {
 
             $from = date('Y-m-d 07:00:00');
             $to = date('Y-m-d 07:59:59');
             $duration = "3 pm - 4 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "16:30" && $time < "17:30") {
+        } elseif ($time >= "16:10" && $time < "17:10") {
 
             $from = date('Y-m-d 08:00:00');
             $to = date('Y-m-d 08:59:59');
             $duration = "4 pm - 5 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "17:30" && $time < "18:30") {
+        } elseif ($time >= "17:10" && $time < "18:10") {
 
             $from = date('Y-m-d 09:00:00');
             $to = date('Y-m-d 09:59:59');
             $duration = "5 pm - 6 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "18:30" && $time < "19:30") {
+        } elseif ($time >= "18:10" && $time < "19:10") {
 
             $from = date('Y-m-d 10:00:00');
             $to = date('Y-m-d 10:59:59');
             $duration = "6 pm - 7 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "19:30" && $time < "20:30") {
+        } elseif ($time >= "19:10" && $time < "20:10") {
 
             $from = date('Y-m-d 11:00:00');
             $to = date('Y-m-d 11:59:59');
             $duration = "7 pm - 8 pm"; 
             $greetings = "Good Evening!";
             
-        } elseif ($time >= "20:30" && $time < "21:30") {
+        } elseif ($time >= "20:10" && $time < "21:10") {
 
             $from = date('Y-m-d 12:00:00');
             $to = date('Y-m-d 12:59:59');
             $duration = "8 pm - 9 pm"; 
             $greetings = "Good Evening!";
             
-        } elseif ($time >= "21:30" && $time < "22:30") {
+        } elseif ($time >= "21:10" && $time < "22:10") {
 
             $from = date('Y-m-d 13:00:00');
             $to = date('Y-m-d 13:59:59');
             $duration = "9 pm - 10 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "22:30" && $time < "23:30") {
+        } elseif ($time >= "22:10" && $time < "23:10") {
 
             $from = date('Y-m-d 14:00:00');
             $to = date('Y-m-d 14:59:59');
             $duration = "10 pm - 11 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "23:30" && $time <= "00:30") {
+        } elseif ($time >= "23:10" && $time <= "00:10") {
 
             $from = date('Y-m-d 15:00:00');
             $to = date('Y-m-d 15:59:59');
