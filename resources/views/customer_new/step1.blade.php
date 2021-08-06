@@ -54,11 +54,11 @@ Pendaftaran Pembeli
 
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Pertama:</label>
-                            <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name">
+                            <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name" style="text-transform:uppercase">
                         </div>
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Akhir:</label>
-                            <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name">
+                            <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name" style="text-transform:uppercase">
                         </div>
 
                         <div class="col-md-6 pb-2">
