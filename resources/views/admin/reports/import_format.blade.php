@@ -12,7 +12,6 @@
             <th>status</th>
             <th>pay_method</th>
             <th>offer_id</th>
-            <th>user_id</th>
         
         </tr>
     </thead>
@@ -29,6 +28,5 @@
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
             <td>OFF001</td>
-            <td>UID001</td>
         </tr>
 </tbody>
