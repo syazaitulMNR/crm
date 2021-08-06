@@ -26,11 +26,7 @@ class ImportExcelController extends Controller
         $data = Student::orderBy('id','desc')->paginate(15);
         $emails = Email::all();
 
-        $user_id = Auth::user()->user_id;
-
-        dd($user_id);
-
-        // return view('admin.reports.importexcel', compact('data', 'product', 'package', 'emails'));
+        return view('admin.reports.importexcel', compact('data', 'product', 'package', 'emails'));
     }
 
     // public function import(Request $request, $product_id, $package_id )
@@ -75,10 +71,9 @@ class ImportExcelController extends Controller
         $pkd_id = $package->package_id;
         $user_id = Auth::user()->user_id;
 
-        dd($user_id);
-        // Excel::import(new StudentImport($prd_id, $pkd_id), request()->file('file'));
+        Excel::import(new StudentImport($prd_id, $pkd_id, $user_id), request()->file('file'));
 
-        // return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
     }
 
     public function export()

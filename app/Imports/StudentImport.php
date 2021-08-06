@@ -15,12 +15,13 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
     // private $prd_id, $pkd_id, $email_id, $regex_content;
-    private $prd_id, $pkd_id;
+    private $prd_id, $pkd_id, $user_id;
 
     // public function __construct($prd_id, $pkd_id, $email_id, $regex_content){
-    public function __construct($prd_id, $pkd_id){
+    public function __construct($prd_id, $pkd_id, $user_id){
         $this->product = $prd_id;
         $this->package = $pkd_id;
+        $this->user_id = $user_id;
         // $this->email_id = $email_id;
         // $this->regex_content = $regex_content;
     }
@@ -49,6 +50,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'user_id'       => $row['user_id'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
+                    'user_id'       => $this->user_id,
                 ]);
 
             }else{
@@ -79,6 +81,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'user_id'      => $row['user_id'],
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
+                    'user_id'       => $this->user_id,
                 ]);
 
             }
