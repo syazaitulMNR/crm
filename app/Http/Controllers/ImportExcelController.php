@@ -26,7 +26,11 @@ class ImportExcelController extends Controller
         $data = Student::orderBy('id','desc')->paginate(15);
         $emails = Email::all();
 
-        return view('admin.reports.importexcel', compact('data', 'product', 'package', 'emails'));
+        $user_id = Auth::user()->user_id;
+
+        dd($user_id);
+
+        // return view('admin.reports.importexcel', compact('data', 'product', 'package', 'emails'));
     }
 
     // public function import(Request $request, $product_id, $package_id )
