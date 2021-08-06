@@ -36,7 +36,7 @@ class AdminController extends Controller
         // get date and time
         $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
-        $time = Carbon::now('Asia/Kuala_Lumpur')->format('H');
+        $time = Carbon::now('Asia/Kuala_Lumpur')->format('H:i');
         
         // show the duration of current 2 hours
         // the $time is +1 hour from the duration
@@ -197,7 +197,7 @@ class AdminController extends Controller
         $pendingticket = $totalregister - $totalpaid;
         $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
+        return view('admin.dashboard', compact('time', 'product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
