@@ -28,7 +28,7 @@ Pendaftaran Pembeli
                         <tr>
                             <td class="w-50">Nama Pembeli</td>
                             <td>:</td>
-                            <td class="text-break"><strong class="text-uppercase">{{$student->first_name}}</strong> <strong class="text-uppercase">{{$student->last_name}}</strong></td>
+                            <td class="text-break"><strong>{{$student->first_name}}</strong> <strong>{{$student->last_name}}</strong></td>
                         </tr>
                         <tr>
                             <td class="w-50">Emel</td>
