@@ -208,15 +208,15 @@ Sales Report
           </tr>
           </thead>
           <tbody> 
-            @foreach ($student as $students) 
+            {{-- @foreach ($student as $students)  --}}
             @foreach ($payment as $key => $payments)  
-            @if ($payments->stud_id == $students->stud_id)
+            {{-- @if ($payments->stud_id == $students->stud_id) --}}
             {{-- @if ($payments->product_id == $product->product_id)   --}}
             <tr>
                 <td>{{ $count++ }}</td>
-                <td>{{ $students->ic }}</td>
+                {{-- <td>{{ $students->ic }}</td>
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                <td>{{ $students->email }}</td>
+                <td>{{ $students->email }}</td> --}}
                 <td>
                   @if ($payments->status == 'paid')
                     <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
@@ -235,13 +235,13 @@ Sales Report
                     <p>NULL</p>
                   @endif
                 </td>
-                <td>
+                {{-- <td>
                   <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
-                </td>
+                </td> --}}
             </tr>
             {{-- @endif --}}
-            @endif
-            @endforeach
+            {{-- @endif
+            @endforeach --}}
             @endforeach
           
           </tbody>
