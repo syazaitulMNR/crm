@@ -211,7 +211,7 @@ Sales Report
             @foreach ($student as $students) 
             @foreach ($payment as $key => $payments)  
             @if ($payments->stud_id == $students->stud_id)
-            @if ($payments->product_id == $product->product_id)  
+            {{-- @if ($payments->product_id == $product->product_id)   --}}
             <tr>
                 <td>{{ $count++ }}</td>
                 <td>{{ $students->ic }}</td>
@@ -239,7 +239,7 @@ Sales Report
                   <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
                 </td>
             </tr>
-            @endif
+            {{-- @endif --}}
             @endif
             @endforeach
             @endforeach
