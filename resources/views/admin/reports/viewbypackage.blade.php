@@ -208,15 +208,15 @@ Sales Report
           </tr>
           </thead>
           <tbody> 
-            {{-- @foreach ($student as $students)  --}}
+            @foreach ($student as $students) 
             @foreach ($payment as $key => $payments)  
             {{-- @if ($payments->stud_id == $students->stud_id) --}}
             {{-- @if ($payments->product_id == $product->product_id)   --}}
             <tr>
                 <td>{{ $count++ }}</td>
-                {{-- <td>{{ $students->ic }}</td>
+                <td>{{ $students->ic }}</td>
                 <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-                <td>{{ $students->email }}</td> --}}
+                <td>{{ $students->email }}</td>
                 <td>
                   @if ($payments->status == 'paid')
                     <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
@@ -240,8 +240,8 @@ Sales Report
                 </td> --}}
             </tr>
             {{-- @endif --}}
-            {{-- @endif
-            @endforeach --}}
+            {{-- @endif --}}
+            @endforeach
             @endforeach
           
           </tbody>
@@ -262,15 +262,15 @@ Sales Report
         </tr>
         </thead>
         <tbody> 
-          {{-- @foreach ($student as $students)    --}}
+          @foreach ($student as $students)   
           @foreach ($payment as $key => $payments)
           {{-- @if ($payments->stud_id == $students->stud_id)
           @if ($payments->product_id == $product->product_id)   --}}
           <tr>
               <td>{{ $count++ }}</td>
-              {{-- <td>{{ $students->ic }}</td>
+              <td>{{ $students->ic }}</td>
               <td>{{ $students->first_name }} {{ $students->last_name }}</td>
-              <td>{{ $students->email }}</td> --}}
+              <td>{{ $students->email }}</td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
                   <i class="bi bi-check-lg" style="color:green"></i>
@@ -285,8 +285,8 @@ Sales Report
               </td> --}}
           </tr>
           {{-- @endif
-          @endif
-          @endforeach --}}
+          @endif --}}
+          @endforeach
           @endforeach
         </tbody>
       </table>  
