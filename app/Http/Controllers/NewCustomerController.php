@@ -187,7 +187,7 @@ class NewCustomerController extends Controller
         return redirect('payment-method/'.  $product_id . '/' . $package_id );
     }
 
-    public function payment_method($product_id, $package_id, $get_ic, Request $request)
+    public function payment_method($product_id, $package_id, Request $request)
     {
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
@@ -201,7 +201,7 @@ class NewCustomerController extends Controller
 
         }else if($payment->pay_method == 'FPX'){
 
-            return redirect('data-fpx/'.  $product_id . '/' . $package_id . '/' . $get_ic);
+            return redirect('data-fpx/'.  $product_id . '/' . $package_id );
 
         }else{
 
@@ -307,7 +307,7 @@ class NewCustomerController extends Controller
         return redirect('pendaftaran-berjaya');
     }
 
-    public function pay_billplz($product_id, $package_id, $get_ic, Request $request)
+    public function pay_billplz($product_id, $package_id, Request $request)
     {
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
@@ -332,7 +332,7 @@ class NewCustomerController extends Controller
             );
 
         } catch (\Throwable $th) {
-            return redirect('maklumat-pembeli/'.  $product_id . '/' . $package_id . '/' . $get_ic)->with('error', 'Maklumat tidak tepat');
+            return redirect()->back()->with('error', 'Maklumat tidak tepat');
         }
         
         $pay_data = $response->toArray();

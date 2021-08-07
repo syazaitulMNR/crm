@@ -210,7 +210,7 @@ Route::post('store4/{product_id}/{package_id}', 'NewCustomerController@postCreat
 Route::get('payment-method/{product_id}/{package_id}', 'NewCustomerController@payment_method');
 Route::get('maklumat-kad/{product_id}/{package_id}', 'NewCustomerController@card_payment');
 Route::post('storeCard/{product_id}/{package_id}', 'NewCustomerController@postCardMethod');
-Route::get('data-fpx/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@pay_billplz');
+Route::get('data-fpx/{product_id}/{package_id}', 'NewCustomerController@pay_billplz');
 Route::get('redirect-payment/{product_id}/{package_id}', 'NewCustomerController@redirect_payment');
 
 // Existedstudent
