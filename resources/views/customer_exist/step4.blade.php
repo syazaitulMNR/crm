@@ -45,29 +45,35 @@ Pendaftaran Pembeli
 
                 <div class="card-body">
 
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="px-3">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                    @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block text-center">	
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
 
-                        <div class="form-group row">
-                            <div class="col-md-12 text-center">
-                                {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
-                                    <i class="far fa-credit-card fa-3x"></i>
-                                    <br><br>Kad Debit/Kredit
-                                </button> --}}
-                            
-                                <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
-                                    <i class="fas fa-university fa-3x"></i>
-                                    <br><br>Billplz
-                                </button>
-                            </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="px-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
+                    @endif
+
+                    <div class="form-group row">
+                        <div class="col-md-12 text-center">
+                            {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
+                                <i class="far fa-credit-card fa-3x"></i>
+                                <br><br>Kad Debit/Kredit
+                            </button> --}}
+                        
+                            <button type="submit" class="button button4" name="pay_method" value="{{ $billplz ?? '' }}">
+                                <i class="fas fa-university fa-3x"></i>
+                                <br><br>Billplz
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-md-12">
