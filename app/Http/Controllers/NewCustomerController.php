@@ -332,7 +332,7 @@ class NewCustomerController extends Controller
             );
 
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Maklumat tidak tepat');
+            return redirect()->back()->with('error', 'Emel/No Tel tidak tepat');
         }
         
         $pay_data = $response->toArray();
