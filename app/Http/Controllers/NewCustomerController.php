@@ -318,17 +318,23 @@ class NewCustomerController extends Controller
 
         $bill = $billplz->bill();
 
-        $response = $bill->create(
-            $product->collection_id,
-            $student->email,
-            $student->phoneno,
-            $student->first_name,
-            \Duit\MYR::given($payment->totalprice * 100),
-            'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id,
-            $product->name . ' - ' . $package->name,
-            ['redirect_url' => 'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id]
-        );
+        try {
+            
+            $response = $bill->create(
+                $product->collection_id,
+                $student->email,
+                $student->phoneno,
+                $student->first_name,
+                \Duit\MYR::given($payment->totalprice * 100),
+                'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id,
+                $product->name . ' - ' . $package->name,
+                ['redirect_url' => 'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id]
+            );
 
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Maaf! Emel atau No Telefon Anda Tidak Tepat.');
+        }
+        
         $pay_data = $response->toArray();
         
         $addData = array(

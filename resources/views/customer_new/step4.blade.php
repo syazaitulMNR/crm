@@ -45,6 +45,13 @@ Pendaftaran Pembeli
 
                 <div class="card-body">
 
+                    
+                    @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block text-center">	
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="px-3">
