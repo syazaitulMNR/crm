@@ -482,7 +482,8 @@ class ReportsController extends Controller
 
             if(count($payment) > 0)
             {
-                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+                dd($payment);
+                // return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
 
             }else{
 
