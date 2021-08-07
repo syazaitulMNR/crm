@@ -209,10 +209,9 @@ Sales Report
           </thead>
           <tbody> 
             @foreach ($student as $students) 
-            @foreach ($payment as $key => $payments)  
+            @foreach ($payment as $payments)  
             @if ($payments->stud_id == $students->stud_id)
             @if ($payments->product_id == $product->product_id)  
-            @if ($payments->package_id == $package->package_id)
             <tr>
                 <td>{{ $count++ }}</td>
                 <td>{{ $students->ic }}</td>
@@ -242,7 +241,6 @@ Sales Report
             </tr>
             @endif
             @endif
-            @endif
             @endforeach
             @endforeach
           
@@ -265,10 +263,9 @@ Sales Report
         </thead>
         <tbody> 
           @foreach ($student as $students)   
-          @foreach ($payment as $key => $payments)
+          @foreach ($payment as $payments)
           @if ($payments->stud_id == $students->stud_id)
           @if ($payments->product_id == $product->product_id)  
-          @if ($payments->package_id == $package->package_id)
           <tr>
               <td>{{ $count++ }}</td>
               <td>{{ $students->ic }}</td>
@@ -287,7 +284,6 @@ Sales Report
                 <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
               </td>
           </tr>
-          @endif
           @endif
           @endif
           @endforeach
