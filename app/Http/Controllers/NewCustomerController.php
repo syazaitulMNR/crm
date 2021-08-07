@@ -187,7 +187,7 @@ class NewCustomerController extends Controller
         return redirect('payment-method/'.  $product_id . '/' . $package_id );
     }
 
-    public function payment_method($product_id, $package_id, Request $request)
+    public function payment_method($product_id, $package_id, $get_ic, Request $request)
     {
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
@@ -201,7 +201,7 @@ class NewCustomerController extends Controller
 
         }else if($payment->pay_method == 'FPX'){
 
-            return redirect('data-fpx/'.  $product_id . '/' . $package_id );
+            return redirect('data-fpx/'.  $product_id . '/' . $package_id . '/' . $get_ic);
 
         }else{
 
