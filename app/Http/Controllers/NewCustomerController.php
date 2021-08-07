@@ -332,7 +332,7 @@ class NewCustomerController extends Controller
             );
 
         } catch (\Throwable $th) {
-            return redirect('maklumat-pembeli/'.  $product_id . '/' . $package_id . '/' . $get_ic)->with('error', 'details error');
+            return redirect('maklumat-pembeli/'.  $product_id . '/' . $package_id . '/' . $get_ic)->with('error', 'Maklumat tidak tepat');
         }
         
         $pay_data = $response->toArray();
