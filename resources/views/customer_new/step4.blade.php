@@ -47,7 +47,7 @@ Pendaftaran Pembeli
 
                     
                     @if ($message = Session::get('error'))
-                    <div class="alert alert-warning alert-block">	
+                    <div class="alert alert-warning alert-block text-center">	
                         <strong>{{ $message }}</strong>
                     </div>
                     @endif
