@@ -58,7 +58,7 @@
             <table class="table text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left">Time</th>
+                  <th class="text-left w-25">Time</th>
                   @for ($i = 0; $i < $count_package; $i++)
                     <th>{{ $package[$i]->name }}</th>
                   @endfor
