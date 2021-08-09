@@ -65,6 +65,10 @@
                     <th colspan="3">{{ $package[$i]->name }}</th>
                   @endfor
                 </tr>
+                <tr>
+                  <th>Registration [A]</th>
+                  <th>Updated Paid Ticket [B]</th>
+                </tr>
               </thead>
               {{-- <tbody>
                 <tr>
