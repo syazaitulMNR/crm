@@ -80,24 +80,26 @@
                 <tr>
                   <th class="text-left">11:00 am - 12:00 pm</th>
                 </tr>
-                <tr>
-                  <th class="text-left">Registration [A]</th>
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <td> {{ number_format($registration[$i]) }} </td>
-                  @endfor
-                </tr>
-                <tr>
-                  <th class="text-left"> Updated Paid Ticket [B] </th>
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <td> {{ number_format($paidticket[$i]) }} </td>
-                  @endfor
-                </tr>
-                <tr>
-                  <th class="text-left"> Updated Free Ticket [C] </th>
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <td> {{ number_format($freeticket[$i]) }} </td>
-                  @endfor
-                </tr>
+                <tfoot>
+                  <tr>
+                    <th class="text-left">Registration [A]</th>
+                    @for ($i = 0; $i < $count_package; $i++)
+                      <td> {{ number_format($registration[$i]) }} </td>
+                    @endfor
+                  </tr>
+                  <tr>
+                    <th class="text-left"> Updated Paid Ticket [B] </th>
+                    @for ($i = 0; $i < $count_package; $i++)
+                      <td> {{ number_format($paidticket[$i]) }} </td>
+                    @endfor
+                  </tr>
+                  <tr>
+                    <th class="text-left"> Updated Free Ticket [C] </th>
+                    @for ($i = 0; $i < $count_package; $i++)
+                      <td> {{ number_format($freeticket[$i]) }} </td>
+                    @endfor
+                  </tr>
+                </tfoot>
               </tbody>
             </table>
           </div>
