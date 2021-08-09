@@ -57,7 +57,7 @@
           <div class="table-responsive pb-4">
             <table class="table table-sm text-center">
               <thead class="thead">
-                <tr rowspan="2">
+                <tr>
                   <th class="text-left w-25">Time</th>
                 </tr>
                 <tr>
@@ -65,7 +65,7 @@
                     <th colspan="3">{{ $package[$i]->name }}</th>
                   @endfor
                 </tr>
-                <tr>
+                <tr rowspan="2">
                   <th>Registration [A]</th>
                   <th>Updated Paid Ticket [B]</th>
                   <th>Updated Free Ticket [C]</th>
