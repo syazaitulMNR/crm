@@ -55,7 +55,7 @@
 
         @if ( Auth::user()->user_id == 'UID001' )
           <div class="table-responsive pb-4">
-            <table class="table text-center">
+            <table class="table table-sm text-center">
               <thead class="thead">
                 <tr>
                   <th class="text-left w-25">Time</th>
