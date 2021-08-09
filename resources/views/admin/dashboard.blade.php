@@ -67,12 +67,21 @@
               <tbody>
                 <tr>
                   <td class="text-left">Registration [A]</td>
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <td> {{ number_format($registration[$i]) }} </td>
+                  @endfor
                 </tr>
                 <tr>
                   <td class="text-left"> Updated Paid Ticket [B] </td>
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <td> {{ number_format($paidticket[$i]) }} </td>
+                  @endfor
                 </tr>
                 <tr>
                   <td class="text-left"> Updated Free Ticket [C] </td>
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <td> {{ number_format($freeticket[$i]) }} </td>
+                  @endfor
                 </tr>
               </tbody>
             </table>
