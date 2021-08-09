@@ -60,7 +60,10 @@
                 <tr>
                   <th class="text-left w-25">Time</th>
                   @for ($i = 0; $i < $count_package; $i++)
-                    <th>{{ $package[$i]->name }}</th>
+                    <th colspan="3">{{ $package[$i]->name }}</th>
+                    <th>Registration [A]</th>
+                    <th>Updated Paid Ticket [B]</th>
+                    <th>Updated Free Ticket [C]</th>
                   @endfor
                 </tr>
               </thead>
