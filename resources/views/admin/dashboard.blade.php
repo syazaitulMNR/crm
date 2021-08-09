@@ -26,7 +26,7 @@
 
         <h5 class="text-center py-4">{{ $product->name }}</h5>
 
-        <p>Date : <b>{{ $total_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
         <div class="table-responsive pb-4">
           <table class="table text-center">
