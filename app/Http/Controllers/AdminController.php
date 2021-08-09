@@ -189,16 +189,20 @@ class AdminController extends Controller
             
         }
         
-        // get the total
-        $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        $totalticket = Ticket::where('product_id', $product_id)->count();        
-        $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
-        $pendingticket = $totalregister - $totalpaid;
-        $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
+        // get the total 
+        $total_today = Carbon::today('Asia/Kuala_Lumpur');
+        $total_now = Carbon::now('Asia/Kuala_Lumpur');
+        dd($total_today);
+        // $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
+
+        // $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        // $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
+        // $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
+        // $totalticket = Ticket::where('product_id', $product_id)->count();        
+        // $pendingticket = $totalregister - $totalpaid;
+        // $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'todayticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
+        // return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'todayticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
