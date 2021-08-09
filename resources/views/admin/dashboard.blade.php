@@ -53,6 +53,29 @@
           </table>
         </div>
 
+        @if ( Auth::user()->user_id == 'UID001' )
+          <div class="table-responsive pb-4">
+            <table class="table text-center">
+              <thead class="thead">
+                <tr>
+                  <th class="text-left">Package</th>
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <th>{{ $package[$i]->name }}</th>
+                  @endfor
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-left">Registration [A]</td>
+                  <td> Updated Paid Ticket [B] </td>
+                  <td> Updated Free Ticket [C] </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        @else
+        @endif
+
       </div>
     </div>
 
