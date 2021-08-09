@@ -75,13 +75,19 @@ Sales Report
                 <div class="form-group row px-4">
                     <label for="name" class="col-sm-4 col-form-label">Quantity</label>
                     <div class="col-sm-8">
-                      <input type="range" class="form-range" min="0" max="5" id="quantity" name="quantity" onchange="calculateAmount(this.value)" required>
-                      {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
+                      <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" class="form-select" required>
                         <option value="" disabled selected>-- Tiket --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                      </select> --}}
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                      </select>
                     </div>
                 </div>
                 <div class="form-group row px-4">
