@@ -70,13 +70,12 @@
             <td>$80</td>
           </tr>
         </table>
+        
           <div class="table-responsive pb-4">
-            <table class="table table-sm text-center">
+            <table class="table table-sm table-bordered text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left w-25" rowspan="2">Time</th>
-                </tr>
-                <tr>
+                  <th class="text-left w-25" rowspan="2">Time</th>                
                   @for ($i = 0; $i < $count_package; $i++)
                     <th colspan="3">{{ $package[$i]->name }}</th>
                   @endfor
