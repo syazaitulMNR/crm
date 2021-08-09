@@ -54,11 +54,11 @@
         </div>
 
         @if ( Auth::user()->user_id == 'UID001' )
-        <table class="table">
+        <table class="table table-bordered">
           <tr>
+            <td rowspan="2">$50</td>
             <td>January</td>
             <td>$100</td>
-            <td rowspan="2">$50</td>
           </tr>
           <tr>
             <th>Month</th>
