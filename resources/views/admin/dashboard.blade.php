@@ -76,13 +76,13 @@
               <thead class="thead">
                 <tr>
                   <th class="text-left" rowspan="2">Time</th>       
-                  <th>Registration [A]</th>
+                  <th colspan="3">Registration [A]</th>
                   <th>Updated Paid Ticket [B]</th>
                   <th>Updated Free Ticket [C]</th>       
                 </tr>
                 <tr>
                   @for ($i = 0; $i < $count_package; $i++)
-                    <th colspan="3">{{ $package[$i]->name }}</th>
+                    <th>{{ $package[$i]->name }}</th>
                   @endfor
                 </tr>
               </thead>
