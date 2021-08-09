@@ -67,7 +67,11 @@
               <tbody>
                 <tr>
                   <td class="text-left">Registration [A]</td>
+                </tr>
+                <tr>
                   <td> Updated Paid Ticket [B] </td>
+                </tr>
+                <tr>
                   <td> Updated Free Ticket [C] </td>
                 </tr>
               </tbody>
