@@ -66,19 +66,19 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>12:00 am - 08:00 am</td>
+                  <th class="text-left">12:00 am - 08:00 am</th>
                 </tr>
                 <tr>
-                  <td>08:00 am - 09:00 am</td>
+                  <th class="text-left">08:00 am - 09:00 am</th>
                 </tr>
                 <tr>
-                  <td>09:00 am - 10:00 am</td>
+                  <th class="text-left">09:00 am - 10:00 am</th>
                 </tr>
                 <tr>
-                  <td>10:00 am - 11:00 am</td>
+                  <th class="text-left">10:00 am - 11:00 am</th>
                 </tr>
                 <tr>
-                  <td>11:00 am - 12:00 pm</td>
+                  <th class="text-left">11:00 am - 12:00 pm</th>
                 </tr>
                 <tr>
                   <th class="text-left">Registration [A]</th>
