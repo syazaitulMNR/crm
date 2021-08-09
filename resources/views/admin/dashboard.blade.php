@@ -57,26 +57,26 @@
     </div>
 
     <div class="col-md-3">
-      @if ( Auth::user()->user_id == 'UID002')
-      <div class="card border-0 shadow text-center" style="height: 117px">
+      @if ( Auth::user()->user_id == 'UID001')
+      <div class="card border-0 shadow text-center" style="height: 150px">
         <h6 class="pt-4">Today's Ticket</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
       @else
       @endif
-      <div class="card border-0 shadow text-center" style="height: 117px">
+      <div class="card border-0 shadow text-center" style="height: 150px">
         <h6 class="pt-4">Updated Ticket [B+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
     </div>
     <div class="col-md-3">
-      <div class="card border-0 shadow text-center text-danger" style="height: 117px">
+      <div class="card border-0 shadow text-center text-danger" style="height: 150px">
         <h6 class="pt-4">Pending Ticket [A-B]</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <br>
-      <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
+      <div class="card border-0 gradient-3 shadow text-center" style="height: 150px">
         <h6 class="pt-4">Overall Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
