@@ -54,7 +54,7 @@
         </div>
 
         @if ( Auth::user()->user_id == 'UID001' )
-        <table>
+        <table class="table">
           <tr>
             <td>January</td>
             <td>$100</td>
