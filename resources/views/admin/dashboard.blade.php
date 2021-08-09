@@ -58,14 +58,14 @@
             <table class="table table-sm text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left w-25">Time</th>
+                  <th class="text-left w-25" rowspan="2">Time</th>
                 </tr>
                 <tr>
                   @for ($i = 0; $i < $count_package; $i++)
                     <th colspan="3">{{ $package[$i]->name }}</th>
                   @endfor
                 </tr>
-                <tr rowspan="2">
+                <tr>
                   <th>Registration [A]</th>
                   <th>Updated Paid Ticket [B]</th>
                   <th>Updated Free Ticket [C]</th>
