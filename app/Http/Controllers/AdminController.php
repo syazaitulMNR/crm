@@ -190,8 +190,8 @@ class AdminController extends Controller
         }
         
         // get the total 
-        $total_today = Carbon::today('Asia/Kuala_Lumpur');
-        $total_now = Carbon::now('Asia/Kuala_Lumpur');
+        $total_today = Carbon::today('Asia/Kuala_Lumpur')->format('d-m-Y');
+        $total_now = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
