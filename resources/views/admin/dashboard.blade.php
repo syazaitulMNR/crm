@@ -69,10 +69,10 @@
                   <td class="text-left">Registration [A]</td>
                 </tr>
                 <tr>
-                  <td> Updated Paid Ticket [B] </td>
+                  <td class="text-left"> Updated Paid Ticket [B] </td>
                 </tr>
                 <tr>
-                  <td> Updated Free Ticket [C] </td>
+                  <td class="text-left"> Updated Free Ticket [C] </td>
                 </tr>
               </tbody>
             </table>
