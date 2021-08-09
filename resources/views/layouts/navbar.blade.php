@@ -84,7 +84,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle nav-link active" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i> <span class="caret"></span>
+                            {{ Auth::user()->email }} <i class="bi bi-person-circle" style="font-size: 1.2rem;"></i> <span class="caret"></span>
                         </a>
         
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">  
