@@ -57,8 +57,8 @@
           <div class="table-responsive pb-4">
             <table class="table table-sm text-center">
               <thead class="thead">
-                <tr>
-                  <th class="text-left w-25" rowspan="2">Time</th>
+                <tr rowspan="2">
+                  <th class="text-left w-25">Time</th>
                 </tr>
                 <tr>
                   @for ($i = 0; $i < $count_package; $i++)
@@ -68,6 +68,7 @@
                 <tr>
                   <th>Registration [A]</th>
                   <th>Updated Paid Ticket [B]</th>
+                  <th>Updated Free Ticket [C]</th>
                 </tr>
               </thead>
               {{-- <tbody>
