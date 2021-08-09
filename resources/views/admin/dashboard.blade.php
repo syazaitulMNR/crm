@@ -58,13 +58,28 @@
             <table class="table text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left">Package</th>
+                  <th class="text-left">Time</th>
                   @for ($i = 0; $i < $count_package; $i++)
                     <th>{{ $package[$i]->name }}</th>
                   @endfor
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td>12:00 am - 08:00 am</td>
+                </tr>
+                <tr>
+                  <td>08:00 am - 09:00 am</td>
+                </tr>
+                <tr>
+                  <td>09:00 am - 10:00 am</td>
+                </tr>
+                <tr>
+                  <td>10:00 am - 11:00 am</td>
+                </tr>
+                <tr>
+                  <td>11:00 am - 12:00 pm</td>
+                </tr>
                 <tr>
                   <th class="text-left">Registration [A]</th>
                   @for ($i = 0; $i < $count_package; $i++)
