@@ -58,16 +58,15 @@
             <table class="table table-sm text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left w-25">Time</th>
+                  <th class="text-left w-25" rowspan="2">Time</th>
+                </tr>
+                <tr>
                   @for ($i = 0; $i < $count_package; $i++)
                     <th colspan="3">{{ $package[$i]->name }}</th>
-                    <th>Registration [A]</th>
-                    <th>Updated Paid Ticket [B]</th>
-                    <th>Updated Free Ticket [C]</th>
                   @endfor
                 </tr>
               </thead>
-              <tbody>
+              {{-- <tbody>
                 <tr>
                   <th class="text-left">12:00 am - 08:00 am</th>
                 </tr>
@@ -103,7 +102,7 @@
                     @endfor
                   </tr>
                 </tfoot>
-              </tbody>
+              </tbody> --}}
             </table>
           </div>
         @else
