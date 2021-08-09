@@ -34,7 +34,7 @@ class AdminController extends Controller
     public function dashboard(Request $request){      
         
         // get date and time
-        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
+        $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y h:i:s');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H:i');
         
@@ -193,11 +193,12 @@ class AdminController extends Controller
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        $totalticket = Ticket::where('product_id', $product_id)->count();
+        $totalticket = Ticket::where('product_id', $product_id)->count();        
+        $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ $from , $to ])->count();
         $pendingticket = $totalregister - $totalpaid;
         $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
+        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'todayticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
