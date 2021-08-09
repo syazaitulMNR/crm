@@ -70,20 +70,20 @@
             <td>$80</td>
           </tr>
         </table>
-        
+
           <div class="table-responsive pb-4">
             <table class="table table-sm table-bordered text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left w-25" rowspan="2">Time</th>                
+                  <th class="text-left" rowspan="2">Time</th>       
+                  <th>Registration [A]</th>
+                  <th>Updated Paid Ticket [B]</th>
+                  <th>Updated Free Ticket [C]</th>       
+                </tr>
+                <tr>
                   @for ($i = 0; $i < $count_package; $i++)
                     <th colspan="3">{{ $package[$i]->name }}</th>
                   @endfor
-                </tr>
-                <tr>
-                  <th>Registration [A]</th>
-                  <th>Updated Paid Ticket [B]</th>
-                  <th>Updated Free Ticket [C]</th>
                 </tr>
               </thead>
               {{-- <tbody>
