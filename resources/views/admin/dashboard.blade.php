@@ -77,8 +77,8 @@
                 <tr>
                   <th class="text-left" rowspan="2">Time</th>       
                   <th colspan="3">Registration [A]</th>
-                  <th>Updated Paid Ticket [B]</th>
-                  <th>Updated Free Ticket [C]</th>       
+                  <th colspan="3">Updated Paid Ticket [B]</th>
+                  <th colspan="3">Updated Free Ticket [C]</th>       
                 </tr>
                 <tr>
                   @for ($i = 0; $i < $count_package; $i++)
