@@ -53,7 +53,7 @@
             <tfoot>              
               <tr>
                 <th colspan="3" class="text-right"> Total Registration {{ $total_yesterday }}</th> 
-                <td>{{ number_format($todayticket) }}</td>
+                <td class="table-active">{{ number_format($todayticket) }}</td>
               </tr>
             </tfoot>
           </table>
