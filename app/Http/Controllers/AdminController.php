@@ -190,7 +190,7 @@ class AdminController extends Controller
         }
         
         // get the total 
-        $total_yesterday = date('Y-m-d 00:00:00', strtotime("-1 day"));
+        $total_yesterday = Carbon::yesterday('Asia/Kuala_Lumpur')->format('d-m-Y');
         $total_now = Carbon::now('Asia/Kuala_Lumpur'); // 2021-07-01 08:55:36
         $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
 
