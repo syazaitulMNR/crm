@@ -168,8 +168,8 @@
 
     <div class="col-md-3 pb-4">
       <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Total</h6>
-        <b class="display-6 pb-3">{{ number_format($totalregister) }}</b><p class="badge rounded-pill bg-success">+ ({{ number_format($todayticket) }})</p>
+        <h6 class="pt-4">Total</h6><span class="badge rounded-pill bg-success">+ ({{ number_format($todayticket) }})</span>
+        <b class="display-6 pb-3">{{ number_format($totalregister) }}</b>
       </div>
     </div>
   </div>
