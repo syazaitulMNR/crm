@@ -112,7 +112,7 @@
 
     <div class="col-md-4">
       <div class="card border-0 shadow text-center text-success" style="height: 117px">
-        <h6 class="pt-4">Registration {{ $total_yesterday }}</h6>
+        <h6 class="pt-4">Total Registration (Yesterday)</h6>
         <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
       </div>
       <br>
@@ -129,7 +129,7 @@
 
   </div>
 
-  <h4 class="border-bottom pb-3">Total Registration</h4>
+  <h4 class="border-bottom pb-3">Overall Registration</h4>
 
   <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
@@ -149,7 +149,7 @@
     </div>
   </div>
 
-  <h4 class="border-bottom pb-3">Total Collection</h4>
+  <h4 class="border-bottom pb-3">Overall Collection</h4>
 
   <div class="row pt-2">
     @for ($i = 0; $i < $count_package; $i++)
