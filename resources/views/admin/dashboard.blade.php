@@ -75,7 +75,7 @@
             <table class="table table-sm table-bordered text-center">
               <thead class="thead">
                 <tr>
-                  <th class="text-left" rowspan="2">Time</th>       
+                  <th class="text-center" rowspan="2">Time</th>       
                   <th colspan="3">Registration [A]</th>
                   <th colspan="3">Updated Paid Ticket [B]</th>
                   <th colspan="3">Updated Free Ticket [C]</th>       
@@ -110,7 +110,7 @@
                 </tr>
                 <tfoot>
                   <tr> 
-                    <th>Total Yesterday</th>
+                    <th class="text-left">Total Yesterday</th>
                   </tr>
                 </tfoot>
               </tbody>
