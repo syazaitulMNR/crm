@@ -84,6 +84,12 @@
                   @for ($i = 0; $i < $count_package; $i++)
                     <th>{{ $package[$i]->name }}</th>
                   @endfor
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <th>{{ $package[$i]->name }}</th>
+                  @endfor
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <th>{{ $package[$i]->name }}</th>
+                  @endfor
                 </tr>
               </thead>
               {{-- <tbody>
