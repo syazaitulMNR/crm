@@ -52,7 +52,7 @@
             </tbody>
             <tfoot>              
               <tr>
-                <td colspan="3">Registration {{ $total_yesterday }}</td> 
+                <th colspan="3" class="text-right"> Total Registration {{ $total_yesterday }}</th> 
                 <td>{{ number_format($todayticket) }}</td>
               </tr>
             </tfoot>
@@ -143,7 +143,7 @@
 
   </div>
 
-  <h4 class="border-bottom pb-3">Total Registration</h4>
+  <h4 class="border-bottom pb-3">Overall Registration</h4>
 
   <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
@@ -163,7 +163,7 @@
     </div>
   </div>
 
-  <h4 class="border-bottom pb-3">Total Collection</h4>
+  <h4 class="border-bottom pb-3">Overall Collection</h4>
 
   <div class="row pt-2">
     @for ($i = 0; $i < $count_package; $i++)
