@@ -192,7 +192,7 @@ class AdminController extends Controller
         // get the total 
         $total_today = Carbon::today('Asia/Kuala_Lumpur'); // 2021-07-01 00:00:00
         $total_now = Carbon::now('Asia/Kuala_Lumpur'); // 2021-07-01 08:55:36
-        $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
+        $todayticket = Ticket::where('product_id', $product_id)->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
 
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
