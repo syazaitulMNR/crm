@@ -81,10 +81,10 @@
                   <th colspan="3">Updated Free Ticket [C]</th>       
                 </tr>
                 <tr>
-                  @for ($i = 1; $i < $count_package; $i++)
+                  @for ($i = 0; $i < $count_package; $i++)
                     <th>{{ $package[$i]->name }}</th>
                   @endfor
-                  @for ($i = 2; $i < $count_package; $i++)
+                  @for ($i = 0; $i < $count_package; $i++)
                     <th>{{ $package[$i]->name }}</th>
                   @endfor
                   @for ($i = 0; $i < $count_package; $i++)
