@@ -111,17 +111,9 @@
     </div>
 
     <div class="col-md-4">
-      @if ( Auth::user()->user_id == 'UID001')
-      <div class="card border-0 shadow text-center" style="height: 117px">
+      <div class="card border-0 shadow text-center text-success" style="height: 117px">
         <h6 class="pt-4">Registration {{ $total_yesterday }}</h6>
-        <b class="display-6 pb-3">{{ number_format($todayticket) }}</b>
-      </div>
-      <br>
-      @else
-      @endif
-      <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Registration {{ $total_yesterday }}</h6>
-        <b class="display-6 pb-3">{{ number_format($todayticket) }}</b>
+        <b class="display-6 pb-3">+ {{ number_format($todayticket) }}</b>
       </div>
       <br>
       <div class="card border-0 shadow text-center" style="height: 117px">
