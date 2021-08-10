@@ -50,27 +50,16 @@
               </tr>
               @endfor
             </tbody>
+            <tfoot>              
+              <tr>
+                <td colspan="3">Registration {{ $total_yesterday }}</td> 
+                <td>{{ number_format($todayticket) }}</td>
+              </tr>
+            </tfoot>
           </table>
         </div>
 
         @if ( Auth::user()->user_id == 'UID001' )
-        <table class="table table-bordered">
-          <tr>
-            <td rowspan="2">$50</td>
-            <td>January</td>
-            <td>$100</td>
-          </tr>
-          <tr>
-            <th>Month</th>
-            <th>Savings</th>
-            <th>Savings for holiday!</th>
-          </tr>
-          <tr>
-            <td>February</td>
-            <td>$80</td>
-          </tr>
-        </table>
-
           <div class="table-responsive pb-4">
             <table class="table table-sm table-bordered text-center">
               <thead class="thead">
