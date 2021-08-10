@@ -22,9 +22,9 @@
   <div class="row pb-2">
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
-      <div class="card bg-white shadow px-4 py-3">
+      <div class="card bg-white shadow px-4 py-4">
 
-        <h5 class="text-center py-2">{{ $product->name }}</h5>
+        <h5 class="text-center py-4">{{ $product->name }}</h5>
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
@@ -50,12 +50,6 @@
               </tr>
               @endfor
             </tbody>
-            <tfoot>              
-              <tr>
-                <th colspan="3" class="text-right"> Total Registration {{ $total_yesterday }}</th> 
-                <td class="table-active">{{ number_format($todayticket) }}</td>
-              </tr>
-            </tfoot>
           </table>
         </div>
 
@@ -136,14 +130,14 @@
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Overall Ticket [A+C]</h6>
-        <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
+        <h6 class="pt-4">Registration {{ $total_yesterday }}</h6>
+        <b class="display-6 pb-3">{{ number_format($todayticket) }}</b>
       </div>
     </div>
 
   </div>
 
-  <h4 class="border-bottom pb-3">Overall Registration</h4>
+  <h4 class="border-bottom pb-3">Total Registration</h4>
 
   <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
@@ -163,7 +157,7 @@
     </div>
   </div>
 
-  <h4 class="border-bottom pb-3">Overall Collection</h4>
+  <h4 class="border-bottom pb-3">Total Collection</h4>
 
   <div class="row pt-2">
     @for ($i = 0; $i < $count_package; $i++)
