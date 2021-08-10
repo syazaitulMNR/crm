@@ -378,7 +378,8 @@ class ReportsController extends Controller
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => $request->offer_id
+                'offer_id' => $request->offer_id,
+                'user_id' => Auth::user()->user_id
             ));
 
         }else{
@@ -407,7 +408,8 @@ class ReportsController extends Controller
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => $request->offer_id
+                'offer_id' => $request->offer_id,
+                'user_id' => Auth::user()->user_id
             ));
 
         }
