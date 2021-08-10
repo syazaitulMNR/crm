@@ -94,7 +94,12 @@
               </thead>
               <tbody>
                 <tr>
-                  <th class="text-left">12:00 am - 08:00 am</th>
+                  <th class="text-left">12:00 am - 08:00 am</th>                  
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <td>{{ number_format($registration[$i]) }}</td>
+                    <td>{{ number_format($paidticket[$i]) }}</td>
+                    <td>{{ number_format($freeticket[$i]) }}</td>
+                  @endfor
                 </tr>
                 <tr>
                   <th class="text-left">08:00 am - 09:00 am</th>
