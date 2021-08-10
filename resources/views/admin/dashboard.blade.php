@@ -24,7 +24,7 @@
     <div class="col-md-8 pb-4">
       <div class="card bg-white shadow px-4 py-2">
 
-        <h5 class="text-center py-4">{{ $product->name }}</h5>
+        <h5 class="text-center py-2">{{ $product->name }}</h5>
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
