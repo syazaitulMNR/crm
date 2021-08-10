@@ -130,7 +130,7 @@
     <div class="col-md-4">
       @if ( Auth::user()->user_id == 'UID001')
       <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Today's Ticket</h6>
+        <h6 class="pt-4">Registration Yesterday</h6>
         <b class="display-6 pb-3">{{ number_format($todayticket) }}</b>
       </div>
       <br>
@@ -169,7 +169,7 @@
     <div class="col-md-3 pb-4">
       <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
         <h6 class="pt-4">Total</h6>
-        <b class="display-6 pb-3">{{ number_format($totalregister) }}</b>
+        <b class="display-6 pb-3">{{ number_format($totalregister) }}</b><span class="badge rounded-pill bg-success">+ ({{ number_format($todayticket) }})</span>
       </div>
     </div>
   </div>
