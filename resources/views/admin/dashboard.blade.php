@@ -92,7 +92,7 @@
                   @endfor
                 </tr>
               </thead>
-              {{-- <tbody>
+              <tbody>
                 <tr>
                   <th class="text-left">12:00 am - 08:00 am</th>
                 </tr>
@@ -128,7 +128,7 @@
                     @endfor
                   </tr>
                 </tfoot>
-              </tbody> --}}
+              </tbody>
             </table>
           </div>
         @else
