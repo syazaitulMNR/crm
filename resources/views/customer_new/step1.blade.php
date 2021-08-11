@@ -42,7 +42,7 @@ Pendaftaran Pembeli
                             </ul>
                         </div>
                     @endif
-
+                    {{ ucfirst(trans('messages.welcome')) }}
                     <div class="form-group row">
 
                         <input type="hidden" value="{{ $stud_id ?? '' }}" class="form-control" name="stud_id" readonly/>
@@ -54,11 +54,11 @@ Pendaftaran Pembeli
 
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Pertama:</label>
-                            <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name" style="text-transform:uppercase">
+                            <input type="text" value="{{ ucfirst(trans($student->first_name ?? '')) }}" class="form-control" placeholder="Mohammad"  name="first_name" style="text-transform:uppercase">
                         </div>
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Akhir:</label>
-                            <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name" style="text-transform:uppercase">
+                            <input type="text" value="{{ ucfirst(trans($student->last_name ?? '')) }}" class="form-control" placeholder="Ali"  name="last_name" style="text-transform:uppercase">
                         </div>
 
                         <div class="col-md-6 pb-2">
