@@ -42,7 +42,7 @@ Pendaftaran Pembeli
                             </ul>
                         </div>
                     @endif
-                    {{ ucfirst(trans('messages.welcome')) }}
+                    
                     <div class="form-group row">
 
                         <input type="hidden" value="{{ $stud_id ?? '' }}" class="form-control" name="stud_id" readonly/>
