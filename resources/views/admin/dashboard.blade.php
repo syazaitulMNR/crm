@@ -22,14 +22,14 @@
   <div class="row pb-2">
     @if ( Auth::user()->user_id == 'UID001' )
     
-      <div class="col-md-6">
+      <div class="col-md-6 pb-3">
         <div class="card border-0 shadow text-center text-success" style="height: 117px">
           <h6 class="pt-4">Total Registration [Yesterday]</h6>
           <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
         </div>
       </div>
     
-      <div class="col-md-6">
+      <div class="col-md-6pb-3">
         <div class="card border-0 shadow text-center text-success" style="height: 117px">
           <h6 class="pt-4">Total Registration [Yesterday]</h6>
           <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
