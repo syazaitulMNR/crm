@@ -36,7 +36,7 @@ class AdminController extends Controller
         // get date and time
         $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
-        $time = "00:02";
+        $time = "00:00";
         
         // show the duration of current 2 hours
         // the $time is +1 hour from the duration
@@ -152,7 +152,7 @@ class AdminController extends Controller
             $duration = "10 pm - 11 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "23:10" && $time <= "00:10") {
+        } elseif ($time >= "23:10" && $time <= "00:00") {
 
             $from = date('Y-m-d 15:00:00');
             $to = date('Y-m-d 15:59:59');
