@@ -53,7 +53,7 @@
           </table>
         </div>
 
-        @if ( Auth::user()->user_id == 'UID001' )
+        {{-- @if ( Auth::user()->user_id == 'UID001' )
           <div class="table-responsive pb-4">
             <table class="table table-sm table-bordered text-center">
               <thead class="thead">
@@ -105,7 +105,7 @@
             </table>
           </div>
         @else
-        @endif
+        @endif --}}
 
       </div>
     </div>
