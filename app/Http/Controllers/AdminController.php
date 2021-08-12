@@ -152,7 +152,7 @@ class AdminController extends Controller
             $duration = "10 pm - 11 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "23:10" && $time <= "00:00") {
+        } elseif ($time >= "23:10" && $time <= "00:10") {
 
             $from = date('Y-m-d 15:00:00');
             $to = date('Y-m-d 15:59:59');
@@ -161,10 +161,10 @@ class AdminController extends Controller
 
         } else {
 
-            $from = "undefined";
-            $to = "undefined";
+            $from = date('Y-m-d 15:00:00');
+            $to = date('Y-m-d 15:59:59');
+            $duration = "11 pm - 12 am";
             $greetings = "Good Evening!";
-            $duration = "undefined";
 
         }
 
