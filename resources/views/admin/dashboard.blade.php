@@ -20,7 +20,7 @@
   @endif
 
   <div class="row pb-2">
-    <div class="col-md-12 pb-2">
+    {{-- <div class="col-md-12 pb-2">
 
       <div class="card border-0 shadow text-center text-success" style="height: 117px">
         <h6 class="pt-4">Total Registration [Yesterday]</h6>
@@ -31,7 +31,7 @@
         <h6 class="pt-4">Total Registration [Yesterday]</h6>
         <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
       </div>
-    </div>
+    </div> --}}
 
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
