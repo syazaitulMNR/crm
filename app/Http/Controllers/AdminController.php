@@ -161,6 +161,9 @@ class AdminController extends Controller
 
         } else {
 
+            $from = "undefined";
+            $to = "undefined";
+            $greetings = "Good Evening!";
             $duration = "undefined";
 
         }
