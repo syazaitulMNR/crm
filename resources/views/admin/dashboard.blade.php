@@ -20,25 +20,21 @@
   @endif
 
   <div class="row pb-2">
-    @if ( Auth::user()->user_id == 'UID001' )
-    
-      <div class="col-md-6 pb-3">
-        <div class="card border-0 shadow text-center text-success" style="height: 117px">
-          <h6 class="pt-4">Today's Registration</h6>
-          <b class="display-6 pb-3">+{{ number_format($total_now) }}</b>
-        </div>
-      </div>
-    
-      <div class="col-md-6 pb-3">
-        <div class="card border-0 shadow text-center text-success" style="height: 117px">
-          <h6 class="pt-4">Yesterday's Registration</h6>
-          <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
-        </div>
-      </div>
-    
-    @else
-    @endif
 
+    <div class="col-md-6 pb-3">
+      <div class="card border-0 shadow text-center text-success" style="height: 117px">
+        <h6 class="pt-4">Today's Registration</h6>
+        <b class="display-6 pb-3">+{{ number_format($total_now) }}</b>
+      </div>
+    </div>
+  
+    <div class="col-md-6 pb-3">
+      <div class="card border-0 shadow text-center text-success" style="height: 117px">
+        <h6 class="pt-4">Yesterday's Registration</h6>
+        <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
+      </div>
+    </div>
+    
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
       <div class="card bg-white shadow px-4 py-4">
