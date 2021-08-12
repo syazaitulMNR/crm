@@ -33,6 +33,8 @@
       </div>
     </div>
 
+    <br>
+    
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
       <div class="card bg-white shadow px-4 py-4">
