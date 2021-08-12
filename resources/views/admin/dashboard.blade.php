@@ -24,15 +24,15 @@
     
       <div class="col-md-6 pb-3">
         <div class="card border-0 shadow text-center text-success" style="height: 117px">
-          <h6 class="pt-4">Total Registration [Yesterday]</h6>
-          <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
+          <h6 class="pt-4">Today's Registration</h6>
+          <b class="display-6 pb-3">+{{ number_format($total_now) }}</b>
         </div>
       </div>
     
       <div class="col-md-6 pb-3">
         <div class="card border-0 shadow text-center text-success" style="height: 117px">
-          <h6 class="pt-4">Total Registration [Yesterday]</h6>
-          <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
+          <h6 class="pt-4">Yesterday's Registration</h6>
+          <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
         </div>
       </div>
     
@@ -130,11 +130,6 @@
     </div>
 
     <div class="col-md-4">
-      <div class="card border-0 shadow text-center text-success" style="height: 117px">
-        <h6 class="pt-4">Total Registration [Yesterday]</h6>
-        <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
-      </div>
-      <br>
       <div class="card border-0 shadow text-center" style="height: 117px">
         <h6 class="pt-4">Total Updated Ticket [B+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
@@ -144,6 +139,7 @@
         <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
+      <br>
     </div>
 
   </div>
