@@ -20,8 +20,8 @@
   @endif
 
   <div class="row pb-2">
+    @if ( Auth::user()->user_id == 'UID001' )
     <div class="col-md-12 pb-2">
-
       <div class="col-md-6">
         <div class="card border-0 shadow text-center text-success" style="height: 117px">
           <h6 class="pt-4">Total Registration [Yesterday]</h6>
@@ -36,6 +36,8 @@
         </div>
       </div>
     </div>
+    @else
+    @endif
 
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
