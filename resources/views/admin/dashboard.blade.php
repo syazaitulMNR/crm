@@ -20,18 +20,24 @@
   @endif
 
   <div class="row pb-2">
-    {{-- <div class="col-md-12 pb-2">
-
-      <div class="card border-0 shadow text-center text-success" style="height: 117px">
-        <h6 class="pt-4">Total Registration [Yesterday]</h6>
-        <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
+    @if ( Auth::user()->user_id == 'UID001' )
+    
+      <div class="col-md-6 pb-3">
+        <div class="card border-0 shadow text-center text-success" style="height: 117px">
+          <h6 class="pt-4">Today's Registration</h6>
+          <b class="display-6 pb-3">+{{ number_format($total_now) }}</b>
+        </div>
       </div>
     
-      <div class="card border-0 shadow text-center text-success" style="height: 117px">
-        <h6 class="pt-4">Total Registration [Yesterday]</h6>
-        <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
+      <div class="col-md-6 pb-3">
+        <div class="card border-0 shadow text-center text-success" style="height: 117px">
+          <h6 class="pt-4">Yesterday's Registration</h6>
+          <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
+        </div>
       </div>
-    </div> --}}
+    
+    @else
+    @endif
 
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
@@ -123,10 +129,10 @@
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card border-0 shadow text-center text-success" style="height: 117px">
-        <h6 class="pt-4">Total Registration [Yesterday]</h6>
-        <b class="display-6 pb-3">+{{ number_format($todayticket) }}</b>
+    <div class="col-md-4">      
+      <div class="card border-0 shadow text-center text-danger" style="height: 117px">
+        <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
+        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <br>
       <div class="card border-0 shadow text-center" style="height: 117px">
@@ -134,9 +140,9 @@
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
-      <div class="card border-0 shadow text-center text-danger" style="height: 117px">
-        <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
-        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
+      <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
+        <h6 class="pt-4">Overall Ticket [A+C]</h6>
+        <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
 
