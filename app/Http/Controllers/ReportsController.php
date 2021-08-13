@@ -358,59 +358,117 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-        // $users = User::all();
-
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
-        /*-- Manage Email ---------------------------------------------------*/
-        $fileName = $product->name.'_participant.csv';
-        $columnNames = [
-            'Ticket ID',
-            'First Name',
-            'Last Name',
-            'IC No',
-            'Phone No',
-            'Email',
-            'Package',
-            'Ticket Type',
-            'Ticket Source',
-            'Registered At'
-        ];
+        $users = User::all();
         
-        $file = fopen(public_path('export/') . $fileName, 'w');
-        fputcsv($file, $columnNames);
-        
-        foreach ($student as $students) {
-            foreach($ticket as $tickets){
-                foreach($package as $packages){
-                    // foreach($users as $user){
-                        if($tickets->ic == $students->ic){
-                            if($tickets->package_id == $packages->package_id){
-                                // if($tickets->user_id == $user->user_id){
-                                    
-                                    fputcsv($file, [
-                                        $tickets->ticket_id,
-                                        $students->first_name,
-                                        $students->last_name,
-                                        $students->ic,
-                                        $students->phoneno,
-                                        $students->email,
-                                        $packages->name,
-                                        $tickets->ticket_type,
-                                        $tickets->user_id,
-                                        $tickets->created_at,
-                                    ]);
+        $filter = $request->filter_export;
 
-                                // }
+        if($filter == 'manual_participant') {
+            // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+            /*-- Manage Email ---------------------------------------------------*/
+            $fileName = $product->product_id.' - Manual_Participant.csv';
+            $columnNames = [
+                'Ticket ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Package',
+                'Ticket Type',
+                'Ticket Source',
+                'Registered At'
+            ];
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($ticket as $tickets){
+                    foreach($package as $packages){
+                        foreach($users as $user){
+                            if($tickets->ic == $students->ic){
+                                if($tickets->package_id == $packages->package_id){
+                                    if($tickets->user_id == $user->user_id){
+                                        
+                                        fputcsv($file, [
+                                            $tickets->ticket_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $packages->name,
+                                            $tickets->ticket_type,
+                                            $tickets->user_id,
+                                            $tickets->created_at,
+                                        ]);
 
+                                    }
+
+                                }
                             }
                         }
-                    // }
+                    }
                 }
+                
             }
             
+            fclose($file);
+
+        } else {
+
+            /*-- Manage Email ---------------------------------------------------*/
+            $fileName = $product->product_id.' - All_Participant.csv';
+            $columnNames = [
+                'Ticket ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Package',
+                'Ticket Type',
+                'Ticket Source',
+                'Registered At'
+            ];
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($ticket as $tickets){
+                    foreach($package as $packages){
+                        // foreach($users as $user){
+                            if($tickets->ic == $students->ic){
+                                if($tickets->package_id == $packages->package_id){
+                                    // if($tickets->user_id == $user->user_id){
+                                        
+                                        fputcsv($file, [
+                                            $tickets->ticket_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $packages->name,
+                                            $tickets->ticket_type,
+                                            $tickets->user_id,
+                                            $tickets->created_at,
+                                        ]);
+
+                                    // }
+
+                                }
+                            }
+                        // }
+                    }
+                }
+                
+            }
+            
+            fclose($file);
+
         }
-        
-        fclose($file);
 
         
         Mail::send('emails.export_mail', [], function($message) use ($fileName)

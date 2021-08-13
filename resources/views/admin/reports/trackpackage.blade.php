@@ -98,6 +98,23 @@ Sales Report
                   
                     <div class='col-md-12 px-4'>
                       
+                      <p>Please choose the data that you want to export :</p>
+                      
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="manual_participant">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Manual Participant Only
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_participant">
+                        <label class="form-check-label" for="exampleRadios2">
+                          All Participant
+                        </label>
+                      </div>
+
+                      <br>
+
                       <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Send to</label>
                         <div class="col-sm-10">
