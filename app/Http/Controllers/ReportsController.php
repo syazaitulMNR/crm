@@ -258,7 +258,7 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $payments->offer_id,
                                             $payments->update_count,
-                                            $payments->user_id,
+                                            $user->email,
                                             $payments->created_at,
                                         ]);
 
@@ -399,7 +399,7 @@ class ReportsController extends Controller
                                             $students->email,
                                             $packages->name,
                                             $tickets->ticket_type,
-                                            $tickets->user_id,
+                                            $user->email,
                                             $tickets->created_at,
                                         ]);
 
