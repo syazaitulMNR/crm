@@ -72,7 +72,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-        $users = User::all();
+        // $users = User::all();
       
         $filter = $request->filter_export;
         $receipient_mail = $request->receipient_mail;
@@ -108,10 +108,10 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        foreach($users as $user){
+                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    if($payments->user_id == $user->user_id){
+                                    // if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -127,15 +127,15 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $payments->offer_id,
                                             $payments->update_count,
-                                            $user->email,
+                                            $payments->user_id,
                                             $payments->created_at,
                                         ]);
 
-                                    }
+                                    // }
 
                                 }
                             }
-                        }
+                        // }
                     }
                 }
                 
@@ -174,10 +174,10 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        foreach($users as $user){
+                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    if($payments->user_id == $user->user_id){
+                                    // if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -193,14 +193,14 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $payments->offer_id,
                                             $payments->update_count,
-                                            $user->email,
+                                            $payments->user_id,
                                             $payments->created_at,
                                         ]);
 
-                                    }
+                                    // }
                                 }
                             }
-                        }
+                        // }
                     }
                 }
                 
@@ -239,10 +239,10 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        foreach($users as $user){
+                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    if($payments->user_id == $user->user_id){
+                                    // if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -258,14 +258,14 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $payments->offer_id,
                                             $payments->update_count,
-                                            $user->email,
+                                            $payments->user_id,
                                             $payments->created_at,
                                         ]);
 
-                                    }
+                                    // }
                                 }
                             }
-                        }
+                        // }
                     }
                 }
                 
@@ -293,7 +293,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-        $users = User::all();
+        // $users = User::all();
 
         // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
         /*-- Manage Email ---------------------------------------------------*/
@@ -317,10 +317,10 @@ class ReportsController extends Controller
         foreach ($student as $students) {
             foreach($ticket as $tickets){
                 foreach($package as $packages){
-                    foreach($users as $user){
+                    // foreach($users as $user){
                         if($tickets->ic == $students->ic){
                             if($tickets->package_id == $packages->package_id){
-                                if($tickets->user_id == $user->user_id){
+                                // if($tickets->user_id == $user->user_id){
                                     
                                     fputcsv($file, [
                                         $tickets->ticket_id,
@@ -331,15 +331,15 @@ class ReportsController extends Controller
                                         $students->email,
                                         $packages->name,
                                         $tickets->ticket_type,
-                                        $user->email,
+                                        $tickets->user_id,
                                         $tickets->created_at,
                                     ]);
 
-                                }
+                                // }
 
                             }
                         }
-                    }
+                    // }
                 }
             }
             
