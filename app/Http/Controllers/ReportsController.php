@@ -301,22 +301,27 @@ class ReportsController extends Controller
         foreach ($student as $students) {
             foreach($ticket as $tickets){
                 foreach($package as $packages){
-                    if($tickets->ic == $students->ic){
-                        if($tickets->package_id == $packages->package_id){
+                    foreach($users as $user){
+                        if($tickets->ic == $students->ic){
+                            if($tickets->package_id == $packages->package_id){
+                                if($tickets->user_id == $user->user_id){
+                                    
+                                    fputcsv($file, [
+                                        $tickets->ticket_id,
+                                        $students->first_name,
+                                        $students->last_name,
+                                        $students->ic,
+                                        $students->phoneno,
+                                        $students->email,
+                                        $packages->name,
+                                        $tickets->ticket_type,
+                                        $user->email,
+                                        $tickets->created_at,
+                                    ]);
 
-                            fputcsv($file, [
-                                $tickets->ticket_id,
-                                $students->first_name,
-                                $students->last_name,
-                                $students->ic,
-                                $students->phoneno,
-                                $students->email,
-                                $packages->name,
-                                $tickets->ticket_type,
-                                $tickets->user_id,
-                                $tickets->created_at,
-                            ]);
+                                }
 
+                            }
                         }
                     }
                 }
