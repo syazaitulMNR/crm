@@ -18,7 +18,8 @@ class TicketTableSeeder extends Seeder
             'ic' => '912345678900',
             'product_id' => 'PRD001', 
             'package_id' => 'PKD001',
-            'payment_id'=> 'OD001'
+            'payment_id'=> 'OD001',
+            'user_id' => 'UID001',
         ]);
     }
 }

@@ -12,11 +12,12 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class ParticipantImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
-    private $prd_id, $pkd_id;
+    private $prd_id, $pkd_id, $user_id;
 
-    public function __construct($prd_id, $pkd_id){
+    public function __construct($prd_id, $pkd_id, $user_id){
         $this->product = $prd_id;
         $this->package = $pkd_id;
+        $this->user_id = $user_id;
     }
 
     public function collection(Collection $rows)
@@ -38,7 +39,8 @@ class ParticipantImport implements ToCollection, WithChunkReading, WithHeadingRo
                     'email_status'  => 'Hold',
                     'stud_id'       => $student->stud_id,
                     'product_id'    => $this->product,
-                    'package_id'    => $this->package
+                    'package_id'    => $this->package,
+                    'user_id'       => $this->user_id,
                 ]);
 
             }else{
@@ -64,7 +66,8 @@ class ParticipantImport implements ToCollection, WithChunkReading, WithHeadingRo
                     'email_status'  => 'Hold',
                     'stud_id'       => $stud_id,
                     'product_id'    => $this->product,
-                    'package_id'    => $this->package
+                    'package_id'    => $this->package,
+                    'user_id'       => $this->user_id,
                 ]);
             }
         }

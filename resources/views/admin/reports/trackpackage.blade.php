@@ -49,6 +49,12 @@ Sales Report
                         </label>
                       </div>
                       <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="manual_register">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Manual Registration Only
+                        </label>
+                      </div>
+                      <div class="form-check">
                         <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_buyer">
                         <label class="form-check-label" for="exampleRadios2">
                           All Buyer
@@ -82,7 +88,7 @@ Sales Report
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header border-bottom-0">
-                    <h5 class="modal-title" id="exampleModalLabel">Export Participan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Export Participant</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -92,6 +98,23 @@ Sales Report
                   
                     <div class='col-md-12 px-4'>
                       
+                      <p>Please choose the data that you want to export :</p>
+                      
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="manual_participant">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Manual Participant Only
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_participant">
+                        <label class="form-check-label" for="exampleRadios2">
+                          All Participant
+                        </label>
+                      </div>
+
+                      <br>
+
                       <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Send to</label>
                         <div class="col-sm-10">

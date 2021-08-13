@@ -29,6 +29,7 @@ class CreateTicketTable extends Migration
             $table->string('product_id');
             $table->string('package_id');
             $table->string('payment_id');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
