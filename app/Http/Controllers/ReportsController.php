@@ -156,6 +156,7 @@ class ReportsController extends Controller
                 'Package',
                 'Offer ID',
                 'Update Participant',
+                'Payment Source',
                 'Purchased At'
             ];
 
@@ -183,6 +184,7 @@ class ReportsController extends Controller
                                     $packages->name,
                                     $payments->offer_id,
                                     $payments->update_count,
+                                    $payments->user_id,
                                     $payments->created_at,
                                 ]);
 
@@ -215,6 +217,7 @@ class ReportsController extends Controller
                 'Package',
                 'Offer ID',
                 'Update Participant',
+                'Payment Source',
                 'Purchased At'
             ];
 
@@ -242,6 +245,7 @@ class ReportsController extends Controller
                                     $packages->name,
                                     $payments->offer_id,
                                     $payments->update_count,
+                                    $payments->user_id,
                                     $payments->created_at,
                                 ]);
 
