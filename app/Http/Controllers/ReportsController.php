@@ -72,6 +72,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
+        $users = User::all();
       
         $filter = $request->filter_export;
         $receipient_mail = $request->receipient_mail;
@@ -107,27 +108,32 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        if($payments->stud_id == $students->stud_id){
-                            if($payments->package_id == $packages->package_id){
+                        foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    if($tickets->user_id == $user->user_id){
 
-                                fputcsv($file, [
-                                    $payments->payment_id,
-                                    $students->first_name,
-                                    $students->last_name,
-                                    $students->ic,
-                                    $students->phoneno,
-                                    $students->email,
-                                    $payments->quantity,
-                                    $payments->totalprice,
-                                    $payments->status,
-                                    $payments->pay_method,
-                                    $packages->name,
-                                    $payments->offer_id,
-                                    $payments->update_count,
-                                    $payments->user_id,
-                                    $payments->created_at,
-                                ]);
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $user->email,
+                                            $payments->created_at,
+                                        ]);
 
+                                    }
+
+                                }
                             }
                         }
                     }
@@ -168,27 +174,31 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        if($payments->stud_id == $students->stud_id){
-                            if($payments->package_id == $packages->package_id){
+                        foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    if($tickets->user_id == $user->user_id){
 
-                                fputcsv($file, [
-                                    $payments->payment_id,
-                                    $students->first_name,
-                                    $students->last_name,
-                                    $students->ic,
-                                    $students->phoneno,
-                                    $students->email,
-                                    $payments->quantity,
-                                    $payments->totalprice,
-                                    $payments->status,
-                                    $payments->pay_method,
-                                    $packages->name,
-                                    $payments->offer_id,
-                                    $payments->update_count,
-                                    $payments->user_id,
-                                    $payments->created_at,
-                                ]);
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $user->email,
+                                            $payments->created_at,
+                                        ]);
 
+                                    }
+                                }
                             }
                         }
                     }
@@ -229,27 +239,31 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        if($payments->stud_id == $students->stud_id){
-                            if($payments->package_id == $packages->package_id){
+                        foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    if($tickets->user_id == $user->user_id){
 
-                                fputcsv($file, [
-                                    $payments->payment_id,
-                                    $students->first_name,
-                                    $students->last_name,
-                                    $students->ic,
-                                    $students->phoneno,
-                                    $students->email,
-                                    $payments->quantity,
-                                    $payments->totalprice,
-                                    $payments->status,
-                                    $payments->pay_method,
-                                    $packages->name,
-                                    $payments->offer_id,
-                                    $payments->update_count,
-                                    $payments->user_id,
-                                    $payments->created_at,
-                                ]);
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $user->email,
+                                            $payments->created_at,
+                                        ]);
 
+                                    }
+                                }
                             }
                         }
                     }
