@@ -352,7 +352,7 @@ class ReportsController extends Controller
 
     }
 
-    public function exportParticipant($product_id)
+    public function exportParticipant($product_id, Request $request)
     {
         $ticket = Ticket::where('product_id', $product_id)->get();
         $student = Student::orderBy('id','desc')->get();
