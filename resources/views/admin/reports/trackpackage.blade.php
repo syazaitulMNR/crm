@@ -49,6 +49,12 @@ Sales Report
                         </label>
                       </div>
                       <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="manual_register">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Manual Registration Only
+                        </label>
+                      </div>
+                      <div class="form-check">
                         <input class="form-check-input" type="radio" name="filter_export" id="exampleRadios2" value="all_buyer">
                         <label class="form-check-label" for="exampleRadios2">
                           All Buyer

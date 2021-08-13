@@ -208,6 +208,71 @@ class ReportsController extends Controller
             
             fclose($file);
 
+        } elseif ($filter == 'manual_register') {
+
+            $payment = Payment::where('product_id', $product_id)->get();
+            
+            /*-- All Buyer ---------------------------------------------------*/
+            $fileName = $product->product_id.' - Manual_Registration.csv';
+            $columnNames = [
+                'Customer ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Quantity',
+                'Payment',
+                'Status',
+                'Payment Method',
+                'Package',
+                'Offer ID',
+                'Update Participant',
+                'Payment Source',
+                'Purchased At'
+            ];
+
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($payment as $payments){
+                    foreach($package as $packages){
+                        foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    if($payments->user_id == $user->user_id){
+
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $payments->user_id,
+                                            $payments->created_at,
+                                        ]);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
+            fclose($file);
+
         } else {
             
             $payment = Payment::where('product_id', $product_id)->get();
