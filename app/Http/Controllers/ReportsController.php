@@ -681,8 +681,9 @@ class ReportsController extends Controller
 
         $prd_id = $product->product_id;
         $pkd_id = $package->package_id;
+        $user_id = Auth::user()->user_id;
 
-        Excel::import(new ParticipantImport($prd_id, $pkd_id), request()->file('file'));
+        Excel::import(new ParticipantImport($prd_id, $pkd_id, $user_id), request()->file('file'));
 
         return redirect('view/participant/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
     }
