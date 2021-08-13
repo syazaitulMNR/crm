@@ -72,7 +72,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-        // $users = User::all();
+        $users = User::all();
       
         $filter = $request->filter_export;
         $receipient_mail = $request->receipient_mail;
