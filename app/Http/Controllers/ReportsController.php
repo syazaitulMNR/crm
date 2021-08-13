@@ -111,7 +111,7 @@ class ReportsController extends Controller
                         foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    if($tickets->user_id == $user->user_id){
+                                    if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -177,7 +177,7 @@ class ReportsController extends Controller
                         foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    if($tickets->user_id == $user->user_id){
+                                    if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -242,7 +242,7 @@ class ReportsController extends Controller
                         foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    if($tickets->user_id == $user->user_id){
+                                    if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
