@@ -9,6 +9,7 @@ use App\Package;
 use App\Payment;
 use App\Ticket;
 use App\Offer;
+use App\User;
 use App\Imports\ParticipantImport;
 // use App\Exports\ProgramExport;
 use App\Exports\ParticipantFormat;
@@ -71,6 +72,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
+        $users = User::all();
       
         $filter = $request->filter_export;
         $receipient_mail = $request->receipient_mail;
@@ -95,6 +97,7 @@ class ReportsController extends Controller
                 'Package',
                 'Offer ID',
                 'Update Participant',
+                'Payment Source',
                 'Purchased At'
             ];
 
@@ -105,28 +108,34 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        if($payments->stud_id == $students->stud_id){
-                            if($payments->package_id == $packages->package_id){
+                        // foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    // if($payments->user_id == $user->user_id){
 
-                                fputcsv($file, [
-                                    $payments->payment_id,
-                                    $students->first_name,
-                                    $students->last_name,
-                                    $students->ic,
-                                    $students->phoneno,
-                                    $students->email,
-                                    $payments->quantity,
-                                    $payments->totalprice,
-                                    $payments->status,
-                                    $payments->pay_method,
-                                    $packages->name,
-                                    $payments->offer_id,
-                                    $payments->update_count,
-                                    $payments->created_at,
-                                ]);
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $payments->user_id,
+                                            $payments->created_at,
+                                        ]);
 
+                                    // }
+
+                                }
                             }
-                        }
+                        // }
                     }
                 }
                 
@@ -154,6 +163,7 @@ class ReportsController extends Controller
                 'Package',
                 'Offer ID',
                 'Update Participant',
+                'Payment Source',
                 'Purchased At'
             ];
 
@@ -164,26 +174,96 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        if($payments->stud_id == $students->stud_id){
-                            if($payments->package_id == $packages->package_id){
+                        // foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    // if($payments->user_id == $user->user_id){
 
-                                fputcsv($file, [
-                                    $payments->payment_id,
-                                    $students->first_name,
-                                    $students->last_name,
-                                    $students->ic,
-                                    $students->phoneno,
-                                    $students->email,
-                                    $payments->quantity,
-                                    $payments->totalprice,
-                                    $payments->status,
-                                    $payments->pay_method,
-                                    $packages->name,
-                                    $payments->offer_id,
-                                    $payments->update_count,
-                                    $payments->created_at,
-                                ]);
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $payments->user_id,
+                                            $payments->created_at,
+                                        ]);
 
+                                    // }
+                                }
+                            }
+                        // }
+                    }
+                }
+                
+            }
+            
+            fclose($file);
+
+        } elseif ($filter == 'manual_register') {
+
+            $payment = Payment::where('product_id', $product_id)->get();
+            
+            /*-- All Buyer ---------------------------------------------------*/
+            $fileName = $product->product_id.' - Manual_Registration.csv';
+            $columnNames = [
+                'Customer ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Quantity',
+                'Payment',
+                'Status',
+                'Payment Method',
+                'Package',
+                'Offer ID',
+                'Update Participant',
+                'Payment Source',
+                'Purchased At'
+            ];
+
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($payment as $payments){
+                    foreach($package as $packages){
+                        foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    if($payments->user_id == $user->user_id){
+
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $user->email,
+                                            $payments->created_at,
+                                        ]);
+
+                                    }
+                                }
                             }
                         }
                     }
@@ -213,6 +293,7 @@ class ReportsController extends Controller
                 'Package',
                 'Offer ID',
                 'Update Participant',
+                'Payment Source',
                 'Purchased At'
             ];
 
@@ -223,28 +304,33 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        if($payments->stud_id == $students->stud_id){
-                            if($payments->package_id == $packages->package_id){
+                        // foreach($users as $user){
+                            if($payments->stud_id == $students->stud_id){
+                                if($payments->package_id == $packages->package_id){
+                                    // if($payments->user_id == $user->user_id){
 
-                                fputcsv($file, [
-                                    $payments->payment_id,
-                                    $students->first_name,
-                                    $students->last_name,
-                                    $students->ic,
-                                    $students->phoneno,
-                                    $students->email,
-                                    $payments->quantity,
-                                    $payments->totalprice,
-                                    $payments->status,
-                                    $payments->pay_method,
-                                    $packages->name,
-                                    $payments->offer_id,
-                                    $payments->update_count,
-                                    $payments->created_at,
-                                ]);
+                                        fputcsv($file, [
+                                            $payments->payment_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $payments->quantity,
+                                            $payments->totalprice,
+                                            $payments->status,
+                                            $payments->pay_method,
+                                            $packages->name,
+                                            $payments->offer_id,
+                                            $payments->update_count,
+                                            $payments->user_id,
+                                            $payments->created_at,
+                                        ]);
 
+                                    // }
+                                }
                             }
-                        }
+                        // }
                     }
                 }
                 
@@ -266,57 +352,123 @@ class ReportsController extends Controller
 
     }
 
-    public function exportParticipant($product_id)
+    public function exportParticipant($product_id, Request $request)
     {
         $ticket = Ticket::where('product_id', $product_id)->get();
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
-
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
-        /*-- Manage Email ---------------------------------------------------*/
-        $fileName = $product->name.'_participant.csv';
-        $columnNames = [
-            'Ticket ID',
-            'First Name',
-            'Last Name',
-            'IC No',
-            'Phone No',
-            'Email',
-            'Package',
-            'Ticket Type',
-            'Registered At'
-        ];
+        $users = User::all();
         
-        $file = fopen(public_path('export/') . $fileName, 'w');
-        fputcsv($file, $columnNames);
-        
-        foreach ($student as $students) {
-            foreach($ticket as $tickets){
-                foreach($package as $packages){
-                    if($tickets->ic == $students->ic){
-                        if($tickets->package_id == $packages->package_id){
+        $filter = $request->filter_export;
 
-                            fputcsv($file, [
-                                $tickets->ticket_id,
-                                $students->first_name,
-                                $students->last_name,
-                                $students->ic,
-                                $students->phoneno,
-                                $students->email,
-                                $packages->name,
-                                $tickets->ticket_type,
-                                $tickets->created_at,
-                            ]);
+        if($filter == 'manual_participant') {
+            // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
+            /*-- Manage Email ---------------------------------------------------*/
+            $fileName = $product->product_id.' - Manual_Participant.csv';
+            $columnNames = [
+                'Ticket ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Package',
+                'Ticket Type',
+                'Ticket Source',
+                'Registered At'
+            ];
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($ticket as $tickets){
+                    foreach($package as $packages){
+                        foreach($users as $user){
+                            if($tickets->ic == $students->ic){
+                                if($tickets->package_id == $packages->package_id){
+                                    if($tickets->user_id == $user->user_id){
+                                        
+                                        fputcsv($file, [
+                                            $tickets->ticket_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $packages->name,
+                                            $tickets->ticket_type,
+                                            $user->email,
+                                            $tickets->created_at,
+                                        ]);
 
+                                    }
+
+                                }
+                            }
                         }
                     }
                 }
+                
             }
             
+            fclose($file);
+
+        } else {
+
+            /*-- Manage Email ---------------------------------------------------*/
+            $fileName = $product->product_id.' - All_Participant.csv';
+            $columnNames = [
+                'Ticket ID',
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Package',
+                'Ticket Type',
+                'Ticket Source',
+                'Registered At'
+            ];
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($ticket as $tickets){
+                    foreach($package as $packages){
+                        // foreach($users as $user){
+                            if($tickets->ic == $students->ic){
+                                if($tickets->package_id == $packages->package_id){
+                                    // if($tickets->user_id == $user->user_id){
+                                        
+                                        fputcsv($file, [
+                                            $tickets->ticket_id,
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $packages->name,
+                                            $tickets->ticket_type,
+                                            $tickets->user_id,
+                                            $tickets->created_at,
+                                        ]);
+
+                                    // }
+
+                                }
+                            }
+                        // }
+                    }
+                }
+                
+            }
+            
+            fclose($file);
+
         }
-        
-        fclose($file);
 
         
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
@@ -378,7 +530,8 @@ class ReportsController extends Controller
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => $request->offer_id
+                'offer_id' => $request->offer_id,
+                'user_id' => Auth::user()->user_id
             ));
 
         }else{
@@ -407,7 +560,8 @@ class ReportsController extends Controller
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
-                'offer_id' => $request->offer_id
+                'offer_id' => $request->offer_id,
+                'user_id' => Auth::user()->user_id
             ));
 
         }
@@ -675,8 +829,9 @@ class ReportsController extends Controller
 
         $prd_id = $product->product_id;
         $pkd_id = $package->package_id;
+        $user_id = Auth::user()->user_id;
 
-        Excel::import(new ParticipantImport($prd_id, $pkd_id), request()->file('file'));
+        Excel::import(new ParticipantImport($prd_id, $pkd_id, $user_id), request()->file('file'));
 
         return redirect('view/participant/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
     }

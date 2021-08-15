@@ -26,6 +26,7 @@ class PaymentTableSeeder extends Seeder
             'package_id' => 'PKD001',
             'offer_id' => 'OFF001',
             'stripe_id' => 'cus_001',
+            'user_id' => 'UID001',
         ]);
     }
 }

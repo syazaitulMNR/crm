@@ -152,7 +152,7 @@ class AdminController extends Controller
             $duration = "10 pm - 11 pm"; 
             $greetings = "Good Evening!";
 
-        } elseif ($time >= "23:10" && $time <= "00:10") {
+        } elseif ($time >= "23:10" && $time <= "00:00") {
 
             $from = date('Y-m-d 15:00:00');
             $to = date('Y-m-d 15:59:59');
@@ -161,7 +161,10 @@ class AdminController extends Controller
 
         } else {
 
-            $duration = "undefined";
+            $from = date('Y-m-d 15:00:00');
+            $to = date('Y-m-d 15:59:59');
+            $duration = "11 pm - 12 am";
+            $greetings = "Good Evening!";
 
         }
 
@@ -189,15 +192,29 @@ class AdminController extends Controller
             
         }
         
-        // get the total
+        // get the total 
+        // $total_yesterday = Carbon::yesterday('Asia/Kuala_Lumpur')->format('d-m-Y');
+        // $total_now = Carbon::now('Asia/Kuala_Lumpur'); // 2021-07-01 08:55:36
+        $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
+        $total_now = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
+        
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        $totalticket = Ticket::where('product_id', $product_id)->count();
+        $totalticket = Ticket::where('product_id', $product_id)->count();        
         $pendingticket = $totalregister - $totalpaid;
         $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
+
+        // $users = Student::whereIn('stud_id', function ( $query ) {
+        //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
+        // })->orderBy('id','Desc')->get();
+
+        // foreach ($users as $user) 
+        // {
+        //     echo $user->stud_id . "<br>";
+        // }
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
+        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/

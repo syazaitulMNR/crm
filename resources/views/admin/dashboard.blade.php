@@ -20,6 +20,21 @@
   @endif
 
   <div class="row pb-2">
+
+    <div class="col-md-6 pb-3">
+      <div class="card border-0 shadow text-center text-success" style="height: 117px">
+        <h6 class="pt-4">Today's Registration</h6>
+        <b class="display-6 pb-3">+{{ number_format($total_now) }}</b>
+      </div>
+    </div>
+  
+    <div class="col-md-6 pb-3">
+      <div class="card border-0 shadow text-center text-success" style="height: 117px">
+        <h6 class="pt-4">Yesterday's Registration</h6>
+        <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
+      </div>
+    </div>
+    
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-8 pb-4">
       <div class="card bg-white shadow px-4 py-4">
@@ -53,18 +68,72 @@
           </table>
         </div>
 
+        {{-- @if ( Auth::user()->user_id == 'UID001' )
+          <div class="table-responsive pb-4">
+            <table class="table table-sm table-bordered text-center">
+              <thead class="thead">
+                <tr>
+                  <th class="text-center" rowspan="2">Time</th>       
+                  <th colspan="3">Registration [A]</th>
+                  <th colspan="3">Updated Paid Ticket [B]</th>
+                  <th colspan="3">Updated Free Ticket [C]</th>       
+                </tr>
+                <tr>
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <th>{{ $package[$i]->name }}</th>
+                  @endfor
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <th>{{ $package[$i]->name }}</th>
+                  @endfor
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <th>{{ $package[$i]->name }}</th>
+                  @endfor
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class="text-left">12:00 am - 08:00 am</th>                  
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <td>{{ number_format($registration[$i]) }}</td>
+                    <td>{{ number_format($paidticket[$i]) }}</td>
+                    <td>{{ number_format($freeticket[$i]) }}</td>
+                  @endfor
+                </tr>
+                <tr>
+                  <th class="text-left">08:00 am - 09:00 am</th>
+                </tr>
+                <tr>
+                  <th class="text-left">09:00 am - 10:00 am</th>
+                </tr>
+                <tr>
+                  <th class="text-left">10:00 am - 11:00 am</th>
+                </tr>
+                <tr>
+                  <th class="text-left">11:00 am - 12:00 pm</th>
+                </tr>
+                <tfoot>
+                  <tr> 
+                    <th class="text-left">Total Yesterday</th>
+                  </tr>
+                </tfoot>
+              </tbody>
+            </table>
+          </div>
+        @else
+        @endif --}}
+
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Updated Ticket [B+C]</h6>
-        <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
+    <div class="col-md-4">      
+      <div class="card border-0 shadow text-center text-danger" style="height: 117px">
+        <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
+        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <br>
-      <div class="card border-0 shadow text-center text-danger" style="height: 117px">
-        <h6 class="pt-4">Pending Ticket [A-B]</h6>
-        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
+      <div class="card border-0 shadow text-center" style="height: 117px">
+        <h6 class="pt-4">Total Updated Ticket [B+C]</h6>
+        <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
@@ -75,7 +144,7 @@
 
   </div>
 
-  <h4 class="border-bottom pb-3">Total Registration</h4>
+  <h4 class="border-bottom pb-3">Overall Registration</h4>
 
   <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
@@ -95,7 +164,7 @@
     </div>
   </div>
 
-  <h4 class="border-bottom pb-3">Total Collection</h4>
+  <h4 class="border-bottom pb-3">Overall Collection</h4>
 
   <div class="row pt-2">
     @for ($i = 0; $i < $count_package; $i++)

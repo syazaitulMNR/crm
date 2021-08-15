@@ -80,6 +80,13 @@ Sales Report
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
                       </select>
                     </div>
                 </div>
@@ -264,8 +271,8 @@ Sales Report
         <tbody> 
           @foreach ($student as $students)   
           @foreach ($payment as $payments)
-          @if (($students->stud_id == $payments->stud_id))
-          {{-- @if ($payments->product_id == $product->product_id)   --}}
+          @if ($students->stud_id == $payments->stud_id)
+          @if ($payments->product_id == $product->product_id)  
           <tr>
               <td>{{ $count++ }}</td>
               <td>{{ $students->ic }}</td>
@@ -284,7 +291,7 @@ Sales Report
                 <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
               </td>
           </tr>
-          {{-- @endif --}}
+          @endif
           @endif
           @endforeach
           @endforeach

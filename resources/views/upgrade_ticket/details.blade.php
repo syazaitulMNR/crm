@@ -91,7 +91,7 @@ Upgrade Pakej
 <script>
 
     var x = document.getElementById("price").value;
-    var y = '{{ $current_package->price }}';
+    var y = '{{ $ticket->pay_price }}';
     var z = x - y;
 
     /*display the result*/
