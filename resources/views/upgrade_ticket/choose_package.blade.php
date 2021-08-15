@@ -40,7 +40,7 @@ Upgrade Pakej
                                 </div>
                                 <div class="pricing-price pb-1 text-dark color-dark-text mb-3">
                                     <h1 style="font-weight: 1000; font-size: 3.5em;">
-                                        <span style="font-size: 20px;">RM</span>{{ $current_package->price }}
+                                        <span style="font-size: 20px;">RM</span>{{ $ticket->pay_price }}
                                     </h1>
                                 </div>
                                 <div class="pricing-button pt-1 pb-1">
