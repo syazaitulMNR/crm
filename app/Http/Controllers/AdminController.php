@@ -205,6 +205,13 @@ class AdminController extends Controller
         $pendingticket = $totalregister - $totalpaid;
         $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
 
+        // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
+
+        for ($i = 1; $i < 7; $i++) {
+            $day[] = Carbon::now()->subDays($i)->format('D');
+        }
+
+        dd($day);
         // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
@@ -225,7 +232,7 @@ class AdminController extends Controller
         //     echo $user->payment_id . "<br>";
         // }
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
+        // return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
