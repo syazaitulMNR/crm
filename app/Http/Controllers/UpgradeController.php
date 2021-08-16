@@ -349,49 +349,47 @@ class UpgradeController extends Controller
         $new_package->fill($addData);
         $request->session()->put('ticket', $new_package);
 
-        dd($new_package);
+        if ($new_package->status == 'paid')
+        {
+            /*-- Manage Email ---------------------------------------------------*/
 
-        // if ($new_package->status == 'paid')
-        // {
-        //     /*-- Manage Email ---------------------------------------------------*/
-
-        //     $product = Product::where('product_id', $new_package->product_id)->first();
-        //     $package = Package::where('package_id', $new_package->package_id)->first();
-        //     $student = Student::where('ic', $new_package->ic)->first();  
+            $product = Product::where('product_id', $new_package->product_id)->first();
+            $package = Package::where('package_id', $new_package->package_id)->first();
+            $student = Student::where('ic', $new_package->ic)->first();  
             
-        //     $send_mail = $student->email;
-        //     $product_name = $product->name;   
-        //     $package_name = $package->name;       
-        //     $date_from = $product->date_from;
-        //     $date_to = $product->date_to;
-        //     $time_from = $product->time_from;
-        //     $time_to = $product->time_to;
-        //     $packageId = $package_id;
-        //     $productId = $product_id;        
-        //     $stud_id = $student->stud_id;
-        //     $survey_form = $product->survey_form;
+            $send_mail = $student->email;
+            $product_name = $product->name;   
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $stud_id = $student->stud_id;
+            $survey_form = $product->survey_form;
 
-        //     $new_package->save();
+            $new_package->save();
 
-        //     dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
             
-        //     /*-- End Email -----------------------------------------------------------*/
+            /*-- End Email -----------------------------------------------------------*/
     
-        //     $request->session()->forget('student');
-        //     $request->session()->forget('payment');
+            $request->session()->forget('student');
+            $request->session()->forget('ticket');
 
-        //     return redirect('naik-taraf-berjaya');  
+            return redirect('naik-taraf-berjaya');  
 
-        // } else {
+        } else {
 
-        //     $new_package->save();
+            $new_package->save();
     
-        //     $request->session()->forget('student');
-        //     $request->session()->forget('payment');
+            $request->session()->forget('student');
+            $request->session()->forget('ticket');
 
-        //     return redirect('pendaftaran-tidak-berjaya');
+            return redirect('pendaftaran-tidak-berjaya');
             
-        // }
+        }
         
     }
 
