@@ -210,7 +210,7 @@ class AdminController extends Controller
         $day = Carbon::now()->isThursday();
 
         dd($day);
-        // // check duplicate student data --------------------------------//
+        // // check duplicate student data --------------------------------///
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
         // })->orderBy('id','Desc')->get();
