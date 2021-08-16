@@ -211,8 +211,8 @@ class AdminController extends Controller
         $fri = Carbon::now()->subDays(3)->format('D');
         $sat = Carbon::now()->subDays(2)->format('D');
         $sun = Carbon::now()->subDays(1)->format('D');
-
-        $day = date('l Y-m-d 00:00:00', strtotime("-1 day"));
+        $day = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('l Y-m-d 00:00:00', strtotime("-1 day")) , date('l Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
+        // $day = date('l Y-m-d 00:00:00', strtotime("-1 day"));
 
         dd($day);
         // // check duplicate student data --------------------------------//
