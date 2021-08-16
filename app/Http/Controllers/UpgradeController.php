@@ -369,7 +369,7 @@ class UpgradeController extends Controller
             $stud_id = $student->stud_id;
             $survey_form = $product->survey_form;
 
-            dd($package_name);
+            dd($new_package);
 
         //     $new_package->save();
 
