@@ -214,14 +214,14 @@ class AdminController extends Controller
         //     echo $user->stud_id . "<br>";
         // }
 
-        $users = Payment::whereIn('payment_id', function ( $query ) {
-            $query->select('payment_id')->from('payment')->groupBy('payment_id')->havingRaw('count(*) > 1');
-        })->orderBy('id','Desc')->get();
+        // $users = Payment::whereIn('payment_id', function ( $query ) {
+        //     $query->select('payment_id')->from('payment')->groupBy('payment_id')->havingRaw('count(*) > 1');
+        // })->orderBy('id','Desc')->get();
 
-        foreach ($users as $user) 
-        {
-            echo $user->payment_id . "<br>";
-        }
+        // foreach ($users as $user) 
+        // {
+        //     echo $user->payment_id . "<br>";
+        // }
         
         // return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
