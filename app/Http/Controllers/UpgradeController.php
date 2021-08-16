@@ -353,8 +353,8 @@ class UpgradeController extends Controller
         {
             /*-- Manage Email ---------------------------------------------------*/
 
-            $product = Product::where('product_id', $product_id)->first();
-            $package = Package::where('package_id', $package_id)->first();
+            $product = Product::where('product_id', $new_package->product_id)->first();
+            $package = Package::where('package_id', $new_package->package_id)->first();
             $student = Student::where('ic', $new_package->ic)->first();  
             
             $send_mail = $student->email;
