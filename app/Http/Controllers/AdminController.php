@@ -205,6 +205,7 @@ class AdminController extends Controller
         $pendingticket = $totalregister - $totalpaid;
         $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
 
+        // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
         // })->orderBy('id','Desc')->get();
@@ -214,6 +215,7 @@ class AdminController extends Controller
         //     echo $user->stud_id . "<br>";
         // }
 
+        // // check duplicate payment data --------------------------------//
         // $users = Payment::whereIn('payment_id', function ( $query ) {
         //     $query->select('payment_id')->from('payment')->groupBy('payment_id')->havingRaw('count(*) > 1');
         // })->orderBy('id','Desc')->get();

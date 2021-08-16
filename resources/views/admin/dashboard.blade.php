@@ -196,9 +196,12 @@
 
 <!-- Show data in line graph --------------------------------------------------->
 
-{{-- <figure class="highcharts-figure">
+@if ( Auth::user()->user_id == 'UID001' )
+<figure class="highcharts-figure">
   <div id="container"></div>
-</figure> --}}
+</figure>
+@else
+@endif
 
 <!-- Function to show bar chart ----------------------------------------------------->
 {{-- <script>
@@ -271,7 +274,7 @@
 </script> --}}
 
 <!-- Function to show line graph ----------------------------------------------------->
-{{-- <script>
+<script>
   Highcharts.chart('container', {
 
   title: {
@@ -355,5 +358,5 @@
   }
 
 });
-</script> --}}
+</script>
 @endsection
