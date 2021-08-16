@@ -215,7 +215,7 @@ class AdminController extends Controller
         $timestamp = strtotime('Y-m-d 00:00:00');
         $day = date('D', $timestamp);
 
-        dd($day);
+        dd($timestamp);
         // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
