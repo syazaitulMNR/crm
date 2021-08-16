@@ -32,7 +32,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
         
         foreach ($rows as $row) 
         {
-            $student = Student::where('ic', $row['ic']);
+            $student = Student::where('ic', $row['ic'])->first();
             
             if(Student::where('ic', $row['ic'])->exists()){
 
