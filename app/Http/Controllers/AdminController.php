@@ -207,7 +207,7 @@ class AdminController extends Controller
 
         // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
 
-        $day = Carbon::now()->format( 'l' );
+        $day = Carbon::now()->subDays(1)->format('D');
 
         dd($day);
         // // check duplicate student data --------------------------------//
