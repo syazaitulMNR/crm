@@ -347,8 +347,8 @@ class UpgradeController extends Controller
         );
 
         $new_package->fill($addData);
+        $request->session()->put('ticket', $new_package);
         dd($new_package);
-        // $request->session()->put('ticket', $new_package);
 
         // if ($new_package->status == 'paid')
         // {
