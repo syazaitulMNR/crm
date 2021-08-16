@@ -212,7 +212,7 @@ class AdminController extends Controller
         $sat = Carbon::now()->subDays(2)->format('D');
         $sun = Carbon::now()->subDays(1)->format('D');
 
-        $timestamp = strtotime('Y-m-d 00:00:00');
+        $timestamp = strtotime('Y-m-d');
         $day = date('D', $timestamp);
 
         dd($timestamp);
