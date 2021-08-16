@@ -366,7 +366,7 @@ class UpgradeController extends Controller
             $time_to = $product->time_to;
             $packageId = $package_id;
             $productId = $product_id;        
-            $student_id = $student->stud_id;
+            $stud_id = $student->stud_id;
             $survey_form = $product->survey_form;
 
             $new_package->save();
