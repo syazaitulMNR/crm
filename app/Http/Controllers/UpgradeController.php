@@ -349,8 +349,8 @@ class UpgradeController extends Controller
         $new_package->fill($addData);
         $request->session()->put('ticket', $new_package);
 
-        // if ($new_package->status == 'paid')
-        // {
+        if ($new_package->status == 'paid')
+        {
             /*-- Manage Email ---------------------------------------------------*/
 
             $product = Product::where('product_id', $new_package->product_id)->first();
@@ -369,29 +369,27 @@ class UpgradeController extends Controller
             $stud_id = $student->stud_id;
             $survey_form = $product->survey_form;
 
-            dd($new_package);
+            $new_package->save();
 
-        //     $new_package->save();
-
-        //     dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
+            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
             
-        //     /*-- End Email -----------------------------------------------------------*/
+            /*-- End Email -----------------------------------------------------------*/
     
-        //     $request->session()->forget('student');
-        //     $request->session()->forget('ticket');
+            $request->session()->forget('student');
+            $request->session()->forget('ticket');
 
-        //     return redirect('naik-taraf-berjaya');  
+            return redirect('naik-taraf-berjaya');  
 
-        // } else {
+        } else {
 
-        //     $new_package->save();
+            $new_package->save();
     
-        //     $request->session()->forget('student');
-        //     $request->session()->forget('ticket');
+            $request->session()->forget('student');
+            $request->session()->forget('ticket');
 
-        //     return redirect('pendaftaran-tidak-berjaya');
+            return redirect('pendaftaran-tidak-berjaya');
             
-        // }
+        }
         
     }
 
