@@ -348,27 +348,28 @@ class UpgradeController extends Controller
 
         $new_package->fill($addData);
         $request->session()->put('ticket', $new_package);
-        dd($new_package);
 
         // if ($new_package->status == 'paid')
         // {
-        //     /*-- Manage Email ---------------------------------------------------*/
+            /*-- Manage Email ---------------------------------------------------*/
 
-        //     $product = Product::where('product_id', $new_package->product_id)->first();
-        //     $package = Package::where('package_id', $new_package->package_id)->first();
-        //     $student = Student::where('ic', $new_package->ic)->first();  
+            $product = Product::where('product_id', $new_package->product_id)->first();
+            $package = Package::where('package_id', $new_package->package_id)->first();
+            $student = Student::where('ic', $new_package->ic)->first();  
             
-        //     $send_mail = $student->email;
-        //     $product_name = $product->name;   
-        //     $package_name = $package->name;       
-        //     $date_from = $product->date_from;
-        //     $date_to = $product->date_to;
-        //     $time_from = $product->time_from;
-        //     $time_to = $product->time_to;
-        //     $packageId = $package_id;
-        //     $productId = $product_id;        
-        //     $stud_id = $student->stud_id;
-        //     $survey_form = $product->survey_form;
+            $send_mail = $student->email;
+            $product_name = $product->name;   
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $stud_id = $student->stud_id;
+            $survey_form = $product->survey_form;
+
+            dd($package_name);
 
         //     $new_package->save();
 
