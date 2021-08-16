@@ -335,18 +335,19 @@ class UpgradeController extends Controller
     public function redirect_page($product_id, $package_id, $ticket_id, Request $request)
     {
         $new_package = $request->session()->get('ticket');
+        
+        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+
+        $bill = $billplz->bill();
+        $response = $bill->get($new_package->billplz_id);
+        $pay_data = $response->toArray();
+
+        $addData = array(
+            'status' => $pay_data['state']
+        );
+
+        $new_package->fill($addData);
         dd($new_package);
-        // $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
-
-        // $bill = $billplz->bill();
-        // $response = $bill->get($new_package->billplz_id);
-        // $pay_data = $response->toArray();
-
-        // $addData = array(
-        //     'status' => $pay_data['state']
-        // );
-
-        // $new_package->fill($addData);
         // $request->session()->put('ticket', $new_package);
 
         // if ($new_package->status == 'paid')
