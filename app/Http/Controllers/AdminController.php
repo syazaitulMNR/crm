@@ -212,7 +212,7 @@ class AdminController extends Controller
         $sat = Carbon::now()->subDays(2)->format('D');
         $sun = Carbon::now()->subDays(1)->format('D');
 
-        $day = date('l Y-m-d 00:00:00');
+        $day = date('l Y-m-d 00:00:00', strtotime("-1 day"));
 
         dd($day);
         // // check duplicate student data --------------------------------//
