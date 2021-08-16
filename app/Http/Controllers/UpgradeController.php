@@ -335,61 +335,61 @@ class UpgradeController extends Controller
     public function redirect_page($product_id, $package_id, $ticket_id, Request $request)
     {
         $new_package = $request->session()->get('ticket');
-        
-        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+        dd($new_package);
+        // $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
-        $bill = $billplz->bill();
-        $response = $bill->get($new_package->billplz_id);
-        $pay_data = $response->toArray();
+        // $bill = $billplz->bill();
+        // $response = $bill->get($new_package->billplz_id);
+        // $pay_data = $response->toArray();
 
-        $addData = array(
-            'status' => $pay_data['state']
-        );
+        // $addData = array(
+        //     'status' => $pay_data['state']
+        // );
 
-        $new_package->fill($addData);
-        $request->session()->put('ticket', $new_package);
+        // $new_package->fill($addData);
+        // $request->session()->put('ticket', $new_package);
 
-        if ($new_package->status == 'paid')
-        {
-            /*-- Manage Email ---------------------------------------------------*/
+        // if ($new_package->status == 'paid')
+        // {
+        //     /*-- Manage Email ---------------------------------------------------*/
 
-            $product = Product::where('product_id', $new_package->product_id)->first();
-            $package = Package::where('package_id', $new_package->package_id)->first();
-            $student = Student::where('ic', $new_package->ic)->first();  
+        //     $product = Product::where('product_id', $new_package->product_id)->first();
+        //     $package = Package::where('package_id', $new_package->package_id)->first();
+        //     $student = Student::where('ic', $new_package->ic)->first();  
             
-            $send_mail = $student->email;
-            $product_name = $product->name;   
-            $package_name = $package->name;       
-            $date_from = $product->date_from;
-            $date_to = $product->date_to;
-            $time_from = $product->time_from;
-            $time_to = $product->time_to;
-            $packageId = $package_id;
-            $productId = $product_id;        
-            $stud_id = $student->stud_id;
-            $survey_form = $product->survey_form;
+        //     $send_mail = $student->email;
+        //     $product_name = $product->name;   
+        //     $package_name = $package->name;       
+        //     $date_from = $product->date_from;
+        //     $date_to = $product->date_to;
+        //     $time_from = $product->time_from;
+        //     $time_to = $product->time_to;
+        //     $packageId = $package_id;
+        //     $productId = $product_id;        
+        //     $stud_id = $student->stud_id;
+        //     $survey_form = $product->survey_form;
 
-            $new_package->save();
+        //     $new_package->save();
 
-            dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
+        //     dispatch(new UpgradeJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $ticket_id, $productId, $stud_id, $survey_form));
             
-            /*-- End Email -----------------------------------------------------------*/
+        //     /*-- End Email -----------------------------------------------------------*/
     
-            $request->session()->forget('student');
-            $request->session()->forget('payment');
+        //     $request->session()->forget('student');
+        //     $request->session()->forget('payment');
 
-            return redirect('naik-taraf-berjaya');  
+        //     return redirect('naik-taraf-berjaya');  
 
-        } else {
+        // } else {
 
-            $new_package->save();
+        //     $new_package->save();
     
-            $request->session()->forget('student');
-            $request->session()->forget('payment');
+        //     $request->session()->forget('student');
+        //     $request->session()->forget('payment');
 
-            return redirect('pendaftaran-tidak-berjaya');
+        //     return redirect('pendaftaran-tidak-berjaya');
             
-        }
+        // }
         
     }
 
