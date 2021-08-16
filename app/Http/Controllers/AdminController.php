@@ -207,10 +207,10 @@ class AdminController extends Controller
 
         // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
 
-        $dt = Carbon::is('Sunday');
+        $day = Carbon::now()->format( 'l' );
 
-        dd($dt);
-        // // check duplicate student data --------------------------------///
+        dd($day);
+        // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
         // })->orderBy('id','Desc')->get();
