@@ -210,10 +210,10 @@
         type: 'column'
     },
     title: {
-        text: 'Magic Number'
+        text: '{{ $product->name }}'
     },
     subtitle: {
-        text: 'Profit of Momentum Internet'
+        text: 'Total Registration per Day (From 8am)'
     },
     xAxis: {
         categories: [
@@ -230,7 +230,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Profit (RM)'
+            text: ''
         }
     },
     tooltip: {
