@@ -268,7 +268,7 @@
   // Make monochrome colors
 var pieColors = (function () {
     var colors = [],
-        base = Highcharts.getOptions().colors[7],
+        base = Highcharts.getOptions().colors[8],
         i;
 
     for (i = 0; i < 10; i += 1) {
