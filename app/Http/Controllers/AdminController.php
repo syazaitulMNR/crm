@@ -207,7 +207,7 @@ class AdminController extends Controller
 
         // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
 
-        $mon = date('Y-m-d 00:00:00', strtotime('wednesday'));
+        $mon = date('Y-m-d 00:00:00', strtotime('this monday'));
         $fri = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('friday')) , date('Y-m-d 23:59:59', strtotime('friday')) ])->count();
         $sat = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('saturday')) , date('Y-m-d 23:59:59', strtotime('saturday')) ])->count();
         $sun = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('sunday')) , date('Y-m-d 23:59:59', strtotime('sunday')) ])->count();
