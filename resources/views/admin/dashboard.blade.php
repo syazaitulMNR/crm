@@ -197,9 +197,19 @@
 
 @if ( Auth::user()->user_id == 'UID001' )
 <!-- Show data in bar chart --------------------------------------------------->
-<figure class="highcharts-figure">
-  <div id="container"></div>
-</figure>
+
+<div class="col-md-3">      
+  <div class="card border-0 shadow text-center text-danger" style="height: 136px"> 
+    <figure class="highcharts-figure">
+      <div id="container"></div>
+    </figure>
+  </div>
+  <br>
+  <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
+    <h6 class="pt-4">Overall Ticket [A+C]</h6>
+    <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
+  </div>
+</div>
 
 @else
 @endif
