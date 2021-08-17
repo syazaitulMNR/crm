@@ -197,13 +197,9 @@
 <!-- Show data in line graph --------------------------------------------------->
 
 @if ( Auth::user()->user_id == 'UID001' )
-<div class="col-md-12 bg-white pb-4">
-  {{-- <div class="card bg-white shadow"> --}}
-    <figure class="highcharts-figure">
+    <figure class="highcharts-figure px-4 py-4">
       <div id="container"></div>
     </figure>
-  {{-- </div> --}}
-</div>
 @else
 @endif
 
