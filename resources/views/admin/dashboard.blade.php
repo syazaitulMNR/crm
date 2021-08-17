@@ -125,6 +125,12 @@
       </div>
     </div>
 
+    <div class="col-md-4">
+      <div class="card bg-white shadow px-4 py-4">
+        <div id="chartdata" ></div>
+      </div>
+    </div>
+
     <div class="col-md-3">      
       <div class="card border-0 shadow text-center text-danger" style="height: 117px">
         <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
