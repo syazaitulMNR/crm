@@ -196,12 +196,12 @@
 
 <!-- Show data in line graph --------------------------------------------------->
 
-{{-- @if ( Auth::user()->user_id == 'UID001' )
+@if ( Auth::user()->user_id == 'UID001' )
 <figure class="highcharts-figure">
   <div id="container"></div>
 </figure>
 @else
-@endif --}}
+@endif
 
 <!-- Function to show bar chart ----------------------------------------------------->
 {{-- <script>
@@ -274,15 +274,15 @@
 </script> --}}
 
 <!-- Function to show line graph ----------------------------------------------------->
-{{-- <script>
+<script>
   Highcharts.chart('container', {
 
   title: {
-    text: {{ $product->name }}
+    text: '{{ $product->name }}'
   },
 
   subtitle: {
-    text: 'Total Registration per Day (From 8 am)'
+    text: 'Profit of Momentum Internet'
   },
 
   yAxis: {
@@ -324,15 +324,15 @@
   },
 
   series: [{
-    name: 'Profit (RM)',
+    name: 'Registration',
     data: [
-            {{$mon}},
-            {{$tue}},
-            {{$wed}},
-            {{$thu}},
-            {{$fri}},
-            {{$sat}},
-            {{$sun}}
+            4,
+            3,
+            5,
+            1,
+            3,
+            5,
+            3
           ]
   }],
 
@@ -352,5 +352,5 @@
   }
 
 });
-</script> --}}
+</script>
 @endsection
