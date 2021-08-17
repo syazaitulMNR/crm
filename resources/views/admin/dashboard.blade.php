@@ -189,7 +189,7 @@
 
 @if ( Auth::user()->user_id == 'UID001' )
 <!-- Show data in bar chart --------------------------------------------------->
-<div class="col-md-5">
+<div class="col-md-12">
   <div class="card bg-white shadow px-2 py-2">
     <div id="chartdata" ></div>
   </div>
