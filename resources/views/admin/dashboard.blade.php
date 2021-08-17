@@ -326,13 +326,13 @@
   series: [{
     name: 'Registration',
     data: [
-            4,
-            3,
-            5,
-            1,
-            3,
-            5,
-            3
+            {{$mon}},
+            {{$tue}},
+            {{$wed}},
+            {{$thu}},
+            {{$fri}},
+            {{$sat}},
+            {{$sun}}
           ]
   }],
 
