@@ -278,7 +278,7 @@
   Highcharts.chart('container', {
 
   title: {
-    text: {{ $product->name }}
+    // text: {{ $product->name }}
   },
 
   subtitle: {
