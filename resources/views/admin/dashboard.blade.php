@@ -187,24 +187,24 @@
 </div>
 
 
+@if ( Auth::user()->user_id == 'UID001' )
 <!-- Show data in bar chart --------------------------------------------------->
-{{-- <div class="col-md-5">
+<div class="col-md-5">
   <div class="card bg-white shadow px-2 py-2">
     <div id="chartdata" ></div>
   </div>
-</div> --}}
+</div>
 
 <!-- Show data in line graph --------------------------------------------------->
 
-@if ( Auth::user()->user_id == 'UID001' )
-    <figure class="highcharts-figure px-4 py-4">
+    <figure class="highcharts-figure">
       <div id="container"></div>
     </figure>
 @else
 @endif
 
 <!-- Function to show bar chart ----------------------------------------------------->
-{{-- <script>
+<script>
   Highcharts.chart('chartdata', {
     chart: {
         type: 'column'
@@ -217,18 +217,13 @@
     },
     xAxis: {
         categories: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
+            'Mon',
+            'Tue',
+            'Wed',
+            'Thu',
+            'Fri',
+            'Sat',
+            'Sun'
         ],
         crosshair: true
     },
@@ -253,25 +248,20 @@
         }
     },
     series: [{
-        name: 'Month',
+        name: 'Registration',
         data: [
-            {{$jan}},
-            {{$feb}},
-            {{$mar}},
-            {{$apr}},
-            {{$may}},
-            {{$jun}},
-            {{$jul}},
-            {{$aug}},
-            {{$sep}},
-            {{$oct}},
-            {{$nov}},
-            {{$dec}}
+            {{$mon}},
+            {{$tue}},
+            {{$wed}},
+            {{$thu}},
+            {{$fri}},
+            {{$sat}},
+            {{$sun}}
           ]
 
     }]
   });
-</script> --}}
+</script>
 
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
