@@ -34,6 +34,13 @@
         <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
       </div>
     </div>
+
+    <!-- Show data in bar chart ----------------------------------------------->
+    <div class="col-md-4">
+      <div class="card bg-white shadow px-4 py-4">
+        <div id="chartdata" ></div>
+      </div>
+    </div>
     
     <!-- Show data in table --------------------------------------------------->
     <div class="col-md-5 pb-4">
@@ -123,12 +130,6 @@
         @else
         @endif --}}
 
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card bg-white shadow px-4 py-4">
-        <div id="chartdata" ></div>
       </div>
     </div>
 
