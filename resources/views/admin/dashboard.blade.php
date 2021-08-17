@@ -196,9 +196,12 @@
 
 <!-- Show data in line graph --------------------------------------------------->
 
-{{-- <figure class="highcharts-figure">
+ @if ( Auth::user()->user_id == 'UID001' )
+<figure class="highcharts-figure">
   <div id="container"></div>
-</figure> --}}
+</figure>
+@else
+@endif
 
 <!-- Function to show bar chart ----------------------------------------------------->
 {{-- <script>
@@ -271,15 +274,15 @@
 </script> --}}
 
 <!-- Function to show line graph ----------------------------------------------------->
-{{-- <script>
+<script>
   Highcharts.chart('container', {
 
   title: {
-    text: 'Magic Number'
+    text: {{ $product->name }}
   },
 
   subtitle: {
-    text: 'Profit of Momentum Internet'
+    text: 'Total Registration per Day (From 8 am)'
   },
 
   yAxis: {
@@ -289,8 +292,7 @@
   },
 
   xAxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
   },
 
   // xAxis: {
@@ -324,18 +326,13 @@
   series: [{
     name: 'Profit (RM)',
     data: [
-            {{$jan}},
-            {{$feb}},
-            {{$mar}},
-            {{$apr}},
-            {{$may}},
-            {{$jun}},
-            {{$jul}},
-            {{$aug}},
-            {{$sep}},
-            {{$oct}},
-            {{$nov}},
-            {{$dec}}
+            // {{$mon}},
+            // {{$tue}},
+            // {{$wed}},
+            // {{$thu}},
+            // {{$fri}},
+            // {{$sat}},
+            // {{$sun}}
           ]
   }],
 
@@ -355,5 +352,5 @@
   }
 
 });
-</script> --}}
+</script>
 @endsection
