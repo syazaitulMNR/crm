@@ -40,9 +40,9 @@
       <div class="card bg-white shadow px-4 py-4">
 
         <h5 class="text-center pt-4">{{ $product->name }}</h5>
-        <b class="text-center pb-4">Report per Hour</b>
+        <b class="text-center pb-3">Report per Hour</b>
 
-        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+        <p class="text-center pb-3">Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
         <div class="table-responsive pb-4">
           <table class="table text-center">
