@@ -212,7 +212,7 @@
         type: 'column'
     },
     title: {
-        text: '{{ $product->name }}'
+        text: ''
     },
     subtitle: {
         text: 'Total Registration per Day (From 8am)'
