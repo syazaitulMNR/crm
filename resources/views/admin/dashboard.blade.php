@@ -199,14 +199,6 @@
 <!-- Show data in bar chart --------------------------------------------------->
 <figure class="highcharts-figure">
   <div id="container"></div>
-  <p class="highcharts-description">
-      Pie chart demonstrating a monochrome color scheme. Monochrome color
-      schemes can make certain charts easier to understand, as it helps
-      readers to focus on the content instead of the colors. There can also
-      be accessibility benefits to using this kind of color scheme, both fo
-      color blindness and tactile mediums, as long as there is a clear
-      separation between slices.
-  </p>
 </figure>
 
 @else
