@@ -39,7 +39,8 @@
     <div class="col-md-5 pb-4">
       <div class="card bg-white shadow px-4 py-4">
 
-        <h5 class="text-center py-4">{{ $product->name }}</h5>
+        <h5 class="text-center pt-4">{{ $product->name }}</h5>
+        <b class="text-center pb-4">Report per Hour</b>
 
         <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
