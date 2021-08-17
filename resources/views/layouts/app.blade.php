@@ -18,7 +18,11 @@
     <title>@yield('title') | Momentum Internet</title>
 
     <!-- Scripts -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> {{--  pie chart --}}
+    <script src="https://code.highcharts.com/modules/exporting.js"></script> {{--  pie chart --}}
+    <script src="https://code.highcharts.com/modules/export-data.js"></script> {{--  pie chart --}}
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script> {{--  pie chart --}}
+    <script src="https://code.highcharts.com/highcharts.js"></script> {{--  bar chart --}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/e4e5c205fb.js" crossorigin="anonymous"></script>
@@ -55,11 +59,11 @@
         color: rgb(0, 0, 0);
       }
 
-      /* Highcharts css */
-      /* .highcharts-figure, .highcharts-data-table table {
-        min-width: 360px; 
-        max-width: 800px;
-        margin: 1em auto;
+      /* Highcharts for pie chart css */
+      .highcharts-figure, .highcharts-data-table table {
+          min-width: 320px; 
+          max-width: 660px;
+          margin: 1em auto;
       }
 
       .highcharts-data-table table {
@@ -72,23 +76,24 @@
         max-width: 500px;
       }
       .highcharts-data-table caption {
-        padding: 1em 0;
-        font-size: 1.2em;
-        color: #555;
+          padding: 1em 0;
+          font-size: 1.2em;
+          color: #555;
       }
       .highcharts-data-table th {
         font-weight: 600;
-        padding: 0.5em;
+          padding: 0.5em;
       }
       .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
-        padding: 0.5em;
+          padding: 0.5em;
       }
       .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
-        background: #f8f8f8;
+          background: #f8f8f8;
       }
       .highcharts-data-table tr:hover {
-        background: #f1f7ff;
-      } */
+          background: #f1f7ff;
+      }
+
 
       .gradient-1
       {

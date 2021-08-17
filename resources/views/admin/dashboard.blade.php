@@ -197,13 +197,18 @@
 
 @if ( Auth::user()->user_id == 'UID001' )
 <!-- Show data in bar chart --------------------------------------------------->
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <p class="highcharts-description">
+      Pie chart demonstrating a monochrome color scheme. Monochrome color
+      schemes can make certain charts easier to understand, as it helps
+      readers to focus on the content instead of the colors. There can also
+      be accessibility benefits to using this kind of color scheme, both fo
+      color blindness and tactile mediums, as long as there is a clear
+      separation between slices.
+  </p>
+</figure>
 
-
-<!-- Show data in line graph --------------------------------------------------->
-
-    <figure class="highcharts-figure">
-      <div id="container"></div>
-    </figure>
 @else
 @endif
 
@@ -268,82 +273,67 @@
 
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
-  Highcharts.chart('container', {
+  // Make monochrome colors
+var pieColors = (function () {
+    var colors = [],
+        base = Highcharts.getOptions().colors[0],
+        i;
 
-  title: {
-    text: '{{ $product->name }}'
-  },
+    for (i = 0; i < 10; i += 1) {
+        // Start out with a darkened base color (negative brighten), and end
+        // up with a much brighter color
+        colors.push(Highcharts.color(base).brighten((i - 3) / 7).get());
+    }
+    return colors;
+}());
 
-  subtitle: {
-    text: 'Total Registration per Day (From 8am)'
-  },
-
-  yAxis: {
+// Build the chart
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
     title: {
-      text: ''
-    }
-  },
-
-  xAxis: {
-    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  },
-
-  // xAxis: {
-  //   accessibility: {
-  //     rangeDescription: 'Range: 2010 to 2017'
-  //   }
-  // },
-
-  legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'middle'
-  },
-
-  plotOptions: {
-    spline: {
-      marker: {
-        radius: 4,
-        lineColor: '#303030',
-        lineWidth: 1
-      }
-    }
-    // series: {
-    //   label: {
-    //     connectorAllowed: false
-    //   },
-    //   pointStart: 2021
-    // }
-  },
-
-  series: [{
-    name: 'Registration',
-    data: [
-            {{$mon}},
-            {{$tue}},
-            {{$wed}},
-            {{$thu}},
-            {{$fri}},
-            {{$sat}},
-            {{$sun}}
-          ]
-  }],
-
-  responsive: {
-    rules: [{
-      condition: {
-        maxWidth: 800
-      },
-      chartOptions: {
-        legend: {
-          layout: 'horizontal',
-          align: 'center',
-          verticalAlign: 'bottom'
+        text: 'Browser market shares at a specific website, 2014'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
         }
-      }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            colors: pieColors,
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+                distance: -50,
+                filter: {
+                    property: 'percentage',
+                    operator: '>',
+                    value: 4
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Share',
+        data: [
+            { name: 'Chrome', y: 61.41 },
+            { name: 'Internet Explorer', y: 11.84 },
+            { name: 'Firefox', y: 10.85 },
+            { name: 'Edge', y: 4.67 },
+            { name: 'Safari', y: 4.18 },
+            { name: 'Other', y: 7.05 }
+        ]
     }]
-  }
-
 });
 </script>
 @endsection
