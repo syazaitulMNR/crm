@@ -212,10 +212,10 @@
         type: 'column'
     },
     title: {
-        text: 'Total Registration per Day (From 8am)'
+        text: ''
     },
     subtitle: {
-        text: ''
+        text: 'Total Registration per Day (From 8am)'
     },
     xAxis: {
         categories: [
