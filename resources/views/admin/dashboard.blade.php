@@ -288,7 +288,7 @@ Highcharts.chart('container', {
         type: 'pie'
     },
     title: {
-        text: 'Browser market shares at a specific website, 2014'
+        text: 'Ticket'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -316,14 +316,10 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Share',
+        name: 'Total',
         data: [
-            { name: 'Chrome', y: 61.41 },
-            { name: 'Internet Explorer', y: 11.84 },
-            { name: 'Firefox', y: 10.85 },
-            { name: 'Edge', y: 4.67 },
-            { name: 'Safari', y: 4.18 },
-            { name: 'Other', y: 7.05 }
+            { name: 'Updated Ticket', y: 61.41 },
+            { name: 'Pending Ticket', y: 11.84 },
         ]
     }]
 });
