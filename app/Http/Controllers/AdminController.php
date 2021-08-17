@@ -207,17 +207,17 @@ class AdminController extends Controller
 
         // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
 
-        $mon = Carbon::now()->subDays(0)->format('D');
-        $fri = Carbon::now()->subDays(3)->format('D');
-        $sat = Carbon::now()->subDays(2)->format('D');
-        $sun = Carbon::now()->subDays(1)->format('D');
-        $thu = Carbon::now()->subDays(4)->format('D');
-        $wed = Carbon::now()->subDays(5)->format('D');
-        $tue = Carbon::now()->subDays(6)->format('D');
+        $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('monday')) , date('Y-m-d 23:59:59', strtotime('monday')) ])->count();
+        $fri = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('friday')) , date('Y-m-d 23:59:59', strtotime('friday')) ])->count();
+        $sat = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('saturday')) , date('Y-m-d 23:59:59', strtotime('saturday')) ])->count();
+        $sun = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('sunday')) , date('Y-m-d 23:59:59', strtotime('sunday')) ])->count();
+        $thu = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('thursday')) , date('Y-m-d 23:59:59', strtotime('thursday')) ])->count();
+        $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday')) , date('Y-m-d 23:59:59', strtotime('wednesday')) ])->count();
+        $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday')) , date('Y-m-d 23:59:59', strtotime('tuesday')) ])->count();
         // $day = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('l Y-m-d 00:00:00', strtotime("-1 day")) , date('l Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
         // $day = date('Y-m-d', strtotime('monday'));
 
-        // dd($tue);
+        dd($mon);
         // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
@@ -238,7 +238,7 @@ class AdminController extends Controller
         //     echo $user->payment_id . "<br>";
         // }
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
+        // return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
