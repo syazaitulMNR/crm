@@ -56,7 +56,7 @@
       }
 
       /* Highcharts css */
-      .highcharts-figure, .highcharts-data-table table {
+      /* .highcharts-figure, .highcharts-data-table table {
         min-width: 360px; 
         max-width: 800px;
         margin: 1em auto;
@@ -88,7 +88,7 @@
       }
       .highcharts-data-table tr:hover {
         background: #f1f7ff;
-      }
+      } */
 
       .gradient-1
       {
