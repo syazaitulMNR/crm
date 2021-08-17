@@ -199,7 +199,7 @@
 <!-- Show data in bar chart --------------------------------------------------->
 
 <div class="col-md-3">      
-  <div class="card border-0 shadow text-center text-danger" style="height: 500px"> 
+  <div class="card border-0 shadow text-center text-danger" style="height: 272px"> 
     <figure class="highcharts-figure">
       <div id="container"></div>
     </figure>
