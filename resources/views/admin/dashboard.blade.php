@@ -134,17 +134,17 @@
 
     <div class="col-md-3">      
       <div class="card border-0 shadow text-center text-danger" style="height: 136px">
-        <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
+        <h6 class="pt-5">Total Pending Ticket [A-B]</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
       </div>
       <br>
       <div class="card border-0 shadow text-center" style="height: 136px">
-        <h6 class="pt-4">Total Updated Ticket [B+C]</h6>
+        <h6 class="pt-5">Total Updated Ticket [B+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
-        <h6 class="pt-4">Overall Ticket [A+C]</h6>
+        <h6 class="pt-5">Overall Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
