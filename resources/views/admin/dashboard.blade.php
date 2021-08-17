@@ -196,7 +196,7 @@
 
 <!-- Show data in line graph --------------------------------------------------->
 
- @if ( Auth::user()->user_id == 'UID001' )
+@if ( Auth::user()->user_id == 'UID001' )
 <figure class="highcharts-figure">
   <div id="container"></div>
 </figure>
@@ -326,6 +326,13 @@
   series: [{
     name: 'Profit (RM)',
     data: [
+            3,
+            2,
+            6,
+            4,
+            7,
+            6,
+            7
             // {{$mon}},
             // {{$tue}},
             // {{$wed}},
