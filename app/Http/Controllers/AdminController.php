@@ -207,16 +207,14 @@ class AdminController extends Controller
 
         // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
 
-        $mon = date('Y-m-d 00:00:00', strtotime('this monday'));
-        $fri = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('friday')) , date('Y-m-d 23:59:59', strtotime('friday')) ])->count();
-        $sat = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('saturday')) , date('Y-m-d 23:59:59', strtotime('saturday')) ])->count();
-        $sun = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('sunday')) , date('Y-m-d 23:59:59', strtotime('sunday')) ])->count();
-        $thu = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('thursday')) , date('Y-m-d 23:59:59', strtotime('thursday')) ])->count();
-        $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday')) , date('Y-m-d 23:59:59', strtotime('wednesday')) ])->count();
-        $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday')) , date('Y-m-d 23:59:59', strtotime('tuesday')) ])->count();
-        // $day = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('l Y-m-d 00:00:00', strtotime("-1 day")) , date('l Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
-        // $day = date('Y-m-d', strtotime('monday'));
-
+        $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('monday this week')) , date('Y-m-d 23:59:59', strtotime('monday this week')) ])->count();
+        $fri = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('friday this week')) , date('Y-m-d 23:59:59', strtotime('friday this week')) ])->count();
+        $sat = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('saturday this week')) , date('Y-m-d 23:59:59', strtotime('saturday this week')) ])->count();
+        $sun = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('sunday this week')) , date('Y-m-d 23:59:59', strtotime('sunday this week')) ])->count();
+        $thu = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('thursday this week')) , date('Y-m-d 23:59:59', strtotime('thursday this week')) ])->count();
+        $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday this week')) , date('Y-m-d 23:59:59', strtotime('wednesday this week')) ])->count();
+        $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday this week')) , date('Y-m-d 23:59:59', strtotime('tuesday this week')) ])->count();
+       
         dd($mon);
         // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
