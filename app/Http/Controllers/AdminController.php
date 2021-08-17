@@ -207,7 +207,7 @@ class AdminController extends Controller
 
         // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d 23:59:59') ])->count();
 
-        $mon = date('Y-m-d 00:00:00', strtotime('monday'));
+        $mon = date('Y-m-d 00:00:00', strtotime('tuesday'));
         $fri = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('friday')) , date('Y-m-d 23:59:59', strtotime('friday')) ])->count();
         $sat = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('saturday')) , date('Y-m-d 23:59:59', strtotime('saturday')) ])->count();
         $sun = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('sunday')) , date('Y-m-d 23:59:59', strtotime('sunday')) ])->count();
@@ -217,7 +217,7 @@ class AdminController extends Controller
         // $day = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('l Y-m-d 00:00:00', strtotime("-1 day")) , date('l Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
         // $day = date('Y-m-d', strtotime('monday'));
 
-        dd($tue);
+        dd($mon);
         // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
