@@ -278,11 +278,11 @@
   Highcharts.chart('container', {
 
   title: {
-    text: '{{ $product->name }}'
+    text: {{ $product->name }}
   },
 
   subtitle: {
-    text: 'Profit of Momentum Internet'
+    text: 'Total Registration per Day (From 8am)'
   },
 
   yAxis: {
