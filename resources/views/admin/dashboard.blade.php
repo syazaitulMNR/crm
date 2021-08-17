@@ -235,8 +235,7 @@
     },
     tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="padding:3"> </td>' +
-            '<td style="padding:3"><b> {point.y} </b></td></tr>',
+        pointFormat: '<tr><td style="padding:3"><b> {point.y} </b></td></tr>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
