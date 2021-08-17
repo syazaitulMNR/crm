@@ -36,7 +36,7 @@
     </div>
     
     <!-- Show data in table --------------------------------------------------->
-    <div class="col-md-8 pb-4">
+    <div class="col-md-5 pb-4">
       <div class="card bg-white shadow px-4 py-4">
 
         <h5 class="text-center py-4">{{ $product->name }}</h5>
@@ -125,7 +125,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">      
+    <div class="col-md-3">      
       <div class="card border-0 shadow text-center text-danger" style="height: 117px">
         <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
         <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
@@ -189,11 +189,7 @@
 
 @if ( Auth::user()->user_id == 'UID001' )
 <!-- Show data in bar chart --------------------------------------------------->
-<div class="col-md-12">
-  <div class="card bg-white shadow px-4 py-4">
-    <div id="chartdata" ></div>
-  </div>
-</div>
+
 
 <!-- Show data in line graph --------------------------------------------------->
 
@@ -242,7 +238,7 @@
     },
     plotOptions: {
         column: {
-            pointPadding: 0.1,
+            pointPadding: 0.2,
             borderWidth: 0
         }
     },
