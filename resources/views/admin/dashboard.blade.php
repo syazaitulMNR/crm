@@ -198,11 +198,11 @@
 
 @if ( Auth::user()->user_id == 'UID001' )
 <div class="col-md-12 pb-4">
-  <div class="card bg-white shadow">
+  {{-- <div class="card bg-white shadow"> --}}
     <figure class="highcharts-figure">
       <div id="container"></div>
     </figure>
-  </div>
+  {{-- </div> --}}
 </div>
 @else
 @endif
