@@ -212,7 +212,7 @@
                   {{$fri}},
                   {{$sat}},
                   {{$sun}} ];
-  var barColors = [#1B4F72, #17A589, #633974, #F1948A, #FDD74C, #23B4B1, #DA4414 ];
+  var barColors = ["#1B4F72", "#17A589", "#633974", "#F1948A", "#FDD74C", "#23B4B1", "#DA4414" ];
   
   new Chart("barChart", {
     type: "bar",
