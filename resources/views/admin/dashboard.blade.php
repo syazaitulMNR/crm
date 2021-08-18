@@ -199,7 +199,7 @@
 <!-- Show data in bar chart --------------------------------------------------->
 
 <div class="col-md-3">      
-  <div class="card border-0 shadow text-center text-danger mt-auto" style="height: 272px"> 
+  <div class="card border-0 shadow text-center text-danger mt-5" style="height: 272px"> 
     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
   </div>
   <br>
