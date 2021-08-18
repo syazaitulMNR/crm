@@ -134,7 +134,7 @@
     </div>
 
     <div class="col-md-3">      
-      <div class="card border-0 shadow text-center text-danger py-3" style="height: 272px"> 
+      <div class="card border-0 shadow text-center text-danger py-4" style="height: 272px"> 
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
     
         <br>
