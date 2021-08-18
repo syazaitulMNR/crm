@@ -157,7 +157,7 @@
   <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
     <div class="col-md-3 pb-4">
-      <div class="card border-0 shadow text-center" style="height: 120px">
+      <div class="card border-0 shadow text-center" style="height: 125px">
         <h6 class="pt-4">{{ $package[$i]->name }}</h6>
         <b class="display-6 pb-3">{{ number_format($totalpackage[$i]) }}</b>
       </div>
@@ -165,7 +165,7 @@
     @endfor
 
     <div class="col-md-3 pb-4">
-      <div class="card border-0 gradient-2 shadow text-center" style="height: 120px">
+      <div class="card border-0 gradient-2 shadow text-center" style="height: 125px">
         <h6 class="pt-4">Total</h6>
         <b class="display-6 pb-3">{{ number_format($totalregister) }}</b>
       </div>
@@ -177,7 +177,7 @@
   <div class="row pt-2">
     @for ($i = 0; $i < $count_package; $i++)
     <div class="col-md-3 pb-4">
-      <div class="card border-0 shadow text-center" style="height: 120px">
+      <div class="card border-0 shadow text-center" style="height: 125px">
         <h6 class="pt-4">{{ $package[$i]->name }}</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection[$i]) }}</b>
       </div>
@@ -185,7 +185,7 @@
     @endfor
 
     <div class="col-md-3 pb-4">
-      <div class="card border-0 gradient-2 shadow text-center" style="height: 120px">
+      <div class="card border-0 gradient-2 shadow text-center" style="height: 125px">
         <h6 class="pt-4">Total</h6>
         <b class="display-6 pb-3">RM {{ number_format($totalcollection) }}</b>
       </div>
