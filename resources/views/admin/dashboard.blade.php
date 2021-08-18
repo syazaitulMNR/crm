@@ -276,8 +276,8 @@
   var xValues = ["Updated Ticket", "Pending Ticket"];
   var yValues = [{{ $totalticket }}, {{ $pendingticket }}];
   var barColors = [
-    "#1e7145",
-    "#b91d47"
+    "#3EFF69",
+    "#FF3E3E"
   ];
 
   new Chart("myChart", {
