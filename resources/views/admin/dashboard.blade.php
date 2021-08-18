@@ -195,7 +195,7 @@
   @if(Auth::user()->user_id == 'UID001')
   <div class="col-md-4 pb-4">
     <div class="card border-0 bg-white shadow px-4 py-4">      
-      <canvas id="barChart" style="width:100%;max-width:600px"></canvas>
+      <canvas id="barChart" style="width:100%; height: 800px"></canvas>
     </div>
   </div>
   @else
