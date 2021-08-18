@@ -274,7 +274,7 @@
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
   var xValues = ["Updated Ticket", "Pending Ticket"];
-  var yValues = [55, 49];
+  var yValues = [{{ number_format($totalticket) }}, {{ number_format($pendingticket) }}];
   var barColors = [
     "#b91d47",
     "#1e7145"
