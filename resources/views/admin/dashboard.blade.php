@@ -199,8 +199,11 @@
 <!-- Show data in bar chart --------------------------------------------------->
 
 <div class="col-md-3">      
-  <div class="card border-0 shadow text-center text-danger pt-5" style="height: 272px"> 
+  <div class="card border-0 shadow text-center text-danger pt-3" style="height: 272px"> 
     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+    <p>Updated Ticket : {{ number_format($totalticket) }}</p>
+    <p>Pending Ticket : {{ number_format($pendingticket) }}</p>
   </div>
   <br>
   <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
