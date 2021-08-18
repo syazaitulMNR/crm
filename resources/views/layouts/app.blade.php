@@ -19,11 +19,6 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script> {{--  pie chart --}}
-    <script src="https://code.highcharts.com/modules/exporting.js"></script> {{--  pie chart --}}
-    <script src="https://code.highcharts.com/modules/export-data.js"></script> {{--  pie chart --}}
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script> {{--  pie chart --}}
-    <script src="https://code.highcharts.com/highcharts.js"></script> {{--  bar chart --}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/e4e5c205fb.js" crossorigin="anonymous"></script>

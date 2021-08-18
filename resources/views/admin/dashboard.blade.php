@@ -197,13 +197,7 @@
 <!-- Function to show bar chart ----------------------------------------------------->
 <script>
   var xValues = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  var yValues = [ {{$mon}},
-                  {{$tue}},
-                  {{$wed}},
-                  {{$thu}},
-                  {{$fri}},
-                  {{$sat}},
-                  {{$sun}} ];
+  var yValues = [{{$mon}}, {{$tue}}, {{$wed}}, {{$thu}}, {{$fri}}, {{$sat}}, {{$sun}}];
   var barColors = ["#1B4F72", "#17A589", "#633974", "#F1948A", "#FDD74C", "#23B4B1", "#DA4414" ];
   
   new Chart("barChart", {
@@ -225,65 +219,7 @@
   });
 </script>
 
-<script>
-  Highcharts.chart('chartdata', {
-    chart: {
-        type: 'column'
-    },
-    title: {
-        text: ''
-    },
-    subtitle: {
-        text: 'Total Registration per Day (From 8am)'
-    },
-    xAxis: {
-        categories: [
-            'Mon',
-            'Tue',
-            'Wed',
-            'Thu',
-            'Fri',
-            'Sat',
-            'Sun'
-        ],
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: ''
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="padding:3"><b> {point.y} </b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Registration',
-        data: [
-            {{$mon}},
-            {{$tue}},
-            {{$wed}},
-            {{$thu}},
-            {{$fri}},
-            {{$sat}},
-            {{$sun}}
-          ]
-
-    }]
-  });
-</script>
-
-<!-- Function to show line graph ----------------------------------------------------->
+<!-- Function to show doughnut chart ----------------------------------------------------->
 <script>
   var xValues = ["Updated Ticket", "Pending Ticket"];
   var yValues = [{{ $totalticket }}, {{ $pendingticket }}];
