@@ -273,8 +273,8 @@
 
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
-  var xValues = ["Updated Ticket", "Pending Ticket"];
-  var yValues = [55, 49];
+  var xValues = ["Updated Ticket", "Pending Ticket", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
   var barColors = [
     "#b91d47",
     "#00aba9",
