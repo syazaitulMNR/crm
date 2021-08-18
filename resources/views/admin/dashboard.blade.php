@@ -200,7 +200,7 @@
 
 <div class="col-md-3">      
   <div class="card border-0 shadow text-center text-danger" style="height: 272px"> 
-    <canvas id="myChart" style="width:900px"></canvas>
+    <canvas class="py-3" id="myChart" style="width:100%;max-width:600px"></canvas>
   </div>
   <br>
   <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
