@@ -134,7 +134,7 @@
     </div>
 
     <div class="col-md-3 pb-4">      
-      <div class="card border-0 shadow text-center text-danger pt-3" style="height: 293px"> 
+      <div class="card border-0 shadow text-center text-danger pt-3" style="height: 289px"> 
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
     
         <br>
@@ -144,8 +144,8 @@
         
       </div>
       <br>
-      <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
-        <h6 class="pt-4">Total Ticket [A+C]</h6>
+      <div class="card border-0 gradient-3 shadow text-center" style="height: 140px">
+        <h6 class="pt-5">Total Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
