@@ -205,7 +205,13 @@
 <!-- Function to show bar chart ----------------------------------------------------->
 <script>
   var xValues = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  var yValues = [55, 49, 44, 24, 15, 3, 23];
+  var yValues = [ {{$mon}},
+                  {{$tue}},
+                  {{$wed}},
+                  {{$thu}},
+                  {{$fri}},
+                  {{$sat}},
+                  {{$sun}} ];
   var barColors = ["red", "green","blue","orange","brown", "purple", "yellow"];
   
   new Chart("barChart", {
