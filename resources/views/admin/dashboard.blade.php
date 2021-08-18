@@ -200,9 +200,9 @@
 
 <!-- Function to show bar chart ----------------------------------------------------->
 <script>
-  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-  var yValues = [55, 49, 44, 24, 15];
-  var barColors = ["red", "green","blue","orange","brown"];
+  var xValues = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var yValues = [55, 49, 44, 24, 15, 3, 23];
+  var barColors = ["red", "green","blue","orange","brown", "purple", "yellow"];
   
   new Chart("barChart", {
     type: "bar",
@@ -217,7 +217,7 @@
       legend: {display: false},
       title: {
         display: true,
-        text: "World Wine Production 2018"
+        text: "Total Registration per Day (From 8am)"
       }
     }
   });
