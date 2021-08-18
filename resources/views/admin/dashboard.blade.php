@@ -274,10 +274,10 @@
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
   var xValues = ["Updated Ticket", "Pending Ticket"];
-  var yValues = [{{ number_format($totalticket) }}, {{ number_format($pendingticket) }}];
+  var yValues = [{{ $totalticket }}, {{ $pendingticket }}];
   var barColors = [
-    "#b91d47",
-    "#1e7145"
+    "#1e7145",
+    "#b91d47"
   ];
 
   new Chart("myChart", {
