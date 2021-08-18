@@ -193,7 +193,7 @@
   </div>
 
   @if(Auth::user()->user_id == 'UID001')
-  <canvas id="barChart" style="width:100%;max-width:600px"></canvas>
+  <canvas id="barChart" style="width:50%;max-width:600px"></canvas>
   @else
   @endif      
 </div>
