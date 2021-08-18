@@ -200,9 +200,7 @@
 
 <div class="col-md-3">      
   <div class="card border-0 shadow text-center text-danger" style="height: 272px"> 
-    <figure class="highcharts-figure">
-      <div id="container"></div>
-    </figure>
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
   </div>
   <br>
   <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
@@ -275,63 +273,28 @@
 
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
-  // Make monochrome colors
-var pieColors = (function () {
-    var colors = [],
-        base = Highcharts.getOptions().colors[7],
-        i;
+  var xValues = ["Updated Ticket", "Pending Ticket"];
+  var yValues = [{{ number_format($totalticket) }}, {{ number_format($pendingticket) }}];
+  var barColors = [
+    "#b91d47",
+    "#1e7145"
+  ];
 
-    for (i = 0; i < 10; i += 1) {
-        // Start out with a darkened base color (negative brighten), and end
-        // up with a much brighter color
-        colors.push(Highcharts.color(base).brighten((i - 3) / 9).get());
+  new Chart("myChart", {
+    type: "doughnut",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Total Ticket"
+      }
     }
-    return colors;
-}());
-
-// Build the chart
-Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Ticket'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    accessibility: {
-        point: {
-            valueSuffix: '%'
-        }
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            colors: pieColors,
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
-                distance: -50,
-                filter: {
-                    property: 'percentage',
-                    operator: '>',
-                    value: 4
-                }
-            }
-        }
-    },
-    series: [{
-        name: 'Total',
-        data: [
-            { name: 'Updated Ticket', y: 61.41 },
-            { name: 'Pending Ticket', y: 11.84 },
-        ]
-    }]
-});
+  });
 </script>
 @endsection

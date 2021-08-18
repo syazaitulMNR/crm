@@ -18,6 +18,7 @@
     <title>@yield('title') | Momentum Internet</title>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script> {{--  pie chart --}}
     <script src="https://code.highcharts.com/modules/exporting.js"></script> {{--  pie chart --}}
     <script src="https://code.highcharts.com/modules/export-data.js"></script> {{--  pie chart --}}
