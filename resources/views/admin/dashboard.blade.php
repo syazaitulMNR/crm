@@ -134,14 +134,14 @@
     </div>
 
     <div class="col-md-3">      
-      <div class="card border-0 shadow text-center text-danger pt-3" style="height: 272px"> 
+      <div class="card border-0 shadow text-center text-danger py-3" style="height: 272px"> 
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
     
         <br>
     
         <p class="text-dark">Updated Ticket [B+C] : <b>{{ number_format($totalticket) }}</b>
         <br>Pending Ticket [A-B] : <b>{{ number_format($pendingticket) }}</b></p>
-        
+
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
