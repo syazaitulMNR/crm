@@ -204,8 +204,7 @@
 
     <br>
 
-    <p class="text-dark">Updated Ticket : <b>{{ number_format($totalticket) }}</b></p>
-    <p class="text-dark">Pending Ticket : <b>{{ number_format($pendingticket) }}</b></p>
+    <p class="text-dark">Updated Ticket : <b>{{ number_format($totalticket) }}</b><br>Pending Ticket : <b>{{ number_format($pendingticket) }}</b></p>
   </div>
   <br>
   <div class="card border-0 gradient-3 shadow text-center" style="height: 136px">
