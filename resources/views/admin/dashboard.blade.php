@@ -37,8 +37,8 @@
 
     <!-- Show data in bar chart ----------------------------------------------->
     <div class="col-md-4 pb-4">
-      <div class="card border-0 bg-white shadow px-4 py-4">
-        <div id="chartdata" ></div>
+      <div class="card border-0 bg-white shadow px-4 py-4">      
+        <canvas id="barChart" style="width:100%; height: 400px"></canvas>
       </div>
     </div>
     
@@ -192,14 +192,6 @@
     </div>
   </div>
 
-  @if(Auth::user()->user_id == 'UID001')
-  <div class="col-md-4 pb-4">
-    <div class="card border-0 bg-white shadow px-4 py-4">      
-      <canvas id="barChart" style="width:100%; height: 400px"></canvas>
-    </div>
-  </div>
-  @else
-  @endif      
 </div>
 
 <!-- Function to show bar chart ----------------------------------------------------->
