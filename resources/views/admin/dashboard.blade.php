@@ -191,10 +191,38 @@
       </div>
     </div>
   </div>
-      
+
+  @if(Auth::user()->user_id == 'UID001')
+  <canvas id="barChart" style="width:100%;max-width:600px"></canvas>
+  @else
+  @endif      
 </div>
 
 <!-- Function to show bar chart ----------------------------------------------------->
+<script>
+  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
+  var barColors = ["red", "green","blue","orange","brown"];
+  
+  new Chart("barChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "World Wine Production 2018"
+      }
+    }
+  });
+</script>
+
 <script>
   Highcharts.chart('chartdata', {
     chart: {
