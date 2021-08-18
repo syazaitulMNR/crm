@@ -145,7 +145,7 @@
       </div>
       <br>
       <div class="card border-0 gradient-3 shadow text-center" style="height: 140px">
-        <h6 class="pt-4">Total Ticket [A+C]</h6>
+        <h6 class="pt-4 pb-2">Total Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
