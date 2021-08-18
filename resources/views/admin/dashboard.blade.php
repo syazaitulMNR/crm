@@ -274,9 +274,12 @@
 <!-- Function to show line graph ----------------------------------------------------->
 <script>
   var xValues = ["Updated Ticket", "Pending Ticket"];
-  var yValues = [{{ number_format($totalticket) }}, {{ number_format($pendingticket) }}];
+  var yValues = [55, 49];
   var barColors = [
     "#b91d47",
+    "#00aba9",
+    "#2b5797",
+    "#e8c3b9",
     "#1e7145"
   ];
 
@@ -292,7 +295,7 @@
     options: {
       title: {
         display: true,
-        text: "Total Ticket"
+        text: "World Wide Wine Production 2018"
       }
     }
   });
