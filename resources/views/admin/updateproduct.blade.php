@@ -34,7 +34,7 @@
             <label class="form-label">Offer Provided</label>
             <input name="offer_id" type="text" class="form-control" value="{{ $product->offer_id }}">
             @foreach($offers as $offer)
-            <em><b>{{ $offer->offer_id }}</b></em> = {{ $offer->name }}; </em>
+            <em><b>{{ $offer->offer_id }}</b> = {{ $offer->name }}; </em>
             @endforeach
             {{-- <select class="form-select" aria-label="Default select example" name="offer_id" required>
                 <option disabled selected>-- Please Select --</option>
