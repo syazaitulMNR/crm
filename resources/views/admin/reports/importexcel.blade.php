@@ -117,7 +117,7 @@ Sales Report
                             <th>Offer ID</th>
                             <th>Description</th>
                         </tr>
-                        @foreach ($offers as $offers)
+                        @foreach ($offer as $offers)
                         <tr>
                             <td>{{ $count++ }}</td>
                             <td>{{ $offers->offer_id }}</td>
