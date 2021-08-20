@@ -89,7 +89,7 @@ class ExistCustomerController extends Controller
             if($count_package == 1){
                 
                 //if only one package for the event
-                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
           
             } else {
           
