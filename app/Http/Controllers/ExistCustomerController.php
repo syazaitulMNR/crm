@@ -60,6 +60,7 @@ class ExistCustomerController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $package_name = Package::where('product_id', $product_id)->get();
+        $count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
@@ -82,6 +83,21 @@ class ExistCustomerController extends Controller
             //for Bulk Ticket
             return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
+        } else if($product->offer_id == 'OFF004') {
+
+            //for Bulk Ticket (1,3,5)
+            if($count_package == 1){
+                
+                //if only one package for the event
+                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+          
+            } else {
+          
+                //if has 3 package for the event
+                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+          
+            }
+            
         } else {
 
             echo 'No Such Offer';
