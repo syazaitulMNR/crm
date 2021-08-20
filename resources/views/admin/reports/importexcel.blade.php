@@ -119,7 +119,7 @@ Sales Report
                         </tr>
                         @foreach ($offers as $key => $offers)
                         <tr>
-                            <td>{{ $offer-> firstItem() + $key }}</td>
+                            <td>{{ $count++ }}</td>
                             <td>{{ $offers->offer_id }}</td>
                             <td>{{ $offers->name }}</td>
                         </tr>
