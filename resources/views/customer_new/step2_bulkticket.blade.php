@@ -51,9 +51,15 @@ Pendaftaran Pembeli
                             {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> --}}
                             <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-select" required>
                                 <option value="" disabled selected>-- Tiket --</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                @if ($product->offer_id == 'OFF004')
+                                    <option value="1">1</option>
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                @else
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                @endif
                             </select>
                         </div>
                         <div class="col-md-6 pb-2">
@@ -91,70 +97,147 @@ Pendaftaran Pembeli
         var discount1 = 60;
         var discount2 = 120;
 
-        if (package_name == package1) {
 
-            if ( price <= 10 )
-            {
-                var prices = document.getElementById("price").value;
-                var total_price = val * prices;
-
-                var divobj = document.getElementById('jumlahharga');
-                divobj.value = total_price;
-
-            } else if ( price > 10 && price <= 30 ){
-
-                if (val == 1) {
-                    total = price * 1;
-                } else if (val == 2) {
-                    total = price * 2;
-                } else {
-                    total = (price * 3) - 10;
-                }
-                var totallagi = document.getElementById('jumlahharga');
-                totallagi.value = total;
-
-            } else {
+        if ('{{ $product->offer_id }}' == 'OFF004' ) {
             
+            // for bulk ticket 1,3,5
+            if (package_name == package1) {
+
+                if ( price <= 10 )
+                {
+                    var prices = document.getElementById("price").value;
+                    var total_price = val * prices;
+
+                    var divobj = document.getElementById('jumlahharga');
+                    divobj.value = total_price;
+
+                } else if ( price > 10 && price <= 30 ){
+
+                    if (val == 1) {
+                        total = price * 1;
+                    } else if (val == 3) {
+                        total = price * 3;
+                    } else {
+                        total = (price * 5) - 10;
+                    }
+                    var totallagi = document.getElementById('jumlahharga');
+                    totallagi.value = total;
+
+                } else {
+                
+                    if (val == 1) {
+                        total = price * 1;
+                    } else if (val == 3) {
+                        total = price * 3;
+                    } else {
+                        total = (price * 5) - 20;
+                    }
+                    var totallagi = document.getElementById('jumlahharga');
+                    totallagi.value = total;
+
+                }
+
+            } else if (package_name == package2) {
+
                 if (val == 1) {
                     total = price * 1;
-                } else if (val == 2) {
-                    total = price * 2;
+                } else if (val == 3) {
+                    total = price * 3;
                 } else {
-                    total = (price * 3) - 20;
+                    total = (price * 5) - discount1;
                 }
                 var totallagi = document.getElementById('jumlahharga');
-                totallagi.value = total;
+                totallagi.value = Math.round(total);
 
-            }
+            } else if (package_name == package3) {
 
-        } else if (package_name == package2) {
+                if (val == 1) {
+                    total = price * 1;
+                } else if (val == 3) {
+                    total = price * 3;
+                } else {
+                    total = (price * 5) - discount2;
+                }
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = Math.round(total);
 
-            if (val == 1) {
-                total = price * 1;
-            } else if (val == 2) {
-                total = price * 2;
             } else {
-                total = (price * 3) - discount1;
-            }
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = Math.round(total);
+                
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = error;
 
-        } else if (package_name == package3) {
-
-            if (val == 1) {
-                total = price * 1;
-            } else if (val == 2) {
-                total = price * 2;
-            } else {
-                total = (price * 3) - discount2;
             }
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = Math.round(total);
 
         } else {
-            
-            var totallagi = document.getElementById('jumlahharga');
-            totallagi.value = error;
+
+            // for bulk ticket 1,2,3
+            if (package_name == package1) {
+
+                if ( price <= 10 )
+                {
+                    var prices = document.getElementById("price").value;
+                    var total_price = val * prices;
+
+                    var divobj = document.getElementById('jumlahharga');
+                    divobj.value = total_price;
+
+                } else if ( price > 10 && price <= 30 ){
+
+                    if (val == 1) {
+                        total = price * 1;
+                    } else if (val == 2) {
+                        total = price * 2;
+                    } else {
+                        total = (price * 3) - 10;
+                    }
+                    var totallagi = document.getElementById('jumlahharga');
+                    totallagi.value = total;
+
+                } else {
+
+                    if (val == 1) {
+                        total = price * 1;
+                    } else if (val == 2) {
+                        total = price * 2;
+                    } else {
+                        total = (price * 3) - 20;
+                    }
+                    var totallagi = document.getElementById('jumlahharga');
+                    totallagi.value = total;
+
+                }
+
+            } else if (package_name == package2) {
+
+                if (val == 1) {
+                    total = price * 1;
+                } else if (val == 2) {
+                    total = price * 2;
+                } else {
+                    total = (price * 3) - discount1;
+                }
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = Math.round(total);
+
+            } else if (package_name == package3) {
+
+                if (val == 1) {
+                    total = price * 1;
+                } else if (val == 2) {
+                    total = price * 2;
+                } else {
+                    total = (price * 3) - discount2;
+                }
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = Math.round(total);
+
+            } else {
+
+                var totallagi = document.getElementById('jumlahharga');
+                totallagi.value = error;
+
+            }
+
 
         }
 
