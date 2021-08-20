@@ -80,8 +80,18 @@ class ExistCustomerController extends Controller
 
         } else if($product->offer_id == 'OFF003') {
 
-            //for Bulk Ticket
-            return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+            //for Bulk Ticket (1,3,5)
+            if($count_package == 1){
+                
+                //if only one package for the event
+                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+          
+            } else {
+          
+                //if has 3 package for the event
+                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+          
+            }
 
         } else if($product->offer_id == 'OFF004') {
 

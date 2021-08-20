@@ -81,6 +81,7 @@ class NewCustomerController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $package_name = Package::where('product_id', $product_id)->get();
+        $count_package = Package::where('product_id', $product_id)->count();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
