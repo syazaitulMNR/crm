@@ -6,13 +6,13 @@ Pendaftaran Pembeli
 
 @section('content')
 <div class="row">
-    <div class="col-md-12 pt-5 pb-3 text-center">
+    <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:150px">
         <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }}</h1>
     </div>
 
     <div class="col-md-6 offset-md-3 pb-5">
-        <form action="{{ url('save2') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" method="POST">
+        <form action="{{ url('store2') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
             @csrf
             <div class="card px-4 py-4 shadow">
                 <div class="bg-dark text-white px-2 py-2">Langkah 2/5: Maklumat Tiket</div>
@@ -48,7 +48,8 @@ Pendaftaran Pembeli
                         </div>
                         <div class="col-md-6 pb-2">
                             <label for="quantity">Kuantiti:</label>
-                            <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-select" required> 
+                            {{-- <select id="quantity" name="quantity" onchange="calculateAmount(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-control" required> --}}
+                            <select id="quantity" name="quantity" onchange="myFunction(this.value)" value="{{ $payment->quantity ?? '' }}" class="form-select" required>
                                 <option value="" disabled selected>-- Tiket --</option>
                                 @if ($product->offer_id == 'OFF004')
                                     <option value="1">1</option>
@@ -71,7 +72,7 @@ Pendaftaran Pembeli
                 
                 <div class="col-md-12">
                     <div class="pull-left">
-                        <a href="{{ url('langkah-pertama') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->stud_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
+                        <a href="{{ url('maklumat-pembeli') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $student->ic }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                     </div>
                     <div class="pull-right">
                         <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
@@ -91,7 +92,7 @@ Pendaftaran Pembeli
         var price = '{{ $package->price }}';
         var package1 = '{{ $package_name[0]->name }}';
         var error = 'No such package'; 
-        var discount1 = 60;
+                var discount1 = 60;
         var discount2 = 120; 
 
         if ('{{ $product->offer_id }}' == 'OFF004' ) {
@@ -190,5 +191,4 @@ Pendaftaran Pembeli
 
     }
 </script>
-
 @endsection
