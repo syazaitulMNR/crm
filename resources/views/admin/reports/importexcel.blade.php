@@ -117,21 +117,13 @@ Sales Report
                             <th>Offer ID</th>
                             <th>Description</th>
                         </tr>
+                        @foreach ($offers as $key => $offers)
                         <tr>
-                            <td>1</td>
-                            <td>OFF001</td>
-                            <td>No Offer</td>
+                            <td>{{ $offer-> firstItem() + $key }}</td>
+                            <td>{{ $offers->offer_id }}</td>
+                            <td>{{ $offers->name }}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>OFF002</td>
-                            <td>Buy 1 Free 1 (Same Ticket)</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>OFF003</td>
-                            <td>Bulk Ticket</td>
-                        </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>  
