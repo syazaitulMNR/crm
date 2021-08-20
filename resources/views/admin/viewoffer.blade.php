@@ -90,11 +90,11 @@
             <td>{{ $offer->name  }}</td>
             <td>
               <!-- Update trigger modal -->
-              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateoffer">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateoffer{{ $offer->offer_id }}">
                   <i class="bi bi-pencil-square"></i>
               </button>
               <!-- Update Modal -->
-              <div class="modal fade" id="updateoffer" tabindex="-1" role="dialog" aria-labelledby="updateofferLabel" aria-hidden="true">
+              <div class="modal fade" id="#updateoffer{{ $offer->offer_id }}" tabindex="-1" role="dialog" aria-labelledby="updateofferLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                       <div class="modal-header border-bottom-0">
