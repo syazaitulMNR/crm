@@ -73,7 +73,6 @@ class ExistCustomerController extends Controller
             return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
 
         } else if($product->offer_id == 'OFF002') {
-
             
             //for Buy 1 Get 1 (Same Ticket)
             return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
