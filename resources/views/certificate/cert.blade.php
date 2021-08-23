@@ -45,7 +45,7 @@
         <tr>
             <td align="center" colspan="2" style="padding: 40px 0 25px 0;">
                 <p style="margin: 0;">This certifies that</p>
-                <h3 style="margin: 0;"> {{ $first_name }} {{ $last_name }}</h3>
+                <h3 style="margin: 0;"> {{ ucwords(strtolower($first_name)) }} {{ ucwords(strtolower($last_name)) }}</h3>
                 <h4 style="margin: 0;"> ({{ $ic }})</h4>
             </td>
         </tr>
