@@ -50,8 +50,8 @@ class ParticipantImport implements ToCollection, WithChunkReading, WithHeadingRo
 
                 Student::create([
                     'stud_id'    => $stud_id,
-                    'first_name' => $row['first_name'],
-                    'last_name'  => $row['last_name'], 
+                    'first_name' => ucwords(strtolower($row['first_name'])),
+                    'last_name'  => ucwords(strtolower($row['last_name'])), 
                     'ic'         => $row['ic'],
                     'email'      => $row['email'],
                     'phoneno'    => '+' . $row['phoneno'],
