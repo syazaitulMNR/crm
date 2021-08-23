@@ -27,7 +27,7 @@ Sales Report
 
         {{-- <div class="row-fluid"> --}}
             @if(Auth::user()->user_id == 'UID001')
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Emails</label>
@@ -40,7 +40,7 @@ Sales Report
                     </select>
                 </div>
                 <em class="pl-3">Choose email template</em>
-            </div>
+            </div> --}}
             @else
             @endif
             
