@@ -28,8 +28,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
     public function collection(Collection $rows)
     {
-        // dump($rows[2]);
-        
+
         foreach ($rows as $row) 
         {
             $student = Student::where('ic', $row['ic'])->first();
@@ -59,8 +58,8 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
                 Student::create([
                     'stud_id'    => $stud_id,
-                    'first_name' => $row['first_name'],
-                    'last_name'  => $row['last_name'], 
+                    'first_name' => ucwords(strtolower($row['first_name'])),
+                    'last_name'  => ucwords(strtolower($row['last_name'])), 
                     'ic'         => $row['ic'],
                     'email'      => $row['email'],
                     'phoneno'    => '+' . $row['phoneno'],
@@ -85,6 +84,8 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             }
         }
+
+        dump($rows);
 
         // dispatch(new TestJobMail($rows, $this->email_id, $this->regex_content));
         
