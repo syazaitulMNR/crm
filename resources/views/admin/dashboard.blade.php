@@ -55,7 +55,7 @@
           <table class="table text-center">
             <thead class="thead">
               <tr>
-                <th class="text-left">Package</th>
+                <th class="text-left w-25">Package</th>
                 <th>Registration [A]</th>
                 <th>Updated Paid Ticket [B]</th>
                 <th>Updated Free Ticket [C]</th>
