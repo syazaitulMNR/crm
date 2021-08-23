@@ -224,7 +224,7 @@
                   <tr>
                       <td>{{ $count++ }}</td>
                       <td>{{ $students->ic }}</td>
-                      <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                      <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
                       <td>{{ $students->email }}</td>
                       <td>{{ $tickets->ticket_type }}</td>
                       <td>
