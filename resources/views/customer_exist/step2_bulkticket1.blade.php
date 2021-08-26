@@ -91,8 +91,8 @@ Pendaftaran Pembeli
         var price = '{{ $package->price }}';
         var package1 = '{{ $package_name[0]->name }}';
         var error = 'No such package'; 
-        var discount1 = 60;
-        var discount2 = 120; 
+        var discount1 = 27;
+        var discount2 = 55; 
 
         if ('{{ $product->offer_id }}' == 'OFF004' ) {
             
@@ -107,26 +107,14 @@ Pendaftaran Pembeli
                     var divobj = document.getElementById('jumlahharga');
                     divobj.value = total_price;
 
-                } else if ( price > 10 && price <= 30 ){
-
-                    if (val == 1) {
-                        total = price * 1;
-                    } else if (val == 3) {
-                        total = price * 3;
-                    } else {
-                        total = (price * 5) - 10;
-                    }
-                    var totallagi = document.getElementById('jumlahharga');
-                    totallagi.value = total;
-
                 } else {
                 
                     if (val == 1) {
                         total = price * 1;
                     } else if (val == 3) {
-                        total = price * 3;
+                        total = (price * 3) - discount1;
                     } else {
-                        total = (price * 5) - 20;
+                        total = (price * 5) - discount2;
                     }
                     var totallagi = document.getElementById('jumlahharga');
                     totallagi.value = total;
