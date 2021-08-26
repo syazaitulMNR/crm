@@ -128,7 +128,7 @@
 				</button>
 			</div>
 			
-			<div class="modal-body">
+			<div class="modal-body px-4">
 				<form action="{{ url('smsblast/send') }}" method="POST"> 
 					@csrf
 					Message:
@@ -137,7 +137,7 @@
 					Phone Number:
 					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
 					
-					<div class='col-md-12 text-right px-4'>
+					<div class='col-md-12 text-right'>
 						<button type='submit' class='btn btn-success'> 
 							<i class="fas fa-save pr-1"></i> Send 
 						</button>
@@ -159,7 +159,7 @@
 				</button>
 			</div>
 			
-			<div class="modal-body">
+			<div class="modal-body px-4">
 				<form action="{{ url('smsblast/send_bulk') }}" method="POST" enctype="multipart/form-data"> 
 					@csrf
 					Template:
@@ -172,7 +172,7 @@
 					Excel Data:
 					<input type="file" name="file" /><br />
 					
-					<div class='col-md-12 text-right px-4'>
+					<div class='col-md-12 text-right'>
 						<button type='submit' class='btn btn-success'> 
 							<i class="fas fa-paper-plane pr-1"></i> Send 
 						</button>
