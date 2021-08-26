@@ -79,7 +79,7 @@ class ExistCustomerController extends Controller
 
         } else if($product->offer_id == 'OFF003') {
 
-            //for Bulk Ticket (1,3,5)
+            //for Bulk Ticket (1,2,3)
             if($count_package == 1){
                 
                 //if only one package for the event
