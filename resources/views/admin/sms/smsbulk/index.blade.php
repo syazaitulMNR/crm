@@ -139,7 +139,7 @@
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
-							<i class="fas fa-save pr-1"></i> Save 
+							<i class="fas fa-save pr-1"></i> Send 
 						</button>
 					</div>
 				</form>
@@ -174,7 +174,7 @@
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
-							<i class="fas fa-paper-plane pr-1"></i> Save 
+							<i class="fas fa-paper-plane pr-1"></i> Send 
 						</button>
 					</div>
 				</form>
