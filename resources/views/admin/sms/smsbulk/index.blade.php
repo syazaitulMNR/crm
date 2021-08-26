@@ -137,7 +137,7 @@
 					Phone Number:
 					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
 					
-					<div class='col-md-12 text-right'>
+					<div class='text-right'>
 						<button type='submit' class='btn btn-success'> 
 							<i class="fas fa-save pr-1"></i> Send 
 						</button>
@@ -172,7 +172,7 @@
 					Excel Data:
 					<input type="file" name="file" /><br />
 					
-					<div class='col-md-12 text-right'>
+					<div class='text-right'>
 						<button type='submit' class='btn btn-success'> 
 							<i class="fas fa-paper-plane pr-1"></i> Send 
 						</button>
