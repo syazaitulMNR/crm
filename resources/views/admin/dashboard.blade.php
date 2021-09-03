@@ -34,20 +34,28 @@
         <b class="display-6 pb-3">+{{ number_format($total_yesterday) }}</b>
       </div>
     </div>
+
+    <!-- Show data in bar chart ----------------------------------------------->
+    <div class="col-md-4 pb-4">
+      <div class="card border-0 bg-white shadow px-4 py-4">      
+        <canvas id="barChart" style="width:100%; height: 401px"></canvas>
+      </div>
+    </div>
     
     <!-- Show data in table --------------------------------------------------->
-    <div class="col-md-8 pb-4">
+    <div class="col-md-5 pb-4">
       <div class="card bg-white shadow px-4 py-4">
 
-        <h5 class="text-center py-4">{{ $product->name }}</h5>
+        <h5 class="text-center pt-4">{{ $product->name }}</h5>
+        <b class="text-center pb-4">Report per Hour</b>
 
-        <p>Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
+        <p class="text-center pb-3">Date : <b>{{ $date_today }}</b> &nbsp;&nbsp; Report Hours : <b>{{ $duration }}</b></p>
 
         <div class="table-responsive pb-4">
           <table class="table text-center">
             <thead class="thead">
               <tr>
-                <th class="text-left">Package</th>
+                <th class="text-left w-25">Package</th>
                 <th>Registration [A]</th>
                 <th>Updated Paid Ticket [B]</th>
                 <th>Updated Free Ticket [C]</th>
@@ -125,19 +133,19 @@
       </div>
     </div>
 
-    <div class="col-md-4">      
-      <div class="card border-0 shadow text-center text-danger" style="height: 117px">
-        <h6 class="pt-4">Total Pending Ticket [A-B]</h6>
-        <b class="display-6 pb-3">{{ number_format($pendingticket) }}</b>
+    <div class="col-md-3 pb-4">      
+      <div class="card border-0 shadow text-center text-danger pt-3" style="height: 284px"> 
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    
+        <br>
+    
+        <p class="text-dark">Updated Ticket [B+C] : <b>{{ number_format($totalticket) }}</b>
+        <br>Pending Ticket [A-B] : <b>{{ number_format($pendingticket) }}</b></p>
+        
       </div>
       <br>
-      <div class="card border-0 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Total Updated Ticket [B+C]</h6>
-        <b class="display-6 pb-3">{{ number_format($totalticket) }}</b>
-      </div>
-      <br>
-      <div class="card border-0 gradient-3 shadow text-center" style="height: 117px">
-        <h6 class="pt-4">Overall Ticket [A+C]</h6>
+      <div class="card border-0 gradient-3 shadow text-center" style="height: 145px">
+        <h6 class="pt-4 pb-3">Total Ticket [A+C]</h6>
         <b class="display-6 pb-3">{{ number_format($totalticket + $pendingticket) }}</b>
       </div>
     </div>
@@ -149,7 +157,7 @@
   <div class="row py-2">
     @for ($i = 0; $i < $count_package; $i++)
     <div class="col-md-3 pb-4">
-      <div class="card border-0 shadow text-center" style="height: 117px">
+      <div class="card border-0 shadow text-center" style="height: 125px">
         <h6 class="pt-4">{{ $package[$i]->name }}</h6>
         <b class="display-6 pb-3">{{ number_format($totalpackage[$i]) }}</b>
       </div>
@@ -157,7 +165,7 @@
     @endfor
 
     <div class="col-md-3 pb-4">
-      <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
+      <div class="card border-0 gradient-2 shadow text-center" style="height: 125px">
         <h6 class="pt-4">Total</h6>
         <b class="display-6 pb-3">{{ number_format($totalregister) }}</b>
       </div>
@@ -169,7 +177,7 @@
   <div class="row pt-2">
     @for ($i = 0; $i < $count_package; $i++)
     <div class="col-md-3 pb-4">
-      <div class="card border-0 shadow text-center" style="height: 117px">
+      <div class="card border-0 shadow text-center" style="height: 125px">
         <h6 class="pt-4">{{ $package[$i]->name }}</h6>
         <b class="display-6 pb-3">RM {{ number_format($collection[$i]) }}</b>
       </div>
@@ -177,183 +185,64 @@
     @endfor
 
     <div class="col-md-3 pb-4">
-      <div class="card border-0 gradient-2 shadow text-center" style="height: 117px">
+      <div class="card border-0 gradient-2 shadow text-center" style="height: 125px">
         <h6 class="pt-4">Total</h6>
         <b class="display-6 pb-3">RM {{ number_format($totalcollection) }}</b>
       </div>
     </div>
   </div>
-      
+
 </div>
 
-
-<!-- Show data in bar chart --------------------------------------------------->
-{{-- <div class="col-md-5">
-  <div class="card bg-white shadow px-2 py-2">
-    <div id="chartdata" ></div>
-  </div>
-</div> --}}
-
-<!-- Show data in line graph --------------------------------------------------->
-
-{{-- <figure class="highcharts-figure">
-  <div id="container"></div>
-</figure> --}}
-
 <!-- Function to show bar chart ----------------------------------------------------->
-{{-- <script>
-  Highcharts.chart('chartdata', {
-    chart: {
-        type: 'column'
+<script>
+  var xValues = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var yValues = [{{$mon}}, {{$tue}}, {{$wed}}, {{$thu}}, {{$fri}}, {{$sat}}, {{$sun}}];
+  var barColors = ["#1B4F72", "#17A589", "#633974", "#F1948A", "#FDD74C", "#23B4B1", "#DA4414" ];
+  
+  new Chart("barChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
     },
-    title: {
-        text: 'Magic Number'
-    },
-    subtitle: {
-        text: 'Profit of Momentum Internet'
-    },
-    xAxis: {
-        categories: [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
-        ],
-        crosshair: true
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Profit (RM)'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="padding:3">RM </td>' +
-            '<td style="padding:3"><b> {point.y:.2f} </b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: 'Month',
-        data: [
-            {{$jan}},
-            {{$feb}},
-            {{$mar}},
-            {{$apr}},
-            {{$may}},
-            {{$jun}},
-            {{$jul}},
-            {{$aug}},
-            {{$sep}},
-            {{$oct}},
-            {{$nov}},
-            {{$dec}}
-          ]
-
-    }]
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "Total Registration per Day (From 8am)"
+      }
+    }
   });
-</script> --}}
+</script>
 
-<!-- Function to show line graph ----------------------------------------------------->
-{{-- <script>
-  Highcharts.chart('container', {
+<!-- Function to show doughnut chart ----------------------------------------------------->
+<script>
+  var xValues = ["Updated Ticket", "Pending Ticket"];
+  var yValues = [{{ $totalticket }}, {{ $pendingticket }}];
+  var barColors = [
+    "#3EFF69",
+    "#FF3E3E"
+  ];
 
-  title: {
-    text: 'Magic Number'
-  },
-
-  subtitle: {
-    text: 'Profit of Momentum Internet'
-  },
-
-  yAxis: {
-    title: {
-      text: ''
-    }
-  },
-
-  xAxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  },
-
-  // xAxis: {
-  //   accessibility: {
-  //     rangeDescription: 'Range: 2010 to 2017'
-  //   }
-  // },
-
-  legend: {
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'middle'
-  },
-
-  plotOptions: {
-    spline: {
-      marker: {
-        radius: 4,
-        lineColor: '#303030',
-        lineWidth: 1
+  new Chart("myChart", {
+    type: "doughnut",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Ticket Status"
       }
     }
-    // series: {
-    //   label: {
-    //     connectorAllowed: false
-    //   },
-    //   pointStart: 2021
-    // }
-  },
-
-  series: [{
-    name: 'Profit (RM)',
-    data: [
-            {{$jan}},
-            {{$feb}},
-            {{$mar}},
-            {{$apr}},
-            {{$may}},
-            {{$jun}},
-            {{$jul}},
-            {{$aug}},
-            {{$sep}},
-            {{$oct}},
-            {{$nov}},
-            {{$dec}}
-          ]
-  }],
-
-  responsive: {
-    rules: [{
-      condition: {
-        maxWidth: 800
-      },
-      chartOptions: {
-        legend: {
-          layout: 'horizontal',
-          align: 'center',
-          verticalAlign: 'bottom'
-        }
-      }
-    }]
-  }
-
-});
-</script> --}}
+  });
+</script>
 @endsection

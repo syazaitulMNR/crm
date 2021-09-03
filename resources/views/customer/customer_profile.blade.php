@@ -277,11 +277,11 @@ Customer Profiles
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="First Name">First Name</label>
-                                        <input type="text" name="first" class="form-control" value="{{ $customer->first_name }}" disabled>
+                                        <input type="text" name="first" class="form-control" value="{{ ucwords(strtolower($customer->first_name)) }}" disabled>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="First Name">Last Name</label>
-                                        <input type="text" name="last" class="form-control" value="{{ $customer->last_name }}" disabled>
+                                        <input type="text" name="last" class="form-control" value="{{ ucwords(strtolower($customer->last_name)) }}" disabled>
                                     </div>
                                 </div>
             

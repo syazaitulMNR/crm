@@ -28,8 +28,8 @@ class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             if(Student::where('ic', $row['ic'])->exists()){
 
-                $student->first_name    = $row['first_name'];
-                $student->last_name     = $row['last_name'];
+                $student->first_name    = ucwords(strtolower($row['first_name']));
+                $student->last_name     = ucwords(strtolower($row['last_name']));
                 // $student->ic            = $row['ic'];
                 $student->email         = $row['email'];
                 $student->phoneno       = '+' . $row['phoneno'];
@@ -44,8 +44,8 @@ class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
 
                 Student::create([
                     'stud_id'           => $stud_id,
-                    'first_name'        => $row['first_name'],
-                    'last_name'         => $row['last_name'], 
+                    'first_name'        => ucwords(strtolower($row['first_name'])),
+                    'last_name'         => ucwords(strtolower($row['last_name'])), 
                     'ic'                => $row['ic'],
                     'email'             => $row['email'],
                     'phoneno'           => '+' . $row['phoneno'],

@@ -222,7 +222,7 @@ Sales Report
             <tr>
                 <td>{{ $count++ }}</td>
                 <td>{{ $students->ic }}</td>
-                <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
                 <td>{{ $students->email }}</td>
                 <td>
                   @if ($payments->status == 'paid')
@@ -276,7 +276,7 @@ Sales Report
           <tr>
               <td>{{ $count++ }}</td>
               <td>{{ $students->ic }}</td>
-              <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+              <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
               <td>{{ $students->email }}</td>
               <td class="text-center">
                 @if ($payments->update_count == 1)

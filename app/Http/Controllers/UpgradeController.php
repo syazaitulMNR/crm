@@ -327,7 +327,7 @@ class UpgradeController extends Controller
         );
 
         $new_package->fill($addData);
-        $request->session()->put('payment', $new_package);
+        $request->session()->put('ticket', $new_package);
 
         return redirect($pay_data['url']);
     }
@@ -335,7 +335,7 @@ class UpgradeController extends Controller
     public function redirect_page($product_id, $package_id, $ticket_id, Request $request)
     {
         $new_package = $request->session()->get('ticket');
-
+        
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
         $bill = $billplz->bill();
@@ -353,9 +353,9 @@ class UpgradeController extends Controller
         {
             /*-- Manage Email ---------------------------------------------------*/
 
-            $product = Product::where('product_id', $product_id)->first();
-            $package = Package::where('package_id', $package_id)->first();
-            $student = Student::where('ic', $ticket->ic)->first();  
+            $product = Product::where('product_id', $new_package->product_id)->first();
+            $package = Package::where('package_id', $new_package->package_id)->first();
+            $student = Student::where('ic', $new_package->ic)->first();  
             
             $send_mail = $student->email;
             $product_name = $product->name;   
@@ -366,7 +366,7 @@ class UpgradeController extends Controller
             $time_to = $product->time_to;
             $packageId = $package_id;
             $productId = $product_id;        
-            $student_id = $student->stud_id;
+            $stud_id = $student->stud_id;
             $survey_form = $product->survey_form;
 
             $new_package->save();
@@ -376,7 +376,7 @@ class UpgradeController extends Controller
             /*-- End Email -----------------------------------------------------------*/
     
             $request->session()->forget('student');
-            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
 
             return redirect('naik-taraf-berjaya');  
 
@@ -385,7 +385,7 @@ class UpgradeController extends Controller
             $new_package->save();
     
             $request->session()->forget('student');
-            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
 
             return redirect('pendaftaran-tidak-berjaya');
             

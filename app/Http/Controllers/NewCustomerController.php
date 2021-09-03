@@ -81,6 +81,7 @@ class NewCustomerController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $package_name = Package::where('product_id', $product_id)->get();
+        $count_package = Package::where('product_id', $product_id)->count();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
@@ -99,9 +100,34 @@ class NewCustomerController extends Controller
 
         } else if($product->offer_id == 'OFF003') {
 
-            //for Bulk Ticket
-            return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
-
+            //for Bulk Ticket (1,2,3)
+            if($count_package == 1){
+                
+                //if only one package for the event
+                return view('customer_new.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+      
+            } else {
+      
+                //if has 3 package for the event
+                return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+      
+            }
+            
+        } else if($product->offer_id == 'OFF004') {
+      
+            //for Bulk Ticket (1,3,5)
+            if($count_package == 1){
+      
+                //if only one package for the event
+                return view('customer_new.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+      
+            } else {
+      
+                //if has 3 package for the event
+                return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+      
+            }
+      
         } else {
 
             echo 'No Such Offer';

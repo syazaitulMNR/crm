@@ -130,25 +130,20 @@ class HomeController extends Controller
 
         }else{
 
-            if($payment->offer_id == 'OFF001') {
+            if($payment->offer_id == 'OFF001' || $payment->offer_id == 'OFF003' || $payment->offer_id == 'OFF004') {
 
-                //for no offer ticket
+                //for no offer & bulk ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-    
+            
             } else if($payment->offer_id == 'OFF002') {
-
+            
                 //for Buy 1 Get 1 (Same Ticket)
                 return view('customer.get1free1same', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-    
-            } else if($payment->offer_id == 'OFF003') {
-
-                //for Bulk Ticket
-                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-    
+            
             } else {
-    
+            
                 echo 'No Such Offer';
-    
+            
             }
 
         }

@@ -201,8 +201,8 @@ class MembershipController extends Controller
 
         $student->ic = $request->ic;
         $student->phoneno = $request->phoneno;
-        $student->first_name = $request->first_name;
-        $student->last_name = $request->last_name;
+        $student->first_name = ucwords(strtolower($request->first_name));
+        $student->last_name = ucwords(strtolower($request->last_name));
         $student->email = $request->email;
         $student->status = $request->status;
         $student->save();
@@ -256,8 +256,8 @@ class MembershipController extends Controller
 
             $student->ic = $request->ic;
             $student->phoneno = $request->phoneno;
-            $student->first_name = $request->first_name;
-            $student->last_name = $request->last_name;
+            $student->first_name = ucwords(strtolower($request->first_name));
+            $student->last_name = ucwords(strtolower($request->last_name));
             $student->email = $request->email;
             $student->membership_id = $membership_id;
             $student->level_id = $level_id;
@@ -270,8 +270,8 @@ class MembershipController extends Controller
             
             Student::create(array(
                 'stud_id'=> $stud_id,
-                'first_name'=> $request->first_name,
-                'last_name'=> $request->last_name,
+                'first_name'=> ucwords(strtolower($request->first_name)),
+                'last_name'=> ucwords(strtolower($request->last_name)),
                 'ic' => $request->ic,
                 'phoneno' => $request->phoneno,
                 'email' => $request->email,

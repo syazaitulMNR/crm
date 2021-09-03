@@ -32,7 +32,7 @@ E-Certificate
 
                         <div class="col-md-6 pb-2">
                             <label for="description">Nama Peserta:</label>
-                            <input type="text"  value="{{ $student->first_name }} {{ $student->last_name }}" class="form-control" disabled/>
+                            <input type="text"  value="{{ ucwords(strtolower($student->first_name)) }} {{ ucwords(strtolower($student->last_name)) }}" class="form-control" disabled/>
                         </div>
                         
                         <div class="col-md-6 pb-4">

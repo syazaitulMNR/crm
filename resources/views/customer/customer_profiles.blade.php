@@ -64,7 +64,7 @@ Customer Profiles
                 @forelse ($customers as $key => $customer)
                 <tr>
                     <th scope="row">{{ ++$no }}</th>
-                    <td>{{ $customer->first_name }} {{ $customer->last_name }}</td>
+                    <td>{{ ucwords(strtolower($customer->first_name)) }} {{ ucwords(strtolower($customer->last_name)) }}</td>
                     <td>{{ $customer->ic }}</td>
                     <td>
                         @if ($customer->status === "Active")

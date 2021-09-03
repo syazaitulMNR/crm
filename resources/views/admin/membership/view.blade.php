@@ -213,7 +213,7 @@ Membership
             <tr>
                 <td>{{ $count++ }}</td>
                 <td>{{ $students->ic }}</td>
-                <td>{{ $students->first_name }} {{ $students->last_name }}</td>
+                <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
                 <td class="text-center">
                   @if ($students->status == 'Deactive')
                     <span class="badge rounded-pill bg-danger"> &nbsp;{{ $students->status }}&nbsp; </span>

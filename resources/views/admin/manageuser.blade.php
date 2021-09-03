@@ -18,7 +18,7 @@
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group">
           <a href="managerole" class="btn btn-sm btn-outline-secondary"><i class="bi bi-people pr-2"></i>Manage Role</a>
-          <a href="create" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-lg pr-2"></i>Add New User</a>
+          <a href="create" class="btn btn-sm btn-outline-secondary"><i class="bi bi-plus-lg pr-2"></i>New User</a>
         </div>
       </div>
     </div>
