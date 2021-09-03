@@ -1,3 +1,4 @@
+@if (Session::get('student_login_id'))
 <nav class="navbar navbar-expand-lg navbar-light sticky-top px-5" style="background-color: #ffffff; padding-top:1%; padding-bottom:1%; box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,15 +11,9 @@
             {{-- left element --}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/student/dashboard">Home</a>
                 </li>
 				
-				<li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/customer-support">
-						Customer Support 
-						<span class="fas fa-circle text-dark"></span>
-					</a>
-                </li>
             </ul>
 
             {{-- right element --}}
@@ -36,10 +31,17 @@
                             <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#passwordModal"><i class="fas fa-address-card pr-3"></i> Change Password</a>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="dropdown-item" href="/student/logout"
-                                onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                <i class="bi bi-box-arrow-right pr-2"></i> Logout
+                            <a class="dropdown-item" href="/student/form-current-password">
+                                <i class="bi bi-key pr-2"></i> Reset Password
+                            </a>
+    
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="/student/logout">
+                                 <i class="bi bi-box-arrow-right pr-2"></i> Logout
                             </a>
     
                             <form id="logout-form" action="/logout" method="POST" style="display: none;">
@@ -52,6 +54,7 @@
         </div>
     </div>
 </nav>
+@endif
 
 <script>
 var wsn = new WebSocket("ws://{{ env('CS_WS_Server') }}/notify");

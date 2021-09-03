@@ -129,7 +129,7 @@
 								</td>
 
 								<td>
-									Created: January 1, 2015<br />
+									Created: {{$current_date}}<br />
 									Due: February 1, 2015
 								</td>
 							</tr>

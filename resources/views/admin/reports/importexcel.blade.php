@@ -26,23 +26,6 @@ Sales Report
         <h5 class="py-3">Import Customer</h5>
 
         {{-- <div class="row-fluid"> --}}
-            @if(Auth::user()->user_id == 'UID001')
-            {{-- <div class="col-md-6">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Emails</label>
-                    </div>
-                    <select class="custom-select" id="inputGroupSelect01" name="email" required>
-                        <option value="">--</option>
-                        @foreach ($emails as $email)
-                            <option value="{{$email->id}}">{{$email->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <em class="pl-3">Choose email template</em>
-            </div> --}}
-            @else
-            @endif
             
             <div class="col-md-12">
                 <div class="input-group">
@@ -117,13 +100,13 @@ Sales Report
                             <th>Offer ID</th>
                             <th>Description</th>
                         </tr>
-                        @foreach ($offer as $offers)
+						 @foreach ($offer as $offers)
                         <tr>
                             <td>{{ $count++ }}</td>
                             <td>{{ $offers->offer_id }}</td>
                             <td>{{ $offers->name }}</td>
                         </tr>
-                        @endforeach
+						@endforeach
                     </table>
                 </div>
             </div>  

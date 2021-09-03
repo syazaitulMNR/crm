@@ -13,6 +13,9 @@
                 <li class="nav-item ">
                     <a class="nav-link active" aria-current="page" href="{{ route('staff.dashboard') }}">Home</a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link active" aria-current="page" href="{{ route('staff.link') }}">Event Link</a>
+                </li>
 
                 {{-- <li class="nav-item ">
                     <a class="nav-link active" aria-current="page" href="{{ route('staff.link') }}">Staff Link</a>

@@ -45,18 +45,20 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col" class="text-center">Name</th>
+                        <th scope="col" class="text-center">First Name</th>
+                        <th scope="col" class="text-center">Last Name</th>
                         <th scope="col" class="text-center">Email</th>
                         <th scope="col" class="text-right"><i class="fas fa-cogs"></i></th>
                     </tr>
                 </thead>
 
                 <tbody> 
-                @foreach ($participants as $key => $participant)
+                @foreach ($students as $key => $student)
                     <tr>
                         <td>{{$key + 1}}</td>
-                        <td class="text-center">{{$participant -> first_name}}</td>
-                        <td class="text-center">{{$participant -> email}}</td>
+                        <td class="text-center">{{$student -> first_name}}</td>
+                        <td class="text-center">{{$student -> last_name}}</td>
+                        <td class="text-center">{{$student -> email}}</td>
                         <td class="text-right">
                             <a class="btn btn-primary" href="/zoom/"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-dark" href="/zoom/edit/"><i class="bi bi-pencil"></i></a>

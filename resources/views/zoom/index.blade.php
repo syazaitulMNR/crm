@@ -70,7 +70,7 @@
                         <td class="text-center">{{$webinar -> join_url}}</td>
                         <td class="text-center"><a href="{{$webinar -> start_url}}" target="_blank" class="btn btn-dark">Start Webinar</a></td>
                         <td class="text-right">
-                            <a class="btn btn-primary" href="/zoom/{{$webinar->webinar_id}}"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-primary" href="/zoom/{{$webinar->id}}/{{$webinar->webinar_id}}"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-dark" href="/zoom/edit/{{$webinar->id}}"><i class="bi bi-pencil"></i></a>
                             <a class="btn btn-danger" href="/zoom/delete/{{$webinar->id}}"><i class="bi bi-trash"></i></a>
                         </td>

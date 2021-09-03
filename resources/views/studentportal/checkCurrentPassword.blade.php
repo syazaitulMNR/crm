@@ -16,33 +16,28 @@
         <div class="card px-4 pt-3 text-center shadow">
             
             <div class="card-body">
-                <form method="POST" action="{{ route('student.login.submit') }}">
+                <form method="POST" action="{{ route('check-current-password') }}">
                     @csrf
-                    
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    </div>
-                    @if(Session::get('student_login') == "fail")
-                        <div class="mb-3 alert alert-danger" role="alert">
-                            <strong class="text-danger "> Credentials does not match our record </strong>
-                        </div>
-                    @endif
 
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter current password" name="password" required autocomplete="current-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
+                    @if(Session::get('check_current_password') == "fail")
+                        <div class="mb-3 alert alert-danger" role="alert">
+                            <strong class="text-danger "> Credential does not match our record </strong>
+                        </div>
+                    @endif
 
                     <div class="form-group row text-center">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-sm btn-dark">
-                                <i class="bi bi-box-arrow-in-right pr-1"></i> {{ __('Login') }}
+                                 Submit
                             </button>
                         </div>
 
