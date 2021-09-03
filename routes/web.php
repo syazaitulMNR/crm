@@ -43,7 +43,6 @@ Route::get('members-format/{membership_id}/{level_id}','MembershipController@exp
 Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
-
 /*
 |--------------------------------------------------------------------------
 | Sales Report
@@ -108,7 +107,7 @@ Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Bla
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
-
+Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');;
 /*
 |--------------------------------------------------------------------------
 | Manage event
@@ -182,7 +181,7 @@ Route::get('deleteuser/{id}', 'AdminController@destroy');
 
 Route::get('/', 'HomeController@viewproduct');
 Route::get('showpackage/{id}', 'HomeController@view');
-Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
+Route::get('pendaftaran/{product_id}/{package_id}/{user_invite}', 'HomeController@register');
 Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic');
 
 /*
@@ -191,13 +190,14 @@ Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic')
 |--------------------------------------------------------------------------
 */
 
-Route::get('customer_profiles', 'ExistCustomerController@customerProfiles');
-Route::get('customer_profiles/{id}', 'ExistCustomerController@customerProfile');
+// Route::get('customer_profiles', 'ExistCustomerController@customerProfiles');
+// Route::get('customer_profiles/{id}', 'ExistCustomerController@customerProfile');
 // Route::get('customers', 'ExistCustomerController@customers');
 Route::get('customer_profiles', 'customerProfileController@customerProfiles');
 Route::get('customer_profiles/{id}', 'customerProfileController@customerProfile')->name('customerProfile');
 Route::post('update_cust/{id}', 'customerProfileController@customerUpdate');
 Route::post('add_comment/{id}', 'customerProfileController@customerAddComment');
+Route::get('customer_details', 'customerProfileController@customerDetails');
 
 // Newstudent
 Route::get('maklumat-pembeli/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@createStepOne');
@@ -230,6 +230,7 @@ Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 // Thank you page
 Route::get('pendaftaran-berjaya','HomeController@thankyou');
 Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
+
 
 
 /*
@@ -353,7 +354,16 @@ Route::prefix('student')->group(function() {
 	Route::get('/login','StudentPortal@loginForm')->name('student.login');
 	Route::post('/login', 'StudentPortal@login')->name('student.login.submit');
 	Route::get('/logout', 'StudentPortal@logout')->name('student.logout');
-	Route::get('/dashboard/{student}', 'StudentPortal@show')->name('student.dashboard');
+	Route::get('/form-current-password', 'StudentPortal@showCheckPassword')->name('form_check_password');
+	Route::post('/check-current-password', 'StudentPortal@checkCurrentPassword')->name('check-current-password');
+	Route::get('/form-reset-password', 'StudentPortal@showResetPassword')->name('form_reset_password');
+	Route::post('/reset-password', 'StudentPortal@resetPassword')->name('reset-password');
+	Route::get('/dashboard', 'StudentPortal@show')->name('student.dashboard');
+	Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
+	Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
+	Route::get('/list-invoice', 'StudentPortal@listInvoice')->name('student.listInvoice');
+	Route::get('/list-bill/{level}', 'StudentPortal@linkBill')->name('student.linkBill');
+	Route::get('/receive-payment/{stud}/{level}', 'StudentPortal@receivepayment')->name('student.receivePayment');
 });
 
 Route::prefix('staff')->group(function() {
@@ -361,6 +371,8 @@ Route::prefix('staff')->group(function() {
 	Route::post('/login', 'UserPortalController@login')->name('staff.login.submit');
 	Route::post('/logout', 'UserPortalController@logout')->name('staff.logout');
 	Route::get('/dashboard', 'UserPortalController@index')->name('staff.dashboard');
+	Route::get('/event-link', 'UserPortalController@showLink')->name('staff.link');
+	Route::get('/link-detail/{product_id}', 'UserPortalController@linkDetail')->name('staff.link_detail');
 	// Route::get('/link', 'UserPortalController@getLink')->name('staff.link');
 });
 
@@ -375,17 +387,22 @@ Route::get("customer-support", 'CustomerSupport@index');
 Route::get('/zoom', 'ZoomController@index');
 Route::get('/zoom/add', 'ZoomController@create');
 Route::post('/zoom/add', 'ZoomController@store');
-Route::get('/zoom/{zoom}', 'ZoomController@showParticipants');
+Route::get('/zoom/{zoom}/{webinar}', 'ZoomController@showParticipants');
 Route::get('/zoom/edit/{zoom}', 'ZoomController@edit');
 Route::put('/zoom/edit/{zoom}', 'ZoomController@update');
 Route::get('/zoom/delete/{zoom}', 'ZoomController@del');
 Route::delete('/zoom/delete/{zoom}', 'ZoomController@destroy');
 
-
 Route::post("/ajax", 'ChatAPI@index');
 
+Route::get("/sample-client", 'SampleChat@index');
 
-
+// Bussiness Details
+Route::get('business_details/{ticket_id}', 'HomeController@showIC');
+Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
+Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
+Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
+Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
 
 
 
