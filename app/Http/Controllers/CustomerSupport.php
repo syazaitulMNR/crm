@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\UserChatModel;
 use Auth;
 
 class CustomerSupport extends Controller
@@ -14,10 +16,37 @@ class CustomerSupport extends Controller
      */
     public function index()
     {
-        $maintenance = true;
-		//Auth::user();
+        $maintenance = false;
+		$error = false;
+		$user_id = Auth::user()->id;
 		
-		return view("admin.customer_support", compact("maintenance"));
+		$uc = UserChatModel::where("user_id", $user_id);
+		
+		if($uc->count() > 0){
+			$uc = $uc->first();
+		}else{
+			UserChatModel::create([
+				"name"		=> Auth::user()->name,
+				"phone"		=> "-",
+				"email"		=> Auth::user()->email, 
+				"stud_id"	=> 0,
+				"user_id"	=> $user_id,
+				"notes"		=> "",
+				"channel"	=> Str::random(24),
+				"topic_id"	=> 0
+			]);
+			
+			$uc = UserChatModel::where("user_id", $user_id);
+			
+			if($uc->count() > 0){
+				$uc = $uc->first();
+			}else{
+				$uc = null;
+				$error = true;
+			}
+		}
+		
+		return view("admin.customer_support", compact("maintenance", "error", "uc"));
     }
 
     /**

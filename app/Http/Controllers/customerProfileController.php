@@ -12,13 +12,113 @@ use App\Membership_Level;
 use App\Comment;
 use Carbon\Carbon;
 use App\User;
+use App\BusinessDetail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class customerProfileController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function customerDetails(Request $request) {
+        $search = (is_null($request->query('search')) ? "" : $request->query('search'));
+        $price = (is_null($request->query('price')) ? "" : $request->query('price'));
+
+        if($search && $price) {
+            $customers = BusinessDetail::where('business_amount', '<', $price)
+            ->where(function($query) use($search){
+                $query->where('business_role', 'LIKE', '%'.$search.'%')
+                      ->orWhere('business_type', 'LIKE', '%'.$search.'%');
+            })->get();
+            
+            $business_details = [];
+
+            if(count($customers) != 0) {
+                foreach($customers as $c) {
+                    $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+                    
+                    if($ticketname->count() > 0) {
+                        $ticketname = $ticketname->first();
+                        
+                        $productname = Product::where('product_id', $ticketname->product_id)->first();
+                        $user = Student::where('ic', $ticketname->ic)->first();
+                        
+                        $c->class = $productname->name;
+                        $c->name = $user->first_name . " " . $user->last_name;
+                    }else {
+                        $c->class = '';
+                        $c->name = '';
+                    }
+                    $business_details[] = $c;
+                }
+            }
+        }elseif($search || $price) {
+            $customers = BusinessDetail::where('business_role', 'LIKE', '%'.$search.'%')
+            ->orWhere('business_type', 'LIKE', '%'.$search.'%')
+            ->orWhere('business_amount', '<', $price)
+            ->get();
+            
+            $business_details = [];
+
+            if(count($customers) != 0) {
+                foreach($customers as $c) {
+                    $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+                    
+                    if($ticketname->count() > 0) {
+                        $ticketname = $ticketname->first();
+                        
+                        $productname = Product::where('product_id', $ticketname->product_id)->first();
+                        $user = Student::where('ic', $ticketname->ic)->first();
+                        
+                        $c->class = $productname->name;
+                        $c->name = $user->first_name . " " . $user->last_name;
+                    }else {
+                        $c->class = '';
+                        $c->name = '';
+                    }
+                    $business_details[] = $c;
+                }
+            }
+        }else {
+            $customers = BusinessDetail::all();
+            
+            if(count($customers) != 0) {
+                foreach($customers as $c) {
+                    $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+                    
+                    if($ticketname->count() > 0) {
+                        $ticketname = $ticketname->first();
+                        
+                        $productname = Product::where('product_id', $ticketname->product_id)->first();
+                        $user = Student::where('ic', $ticketname->ic)->first();
+                        
+                        $c->class = $productname->name;
+                        $c->name = $user->first_name . " " . $user->last_name;
+                    }else {
+                        $c->class = '';
+                        $c->name = '';
+                    }
+                    $business_details[] = $c;
+                }
+            }
+        }
+
+        $data = $this->paginate($business_details, 10);
+        $data->setPath('business_details');
+
+        return view('customer.business_details', compact('data'));
+    }
+
+    public function paginate($items, $perPage, $page = null, $options = []){
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     public function customerAddComment($cust_id, Request $request) {
@@ -51,12 +151,12 @@ class customerProfileController extends Controller
         $search = $request->query('search');
 
         if($search) {
-            $customers = Student::where('first_name', 'LIKE', '%'.$search.'%')
-            ->whereNotNull('membership_id')
-            ->orWhere('last_name', 'LIKE', '%'.$search.'%')
-            ->orWhere('ic', 'LIKE', '%'.$search.'%')
-            ->paginate(10);
-
+            $customers = Student::whereNotNull('membership_id')
+            ->where(function($query) use ($search){
+                $query->where('first_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('ic', 'LIKE', '%'.$search.'%');
+            })->paginate(10);
         }else {
             $customers = Student::whereNotNull('membership_id')->paginate(10);
         }
@@ -70,7 +170,7 @@ class customerProfileController extends Controller
         $payment = Payment::where('stud_id', $customer['stud_id'])
         ->orderBy('created_at', 'DESC')
         ->get();
-
+        
         $member_lvl = Membership_Level::where('level_id', $customer->level_id)->first()->name;
         $comment = Comment::where('stud_id', $customer['stud_id'])->get();
 		

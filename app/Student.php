@@ -17,4 +17,9 @@ class Student extends Authenticatable
     {
         return $this->hasMany('App\Payment');
     }
+
+    public function zooms()
+    {
+        return $this->belongsToMany(Zoom::class);
+    }
 }

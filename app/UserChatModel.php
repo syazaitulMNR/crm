@@ -10,7 +10,7 @@ class UserChatModel extends Model
 	protected $table = 'user_chat';
 	
 	protected $fillable = [
-        'name', 'phone', 'email', 'stud_id', 'user_id', 'notes'
+        'name', 'phone', 'email', 'stud_id', 'user_id', 'notes', 'channel', 'topic_id'
     ];
 	
 	public function student(){

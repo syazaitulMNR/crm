@@ -9,25 +9,29 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\TestMail;
 use App\Email;
+use App\Student;
 use Mail;
+use Illuminate\Support\Facades\Schema;
 
 class TestJobMail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $rows, $email_id, $regex_content, $message;
+    protected $request, $message, $regex_content;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($rows, $email_id, $regex_content)
+    public function __construct($request, $regex_content)
     {
-        $this->rows = $rows;
-        $this->email_id = $email_id;
+        $this->request = $request;
         $this->regex_content = $regex_content;
 
-        $email = Email::where('id', $email_id)->first();
-        $this->message = $email->content;
+        // \Log::info($request['emailId']);
+        $email = Email::where('id', $request['emailId'])->first();
+
+        // \Log::info($email['content']);
+        $this->message = $email['content'];
     }
 
     /**
@@ -37,21 +41,36 @@ class TestJobMail implements ShouldQueue
      */
     public function handle()
     {
-        // Mail::to($this->email)->send(new Testmail("ttt"));
-        $rows = $this->rows;
 
-        foreach($rows as $row){
+        $request = $this->request;
+        $emails = $request['emailList'];
+
+        // $column_name = Schema::getColumnListing($table);
+
+        // \Log::info($this->emails);
+
+        $columns = Schema::getColumnListing('student');
+        
+
+        foreach($emails as $email){
             $message = $this->message;
+           
+            
+            $student = Student::where('email', $email)->first();
+
+            // \Log::info($student->$nameEmail);
 
             foreach($this->regex_content as $rc){
-				if(isset($row[strtolower($rc)])){
-					$message = str_replace("{". $rc ."}", $row[strtolower($rc)], $message);
+                if (in_array(strtolower($rc), $columns)){
+					$message = str_replace("{". $rc ."}", $student->$rc, $message);
 				}
             }
 
-            if(isset($row["email"])){
-				$email = $row["email"];
-            
+            if($student->email !== (null || "")){
+				$email = $student->email;
+                \Log::info('ada');
+
+                
                 Mail::to($email)->send(new Testmail($message));
                 
 			}else{

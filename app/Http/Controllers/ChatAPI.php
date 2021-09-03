@@ -9,11 +9,6 @@ use Auth;
 
 class ChatAPI extends Controller
 {
-	public function __construct(){
-		
-		$this->middleware('auth');
-	}
-	
     public function index(Request $rq){
 		
 		switch($rq->action){

@@ -77,17 +77,33 @@ class ZoomController extends Controller
      * @param  \App\Zoom  $zoom
      * @return \Illuminate\Http\Response
      */
-    public function showParticipants($webinarId)
+    public function showParticipants(Zoom $zoom, $webinarId)
     {
-        $students = Student::all();
-        // dd($webinarId);
+        
         $webinarDetails = ZoomService::getListRegistree($webinarId);
 
         $participants = $webinarDetails->registrants;
 
-        dd($participants);
+        $participantEmails = array();
 
-        return view('zoom.participants', compact('participants'));
+        foreach($participants as $participant){
+            $participantEmails[] = $participant->email;
+        }
+
+        $filterStudents = Student::whereIn('email', $participantEmails)->get();
+
+        foreach($filterStudents as $filterStudent){
+
+            $checkStudent = $zoom->students()->where('student_id',$filterStudent->id)->get();
+        
+            if($checkStudent->isEmpty()){
+                $zoom->students()->attach($filterStudent->id);
+            }
+        }
+        
+        $students = $zoom->students()->get();
+
+        return view('zoom.participants', compact('students'));
     }
 
     /**

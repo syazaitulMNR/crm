@@ -8,6 +8,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Carbon\Carbon;
 
 class InvoiceRemindEmail extends Mailable
 {
@@ -26,9 +27,18 @@ class InvoiceRemindEmail extends Mailable
     {
         $payment = $this->student_id;
 
+        $currentDate = Carbon::now()->toFormattedDateString();
+
         $product = Product::where('product_id', $payment['product_id'])->first();
 
+        //content->payment
+
         return $this->view('invoice.invoice')
-                    ->with([ 'contents' => $this->student_id, 'student' => $this->student, 'product' => $product ]);
+                    ->with([ 
+                        'contents' => $this->student_id, 
+                        'student' => $this->student, 
+                        'product' => $product,
+                        'current_date' => $currentDate
+                    ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Package;
@@ -57,6 +58,8 @@ class NewCustomerController extends Controller
             'email' => 'required',
             'phoneno' => 'required'
         ]);
+
+        $validatedData['student_password'] = "";
   
         if(empty($request->session()->get('student'))){
             $student = new Student();
@@ -81,7 +84,7 @@ class NewCustomerController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $package_name = Package::where('product_id', $product_id)->get();
-        $count_package = Package::where('product_id', $product_id)->count();
+		$count_package = Package::where('product_id', $product_id)->count();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
@@ -127,7 +130,7 @@ class NewCustomerController extends Controller
                 return view('customer_new.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
       
             }
-      
+
         } else {
 
             echo 'No Such Offer';
@@ -377,47 +380,62 @@ class NewCustomerController extends Controller
     {
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+        
+        $addDataPassword = array(
+            'student_password' => ""
+        );
+
+        $student->fill($addDataPassword);
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
         $bill = $billplz->bill();
+        // dd($bill);
         $response = $bill->get($payment->billplz_id);
-
+        
         $pay_data = $response->toArray();
-
+        
         $addData = array(
             'status' => $pay_data['state']
         );
 
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
-
-        if ($payment->status == 'paid')
+        
+        if ($payment->status == 'paid'|| 1)
         {
+            $addDataUserInvite = array(
+                'user_invite' => Session::get('user_invite')
+            );
+    
+            $payment->fill($addDataUserInvite);
+            
             /*-- Manage Email ---------------------------------------------------*/
             $product = Product::where('product_id', $product_id)->first();
             $package = Package::where('package_id', $package_id)->first();
 
             $send_mail = $student->email;
-            $product_name = $product->name;   
-            $package_name = $package->name;       
+            $product_name = $product->name;
+            $package_name = $package->name;   
             $date_from = $product->date_from;
             $date_to = $product->date_to;
             $time_from = $product->time_from;
             $time_to = $product->time_to;
             $packageId = $package_id;
             $payment_id = $payment->payment_id;
-            $productId = $product_id;        
+            $productId = $product_id;
             $student_id = $student->stud_id;
 
             $student->save();
             $payment->save();
 
+            
             dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));          
             /*-- End Email -----------------------------------------------------------*/
             
             $request->session()->forget('student');
             $request->session()->forget('payment');
+            Session::forget('user_invite');
 
             return redirect('pendaftaran-berjaya');
 
@@ -425,7 +443,8 @@ class NewCustomerController extends Controller
 
             $student->save();
             $payment->save();
-    
+
+            Session::forget('user_invite');
             $request->session()->forget('student');
             $request->session()->forget('payment');
 

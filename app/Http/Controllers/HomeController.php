@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Jobs\TiketJob;
@@ -11,6 +12,7 @@ use App\Package;
 use App\Payment;
 use App\Student;
 use App\Ticket;
+use App\BusinessDetail;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 
@@ -23,6 +25,73 @@ class HomeController extends Controller
     |   This controller is for managing customer page
     | 
     */
+
+    // Business Details
+    public function saveBusinessDetails(Request $request, $ticket_id) {
+        
+        if(Session::get('validatedIC')) {
+            if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
+                $validatedData = $request->validate([
+                    'business' => 'required',
+                    'income'=> 'required|numeric',
+                    'role' => 'required'
+                ]);
+                
+                $bussInsert = BusinessDetail::create([
+                    'ticket_id' => $ticket_id,
+                    'business_role' => $request->role,
+                    'business_type' => $request->business,
+                    'business_amount' => $request->income
+                ]);
+    
+                if($bussInsert) {
+                    Session::forget('validatedIC');
+                    return redirect('pendaftaran-berjaya-ticket');
+                }
+            }else {
+                return redirect('business_details/'. $ticket_id);
+            }
+        }else {
+            return redirect('business_details/'. $ticket_id);
+        }
+    }
+
+    public function ICValidation(Request $request, $ticket_id) {
+        $data = Ticket::where('ticket_id', $ticket_id)->first();
+        $dataStudent = Student::where('stud_id', $data->stud_id)->first();
+        // dd($dataStudent->ic); // 871117065195
+        if($dataStudent->ic === $request->ic) {
+            Session::put('validatedIC', 1);
+
+            return redirect('next-details/'. $ticket_id);
+        }else {
+            return redirect('business_details/'. $ticket_id);
+        }
+    }
+
+    public function businessForm($ticket_id) {
+        if(Session::get('validatedIC')) {
+            $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+            $product = Product::where('product_id', $ticket->product_id)->first();
+            $package = Package::where('package_id', $ticket->package_id)->first();
+            $packageName = $package->name;
+            $productName = $product->name;
+
+            return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id'));
+        }else {
+            return redirect('business_details/'. $ticket_id);
+        }
+    }
+
+    public function showIC($ticket_id) {
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+        $product = Product::where('product_id', $ticket->product_id)->first();
+        $package = Package::where('package_id', $ticket->package_id)->first();
+        $packageName = $package->name;
+        $productName = $product->name;
+
+        return view('ticket.checkIC', compact('productName', 'packageName', 'ticket_id'));
+    }
 
     /*-- Landing Page -------------------------------------------------------*/
     public function viewproduct()
@@ -43,8 +112,10 @@ class HomeController extends Controller
     }
 
     /*-- Buyer Registration -----------------------------------------------*/
-    public function register($product_id,$package_id)
+    public function register($product_id,$package_id, $user_invite)
     {
+        Session::put('user_invite', $user_invite);
+        
         $package = Package::where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
 
@@ -56,15 +127,16 @@ class HomeController extends Controller
     {
         // Check if ic exist
         if(Student::where('ic', $request->ic)->exists()){
-            
             $student = Student::where('ic', $request->ic)->first();
             return redirect('langkah-pertama/' . $product_id . '/' . $package_id .'/'.$student->stud_id);
 
         }else{
-
             return redirect('maklumat-pembeli/'. $product_id . '/' . $package_id . '/' . $request->ic);
-
         }
+    }
+
+    public function thankyouTicket() {
+        return view('ticket.thankyou');
     }
 
     public function thankyou() 
@@ -130,20 +202,25 @@ class HomeController extends Controller
 
         }else{
 
-            if($payment->offer_id == 'OFF001' || $payment->offer_id == 'OFF003' || $payment->offer_id == 'OFF004') {
+            if($payment->offer_id == 'OFF001') {
 
-                //for no offer & bulk ticket
+                //for no offer ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-            
+    
             } else if($payment->offer_id == 'OFF002') {
-            
+
                 //for Buy 1 Get 1 (Same Ticket)
                 return view('customer.get1free1same', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-            
+    
+            } else if($payment->offer_id == 'OFF003') {
+
+                //for Bulk Ticket
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+    
             } else {
-            
+    
                 echo 'No Such Offer';
-            
+    
             }
 
         }
