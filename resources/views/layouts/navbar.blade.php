@@ -60,7 +60,7 @@
                       <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Manage Event</a></li>
                       <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Manage Offer</a></li>
                       <li><hr class="dropdown-divider"></li>                      
-                      <li><a class="dropdown-item" href="/collection-id"><i class="bi bi-tags pr-2"></i>Collection ID</a></li>
+                      <li><a class="dropdown-item" href="/collection-id"><i class="bi bi-cash-stack pr-2"></i>Collection ID</a></li>
                     </ul>
                 </li>
                 
