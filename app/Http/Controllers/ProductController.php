@@ -9,6 +9,7 @@ use App\Product;
 use App\Package;
 use App\Feature;
 use App\Offer;
+use App\Collection_id;
 use validator;
 
 class ProductController extends Controller
@@ -299,7 +300,8 @@ class ProductController extends Controller
     /*-- Collection ID -------------------------------------------------------------*/
     public function collection_id()
     {
-        return view('admin.collection_id');
+        $billplz = Collection_id::orderBy('id','desc');
+        return view('admin.collection_id', compact('billplz'));
     }
 
 }

@@ -75,15 +75,15 @@
   </div>
   @endif
 
-  {{-- <div class="float-right pt-3">{{$offers->links()}}</div>
-  @if(count($offers) > 0) --}}
+  <div class="float-right pt-3">{{$billplz->links()}}</div>
+  @if(count($billplz) > 0)
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col" style="width: 10%">#</th>
-          <th scope="col" style="width: 35%">Collection Name</th>
           <th scope="col" style="width: 35%">Collection ID</th>
+          <th scope="col" style="width: 35%">Collection Name</th>
           <th scope="col" style="width: 15%"><i class="fas fa-cogs"></i></th>
         </tr>
       </thead>
@@ -150,9 +150,9 @@
       </tbody>
     </table>
   </div>
-  {{-- @else
+  @else
     <p>There are no offer to display.</p>
-  @endif --}}
+  @endif
     
 </div>
 @endsection
