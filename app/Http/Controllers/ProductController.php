@@ -302,8 +302,7 @@ class ProductController extends Controller
     {
         $billplz = Collection_id::orderBy('id','desc')->get();
 
-        dd($billplz);
-        // return view('admin.collection_id', compact('billplz'));
+        return view('admin.collection_id', compact('billplz'));
     }
 
 }

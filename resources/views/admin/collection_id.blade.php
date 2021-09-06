@@ -32,15 +32,17 @@
                     <form action="{{ url('new-collection/save') }}" method="POST"> 
                     @csrf
                         <div class="form-group row px-4">
-                            <label for="name" class="col-sm-4 col-form-label">Collection Name</label>
-                            <div class="col-sm-8">
-                            <input type="text" class="form-control" name="name" >
-                            </div>
 
                             <label for="name" class="col-sm-4 col-form-label">Collection ID</label>
                             <div class="col-sm-8">
                             <input type="text" class="form-control" name="collection_id" >
                             </div>
+
+                            <label for="name" class="col-sm-4 col-form-label">Collection Name</label>
+                            <div class="col-sm-8">
+                            <input type="text" class="form-control" name="name" >
+                            </div>
+                            
                         </div>
                                             
                         <div class='col-md-12 text-right px-4 pb-4'>
