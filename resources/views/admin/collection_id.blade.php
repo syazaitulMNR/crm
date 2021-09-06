@@ -105,23 +105,30 @@
                   <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                       <div class="modal-header border-bottom-0">
-                          <h5 class="modal-title" id="updateofferLabel">Update Offer</h5>
+                          <h5 class="modal-title" id="updateofferLabel">Update Collection</h5>
                           <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
-                      <form action="{{ url('update-offer/save') }}/{{ $billplzs->collection_id }}" method="POST"> 
+                      <form action="{{ url('update-collection/save') }}/{{ $billplzs->collection_id }}" method="POST"> 
                       @csrf
-                          <div class="form-group row px-4">
-                              <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
-                              <div class="col-sm-8">
-                              <input type="text" class="form-control" name="name" value="{{ $billplzs->name }}">
-                              </div>
-                          </div>
-                                              
-                          <div class='col-md-12 text-right px-4 pb-4'>
-                              <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
-                          </div>
+
+                            <div class="form-group row px-4">
+                                <label for="name" class="col-sm-4 col-form-label">Collection ID</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" value="{{ $billplzs->collection_id }}">
+                                </div>
+                            </div>
+                            <div class="form-group row px-4">
+                                <label for="name" class="col-sm-4 col-form-label">Collection Name</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" value="{{ $billplzs->name }}">
+                                </div>
+                            </div>
+                                                
+                            <div class='col-md-12 text-right px-4 pb-4'>
+                                <button type='submit' class='btn btn-primary'> <i class="bi bi-save pr-2"></i>Submit </button>
+                            </div>
                       </form>
                   </div>
                   </div>

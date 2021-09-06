@@ -317,4 +317,15 @@ class ProductController extends Controller
         return redirect('collection-id')->with('add-success', 'Collection ID Successfully Created');
     }
 
+    public function update_collection($collection_id, Request $request)
+    {
+        $billplz = Collection_id::where('collection_id', $collection_id)->first();
+
+        $billplz->collection_id = $request->collection_id;
+        $billplz->name = $request->name;
+        $billplz->save();
+
+        return redirect('collection-id')->with('update-success', 'Collection ID Successfully Updated'); 
+    }
+
 }
