@@ -32,9 +32,9 @@
                         <li><a class="dropdown-item" href="/emailblast"><i class="bi bi-envelope pr-2"></i>Email Blasting</a></li>
 						<li><a class="dropdown-item" href="/emailtemplate"><i class="bi bi-palette pr-2"></i>Email Template</a></li>
                         
-                        <li><hr class="dropdown-divider"></li>
                         @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                         @else   
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/smsblast"><i class="bi bi-chat-left-text pr-2"></i>SMS Blasting</a></li>
 						<li><a class="dropdown-item" href="/smstemplate"><i class="bi bi-palette pr-2"></i>SMS Template</a></li>
                         @endif
