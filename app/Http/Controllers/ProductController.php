@@ -300,7 +300,7 @@ class ProductController extends Controller
     /*-- Collection ID -------------------------------------------------------------*/
     public function collection_id()
     {
-        $billplz = Collection_id::orderBy('id','desc')->get();
+        $billplz = Collection_id::orderBy('id','desc')->paginate(10);
 
         return view('admin.collection_id', compact('billplz'));
     }
