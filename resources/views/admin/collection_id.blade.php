@@ -75,8 +75,8 @@
   </div>
   @endif
 
-  <div class="float-right pt-3">{{$offers->links()}}</div>
-  @if(count($offers) > 0)
+  {{-- <div class="float-right pt-3">{{$offers->links()}}</div>
+  @if(count($offers) > 0) --}}
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
@@ -150,9 +150,9 @@
       </tbody>
     </table>
   </div>
-  @else
+  {{-- @else
     <p>There are no offer to display.</p>
-  @endif
+  @endif --}}
     
 </div>
 @endsection
