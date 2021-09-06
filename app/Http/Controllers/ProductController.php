@@ -299,8 +299,7 @@ class ProductController extends Controller
     /*-- Collection ID -------------------------------------------------------------*/
     public function collection_id()
     {
-        echo 'collection_id';
-        // return view('admin.collection_id', compact('product', 'package', 'link'));
+        return view('admin.collection_id');
     }
 
 }
