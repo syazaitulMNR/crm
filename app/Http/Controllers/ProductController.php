@@ -328,4 +328,12 @@ class ProductController extends Controller
         return redirect('collection-id')->with('update-success', 'Collection ID Successfully Updated'); 
     }
 
+    public function delete_collection($collection_id)
+    {
+        $billplz = Collection_id::where('collection_id', $collection_id);
+        $billplz->delete();
+
+        return back()->with('delete', 'Collection ID Successfully Deleted');
+    }
+
 }
