@@ -305,4 +305,16 @@ class ProductController extends Controller
         return view('admin.collection_id', compact('billplz'));
     }
 
+    public function new_collection(Request $request)
+    {
+        $billplz = Collection_id::orderBy('id','desc')->first();
+    
+        Collection_id::create([
+            'collection_id' => $request->collection_id,
+            'name' => $request->name
+        ]);
+
+        return redirect('collection-id')->with('add-success', 'Offer Successfully Created');
+    }
+
 }

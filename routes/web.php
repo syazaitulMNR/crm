@@ -151,7 +151,7 @@ Route::get('delete-offer/{offer_id}', 'OfferController@delete');
 |--------------------------------------------------------------------------
 */
 Route::get('collection-id', 'ProductController@collection_id');
-// Route::post('new-offer/save', 'OfferController@create');
+Route::post('new-collection/save', 'OfferController@new_collection');
 // Route::post('update-offer/save/{offer_id}', 'OfferController@update');
 // Route::get('delete-offer/{offer_id}', 'OfferController@delete');
 
