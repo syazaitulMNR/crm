@@ -88,17 +88,17 @@
         </tr>
       </thead>
       <tbody>
-        {{-- @foreach ($offers as $key => $offer)                        
+        @foreach ($billplz as $key => $billplzs)                        
           <tr>
-            <td>{{ $offers->firstItem() + $key  }}</td>
-            <td>{{ $offer->name  }}</td>
+            <td>{{ $billplz->firstItem() + $key  }}</td>
+            <td>{{ $billplzs->name  }}</td>
             <td>
               <!-- Update trigger modal -->
-              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateoffer{{ $offer->offer_id }}">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateoffer{{ $billplzs->collection_id }}">
                   <i class="bi bi-pencil-square"></i>
               </button>
               <!-- Update Modal -->
-              <div class="modal fade" id="updateoffer{{ $offer->offer_id }}" tabindex="-1" role="dialog" aria-labelledby="updateofferLabel" aria-hidden="true">
+              <div class="modal fade" id="updateoffer{{ $billplzs->collection_id }}" tabindex="-1" role="dialog" aria-labelledby="updateofferLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                       <div class="modal-header border-bottom-0">
@@ -107,12 +107,12 @@
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
-                      <form action="{{ url('update-offer/save') }}/{{ $offer->offer_id }}" method="POST"> 
+                      <form action="{{ url('update-offer/save') }}/{{ $billplzs->collection_id }}" method="POST"> 
                       @csrf
                           <div class="form-group row px-4">
                               <label for="name" class="col-sm-4 col-form-label">Offer Name</label>
                               <div class="col-sm-8">
-                              <input type="text" class="form-control" name="name" value="{{ $offer->name }}">
+                              <input type="text" class="form-control" name="name" value="{{ $billplzs->name }}">
                               </div>
                           </div>
                                               
@@ -125,9 +125,9 @@
               </div>
 
               <!-- Delete trigger modal -->
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $offer->offer_id }}"><i class="bi bi-trash"></i></button>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $billplzs->collection_id }}"><i class="bi bi-trash"></i></button>
               <!-- Delete Modal -->
-              <div class="modal fade" id="delete{{ $offer->offer_id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+              <div class="modal fade" id="delete{{ $billplzs->collection_id }}" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -139,19 +139,19 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <a class="btn btn-danger" href="{{ url('delete-offer') }}/{{ $offer->offer_id }}">Delete</a>
+                      <a class="btn btn-danger" href="{{ url('delete-collection') }}/{{ $billplzs->collection_id }}">Delete</a>
                     </div>
                   </div>
                 </div>
               </div>
             </td>
           </tr>    
-        @endforeach --}}
+        @endforeach
       </tbody>
     </table>
   </div>
   @else
-    <p>There are no offer to display.</p>
+    <p>There are no collection id to display.</p>
   @endif
     
 </div>
