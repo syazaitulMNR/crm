@@ -93,6 +93,7 @@
         @foreach ($billplz as $key => $billplzs)                        
           <tr>
             <td>{{ $billplz->firstItem() + $key  }}</td>
+            <td>{{ $billplzs->collection_id  }}</td>
             <td>{{ $billplzs->name  }}</td>
             <td>
               <!-- Update trigger modal -->

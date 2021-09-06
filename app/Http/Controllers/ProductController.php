@@ -314,7 +314,7 @@ class ProductController extends Controller
             'name' => $request->name
         ]);
 
-        return redirect('collection-id')->with('add-success', 'Offer Successfully Created');
+        return redirect('collection-id')->with('add-success', 'Collection ID Successfully Created');
     }
 
 }
