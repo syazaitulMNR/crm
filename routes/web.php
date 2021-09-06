@@ -147,6 +147,17 @@ Route::get('delete-offer/{offer_id}', 'OfferController@delete');
 
 /*
 |--------------------------------------------------------------------------
+| Collection ID
+|--------------------------------------------------------------------------
+*/
+Route::get('collection-id', 'ProductController@collection_id');
+// Route::post('new-offer/save', 'OfferController@create');
+// Route::post('update-offer/save/{offer_id}', 'OfferController@update');
+// Route::get('delete-offer/{offer_id}', 'OfferController@delete');
+
+
+/*
+|--------------------------------------------------------------------------
 | Manage profile
 |--------------------------------------------------------------------------
 */

@@ -295,4 +295,12 @@ class ProductController extends Controller
         return back()->with('delete','Package Successfully Deleted!');
     }
 
+    
+    /*-- Collection ID -------------------------------------------------------------*/
+    public function collection_id()
+    {
+        echo 'collection_id';
+        // return view('admin.collection_id', compact('product', 'package', 'link'));
+    }
+
 }
