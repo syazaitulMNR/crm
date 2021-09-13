@@ -251,122 +251,120 @@ class ExistCustomerController extends Controller
         $student = $request->session()->get('student');
         $ticket = $request->session()->get('ticket');
 
-        dd($ticket);
+        /*-- Stripe ---------------------------------------------------------*/
+        //Make Payment
+        $stripe = Stripe\Stripe::setApiKey('sk_test_3hkk4U4iBvTAO5Y5yV9YisD600VdfR6nrR');
 
-        // /*-- Stripe ---------------------------------------------------------*/
-        // //Make Payment
-        // $stripe = Stripe\Stripe::setApiKey('sk_test_3hkk4U4iBvTAO5Y5yV9YisD600VdfR6nrR');
+        try {
 
-        // try {
+            // Generate token
+            $token = Stripe\Token::create(array(
+                "card" => array(
+                    "number"    => $request->cardnumber,
+                    "exp_month" => $request->month,
+                    "exp_year"  => $request->year,
+                    "cvc"       => $request->cvc,
+                    "name"      => $request->cardholder
+                )
+            ));
 
-        //     // Generate token
-        //     $token = Stripe\Token::create(array(
-        //         "card" => array(
-        //             "number"    => $request->cardnumber,
-        //             "exp_month" => $request->month,
-        //             "exp_year"  => $request->year,
-        //             "cvc"       => $request->cvc,
-        //             "name"      => $request->cardholder
-        //         )
-        //     ));
+            // If not generate view error
+            if (!isset($token['id'])) {
 
-        //     // If not generate view error
-        //     if (!isset($token['id'])) {
-
-        //         return redirect()->back()->with('error','Token is not generate correct');
+                return redirect()->back()->with('error','Token is not generate correct');
             
-        //     }   else{
+            }   else{
     
-        //         // Create a Customer:
-        //         $customer = \Stripe\Customer::create([
+                // Create a Customer:
+                $customer = \Stripe\Customer::create([
 
-        //             'name' => $student->first_name,
-        //             'source' => $token['id'],
-        //             'email' => $student->email,
-        //         ]);
+                    'name' => $student->first_name,
+                    'source' => $token['id'],
+                    'email' => $student->email,
+                ]);
 
-        //         // Make a Payment
-        //         Stripe\Charge::create([
-        //             "currency" => "myr",
-        //             "description" => "MIMS - ".$package->name,
-        //             "customer" => $customer->id,
-        //             "amount" => $payment->totalprice * 100,
-        //         ]);
-        //     }
+                // Make a Payment
+                Stripe\Charge::create([
+                    "currency" => "myr",
+                    "description" => "MIMS - ".$package->name,
+                    "customer" => $customer->id,
+                    "amount" => $payment->totalprice * 100,
+                ]);
+            }
 
-        //     //update to database
-        //     $addData = array(
-        //         'status' => 'paid',
-        //         'stripe_id' => $customer->id
-        //     );
+            //update to database
+            $addData = array(
+                'status' => 'paid',
+                'stripe_id' => $customer->id
+            );
 
-        //     $payment->fill($addData);
-        //     $request->session()->put('payment', $payment);
+            $payment->fill($addData);
+            $request->session()->put('payment', $payment);
 
-        // } catch (\Exception $ex) {
-        //     return redirect()->back()->with('error', $ex->getMessage());
-        // }
-        // /*-- End Stripe -----------------------------------------------------*/
+        } catch (\Exception $ex) {
+            return redirect()->back()->with('error', $ex->getMessage());
+        }
+        /*-- End Stripe -----------------------------------------------------*/
 
-        // /*-- Manage Email ---------------------------------------------------*/
+        /*-- Manage Email ---------------------------------------------------*/
       
-        // if($payment->quantity == 1){
+        if($payment->quantity == 1){
 
-        //     $product = Product::where('product_id', $product_id)->first();
-        //     $package = Package::where('package_id', $package_id)->first();
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
 
-        //     $email = $student->email;
-        //     $product_name = $product->name; 
-        //     $package_name = $package->name; 
-        //     $date_from = $product->date_from;
-        //     $date_to = $product->date_to;
-        //     $time_from = $product->time_from;
-        //     $time_to = $product->time_to;
-        //     $packageId = $package_id;
-        //     $productId = $product_id;        
-        //     $student_id = $student->stud_id;
-        //     $ticket_id = $request->ticket_id;
-        //     $survey_form = $product->survey_form;
+            $email = $student->email;
+            $product_name = $product->name; 
+            $package_name = $package->name; 
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+            $ticket_id = $ticket->ticket_id;
+            $survey_form = $product->survey_form;
 
-        //     $student->save();
-        //     $payment->save();
-        //     $ticket->save();
+            $student->save();
+            $payment->save();
+            $ticket->save();
             
-        //     dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
                 
-        //     $request->session()->forget('student');
-        //     $request->session()->forget('payment');
-        //     $request->session()->forget('ticket');
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
             
-        //     return redirect('thankyou-update/' . $product_id );
+            return redirect('thankyou-update/' . $product_id );
 
-        // }else{
+        }else{
 
-        //     $send_mail = $student->email;
-        //     $product_name = $product->name;  
-        //     $package_name = $package->name;        
-        //     $date_from = $product->date_from;
-        //     $date_to = $product->date_to;
-        //     $time_from = $product->time_from;
-        //     $time_to = $product->time_to;
-        //     $packageId = $package_id;
-        //     $payment_id = $payment->payment_id;
-        //     $productId = $product_id;        
-        //     $student_id = $student->stud_id;
+            $send_mail = $student->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
 
-        //     $student->save();
-        //     $payment->save();
+            $student->save();
+            $payment->save();
 
-        //     dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
             
-        //     $request->session()->forget('student');
-        //     $request->session()->forget('payment');
-        //     $request->session()->forget('ticket');
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
             
-        //     return redirect('pendaftaran-berjaya');
-        // }
+            return redirect('pendaftaran-berjaya');
+        }
 
-        // /*-- End Email -----------------------------------------------------------*/
+        /*-- End Email -----------------------------------------------------------*/
   
     }
 
@@ -453,7 +451,7 @@ class ExistCustomerController extends Controller
                 $packageId = $package_id;
                 $productId = $product_id;        
                 $student_id = $student->stud_id;
-                $ticket_id = $request->ticket_id;
+                $ticket_id = $ticket->ticket_id;
                 $survey_form = $product->survey_form;
     
                 $student->save();
