@@ -72,7 +72,13 @@
             <label class="form-label">Survey Form Link</label>
             <input name="survey_form" type="text" class="form-control" value="{{ $product->survey_form }}">
         </div>
-        <div class="col-md-2">
+
+        <div class="col-md-3">
+            <label class="form-label">TQ Page Link</label>
+            <input name="tq_page" type="text" class="form-control" value="{{ $product->tq_page }}">
+        </div>
+
+        <div class="col-md-6">
             <label class="form-label">BillPlz Collection ID</label>
             <input name="collection_id" type="text" class="form-control" value="{{ $product->collection_id }}">
             {{-- <select class="form-select" name="collection_id">
@@ -82,7 +88,7 @@
                 @endforeach
             </select> --}}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6">
             <label class="form-label">Dashboard Report</label>
             <select class="form-select" name="status" required>
                 <option disabled selected>-- {{ $product->status }} --</option>

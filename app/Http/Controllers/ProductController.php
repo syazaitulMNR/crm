@@ -65,6 +65,7 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
 
@@ -86,6 +87,7 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
         }
@@ -116,6 +118,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->tq_page = $request->tq_page;
             $product->status = $request->status;
             $product->save();
 
@@ -137,6 +140,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->tq_page = $request->tq_page;
             $product->status = $request->status;
 
             if($request->hasFile('cert_image'))

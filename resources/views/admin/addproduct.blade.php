@@ -76,7 +76,13 @@
             <label class="form-label">Survey Form Link</label>
             <input name="survey_form" type="text" class="form-control">
         </div>
-        <div class="col-md-2">
+
+        <div class="col-md-4">
+            <label class="form-label">TQ Page Link</label>
+            <input name="tq_page" type="text" class="form-control">
+        </div>
+
+        <div class="col-md-6">
             <label class="form-label">BillPlz Collection ID</label>
             <select class="form-select" name="collection_id" required>
                 <option disabled selected>-- Please select --</option>
@@ -85,7 +91,7 @@
             </select>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-6">
             <label class="form-label">Dashboard Report</label>
             <select class="form-select" name="status" required>
                 <option disabled selected>-- Please select --</option>
