@@ -31,8 +31,9 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Offer Provided <em>Please refer the table below</em></label>
+            <label class="form-label">Offer Provided</label>
             <input name="offer_id" type="text" class="form-control" value="{{ $product->offer_id }}">
+            <em>*Please refer the table below</em>
         </div>
 
         <div class="col-md-6">
