@@ -352,7 +352,7 @@ class NewCustomerController extends Controller
                 $student->phoneno,
                 $student->first_name,
                 \Duit\MYR::given($payment->totalprice * 100),
-                'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id,
+                'https://mims.momentuminternet.my/callback-payment/'.  $product_id . '/' . $package_id,
                 $product->name . ' - ' . $package->name,
                 ['redirect_url' => 'https://mims.momentuminternet.my/redirect-payment/'.  $product_id . '/' . $package_id]
             );
@@ -371,6 +371,67 @@ class NewCustomerController extends Controller
         $request->session()->put('payment', $payment);
 
         return redirect($pay_data['url']);
+    }
+
+    public function callback_payment($product_id, $package_id, Request $request)
+    {
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+
+        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+
+        $bill = $billplz->bill();
+        $response = $bill->get($payment->billplz_id);
+
+        $pay_data = $response->toArray();
+
+        $addData = array(
+            'status' => $pay_data['state']
+        );
+
+        $payment->fill($addData);
+        $request->session()->put('payment', $payment);
+
+        if ($payment->status == 'paid')
+        {
+            /*-- Manage Email ---------------------------------------------------*/
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;   
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            $student->save();
+            $payment->save();
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));          
+            /*-- End Email -----------------------------------------------------------*/
+            
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+
+            return redirect('pendaftaran-berjaya');
+
+        } else {
+
+            $student->save();
+            $payment->save();
+    
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+
+            return redirect('pendaftaran-tidak-berjaya');
+        }
+        
     }
 
     public function redirect_payment($product_id, $package_id, Request $request)
