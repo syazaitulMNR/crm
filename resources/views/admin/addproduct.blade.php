@@ -120,8 +120,8 @@
                     @foreach ($offers as $offer)
                     <tr>
                         <td>{{ $count++ }}</td>
-                        <td>{{ $offers->offer_id }}</td>
-                        <td>{{ $offers->name }}</td>
+                        <td>{{ $offer->offer_id }}</td>
+                        <td>{{ $offer->name }}</td>
                     </tr>
                     @endforeach
                 </table>
