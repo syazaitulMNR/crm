@@ -365,10 +365,6 @@ class ExistCustomerController extends Controller
 
         /*-- End Email -----------------------------------------------------------*/
   
-        $request->session()->forget('student');
-        $request->session()->forget('payment');
-        
-        return redirect('pendaftaran-berjaya');
     }
 
     public function billplz_payment($product_id, $package_id, Request $request)
