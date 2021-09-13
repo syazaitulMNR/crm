@@ -19,7 +19,7 @@
     </div>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Update Product</h1>
+        <h1 class="h2">Update Event</h1>
     </div>
     
     <form class="row g-3 px-3" action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
