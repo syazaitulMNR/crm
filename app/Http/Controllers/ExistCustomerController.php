@@ -63,19 +63,23 @@ class ExistCustomerController extends Controller
         $count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
 
         //generate id
         $payment_id = 'OD'.uniqid();
+        $ticket_id = 'TIK'.uniqid();
+
+        $ticket_type = 'paid';
 
         if($product->offer_id == 'OFF001') {
 
             //for no offer ticket
-            return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+            return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
 
         } else if($product->offer_id == 'OFF002') {
             
             //for Buy 1 Get 1 (Same Ticket)
-            return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+            return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
 
         } else if($product->offer_id == 'OFF003') {
 
@@ -83,12 +87,12 @@ class ExistCustomerController extends Controller
             if($count_package == 1){
                 
                 //if only one package for the event
-                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
           
             } else {
           
                 //if has 3 package for the event
-                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
           
             }
 
@@ -98,12 +102,12 @@ class ExistCustomerController extends Controller
             if($count_package == 1){
                 
                 //if only one package for the event
-                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+                return view('customer_exist.step2_bulkticket1',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
           
             } else {
           
                 //if has 3 package for the event
-                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+                return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
           
             }
             
@@ -117,7 +121,7 @@ class ExistCustomerController extends Controller
 
     public function saveStepTwo($product_id, $package_id, $stud_id, Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedPayment = $request->validate([
             'payment_id' => 'required',
             'pay_price'=> 'required|numeric',
             'quantity' => 'required|numeric',
@@ -128,12 +132,43 @@ class ExistCustomerController extends Controller
             'offer_id' => 'required'
         ]);
 
-        $request->session()->get('payment');
-        $payment = new Payment();
-        $payment->fill($validatedData);
-        $request->session()->put('payment', $payment);
-  
-        return redirect('langkah-ketiga/'.  $product_id . '/' . $package_id . '/' . $stud_id );
+        $validatedTicket = $request->validate([
+            'ticket_id' => 'required',
+            'ticket_type'=> 'required',
+            'ic' => 'required',
+            'pay_price'=> 'required|numeric',
+            'stud_id' => 'required',
+            'product_id' => 'required',
+            'package_id' => 'required',
+            'payment_id' => 'required'
+        ]);
+
+        if($request->quantity == 1){
+            
+            $student = $request->session()->get('student');
+
+            $request->session()->get('payment');
+            $payment = new Payment();
+            $payment->fill($validatedPayment);
+            $request->session()->put('payment', $payment);
+
+            $request->session()->get('ticket');
+            $ticket = new Ticket();
+            $ticket->fill($validatedTicket);
+            $request->session()->put('ticket', $ticket);
+      
+            return redirect('langkah-ketiga/'.  $product_id . '/' . $package_id . '/' . $stud_id );
+
+        }else{
+            
+            $request->session()->get('payment');
+            $payment = new Payment();
+            $payment->fill($validatedPayment);
+            $request->session()->put('payment', $payment);
+      
+            return redirect('langkah-ketiga/'.  $product_id . '/' . $package_id . '/' . $stud_id );
+
+        }
     }
 
     public function stepThree($product_id, $package_id, $stud_id, Request $request)
@@ -213,6 +248,7 @@ class ExistCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $payment = $request->session()->get('payment');
         $student = $request->session()->get('student');
+        $ticket = $request->session()->get('ticket');
 
         /*-- Stripe ---------------------------------------------------------*/
         //Make Payment
@@ -271,23 +307,62 @@ class ExistCustomerController extends Controller
 
         /*-- Manage Email ---------------------------------------------------*/
       
-        $send_mail = $student->email;
-        $product_name = $product->name;  
-        $package_name = $package->name;        
-        $date_from = $product->date_from;
-        $date_to = $product->date_to;
-        $time_from = $product->time_from;
-        $time_to = $product->time_to;
-        $packageId = $package_id;
-        $payment_id = $payment->payment_id;
-        $productId = $product_id;        
-        $student_id = $student->stud_id;
+        if($payment->quantity == 1){
 
-        $student->save();
-        $payment->save();
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
 
-        dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-        
+            $email = $student->email;
+            $product_name = $product->name; 
+            $package_name = $package->name; 
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+            $ticket_id = $request->ticket_id;
+            $survey_form = $product->survey_form;
+
+            $student->save();
+            $payment->save();
+            $ticket->save();
+            
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
+            
+            return redirect('thankyou-update/' . $product_id );
+
+        }else{
+
+            $send_mail = $student->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            $student->save();
+            $payment->save();
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+            
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
+            
+            return redirect('pendaftaran-berjaya');
+        }
+
         /*-- End Email -----------------------------------------------------------*/
   
         $request->session()->forget('student');
@@ -302,6 +377,7 @@ class ExistCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
 
         //billplz API
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
@@ -342,6 +418,7 @@ class ExistCustomerController extends Controller
     {
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
@@ -362,32 +439,64 @@ class ExistCustomerController extends Controller
         {
             /*-- Manage Email ---------------------------------------------------*/
 
-            $product = Product::where('product_id', $product_id)->first();
-            $package = Package::where('package_id', $package_id)->first();
+            if($payment->quantity == 1){
 
-            $send_mail = $student->email;
-            $product_name = $product->name;    
-            $package_name = $package->name;      
-            $date_from = $product->date_from;
-            $date_to = $product->date_to;
-            $time_from = $product->time_from;
-            $time_to = $product->time_to;
-            $packageId = $package_id;
-            $payment_id = $payment->payment_id;
-            $productId = $product_id;        
-            $student_id = $student->stud_id;
-
-            $student->save();
-            $payment->save();
-
-            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-            
-            /*-- End Email -----------------------------------------------------------*/
+                $product = Product::where('product_id', $product_id)->first();
+                $package = Package::where('package_id', $package_id)->first();
     
-            $request->session()->forget('student');
-            $request->session()->forget('payment');
+                $email = $student->email;
+                $product_name = $product->name; 
+                $package_name = $package->name; 
+                $date_from = $product->date_from;
+                $date_to = $product->date_to;
+                $time_from = $product->time_from;
+                $time_to = $product->time_to;
+                $packageId = $package_id;
+                $productId = $product_id;        
+                $student_id = $student->stud_id;
+                $ticket_id = $request->ticket_id;
+                $survey_form = $product->survey_form;
+    
+                $student->save();
+                $payment->save();
+                $ticket->save();
+                
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                               
+                $request->session()->forget('student');
+                $request->session()->forget('payment');
+                $request->session()->forget('ticket');
+                
+                return redirect('thankyou-update/' . $product_id );
 
-            return redirect('pendaftaran-berjaya');  
+            }else{
+    
+                $send_mail = $student->email;
+                $product_name = $product->name;  
+                $package_name = $package->name;        
+                $date_from = $product->date_from;
+                $date_to = $product->date_to;
+                $time_from = $product->time_from;
+                $time_to = $product->time_to;
+                $packageId = $package_id;
+                $payment_id = $payment->payment_id;
+                $productId = $product_id;        
+                $student_id = $student->stud_id;
+    
+                $student->save();
+                $payment->save();
+    
+                dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                
+                $request->session()->forget('student');
+                $request->session()->forget('payment');
+                $request->session()->forget('ticket');
+
+                return redirect('pendaftaran-berjaya');
+
+            }
+
+            /*-- End Email -----------------------------------------------------------*/  
 
         } else {
 
@@ -396,6 +505,7 @@ class ExistCustomerController extends Controller
     
             $request->session()->forget('student');
             $request->session()->forget('payment');
+            $request->session()->forget('ticket');
 
             return redirect('pendaftaran-tidak-berjaya');
         }
@@ -406,6 +516,7 @@ class ExistCustomerController extends Controller
     {
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
 
@@ -426,32 +537,64 @@ class ExistCustomerController extends Controller
         {
             /*-- Manage Email ---------------------------------------------------*/
 
-            $product = Product::where('product_id', $product_id)->first();
-            $package = Package::where('package_id', $package_id)->first();
+            if($payment->quantity == 1){
 
-            $send_mail = $student->email;
-            $product_name = $product->name;    
-            $package_name = $package->name;      
-            $date_from = $product->date_from;
-            $date_to = $product->date_to;
-            $time_from = $product->time_from;
-            $time_to = $product->time_to;
-            $packageId = $package_id;
-            $payment_id = $payment->payment_id;
-            $productId = $product_id;        
-            $student_id = $student->stud_id;
-
-            $student->save();
-            $payment->save();
-
-            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
-            
-            /*-- End Email -----------------------------------------------------------*/
+                $product = Product::where('product_id', $product_id)->first();
+                $package = Package::where('package_id', $package_id)->first();
     
-            $request->session()->forget('student');
-            $request->session()->forget('payment');
+                $email = $student->email;
+                $product_name = $product->name; 
+                $package_name = $package->name; 
+                $date_from = $product->date_from;
+                $date_to = $product->date_to;
+                $time_from = $product->time_from;
+                $time_to = $product->time_to;
+                $packageId = $package_id;
+                $productId = $product_id;        
+                $student_id = $student->stud_id;
+                $ticket_id = $request->ticket_id;
+                $survey_form = $product->survey_form;
+    
+                $student->save();
+                $payment->save();
+                $ticket->save();
+                
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                               
+                $request->session()->forget('student');
+                $request->session()->forget('payment');
+                $request->session()->forget('ticket');
+                
+                return redirect('thankyou-update/' . $product_id );
 
-            return redirect('pendaftaran-berjaya');  
+            }else{
+    
+                $send_mail = $student->email;
+                $product_name = $product->name;  
+                $package_name = $package->name;        
+                $date_from = $product->date_from;
+                $date_to = $product->date_to;
+                $time_from = $product->time_from;
+                $time_to = $product->time_to;
+                $packageId = $package_id;
+                $payment_id = $payment->payment_id;
+                $productId = $product_id;        
+                $student_id = $student->stud_id;
+    
+                $student->save();
+                $payment->save();
+    
+                dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+                
+                $request->session()->forget('student');
+                $request->session()->forget('payment');
+                $request->session()->forget('ticket');
+
+                return redirect('pendaftaran-berjaya');
+
+            }
+
+            /*-- End Email -----------------------------------------------------------*/  
 
         } else {
 
@@ -460,6 +603,7 @@ class ExistCustomerController extends Controller
     
             $request->session()->forget('student');
             $request->session()->forget('payment');
+            $request->session()->forget('ticket');
 
             return redirect('pendaftaran-tidak-berjaya');
         }
