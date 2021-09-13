@@ -147,7 +147,7 @@ class NewCustomerController extends Controller
      */
     public function postCreateStepTwo($product_id, $package_id, Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedPayment = $request->validate([
             'payment_id' => 'required',
             'pay_price'=> 'required|numeric',
             'quantity' => 'required|numeric',
