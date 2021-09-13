@@ -117,7 +117,7 @@
                         <th>Offer ID</th>
                         <th>Description</th>
                     </tr>
-                    @foreach ($offer as $offers)
+                    @foreach ($offers as $offer)
                     <tr>
                         <td>{{ $count++ }}</td>
                         <td>{{ $offers->offer_id }}</td>
