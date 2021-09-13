@@ -73,7 +73,7 @@
             <input name="survey_form" type="text" class="form-control" value="{{ $product->survey_form }}">
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <label class="form-label">TQ Page Link</label>
             <input name="tq_page" type="text" class="form-control" value="{{ $product->tq_page }}">
         </div>
