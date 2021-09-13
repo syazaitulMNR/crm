@@ -549,7 +549,7 @@ class ExistCustomerController extends Controller
                 $packageId = $package_id;
                 $productId = $product_id;        
                 $student_id = $student->stud_id;
-                $ticket_id = $request->ticket_id;
+                $ticket_id = $ticket->ticket_id;
                 $survey_form = $product->survey_form;
     
                 $student->save();
