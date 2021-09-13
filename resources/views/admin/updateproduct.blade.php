@@ -103,6 +103,29 @@
                 
     </form>
 
+    <p>Refer to this table for Offer ID </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <!-- Show details in table ----------------------------------------------->
+                <table class="table table-bordered table-sm">
+                    <tr class="table-active">
+                        <th>#</th>
+                        <th>Offer ID</th>
+                        <th>Description</th>
+                    </tr>
+                    @foreach ($offer as $offers)
+                    <tr>
+                        <td>{{ $count++ }}</td>
+                        <td>{{ $offers->offer_id }}</td>
+                        <td>{{ $offers->name }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>  
+    </div>
+
 </div>
 
 <!-- Function for datepicker --------------------------------------------------->
