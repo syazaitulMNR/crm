@@ -171,7 +171,7 @@
 					
 					Excel Data:
 					<input type="file" name="file" /><br />
-					<em>Click <a href="" class="text-primary">here</a> to get the upload template.</em>
+					<em>Click <a href="{{ url('download-phoneno-template') }}" class="text-primary">here</a> to get the upload template.</em>
 					
 					<div class='text-right'>
 						<button type='submit' class='btn btn-success'> 

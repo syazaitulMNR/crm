@@ -354,6 +354,7 @@ Route::get("/smstemplate/delete/{id}", 'SmsTemplate@del');
 Route::delete("/smstemplate/delete/{id}", 'SmsTemplate@remove');
 
 Route::get("/smsblast", 'SmsBulk@index');
+Route::get('/download-phoneno-template', 'SmsBulk@export');
 Route::get("/smsblast/add", 'SmsBulk@add');
 Route::post("/smsblast/send", 'SmsBulk@create');
 Route::post("/smsblast/send_bulk", 'SmsBulk@create_bulk');
