@@ -460,9 +460,20 @@ class NewCustomerController extends Controller
         $pay_data = $response->toArray();
 
         //update payment history status to database
-        $addData = array(
-            'status' => $pay_data['state']
-        );
+        if($payment->quantity == 1){
+
+            $addData = array(
+                'status' => $pay_data['state'],
+                'update_count'  => 1
+            );
+
+        }else{
+
+            $addData = array(
+                'status' => $pay_data['state']
+            );
+
+        }
 
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
@@ -558,9 +569,20 @@ class NewCustomerController extends Controller
         $pay_data = $response->toArray();
 
         //update payment history status to database
-        $addData = array(
-            'status' => $pay_data['state']
-        );
+        if($payment->quantity == 1){
+
+            $addData = array(
+                'status' => $pay_data['state'],
+                'update_count'  => 1
+            );
+
+        }else{
+
+            $addData = array(
+                'status' => $pay_data['state']
+            );
+
+        }
 
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
