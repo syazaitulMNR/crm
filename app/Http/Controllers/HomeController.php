@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Redirect;
 use App\Jobs\TiketJob;
 use App\Product;
 use App\Feature;
