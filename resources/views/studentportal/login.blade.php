@@ -19,6 +19,12 @@
                 <form method="POST" action="{{ route('student.login.submit') }}">
                     @csrf
                     
+                    @if(Session::get('student_block') == "fail")
+                        <div class="mb-3 alert alert-danger" role="alert">
+                            <strong class="text-danger "> You have been blocked from entering the system. Please contact centre. </strong>
+                        </div>
+                    @endif
+
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

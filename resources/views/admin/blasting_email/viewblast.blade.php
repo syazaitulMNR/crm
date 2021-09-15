@@ -35,8 +35,10 @@
 
       @if(count($payment) > 0)
       <div class="row">
+
         <div class="col-md-5">
           <form id="productForm" name="productForm" class="form-horizontal">
+            <em class="pl-3">Choose email template</em>
             <div class="input-group">
               <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Emails</label>
@@ -48,12 +50,11 @@
                   @endforeach
               </select>
             </div>
-            
-            <em class="pl-3">Choose email template</em>
+            <span id="chooseEmail" style="visibility:hidden;" class="text-danger font-weight-bold">Email was not chosen</span>
           </form>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-md-4">
           <div class="spinner-border text-primary" id="loader" role="status" style="visibility:hidden;">
               <span class="sr-only">Loading...</span>
             </div>
@@ -61,10 +62,11 @@
         </div>
 
         <div class="col-md-3">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" id="bt-get-email" value="create">Send emails</button>
+          <div class="col-sm-offset-2 col-sm-10 ml-5">
+            <button type="submit" class="btn btn-primary ml-5" id="bt-get-email" value="create" >Send emails</button>
           </div>
         </div>
+
       </div>
 
       <div class="table-responsive">
@@ -164,60 +166,65 @@
     $('#bt-get-email').click(function (e) {
         e.preventDefault();
 
-        document.getElementById("loader").style.visibility = "visible";
+        $emailValueId = document.getElementById("emailId").value;
 
-        var myTab = document.getElementById('searchTable');
-        var emailList = [];
-        var paymentId = [];
+        if($emailValueId != (null || "")){
+          document.getElementById("loader").style.visibility = "visible";
+          document.getElementById("chooseEmail").style.visibility = "hidden";
 
-        // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-        var firstObjCells = myTab.rows.item(0).cells;
-        var column = 0;
-        var columnPayment = 0;
+          var myTab = document.getElementById('searchTable');
+          var emailList = [];
+          var paymentId = [];
 
-        // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-        for (var k = 0; k < firstObjCells.length; k++) {
-          if(firstObjCells.item(k).innerHTML == "Email"){
-            column = k;
+          // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+          var firstObjCells = myTab.rows.item(0).cells;
+          var column = 0;
+          var columnPayment = 0;
+
+          // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+          for (var k = 0; k < firstObjCells.length; k++) {
+            if(firstObjCells.item(k).innerHTML == "Email"){
+              column = k;
+            }
+            if(firstObjCells.item(k).innerHTML == "PaymentID"){
+              columnPayment = k;
+            }
+          }  
+
+          // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+          for (i = 1; i < myTab.rows.length; i++) {
+
+            var objCells = myTab.rows.item(i).cells;
+            emailList.push(objCells.item(column).innerHTML);
+            paymentId.push(objCells.item(columnPayment).innerHTML);
           }
-          if(firstObjCells.item(k).innerHTML == "PaymentID"){
-            columnPayment = k;
-          }
-        }  
 
-        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length; i++) {
+          // console.log($())
 
-          var objCells = myTab.rows.item(i).cells;
-          emailList.push(objCells.item(column).innerHTML);
-          paymentId.push(objCells.item(columnPayment).innerHTML);
+          $.ajax({
+            data:{
+              emailList: emailList,
+              emailId: $('#emailId').val(),
+              prod_id: $('#prod_id').val(),
+              pack_id: $('#pack_id').val(),
+              paymentId: paymentId
+            },
+            url: "{{ route('email-bulk-blast') }}",
+            type: "POST",
+            success: function (data) {
+              console.log(data);
+                console.log('jadi');
+                location.reload();
+            },
+            error: function (data) {
+              console.log('error');
+              console.log(data);
+            }
+          });
+        }else{
+          document.getElementById("chooseEmail").style.visibility = "visible";
+          console.log('please choose eail');
         }
-
-        // console.log($())
-
-        $.ajax({
-          data:{
-            emailList: emailList,
-            emailId: $('#emailId').val(),
-            prod_id: $('#prod_id').val(),
-            pack_id: $('#pack_id').val(),
-            paymentId: paymentId
-          },
-          url: "{{ route('email-bulk-blast') }}",
-          type: "POST",
-          // dataType: 'json',
-          success: function (data) {
-            console.log("jadi kot");
-            location.reload();
-              // $('#productForm').trigger("reset");
-              // $('#ajaxModel').modal('hide');
-              // table.draw();
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              // $('#saveBtn').html('Save Changes');
-          }
-      });
     });
   });
 </script>

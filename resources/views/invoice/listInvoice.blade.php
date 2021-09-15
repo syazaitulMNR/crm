@@ -21,7 +21,15 @@
     <div class="col-md-12 "> 
         
       <!-- Search box ---------------------------------------------------------->
-      <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
+      <form action="{{ route('student.searchInvoice') }}" class="input-group" method="GET">
+            @csrf
+
+            @if(isset($query))
+            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search date">
+            @else
+            <input type="text" class="form-control" name="search" value="" placeholder="Search date">">
+            @endif
+        </form>
       
       <div class="float-right pt-3"></div>
       <br>
@@ -34,32 +42,41 @@
                 <th>#</th>
                 <th>Membership</th>
                 <th>Date</th>
+                <th>Status</th>
                 <th>Price</th>
                 <th class="text-center"><i class="fas fa-cogs"></i></th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($months as $month)
+              @foreach ($invoices as $key => $invoice)
               <tr>
                 <td>
-                  {{$no++}}
+                  {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
                 </td>
                 <td>
                   {{$membership_level->name}}
                 </td>
                 <td>
-                  {{$month}}
+                  {{$invoice->for_date}}
                 </td>
                 <td>
-                {{$membership_level->price}}
+                  {{$invoice->status}}
+                </td>
+                <td>
+                  {{$membership_level->price}}
                 </td>
                 <td class="text-center">
-                  <a href="/student/list-bill/{{$membership_level->level_id}}" class="btn btn-success">Pay Now</a>
+                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn btn-success">Pay Now</a>
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>   
+          @if(isset($query))
+              {{ $invoices->appends(['search' => $query])->links() }} 
+          @else
+              {{ $invoices->links() }} 
+          @endif
         </div>  
       
 

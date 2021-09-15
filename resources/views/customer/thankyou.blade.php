@@ -52,6 +52,8 @@
             <iframe class="video-size" src="https://player.vimeo.com/video/556461041" height="315" width="560" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div> --}}
         {{-- </div> --}}
+
+        <a class="btn btn-primary" href="{{ $product_link }}" role="button">Go to zoom</a>
  
         <hr>
         

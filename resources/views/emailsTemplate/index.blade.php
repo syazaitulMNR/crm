@@ -22,7 +22,15 @@
             </div>
         </div>
             
-        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Event Name" title="Type in a name">
+        <form action="{{ route('emailSearch') }}" class="input-group" method="GET">
+            @csrf
+
+            @if(isset($query))
+            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search name">
+            @else
+            <input type="text" class="form-control" name="search" value="" placeholder="Search name">
+            @endif
+        </form>
         <br>       
 
         @if ($message = Session::get('success'))
@@ -40,11 +48,13 @@
         @endif
                 
         <!-- View event details in table ----------------------------------------->
+
         <div class="table-responsive">
             <table class="table table-hover" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col" class="text-center">Title </th>
                         <th scope="col" class="text-center">Name</th>
                         <th scope="col" class="text-right"><i class="fas fa-cogs"></i></th>
                     </tr>
@@ -53,16 +63,23 @@
                 <tbody> 
                 @foreach ($emailsTemplate as $key => $emailTemplate)
                     <tr>
-                        <td>{{$key + 1}}</td>
+                        <td>{{( ($emailsTemplate->currentPage() -1) * 10) + $key + 1}}</td>
+                        <td class="text-center">{{$emailTemplate -> title}}</td>
                         <td class="text-center">{{$emailTemplate -> name}}</td>
                         <td class="text-right">
+                            <a class="btn btn-primary" href="/emailtemplate/show/{{$emailTemplate->id}}"><i class="bi bi-eye"></i></i></a>
                             <a class="btn btn-dark" href="/emailtemplate/edit/{{$emailTemplate->id}}"><i class="bi bi-pencil"></i></i></a>
                             <a class="btn btn-danger" href="/emailtemplate/delete/{{$emailTemplate->id}}"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
-            </table>   
+            </table>  
+            @if(isset($query))
+                {{ $emailsTemplate->appends(['search' => $query])->links() }} 
+            @else
+                {{ $emailsTemplate->links() }} 
+            @endif
         </div>  
 
     </div>

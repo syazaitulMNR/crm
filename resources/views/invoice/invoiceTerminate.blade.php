@@ -61,7 +61,7 @@
 			}
 
 			.invoice-box table tr td:nth-child(2) {
-				/* text-align: right; */
+				text-align: right;
 			}
 
 			.invoice-box table tr.top table td {
@@ -118,70 +118,15 @@
 	</head>
 
 	<body>
-		<div class="invoice-box">
-			<table>
-				<tr class="top">
-					<td colspan="2">
-						<table>
-							<tr>
-								<td class="title">
-									<img src="https://mims.momentuminternet.my/assets/images/logo.png" alt="Company logo" title="Company ogo" style="display:block; width: 100%; max-width: 300px" />
-								</td>
-
-								<td align="right">
-									Created: {{$current_date}}<br />
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-
-				<tr class="information">
-					<td colspan="2">
-						<table>
-							<tr>
-                                <td>
-									Momentum Internet<br />
-									288 Tingkat 1, Jalan Lambak,<br />
-                                    86000 Kluang, <br />
-                                    Johor
-								</td>
-
-								<td align="right">
-									{{$student->first_name}}&nbsp;{{$student->last_name}}<br />
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr class="heading">
-					<td>Membership</td>
-
-					<td align="right">Price</td>
-				</tr>
-
-				<tr class="item">
-					<td>{{$content->name}}</td>
-
-					<td align="right">{{$content->price}}</td>
-				</tr>
-
-				<tr class="total">
-					<td></td>
-
-					<td align="right">
-						<h5>Total Price: {{$content->price}}</h5>
-					</td>
-				</tr>
-
-				<tr>
-					<td align="center" colspan=2>
-						<a href="https://mims.momentuminternet.my/list-bill/{{$content->level_id}}/{{$invoice->invoice_id}}/{{$student->stud_id}}">Pay Here</a>
-					</td>
-				</tr>
-			</table>
-
-			
-		</div>
+    <div style='font-family:Trebuchet MS,Arial,sans-serif'>
+    <img src="https://mims.momentuminternet.my/assets/images/logo.png" alt="Company logo" title="Company ogo" style="display:block" width="200" height="87" />
+        <hr/>
+            THIS IS A REMINDER!!
+        <br/>
+		
+		YOUR PAYMENT WAS OVERDUE FOR 3 MONTHS. PLEASE PAY IMMEDIATELY SO YOU WILL NOT BE REMOVED FROM OUR SYSTEM.
+        <br/>
+		<a href="https://mims.momentuminternet.my/dashboard">Pay Here</a>
+    </div>
 	</body>
 </html>

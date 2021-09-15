@@ -22,7 +22,15 @@
             </div>
         </div>
             
-        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Webinar Name" title="Type in a name">
+        <form action="{{ route('zoomSearch') }}" class="input-group" method="GET">
+            @csrf
+
+            @if(isset($query))
+            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search by name or date(both start or end time)">
+            @else
+            <input type="text" class="form-control" name="search" value="" placeholder="Search by name or date(both start or end time)">">
+            @endif
+        </form>
         <br>       
 
         @if ($message = Session::get('success'))
@@ -58,7 +66,7 @@
                 <tbody> 
                 @foreach ($webinars as $key => $webinar)
                     <tr>
-                        <td>{{$key + 1}}</td>
+                        <td>{{( ( $webinars->currentPage() - 1 ) * 10) + $key + 1}}</td>
                         <td class="text-center">{{$webinar -> topic}}</td>
                         <td class="text-center">{{$webinar -> password}}</td>
                         <td class="text-center">
@@ -78,6 +86,11 @@
                 @endforeach
                 </tbody>
             </table>   
+            @if(isset($query))
+                {{ $webinars->appends(['search' => $query])->links() }} 
+            @else
+                {{ $webinars->links() }} 
+            @endif
         </div>  
 
     </div>

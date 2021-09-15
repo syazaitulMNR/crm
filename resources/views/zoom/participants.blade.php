@@ -13,16 +13,18 @@
         </div> 
         
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Zoom Webinar</h1>
-            
-            <div class="btn-toolbar mb-2 mb-md-0">
-                <a href="/zoom/add" class="btn btn-outline-dark">
-                    <i class="bi bi-plus-lg pr-2"></i> New Zoom Webinar
-                </a>
-            </div>
+            <h1 class="h2">Participants</h1>
         </div>
             
-        <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Please Enter Webinar Name" title="Type in a name">
+        <form action="{{ route('participantSearch', ['zoom' => $zoom->id, 'webinar' => $webinarId]) }}" class="input-group" method="GET">
+            @csrf
+
+            @if(isset($query))
+            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search email">
+            @else
+            <input type="text" class="form-control" name="search" value="" placeholder="Search email">
+            @endif
+        </form>
         <br>       
 
         @if ($message = Session::get('success'))
@@ -45,8 +47,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col" class="text-center">First Name</th>
-                        <th scope="col" class="text-center">Last Name</th>
+                        <th scope="col" class="text-center">Name</th>
                         <th scope="col" class="text-center">Email</th>
                         <th scope="col" class="text-right"><i class="fas fa-cogs"></i></th>
                     </tr>
@@ -55,9 +56,8 @@
                 <tbody> 
                 @foreach ($students as $key => $student)
                     <tr>
-                        <td>{{$key + 1}}</td>
-                        <td class="text-center">{{$student -> first_name}}</td>
-                        <td class="text-center">{{$student -> last_name}}</td>
+                        <td>{{( ($students->currentPage() - 1) * 10) + $key + 1}}</td>
+                        <td class="text-center">{{$student -> first_name.' '.$student -> last_name}}</td>
                         <td class="text-center">{{$student -> email}}</td>
                         <td class="text-right">
                             <a class="btn btn-primary" href="/zoom/"><i class="bi bi-eye"></i></a>
@@ -68,9 +68,23 @@
                 @endforeach
                 </tbody>
             </table>   
-        </div>  
+            @if(isset($query))
+                {{ $students->appends(['search' => $query])->links() }} 
+            @else
+                {{ $students->links() }} 
+            @endif
+        </div> 
+         
 
     </div>
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                location.reload(true);
+            }, 30000);
+        });
+    </script>
 
     
 
