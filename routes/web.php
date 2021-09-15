@@ -241,7 +241,7 @@ Route::get('callback-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerController@redirect_billplz');
 
 // Thank you page
-Route::get('pendaftaran-berjaya','HomeController@thankyou');
+Route::get('pendaftaran-berjaya/{product_id}','HomeController@thankyou');
 Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
 
 

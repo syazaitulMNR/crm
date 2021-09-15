@@ -68,9 +68,10 @@ class HomeController extends Controller
         }
     }
 
-    public function thankyou() 
+    public function thankyou($product_id) 
     {
-        $url = 'https://www.naktarikpelanggan.com/tqrpmpeluangkedua/';
+        $product = Product::where('product_id', $product_id)->first();
+        $url = $product->tq_page;
         return new RedirectResponse($url);
         // return view('customer/thankyou');
     }
