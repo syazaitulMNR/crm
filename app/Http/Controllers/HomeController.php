@@ -69,7 +69,9 @@ class HomeController extends Controller
 
     public function thankyou() 
     {
-        return view('customer/thankyou');
+        $url = 'https://www.naktarikpelanggan.com/tqrpmpeluangkedua/';
+        return Redirect::to($url);
+        // return view('customer/thankyou');
     }
 
     public function failed_payment() 
