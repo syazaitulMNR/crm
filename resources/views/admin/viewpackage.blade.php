@@ -64,7 +64,7 @@
             <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}" readonly></td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
-              <a class="btn btn-dark" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="bi bi-chevron-right"></i></a>
+              <a class="btn btn-warning" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="bi bi-pencil-square"></i></a>
               <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="bi bi-trash"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $packages->package_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

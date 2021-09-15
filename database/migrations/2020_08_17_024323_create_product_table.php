@@ -25,7 +25,8 @@ class CreateProductTable extends Migration
             $table->string('cert_image');      
             $table->string('offer_id');     
             $table->string('collection_id');     
-            $table->string('survey_form');
+            $table->string('survey_form');     
+            $table->string('tq_page');
             $table->timestamps();
         });
     }

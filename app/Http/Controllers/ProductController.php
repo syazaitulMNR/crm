@@ -9,6 +9,7 @@ use App\Product;
 use App\Package;
 use App\Feature;
 use App\Offer;
+use App\Collection_id;
 use validator;
 
 class ProductController extends Controller
@@ -39,8 +40,9 @@ class ProductController extends Controller
     public function create()
     {
         $offers = Offer::orderBy('id','asc')->get();
+        $count = 1;
 
-        return view('admin.addproduct', compact('offers'));
+        return view('admin.addproduct', compact('offers', 'count'));
     }
 
     public function store(Request $request)
@@ -64,6 +66,7 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
 
@@ -85,6 +88,7 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
         }
@@ -96,8 +100,9 @@ class ProductController extends Controller
     {
         $product = Product::where('product_id', $id)->first();
         $offers = Offer::orderBy('id','asc')->get();
+        $count = 1;
 
-        return view('admin/updateproduct', compact('product', 'offers'));        
+        return view('admin/updateproduct', compact('product', 'offers', 'count'));        
     }
 
     public function update($id, Request $request)
@@ -115,6 +120,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->tq_page = $request->tq_page;
             $product->status = $request->status;
             $product->save();
 
@@ -136,6 +142,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->tq_page = $request->tq_page;
             $product->status = $request->status;
 
             if($request->hasFile('cert_image'))
@@ -293,6 +300,46 @@ class ProductController extends Controller
         $package->delete();
         $feature->delete();
         return back()->with('delete','Package Successfully Deleted!');
+    }
+
+    
+    /*-- Collection ID -------------------------------------------------------------*/
+    public function collection_id()
+    {
+        $billplz = Collection_id::orderBy('id','desc')->paginate(10);
+
+        return view('admin.collection_id', compact('billplz'));
+    }
+
+    public function new_collection(Request $request)
+    {
+        $billplz = Collection_id::orderBy('id','desc')->first();
+    
+        Collection_id::create([
+            'collection_id' => $request->collection_id,
+            'name' => $request->name
+        ]);
+
+        return redirect('collection-id')->with('add-success', 'Collection ID Successfully Created');
+    }
+
+    public function update_collection($collection_id, Request $request)
+    {
+        $billplz = Collection_id::where('collection_id', $collection_id)->first();
+
+        $billplz->collection_id = $request->collection_id;
+        $billplz->name = $request->name;
+        $billplz->save();
+
+        return redirect('collection-id')->with('update-success', 'Collection ID Successfully Updated'); 
+    }
+
+    public function delete_collection($collection_id)
+    {
+        $billplz = Collection_id::where('collection_id', $collection_id);
+        $billplz->delete();
+
+        return back()->with('delete', 'Collection ID Successfully Deleted');
     }
 
 }

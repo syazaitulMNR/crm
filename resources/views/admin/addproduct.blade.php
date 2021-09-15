@@ -39,13 +39,9 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Offer Provided</label>
-            <select class="form-select" aria-label="Default select example" name="offer_id" required>
-                <option disabled selected>-- Please Select --</option>
-                @foreach($offers as $offer)
-                <option value="{{ $offer->offer_id }}">{{ $offer->offer_id }} - {{ $offer->name }}</option>
-                @endforeach
-            </select>
+            <label class="form-label">Offer ID</label>
+            <input name="offer_id" type="text" class="form-control" required>
+            <em>*Please refer the Offer ID table below</em>
         </div>
 
         <div class="col-md-6">
@@ -76,7 +72,13 @@
             <label class="form-label">Survey Form Link</label>
             <input name="survey_form" type="text" class="form-control">
         </div>
-        <div class="col-md-2">
+
+        <div class="col-md-4">
+            <label class="form-label">TQ Page Link</label>
+            <input name="tq_page" type="text" class="form-control">
+        </div>
+
+        <div class="col-md-6">
             <label class="form-label">BillPlz Collection ID</label>
             <select class="form-select" name="collection_id" required>
                 <option disabled selected>-- Please select --</option>
@@ -85,7 +87,7 @@
             </select>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-6">
             <label class="form-label">Dashboard Report</label>
             <select class="form-select" name="status" required>
                 <option disabled selected>-- Please select --</option>
@@ -99,6 +101,29 @@
         </div>
 
     </form>
+
+    <p>Refer to this table for Offer ID </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <!-- Show details in table ----------------------------------------------->
+                <table class="table table-bordered table-sm">
+                    <tr class="table-active">
+                        <th>#</th>
+                        <th>Offer ID</th>
+                        <th>Description</th>
+                    </tr>
+                    @foreach ($offers as $offer)
+                    <tr>
+                        <td>{{ $count++ }}</td>
+                        <td>{{ $offer->offer_id }}</td>
+                        <td>{{ $offer->name }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>  
+    </div>
 
 </div>
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\SMSBulkImport;
+use App\Exports\SMSTemplate;
 
 use Auth;
 
@@ -42,6 +43,11 @@ class SmsBulk extends Controller
 			
 			return view("admin.sms.smsbulk.index", compact("x", "y"));
 		}
+    }
+
+    public function export()
+    {
+        return Excel::download(new SMSTemplate, 'Phone_No.xlsx');
     }
 
     /**

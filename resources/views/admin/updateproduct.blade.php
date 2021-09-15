@@ -15,11 +15,11 @@
 <div class="col-md-12 pt-3">
 
     <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-        <a href="/product"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/product">Event</a> / <b>Update Product</b>
+        <a href="/product"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <a href="/product">Event</a> / <b>Update Event</b>
     </div>
 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Update Product</h1>
+        <h1 class="h2">Update Event</h1>
     </div>
     
     <form class="row g-3 px-3" action="{{ url('update') }}/{{ $product->product_id }}" method="POST" enctype="multipart/form-data"> 
@@ -31,17 +31,9 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Offer Provided</label>
+            <label class="form-label">Offer ID</label>
             <input name="offer_id" type="text" class="form-control" value="{{ $product->offer_id }}">
-            @foreach($offers as $offer)
-            <em><b>{{ $offer->offer_id }}</b> = {{ $offer->name }}; </em>
-            @endforeach
-            {{-- <select class="form-select" aria-label="Default select example" name="offer_id" required>
-                <option disabled selected>-- Please Select --</option>
-                @foreach($offers as $offer)
-                <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
-                @endforeach
-            </select> --}}
+            <em>*Please refer the Offer ID table below</em>
         </div>
 
         <div class="col-md-6">
@@ -72,7 +64,13 @@
             <label class="form-label">Survey Form Link</label>
             <input name="survey_form" type="text" class="form-control" value="{{ $product->survey_form }}">
         </div>
-        <div class="col-md-2">
+
+        <div class="col-md-4">
+            <label class="form-label">TQ Page Link</label>
+            <input name="tq_page" type="text" class="form-control" value="{{ $product->tq_page }}">
+        </div>
+
+        <div class="col-md-6">
             <label class="form-label">BillPlz Collection ID</label>
             <input name="collection_id" type="text" class="form-control" value="{{ $product->collection_id }}">
             {{-- <select class="form-select" name="collection_id">
@@ -82,7 +80,7 @@
                 @endforeach
             </select> --}}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-6">
             <label class="form-label">Dashboard Report</label>
             <select class="form-select" name="status" required>
                 <option disabled selected>-- {{ $product->status }} --</option>
@@ -96,6 +94,29 @@
         </div>
                 
     </form>
+
+    <p>Refer to this table for Offer ID </p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <!-- Show details in table ----------------------------------------------->
+                <table class="table table-bordered table-sm">
+                    <tr class="table-active">
+                        <th>#</th>
+                        <th>Offer ID</th>
+                        <th>Description</th>
+                    </tr>
+                    @foreach ($offers as $offer)
+                    <tr>
+                        <td>{{ $count++ }}</td>
+                        <td>{{ $offer->offer_id }}</td>
+                        <td>{{ $offer->name }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>  
+    </div>
 
 </div>
 
