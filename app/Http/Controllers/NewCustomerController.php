@@ -436,20 +436,9 @@ class NewCustomerController extends Controller
         
         $pay_data = $response->toArray();
         
-        if($payment->quantity == 1){
-
-            $addData = array(
-                'billplz_id' => $pay_data['id'],
-                'update_count'  => 1
-            );
-
-        }else{
-
-            $addData = array(
-                'billplz_id' => $pay_data['id']
-            );
-
-        }
+        $addData = array(
+            'billplz_id' => $pay_data['id']
+        );
 
         $payment->fill($addData);
         $request->session()->put('payment', $payment);
