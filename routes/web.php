@@ -209,6 +209,7 @@ Route::get('customer_profiles/{id}', 'customerProfileController@customerProfile'
 Route::post('update_cust/{id}', 'customerProfileController@customerUpdate');
 Route::post('add_comment/{id}', 'customerProfileController@customerAddComment');
 Route::get('customer_details', 'customerProfileController@customerDetails');
+Route::get('customer-invite', 'customerProfileController@customerInvite')->name('staff.customer-invite');;
 
 // Newstudent
 Route::get('maklumat-pembeli/{product_id}/{package_id}/{get_ic}', 'NewCustomerController@createStepOne');
@@ -339,8 +340,10 @@ Route::get('test/email', function(){
 Route::get('/test/bulkmail', 'TestEmailController@testBulkEmails');
 
 Route::get("/emailtemplate", 'EmailTemplate@index');
+Route::get("/emailtemplate/search", 'EmailTemplate@search')->name('emailSearch');
 Route::get("/emailtemplate/add", 'EmailTemplate@add');
 Route::post("/emailtemplate/add", 'EmailTemplate@create');
+Route::get("/emailtemplate/show/{id}", 'EmailTemplate@show');
 Route::get("/emailtemplate/edit/{id}", 'EmailTemplate@edit');
 Route::put("/emailtemplate/edit/{id}", 'EmailTemplate@update');
 Route::get("/emailtemplate/delete/{id}", 'EmailTemplate@del');
@@ -365,6 +368,7 @@ Route::get("/smsblast/delete/{id}", 'SmsBulk@del');
 Route::delete("/smsblast/delete/{id}", 'SmsBulk@remove');
 
 Route::prefix('student')->group(function() {
+	Route::get('/','StudentPortal@redirectLogin');
 	Route::get('/login','StudentPortal@loginForm')->name('student.login');
 	Route::post('/login', 'StudentPortal@login')->name('student.login.submit');
 	Route::get('/logout', 'StudentPortal@logout')->name('student.logout');
@@ -376,8 +380,17 @@ Route::prefix('student')->group(function() {
 	Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
 	Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
 	Route::get('/list-invoice', 'StudentPortal@listInvoice')->name('student.listInvoice');
-	Route::get('/list-bill/{level}', 'StudentPortal@linkBill')->name('student.linkBill');
-	Route::get('/receive-payment/{stud}/{level}', 'StudentPortal@receivepayment')->name('student.receivePayment');
+
+	// shauqi add new routes
+	
+	Route::get('/invite-list', 'StudentPortal@showList')->name('student.invite_list');
+	Route::get('/event-link', 'StudentPortal@showLink')->name('student.link');
+	Route::get('/link-detail/{product_id}', 'StudentPortal@linkDetail')->name('student.link_detail');
+	Route::get('/list-invoice/search', 'StudentPortal@searchInvoice')->name('student.searchInvoice');
+	Route::get('/list-bill/{level}/{invoice}/{student}', 'StudentPortal@linkBill')->name('student.linkBill');
+	Route::get('/receive-payment/{stud}/{level}/{invoice}', 'StudentPortal@receivepayment')->name('student.receivePayment');
+	Route::get('/success_payment', 'InvoiceController@success');
+	Route::get('/fail_payment', 'InvoiceController@fail');
 });
 
 Route::prefix('staff')->group(function() {
@@ -399,9 +412,11 @@ Route::get("customer-support", 'CustomerSupport@index');
 //Route::get("studentportal", 'StudentPortal@index');
 
 Route::get('/zoom', 'ZoomController@index');
+Route::get('/zoom/search', 'ZoomController@search')->name('zoomSearch');
 Route::get('/zoom/add', 'ZoomController@create');
 Route::post('/zoom/add', 'ZoomController@store');
 Route::get('/zoom/{zoom}/{webinar}', 'ZoomController@showParticipants');
+Route::get('/zoom/participantSearch/{zoom}/{webinar}', 'ZoomController@participantSearch')->name('participantSearch');
 Route::get('/zoom/edit/{zoom}', 'ZoomController@edit');
 Route::put('/zoom/edit/{zoom}', 'ZoomController@update');
 Route::get('/zoom/delete/{zoom}', 'ZoomController@del');
@@ -417,6 +432,12 @@ Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
 Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
+
+Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
+Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
+//check invoice template email
+Route::get('check_invoice', 'InvoiceController@show');
+
 
 
 
