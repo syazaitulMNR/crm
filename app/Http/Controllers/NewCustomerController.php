@@ -436,14 +436,26 @@ class NewCustomerController extends Controller
         
         $pay_data = $response->toArray();
         
-        $addData = array(
-            'billplz_id' => $pay_data['id']
-        );
+        if($payment->quantity == 1){
 
-        $payment->fill($addData);
-        $request->session()->put('payment', $payment);
+            $addData = array(
+                'billplz_id' => $pay_data['id'],
+                'update_count'  => 1
+            );
 
-        return redirect($pay_data['url']);
+        }else{
+
+            $addData = array(
+                'billplz_id' => $pay_data['id']
+            );
+
+        }
+
+        dd($addData);
+        // $payment->fill($addData);
+        // $request->session()->put('payment', $payment);
+
+        // return redirect($pay_data['url']);
     }
 
     public function callback_payment($product_id, $package_id, Request $request)
