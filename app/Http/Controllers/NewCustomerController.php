@@ -459,7 +459,7 @@ class NewCustomerController extends Controller
         $response = $bill->get($payment->billplz_id);
         $pay_data = $response->toArray();
 
-        //update to database
+        //update payment history status to database
         $addData = array(
             'status' => $pay_data['state']
         );
@@ -557,7 +557,7 @@ class NewCustomerController extends Controller
         $response = $bill->get($payment->billplz_id);
         $pay_data = $response->toArray();
 
-        //update to database
+        //update payment history status to database
         $addData = array(
             'status' => $pay_data['state']
         );
