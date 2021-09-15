@@ -6,6 +6,7 @@ use App\Zoom;
 use App\Student;
 use Illuminate\Http\Request;
 use App\Services\ZoomService;
+use Session;
 
 class ZoomController extends Controller
 {
@@ -19,6 +20,16 @@ class ZoomController extends Controller
         $webinars = Zoom::paginate(10);
 
         return view('zoom.index', compact('webinars'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->search;
+        $webinars = Zoom::where('topic', 'LIKE','%'.$query.'%')
+            ->orWhere('start_time', 'LIKE','%'.$query.'%')
+            ->orWhere('end_time', 'LIKE','%'.$query.'%')
+            ->paginate(10);
+        return view('zoom.index', compact('webinars', 'query'));
     }
 
     /**
@@ -49,7 +60,6 @@ class ZoomController extends Controller
 
         $webinarDetails = ZoomService::createWebinar($request);
 
-        // dd($webinarDetails);
 
         $webinar_id = $webinarDetails->id;
 
@@ -79,31 +89,80 @@ class ZoomController extends Controller
      */
     public function showParticipants(Zoom $zoom, $webinarId)
     {
-        
         $webinarDetails = ZoomService::getListRegistree($webinarId);
 
-        $participants = $webinarDetails->registrants;
+        if(!isset($webinarDetails->registrants)){
 
-        $participantEmails = array();
+            $students = $zoom->students()->paginate(10);
+            
+            return view('zoom.participants', compact('students', 'zoom', 'webinarId'));
+            
+        }else{
+            // Session::put('Link expired', 'Expired');
+            $participants = $webinarDetails->registrants;
 
-        foreach($participants as $participant){
-            $participantEmails[] = $participant->email;
-        }
+            $participantEmails = array();
 
-        $filterStudents = Student::whereIn('email', $participantEmails)->get();
-
-        foreach($filterStudents as $filterStudent){
-
-            $checkStudent = $zoom->students()->where('student_id',$filterStudent->id)->get();
-        
-            if($checkStudent->isEmpty()){
-                $zoom->students()->attach($filterStudent->id);
+            foreach($participants as $participant){
+                $participantEmails[] = $participant->email;
             }
-        }
-        
-        $students = $zoom->students()->get();
 
-        return view('zoom.participants', compact('students'));
+            $filterStudents = Student::whereIn('email', $participantEmails)->get();
+
+            foreach($filterStudents as $filterStudent){
+
+                $checkStudent = $zoom->students()->where('student_id',$filterStudent->id)->get();
+            
+                if($checkStudent->isEmpty()){
+                    $zoom->students()->attach($filterStudent->id);
+                }
+            }
+            
+            $students = $zoom->students()->paginate(10);
+
+            return view('zoom.participants', compact('students', 'zoom', 'webinarId'));
+        }
+
+    }
+
+    public function participantSearch(Request $request, Zoom $zoom, $webinarId)
+    {
+        $webinarDetails = ZoomService::getListRegistree($webinarId);
+
+        $query = $request->search;
+
+        if(!isset($webinarDetails->registrants)){
+
+            $students = $zoom->students()->where('email', 'LIKE','%'.$query.'%')->paginate(10);
+            // dd($students);
+            
+            return view('zoom.participants', compact('students', 'query', 'zoom', 'webinarId'));
+            
+        }else{
+            // Session::put('Link expired', 'Expired');
+            $participants = $webinarDetails->registrants;
+
+            $participantEmails = array();
+
+            foreach($participants as $participant){
+                $participantEmails[] = $participant->email;
+            }
+
+            $filterStudents = Student::whereIn('email', $participantEmails)->get();
+
+            foreach($filterStudents as $filterStudent){
+
+                $checkStudent = $zoom->students()->where('student_id',$filterStudent->id)->get();
+            
+                if($checkStudent->isEmpty()){
+                    $zoom->students()->attach($filterStudent->id);
+                }
+            }
+            
+            $students = $zoom->students()->where('email', 'LIKE','%'.$query.'%')->paginate(10);
+
+            return view('zoom.participants', compact('students', 'query', 'zoom', 'webinarId'));
+        }
     }
 
     /**

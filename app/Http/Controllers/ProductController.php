@@ -66,6 +66,8 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'status' => $request->status,
+                'zoom_link' => $request->zoom_link,
                 'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
@@ -88,6 +90,8 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'status' => $request->status,
+                'zoom_link' => $request->zoom_link,
                 'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);

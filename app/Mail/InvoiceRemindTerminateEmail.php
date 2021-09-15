@@ -10,18 +10,17 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Carbon\Carbon;
 
-class InvoiceRemindEmail extends Mailable
+class InvoiceRemindTerminateEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $lvl, $student, $invoice;
+    protected $lvl, $student;
 
     // public $data;
 
-    public function __construct($lvl, $student, $invoice)
+    public function __construct($lvl, $student)
     {
         $this->lvl = $lvl;
         $this->student = $student;
-        $this->invoice = $invoice;
     }
 
     public function build()
@@ -32,12 +31,11 @@ class InvoiceRemindEmail extends Mailable
 
         //content->payment
 
-        return $this->view('invoice.invoice')
+        return $this->view('invoice.invoiceTerminate')
                     ->with([ 
                         'content' => $payment, 
                         'student' => $this->student, 
-                        'current_date' => $currentDate,
-                        'invoice' => $this->invoice
+                        'current_date' => $currentDate
                     ]);
     }
 }

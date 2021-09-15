@@ -57,61 +57,14 @@ class customerProfileController extends Controller
                     $business_details[] = $c;
                 }
             }
-        }elseif($search || $price) {
-            $customers = BusinessDetail::where('business_role', 'LIKE', '%'.$search.'%')
-            ->orWhere('business_type', 'LIKE', '%'.$search.'%')
-            ->orWhere('business_amount', '<', $price)
-            ->get();
-            
-            $business_details = [];
-
-            if(count($customers) != 0) {
-                foreach($customers as $c) {
-                    $ticketname = Ticket::where('ticket_id', $c->ticket_id);
-                    
-                    if($ticketname->count() > 0) {
-                        $ticketname = $ticketname->first();
-                        
-                        $productname = Product::where('product_id', $ticketname->product_id)->first();
-                        $user = Student::where('ic', $ticketname->ic)->first();
-                        
-                        $c->class = $productname->name;
-                        $c->name = $user->first_name . " " . $user->last_name;
-                    }else {
-                        $c->class = '';
-                        $c->name = '';
-                    }
-                    $business_details[] = $c;
-                }
-            }
-        }else {
-            $customers = BusinessDetail::all();
-            
-            if(count($customers) != 0) {
-                foreach($customers as $c) {
-                    $ticketname = Ticket::where('ticket_id', $c->ticket_id);
-                    
-                    if($ticketname->count() > 0) {
-                        $ticketname = $ticketname->first();
-                        
-                        $productname = Product::where('product_id', $ticketname->product_id)->first();
-                        $user = Student::where('ic', $ticketname->ic)->first();
-                        
-                        $c->class = $productname->name;
-                        $c->name = $user->first_name . " " . $user->last_name;
-                    }else {
-                        $c->class = '';
-                        $c->name = '';
-                    }
-                    $business_details[] = $c;
-                }
-            }
         }
 
+        $role = ['Role', 'Employee', 'Dropship', 'Agent', 'Founder'];
+        
         $data = $this->paginate($business_details, 10);
         $data->setPath('business_details');
 
-        return view('customer.business_details', compact('data'));
+        return view('customer.business_details', compact('data', 'incomeOptions', 'role'));
     }
 
     public function paginate($items, $perPage, $page = null, $options = []){
@@ -237,6 +190,35 @@ class customerProfileController extends Controller
         }
         
         return view('customer.customer_profile', compact('customer', 'payment', 'data', 'total_paid', 'total_event', 'member_lvl', 'total_paid_month', 'payment_data', 'ncomment'));
+    }
+
+    public function customerInvite() {
+        $staff = User::where('role_id', 'ROD005')->get(); // get staff
+        $user_list = [];
+        foreach($staff as $s) {
+            
+            $payment = Payment::where('user_invite', $s->user_id)->get();
+            $s->total = count($payment);
+            $s->role = 'Staff';
+
+            $user_list[] = $s;
+        }
+
+        $student = Student::whereNotNull('membership_id')->get();
+
+        foreach($student as $st) {
+            
+            $payment = Payment::where('user_invite', $st->user_id)->get();
+            $st->name =  $st->first_name . ' ' . $st->last_name;
+            $st->total = count($payment);
+            $st->role = 'Student';
+
+            $user_list[] = $st;
+        }
+        $data = $this->paginate($user_list, 10);
+        $data->setPath('customer-invite');
+
+        return view('customer.business_invite', compact('data'));
     }
     
     /**

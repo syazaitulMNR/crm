@@ -10,6 +10,7 @@ use App\Email;
 use App\Exports\StudentExport;
 use App\Imports\StudentImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Offer;
 
 class ImportExcelController extends Controller
 {

@@ -12,6 +12,8 @@ use App\Email;
 use App\Student;
 use Mail;
 use Illuminate\Support\Facades\Schema;
+use App\Package;
+use App\Product;
 
 class TestJobMail implements ShouldQueue
 {
@@ -43,40 +45,57 @@ class TestJobMail implements ShouldQueue
     {
 
         $request = $this->request;
+
         $emails = $request['emailList'];
 
-        // $column_name = Schema::getColumnListing($table);
+        $columns = array();
 
-        // \Log::info($this->emails);
-
-        $columns = Schema::getColumnListing('student');
-        
+        $product_details = Product::where('product_id', $request['prod_id'])->first();
+        $package_details = Package::where('package_id', $request['pack_id'])->first();
 
         foreach($emails as $email){
             $message = $this->message;
            
-            
             $student = Student::where('email', $email)->first();
 
-            // \Log::info($student->$nameEmail);
+            foreach($this->regex_content as $rcs){
 
-            foreach($this->regex_content as $rc){
-                if (in_array(strtolower($rc), $columns)){
-					$message = str_replace("{". $rc ."}", $student->$rc, $message);
-				}
+                $regex = explode(".", $rcs);
+                $tableName = $regex[0];
+                $keyword = $regex[1];
+
+                $columns = Schema::getColumnListing($tableName);
+
+                foreach($columns as $key => $column){
+                    $columns[$key] = $tableName.'.'.$column;
+                }
+
+                if (in_array(strtolower($rcs), $columns)){
+                    if($tableName == "student"){
+
+                        $message = str_replace("{". $rcs ."}", $student->$keyword, $message);
+
+                    }elseif($tableName == "package"){
+
+                        $message = str_replace("{". $rcs ."}", $package_details->$keyword, $message);
+
+                    }elseif($tableName == "product"){
+
+                        $message = str_replace("{". $rcs ."}", $product_details->$keyword, $message);
+                        
+                    }
+                }
             }
 
             if($student->email !== (null || "")){
 				$email = $student->email;
-                \Log::info('ada');
-
                 
                 Mail::to($email)->send(new Testmail($message));
                 
 			}else{
 				return false;
 			}
-            
         }
+        
     }
 }

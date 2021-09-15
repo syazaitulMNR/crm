@@ -4,7 +4,9 @@ namespace App\Console\Commands;
 
 use App\Payment;
 use App\Student;
+use App\Invoice;
 use App\Jobs\TestJobMail;
+use App\Jobs\CreateInvoice;
 use App\Jobs\InvoiceJobMail;
 use Illuminate\Console\Command;
 
@@ -44,11 +46,14 @@ class InvoiceCron extends Command
         //M1981113016705iqbal1
         
         //the real one
-        $student_ids = Payment::where('pay_price', '!=', 0)->where('pay_price', '!=', null)->get()->unique('stud_id');
+        // $studentss = Student::where('email', 'iqbalkisas6@gmail.com')->get();
+        $students = Student::all()->whereNotNull('level_id')->unique('email');
 
         //testing purpose
-        // $student_ids = Payment::whereIn('stud_id',['M1981113016705iqbal1', 'M1981113016705iqbal2'])->get();
+        // $students = Student::whereIn('stud_id',['M1981113016705iqbal1', 'M1981113016705iqbal2'])->whereNotNull('level_id')->get()->unique('email');
 
-        dispatch(new InvoiceJobMail($student_ids));
+        dispatch(new CreateInvoice($students));
+
+        dispatch(new InvoiceJobMail($students));
     }
 }
