@@ -345,10 +345,10 @@ class NewCustomerController extends Controller
 
         /*-- Manage Email ---------------------------------------------------*/
 
-        if($payment->quantity == 1){
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
 
-            $product = Product::where('product_id', $product_id)->first();
-            $package = Package::where('package_id', $package_id)->first();
+        if($payment->quantity == 1){
 
             $email = $student->email;
             $product_name = $product->name; 
@@ -471,10 +471,10 @@ class NewCustomerController extends Controller
         {
             /*-- Manage Email ---------------------------------------------------*/
 
-            if($payment->quantity == 1){
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
 
-                $product = Product::where('product_id', $product_id)->first();
-                $package = Package::where('package_id', $package_id)->first();
+            if($payment->quantity == 1){
     
                 $email = $student->email;
                 $product_name = $product->name; 
@@ -569,10 +569,10 @@ class NewCustomerController extends Controller
         {
             /*-- Manage Email ---------------------------------------------------*/
 
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+            
             if($payment->quantity == 1){
-
-                $product = Product::where('product_id', $product_id)->first();
-                $package = Package::where('package_id', $package_id)->first();
     
                 $email = $student->email;
                 $product_name = $product->name; 
