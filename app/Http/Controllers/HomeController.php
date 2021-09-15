@@ -72,6 +72,7 @@ class HomeController extends Controller
     {
         $product = Product::where('product_id', $product_id)->first();
         $url = $product->tq_page;
+        
         return new RedirectResponse($url);
         // return view('customer/thankyou');
     }
@@ -838,7 +839,10 @@ class HomeController extends Controller
     public function thankyou_update($product_id) 
     {
         $product = Product::where('product_id', $product_id)->first();
-        return view('customer.thankyou_update', compact('product'));
+        $url = $product->tq_page;
+
+        return new RedirectResponse($url);
+        // return view('customer.thankyou_update', compact('product'));
     }
 
 }
