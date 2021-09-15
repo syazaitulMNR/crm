@@ -71,7 +71,7 @@ class HomeController extends Controller
     public function thankyou() 
     {
         $url = 'https://www.naktarikpelanggan.com/tqrpmpeluangkedua/';
-        return Redirect::to($url);
+        return Redirect::away($url);
         // return view('customer/thankyou');
     }
 
