@@ -171,6 +171,7 @@
 					
 					Excel Data:
 					<input type="file" name="file" /><br />
+					<em>Click <a href="">here</a> to get the file template.</em>
 					
 					<div class='text-right'>
 						<button type='submit' class='btn btn-success'> 
