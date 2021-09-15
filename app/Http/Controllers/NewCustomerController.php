@@ -191,7 +191,7 @@ class NewCustomerController extends Controller
 
             $request->session()->get('payment');
             $payment = new Payment();
-            $payment->fill($validatedData);
+            $payment->fill($validatedPayment);
             $request->session()->put('payment', $payment);
     
             return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
@@ -571,7 +571,7 @@ class NewCustomerController extends Controller
 
             $product = Product::where('product_id', $product_id)->first();
             $package = Package::where('package_id', $package_id)->first();
-            
+
             if($payment->quantity == 1){
     
                 $email = $student->email;
