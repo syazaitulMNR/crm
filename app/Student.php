@@ -22,4 +22,9 @@ class Student extends Authenticatable
     {
         return $this->belongsToMany(Zoom::class);
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
