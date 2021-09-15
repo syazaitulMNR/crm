@@ -451,11 +451,10 @@ class NewCustomerController extends Controller
 
         }
 
-        dd($addData);
-        // $payment->fill($addData);
-        // $request->session()->put('payment', $payment);
+        $payment->fill($addData);
+        $request->session()->put('payment', $payment);
 
-        // return redirect($pay_data['url']);
+        return redirect($pay_data['url']);
     }
 
     public function callback_payment($product_id, $package_id, Request $request)
