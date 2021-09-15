@@ -336,7 +336,7 @@ class ExistCustomerController extends Controller
             $request->session()->forget('payment');
             $request->session()->forget('ticket');
             
-            return redirect('thankyou-update/' . $product_id );
+            return redirect('pendaftaran-berjaya/' . $product_id );
 
         }else{
 
@@ -361,7 +361,7 @@ class ExistCustomerController extends Controller
             $request->session()->forget('payment');
             $request->session()->forget('ticket');
             
-            return redirect('pendaftaran-berjaya');
+            return redirect('pendaftaran-berjaya/' . $product_id );
         }
 
         /*-- End Email -----------------------------------------------------------*/
