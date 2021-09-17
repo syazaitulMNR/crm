@@ -95,7 +95,7 @@
                         <td>{{ $roles->firstItem() + $key  }}</td>
                         <td>{{ $role->name  }}</td>
                     <td>
-                        <a class="btn btn-dark" href="{{ url('details') }}/{{ $role->role_id }}"><i class="bi bi-chevron-right"></i> </a>
+                        {{-- <a class="btn btn-dark" href="{{ url('details') }}/{{ $role->role_id }}"><i class="bi bi-chevron-right"></i> </a> --}}
                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $role->role_id }}"><i class="bi bi-trash"></i></button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal{{ $role->role_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
