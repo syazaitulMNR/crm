@@ -222,6 +222,7 @@ Route::get('payment-method/{product_id}/{package_id}', 'NewCustomerController@pa
 Route::get('maklumat-kad/{product_id}/{package_id}', 'NewCustomerController@card_payment');
 Route::post('storeCard/{product_id}/{package_id}', 'NewCustomerController@postCardMethod');
 Route::get('data-fpx/{product_id}/{package_id}', 'NewCustomerController@pay_billplz');
+Route::get('callback-payment/{product_id}/{package_id}', 'NewCustomerController@callback_payment');
 Route::get('redirect-payment/{product_id}/{package_id}', 'NewCustomerController@redirect_payment');
 
 // Existedstudent
@@ -236,10 +237,11 @@ Route::get('pay-method/{product_id}/{package_id}/{stud_id}', 'ExistCustomerContr
 Route::get('data-stripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stripe_payment');
 Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@saveStripeMethod');
 Route::get('data-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@billplz_payment');
+Route::get('callback-billplz/{product_id}/{package_id}', 'ExistCustomerController@callback_billplz');
 Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerController@redirect_billplz');
 
 // Thank you page
-Route::get('pendaftaran-berjaya','HomeController@thankyou');
+Route::get('pendaftaran-berjaya/{product_id}','HomeController@thankyou');
 Route::get('pendaftaran-tidak-berjaya','HomeController@failed_payment');
 
 
@@ -352,6 +354,7 @@ Route::get("/smstemplate/delete/{id}", 'SmsTemplate@del');
 Route::delete("/smstemplate/delete/{id}", 'SmsTemplate@remove');
 
 Route::get("/smsblast", 'SmsBulk@index');
+Route::get('/download-phoneno-template', 'SmsBulk@export');
 Route::get("/smsblast/add", 'SmsBulk@add');
 Route::post("/smsblast/send", 'SmsBulk@create');
 Route::post("/smsblast/send_bulk", 'SmsBulk@create_bulk');

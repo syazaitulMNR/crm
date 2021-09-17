@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\RedirectResponse;
 use App\Jobs\TiketJob;
 use App\Product;
 use App\Feature;
@@ -67,9 +68,13 @@ class HomeController extends Controller
         }
     }
 
-    public function thankyou() 
+    public function thankyou($product_id) 
     {
-        return view('customer/thankyou');
+        $product = Product::where('product_id', $product_id)->first();
+        $url = $product->tq_page;
+        
+        return new RedirectResponse($url);
+        // return view('customer/thankyou');
     }
 
     public function failed_payment() 
@@ -834,7 +839,10 @@ class HomeController extends Controller
     public function thankyou_update($product_id) 
     {
         $product = Product::where('product_id', $product_id)->first();
-        return view('customer.thankyou_update', compact('product'));
+        $url = $product->tq_page;
+
+        return new RedirectResponse($url);
+        // return view('customer.thankyou_update', compact('product'));
     }
 
 }

@@ -40,8 +40,9 @@ class ProductController extends Controller
     public function create()
     {
         $offers = Offer::orderBy('id','asc')->get();
+        $count = 1;
 
-        return view('admin.addproduct', compact('offers'));
+        return view('admin.addproduct', compact('offers', 'count'));
     }
 
     public function store(Request $request)
@@ -65,6 +66,7 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
 
@@ -86,6 +88,7 @@ class ProductController extends Controller
                 'offer_id' => $request->offer_id,
                 'collection_id' => $request->collection_id,
                 'survey_form' => $request->survey_form,
+                'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
         }
@@ -97,8 +100,9 @@ class ProductController extends Controller
     {
         $product = Product::where('product_id', $id)->first();
         $offers = Offer::orderBy('id','asc')->get();
+        $count = 1;
 
-        return view('admin/updateproduct', compact('product', 'offers'));        
+        return view('admin/updateproduct', compact('product', 'offers', 'count'));        
     }
 
     public function update($id, Request $request)
@@ -116,6 +120,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->tq_page = $request->tq_page;
             $product->status = $request->status;
             $product->save();
 
@@ -137,6 +142,7 @@ class ProductController extends Controller
             $product->offer_id = $request->offer_id;
             $product->collection_id = $request->collection_id;
             $product->survey_form = $request->survey_form;
+            $product->tq_page = $request->tq_page;
             $product->status = $request->status;
 
             if($request->hasFile('cert_image'))
