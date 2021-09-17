@@ -88,6 +88,7 @@
         @foreach ($offers as $key => $offer)                        
           <tr>
             <td>{{ $offers->firstItem() + $key  }}</td>
+            <td>{{ $offer->offer_id  }}</td>
             <td>{{ $offer->name  }}</td>
             <td>
               <!-- Update trigger modal -->
