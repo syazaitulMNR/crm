@@ -79,7 +79,8 @@
       <thead>
         <tr>
           <th scope="col" style="width: 10%">#</th>
-          <th scope="col" style="width: 35%">Offer</th>
+          <th scope="col">Offer ID</th>
+          <th scope="col">Offer Name</th>
           <th scope="col" style="width: 15%"><i class="fas fa-cogs"></i></th>
         </tr>
       </thead>
