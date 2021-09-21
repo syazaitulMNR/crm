@@ -126,7 +126,7 @@
 		
 		YOUR PAYMENT WAS OVERDUE FOR 3 MONTHS. PLEASE PAY IMMEDIATELY SO YOU WILL NOT BE REMOVED FROM OUR SYSTEM.
         <br/>
-		<a href="https://mims.momentuminternet.my/dashboard">Pay Here</a>
+		<a href="https://mims.momentuminternet.my/student">Pay Here</a>
     </div>
 	</body>
 </html>

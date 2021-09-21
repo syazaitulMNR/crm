@@ -26,9 +26,9 @@
             @csrf
 
             @if(isset($query))
-            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search by name or date(both start or end time)">
+            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search by name or date">
             @else
-            <input type="text" class="form-control" name="search" value="" placeholder="Search by name or date(both start or end time)">">
+            <input type="text" class="form-control" name="search" value="" placeholder="Search by name or date">
             @endif
         </form>
         <br>       

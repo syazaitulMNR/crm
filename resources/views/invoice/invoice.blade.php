@@ -163,14 +163,14 @@
 				<tr class="item">
 					<td>{{$content->name}}</td>
 
-					<td align="right">{{$content->price}}</td>
+					<td align="right">RM{{$content->price}}.00</td>
 				</tr>
 
 				<tr class="total">
 					<td></td>
 
 					<td align="right">
-						<h5>Total Price: {{$content->price}}</h5>
+						<h5>Total Price: RM{{$content->price}}.00</h5>
 					</td>
 				</tr>
 

@@ -89,7 +89,7 @@ html, body {
 						<span class="fas fa-list"></span> Issues Listing
 					</div>
 					
-					<div class="card-body p-0" id="subject-list">
+					<div class="card-body p-0" id="subject-list" style="overflow-y: auto;">
 					</div>
 				</div>
 			</div>
@@ -103,6 +103,10 @@ html, body {
 							</div>
 							
 							<div class="col-md-6 text-right">								
+								<button class="btn btn-warning btn-sm" id="close-case">
+									Close Case <span class="fas fa-bookmark"></span>
+								</button>
+								
 								<button class="btn btn-danger btn-sm" id="close-chat">
 									Close <span class="fas fa-times"></span>
 								</button>
@@ -145,6 +149,22 @@ function base64_decode(str) {
 
 var ws = null;
 var current_channel = null;
+
+$("#close-case").on("click", function(){
+	var x = confirm("Are you sure to close this case?");
+	
+	if(x){
+		//console.log("asdadasd");
+		
+		if(current_channel != null){
+			ws.send(JSON.stringify({
+				action: "subject",
+				option: "close",
+				ct: current_channel
+			}));
+		}
+	}
+});
 
 $(document).ready(function(){
 	console.log("JQuery is ready now!");
@@ -232,10 +252,17 @@ function run_ws_client(){
 								noti = "";
 							}
 							
+							var badge = "";
+							if(s.status == 1){
+								badge = "<span class='badge badge-secondary'>CLOSED</span>";
+							}else{
+								badge = "<span class='badge badge-secondary' id='closed-"+ s.ukey +"' style='display: none;'>CLOSED</span>";
+							}
+							
 							$("#subject-list").append('\
 								<div class="subject-row" data-id="subject-'+ s.ukey +'" data-channel="'+ s.ukey +'">\
 									<span class="fa fa-circle text-danger notify" style="display: '+ noti +';" id="notify-'+ s.ukey +'"></span> \
-									<strong><u>'+ base64_decode(s.title) +'</u></strong> <br />\
+									<strong><u>'+ base64_decode(s.title) +'</u></strong> '+ badge +' <br />\
 									'+ s.user.name +'<br />\
 									'+ s.user.email +' - '+ s.user.phone +'\
 								</div>\
@@ -244,10 +271,10 @@ function run_ws_client(){
 					break;
 					
 					case "create":
-						$("#subject-list").append('\
+						$("#subject-list").prepend('\
 							<div class="subject-row" data-id="subject-'+ d.data.ct.ukey +'" data-channel="'+ d.data.ct.ukey +'">\
 								<span class="fa fa-circle text-danger" id="notify-'+ d.data.ct.ukey +'"></span> \
-								<strong><u>'+ base64_decode(d.data.ct.title) +'</u></strong><br />\
+								<strong><u>'+ base64_decode(d.data.ct.title) +'</u></strong> <span class="badge badge-secondary" id="closed-'+ d.data.ct.ukey +'" style="display: none;">CLOSED</span><br />\
 								'+ d.data.uc.name +'<br />\
 								'+ d.data.uc.email +' - '+ d.data.uc.phone +'\
 							</div>\
@@ -255,7 +282,11 @@ function run_ws_client(){
 					break;
 					
 					case "close":
-					
+						if(current_channel == d.data.ct){
+							$("#closed-" + d.data.ct).show();
+							$("#message").prop("disabled", true);
+							$("#close-case").hide();
+						}
 					break;
 				}
 			break;
@@ -288,9 +319,19 @@ function run_ws_client(){
 						$("#mi-chat-container").html("");
 						if(d.status == "success"){
 							if(d.data.ct.ukey == current_channel){
+								var addText = "";
+								if(d.data.ct.status == 1){
+									$("#message").prop("disabled", true); 
+									addText = "<br /><small>This case has been closed.</small>";
+									$("#close-case").hide();
+								}else{
+									$("#message").prop("disabled", false);
+									$("#close-case").show();
+								}
+								
 								$("#chat-container").css("display", "flex");
 								
-								$("#sender-name").html(d.data.uc.name + ": " + base64_decode(d.data.ct.title));
+								$("#sender-name").html(d.data.uc.name + ": " + base64_decode(d.data.ct.title) + addText);
 								
 								d.data.chat.forEach(function(x){
 									if(x.from == "{{$uc->channel}}"){

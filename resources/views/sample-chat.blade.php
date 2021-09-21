@@ -68,6 +68,13 @@
 	overflow-y: auto;
 }
 
+.mi-registration-student-body {
+	height: calc(100% - 40px);
+	padding: 10px;
+	overflow-y: auto;
+	display: none;
+}
+
 .mi-chat-sender {
 	position: absolute;
 	width: 95%;
@@ -144,6 +151,17 @@
 			Register
 		</button>
 	</div>
+	
+	<div class="mi-registration-student-body">
+		<small>*Please insert your subject to chat with us.</small><br />
+		
+		Subject:
+		<input type="text" class="form-control mb-3" placeholder="Subject" id="subject" />
+		
+		<button class="btn btn-primary" id="register-student">
+			Register
+		</button>
+	</div>
 </div>
 
 <div class="mi-floating-button">
@@ -168,15 +186,24 @@ function base64_decode(str) {
 $(document).ready(function(){
 	var ws = null;
 	var ct = null;
+	var new_ct = null;
 	var key = null;
 	var logged_in = false;
 	var opened = false;
+	var student = false;
+	var closing = false;
+	var first = true;
 	
 	@if(Session::has('chat_channel'))
 		//Student logged in
 		console.log("student logged in");
 		
 		key = "{{ Session::get('chat_channel') }}";
+		student = true;
+		
+		$(".mi-chat-body").hide();
+		$(".mi-registration-body").hide();
+		$(".mi-registration-student-body").show();
 	@else
 		console.log("Student not logged in");
 		$(".mi-chat-body").hide();
@@ -185,7 +212,7 @@ $(document).ready(function(){
 		key = "";
 		
 		if(localStorage.getItem("chat_channel") == undefined || localStorage.getItem("chat_channel") == null){
-			key = "uid" + Math.random().toString(16).slice(2)
+			key = "uid" + Math.random().toString(16).slice(2);
 			
 			localStorage.setItem("chat_channel", key);
 		}else{
@@ -193,97 +220,7 @@ $(document).ready(function(){
 		}
 	@endif
 	
-	ws = new WebSocket("{{ env('CS_WS_Server') }}customer/" + key);
-	
-	ws.onopen = function(){
-		console.log("Chat server connected");
-		
-		$(".mi-floating-button").show();
-	};
-	
-	ws.onmessage = function(m){
-		var d = JSON.parse(m.data);
-		
-		switch(d.action){
-			case "chat":
-				switch(d.option){
-					case "load":
-						$("#mi-chat-container").html("");
-						d.data.forEach(function(x){
-							if(key == x.from){
-								$("#mi-chat-container").append('\
-									<div class="chat-local mb-2">\
-										'+ base64_decode(x.message) +'\
-									</div>\
-								');
-							}else{
-								$("#mi-chat-container").append('\
-									<div class="chat-remote mb-2">\
-										'+ base64_decode(x.message) +'\
-									</div>\
-								');
-							}
-						});
-						
-						auto_scroll();
-						opened = true;
-					break;
-					
-					case "chat":
-						$("#mi-chat-container").append('\
-							<div class="chat-remote mb-2">\
-								'+ base64_decode(d.data.message) +'\
-							</div>\
-						');
-						
-						if(opened){
-							ws.send(JSON.stringify({
-								action: "chat",
-								option: "read",
-								ct: ct
-							}));
-						}else{
-							$(".mi-notify").show();
-						}
-						
-						auto_scroll();
-					break;
-				}
-			break;
-			
-			case "register":
-				if(d.status == "success"){
-					$(".mi-chat-body").show();
-					$(".mi-registration-body").hide();
-					
-					ct = d.data.ct;
-					
-					ws.send(JSON.stringify({
-						action: "chat",
-						option: "load",
-						ct: ct
-					}));
-				}else{
-					aler(d.message);
-				}
-			break;
-			
-			case "registered":
-				$(".mi-chat-body").show();
-				$(".mi-registration-body").hide();
-				
-				ct = d.data.ct;
-				
-				if(d.data.unread){
-					$(".mi-notify").show();
-				}
-			break;
-		}
-	};
-	
-	ws.onclose = function(){
-		console.log("Connection to chat server closed.");
-	};
+	start_ws();
 	
 	$("#message").on("keyup", function(e){
 		if(e.keyCode == 13){
@@ -312,9 +249,7 @@ $(document).ready(function(){
 	$("#register").on("click", function(){
 		if(ws == null){
 			alert("Fail registration. You are not connected to chat server.");
-		}else{
-			console.log("asdasd");
-			
+		}else{			
 			ws.send(JSON.stringify({
 				action: "register",
 				data: {
@@ -327,21 +262,60 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#register-student").on("click", function(){
+		if(ws == null){
+			alert("Fail registration. You are not connected to chat server.");
+		}else{			
+			ws.send(JSON.stringify({
+				action: "register-student",
+				data: {
+					key: key,
+					subject: base64_encode($("#subject").val())
+				}
+			}));
+		}
+	});
+	
 	$(".mi-floating-button").on("click", function(){
 		$(".mi-chat-box").show();
 		$(".mi-floating-button").hide();
 		
 		if(ct != null){
 			opened = true;
-			ws.send(JSON.stringify({
-				action: "chat",
-				option: "load",
-				ct: ct
-			}));
 			
-			$(".mi-notify").hide();
-			
-			auto_scroll();
+			if(closing){
+				key = "uid" + Math.random().toString(16).slice(2);
+				localStorage.setItem("chat_channel", key);
+				ws.close();
+				ws = null;
+				ct = null;							
+				auto_scroll();
+				closing = false;
+				$(".mi-notify").hide();
+			}else{
+				ws.send(JSON.stringify({
+					action: "chat",
+					option: "load",
+					ct: ct
+				}));
+				
+				$(".mi-notify").hide();
+				
+				auto_scroll();
+			}			
+		}else{
+			if(student){
+				$(".mi-chat-body").hide();
+				$(".mi-registration-body").hide();
+				$(".mi-registration-student-body").show();
+			}else{
+				if(ws == null){
+					start_ws();
+				}
+				
+				$(".mi-chat-body").hide();
+				$(".mi-registration-body").show();
+			}
 		}
 	});
 
@@ -354,6 +328,149 @@ $(document).ready(function(){
 	
 	function auto_scroll(){
 		document.getElementById("mi-chat-container").scrollTop = document.getElementById("mi-chat-container").scrollHeight + 200;
+	}
+	
+	function start_ws(){
+		ws = new WebSocket("{{ env('CS_WS_Server') }}customer/" + key);
+	
+		ws.onopen = function(){
+			console.log("Chat server connected");
+			
+			$("#message").prop("disabled", false);
+			
+			if(first){
+				$(".mi-floating-button").show();
+				first = false;
+			}
+		};
+			
+		ws.onmessage = function(m){
+			var d = JSON.parse(m.data);
+			
+			switch(d.action){
+				case "subject":
+					switch(d.option){
+						case "close":
+							@if(!Session::has('chat_channel'))
+								$("#mi-chat-container").append('\
+									<div class="chat-remote mb-2">\
+										Thank you for contacting us. This case has been close. You can fill the form to chat with us again. :)\
+									</div>\
+								');
+								
+								if(!opened){
+									closing = true;
+									$(".mi-notify").show();
+								}else{
+									key = "uid" + Math.random().toString(16).slice(2);
+									localStorage.setItem("chat_channel", key);
+									ws.close();
+									ws = null;
+									ct = null;							
+									auto_scroll();
+								}
+								
+								$("#message").prop("disabled", true);
+							@else
+								$("#mi-chat-container").append('\
+									<div class="chat-remote mb-2">\
+										Thank you for contacting us. This case has been close. You can reopen this chat to start new issue. :)\
+									</div>\
+								');
+								$("#message").prop("disabled", true);
+								ct = null;
+								auto_scroll();
+							@endif
+						break;
+					}
+				break;
+				
+				case "chat":
+					switch(d.option){
+						case "load":
+							$("#mi-chat-container").html("");
+							d.data.forEach(function(x){
+								if(key == x.from){
+									$("#mi-chat-container").append('\
+										<div class="chat-local mb-2">\
+											'+ base64_decode(x.message) +'\
+										</div>\
+									');
+								}else{
+									$("#mi-chat-container").append('\
+										<div class="chat-remote mb-2">\
+											'+ base64_decode(x.message) +'\
+										</div>\
+									');
+								}
+							});
+							
+							auto_scroll();
+							opened = true;
+						break;
+						
+						case "chat":
+							$("#mi-chat-container").append('\
+								<div class="chat-remote mb-2">\
+									'+ base64_decode(d.data.message) +'\
+								</div>\
+							');
+							
+							if(opened){
+								ws.send(JSON.stringify({
+									action: "chat",
+									option: "read",
+									ct: ct
+								}));
+							}else{
+								$(".mi-notify").show();
+							}
+							
+							auto_scroll();
+						break;
+					}
+				break;
+				
+				case "register":
+					if(d.status == "success"){
+						$("#message").prop("disabled", false);
+						$(".mi-chat-body").show();
+						$(".mi-registration-body").hide();
+						
+						ct = d.data.ct;
+						
+						ws.send(JSON.stringify({
+							action: "chat",
+							option: "load",
+							ct: ct
+						}));
+						
+						$("#name").val("");
+						$("#phone").val("");
+						$("#email").val("");
+						$("#subject").val("");
+					}else{
+						aler(d.message);
+					}
+				break;
+				
+				case "registered":
+					$("#message").prop("disabled", false);
+					$(".mi-chat-body").show();
+					$(".mi-registration-body").hide();
+					
+					ct = d.data.ct;
+					
+					if(d.data.unread){
+						$(".mi-notify").show();
+					}
+				break;
+			}
+		};
+		
+		ws.onclose = function(){
+			console.log("Connection to chat server closed.");
+		};
 	}
 });
 </script>

@@ -38,14 +38,14 @@
                 <div class='col-md-6'>
                     <div class="form-group">
                         <label for="name">Start Time</label>
-                        <input name="start" type="datetime-local" value="{{$zoom->start_time}}" class="form-control" required>
+                        <input name="start" type="date" value="{{$zoom->start_time}}" class="form-control" required>
                     </div>
                 </div>
 
                 <div class='col-md-6'>
                     <div class="form-group">
                         <label for="name">End Time</label>
-                        <input name="end" type="datetime-local" value="{{$zoom->end_time}}" class="form-control" required>
+                        <input name="end" type="date" value="{{$zoom->end_time}}" class="form-control" required>
                     </div>
                 </div>
             </div>
