@@ -10,11 +10,13 @@ use App\Payment;
 use App\Ticket;
 use App\Inovice;
 use App\Membership;
+use App\Offer;
 use App\Membership_Level;
 use App\Comment;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use App\User;
+use App\StudentStaff;
 use App\BussinessDetail;
 use Illuminate\Support\Facades\Hash;
 use Session;
@@ -109,22 +111,26 @@ class StudentPortal extends Controller
             $stud_id = $student_detail->stud_id;
 
             if (Hash::check($validatedData['password'], $student_detail->student_password)) {
+				if($student_detail->status == 'Deactive'){
+                    Session::put("student_block", "fail");
 
-                if($student_detail->status != 'Deactive'){
+                    return view("studentportal.login");
                     
+                    
+                }elseif($student_detail->level_id == null || ""){
+                    Session::put("student_block", "not membership");
+
+                    return view("studentportal.login");
+                }else{
                     Session::put('student_login_id', $stud_id);
                     Session::put('student_detail', $student_detail);
 
                     Session::forget('student_login');
+                    Session::forget('student_block');
                     Session::save();
                     
                     return redirect('/student/dashboard');
-                }else{
-                    Session::put("student_block", "fail");
-
-                    return view("studentportal.login");
                 }
-
             }else{
                 Session::put("student_login", "fail");
 
@@ -431,50 +437,27 @@ class StudentPortal extends Controller
     }
 
     // shauqi edit
-    public function showLink() {
-        $offers = Offer::orderBy('id','desc')->get();
-        $product = Product::orderBy('id','desc')->paginate(15);
+    // public function showLink() {
+        // $offers = Offer::orderBy('id','desc')->get();
+        // $product = Product::orderBy('id','desc')->paginate(15);
         
-        return view('studentportal.event_links', compact('offers', 'product'));
-    }
+        // return view('studentportal.event_links', compact('offers', 'product'));
+    // }
 
-    public function linkDetail(Request $request, $product_id) {
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('product_id', $product_id)->paginate(15);
+    // public function linkDetail(Request $request, $product_id) {
+        // $product = Product::where('product_id', $product_id)->first();
+        // $package = Package::where('product_id', $product_id)->paginate(15);
         
-        $link = request()->getSchemeAndHttpHost().'/pendaftaran/'. $product->product_id . '/';
+        // $link = request()->getSchemeAndHttpHost().'/pendaftaran/'. $product->product_id . '/';
 
-        return view('studentportal.link_detail', compact('product', 'package', 'link'));   
-    }
+        // return view('studentportal.link_detail', compact('product', 'package', 'link'));   
+    // }
 
     public function showList() {
-        $payment = Payment::where('user_invite', Session::get('student_login_id'))->get();
-        // $pay = Payment::where('user_invite', Session::get('user_id'))->paginate(2);
-        
-        // dd($pay);
-        $payment_detail = [];
-
-        if(count($payment) != 0) {
-            foreach($payment as $p) {
-                $user = Student::where('stud_id', $p->stud_id);
-
-                if($user->count() > 0) {
-                    $user = $user->first();
-                    $name = $user->first_name . " " . $user->last_name;
-                    $p->name = $name;
-                }else {
-                    $p->name = "";
-                }
-
-                $payment_detail[] = $p;
-            }
-        }
-        
-        $data = $this->paginate($payment_detail, 10);
-        $data->setPath('inviteList');
-        $data_count = count($data);
-        // dd($data);
-        return view('studentportal.inviteList', compact('data', 'data_count'));
+		$payment = StudentStaff::where('student_invite_id', Session::get('student_login_id'))->paginate(10);
+        $count = count($payment);
+		
+		return view('studentportal.inviteList', compact('payment', 'count'));
     }
 
     public function paginate($items, $perPage, $page = null, $options = []){

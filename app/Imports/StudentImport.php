@@ -17,18 +17,15 @@ use Illuminate\Support\Facades\Crypt;
 
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
-    private $prd_id, $pkd_id, $email_id, $regex_content;
+    private $prd_id, $pkd_id;
 
-    public function __construct($prd_id, $pkd_id, $email_id, $regex_content){
+    public function __construct($prd_id, $pkd_id){
         $this->product = $prd_id;
         $this->package = $pkd_id;
-        $this->email_id = $email_id;
-        $this->regex_content = $regex_content;
     }
 
     public function collection(Collection $rows)
     {
-        
         foreach ($rows as $row) 
         {
             $student = Student::where('ic', $row['ic'])->first();
@@ -67,8 +64,6 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'student_password' => Hash::make($row['email']),
                 ]);
 
-                // $payment_id = 'OD' . uniqid();
-
                 Payment::create([
                     'payment_id'    => 'OD' . uniqid(),
                     'pay_price'     => $row['price'], 
@@ -86,8 +81,6 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 
             }
         }
-
-        dispatch(new TestJobMail($rows, $this->email_id, $this->regex_content));
         
     }
 

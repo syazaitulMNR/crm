@@ -7,6 +7,7 @@ use App\Product;
 use App\Package;
 use App\Student;
 use App\Payment;
+use App\Income;
 use App\Ticket;
 use App\Membership_Level;
 use App\Comment;
@@ -25,39 +26,96 @@ class customerProfileController extends Controller
         $this->middleware('auth');
     }
 
+    
+
     public function customerDetails(Request $request) {
         $search = (is_null($request->query('search')) ? "" : $request->query('search'));
         $price = (is_null($request->query('price')) ? "" : $request->query('price'));
+        $role = (is_null($request->query('role')) ? "" : $request->query('role'));
 
-        if($search && $price) {
-            $customers = BusinessDetail::where('business_amount', '<', $price)
-            ->where(function($query) use($search){
-                $query->where('business_role', 'LIKE', '%'.$search.'%')
+        $incomeOptions = Income::all();
+        $business_details = [];
+        $q = (new BusinessDetail)->newQuery();
+        $hasReq = 0;
+
+        if($request->filled('search')) {
+            $hasReq = 1;
+            $search = $request->query('search');
+
+            $q->where(function($query) use($search){
+                $query->where('business_name', 'LIKE', '%'.$search.'%')
                       ->orWhere('business_type', 'LIKE', '%'.$search.'%');
-            })->get();
-            
-            $business_details = [];
+            });
+        }
 
-            if(count($customers) != 0) {
-                foreach($customers as $c) {
-                    $ticketname = Ticket::where('ticket_id', $c->ticket_id);
-                    
-                    if($ticketname->count() > 0) {
-                        $ticketname = $ticketname->first();
-                        
-                        $productname = Product::where('product_id', $ticketname->product_id)->first();
-                        $user = Student::where('ic', $ticketname->ic)->first();
-                        
-                        $c->class = $productname->name;
-                        $c->name = $user->first_name . " " . $user->last_name;
-                    }else {
-                        $c->class = '';
-                        $c->name = '';
-                    }
-                    $business_details[] = $c;
+        if($request->filled('role')) {
+            $hasReq = 1;
+            $role = $request->query('role');
+
+            $q->where('business_role', '=', $role);
+        }
+
+        if($request->filled('price')) {
+            $hasReq = 1;
+            $price = $request->query('price');
+            $q->where('business_amount', '=', $price);
+        }
+
+        if($hasReq) {
+            $customers = $q->get();
+        }else {
+            $customers = BusinessDetail::all();
+        }
+
+        if(count($customers) != 0) {
+            foreach($customers as $c) {
+                $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+
+                if($ticketname->count() > 0) {
+                    $ticketname = $ticketname->first();
+
+                    $productname = Product::where('product_id', $ticketname->product_id)->first();
+                    $user = Student::where('ic', $ticketname->ic)->first();
+
+                    $c->class = $productname->name;
+                    $c->name = $user->first_name . " " . $user->last_name;
+                }else {
+                    $c->class = '';
+                    $c->name = '';
                 }
+                $business_details[] = $c;
             }
         }
+
+        // if($search && $price) {
+        //     $customers = BusinessDetail::where('business_amount', '<', $price)
+        //     ->where(function($query) use($search){
+        //         $query->where('business_role', 'LIKE', '%'.$search.'%')
+        //               ->orWhere('business_type', 'LIKE', '%'.$search.'%');
+        //     })->get();
+            
+        //     $business_details = [];
+
+        //     if(count($customers) != 0) {
+        //         foreach($customers as $c) {
+        //             $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+                    
+        //             if($ticketname->count() > 0) {
+        //                 $ticketname = $ticketname->first();
+                        
+        //                 $productname = Product::where('product_id', $ticketname->product_id)->first();
+        //                 $user = Student::where('ic', $ticketname->ic)->first();
+                        
+        //                 $c->class = $productname->name;
+        //                 $c->name = $user->first_name . " " . $user->last_name;
+        //             }else {
+        //                 $c->class = '';
+        //                 $c->name = '';
+        //             }
+        //             $business_details[] = $c;
+        //         }
+        //     }
+        // }
 
         $role = ['Role', 'Employee', 'Dropship', 'Agent', 'Founder'];
         

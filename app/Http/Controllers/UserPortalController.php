@@ -63,12 +63,16 @@ class UserPortalController extends Controller
 
         $user_details = User::where('email', $request->email)->first();
         
-        if(Hash::check($request->password, $user_details->password) && $user_details->role_id == 'ROD005') {
-            Session::put('user_id', $user_details->user_id);
-            Session::put('role_id', $user_details->role_id);
-            Session::put('isLogin', 1);
-
-            return redirect()->route('staff.dashboard');
+        if($user_details) {
+            if(Hash::check($request->password, $user_details->password) && $user_details->role_id == 'ROD005') {
+                Session::put('user_id', $user_details->user_id);
+                Session::put('role_id', $user_details->role_id);
+                Session::put('isLogin', 1);
+    
+                return redirect()->route('staff.dashboard');
+            }else {
+                return redirect()->route('staff.login')->with('error','Email-Address And Password Are Wrong.');
+            }
         }else {
             return redirect()->route('staff.login')->with('error','Email-Address And Password Are Wrong.');
         }

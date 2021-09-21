@@ -9,9 +9,11 @@ use Illuminate\Http\RedirectResponse;
 use App\Jobs\TiketJob;
 use App\Product;
 use App\Feature;
+use App\StudentStaff;
 use App\Package;
 use App\Payment;
 use App\Student;
+use App\Income;
 use App\Ticket;
 use App\BusinessDetail;
 use Illuminate\Support\Facades\Mail;
@@ -27,6 +29,46 @@ class HomeController extends Controller
     | 
     */
 
+    public function inviteCustomerForm($user_id) {
+        Session::put('student', $user_id);
+        
+        return view('studentportal.inviteCustomer');
+    }
+
+    public function saveinviteCustomer(Request $request) {
+        
+        $validatedData = $request->validate([
+            'ic' => 'required|numeric',
+            'first_name'=> 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phoneno' => 'required'
+        ]);
+
+        $studstaff_id = 'ST'.uniqid();
+
+        $studentstaff_insert = StudentStaff::create([
+            'user_id' => $studstaff_id,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'ic' => $request->ic,
+            'email' => $request->email,
+            'no_phone' => $request->phoneno,
+            'student_invite_id' => Session::get('student')
+        ]);
+
+        if($studentstaff_insert) {
+            // succcess
+            Session::forget('student');
+            return redirect('invite-customer-thankyou');
+        }
+        
+    }
+
+    public function inviteCustomerThankyou() {
+        return view('studentportal.thankyou');
+    }
+
     // Business Details
     public function saveBusinessDetails(Request $request, $ticket_id) {
         
@@ -34,19 +76,30 @@ class HomeController extends Controller
             if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
                 $validatedData = $request->validate([
                     'business' => 'required',
-                    'income'=> 'required|numeric',
+                    'income'=> 'required',
                     'role' => 'required'
                 ]);
-                
+
+                $data = Ticket::where('ticket_id', $ticket_id)->first();
+                $dataStudent = Student::where('ic', $data->ic)->first();
+                $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
+
                 $bussInsert = BusinessDetail::create([
                     'ticket_id' => $ticket_id,
                     'business_role' => $request->role,
                     'business_type' => $request->business,
-                    'business_amount' => $request->income
+                    'business_amount' => $request->income,
+                    'business_name' => $name
                 ]);
-    
+
+                $student = $request->session()->get('student');
+                $student->save();
+                
                 if($bussInsert) {
+                    Session::put('product_id_session', $data->product_id);
+                    $request->session()->forget('student');
                     Session::forget('validatedIC');
+
                     return redirect('pendaftaran-berjaya-ticket');
                 }
             }else {
@@ -64,7 +117,20 @@ class HomeController extends Controller
         if($dataStudent->ic === $request->ic) {
             Session::put('validatedIC', 1);
 
-            return redirect('next-details/'. $ticket_id);
+            return redirect('user-details/'. $ticket_id);
+            // return redirect('next-details/'. $ticket_id);
+        }else {
+            return redirect('business_details/'. $ticket_id);
+        }
+    }
+
+    public function userDetails($ticket_id){
+        if(Session::get('validatedIC')) {
+            $ticket = Ticket::where('ticket_id', $ticket_id)->first();
+            $student = Student::where('ic', $ticket->ic)->first();
+            $product = Product::where('product_id', $ticket->product_id)->first();
+
+            return view('ticket.userDetails', compact('student','product', 'ticket_id'));
         }else {
             return redirect('business_details/'. $ticket_id);
         }
@@ -77,8 +143,9 @@ class HomeController extends Controller
             $package = Package::where('package_id', $ticket->package_id)->first();
             $packageName = $package->name;
             $productName = $product->name;
+            $incomeOptions = Income::all();
 
-            return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id'));
+            return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id', 'incomeOptions'));
         }else {
             return redirect('business_details/'. $ticket_id);
         }
@@ -92,6 +159,29 @@ class HomeController extends Controller
         $productName = $product->name;
 
         return view('ticket.checkIC', compact('productName', 'packageName', 'ticket_id'));
+    }
+
+    public function saveUserDetails(Request $request, $ticket_id) {
+        
+        if(Session::get('validatedIC')) {
+            $validatedData = $request->validate([
+                'stud_id' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'ic' => 'required',
+                'email' => 'required',
+                'phoneno' => 'required'
+            ]);
+
+            $stud = Student::where('stud_id', $request->stud_id)->first();
+            $stud->fill($validatedData);
+            $request->session()->put('student', $stud);
+
+            return redirect('next-details/'. $ticket_id);
+        }else {
+            return redirect('business_details/'. $ticket_id);
+        }
+
     }
 
     /*-- Landing Page -------------------------------------------------------*/
@@ -137,16 +227,22 @@ class HomeController extends Controller
     }
 	
     public function thankyouTicket() {
-        return view('ticket.thankyou');
+        $product_link = Product::where('product_id', Session::get('product_id_session'))->first();
+        
+        if(!is_null($product_link)) {
+            $product_link = $product_link->zoom_link;
+        }else {
+            $product_link = "";
+        }
+
+        // Session::forget('product_id_session');
+        
+        return view('ticket.thankyou', compact('product_link'));
     }
 
     public function thankyou($product_id) 
     {
-        $product = Product::where('product_id', $product_id)->first();
-        $url = $product->tq_page;
-        
-        return new RedirectResponse($url);
-        // return view('customer/thankyou');
+        return view('customer/thankyou');
     }
 
     public function failed_payment() 

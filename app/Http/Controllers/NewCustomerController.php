@@ -454,6 +454,8 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 		
+		Session::put('product_id_session', $product_id);
+		
         $addDataPassword = array(
             'student_password' => ""
         );
