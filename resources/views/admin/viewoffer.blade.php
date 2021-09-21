@@ -79,7 +79,8 @@
       <thead>
         <tr>
           <th scope="col" style="width: 10%">#</th>
-          <th scope="col" style="width: 35%">Offer</th>
+          <th scope="col">Offer ID</th>
+          <th scope="col">Offer Name</th>
           <th scope="col" style="width: 15%"><i class="fas fa-cogs"></i></th>
         </tr>
       </thead>
@@ -87,6 +88,7 @@
         @foreach ($offers as $key => $offer)                        
           <tr>
             <td>{{ $offers->firstItem() + $key  }}</td>
+            <td>{{ $offer->offer_id  }}</td>
             <td>{{ $offer->name  }}</td>
             <td>
               <!-- Update trigger modal -->

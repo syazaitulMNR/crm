@@ -526,6 +526,14 @@ class NewCustomerController extends Controller
                 $student_id = $student->stud_id;
                 $ticket_id = $ticket->ticket_id;
                 $survey_form = $product->survey_form;
+
+                //update participant form to database
+                $updateform = array(
+                    'update_count' => 1
+                );
+
+                $payment->fill($updateform);
+                $request->session()->put('payment', $payment);
     
                 $student->save();
                 $payment->save();
@@ -624,7 +632,15 @@ class NewCustomerController extends Controller
                 $student_id = $student->stud_id;
                 $ticket_id = $ticket->ticket_id;
                 $survey_form = $product->survey_form;
-    
+                
+                //update participant form to database
+                $updateform = array(
+                    'update_count' => 1
+                );
+
+                $payment->fill($updateform);
+                $request->session()->put('payment', $payment);
+
                 $student->save();
                 $payment->save();
                 $ticket->save();
