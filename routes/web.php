@@ -80,7 +80,6 @@ Route::get('export-participant/{product_id}', 'ReportsController@exportParticipa
 Route::get('participant/search/{product_id}/{package_id}', 'ReportsController@search_participant');
 
 
-
 // Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@search_free');
 // Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
 // Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
@@ -89,7 +88,6 @@ Route::get('participant/search/{product_id}/{package_id}', 'ReportsController@se
 // Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
 // Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
 // Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
-
 
 
 /*
