@@ -148,7 +148,8 @@
 								</td>
 
 								<td align="right">
-									{{$student->first_name}}&nbsp;{{$student->last_name}}<br />
+									{{$student->first_name}}&nbsp;{{$student->last_name}}<br /><br /><br />
+									{{$invoice->invoice_id}}
 								</td>
 							</tr>
 						</table>
