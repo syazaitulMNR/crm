@@ -41,6 +41,33 @@ html, body {
 	background-color: #e0e0e0;
 	
 }
+
+.notify {
+	/* display: none; */
+}
+
+#chat-container {
+	display: none;
+}
+
+.chat-local {
+	width: 80%;
+	margin-left: auto;
+	background-color: #ffd1d2;
+	padding: 5px;
+}
+
+.chat-remote {
+	width: 80%;
+	margin-right: auto;
+	background-color: #d1f4ff;
+	padding: 5px;
+}
+
+#mi-chat-container {
+	padding: 5px;
+	overflow-y: scroll;
+}
 </style>
 <div class="row h-100">
 	<div class="col-md-12 h-100">     
@@ -63,17 +90,6 @@ html, body {
 					</div>
 					
 					<div class="card-body p-0" id="subject-list">
-						<div class="subject-row" data-id="">
-							<strong><u>Subject</u></strong><br />
-							Name<br />
-							Email
-						</div>
-						
-						<div class="subject-row active">
-							<strong><u>Subject</u></strong><br />
-							Name<br />
-							Email
-						</div>
 					</div>
 				</div>
 			</div>
@@ -82,19 +98,11 @@ html, body {
 				<div class="card h-100" id="chat-container">
 					<div class="card-header">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-6" id="sender-name">
 								Username
 							</div>
 							
-							<div class="col-md-6 text-right">
-								<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#mention-modal">
-									Mention <span class="fas fa-at"></span>
-								</button>
-								
-								<button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-close-case">
-									Close Case <span class="fas fa-book"></span>
-								</button>
-								
+							<div class="col-md-6 text-right">								
 								<button class="btn btn-danger btn-sm" id="close-chat">
 									Close <span class="fas fa-times"></span>
 								</button>
@@ -103,20 +111,14 @@ html, body {
 						
 					</div>
 					
-					<div class="card-body">
+					<div class="card-body" id="mi-chat-container">
 						
 					</div>
 					
 					<div class="card-footer">
 						<div class="row">
-							<div class="col-md-10 col-sm-8">
-								<input type="text" autofocus="on" class="form-control" placeholder="Reply..." id="chat-content" />
-							</div>
-							
-							<div class="col-md-2 col-sm-4">
-								<button class="btn btn-primary btn-block" id="chat-send">
-									Send <span class="fas fa-paper-plane"></span>
-								</button>
+							<div class="col-md-12 col-sm-8">
+								<input type="text" autofocus="on" class="form-control" placeholder="Reply..." id="message" />
 							</div>
 						</div>
 					</div>
@@ -128,19 +130,42 @@ html, body {
 </div>
 
 <script>
+function base64_encode(str) {
+	return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+		function toSolidBytes(match, p1) {
+			return String.fromCharCode('0x' + p1);
+	}));
+}
+
+function base64_decode(str) {
+	return decodeURIComponent(atob(str).split('').map(function(c) {
+		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	}).join(''));
+}
+
 var ws = null;
+var current_channel = null;
 
 $(document).ready(function(){
 	console.log("JQuery is ready now!");
 	
-	load_list();
+	run_ws_client();
 });
 
 $(document).on("click", ".subject-row", function(){
-	$("#chat-container").show();
+	current_channel = $(this).data("channel");
+	$("#notify-" + current_channel).hide();
+	
+	ws.send(JSON.stringify({
+		action: "chat",
+		option: "load",
+		ct: current_channel
+	}));
 });
 
 $(document).on("click", "#close-chat", function(){
+	current_channel = null;
+	
 	$("#chat-container").hide();
 });
 
@@ -151,30 +176,154 @@ $("#chat-send").on("click", function(){
 	$("#chat-content").val("");
 });
 
-function load_list(){
-	$.ajax({
-		method: "POST",
-		url: "{{ url('ajax') }}",
-		data: {
-			action: "list_topic",
-			_token: "{{ csrf_token() }}"	
-		},
-		dataType: "json"
-	}).done(function(res){
-		if(res.status == "success"){
-			var data = res.data;
+$("#message").on("keyup", function(e){
+	if(e.keyCode == 13){
+		if(ws != null || ws.readystate == 1){
+			ws.send(JSON.stringify({
+				action: "chat",
+				option: "send",
+				message: base64_encode($(this).val()),
+				ct: current_channel
+			}));
 			
-			data.forEach(function(d){
-				
-			});
+			$("#mi-chat-container").append('\
+				<div class="chat-local mb-2">\
+					'+ $(this).val() +'\
+				</div>\
+			');
+			
+			$(this).val("");
+			auto_scroll();
 		}else{
-			alert("Fail fetching listing data from API server.");
+			alert("Cannot send our message at the moment. Please try again.");
 		}
-	});
+	}
+});
+
+function load_list(){
+	$("#subject-list").html("");
+	
+	ws.send(JSON.stringify({
+		"action": "subject",
+		"option": "list"
+	}));
 }
 
 function run_ws_client(){
-	ws = new WebSocket("ws://{{ env('CS_WS_Server') }}/admin/");
+	ws = new WebSocket("{{ env('CS_WS_Server') }}admin/{{$uc->channel}}");
+	
+	ws.onopen = function(){
+		console.log("Connected to Chat Server");
+		
+		load_list();
+	};
+	
+	ws.onmessage = function(m){
+		var d = JSON.parse(m.data);
+		
+		switch(d.action){
+			case "subject":
+				switch(d.option){
+					case "list":
+						d.data.forEach(function(s){
+							var noti = "none";
+							
+							if(s.unread == true){
+								noti = "";
+							}
+							
+							$("#subject-list").append('\
+								<div class="subject-row" data-id="subject-'+ s.ukey +'" data-channel="'+ s.ukey +'">\
+									<span class="fa fa-circle text-danger notify" style="display: '+ noti +';" id="notify-'+ s.ukey +'"></span> \
+									<strong><u>'+ base64_decode(s.title) +'</u></strong> <br />\
+									'+ s.user.name +'<br />\
+									'+ s.user.email +' - '+ s.user.phone +'\
+								</div>\
+							');
+						});
+					break;
+					
+					case "create":
+						$("#subject-list").append('\
+							<div class="subject-row" data-id="subject-'+ d.data.ct.ukey +'" data-channel="'+ d.data.ct.ukey +'">\
+								<span class="fa fa-circle text-danger" id="notify-'+ d.data.ct.ukey +'"></span> \
+								<strong><u>'+ base64_decode(d.data.ct.title) +'</u></strong><br />\
+								'+ d.data.uc.name +'<br />\
+								'+ d.data.uc.email +' - '+ d.data.uc.phone +'\
+							</div>\
+						');
+					break;
+					
+					case "close":
+					
+					break;
+				}
+			break;
+			
+			case "chat":
+				switch(d.option){
+					case "chat":
+						if($("#notify-" + d.data.ct).length > 0 && d.data.ct != current_channel){
+							$("#notify-" + d.data.ct).show();
+						}
+						
+						if(d.data.ct == current_channel){
+							$("#mi-chat-container").append('\
+								<div class="chat-remote mb-2">\
+									'+ base64_decode(d.data.message) +' \
+								</div>\
+							');
+							
+							ws.send(JSON.stringify({
+								action: "chat",
+								option: "read",
+								ct: current_channel
+							}));
+							
+							auto_scroll();
+						}
+					break;
+					
+					case "load":
+						$("#mi-chat-container").html("");
+						if(d.status == "success"){
+							if(d.data.ct.ukey == current_channel){
+								$("#chat-container").css("display", "flex");
+								
+								$("#sender-name").html(d.data.uc.name + ": " + base64_decode(d.data.ct.title));
+								
+								d.data.chat.forEach(function(x){
+									if(x.from == "{{$uc->channel}}"){
+										$("#mi-chat-container").append('\
+											<div class="chat-local mb-2">\
+												'+ base64_decode(x.message) +' \
+											</div>\
+										');
+									}else{
+										$("#mi-chat-container").append('\
+											<div class="chat-remote mb-2">\
+												'+ base64_decode(x.message) +' \
+											</div>\
+										');
+									}
+								});
+								
+								auto_scroll();
+							}
+						}else{
+							current_channel = null;
+							
+							alert(d.message);
+						}
+					break;
+				}
+			break;
+		}
+	};
+}
+
+function auto_scroll(){
+	document.getElementById("mi-chat-container").scrollTop = document.getElementById("mi-chat-container").scrollHeight + 200;
 }
 </script>
 

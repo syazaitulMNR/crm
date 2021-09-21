@@ -40,23 +40,23 @@
 <div class="row">
   <div class="col-md-12 px-3 py-4">
     <div class="text-center">
-        <h3 class="display-4">Kemaskini berjaya!</h3>
-        {{-- <p class="lead pt-3">Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p> --}}
+        <h3 class="display-4">Pendaftaran anda telah berjaya!</h3>
         {{-- <p class="lead">2) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p> --}}
         <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div>
-        <a class="btn btn-primary" href="{{ $product_link }}" role="button">Zoom Link</a>
         
         {{-- <div class="mx-auto py-4"> --}}
           {{-- <div class="text-center mx-auto py-1">
             <iframe class="video-size" src="https://player.vimeo.com/video/556461041" height="315" width="560" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
           </div> --}}
         {{-- </div> --}}
+
+        {{-- <a class="btn btn-primary" href="{{ $product_link }}" role="button">Go to zoom</a> --}}
  
         <hr>
-        
-        {{-- <p class="lead"> Emel akan diberikan dalam tempoh 48 Jam. Terima kasih kerana menunggu.</p> --}}
+          {{-- <br><br><a class="btn btn-dark py-3 px-4" href="{{ url('updateform')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}" role="button">Kemaskini</a> --}}
+        </p>
         <p class="lead">
           Jika terdapat sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet" class="link-primary">hubungi kami.</a>
         </p>

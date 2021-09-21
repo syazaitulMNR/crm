@@ -55,8 +55,8 @@
                         <th scope="col">#</th>
                         <th scope="col" class="text-center">Topic</th>
                         <th scope="col" class="text-center">Password</th>
-                        <th scope="col" class="text-center">Start Time</th>
-                        <th scope="col" class="text-center">End Time</th>
+                        <th scope="col" class="text-center">Start Date</th>
+                        <th scope="col" class="text-center">End Date</th>
                         <th scope="col" class="text-center">Join URL</th>
                         <th scope="col" class="text-center">Start URL</th>
                         <th scope="col" class="text-right"><i class="fas fa-cogs"></i></th>
@@ -70,10 +70,10 @@
                         <td class="text-center">{{$webinar -> topic}}</td>
                         <td class="text-center">{{$webinar -> password}}</td>
                         <td class="text-center">
-                            {{date( "Y-m-d H:i:s", strtotime($webinar -> start_time))}}
+                            {{date( "Y-m-d", strtotime($webinar -> start_time))}}
                         </td>
                         <td class="text-center">
-                            {{date( "Y-m-d H:i:s", strtotime($webinar -> end_time))}}
+                            {{date( "Y-m-d", strtotime($webinar -> end_time))}}
                         </td>
                         <td class="text-center">{{$webinar -> join_url}}</td>
                         <td class="text-center"><a href="{{$webinar -> start_url}}" target="_blank" class="btn btn-dark">Start Webinar</a></td>

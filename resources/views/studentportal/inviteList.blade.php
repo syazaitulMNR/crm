@@ -58,21 +58,33 @@
         </div> --}}
 
         <div class="col-xl-6 col-md-6 mb-4">
-          <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                              Total Invite</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data_count }}</div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
+          <div class="card">
+            <div class="card-header"><strong>Get Staff URL link</strong></div>
+            <div class="card-body">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Link" aria-label="Recipient's username" aria-describedby="button-addon2" id="input" value="{{ Request::root() }}/invite-customer/{{ Session::get('student_login_id') }}">
+                <button class="btn btn-outline-secondary" type="button" id="clipboardCopy" data-clipboard-target="#post-shortlink">Copy</button>
               </div>
+            </div>
           </div>
-      </div>
+        </div>
+
+        <div class="col-xl-6 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Invite</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count }}</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
       {{-- <div class="col-xl-3 col-md-6 mb-4">
           <div class="card border-left-primary shadow h-100 py-2">
@@ -115,24 +127,24 @@
           <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">Date</th>
-              <th scope="col">Action</th>
+              <th scope="col">IC</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
           </tr>
         </thead>
         <tbody>
           @php
-            $no = (10 * ($data->currentPage() - 1));
+            $no = (10 * ($payment->currentPage() - 1));
 
           @endphp
           
-          @forelse ($data as $key => $p)
+          @forelse ($payment as $key => $p)
               <tr>
                 <th scope="row">{{ ++$no }}</th>
-                <td>{{ $p->name }}</td>
-                <td>RM{{ $p->pay_price }}.00</td>
-                <td>{{ date('d/m/Y', strtotime($p->created_at)) }}</td>
-                <td>lor3m</td>
+                <td>{{ $p->first_name }} {{ $p->last_name }}</td>
+                <td>{{ $p->ic }}</td>
+                <td>{{ $p->email }}</td>
+                <td>{{ $p->no_phone }}</td>
               </tr>
           @empty
             <tr>
@@ -141,16 +153,16 @@
           @endforelse
         </tbody>
       </table>
-      {{ $data->links() }}
+      {{ $payment->links() }}
     </div>
 
-    {{-- <script>
+    <script>
       document.getElementById('clipboardCopy').addEventListener('click', clipboardCopy);
       async function clipboardCopy() {
         let text = document.querySelector("#input").value;
         await navigator.clipboard.writeText(text);
       }
-    </script> --}}
+    </script>
     
   </div>
   @endsection

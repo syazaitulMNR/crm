@@ -53,7 +53,7 @@
           </div> --}}
         {{-- </div> --}}
 
-        <a class="btn btn-primary" href="{{ $product_link }}" role="button">Go to zoom</a>
+        {{-- <a class="btn btn-primary" href="{{ $product_link }}" role="button">Go to zoom</a> --}}
  
         <hr>
         

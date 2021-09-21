@@ -56,15 +56,23 @@
           <div class="input-group mb-3">
             <form action="{{ url('customer_details') }}" class="input-group" method="GET">
               {{-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> --}}
-              <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search role and name">
-              <div class="input-group-append">
+              <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search business type and name">
+              <div class="input-group-append col-md-4">
+                <select class="custom-select" id="inputGroupSelect01" name="role">
+                  @foreach ($role as $r)
+                    @if (request()->query('role'))
+                      <option {{ request()->query('role') === $r ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
+                    @else
+                      <option {{ request()->query('role') === 'Role' ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
+                    @endif
+                  @endforeach
+                </select>
+
                 <select class="custom-select" id="inputGroupSelect02" name="price">
-                  <option selected value="">Price</option>
-                  <option value="100">RM100</option>
-                  <option value="500">RM500</option>
-                  <option value="1000">RM1000</option>
-                  <option value="1500">RM1500</option>
-                  <option value="5000">RM5000</option>
+                  <option {{ !request()->query('price') ? 'selected' : '' }} value="">Income</option>
+                  @foreach ($incomeOptions as $i)
+                      <option {{ request()->query('price') === $i->range ? 'selected' : '' }} value="{{ $i->range }}">{{ $i->range }}</option>
+                  @endforeach
                 </select>
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="submit">Search</button>

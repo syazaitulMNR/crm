@@ -29,11 +29,6 @@
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     </div>
-                    @if(Session::get('student_login') == "fail")
-                        <div class="mb-3 alert alert-danger" role="alert">
-                            <strong class="text-danger "> Credentials does not match our record </strong>
-                        </div>
-                    @endif
 
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
@@ -44,6 +39,18 @@
                             </span>
                         @enderror
                     </div>
+
+                    @if(Session::get('student_login') == "fail")
+                        <div class="mb-3 alert alert-danger" role="alert">
+                            <strong class="text-danger "> Credentials does not match our record </strong>
+                        </div>
+                    @endif
+
+                    @if(Session::get('student_block') == "not membership")
+                        <div class="mb-3 alert alert-danger" role="alert">
+                            <strong class="text-danger "> Only student with membership can login </strong>
+                        </div>
+                    @endif
 
                     <div class="form-group row text-center">
                         <div class="col-md-12">
