@@ -61,7 +61,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'ic'         => $row['ic'],
                     'email'      => $row['email'],
                     'phoneno'    => '+' . $row['phoneno'],
-                    'student_password' => Hash::make($row['email']),
+                    'student_password' => Hash::make($row['ic']),
                 ]);
 
                 Payment::create([

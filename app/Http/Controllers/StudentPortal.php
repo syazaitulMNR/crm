@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Services\Billplz;
 use App\Invoice;
+use App\UserChatModel;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -92,6 +93,7 @@ class StudentPortal extends Controller
 
     public function login(Request $request)
     {
+
         $validatedData = $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -100,13 +102,17 @@ class StudentPortal extends Controller
         // dd(Hash::make('password'));
 
         $student_detail = Student::where('email', '=',$validatedData['email'])->first();
+        $student_chat = UserChatModel::where('stud_id', '=', $student_detail->stud_id)->first();
 
         if($student_detail == (null || "")){
 
             Session::put("student_login", "fail");
 
             return redirect('/student/login');
-        }else{
+        }elseif(Session::has('student_login_id')){
+            return redirect(route('student.dashboard'));
+        }
+        else{
 
             $stud_id = $student_detail->stud_id;
 
@@ -118,16 +124,41 @@ class StudentPortal extends Controller
                     
                     
                 }elseif($student_detail->level_id == null || ""){
+                    Session::forget("student_block", "success");
                     Session::put("student_block", "not membership");
 
                     return view("studentportal.login");
                 }else{
+
+                    if($student_chat == null){
+
+                        $userChat = new UserChatModel();
+
+                        $userChat->name = $student_detail->first_name.$student_detail->last_name;
+                        $userChat->phone = $student_detail->phoneno;
+                        $userChat->email = $student_detail->email;
+                        $userChat->stud_id = $student_detail->stud_id;
+                        $userChat->topic_id = "0";
+                        $userChat->user_id = "0";
+                        $userChat->notes = "0";
+                        $userChat->channel = 'UID' . uniqid() . uniqid();
+
+                        $userChat->save();
+                        Session::put("chat_channel", $userChat->channel);
+
+                    }else{
+
+                        Session::put("chat_channel", $student_chat->channel);
+
+                    }
+
                     Session::put('student_login_id', $stud_id);
                     Session::put('student_detail', $student_detail);
+                    Session::put("student_block", "success");
+                    Session::save();
 
                     Session::forget('student_login');
                     Session::forget('student_block');
-                    Session::save();
                     
                     return redirect('/student/dashboard');
                 }
