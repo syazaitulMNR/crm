@@ -2,8 +2,6 @@
 header("Content-Type: text/plain");
 include_once(__DIR__ . "/Addons/vendor/autoload.php");
 
-
-
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Ratchet\Server\IoServer;
@@ -11,51 +9,418 @@ use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 
 class MyChat implements MessageComponentInterface {
-    protected $clients;
-	private $rooms = [];
+	private $users = [];
+	private $customers = [], $admin = [];
 	
     public function __construct(){
 		echo "Server Called on " .  gethostbyname(gethostname()) . "\n";
-        $this->clients = new \SplObjectStorage;
     }
 
-    public function onOpen(ConnectionInterface $conn){		
-		$url = str_replace("/echo/", "", $conn->httpRequest->getUri()->getPath());
+    public function onOpen(ConnectionInterface $conn){
+		$us = explode("/", ltrim($conn->httpRequest->getUri()->getPath(), "/"));
+		$error = true;
 		
-		$us = explode("/", $url);
+		//print_r($us);
 		
-		if(count($us) == 2){
-			$this->rooms[$us[0]][$us[1]] = $conn; 
+		if(count($us) > 1){
+			switch($us[0]){
+				case "admin":
+					if(isset($us[1])){
+						$uc = user_chat::getBy([
+							"channel"	=> $us[1]
+						]);
+						
+						if(count($uc)){
+							$error = false;
+							$uc = $uc[0];
+							
+							$this->users[$us[1]] = $conn;
+							$this->admin[$us[1]] = $conn;
+						}
+					}
+				break;
+				
+				case "customer":
+					if($us[1] != ""){
+						$error = false;
+						
+						$this->users[$us[1]] = $conn;
+						
+						$uc = user_chat::getBy([
+							"channel"	=> $us[1]
+						]);
+						
+						if(count($uc)){
+							$uc = $uc[0];
+							
+							$ct = chat_topic::getBy(["user_chat" => $uc->channel, "status" => 0]);
+							
+							if(count($ct)){
+								$ct = $ct[0];
+								
+								$c = chat::list(["where" => "topic_id = $ct->id AND status = 0 AND user_chat <> '{$us[1]}'"]);
+								
+								if(count($c) > 0){
+									$unread = true;
+								}else{
+									$unread = false;
+								}
+								
+								$conn->send(json_encode([
+									"action"	=> "registered",
+									"data"		=> [
+										"ct"		=> $ct->ukey,
+										"ix"		=> $ct->id,
+										"unread"	=> $unread,
+										"date"		=> date("Y-m-d H:i:s\ ")
+									]
+								]));
+							}							
+						}
+					}
+				break;
+			}
+		}
+		
+		if($error){
+			$conn->close();
 		}
     }
 
     public function onMessage(ConnectionInterface $from, $msg){
-		$url = str_replace("/echo/", "", $from->httpRequest->getUri()->getPath());
-		$us = explode("/", $url);
+		$us = explode("/", $from->httpRequest->getUri()->getPath());
+		$msg = json_decode($msg);
+		// print_r($msg);
+		// print_r($us);
 		
-		if(count($us) == 2){
-			if(isset($this->rooms[$us[0]]) && is_array($this->rooms[$us[0]])){
-				foreach($this->rooms[$us[0]] as $user => $conn){
-					$conn->send(base64_encode(json_encode([
-						"from"		=> $us[1],
-						"message"	=> $msg
-					])));
-				}
+		if(count($us) > 1){
+			switch($us[1]){
+				case "admin":
+					if(isset($this->admin[$us[2]])){
+						switch($msg->action){
+							case "subject":
+								switch($msg->option){
+									case "list":
+										$cts = chat_topic::list(["order" => "id DESC"]);
+										
+										$data = [];
+										
+										foreach($cts as $ct){
+											$uc = user_chat::getBy(["channel" => $ct->user_chat]);
+											
+											if(count($uc)){
+												$uc = $uc[0];
+												
+												$ct->user = $uc;
+												
+												$c = chat::list(["where" => "topic_id = $ct->id AND status = 0 AND user_chat <> '{$us[2]}'"]);
+												
+												if(count($c)){
+													$unread = true;
+												}else{
+													$unread = false;
+												}
+												
+												$ct->unread = $unread;
+												
+												$data[] = $ct;
+											}
+										}
+										
+										$r = json_encode([
+											"status"	=> "success",
+											"action"	=> "subject",
+											"option"	=> "list",
+											"data"		=> $data
+										]);
+										
+										$from->send($r);
+									break;
+									
+									case "create":
+									
+									break;
+									
+									case "update":
+									
+									break;
+								}
+							break;
+							
+							case "chat":
+								switch($msg->option){
+									case "load":
+										$ct = chat_topic::getBy([
+											"ukey"			=> $msg->ct
+										]);
+										
+										if(count($ct)){
+											$ct = $ct[0];
+											
+											$uc = user_chat::getBy([
+												"channel"	=> $ct->user_chat
+											]);
+											
+											if(count($uc)){
+												$uc = $uc[0];
+												
+												$cs = chat::getBy(["topic_id" => $ct->id]);
+											
+												$data = [];
+												
+												foreach($cs as $c){
+													$data[] = [
+														"message"	=> $c->message,
+														"from"		=> $c->user_chat
+													];
+												}
+												
+												DB::conn()->query("UPDATE chat SET status = 1 WHERE topic_id = $ct->id AND user_chat <> '{$us[2]}'");
+												
+												$from->send(json_encode([
+													"status"	=> "success",
+													"action"	=> "chat",
+													"option"	=> "load",
+													"data"		=> [
+														"chat"	=> $data,
+														"uc"	=> $uc,
+														"ct"	=> $ct
+													]
+												]));
+											}else{
+												$from->send(json_encode([
+													"action"	=> "chat",
+													"option"	=> "load",
+													"status"	=> "error",
+													"message"	=> "Selected user information no found."
+												]));
+											}											
+										}
+									break;
+									
+									case "send":
+										$ct = chat_topic::getBy([
+											"ukey"			=> $msg->ct
+										]);
+										
+										if(count($ct)){
+											$ct = $ct[0];
+											
+											chat::insertInto([
+												"created_at"	=> date("Y-m-d H:i:s\ "),
+												"updated_at"	=> date("Y-m-d H:i:s\ "),
+												"user_chat"		=> $us[2],
+												"stud_id"		=> 0,
+												"user_id"		=> $us[2],
+												"message"		=> $msg->message,
+												"topic_id"		=> $ct->id,
+												"status"		=> 0
+											]);
+											
+											if(isset($this->users[$ct->user_chat])){
+												$this->users[$ct->user_chat]->send(json_encode([
+													"action"	=> "chat",
+													"option"	=> "chat",
+													"data"		=> [
+														"message"	=> $msg->message
+													]
+												]));
+											}
+										}
+									break;
+									
+									case "read":
+										$ct = chat_topic::getBy([
+											"ukey"			=> $msg->ct
+										]);
+										
+										if(count($ct)){
+											$ct = $ct[0];
+											
+											DB::conn()->query("UPDATE chat SET status = 1 WHERE topic_id = $ct->id AND user_chat <> '{$us[2]}'");
+										}
+									break;
+								}
+							break;
+						}
+					}
+				break;
+				
+				default:
+					if(isset($this->users[$us[2]])){
+						switch($msg->action){
+							case "register":
+								$d = $msg->data;
+								
+								user_chat::insertInto([
+									"name"		=> $d->name,
+									"phone"		=> $d->phone,
+									"email"		=> $d->email,
+									"channel"	=> $us[2],
+									"stud_id"	=> 0,
+									"topic_id"	=> 0,
+									"user_id"	=> 0,
+									"notes"		=> 0
+								]);
+								
+								$uc = user_chat::getBy([
+									"channel"	=> $us[2]
+								]);
+								
+								if(count($uc)){
+									$uc = $uc[0];
+									$ukey = F::UniqKey();
+									
+									chat_topic::insertInto([
+										"created_at"=> date("Y-m-d H:i:s\ "),
+										"updated_at"=> date("Y-m-d H:i:s\ "),
+										"title"		=> $d->subject,
+										"status"	=> 0,
+										"user_chat"	=> $us[2],
+										"ukey"		=> $ukey
+									]);
+									
+									$ct = chat_topic::getBy(["ukey" => $ukey]);
+									
+									if(count($ct)){
+										$ct = $ct[0];
+										
+										chat::insertInto([
+											"created_at"=> date("Y-m-d H:i:s\ "),
+											"updated_at"=> date("Y-m-d H:i:s\ "),
+											"topic_id"	=> $ct->id,
+											"user_chat"	=> $uc->channel,
+											"user_id"	=> 0,
+											"stud_id"	=> 0,
+											"message"	=> $d->subject,
+											"status"	=> 0
+										]);
+										
+										$from->send(json_encode([
+											"status"	=> "success",
+											"action"	=> "register",
+											"message"	=> "Chat service is ready!",
+											"data"		=> [
+												"ct"	=> $ukey
+											]
+										]));
+										
+										foreach($this->admin as $ad){
+											$ad->send(json_encode([
+												"action"	=> "subject",
+												"option"	=> "create",
+												"data"		=> [
+													"ct"	=> $ct,
+													"uc"	=> $uc
+												]
+											]));
+										}
+									}else{
+										$from->send(json_encode([
+											"status"	=> "error",
+											"message"	=> "Internal server eror, Cannot accept your subject now."
+										]));
+									}
+								}else{
+									$from->send(json_encode([
+										"status"	=> "error",
+										"message"	=> "Internal server eror, Cannot accept your registration now."
+									]));
+								}
+							break;
+							
+							case "chat":
+								switch($msg->option){
+									case "load":
+										$ct = chat_topic::getBy([
+											"user_chat"		=> $us[2],
+											"ukey"			=> $msg->ct,
+											"status"		=> 0
+										]);
+										
+										if(count($ct)){
+											$ct = $ct[0];
+											
+											$cs = chat::getBy(["topic_id" => $ct->id]);
+											
+											$data = [];
+											
+											foreach($cs as $c){
+												$data[] = [
+													"message"	=> $c->message,
+													"from"		=> $c->user_chat
+												];
+											}
+											
+											DB::conn()->query("UPDATE chat SET status = 1 WHERE topic_id = $ct->id AND user_chat <> '{$us[2]}'");
+											
+											$from->send(json_encode([
+												"action"	=> "chat",
+												"option"	=> "load",
+												"data"		=> $data
+											]));
+										}
+									break;
+									
+									case "send":
+										$ct = chat_topic::getBy([
+											"user_chat"		=> $us[2],
+											"ukey"			=> $msg->ct,
+											"status"		=> 0
+										]);
+										
+										if(count($ct)){
+											$ct = $ct[0];
+											
+											chat::insertInto([
+												"created_at"	=> date("Y-m-d H:i:s\ "),
+												"updated_at"	=> date("Y-m-d H:i:s\ "),
+												"user_chat"		=> $us[2],
+												"stud_id"		=> 0,
+												"user_id"		=> 0,
+												"message"		=> $msg->message,
+												"topic_id"		=> $ct->id,
+												"status"		=> 0
+											]);
+											
+											foreach($this->admin as $t){
+												$t->send(json_encode([
+													"action"	=> "chat",
+													"option"	=> "chat",
+													"data"		=> [
+														"message"	=> $msg->message,
+														"ct"		=> $ct->ukey
+													]
+												]));
+											}
+										}
+									break;
+									
+									case "read":
+										$ct = chat_topic::getBy([
+											"user_chat"		=> $us[2],
+											"ukey"			=> $msg->ct,
+											"status"		=> 0
+										]);
+										
+										if(count($ct)){
+											$ct = $ct[0];
+											
+											DB::conn()->query("UPDATE chat SET status = 1 WHERE topic_id = $ct->id AND user_chat <> '{$us[2]}'");
+										}
+									break;
+								}
+							break;
+						}
+					}
+				break;
 			}
 		}
 	}
 
     public function onClose(ConnectionInterface $conn){
-        $this->clients->detach($conn);
 		$url = str_replace("/echo/", "", $conn->httpRequest->getUri()->getPath());
-		
 		$us = explode("/", $url);
-		
-		if(count($us) == 2){
-			if(isset($this->rooms[$us[0]][$us[1]])){
-				unset($this->rooms[$us[0]][$us[1]]); 
-			}
-		}
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e){
