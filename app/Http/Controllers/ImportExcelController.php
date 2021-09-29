@@ -10,7 +10,8 @@ use App\Email;
 use App\Exports\StudentExport;
 use App\Imports\StudentImport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Offer;
+use App\Offer
+use Auth;
 
 class ImportExcelController extends Controller
 {
@@ -40,8 +41,9 @@ class ImportExcelController extends Controller
 
         $prd_id = $product->product_id;
         $pkd_id = $package->package_id;
+		$user_id = Auth::user()->user_id;
 
-        Excel::import(new StudentImport($prd_id, $pkd_id), request()->file('file'));
+        Excel::import(new StudentImport($prd_id, $pkd_id, $user_id), request()->file('file'));
 
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('importsuccess', 'The file has been inserted to queue, it may take a while to successfully import.');
     }

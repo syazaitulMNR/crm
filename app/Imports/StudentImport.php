@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Crypt;
 
 class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
 {
-    private $prd_id, $pkd_id;
+    private $prd_id, $pkd_id, $_user_id;
 
-    public function __construct($prd_id, $pkd_id){
+    public function __construct($prd_id, $pkd_id, $user_id){
         $this->product = $prd_id;
         $this->package = $pkd_id;
+		$this->_user_id = $user_id;
     }
 
     public function collection(Collection $rows)
@@ -44,7 +45,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'email_status'  => 'Hold',
                     'stud_id'       => $student->stud_id,
                     'offer_id'      => $row['offer_id'], 
-                    'user_id'       => $row['user_id'],
+                    'user_id'       => $this->_user_id,
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
                 ]);
@@ -74,7 +75,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'email_status'  => 'Hold',
                     'stud_id'       => $stud_id,
                     'offer_id'      => $row['offer_id'], 
-                    'user_id'      => $row['user_id'],
+                    'user_id'      	=> $this->_user_id,
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
                 ]);
