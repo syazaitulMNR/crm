@@ -5,6 +5,7 @@ use App\Mail\TestMail;
 use App\Http\Controllers\PDFController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StudentAuthController;
+use App\Http\Controllers\InfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,10 @@ use App\Http\Controllers\StudentAuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//---------------------------------------------- Info Part -------------------------------------------------//
+
+Route::get('information', 'InfoController@info');
 
 //---------------------------------------------- Administrator Part -------------------------------------------------//
 
