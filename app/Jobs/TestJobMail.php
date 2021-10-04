@@ -9,25 +9,31 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\TestMail;
 use App\Email;
+use App\Student;
 use Mail;
+use Illuminate\Support\Facades\Schema;
+use App\Package;
+use App\Product;
 
 class TestJobMail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $rows, $email_id, $regex_content, $message;
+    protected $request, $message, $regex_content;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($rows, $email_id, $regex_content)
+    public function __construct($request, $regex_content)
     {
-        $this->rows = $rows;
-        $this->email_id = $email_id;
+        $this->request = $request;
         $this->regex_content = $regex_content;
 
-        $email = Email::where('id', $email_id)->first();
-        $this->message = $email->content;
+        // \Log::info($request['emailId']);
+        $email = Email::where('id', $request['emailId'])->first();
+
+        // \Log::info($email['content']);
+        $this->message = $email['content'];
     }
 
     /**
@@ -37,27 +43,59 @@ class TestJobMail implements ShouldQueue
      */
     public function handle()
     {
-        // Mail::to($this->email)->send(new Testmail("ttt"));
-        $rows = $this->rows;
 
-        foreach($rows as $row){
+        $request = $this->request;
+
+        $emails = $request['emailList'];
+
+        $columns = array();
+
+        $product_details = Product::where('product_id', $request['prod_id'])->first();
+        $package_details = Package::where('package_id', $request['pack_id'])->first();
+
+        foreach($emails as $email){
             $message = $this->message;
+           
+            $student = Student::where('email', $email)->first();
 
-            foreach($this->regex_content as $rc){
-				if(isset($row[strtolower($rc)])){
-					$message = str_replace("{". $rc ."}", $row[strtolower($rc)], $message);
-				}
+            foreach($this->regex_content as $rcs){
+
+                $regex = explode(".", $rcs);
+                $tableName = $regex[0];
+                $keyword = $regex[1];
+
+                $columns = Schema::getColumnListing($tableName);
+
+                foreach($columns as $key => $column){
+                    $columns[$key] = $tableName.'.'.$column;
+                }
+
+                if (in_array(strtolower($rcs), $columns)){
+                    if($tableName == "student"){
+
+                        $message = str_replace("{". $rcs ."}", $student->$keyword, $message);
+
+                    }elseif($tableName == "package"){
+
+                        $message = str_replace("{". $rcs ."}", $package_details->$keyword, $message);
+
+                    }elseif($tableName == "product"){
+
+                        $message = str_replace("{". $rcs ."}", $product_details->$keyword, $message);
+                        
+                    }
+                }
             }
 
-            if(isset($row["email"])){
-				$email = $row["email"];
-            
+            if($student->email !== (null || "")){
+				$email = $student->email;
+                
                 Mail::to($email)->send(new Testmail($message));
                 
 			}else{
 				return false;
 			}
-            
         }
+        
     }
 }

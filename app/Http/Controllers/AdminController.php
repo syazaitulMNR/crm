@@ -14,6 +14,10 @@ use App\Product;
 use App\Package;
 use App\Ticket;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class AdminController extends Controller
 {
@@ -294,8 +298,40 @@ class AdminController extends Controller
     {
         $users = User::where('user_id', $id)->first();
         $roles = Role::orderBy('id','asc')->get();
+		
+		// shauqi edit
+        
+        $payment = Payment::where('user_invite', $id)->get();
+        $payment_detail = [];
 
-        return view('admin.updateuser', compact('users','roles'));
+        if(count($payment) != 0) {
+            foreach($payment as $p) {
+                $user = Student::where('stud_id', $p->stud_id);
+
+                if($user->count() > 0) {
+                    $user = $user->first();
+                    $name = $user->first_name . " " . $user->last_name;
+                    $p->name = $name;
+                }else {
+                    $p->name = "";
+                }
+
+                $payment_detail[] = $p;
+            }
+        }
+        
+        $data = $this->paginate($payment_detail, 10);
+        $data->setPath('updateUser');
+        $data_count = count($data);
+
+        return view('admin.updateuser', compact('users','roles', 'data', 'data_count'));
+    }
+	
+	public function paginate($items, $perPage, $page = null, $options = []){
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     public function updateuser($id, Request $request){
