@@ -62,13 +62,13 @@
             <input type="time" name="time2" class="form-control" required/>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-4">
             <label class="form-label">Certificate Image</label>
             <input class="form-control" type="file" id="formFile" name="cert_image">
             <em>*Please ignore this part if there is no certificate provided for the event</em>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
             <label class="form-label">Survey Form Link</label>
             <input name="survey_form" type="text" class="form-control">
         </div>
@@ -94,6 +94,11 @@
                 <option value="active">Active</option>
                 <option value="deactive">Deactive</option>
             </select>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Zoom Link</label>
+            <input class="form-control" type="text" name="zoom_link">
         </div>
 
         <div class="col-12">

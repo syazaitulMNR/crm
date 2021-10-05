@@ -14,8 +14,15 @@ class EmailTemplate extends Controller
      */
     public function index()
     {
-        $emailsTemplate = Email::all();
+        $emailsTemplate = Email::paginate(10);
         return view('emailsTemplate.index', compact('emailsTemplate'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->search;
+        $emailsTemplate = Email::where('name', 'LIKE','%'.$query.'%')->paginate(10);
+        return view('emailsTemplate.index', compact('emailsTemplate', 'query'));
     }
 
     /**
@@ -53,6 +60,18 @@ class EmailTemplate extends Controller
         $mail->save();
 
         return redirect('/emailtemplate');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $emailTemplate = Email::where('id', $id)->first();
+        return view('emailsTemplate.show', compact('emailTemplate'));
     }
 
     /**

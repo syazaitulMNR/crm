@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Package;
@@ -26,6 +27,7 @@ class ExistCustomerController extends Controller
         $student = Student::where('stud_id', $stud_id)->first();
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+		$count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
 
         return view('customer_exist.step1', compact('student','product', 'package', 'stud'));
@@ -61,7 +63,6 @@ class ExistCustomerController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $package_name = Package::where('product_id', $product_id)->get();
-        $count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
@@ -78,13 +79,14 @@ class ExistCustomerController extends Controller
             return view('customer_exist.step2_nooffer',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
 
         } else if($product->offer_id == 'OFF002') {
+
             
             //for Buy 1 Get 1 (Same Ticket)
             return view('customer_exist.step2_get1free1same',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
 
         } else if($product->offer_id == 'OFF003') {
-
-            //for Bulk Ticket (1,2,3)
+			
+			//for Bulk Ticket (1,2,3)
             if($count_package == 1){
                 
                 //if only one package for the event
@@ -96,8 +98,10 @@ class ExistCustomerController extends Controller
                 return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
           
             }
-
-        } else if($product->offer_id == 'OFF004') {
+            //for Bulk Ticket
+            return view('customer_exist.step2_bulkticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'package_name'));
+		
+		} else if($product->offer_id == 'OFF004') {
 
             //for Bulk Ticket (1,3,5)
             if($count_package == 1){
@@ -416,10 +420,9 @@ class ExistCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
-
-        //get the bill
+        
+        // get the bill
         $bill = $billplz->bill();
         $response = $bill->get($payment->billplz_id);
         $pay_data = $response->toArray();

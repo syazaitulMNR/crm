@@ -11,6 +11,8 @@ use App\Product;
 use App\Package;
 use App\Payment;
 use App\Ticket;
+use App\Email;
+use App\Jobs\TestJobMail;
 
 class BlastingController extends Controller
 {
@@ -41,10 +43,11 @@ class BlastingController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
+        $emails = Email::all();
 
         $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
         
-        return view('admin.blasting_email.viewblast', compact('student', 'product', 'package', 'payment', 'total'));
+        return view('admin.blasting_email.viewblast', compact('student', 'product', 'package', 'payment', 'total', 'emails', 'product_id', 'package_id'));
     }
 
     public function view_student($product_id, $package_id, $payment_id, $student_id)
@@ -180,5 +183,42 @@ class BlastingController extends Controller
         return redirect('view-participant/' . $product_id . '/' . $package_id. '/' . $ticket_id . '/' . $student_id)->with('update-mail','Participant details successfully updated');
     }
     
+    public function blastBulkEmail(Request $request){
+
+        $product_id = $request->prod_id;
+        $package_id = $request->pack_id;
+        $email = Email::where('id', $request->emailId)->first();
+
+        preg_match_all("/(?<={).*?(?=})/", $email->content, $regex_content);
+			
+        if(count($regex_content) > 0){
+            if(count($regex_content[0]) > 0){
+                $regex_content = $regex_content[0];
+            }else{
+                $regex_content = [];
+            }
+        }else{
+            $regex_content = [];
+        }
+
+        $paymentIds = $request->paymentId;
+        $reqEmails = $request->emailList;
+
+        for($i=0; $i < sizeof($request->paymentId); $i++){
+            $payment = Payment::where('id', $paymentIds[$i])->first();
+
+            if($reqEmails[$i] != (null || "")){
+                $payment->email_status = 'Sent';
+                $payment->save();
+            }
+            $payment->save();
+        }
+
+        dispatch(new TestJobMail($request->all(), $regex_content));
+
+        return redirect('view-event/'.$product_id.'/'.$package_id)->with('success', 'List email has been qued for sending with template.');
+
+        
+    }
     
 }

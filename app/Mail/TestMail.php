@@ -13,8 +13,6 @@ class TestMail extends Mailable
     use Queueable, SerializesModels;
     protected $message;
 
-    // public $data;
-
     public function __construct($message)
     {
         $this->message = $message;
