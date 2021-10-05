@@ -203,9 +203,19 @@ class HomeController extends Controller
     }
 
     /*-- Buyer Registration -----------------------------------------------*/
-    public function register($product_id,$package_id, $user_invite)
+    // public function register($product_id,$package_id, $user_invite)
+    // {
+    //     Session::put('user_invite', $user_invite);
+        
+    //     $package = Package::where('package_id', $package_id)->first();
+    //     $product = Product::where('product_id', $product_id)->first();
+
+    //     return view('customer_new/check_ic', compact('product', 'package'));
+    //     // abort(404); 
+    // }
+    public function register($product_id,$package_id)
     {
-        Session::put('user_invite', $user_invite);
+        // Session::put('user_invite', $user_invite);
         
         $package = Package::where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
