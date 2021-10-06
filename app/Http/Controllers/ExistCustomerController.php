@@ -65,6 +65,7 @@ class ExistCustomerController extends Controller
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
+        $count_package = Package::where('product_id', $product_id)->count();
 
         //generate id
         $payment_id = 'OD'.uniqid();
