@@ -30,7 +30,7 @@ class ExistCustomerController extends Controller
 		$count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
 
-        return view('customer_exist.step1', compact('student','product', 'package', 'stud'));
+        return view('customer_exist.step1', compact('student','product', 'package','count_package', 'stud' ));
 
     }
 
@@ -43,7 +43,6 @@ class ExistCustomerController extends Controller
             'email' => 'required',
             'phoneno' => 'required'
         ]);
-  
         if(empty($request->session()->get('student'))){
             $stud = Student::where('stud_id', $stud_id)->first();
             $stud->fill($validatedData);
