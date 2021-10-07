@@ -600,7 +600,7 @@ class NewCustomerController extends Controller
         $billplz_id = Billplz_collection_id::where('collection_id', $collection_id)->get();
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
-        dd($payment);
+        
         //get the bill
         $bill = $billplz->bill();
         $response = $bill->get($payment->$billplz_id);
