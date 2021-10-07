@@ -592,19 +592,19 @@ class NewCustomerController extends Controller
         
     }
 
-    public function redirect_payment($product_id, $package_id,$collection_id, Request $request)
+    public function redirect_payment($product_id, $package_id, Request $request)
     {
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        $billplz_id = Billplz_collection_id::where('collection_id', $collection_id)->get();
 
         $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
-        
+
         //get the bill
         $bill = $billplz->bill();
-        $response = $bill->get($payment->$billplz_id);
+        $response = $bill->get($payment->billplz_id);
         $pay_data = $response->toArray();
+        dd($payment->billplz_id);
 
         //update payment history status to database
         $addData = array(
