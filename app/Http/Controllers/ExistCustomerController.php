@@ -543,10 +543,11 @@ class ExistCustomerController extends Controller
 
         if ($payment->status == 'paid')
         {
+            /*-- Manage Email ---------------------------------------------------*/
 
             $product = Product::where('product_id', $product_id)->first();
             $package = Package::where('package_id', $package_id)->first();
-            /*-- Manage Email ---------------------------------------------------*/
+
 
             if($payment->quantity == 1){
     
