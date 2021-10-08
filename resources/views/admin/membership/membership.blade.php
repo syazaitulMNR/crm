@@ -54,7 +54,7 @@
                 </div>
               </div>
                                 
-              <div class='col-md-12 text-right px-4'>
+              <div class='col-md-12 text-right px-4 pb-3'>
                   <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
               </div>
             </form>

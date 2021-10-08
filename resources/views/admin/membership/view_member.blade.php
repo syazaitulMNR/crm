@@ -50,7 +50,7 @@ Membership
 
     <div class="col-md-12">
 
-      <form class="px-5" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
+      <form class="px-1" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
         @csrf
       
         <div class="row py-2">
