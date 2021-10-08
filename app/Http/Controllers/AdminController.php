@@ -298,6 +298,7 @@ class AdminController extends Controller
     {
         $users = User::where('user_id', $id)->first();
         $roles = Role::orderBy('id','asc')->get();
+        
 		
 		// shauqi edit
         

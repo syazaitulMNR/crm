@@ -82,15 +82,14 @@
         </div>
         <div class="col-md-6">
             <label class="form-label">Dashboard Report</label>
-            <select class="form-select" name="status" required>
-                <option disabled selected>-- {{ $product->status }} --</option>
-                <option value="active">Active</option>
-                <option value="deactive">Deactive</option>
+            <select class="form-select" name="status" >
+                <option value="active" @if($product->status == 'active') selected @endif>Active</option>
+                <option value="deactive" @if($product->status == 'deactive') selected @endif>Deactive</option>
             </select>
         </div>
         <div class="col-md-6">
             <label class="form-label">Zoom Link</label>
-            <input class="form-control" type="text" name="zoom_link" value="{{ $product->zoom_link}}">
+            <input class="form-control" type="text" name="zoom_link" value="{{ $product->zoom_link }}">
         </div>
 
         <div class="col-12">
@@ -119,7 +118,7 @@
                     @endforeach
                 </table>
             </div>
-        </div>  
+        </div> 
     </div>
 
 </div>
