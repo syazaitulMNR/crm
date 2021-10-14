@@ -215,9 +215,11 @@ class StudentPortal extends Controller
         $student_authenticated = session('student_login_id');
 
         if($student_authenticated == (null||"")){
+
             return view("studentportal.login");
 
         }else{
+
             $invoices = Invoice::where('student_id', $student_authenticated)->get();
             $student_detail = Student::where('stud_id', $student_authenticated)->firstOrFail();
 
@@ -430,7 +432,8 @@ class StudentPortal extends Controller
         }
     }
 
-    public function linkBill($level, $invoice, $student){
+    public function linkBill($level, $invoice, $student)
+    {
 
         $stud_detail = Student::where('stud_id', $student)->first();
         $lvl_detail = Membership_Level::where('level_id', $level)->first();
@@ -466,7 +469,8 @@ class StudentPortal extends Controller
 
         // dd($billplz['paid']);
 
-        if($billplz['paid'] == "true"){
+        if($billplz['paid'] == "true")
+        {
             $payment->status = 'paid';
             $payment->save();
 
@@ -478,6 +482,7 @@ class StudentPortal extends Controller
             return redirect('/student/success_payment');
 
         }else{
+            
             $payment->status = 'due';
             $payment->save();
 
