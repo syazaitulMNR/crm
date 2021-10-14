@@ -26,12 +26,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('emel:pengesahan')
-            ->everyMinute();
+        // $schedule->command('emel:pengesahan')->everyMinute();
 
         // $schedule->command('invoice:cron')->monthlyOn(4, '15:00');
-        // $schedule->command('invoice:cron')->everyMinute();
-        $schedule->command('invoice:cron')->monthlyOn(28, '00:00');
+        $schedule->command('invoice:cron')->everyMinute();
+        // $schedule->command('invoice:cron')->monthlyOn(28, '00:00');
     }
 
     /**
