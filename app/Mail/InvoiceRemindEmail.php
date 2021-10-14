@@ -31,7 +31,7 @@ class InvoiceRemindEmail extends Mailable
         $currentDate = Carbon::now()->toFormattedDateString();
 
         //content->payment
-
+        //remind untuk bayar
         return $this->view('invoice.invoice')
                     ->with([ 
                         'content' => $payment, 

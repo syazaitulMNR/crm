@@ -30,7 +30,7 @@ class InvoiceRemindTerminateEmail extends Mailable
         $currentDate = Carbon::now()->toFormattedDateString();
 
         //content->payment
-
+        //remind terminate untuk bayar atau remove dari sistem
         return $this->view('invoice.invoiceTerminate')
                     ->with([ 
                         'content' => $payment, 
