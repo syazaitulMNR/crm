@@ -386,7 +386,9 @@ class StudentPortal extends Controller
         $stud_detail = Session::get('student_detail');
 
         if($stud_id== (null||"")){
+
             return view("studentportal.login");
+            
         }else{
 
             $invoices = Invoice::where('student_id', $stud_detail->id)->where('status', 'not paid')->paginate(10);
