@@ -6,6 +6,11 @@ use App\Http\Controllers\PDFController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\InfoController;
+use Illuminate\Support\Facades\Hash;
+
+// Route::get('test-password', function () {
+// 	echo Hash::make('password');
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -195,7 +200,7 @@ Route::get('deleteuser/{id}', 'AdminController@destroy');
 
 Route::get('/', 'HomeController@viewproduct');
 Route::get('showpackage/{id}', 'HomeController@view');
-// Route::get('pendaftaran/{product_id}/{package_id}/{user_invite}', 'HomeController@register');
+// Route::get('pendaftaran/{product_id}/{package_id}/{user_invite}', 'HomeController@register_user_invite');
 Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
 Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic');
 
