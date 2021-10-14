@@ -479,14 +479,14 @@ class StudentPortal extends Controller
             $invoice->status = 'paid';
             $invoice->save();
 
-            return redirect('/student/success_payment');
+            return redirect('student/success_payment');
 
         }else{
-            
+
             $payment->status = 'due';
             $payment->save();
 
-            return redirect('/student/fail_payment');
+            return redirect('student/fail_payment');
         }
     }
 
