@@ -127,7 +127,7 @@
     <script>
         $(document).ready(function () {
             setTimeout(function () {
-                location.replace("{{ url('/student/dashboard') }}");
+                location.replace("{{ route('student.dashboard') }}");
             }, 4000);
         });
     </script>
