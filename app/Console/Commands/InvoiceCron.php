@@ -46,8 +46,8 @@ class InvoiceCron extends Command
         //M1981113016705iqbal1
         
         //the real one
-        // $studentss = Student::where('email', 'iqbalkisas6@gmail.com')->get();
-        $students = Student::all()->whereNotNull('level_id')->unique('email');
+        $students = Student::where('email', 'danial0597@gmail.com')->get();
+        // $students = Student::all()->whereNotNull('level_id')->unique('email');
 
         //testing purpose
         // $students = Student::whereIn('stud_id',['M1981113016705iqbal1', 'M1981113016705iqbal2'])->whereNotNull('level_id')->get()->unique('email');

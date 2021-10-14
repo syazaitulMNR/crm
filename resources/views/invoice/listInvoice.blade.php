@@ -27,7 +27,7 @@
             @if(isset($query))
             <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search date">
             @else
-            <input type="text" class="form-control" name="search" value="" placeholder="Search date">">
+            <input type="text" class="form-control" name="search" value="" placeholder="Search date">
             @endif
         </form>
       

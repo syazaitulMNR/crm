@@ -65,12 +65,14 @@ class StudentPortal extends Controller
         return view("studentportal.login");
     }
 
-    public function registerForm(Request $request) {
+    public function registerForm(Request $request) 
+    {
         $student_id = Session::get("student_login_id");
         return view("studentportal.bussiness-form", compact('student_id'));
     }
 
-    public function bussinessForm(Request $request) {
+    public function bussinessForm(Request $request) 
+    {
         if($request->filled('income') && $request->filled('bussiness')) {
             
             $bussInsert = BussinessDetail::create([
@@ -93,7 +95,6 @@ class StudentPortal extends Controller
 
     public function login(Request $request)
     {
-
         $validatedData = $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -104,30 +105,44 @@ class StudentPortal extends Controller
         $student_detail = Student::where('email', '=',$validatedData['email'])->first();
         $student_chat = UserChatModel::where('stud_id', '=', $student_detail->stud_id)->first();
 
-        if($student_detail == (null || "")){
-
+        // Kalau emel takde, pergi ke student login semula
+        if($student_detail == (null || ""))
+        {
             Session::put("student_login", "fail");
 
             return redirect('/student/login');
-        }elseif(Session::has('student_login_id')){
+
+        // tak perlu sign in kalau dah pernah sign in
+        }else if(Session::has('student_login_id')){
+
             return redirect(route('student.dashboard'));
-        }
-        else{
+        
+        
+        }else{
 
             $stud_id = $student_detail->stud_id;
 
-            if (Hash::check($validatedData['password'], $student_detail->student_password)) {
-				if($student_detail->status == 'Deactive'){
+            // semak password
+            if (Hash::check($validatedData['password'], $student_detail->student_password)) 
+            {
+
+                // if student tak aktif
+				if($student_detail->status == 'Deactive')
+                {
+
                     Session::put("student_block", "fail");
 
                     return view("studentportal.login");
-                    
-                    
+                
+                // student yang takde level
                 }elseif($student_detail->level_id == null || ""){
+
                     Session::forget("student_block", "success");
                     Session::put("student_block", "not membership");
 
                     return view("studentportal.login");
+
+                // if student active
                 }else{
 
                     if($student_chat == null){
@@ -162,7 +177,10 @@ class StudentPortal extends Controller
                     
                     return redirect('/student/dashboard');
                 }
+            
+            // Kalau password salah pergi ke login
             }else{
+
                 Session::put("student_login", "fail");
 
                 return view("studentportal.login");
