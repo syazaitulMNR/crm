@@ -203,7 +203,7 @@ class HomeController extends Controller
     }
 
     /*-- Buyer Registration -----------------------------------------------*/
-    // public function register($product_id,$package_id, $user_invite)
+    // public function register_user_invite($product_id,$package_id, $user_invite)
     // {
     //     Session::put('user_invite', $user_invite);
         
