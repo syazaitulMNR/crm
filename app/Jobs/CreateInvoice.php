@@ -44,6 +44,7 @@ class CreateInvoice implements ShouldQueue
             //check student kena block
             $invoice = Invoice::where('student_id', $student->id)->where('status', 'not paid')->get();
 
+            //lebih 3 bulan @ 3 tahun 
             if(count($invoice) < 3){
                 $lvl = Membership_Level::where('level_id', $student->level_id)->first();
 

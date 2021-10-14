@@ -215,6 +215,44 @@ Sales Report
         @endif
         <div class="float-right pt-3">{{$package->links()}}</div>
         
+
+        <!--- Display upgrade link ---->
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Package Name</th>
+                <th scope="col">Link</th>          
+                <th scope="col"></th>
+                {{-- <th scope="col">Image</th> --}}
+                <th scope="col"><i class="fas fa-cogs"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+            <div class="table-responsive">
+              <tr>
+                  <td>{{ $product->name  }} Upgrade Link</td>
+                <td><input type="text" class="form-control" value="{{ $link }}" id="myInput" readonly></td>
+                {{-- <td>{{ $packages->package_image  }}</td> --}}
+                <td>
+                  <div class="row">
+                        <script>
+                          function myFunction() {
+                            var copyText = document.getElementById("myInput");
+                            copyText.select();
+                            copyText.setSelectionRange(0, 99999)
+                            document.execCommand("copy");
+                          }
+                        </script>
+                        <td>                  
+                          <a class="btn btn-sm btn-dark mt-1" onclick="myFunction()">Copy</a>
+                        </td>
+                  </div>  
+                </td>
+              </tr> 
+            </div>
+          </table> 
+        </div>   
       </div>
     </div>
   </div>

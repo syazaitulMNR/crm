@@ -56,6 +56,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->paginate(15);
         $student = Student::orderBy('id','desc')->paginate(15);
+        $link = 'https://mims.momentuminternet.my/upgrade/'. $product->product_id . '/';
 
         $counter = Student::count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
@@ -64,7 +65,7 @@ class ReportsController extends Controller
         // $paidticket = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         
-        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket' , 'link'));
     }
 
     public function exportProgram($product_id, Request $request)

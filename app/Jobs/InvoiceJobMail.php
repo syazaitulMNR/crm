@@ -45,9 +45,11 @@ class InvoiceJobMail implements ShouldQueue
 
         foreach($students as $student){
 
+            //check student kena block
             $invoiceCreate = Invoice::where('student_id', $student->id)->where('status', 'not paid')->get();
             $invoiceId = null;
 
+            //cari status kurang 3 bulan @ 3 tahun tak bayar 'not paid'
             if(count($invoiceCreate) < 3){
                 $lvl = Membership_Level::where('level_id', $student->level_id)->first();
 
@@ -86,12 +88,12 @@ class InvoiceJobMail implements ShouldQueue
 
                 if($difference_year == 0){
 
-                    //remind
+                    //hantar email remind jika kurang 3 bulan deactive
                     if($difference_month < 3){
                         
                         Mail::to($email)->send(new InvoiceRemindEmail($lvl, $student, $invoiceLatest));
 
-                    //terminate
+                    //hantar email terminate kalau 3 bulan tak aktif
                     }elseif($difference_month == 3){
 
                         $student->status = 'Deactive';

@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Membership;
+use Illuminate\Support\Facades\Hash;
 use App\Membership_Level;
 use App\Student;
 use Illuminate\Support\Collection;
@@ -30,7 +31,7 @@ class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
 
                 $student->first_name    = ucwords(strtolower($row['first_name']));
                 $student->last_name     = ucwords(strtolower($row['last_name']));
-                // $student->ic            = $row['ic'];
+                $student->ic            = $row['ic'];
                 $student->email         = $row['email'];
                 $student->phoneno       = '+' . $row['phoneno'];
                 $student->membership_id = $this->membership_id;
@@ -51,7 +52,8 @@ class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'phoneno'           => '+' . $row['phoneno'],
                     'membership_id'     => $this->membership_id,
                     'level_id'          => $this->level_id,
-                    'status'            => 'Active'
+                    'status'            => 'Active',
+                    'student_password' => Hash::make($row['ic']),
                 ]);
 
             }
