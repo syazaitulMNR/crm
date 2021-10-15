@@ -32,8 +32,7 @@ class InvoiceRemindEmail extends Mailable
 
         //content->payment
         //remind untuk bayar
-        return $this->view('invoice.invoice')
-                    ->with([ 
+        return $this->view('invoice.invoice')->with([ 
                         'content' => $payment, 
                         'student' => $this->student, 
                         'current_date' => $currentDate,
