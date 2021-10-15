@@ -57,6 +57,16 @@ class MembershipController extends Controller
         return redirect('membership')->with('success', 'Membership Successfully Created'); 
     }
 
+    public function update_membership_level(Request $request,$lvl_id)
+    {
+        $membership_level = Membership_Level::where('level_id', $lvl_id)->first();
+
+        $membership_level->price = $request->price;
+        $membership_level->save();
+
+        return redirect()->back()->with('success', 'Price Updated');
+    }
+
     public function view_level($membership_id)
     {
         $membership = Membership::where('membership_id', $membership_id)->first();

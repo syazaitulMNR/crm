@@ -4,7 +4,8 @@ namespace App\Services;
 
 class Billplz{
 
-    public static function create_bill($stud, $lvl, $invoice){
+    public static function create_bill($stud, $lvl, $invoice)
+    {
 
         $curl = curl_init();
 
@@ -40,7 +41,9 @@ class Billplz{
 
     }
 
-    public static function test_create_bill($stud, $lvl, $invoice){
+
+    public static function test_create_bill($stud, $lvl, $invoice)
+    {
 
         $curl = curl_init();
 
@@ -70,6 +73,170 @@ class Billplz{
         
         $response = json_decode(curl_exec($curl));
         
+        curl_close($curl);
+
+        return $response;
+
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Create Bill For Platinum Lite
+    |--------------------------------------------------------------------------
+    */
+    public function platinumlite($stud, $lvl, $invoice)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://www.billplz.com/api/v3/bills',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'collection_id' => 'gldg8gfu',
+                'email' => $stud->email,
+                'mobile' => $stud->phoneno,
+                'name' => $stud->first_name,
+                'amount' => $lvl->price . '00',
+                'description' => 'Payment For ' . $lvl->name,
+                'callback_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+                'redirect_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic M2Y3OGRmYWQtNzk5Ny00NWUwLTg0MjgtOTI4MGJhNTM3MjE1Og==',
+            ),
+        ));
+
+        $response = json_decode(curl_exec($curl));
+
+        curl_close($curl);
+
+        return $response;
+
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Create Bill For Platinum Pro
+    |--------------------------------------------------------------------------
+    */
+    public function platinumpro($stud, $lvl, $invoice)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://www.billplz.com/api/v3/bills',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'collection_id' => 'tg6tl5q0',
+                'email' => $stud->email,
+                'mobile' => $stud->phoneno,
+                'name' => $stud->first_name,
+                'amount' => $lvl->price . '00',
+                'description' => 'Payment For ' . $lvl->name,
+                'callback_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+                'redirect_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic M2Y3OGRmYWQtNzk5Ny00NWUwLTg0MjgtOTI4MGJhNTM3MjE1Og==',
+            ),
+        ));
+
+        $response = json_decode(curl_exec($curl));
+
+        curl_close($curl);
+
+        return $response;
+
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Create Bill For Ultimate Plus
+    |--------------------------------------------------------------------------
+    */
+    public function ultimateplus($stud, $lvl, $invoice)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://www.billplz.com/api/v3/bills',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'collection_id' => 'udzw99sv',
+                'email' => $stud->email,
+                'mobile' => $stud->phoneno,
+                'name' => $stud->first_name,
+                'amount' => $lvl->price . '00',
+                'description' => 'Payment For ' . $lvl->name,
+                'callback_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+                'redirect_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic M2Y3OGRmYWQtNzk5Ny00NWUwLTg0MjgtOTI4MGJhNTM3MjE1Og==',
+            ),
+        ));
+
+        $response = json_decode(curl_exec($curl));
+
+        curl_close($curl);
+
+        return $response;
+
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Create Bill For Ultimate Partner
+    |--------------------------------------------------------------------------
+    */
+    public function ultimatepartner($stud, $lvl, $invoice)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://www.billplz.com/api/v3/bills',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'collection_id' => 'opstfdvl',
+                'email' => $stud->email,
+                'mobile' => $stud->phoneno,
+                'name' => $stud->first_name,
+                'amount' => $lvl->price . '00',
+                'description' => 'Payment For ' . $lvl->name,
+                'callback_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+                'redirect_url' => 'https://mims.momentuminternet.my/student/receive-payment/' . $stud->stud_id . '/' . $lvl->level_id . '/' . $invoice,
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic M2Y3OGRmYWQtNzk5Ny00NWUwLTg0MjgtOTI4MGJhNTM3MjE1Og==',
+            ),
+        ));
+
+        $response = json_decode(curl_exec($curl));
+
         curl_close($curl);
 
         return $response;

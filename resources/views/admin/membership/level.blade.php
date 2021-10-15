@@ -55,6 +55,13 @@ Membership
           <strong>{{ $message }}</strong>
       </div>
       @endif
+
+      @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Successful!</strong> {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
                 
       <!-- Show package in table ----------------------------------------------->
       @if(count($membership_level) > 0)
@@ -74,8 +81,37 @@ Membership
               <td>{{ $membership_levels->name  }}</td>
               <td class="text-center">
                 <a class="btn btn-dark" href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_levels->level_id }}"><i class="bi bi-chevron-right"></i></a>
+                <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#membership{{ $membership_levels->level_id }}"><i class="fas fa-edit"></i></a>
               </td>
             </tr>
+            <!-- Edit Membership Level -->
+            <!-- Modal -->
+            <div class="modal fade" id="membership{{ $membership_levels->level_id }}" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">{{ $membership_levels->name  }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="{{ url('membership/level/update') }}/{{ $membership_levels->level_id }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="mb-3">
+                              <label class="form-label">Price (RM)</label>
+                              <input type="text" class="form-control" name="price" placeholder="Enter Price Here" value="{{ $membership_levels->price }}" required>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-dark">Update <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
             @endforeach
             </tbody>
         </table>  

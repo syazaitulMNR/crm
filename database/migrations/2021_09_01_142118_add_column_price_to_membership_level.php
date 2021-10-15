@@ -15,6 +15,7 @@ class AddColumnPriceToMembershipLevel extends Migration
     {
         Schema::table('membership_level', function (Blueprint $table) {
             $table->string('price')->nullable();
+            $table->text('description')->nullable();
         });
     }
 

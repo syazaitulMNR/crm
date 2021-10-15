@@ -43,6 +43,7 @@ Route::get('/addpack', function () {
 Route::get('membership','MembershipController@view_membership');
 Route::post('membership/save','MembershipController@store_membership');
 Route::get('membership/level/{membership_id}','MembershipController@view_level');
+Route::post('membership/level/update/{lvl_id}', 'MembershipController@update_membership_level');
 Route::get('export-members/{membership_id}', 'MembershipController@export_members');
 Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
 Route::get('membership/search/{membership_id}/{level_id}', 'MembershipController@search_membership');
