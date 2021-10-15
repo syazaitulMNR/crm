@@ -440,12 +440,41 @@ class StudentPortal extends Controller
         $stud_detail = Student::where('stud_id', $student)->first();
         $lvl_detail = Membership_Level::where('level_id', $level)->first();
 
-        //test
-        $link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+        // Test Link
+        // $link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+        // Ultimate Plus
+        if($level == 'MBL001')
+        {
+            $ultimate_plus_link = Billplz::ultimateplus($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($ultimate_plus_link);
+
+        // Ultimate Partner
+        }elseif ($level == 'MBL002') {
+            
+            $ultimate_partner_link = Billplz::ultimatepartner($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($ultimate_partner_link);
+
+        // Platinum Pro
+        }elseif ($level == 'MBL003') {
+
+            $platinum_pro_link = Billplz::platinumpro($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($platinum_pro_link);
+    
+        // Platinum Lite
+        }elseif ($level == 'MBL004') {
+
+            $platinum_lite_link = Billplz::platinumlite($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($platinum_lite_link);
+    
+        }
         
         //real
         // $link = Billplz::create_bill($stud_detail, $lvl_detail, $invoice)->url;
-        return redirect($link);
     }
 
     public function receivePayment(Request $request, $stud, $level, $invoice){
