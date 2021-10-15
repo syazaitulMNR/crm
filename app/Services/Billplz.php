@@ -84,7 +84,7 @@ class Billplz{
     | Create Bill For Platinum Lite
     |--------------------------------------------------------------------------
     */
-    public function platinumlite($stud, $lvl, $invoice)
+    public static function platinumlite($stud, $lvl, $invoice)
     {
         $curl = curl_init();
 
@@ -125,7 +125,7 @@ class Billplz{
     | Create Bill For Platinum Pro
     |--------------------------------------------------------------------------
     */
-    public function platinumpro($stud, $lvl, $invoice)
+    public static function platinumpro($stud, $lvl, $invoice)
     {
         $curl = curl_init();
 
@@ -166,7 +166,7 @@ class Billplz{
     | Create Bill For Ultimate Plus
     |--------------------------------------------------------------------------
     */
-    public function ultimateplus($stud, $lvl, $invoice)
+    public static function ultimateplus($stud, $lvl, $invoice)
     {
         $curl = curl_init();
 
@@ -207,7 +207,7 @@ class Billplz{
     | Create Bill For Ultimate Partner
     |--------------------------------------------------------------------------
     */
-    public function ultimatepartner($stud, $lvl, $invoice)
+    public static function ultimatepartner($stud, $lvl, $invoice)
     {
         $curl = curl_init();
 
