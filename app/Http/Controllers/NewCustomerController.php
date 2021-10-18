@@ -604,7 +604,6 @@ class NewCustomerController extends Controller
         $bill = $billplz->bill();
         $response = $bill->get($payment->billplz_id);
         $pay_data = $response->toArray();
-        dd($payment->billplz_id);
 
         //update payment history status to database
         $addData = array(
