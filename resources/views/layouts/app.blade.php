@@ -38,16 +38,6 @@
     <!-- Bootstrap core CSS -->
     <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQHNHZ00GS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-JQHNHZ00GS');
-    </script>
-
     <style>
       .center {
       margin: auto;
