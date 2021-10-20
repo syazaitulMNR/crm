@@ -40,6 +40,7 @@ class InvoiceJobMail implements ShouldQueue
         $students = $this->students;
 
         $now = Carbon::now();
+        $no = 1;
 
         $current_date = $now->month.'/'.$now->year;
 
@@ -58,7 +59,8 @@ class InvoiceJobMail implements ShouldQueue
                 $for_date = $now->month.'/'.$now->year;
 
                 $newInvoice = new Invoice();
-                $newInvoice->invoice_id = 'INV'.uniqid();
+                // $newInvoice->invoice_id = 'INV'.uniqid();
+                $newInvoice->invoice_id = 'INV' . '-' . $now->year . '-' . $now->month . '-' . $no;
                 $newInvoice->price = $lvl->price;
                 $newInvoice->for_date = $for_date;
                 $newInvoice->status = 'not paid';
