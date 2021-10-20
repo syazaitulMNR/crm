@@ -68,6 +68,12 @@ class InvoiceJobMail implements ShouldQueue
                 $invoiceId = $student->invoices()->save($newInvoice);
             }
 
+            /**
+             * Proses Hantar Email
+             * 
+             * 
+             */
+
             $invoiceFirst = Invoice::where('student_id', $student->id)->where('status', 'not paid')->first();
             $invoiceLatest = Invoice::where('student_id', $student->id)->where('status', 'not paid')->get()->last();
 
@@ -96,7 +102,7 @@ class InvoiceJobMail implements ShouldQueue
                         Mail::to($email)->send(new InvoiceRemindEmail($lvl, $student, $invoiceLatest));
 
                     //hantar email terminate kalau 3 bulan tak aktif
-                    }elseif($difference_month == 3){
+                    }else if($difference_month == 3){
 
                         $student->status = 'Deactive';
 
