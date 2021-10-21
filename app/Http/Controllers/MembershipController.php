@@ -73,8 +73,16 @@ class MembershipController extends Controller
         $membership_level = Membership_Level::where('membership_id', $membership_id)->paginate(15);
 
         $total = Student::where('membership_id', $membership_id)->count();
+        $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->count();
+        $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->count();
+        $totalbreak = Student::where('status','Break')->where('membership_id', $membership_id)->count();
+        $totalstop = Student::where('status','Stop')->where('membership_id', $membership_id)->count();
+        $totalpending = Student::where('status','Pending')->where('membership_id', $membership_id)->count();
+        $totalendmembership = Student::where('status','End-Membership')->where('membership_id', $membership_id)->count();
+        $totalupgradepro = Student::where('status','Upgrade-Pro')->where('membership_id', $membership_id)->count();
+        $totalterminate = Student::where('status','Terminate')->where('membership_id', $membership_id)->count();
         
-        return view('admin.membership.level', compact('membership', 'membership_level', 'total'));
+        return view('admin.membership.level', compact('membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'totalbreak', 'totalstop', 'totalpending', 'totalendmembership', 'totalupgradepro', 'totalterminate'));
     }
 
     public function export_members($membership_id)
@@ -147,8 +155,15 @@ class MembershipController extends Controller
         $total = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalbreak = Student::where('status','Break')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalstop = Student::where('status','Stop')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalpending = Student::where('status','Pending')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalendmembership = Student::where('status','End-Membership')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalupgradepro = Student::where('status','Upgrade-Pro')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalterminate = Student::where('status','Terminate')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+
         
-        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'count'));
+        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'count', 'totalbreak', 'totalstop','totalpending','totalendmembership', 'totalupgradepro', 'totalterminate'));
     }
 
     // search buyer

@@ -30,6 +30,96 @@ Membership
     transform: rotate(-44deg);
   }
 
+  .demo{ font-family: 'Poppins', sans-serif; }
+.panel{
+    border-radius: 0;
+    border: none;
+}
+.panel .panel-heading{
+    background: #00324a;
+    padding: 20px 40px;
+    border-radius: 0;
+    margin: 0 0;
+}
+.panel .panel-heading .title{
+    color: #fff;
+    font-size: 28px;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 0;
+}
+.panel .panel-heading .title span{ font-weight: 600; }
+.panel .panel-heading .radio-inline{
+    color: #fff;
+    padding: 6px 12px 6px 30px;
+    margin: 0 -3px;
+    border-radius: 0;
+}
+.panel .panel-heading .radio-inline:first-of-type{ border-radius: 5px 0 0 5px; }
+.panel .panel-heading .radio-inline:last-of-type{ border-radius: 0 5px 5px 0; }
+.panel .panel-body .table{ margin: 0; }
+.panel .panel-body .table tr td{ border-color: #e7e7e7; }
+.panel .panel-body .table thead tr.active th{
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 12px;
+    border-top: 1px solid #e7e7e7;
+    border-bottom-color: #e7e7e7;
+}
+.panel .panel-body .table tbody tr:hover{ background-color: rgba(0,0,0,0.03); }
+.panel .panel-body .table tbody tr td{
+    color: #555;
+    font-size: 16px;
+    padding: 12px 12px;
+    vertical-align: middle;
+}
+.panel .panel-body .table tbody .btn{
+    color: #fff;
+    background: #37BC9B;
+    font-size: 13px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.panel .panel-body .table tbody .btn:hover{ background: #2e9c81; }
+.panel .panel-footer{
+    color: #999;
+    background-color: transparent;
+    padding: 15px;
+    border: none;
+    border-top: 1px solid #e7e7e7;
+}
+.panel .panel-footer .col{ line-height: 35px; }
+.pagination{ margin: 0; }
+.pagination li a{
+    color: #00324a;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 33px;
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    display: block;
+    transition: all 0.3s ease 0s;
+}
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li.active a{
+    color: #fff;
+    background-color: #00324a;
+    border-color: #00324a;
+}
+@media only screen and (max-width:767px){
+    .panel .panel-heading{ padding: 20px; }
+    .panel .panel-heading .title{
+        margin: 0 0 10px;
+        text-align: center;
+    }
+    .inline-form{ text-align: center; }
+}
   
 </style>
 
@@ -133,6 +223,59 @@ Membership
           </div>
           <h3 class="pt-3 pl-3">{{$total}}</h3>
           <h6 class="lead pb-2 pl-3">Total {{ $membership->name }}</h6>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="active">
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Active</td>
+                                    <td><span class="label label-success">{{$totalactive}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Deactive</td>
+                                    <td><span class="label label-warning">{{$totaldeactive}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Break</td>
+                                    <td><span class="label label-success">{{$totalbreak}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Stop</td>
+                                    <td><span class="label label-success">{{$totalstop}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Pending</td>
+                                    <td><span class="label label-success">{{$totalpending}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>End Membership</td>
+                                    <td><span class="label label-success">{{$totalendmembership}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Upgrade Pro</td>
+                                    <td><span class="label label-success">{{$totalupgradepro}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Terminate</td>
+                                    <td><span class="label label-success">{{$totalterminate}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
               
