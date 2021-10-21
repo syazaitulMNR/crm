@@ -577,14 +577,12 @@ class StudentPortal extends Controller
             $invoice_id = Invoice::where('student_id', $invoice_student)->get();
             $balance_due = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->sum('price');
             $invoice_amount = Invoice::where('student_id', $invoice_student)->sum('price');
-            $amount_received = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->first();
+            $amount_received = Invoice::where('student_id', $invoice_student)->where('status', 'paid')->sum('price');
             $member = Membership_level::where('level_id', $member_student)->first();
 
             // $i = 1;
-            // $baki = ($amount_received->price)-($payment_id_student->pay_price);
-            $balance = ($invoice_id->price)-($payment_id_student->pay_price);
-
-            
+            // $baki = ($invoice_amount)-($payment_id_student->pay_price);
+            $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
 
             // add
             $data['name']=$stud_detail->first_name;
@@ -609,7 +607,6 @@ class StudentPortal extends Controller
             $data['total']=$payment_id_student->totalprice;
 
             $data['balance']=$balance;
-            $data['baki']=$baki;
             // $data['i']=$i;
 
             $data['quantity']=$payment_id_student->quantity;

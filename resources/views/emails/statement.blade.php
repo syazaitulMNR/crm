@@ -213,7 +213,7 @@
                         </td>
                         
                         <td colspan="8">
-                            {{ $baki }}
+                            {{ $balance }}
                         </td>
                     </tr>
 
@@ -244,7 +244,7 @@
                         </td>
                         
                         <td colspan="8">
-                            {{ $baki }}
+                            {{ $balance }}
                         </td>
                     </tr>
 
