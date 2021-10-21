@@ -66,9 +66,14 @@ Membership
               <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
               <option value="Active">Active</option>
               <option value="Deactive">Deactive</option>
+              <option value="Break">Break</option>
+              <option value="Stop">Stop</option>
+              <option value="Pending">Pending</option>
+              <option value="End-Membership">End Membership</option>
+              <option value="Upgrade-Pro">Upgrade Pro</option>
+              <option value="Terminate">Terminate</option>
             </select>
           </div>
-
         </div>
 
         <div class="row py-2">

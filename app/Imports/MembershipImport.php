@@ -53,7 +53,7 @@ class MembershipImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'membership_id'     => $this->membership_id,
                     'level_id'          => $this->level_id,
                     'status'            => 'Active',
-                    'student_password' => Hash::make($row['ic']),
+                    'student_password' => 'password',
                 ]);
 
             }

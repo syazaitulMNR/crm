@@ -152,6 +152,9 @@ Customer Profiles
         max-height: 100px;
         overflow-y: scroll;
     }
+    .bs-example{
+    	margin: 20px;
+    }
 </style>
 
 @section('content')
@@ -191,9 +194,14 @@ Customer Profiles
         </div>
         @endif
         
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom bs-example">
             <h1 class="h2">Customer Information</h1>
-            <a href="list-invoice" class="btn btn-primary mr-3">Check Invoices</a>
+            <div class="">
+            <div class="align-right">
+            <a href="statement-format" class="btn btn-danger "><i class="fas fa-download pr-2"></i>Download Statement</a>
+            <a href="list-invoice" class="btn btn-primary "><i class="fas fa-download pr-2"></i>Check Invoices</a>
+            </div>
+            </div>
         </div>
 
         <div class="col-md-12">
@@ -415,9 +423,9 @@ Customer Profiles
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Type</th>
                                             <th scope="col">Paid Date</th>
                                             <th scope="col">Paid Price</th>
+                                            <th scope="col">Download</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -428,13 +436,13 @@ Customer Profiles
                                                     {{ $payment_data[$key]->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $type[$key]}}
-                                                </td>
-                                                <td>
                                                     {{ date('d/m/Y', strtotime($p->created_at)) }}
                                                 </td>
                                                 <td>
                                                     RM {{ $p->pay_price }}.00
+                                                </td>
+                                                <td>
+                                                    <a href="receipt" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
                                                 </td>
                                             </tr>
                                         @empty

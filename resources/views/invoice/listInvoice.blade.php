@@ -10,10 +10,10 @@
 <div class="col-md-12 px-4 py-4">   
 
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
-    <a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>List Invoices</b>
+    <a href="/student/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/student/dashboard">Dashboard</a> / <b>List Invoices</b>
   </div> 
      
-  <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+  <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom ">
       <h1 class="h2">List Invoices</h1>
   </div> 
   
@@ -63,10 +63,12 @@
                   {{$invoice->status}}
                 </td>
                 <td>
-                  {{$membership_level->price}}
+                  {{$invoice->price}}
                 </td>
                 <td class="text-center">
-                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn btn-success">Pay Now</a>
+                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn-sm btn-success">Pay Now</a>
+                  {{-- <a href="/student/invoice-download/{{ $stud_detail->stud_id }}/{{ $payment_id_student->payment_id }}" class="btn btn-danger"><i class="fas fa-download pr-2"></i>Invoice</a> --}}
+                  <a href="/student/invoice-download/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->id}}" class="btn-sm btn-danger"><i class="fas fa-download pr-2"></i>Invoice</a>
                 </td>
               </tr>
               @endforeach

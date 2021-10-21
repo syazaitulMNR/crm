@@ -8,7 +8,8 @@
 <div class="row">
     <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:150px">
-        <h2 class="display-5 text-dark px-3 pt-4">Momentum Internet Management System (MIMS)</h2>
+        <h2 class="display-5 text-dark px-3 pt-4">Momentum Internet Management System (MIMS) </h2>
+        <h2 class="display-5 text-dark px-3 pt-4">Student</h2>
     </div>
 
     <div class="col-md-4 offset-md-4">

@@ -29,8 +29,76 @@ Membership
     -ms-transform: rotate(-44deg);
     transform: rotate(-44deg);
   }
+  .demo{ font-family: 'Poppins', sans-serif; }
+  .panel{
+      border-radius: 0;
+      border: none;
+  }
+  .panel .panel-heading{
+      background: #00324a;
+      padding: 20px 40px;
+      border-radius: 0;
+      margin: 0 0;
+  }
+  .panel .panel-heading .title{
+      color: #fff;
+      font-size: 28px;
+      font-weight: 400;
+      text-transform: capitalize;
+      margin: 0;
+  }
+  .panel .panel-heading .title span{ font-weight: 600; }
+  .panel .panel-heading .radio-inline{
+      color: #fff;
+      padding: 6px 12px 6px 30px;
+      margin: 0 -3px;
+      border-radius: 0;
+  }
+  .panel .panel-heading .radio-inline:first-of-type{ border-radius: 5px 0 0 5px; }
+  .panel .panel-heading .radio-inline:last-of-type{ border-radius: 0 5px 5px 0; }
+  .panel .panel-body .table{ margin: 0; }
+  .panel .panel-body .table tr td{ border-color: #e7e7e7; }
+  .panel .panel-body .table thead tr.active th{
+      background-color: transparent;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 12px;
+      border-top: 1px solid #e7e7e7;
+      border-bottom-color: #e7e7e7;
+  }
+  .panel .panel-body .table tbody tr:hover{ background-color: rgba(0,0,0,0.03); }
+  .panel .panel-body .table tbody tr td{
+      color: #555;
+      font-size: 16px;
+      padding: 12px 12px;
+      vertical-align: middle;
+  }
+  .panel .panel-body .table tbody .btn{
+      color: #fff;
+      background: #37BC9B;
+      font-size: 13px;
+      padding: 5px 8px;
+      border: none;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+  }
+  .panel .panel-body .table tbody .btn:hover{ background: #2e9c81; }
+  .panel .panel-footer{
+      color: #999;
+      background-color: transparent;
+      padding: 15px;
+      border: none;
+      border-top: 1px solid #e7e7e7;
+  }
+  @media only screen and (max-width:767px){
+      .panel .panel-heading{ padding: 20px; }
+      .panel .panel-heading .title{
+          margin: 0 0 10px;
+          text-align: center;
+      }
+      .inline-form{ text-align: center; }
+  }
 
-  
 </style>
 
 
@@ -217,9 +285,22 @@ Membership
                 <td class="text-center">
                   @if ($students->status == 'Deactive')
                     <span class="badge rounded-pill bg-danger"> &nbsp;{{ $students->status }}&nbsp; </span>
+                  @elseif ($students->status == 'Break')
+                  <span class="badge rounded-pill bg-warning text-dark"> &nbsp;{{ $students->status }}&nbsp; </span>
+                  @elseif ($students->status == 'Stop')
+                  <span class="badge rounded-pill bg-danger"> &nbsp;{{ $students->status }}&nbsp; </span>
+                  @elseif ($students->status == 'Pending')
+                  <span class="badge rounded-pill bg-secondary"> &nbsp;{{ $students->status }}&nbsp; </span>
+                  @elseif ($students->status == 'End Membership')
+                  <span class="badge rounded-pill bg-danger"> &nbsp;End Membership&nbsp; </span>
+                  @elseif ($students->status == 'Upgrade Pro')
+                  <span class="badge rounded-pill bg-secondary"> &nbsp;Upgrade Pro&nbsp; </span>
+                  @elseif ($students->status == 'Terminate')
+                  <span class="badge rounded-pill bg-dark"> &nbsp;{{ $students->status }}&nbsp; </span>
                   @else
-                    <span class="badge rounded-pill bg-success"> &nbsp;Active&nbsp; </span>
+                    <span class="badge rounded-pill bg-success"> &nbsp;{{ $students->status }}&nbsp; </span>
                   @endif
+
                 </td>
                 <td>
                   <a class="btn btn-dark" href="{{ url('view/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $students->stud_id }}"><i class="bi bi-chevron-right"></i></a>
@@ -238,7 +319,6 @@ Membership
   </div>
     
   <div class="col-md-3">
-
       <div class="card bg-light py-4 mb-4 text-center shadow">
         <div class="card-block text-dark">
           <div class="rotate">
@@ -249,27 +329,59 @@ Membership
         </div>
       </div>
       
-      <div class="card bg-light py-4 mb-4 text-center shadow">
-        <div class="card-block text-dark">
-          <div class="rotate">
-          <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 255, 38, 0.3)"></i>
-          </div>
-          <h3 class="pt-3 pl-3">{{$totalactive}}</h3>
-          <h6 class="lead pb-2 pl-3">Active</h6>
+      <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="active">
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Active</td>
+                                    <td><span class="label label-success">{{$totalactive}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Deactive</td>
+                                    <td><span class="label label-warning">{{$totaldeactive}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Break</td>
+                                    <td><span class="label label-success">{{$totalbreak}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Stop</td>
+                                    <td><span class="label label-success">{{$totalstop}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Pending</td>
+                                    <td><span class="label label-success">{{$totalpending}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>End Membership</td>
+                                    <td><span class="label label-success">{{$totalendmembership}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Upgrade Pro</td>
+                                    <td><span class="label label-success">{{$totalupgradepro}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Terminate</td>
+                                    <td><span class="label label-success">{{$totalterminate}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
 
-      <div class="card bg-light py-4 mb-4 text-center shadow">
-        <div class="card-block text-dark">
-          <div class="rotate">
-          <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(255, 0, 0, 0.3)"></i>
-          </div>
-          <h3 class="pt-3 pl-3">{{$totaldeactive}}</h3>
-          <h6 class="lead pb-2 pl-3">Deactive</h6>
-        </div>
-      </div>
-  </div>
-        
   </div>
 </div>
 

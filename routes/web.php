@@ -391,6 +391,15 @@ Route::prefix('student')->group(function() {
 	Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
 	Route::get('/list-invoice', 'StudentPortal@listInvoice')->name('student.listInvoice');
 
+	//download invoice kat list-invoice
+	Route::get('/invoice-download/{level}/{invoice}/{student}','StudentPortal@downloadInvoice')->name('invoice-download');
+
+	//add new download statement 
+	Route::get('/statement-format','StudentPortal@exportstatement_format')->name('statement-format');
+
+	//add new resit 
+	Route::get('/receipt','StudentPortal@downloadResit')->name('receipt');
+
 	// shauqi add new routes
 	
 	Route::get('/invite-list', 'StudentPortal@showList')->name('student.invite_list');
@@ -402,6 +411,7 @@ Route::prefix('student')->group(function() {
 	Route::get('/success_payment', 'InvoiceController@success');
 	Route::get('/fail_payment', 'InvoiceController@fail');
 });
+
 
 Route::prefix('staff')->group(function() {
 	Route::get('/login','UserPortalController@showLoginForm')->name('staff.login');

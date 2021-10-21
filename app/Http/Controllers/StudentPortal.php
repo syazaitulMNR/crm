@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+use App\Exports\StatementMembership;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Student;
 use App\Product;
@@ -117,7 +120,6 @@ class StudentPortal extends Controller
 
             return redirect(route('student.dashboard'));
         
-        
         }else{
 
             $stud_id = $student_detail->stud_id;
@@ -170,6 +172,7 @@ class StudentPortal extends Controller
                     Session::put('student_login_id', $stud_id);
                     Session::put('student_detail', $student_detail);
                     Session::put("student_block", "success");
+                    // Session::put('payment_id',$payment_id);
                     Session::save();
 
                     Session::forget('student_login');
@@ -221,6 +224,10 @@ class StudentPortal extends Controller
         }else{
 
             $invoices = Invoice::where('student_id', $student_authenticated)->get();
+
+            //add download pdf
+            $stud_id = Session::get('student_login_id');
+
             $student_detail = Student::where('stud_id', $student_authenticated)->firstOrFail();
 
             $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')
@@ -307,7 +314,7 @@ class StudentPortal extends Controller
                 }
             }
     
-            return view('studentportal.dashboard', compact('student_detail', 'payment', 'data', 'total_paid', 'total_event', 'member_lvl', 'total_paid_month', 'payment_data', 'ncomment', 'type'));
+            return view('studentportal.dashboard', compact( 'stud_id','student_detail', 'payment', 'data', 'total_paid', 'total_event', 'member_lvl', 'total_paid_month', 'payment_data', 'ncomment', 'type'));
            
         }
     }
@@ -384,7 +391,7 @@ class StudentPortal extends Controller
 
         $stud_id = Session::get('student_login_id');
         $stud_detail = Session::get('student_detail');
-
+       
         if($stud_id== (null||"")){
 
             return view("studentportal.login");
@@ -427,10 +434,11 @@ class StudentPortal extends Controller
 
             //dapatkan membership detail
             $membership_level = Membership_Level::where('level_id', $membership_lvl_id)->first();
+            // dd($membership_level);
 
             $no = 1;
 
-            return view('invoice.listInvoice', compact('stud_detail', 'membership_level', 'invoices', 'no'));
+            return view('invoice.listInvoice', compact('stud_detail', 'membership_level', 'invoices', 'no','payment'));
         }
     }
 
@@ -543,6 +551,210 @@ class StudentPortal extends Controller
         $count = count($payment);
 		
 		return view('studentportal.inviteList', compact('payment', 'count'));
+    }
+
+    //add new download statement of account
+    public function exportstatement_format()
+    {
+        $stud_id = Session::get('student_login_id');
+        $stud_detail = Session::get('student_detail');
+        
+
+        if($stud_id== (null||"")){
+
+            return view("studentportal.login");
+            
+        }else{
+
+            //dapatkan membership_id student
+            $payment_student_id = $stud_detail->level_id;
+            $invoice_student = $stud_detail->id;
+            $member_student = $stud_detail->level_id;
+            $student_id = $stud_detail->student_id;
+
+            $payment_id_student = Payment::where('level_id', $payment_student_id)->first();
+            $payment_amount = Payment::where('level_id', $payment_student_id)->first();
+            $invoice_id = Invoice::where('student_id', $invoice_student)->get();
+            $balance_due = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->sum('price');
+            $invoice_amount = Invoice::where('student_id', $invoice_student)->sum('price');
+            $amount_received = Invoice::where('student_id', $invoice_student)->where('status', 'paid')->sum('price');
+            $member = Membership_level::where('level_id', $member_student)->first();
+
+            // $i = 1;
+            // $baki = ($invoice_amount)-($payment_id_student->pay_price);
+            $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+
+            // add
+            $data['name']=$stud_detail->first_name;
+            $data['secondname']=$stud_detail->last_name;
+            $data['ic']=$stud_detail->ic;
+            $data['email']=$stud_detail->email;
+            $data['phoneno']=$stud_detail->phoneno;
+            $data['studentid']=$stud_detail->stud_id;
+        
+            //invoice data
+            // $data['invoice']=$invoice_id->invoice_id;
+            $data['invoice']=Invoice::where('student_id', $invoice_student)->get();
+            $data['payment']=Payment::where('level_id', $payment_student_id)->get();
+            
+            // balance due
+            $data['balance_due'] = $balance_due;
+            
+            $data['invoice_amount'] = $invoice_amount;
+            $data['amount_received'] = $amount_received;
+
+            $data['price']=$payment_id_student->pay_price;
+            $data['total']=$payment_id_student->totalprice;
+
+            $data['balance']=$balance;
+            // $data['i']=$i;
+
+            $data['quantity']=$payment_id_student->quantity;
+            $data['upgrade_count']=$payment_id_student->upgrade_count;
+
+            $data['date_receive']=date('d-m-Y');
+            $data['due_date']=date('d-m-Y');
+            $data['bulan']=date('M Y');
+
+            $data['payment_id']=$payment_id_student;       
+            $data['student_id']=$stud_id;
+
+            $data['membership']=$member->name;
+
+            $pdf = PDF::loadView('emails.statement', $data);
+            return $pdf->download('Statement.pdf');
+            
+        }
+    }
+
+    //download invoice
+    public function downloadInvoice($level, $invoice, $student){
+
+        $stud_id = Session::get('student_login_id');
+        $stud_detail = Session::get('student_detail');
+        
+
+        if($stud_id== (null||"")){
+
+            return view("studentportal.login");
+            
+        }else{
+
+            //dapatkan membership_id student
+            $payment_student_id = $stud_detail->level_id;
+            $invoice_student = $stud_detail->id;
+            $member_student = $stud_detail->level_id;
+
+            $level_id = $level;
+            $invoice_student = $stud_detail->id;
+            $member_student = $student;
+
+            // $invoices = Invoice::where('student_id', $stud_detail->id)
+            // ->where('status', 'not paid');
+
+            $payment_id_student = Payment::where('level_id', $level_id)->first();
+            $member = Membership_level::where('level_id', $level_id)->first();
+            $invoice_id = Invoice::where('student_id', $member_student)->where('invoice_id', $invoice)->first();
+            // $inv = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->first();
+            $inv = Invoice::where('student_id', $member_student)->where('status', 'not paid')->where('invoice_id', $invoice)->first();
+
+            $no = 1;
+            
+            // $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+
+            $data['name']=$stud_detail->first_name;
+            $data['secondname']=$stud_detail->last_name;
+            $data['ic']=$stud_detail->ic;
+            $data['email']=$stud_detail->email;
+            $data['phoneno']=$stud_detail->phoneno;
+        
+            $data['invoice']=$invoice_id->invoice_id;
+            $data['no']=$invoice_id->id;
+
+            $data['price']=$payment_id_student->pay_price;
+            $data['total']=$payment_id_student->totalprice;
+
+            // $data['balance']=$balance;
+            $data['invoices']=$inv;
+            
+            $data['quantity']=$payment_id_student->quantity;
+            $data['upgrade_count']=$payment_id_student->upgrade_count;
+
+            $data['date_receive']=date('d-m-Y');
+            $data['due_date']=date('d-m-Y');
+            $data['bulan']=date('M Y');
+
+            $data['payment_id']=$payment_id_student;       
+            $data['student_id']=$stud_id;
+
+            $data['membership']=$member->name;
+
+            $pdf = PDF::loadView('emails.downloadinvoice', $data);
+            return $pdf->download('Receipt.pdf');
+            
+        }
+    }
+
+    //download invoice
+    public function downloadResit(){
+
+        $stud_id = Session::get('student_login_id');
+        $stud_detail = Session::get('student_detail');
+        
+
+        if($stud_id== (null||"")){
+
+            return view("studentportal.login");
+            
+        }else{
+
+            //dapatkan membership_id student
+            $payment_student_id = $stud_detail->level_id;
+            $invoice_student = $stud_detail->id;
+            $member_student = $stud_detail->level_id;
+
+            $payment_id_student = Payment::where('level_id', $payment_student_id)->first();
+            $invoice_id = Invoice::where('student_id', $invoice_student)->first();
+            $member = Membership_level::where('level_id', $member_student)->first();
+
+            $no = 1;
+
+            $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+
+            // add
+            $data['name']=$stud_detail->first_name;
+            $data['secondname']=$stud_detail->last_name;
+            $data['ic']=$stud_detail->ic;
+            $data['email']=$stud_detail->email;
+            $data['phoneno']=$stud_detail->phoneno;
+        
+            $data['invoice']=$invoice_id->invoice_id;
+            $data['no']=$invoice_id->id;
+
+            $data['price']=$payment_id_student->pay_price;
+            $data['total']=$payment_id_student->totalprice;
+            $data['pay_id']=$payment_id_student->payment_id;
+            $data['method']=$payment_id_student->pay_method;
+
+            $data['balance']=$balance;
+
+            $data['quantity']=$payment_id_student->quantity;
+            $data['upgrade_count']=$payment_id_student->upgrade_count;
+
+            // $data['date_receive']=$payment_id_student->created_at->date('d-m-Y');
+            $data['date_receive']=$payment_id_student->created_at;
+            $data['due_date']=date('d-m-Y');
+            $data['bulan']=date('M Y');
+
+            $data['payment_id']=$payment_id_student;       
+            $data['student_id']=$stud_id;
+
+            $data['membership']=$member->name;
+
+            $pdf = PDF::loadView('emails.resitmember', $data);
+            return $pdf->download('Receipt.pdf');
+            
+        }
     }
 
     public function paginate($items, $perPage, $page = null, $options = []){
