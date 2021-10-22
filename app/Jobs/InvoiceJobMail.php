@@ -42,7 +42,7 @@ class InvoiceJobMail implements ShouldQueue
         $now = Carbon::now();
         $no = 1;
 
-        $current_date = $now->month.'/'.$now->year;
+        // $current_date = $now->month.'/'.$now->year;
 
         foreach($students as $student){
 
@@ -74,45 +74,59 @@ class InvoiceJobMail implements ShouldQueue
              * 
              */
 
-            $invoiceFirst = Invoice::where('student_id', $student->id)->where('status', 'not paid')->first();
+            // $invoiceFirst = Invoice::where('student_id', $student->id)->where('status', 'not paid')->first();
             $invoiceLatest = Invoice::where('student_id', $student->id)->where('status', 'not paid')->get()->last();
 
             $lvl = Membership_Level::where('level_id', $student->level_id)->first();
 
-            $last_date = $invoiceFirst->for_date;
+            // $last_date = $invoiceFirst->for_date;
 
-            $months = array();
-            $years = array();
+            // $months = array();
+            // $years = array();
 
-            $current = explode("/",$current_date);
-            $last = explode("/",$last_date);
+            // $current = explode("/",$current_date);
+            // $last = explode("/",$last_date);
 
-            $difference_year = $current[1] - $last[1];
-            $difference_month = $current[0] - $last[0];
+            // $difference_year = $current[1] - $last[1];
+            // $difference_month = $current[0] - $last[0];
 
-            if(isset($student->email)){
+            // if(isset($student->email)){
                 
                 $email = $student->email;
 
-                if($difference_year == 0){
+                // if($difference_year == 0){
 
-                    //hantar email remind jika kurang 3 bulan deactive
-                    if($difference_month < 3){
+                    //hantar email lagi 3 bulan berturut
+                    // 3 = bermaksud bulan 1,bulan 2, bulan 3
+                    // if($difference_month < 3 && $student->status == 'Active'){
+                    if($student->status == 'Active' && count($invoiceCreate) < 3){
                         
                         Mail::to($email)->send(new InvoiceRemindEmail($lvl, $student, $invoiceLatest));
+                        // print('Hantar Emel Biasa');
 
-                    //hantar email terminate kalau 3 bulan tak aktif
-                    }else if($difference_month == 3){
+                    }else if($student->status == 'Stop' || $student->status == 'Break'){
 
-                        $student->status = 'Deactive';
+                        // print('Tak Hantar');
+
+                    //hantar email terminate kalau 3 bulan tak bayar atau dah terminate
+                    }else if(count($invoiceCreate) == 3 && $student->status == 'Active'){
+                    // }else if($student->status == 'Terminate'){
+
+                        // print('Hantar Terminate');
+
+                        $student->status = 'Terminate';
 
                         $student->save();
                         
                         Mail::to($email)->send(new InvoiceRemindTerminateEmail($lvl, $student));
 
+                    }else{
+
+                        print('Biasa');
+
                     }
-                }
-            }
+                // }
+            // }
             
         }
     }
