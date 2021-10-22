@@ -186,7 +186,6 @@ Membership
 
       <!-- Search box ---------------------------------------------------------->
       <form action="{{ url('membership/search') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}" method="GET" class="needs-validation" novalidate>
-        @csrf
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
             <div class="input-group-append">
