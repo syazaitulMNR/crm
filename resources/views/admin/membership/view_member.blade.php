@@ -65,12 +65,12 @@ Membership
             <select class="form-select form-control" name="status">
               <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
               <option value="Active">Active</option>
-              <option value="Deactive">Deactive</option>
+              <option value="Downgrade">Downgrade</option>
               <option value="Break">Break</option>
               <option value="Stop">Stop</option>
               <option value="Pending">Pending</option>
               <option value="End-Membership">End Membership</option>
-              <option value="Upgrade-Pro">Upgrade Pro</option>
+              <option value="Upgrade">Upgrade</option>
               <option value="Terminate">Terminate</option>
             </select>
           </div>

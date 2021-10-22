@@ -278,7 +278,21 @@ Customer Profiles
                 <div class="col-md-6 pt-3">
                     <div class="card">
                         <div class="card-header">
-                            <strong>Personal Details</strong>
+                            <strong>
+                                Personal Details 
+                                @if ($student_detail->status == 'Terminate')
+                                    <span class="badge bg-dark">{{ $student_detail->status }}</span>
+                                @endif
+                                @if ($student_detail->status == 'Active')
+                                    <span class="badge bg-success">{{ $student_detail->status }}</span>
+                                @endif
+                                @if ($student_detail->status == 'Pending')
+                                    <span class="badge bg-warning">{{ $student_detail->status }}</span>
+                                @endif
+                                @if ($student_detail->status == 'Stop' || $student_detail->status == 'Break')
+                                    <span class="badge bg-danger">{{ $student_detail->status }}</span>
+                                @endif
+                            </strong>
                         </div>
             
                         <div class="card-body">
