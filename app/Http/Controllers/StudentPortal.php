@@ -33,16 +33,15 @@ use Illuminate\Pagination\Factory;
 
 class StudentPortal extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Lepas login akan ke dashboard
     public function index()
     {
         if(Session::get('student_login_id')){
+
 			return redirect("studentportal.dashboard");
+
 		}else{
+
 			return view("studentportal.login");
 		}
     }
@@ -52,23 +51,23 @@ class StudentPortal extends Controller
         $student_authenticated = session('student_login_id');
 
         if($student_authenticated == (null||"")){
+
             return redirect(route("student.login"));
+
         }else{
+
             return redirect(route("student.dashboard"));
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // login form
     public function loginForm(Request $requet)
     {
         return view("studentportal.login");
     }
 
-    public function registerForm(Request $request) 
+
+    public function registerForm() 
     {
         $student_id = Session::get("student_login_id");
         return view("studentportal.bussiness-form", compact('student_id'));
@@ -85,17 +84,24 @@ class StudentPortal extends Controller
                 'monthly_income' => $request->income
             ]);
 
-            if($bussInsert) {
+            if($bussInsert) 
+            {
+
                 return redirect()->route('student.regForm')->with('success','Success.');
-            }else {
+
+            }else{
+
                 return redirect()->route('student.regForm')->with('error','Problem on inserting data.');
+
             }
 
-        }else {
+        }else{
+
             return redirect()->route('student.regForm')->with('error','Problem on inserting data.');
         }
     }
 
+    // authenticated login request
     public function login(Request $request)
     {
         $validatedData = $request->validate([
@@ -319,11 +325,22 @@ class StudentPortal extends Controller
         }
     }
 
+    // form check current password
     public function showCheckPassword()
-    {
-        return view("studentportal.checkCurrentPassword");
+    {   
+        if (Session::get('student_login_id')) {
+
+            return view("studentportal.checkCurrentPassword");
+
+        } else {
+
+            return redirect("student/login");
+
+        }
+
     }
 
+    // Request reset password
     public function checkCurrentPassword(Request $request)
     {
 
@@ -350,11 +367,22 @@ class StudentPortal extends Controller
         }
     }
 
+    // display form reset password
     public function showResetPassword()
     {
-        return view("studentportal.formResetPassword");
+        if (Session::get('student_login_id')) {
+
+            return view("studentportal.formResetPassword");
+
+        } else {
+
+            return redirect("student/login");
+
+        }
+
     }
 
+    // request reset password
     public function resetPassword(Request $request)
     {
         $stud_id = Session::get('student_login_id');
@@ -366,13 +394,15 @@ class StudentPortal extends Controller
             'confirm_password' => 'required',
         ]);
 
-        if (Hash::check($validatedData['new_password'], $student_detail->student_password)) {
+        if (Hash::check($validatedData['new_password'], $student_detail->student_password)) 
+        {
             
             Session::put("same_password", "fail");
 
             return redirect('/student/form-reset-password');
 
         }else{
+
             $student_detail->student_password = Hash::make($validatedData['new_password']);
             $student_detail->save();
 
@@ -387,6 +417,47 @@ class StudentPortal extends Controller
         
     }
 
+    // reset password at login
+    public function resetPasswordForm()
+    {
+        return view('studentportal.resetpassword');
+    }
+
+    // request reset new password
+    public function resetnewpassword(Request $request)
+    {
+        $student_detail = Student::where('email', $request->email)->first();
+
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required',
+        ]);
+
+        if (Hash::check($validatedData['new_password'], $student_detail->student_password)) {
+
+            // Session::put("same_password", "fail");
+
+            return redirect('/student/login/reset-password')->with('error', 'Password cannot same with old password');
+
+        } else {
+
+            $student_detail->student_password = Hash::make($validatedData['new_password']);
+            $student_detail->save();
+
+            // Session::forget('same_password');
+            // Session::save();
+            // Session::forget('success_check');
+            // Session::save();
+            // Session::put("successful_reset", "success");
+
+            return redirect('/student/login/reset-password')->with('success', 'Password successfully updated');
+
+        }
+
+    }
+
+    // List not paid invoices
     public function listInvoice(){
 
         $stud_id = Session::get('student_login_id');
