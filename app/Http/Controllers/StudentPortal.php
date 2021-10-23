@@ -525,30 +525,49 @@ class StudentPortal extends Controller
         // Ultimate Plus
         if($level == 'MBL001')
         {
-            $ultimate_plus_link = Billplz::ultimateplus($stud_detail, $lvl_detail, $invoice)->url;
+            // $ultimate_plus_link = Billplz::ultimateplus($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($ultimate_plus_link);
+            // return redirect($ultimate_plus_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
 
         // Ultimate Partner
         }elseif ($level == 'MBL002') {
             
-            $ultimate_partner_link = Billplz::ultimatepartner($stud_detail, $lvl_detail, $invoice)->url;
+            // $ultimate_partner_link = Billplz::ultimatepartner($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($ultimate_partner_link);
+            // return redirect($ultimate_partner_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
+            
 
         // Platinum Pro
         }elseif ($level == 'MBL003') {
 
-            $platinum_pro_link = Billplz::platinumpro($stud_detail, $lvl_detail, $invoice)->url;
+            // $platinum_pro_link = Billplz::platinumpro($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($platinum_pro_link);
+            // return redirect($platinum_pro_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
+
     
         // Platinum Lite
         }elseif ($level == 'MBL004') {
 
-            $platinum_lite_link = Billplz::platinumlite($stud_detail, $lvl_detail, $invoice)->url;
+            // $platinum_lite_link = Billplz::platinumlite($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($platinum_lite_link);
+            // return redirect($platinum_lite_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
+
     
         }
         
@@ -733,32 +752,32 @@ class StudentPortal extends Controller
             
             // $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
 
-            $data['name']=$stud_detail->first_name;
-            $data['secondname']=$stud_detail->last_name;
-            $data['ic']=$stud_detail->ic;
-            $data['email']=$stud_detail->email;
-            $data['phoneno']=$stud_detail->phoneno;
+            $data['name'] = $stud_detail->first_name;
+            $data['secondname'] = $stud_detail->last_name;
+            $data['ic'] = $stud_detail->ic;
+            $data['email'] = $stud_detail->email;
+            $data['phoneno'] = $stud_detail->phoneno;
         
-            $data['invoice']=$invoice_id->invoice_id;
-            $data['no']=$invoice_id->id;
+            $data['invoice'] = $invoice_id->invoice_id;
+            $data['no'] = $invoice_id->id;
 
-            $data['price']=$payment_id_student->pay_price;
-            $data['total']=$payment_id_student->totalprice;
+            $data['price'] = $payment_id_student->pay_price;
+            $data['total'] = $payment_id_student->totalprice;
 
             // $data['balance']=$balance;
-            $data['invoices']=$inv;
+            $data['invoices'] = $inv;
             
-            $data['quantity']=$payment_id_student->quantity;
-            $data['upgrade_count']=$payment_id_student->upgrade_count;
+            $data['quantity'] = $payment_id_student->quantity;
+            $data['upgrade_count'] = $payment_id_student->upgrade_count;
 
-            $data['date_receive']=date('d-m-Y');
-            $data['due_date']=date('d-m-Y');
-            $data['bulan']=date('M Y');
+            $data['date_receive'] = date('d-m-Y');
+            $data['due_date'] = date('d-m-Y');
+            $data['bulan'] = date('M Y');
 
-            $data['payment_id']=$payment_id_student;       
-            $data['student_id']=$stud_id;
+            $data['payment_id'] = $payment_id_student;       
+            $data['student_id'] = $stud_id;
 
-            $data['membership']=$member->name;
+            $data['membership'] = $member->name;
 
             $pdf = PDF::loadView('emails.downloadinvoice', $data);
             return $pdf->download('Receipt.pdf');
