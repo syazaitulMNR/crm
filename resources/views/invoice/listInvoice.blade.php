@@ -54,21 +54,20 @@
                   {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
                 </td>
                 <td>
-                  {{$membership_level->name}}
+                  {{ $membership_level->name }}
                 </td>
                 <td>
-                  {{$invoice->for_date}}
+                  {{ $invoice->for_date }}
                 </td>
                 <td>
-                  {{$invoice->status}}
+                  {{ $invoice->status }}
                 </td>
                 <td>
-                  {{$invoice->price}}
+                  <b>RM {{ number_format($invoice->price) }}</b>
                 </td>
                 <td class="text-center">
-                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn-sm btn-success">Pay Now</a>
-                  {{-- <a href="/student/invoice-download/{{ $stud_detail->stud_id }}/{{ $payment_id_student->payment_id }}" class="btn btn-danger"><i class="fas fa-download pr-2"></i>Invoice</a> --}}
-                  <a href="/student/invoice-download/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->id}}" class="btn-sm btn-danger"><i class="fas fa-download pr-2"></i>Invoice</a>
+                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn-sm btn-success text-decoration-none">Pay Now</a>
+                  {{-- <a href="/student/invoice-download/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->id}}" class="btn-sm btn-danger text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a> --}}
                 </td>
               </tr>
               @endforeach
