@@ -61,7 +61,10 @@ class MembershipController extends Controller
     {
         $membership_level = Membership_Level::where('level_id', $lvl_id)->first();
 
+        $membership_level->description = $request->description;
         $membership_level->price = $request->price;
+        $membership_level->tax = $request->tax;
+        
         $membership_level->save();
 
         return redirect()->back()->with('success', 'Price Updated');
