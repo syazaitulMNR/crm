@@ -22,33 +22,34 @@
         
       <!-- Search box ---------------------------------------------------------->
       <form action="{{ route('student.searchInvoice') }}" class="input-group" method="GET">
-            @csrf
+          @if(isset($query))
 
-            @if(isset($query))
             <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search date">
-            @else
+
+          @else
             <input type="text" class="form-control" name="search" value="" placeholder="Search date">
-            @endif
-        </form>
+
+          @endif
+      </form>
       
       <div class="float-right pt-3"></div>
       <br>
-      
-        <!-- View event details in table ----------------------------------------->
-        <div class="table-responsive">
-          <table class="table table-hover" id="myTable">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Membership</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Price</th>
-                <th class="text-center"><i class="fas fa-cogs"></i></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($invoices as $key => $invoice)
+    
+      <!-- View event details in table ----------------------------------------->
+      <div class="table-responsive">
+        <table class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Membership</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Price</th>
+              <th class="text-center"><i class="fas fa-cogs"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($invoices as $key => $invoice)
               <tr>
                 <td>
                   {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
@@ -60,27 +61,30 @@
                   {{ $invoice->for_date }}
                 </td>
                 <td>
-                  {{ $invoice->status }}
+                  @if ($invoice->status == 'not paid')
+                      <span class="badge bg-danger">Unpaid</span>
+                  @endif
+
+                  @if ($invoice->status == 'paid')
+                      <span class="badge bg-success">Paid</span>
+                  @endif
                 </td>
                 <td>
                   <b>RM {{ number_format($invoice->price) }}</b>
                 </td>
                 <td class="text-center">
-                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn-sm btn-success text-decoration-none">Pay Now</a>
-                  {{-- <a href="/student/invoice-download/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->id}}" class="btn-sm btn-danger text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a> --}}
+                  <a href="/student/list-bill/{{$membership_level->level_id}}/{{$invoice->invoice_id}}/{{$stud_detail->stud_id}}" class="btn-sm btn-success text-decoration-none">Pay Now <i class="fas fa-arrow-right"></i></a>
                 </td>
               </tr>
-              @endforeach
-            </tbody>
-          </table>   
+            @endforeach
+          </tbody>
+        </table>   
           @if(isset($query))
               {{ $invoices->appends(['search' => $query])->links() }} 
           @else
               {{ $invoices->links() }} 
           @endif
-        </div>  
-      
-
+      </div>  
     </div>
   </div>
 </div>
