@@ -213,7 +213,7 @@ Customer Profiles
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Total Paid (Monthly)</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM {{ $total_paid_month }}.00</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM {{ number_format($total_paid_month) }}.00</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-money-bill fa-2x text-gray-300"></i>
@@ -230,7 +230,7 @@ Customer Profiles
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                         Total Paid (Overall)</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM {{ $total_paid }}.00</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM {{ number_format($total_paid) }}.00</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>

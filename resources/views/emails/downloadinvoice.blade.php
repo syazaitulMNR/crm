@@ -146,64 +146,61 @@
 
                             <td></td>
                             
-                                <td>
-                                    <strong>Invoice :</strong> {{$invoice}}<br>
-                                    <strong>Invoice Date :</strong> {{ $date_receive }}<br>
-                                    <strong>Due Date :</strong> {{ $due_date }}
-                                </td>
+                            <td>
+                                <strong>Invoice :</strong> {{$invoice}}<br>
+                                <strong>Invoice Date :</strong> {{ $date_receive }}<br>
+                                <strong>Due Date :</strong> {{ $due_date }}
+                            </td>
                         </tr>
                         <p class="center">Invoices</p>
                     </table>
                 </td>
             </tr>
             
-            
-            
             <tr class="heading">
-                    <td>
-                        No
-                    </td>
-                    
-                    <td>
-                        Item & Description
-                    </td>
-                    
-                    <td>
-                        Qty
-                    </td>
+                <td>
+                    No
+                </td>
+                
+                <td>
+                    Item & Description
+                </td>
+                
+                <td>
+                    Qty
+                </td>
 
-                    <td>
-                        Rate
-                    </td>
-                    
-                    <td colspan="8">
-                        Amount
-                    </td>
+                <td>
+                    Rate
+                </td>
+                
+                <td colspan="8">
+                    Amount
+                </td>
             </tr>
-                <tr class="item">
+            <tr class="item">
+                <td>
+                    {{ $no }}
+                </td>
+                
+                <td>
+                    MBM - {{ $membership }}<br>
+                    <em>Monthly Consultation Fees - {{ $bulan }}</em>
+                </td>
+                
+                <td>
+                    {{ $quantity }}
+                </td>
 
-                    <td>
-                        {{ $no }}
-                    </td>
-                    
-                    <td>
-                        MBM - {{ $membership }}<br>
-                        <em>Monthly Consultation Fees - {{ $bulan }}</em>
-                    </td>
-                    
-                    <td>
-                        {{ $quantity }}
-                    </td>
-
-                    <td>
-                        {{ $invoices->price }}
-                    </td>
-                    
-                    <td colspan="8">
-                        {{ $invoices->price }}
-                    </td>
-                </tr>
-                <tr class="information">
+                <td>
+                    {{ $invoices->price }}
+                </td>
+                
+                <td colspan="8">
+                    {{ $invoices->price }}
+                </td>
+            </tr>
+            <tr class="information">
                 <td colspan="8">
                     <table>
                         <tr>

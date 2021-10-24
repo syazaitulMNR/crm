@@ -63,8 +63,10 @@ class Billplz{
                 'name' => $stud->first_name,
                 'amount' => $lvl->price.'00',
                 'description' => 'Payment for '.$lvl->name,
-                'callback_url' => 'https://mims.momentuminternet.my/student/receive-payment/'.$stud->stud_id.'/'.$lvl->level_id.'/'.$invoice,
-                'redirect_url' => 'https://mims.momentuminternet.my/student/receive-payment/'.$stud->stud_id.'/'.$lvl->level_id.'/'.$invoice
+                // 'callback_url' => 'https://mims.momentuminternet.my/student/receive-payment/'.$stud->stud_id.'/'.$lvl->level_id.'/'.$invoice,
+                // 'redirect_url' => 'https://mims.momentuminternet.my/student/receive-payment/'.$stud->stud_id.'/'.$lvl->level_id.'/'.$invoice
+                'callback_url' => 'http://127.0.0.1:8000/student/receive-payment/'.$stud->stud_id.'/'.$lvl->level_id.'/'.$invoice,
+                'redirect_url' => 'http://127.0.0.1:8000/student/receive-payment/'.$stud->stud_id.'/'.$lvl->level_id.'/'.$invoice
             ),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Basic MzJjNzBmZGUtNWVlYS00OWU2LTllMjAtMzc1NmY1NzEyNTZmOg=='
