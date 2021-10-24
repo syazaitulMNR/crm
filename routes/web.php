@@ -379,7 +379,9 @@ Route::put("/smsblast/edit/{id}", 'SmsBulk@update');
 Route::get("/smsblast/delete/{id}", 'SmsBulk@del');
 Route::delete("/smsblast/delete/{id}", 'SmsBulk@remove');
 
-Route::prefix('student')->group(function() {
+Route::prefix('student')->group(function() 
+{
+
 	Route::get('/','StudentPortal@redirectLogin');
 	Route::get('/login','StudentPortal@loginForm')->name('student.login');
 	Route::post('/login', 'StudentPortal@login')->name('student.login.submit');
@@ -421,6 +423,12 @@ Route::prefix('student')->group(function() {
 	Route::get('/receive-payment/{stud}/{level}/{invoice}', 'StudentPortal@receivepayment')->name('student.receivePayment');
 	Route::get('/success_payment', 'InvoiceController@success');
 	Route::get('/fail_payment', 'InvoiceController@fail');
+
+	// Invoices & Receipt
+	Route::get('invoices-receipt', 'StudentPortal@invoicesAndreceipt')->name('invoices.receipt');
+	Route::get('invoices-receipt/inv', 'StudentPortal@invoices')->name('invoices-receipt.invoices');
+	Route::get('invoices-receipt/receipt', 'StudentPortal@receipt')->name('invoices-receipt.receipt');
+	
 });
 
 
