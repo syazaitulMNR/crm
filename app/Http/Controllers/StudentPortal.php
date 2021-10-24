@@ -42,7 +42,7 @@ class StudentPortal extends Controller
 
 		}else{
 
-			return view("studentportal.login");
+			return redirect('/student/login');
 		}
     }
 
@@ -52,7 +52,7 @@ class StudentPortal extends Controller
 
         if($student_authenticated == (null||"")){
 
-            return redirect(route("student.login"));
+            return redirect('/student/login');
 
         }else{
 
@@ -192,7 +192,7 @@ class StudentPortal extends Controller
 
                 Session::put("student_login", "fail");
 
-                return view("studentportal.login");
+                return redirect('/student/login');
             }
         }
         
@@ -225,27 +225,26 @@ class StudentPortal extends Controller
 
         if($student_authenticated == (null||"")){
 
-            return view("studentportal.login");
+            return redirect('/student/login');
 
         }else{
 
             $invoices = Invoice::where('student_id', $student_authenticated)->get();
 
-            //add download pdf
             $stud_id = Session::get('student_login_id');
 
             $student_detail = Student::where('stud_id', $student_authenticated)->firstOrFail();
-
-            $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')
-            ->orderBy('created_at', 'DESC')
-            ->get();
     
             $member_lvl = Membership_Level::where('level_id', $student_detail->level_id)->first()->name;
     
+            /*
+            |--------------------------------------------------------------------------
+            | Comment Section
+            |--------------------------------------------------------------------------
+            */
+
             $comment = Comment::where('stud_id', $student_authenticated)->get();
-            
             $ncomment = [];
-    
             if(count($comment) != 0) {
                 foreach($comment as $c) {
                     $name = User::where('user_id', $c->add_user);
@@ -261,22 +260,28 @@ class StudentPortal extends Controller
                 }
             }
     
-            $paymentMonth = Payment::where('stud_id', $student_authenticated)
-            ->whereYear('created_at', Carbon::now()->year)
-            ->whereMonth('created_at', Carbon::now()->month)
-            ->where('status', 'paid')
-            ->get();
-    
+            /*
+            |--------------------------------------------------------------------------
+            | Monthly payment
+            |--------------------------------------------------------------------------
+            */
+
+            $paymentMonth = Payment::where('stud_id', $student_authenticated)->whereYear('created_at', Carbon::now()->year)->whereMonth('created_at', Carbon::now()->month)->where('status', 'paid')->get();
             $total_paid_month = 0;
-            
             if(count($paymentMonth) != 0) {
                 foreach($paymentMonth as $pm) {
                     $total_paid_month += (int)$pm->pay_price;
                 }
             }
-    
+            
+            /*
+            |--------------------------------------------------------------------------
+            | Overall payment
+            |--------------------------------------------------------------------------
+            */
+
+            $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')->orderBy('created_at', 'DESC')->get();
             $total_paid = 0;
-    
             if(count($payment) != 0) {
                 foreach($payment as $p) {
                     $total_paid += (int)$p->pay_price;
@@ -307,10 +312,19 @@ class StudentPortal extends Controller
                 }
             }
             
+            /*
+            |--------------------------------------------------------------------------
+            | Display timeline
+            | Display total ticket
+            |--------------------------------------------------------------------------
+            */
             $ticket = Ticket::where('ic', $student_detail['ic'])->get();
+
+            // Total Event
             $total_event = count($ticket);
             $data = [];
             
+            // Timeline
             foreach($ticket as $t) {
                 $product = Product::where('product_id', $t->product_id);
     
@@ -458,14 +472,15 @@ class StudentPortal extends Controller
     }
 
     // List not paid invoices
-    public function listInvoice(){
+    public function listInvoice()
+    {
 
         $stud_id = Session::get('student_login_id');
         $stud_detail = Session::get('student_detail');
        
         if($stud_id== (null||"")){
 
-            return view("studentportal.login");
+            return redirect('/student/login');
             
         }else{
 
@@ -483,7 +498,8 @@ class StudentPortal extends Controller
         }
     }
 
-    public function searchInvoice(Request $request){
+    public function searchInvoice(Request $request)
+    {
 
         $query = $request->search;
 
@@ -492,7 +508,8 @@ class StudentPortal extends Controller
 
         if($stud_id== (null||"")){
 
-            return view("studentportal.login");
+            return redirect('/student/login');
+
         }else{
 
             $invoices = Invoice::where('student_id', $stud_detail->id)
@@ -652,7 +669,7 @@ class StudentPortal extends Controller
 
         if($stud_id== (null||"")){
 
-            return view("studentportal.login");
+            return redirect('/student/login');
             
         }else{
 
@@ -726,7 +743,7 @@ class StudentPortal extends Controller
 
         if($stud_id== (null||"")){
 
-            return view("studentportal.login");
+            return redirect('/student/login');
             
         }else{
 
@@ -794,7 +811,7 @@ class StudentPortal extends Controller
 
         if($stud_id== (null||"")){
 
-            return view("studentportal.login");
+            return redirect('/student/login');
             
         }else{
 
@@ -847,7 +864,91 @@ class StudentPortal extends Controller
         }
     }
 
-    public function paginate($items, $perPage, $page = null, $options = []){
+    // Dashboard Invoices & Receipt
+    public function invoicesAndreceipt()
+    {   
+        $stud_id = Session::get('student_login_id');
+        
+
+        if($stud_id== (null||"")){
+
+            return redirect('/student/login');
+
+        }else{
+
+            return view('studentportal.invoicesandreceipt');
+
+        }
+    }
+
+    public function invoices()
+    {
+        $stud_id = Session::get('student_login_id');
+        $stud_detail = Session::get('student_detail');
+
+        if ($stud_id == (null || "")) {
+
+            return redirect('/student/login');
+
+        } else {
+
+            // keluarkan senarai invois
+            $invoices = Invoice::where('student_id', $stud_detail->id)->paginate(10);
+
+            //dapatkan membership_id student
+            $membership_lvl_id = $stud_detail->level_id;
+
+            //dapatkan membership detail
+            $membership_level = Membership_Level::where('level_id', $membership_lvl_id)->first();
+
+            $no = 1;
+
+            return view('studentportal.invoicesreceipt.invoices', compact('stud_detail', 'membership_level', 'invoices', 'no'));
+        }
+    }
+
+    public function receipt()
+    {
+        $student_authenticated = session('student_login_id');
+
+        if($student_authenticated == (null||"")){
+
+            return redirect('/student/login');
+
+        }else{
+            $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')->orderBy('created_at', 'DESC')->get();
+
+            $payment_data = [];
+            $type = [];
+
+            foreach ($payment as $pt) {
+                if ($pt->product_id != (null || '')) {
+                    $product1 = Product::where('product_id', $pt->product_id);
+
+                    if ($product1->count() > 0) {
+                        $product1 = $product1->first();
+                        $payment_data[] = $product1;
+                        $type[] = 'Event';
+                    }
+
+                } elseif ($pt->level_id != (null || '')) {
+                    $level1 = Membership_Level::where('level_id', $pt->level_id);
+
+                    if ($level1->count() > 0) {
+                        $level1 = $level1->first();
+                        $payment_data[] = $level1;
+                        $type[] = 'Membership';
+                    }
+                }
+            }
+
+            return view('studentportal.invoicesreceipt.receipt', compact('payment','payment_data','type'));
+        }
+    }
+
+    // Others function
+    public function paginate($items, $perPage, $page = null, $options = [])
+    {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
         

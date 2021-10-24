@@ -21,6 +21,10 @@
                 <li class="nav-item ">
                     <a class="nav-link active" aria-current="page" href="{{ route('student.invite_list') }}">Customer Invite</a>
                 </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link active" aria-current="page" href="{{ route('invoices.receipt') }}">Invoices & Receipt</a>
+                </li>
 				
             </ul>
 
