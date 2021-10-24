@@ -42,8 +42,10 @@ Route::get('/addpack', function () {
 */
 Route::get('membership','MembershipController@view_membership');
 Route::post('membership/save','MembershipController@store_membership');
+
 Route::get('membership/level/{membership_id}','MembershipController@view_level');
 Route::post('membership/level/update/{lvl_id}', 'MembershipController@update_membership_level');
+
 Route::get('export-members/{membership_id}', 'MembershipController@export_members');
 Route::get('membership/level/{membership_id}/{level_id}','MembershipController@view');
 Route::get('membership/search/{membership_id}/{level_id}', 'MembershipController@search_membership');
@@ -382,13 +384,22 @@ Route::prefix('student')->group(function() {
 	Route::get('/login','StudentPortal@loginForm')->name('student.login');
 	Route::post('/login', 'StudentPortal@login')->name('student.login.submit');
 	Route::get('/logout', 'StudentPortal@logout')->name('student.logout');
+
+	// Reset at login
+	Route::get('/login/reset-password', 'StudentPortal@resetPasswordForm')->name('login.reset-password');
+	Route::post('/login/reset-password', 'StudentPortal@resetnewpassword')->name('login.reset-password.submit');
+
+	// Check current password - Dashboard
 	Route::get('/form-current-password', 'StudentPortal@showCheckPassword')->name('form_check_password');
 	Route::post('/check-current-password', 'StudentPortal@checkCurrentPassword')->name('check-current-password');
+
+	// Reset new password - Dashboard
 	Route::get('/form-reset-password', 'StudentPortal@showResetPassword')->name('form_reset_password');
 	Route::post('/reset-password', 'StudentPortal@resetPassword')->name('reset-password');
+
 	Route::get('/dashboard', 'StudentPortal@show')->name('student.dashboard');
-	Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
-	Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
+	// Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
+	// Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
 	Route::get('/list-invoice', 'StudentPortal@listInvoice')->name('student.listInvoice');
 
 	//download invoice kat list-invoice

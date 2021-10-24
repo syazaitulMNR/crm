@@ -189,9 +189,22 @@ Membership
                       <div class="row">
                         <div class="col-md-12">
                           <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" name="description" required>{{ $membership_levels->description }}</textarea>
+                          </div>
+                          <div class="mb-3">
                               <label class="form-label">Price (RM)</label>
                               <input type="text" class="form-control" name="price" placeholder="Enter Price Here" value="{{ $membership_levels->price }}" required>
-                            </div>
+                          </div>
+                          <div class="mb-3">
+                              <label class="form-label">Tax (%)</label>
+                              <input type="text" class="form-control" name="tax" placeholder="Enter Tax Here" value="{{ $membership_levels->tax }}" required>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                          <p><b>Total Price : </b>RM {{ number_format($membership_levels->price) }}</p>
+                          <p><b>Tax (%) : </b>RM {{ number_format($membership_levels->price - $membership_levels->price / $membership_levels->tax, 2) }}</p>
+                          <p><b>Total Taxable Amount : </b>RM {{ number_format($membership_levels->price / $membership_levels->tax, 2) }}</p>
                         </div>
                       </div>
                     </div>

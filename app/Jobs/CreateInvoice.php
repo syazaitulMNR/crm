@@ -53,7 +53,7 @@ class CreateInvoice implements ShouldQueue
                 $for_date = $now->month.'/'.$now->year;
 
                 $invoice = new Invoice();
-                $invoice->invoice_id = 'INV'.'-'.$now->year.'-'.$now->month.'-'.$no;
+                $invoice->invoice_id = 'INV'. '-' . $now->year . '-' . $now->month . '-'. $no;
                 $invoice->price = $lvl->price;
                 $invoice->for_date = $for_date;
                 $invoice->status = 'not paid';

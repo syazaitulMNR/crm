@@ -1,7 +1,7 @@
 @extends('studentportal.app')
 
 @section('title')
-    Login
+    Check Current Password
 @endsection
 
 @section('content')

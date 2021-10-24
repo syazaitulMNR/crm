@@ -33,16 +33,15 @@ use Illuminate\Pagination\Factory;
 
 class StudentPortal extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Lepas login akan ke dashboard
     public function index()
     {
         if(Session::get('student_login_id')){
+
 			return redirect("studentportal.dashboard");
+
 		}else{
+
 			return view("studentportal.login");
 		}
     }
@@ -52,23 +51,23 @@ class StudentPortal extends Controller
         $student_authenticated = session('student_login_id');
 
         if($student_authenticated == (null||"")){
+
             return redirect(route("student.login"));
+
         }else{
+
             return redirect(route("student.dashboard"));
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // login form
     public function loginForm(Request $requet)
     {
         return view("studentportal.login");
     }
 
-    public function registerForm(Request $request) 
+
+    public function registerForm() 
     {
         $student_id = Session::get("student_login_id");
         return view("studentportal.bussiness-form", compact('student_id'));
@@ -85,17 +84,24 @@ class StudentPortal extends Controller
                 'monthly_income' => $request->income
             ]);
 
-            if($bussInsert) {
+            if($bussInsert) 
+            {
+
                 return redirect()->route('student.regForm')->with('success','Success.');
-            }else {
+
+            }else{
+
                 return redirect()->route('student.regForm')->with('error','Problem on inserting data.');
+
             }
 
-        }else {
+        }else{
+
             return redirect()->route('student.regForm')->with('error','Problem on inserting data.');
         }
     }
 
+    // authenticated login request
     public function login(Request $request)
     {
         $validatedData = $request->validate([
@@ -319,11 +325,22 @@ class StudentPortal extends Controller
         }
     }
 
+    // form check current password
     public function showCheckPassword()
-    {
-        return view("studentportal.checkCurrentPassword");
+    {   
+        if (Session::get('student_login_id')) {
+
+            return view("studentportal.checkCurrentPassword");
+
+        } else {
+
+            return redirect("student/login");
+
+        }
+
     }
 
+    // Request reset password
     public function checkCurrentPassword(Request $request)
     {
 
@@ -350,11 +367,22 @@ class StudentPortal extends Controller
         }
     }
 
+    // display form reset password
     public function showResetPassword()
     {
-        return view("studentportal.formResetPassword");
+        if (Session::get('student_login_id')) {
+
+            return view("studentportal.formResetPassword");
+
+        } else {
+
+            return redirect("student/login");
+
+        }
+
     }
 
+    // request reset password
     public function resetPassword(Request $request)
     {
         $stud_id = Session::get('student_login_id');
@@ -366,13 +394,15 @@ class StudentPortal extends Controller
             'confirm_password' => 'required',
         ]);
 
-        if (Hash::check($validatedData['new_password'], $student_detail->student_password)) {
+        if (Hash::check($validatedData['new_password'], $student_detail->student_password)) 
+        {
             
             Session::put("same_password", "fail");
 
             return redirect('/student/form-reset-password');
 
         }else{
+
             $student_detail->student_password = Hash::make($validatedData['new_password']);
             $student_detail->save();
 
@@ -387,6 +417,47 @@ class StudentPortal extends Controller
         
     }
 
+    // reset password at login
+    public function resetPasswordForm()
+    {
+        return view('studentportal.resetpassword');
+    }
+
+    // request reset new password
+    public function resetnewpassword(Request $request)
+    {
+        $student_detail = Student::where('email', $request->email)->first();
+
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required',
+        ]);
+
+        if (Hash::check($validatedData['new_password'], $student_detail->student_password)) {
+
+            // Session::put("same_password", "fail");
+
+            return redirect('/student/login/reset-password')->with('error', 'Password cannot same with old password');
+
+        } else {
+
+            $student_detail->student_password = Hash::make($validatedData['new_password']);
+            $student_detail->save();
+
+            // Session::forget('same_password');
+            // Session::save();
+            // Session::forget('success_check');
+            // Session::save();
+            // Session::put("successful_reset", "success");
+
+            return redirect('/student/login/reset-password')->with('success', 'Password successfully updated');
+
+        }
+
+    }
+
+    // List not paid invoices
     public function listInvoice(){
 
         $stud_id = Session::get('student_login_id');
@@ -454,30 +525,49 @@ class StudentPortal extends Controller
         // Ultimate Plus
         if($level == 'MBL001')
         {
-            $ultimate_plus_link = Billplz::ultimateplus($stud_detail, $lvl_detail, $invoice)->url;
+            // $ultimate_plus_link = Billplz::ultimateplus($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($ultimate_plus_link);
+            // return redirect($ultimate_plus_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
 
         // Ultimate Partner
         }elseif ($level == 'MBL002') {
             
-            $ultimate_partner_link = Billplz::ultimatepartner($stud_detail, $lvl_detail, $invoice)->url;
+            // $ultimate_partner_link = Billplz::ultimatepartner($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($ultimate_partner_link);
+            // return redirect($ultimate_partner_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
+            
 
         // Platinum Pro
         }elseif ($level == 'MBL003') {
 
-            $platinum_pro_link = Billplz::platinumpro($stud_detail, $lvl_detail, $invoice)->url;
+            // $platinum_pro_link = Billplz::platinumpro($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($platinum_pro_link);
+            // return redirect($platinum_pro_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
+
     
         // Platinum Lite
         }elseif ($level == 'MBL004') {
 
-            $platinum_lite_link = Billplz::platinumlite($stud_detail, $lvl_detail, $invoice)->url;
+            // $platinum_lite_link = Billplz::platinumlite($stud_detail, $lvl_detail, $invoice)->url;
 
-            return redirect($platinum_lite_link);
+            // return redirect($platinum_lite_link);
+
+            $test_link = Billplz::test_create_bill($stud_detail, $lvl_detail, $invoice)->url;
+
+            return redirect($test_link);
+
     
         }
         
@@ -662,32 +752,32 @@ class StudentPortal extends Controller
             
             // $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
 
-            $data['name']=$stud_detail->first_name;
-            $data['secondname']=$stud_detail->last_name;
-            $data['ic']=$stud_detail->ic;
-            $data['email']=$stud_detail->email;
-            $data['phoneno']=$stud_detail->phoneno;
+            $data['name'] = $stud_detail->first_name;
+            $data['secondname'] = $stud_detail->last_name;
+            $data['ic'] = $stud_detail->ic;
+            $data['email'] = $stud_detail->email;
+            $data['phoneno'] = $stud_detail->phoneno;
         
-            $data['invoice']=$invoice_id->invoice_id;
-            $data['no']=$invoice_id->id;
+            $data['invoice'] = $invoice_id->invoice_id;
+            $data['no'] = $invoice_id->id;
 
-            $data['price']=$payment_id_student->pay_price;
-            $data['total']=$payment_id_student->totalprice;
+            $data['price'] = $payment_id_student->pay_price;
+            $data['total'] = $payment_id_student->totalprice;
 
             // $data['balance']=$balance;
-            $data['invoices']=$inv;
+            $data['invoices'] = $inv;
             
-            $data['quantity']=$payment_id_student->quantity;
-            $data['upgrade_count']=$payment_id_student->upgrade_count;
+            $data['quantity'] = $payment_id_student->quantity;
+            $data['upgrade_count'] = $payment_id_student->upgrade_count;
 
-            $data['date_receive']=date('d-m-Y');
-            $data['due_date']=date('d-m-Y');
-            $data['bulan']=date('M Y');
+            $data['date_receive'] = date('d-m-Y');
+            $data['due_date'] = date('d-m-Y');
+            $data['bulan'] = date('M Y');
 
-            $data['payment_id']=$payment_id_student;       
-            $data['student_id']=$stud_id;
+            $data['payment_id'] = $payment_id_student;       
+            $data['student_id'] = $stud_id;
 
-            $data['membership']=$member->name;
+            $data['membership'] = $member->name;
 
             $pdf = PDF::loadView('emails.downloadinvoice', $data);
             return $pdf->download('Receipt.pdf');

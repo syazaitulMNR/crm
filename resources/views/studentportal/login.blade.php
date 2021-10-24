@@ -59,6 +59,9 @@
                                 <i class="bi bi-box-arrow-in-right pr-1"></i> {{ __('Login') }}
                             </button>
                         </div>
+                        <div class="col-md-12 mt-3">
+                            <a href="{{ route('login.reset-password') }}" class="text-decoration-none text-primary text-center">Forgot Password?</a>
+                        </div>
 
                         {{-- <div class="col-md-12">
                             @if (Route::has('password.request'))
