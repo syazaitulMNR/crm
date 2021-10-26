@@ -45,20 +45,6 @@
                                 </td>
                             </tr>
                             <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
-                            
-                            {{-- Download resit --}}
-                            <tr>
-                              <td>
-                                <br>
-                                <p>2. Jika anda hendak memuat turun invois dan resit</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="align-center">
-                                <a href="/student/invoice-download/">Invois</a>
-                                <a href="receipt">Resit</a>
-                              </td>
-                            </tr>
 
                             {{-- For upgrade by ticket --}}
                             <tr>
