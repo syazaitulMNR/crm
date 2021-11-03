@@ -79,11 +79,11 @@
                     @endforeach
                 </tbody>
             </table>   
-            {{-- @if(isset($query))
+            @if(isset($query))
                 {{ $invoices->appends(['search' => $query])->links() }} 
             @else
                 {{ $invoices->links() }} 
-            @endif --}}
+            @endif
         </div>  
     </div>
   </div>

@@ -19,17 +19,6 @@
   <div class="row">
     <div class="col-md-12 "> 
         
-      <!-- Search box ---------------------------------------------------------->
-      {{-- <form action="{{ route('student.searchInvoice') }}" class="input-group" method="GET">
-          @if(isset($query))
-
-            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search date">
-
-          @else
-            <input type="text" class="form-control" name="search" value="" placeholder="Search date">
-
-          @endif
-      </form> --}}
       
       <div class="float-right pt-3"></div>
       <br>
@@ -70,6 +59,11 @@
                     @endforelse
                 </tbody>
             </table>  
+            @if(isset($query))
+                {{ $payment->appends(['search' => $query])->links() }} 
+            @else
+                {{ $payment->links() }} 
+            @endif
         </div>  
     </div>
   </div>

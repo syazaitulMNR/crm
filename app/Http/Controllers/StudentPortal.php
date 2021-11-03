@@ -735,7 +735,8 @@ class StudentPortal extends Controller
     }
 
     //download invoice
-    public function downloadInvoice($level, $invoice, $student){
+    public function downloadInvoice($level, $invoice, $student)
+    {
 
         $stud_id = Session::get('student_login_id');
         $stud_detail = Session::get('student_detail');
@@ -803,7 +804,8 @@ class StudentPortal extends Controller
     }
 
     //download invoice
-    public function downloadResit(){
+    public function downloadResit()
+    {
 
         $stud_id = Session::get('student_login_id');
         $stud_detail = Session::get('student_detail');
@@ -916,7 +918,8 @@ class StudentPortal extends Controller
             return redirect('/student/login');
 
         }else{
-            $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')->orderBy('created_at', 'DESC')->get();
+
+            $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')->orderBy('created_at', 'DESC')->paginate(10);
 
             $payment_data = [];
             $type = [];
