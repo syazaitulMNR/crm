@@ -13,6 +13,8 @@ use App\Exports\MembersFormat;
 use Maatwebsite\Excel\Facades\Excel;
 use Mail;
 use Auth;
+use App\Invoice;
+use PDF;
 
 class MembershipController extends Controller
 {
@@ -227,7 +229,58 @@ class MembershipController extends Controller
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
 
-        return view('admin.membership.view_member', compact('membership', 'membership_level', 'student'));
+
+        /*
+        |--------------------------------------------------------------------------
+        | Display Invoices 
+        |--------------------------------------------------------------------------
+        */
+
+        // keluarkan senarai invois
+        $invoices = Invoice::where('student_id', $student->id)->paginate(10);
+
+        //dapatkan membership detail
+        $membership_level = Membership_Level::where('level_id', $level_id)->first();
+
+        $no = 1;
+
+        // dd($invoices);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Display Receipt
+        |--------------------------------------------------------------------------
+        */
+
+        $payment = Payment::where('stud_id', $student_id)->where('status', 'paid')->orderBy('created_at', 'DESC')->paginate(10);
+
+        $payment_data = [];
+        $type = [];
+
+        foreach ($payment as $pt) {
+            if ($pt->product_id != (null || '')) {
+                $product1 = Product::where('product_id', $pt->product_id);
+
+                if ($product1->count() > 0) {
+                    $product1 = $product1->first();
+                    $payment_data[] = $product1;
+                    $type[] = 'Event';
+                }
+
+            } elseif ($pt->level_id != (null || '')) {
+                $level1 = Membership_Level::where('level_id', $pt->level_id);
+
+                if ($level1->count() > 0) {
+                    $level1 = $level1->first();
+                    $payment_data[] = $level1;
+                    $type[] = 'Membership';
+                }
+            }
+        }
+
+
+
+        return view('admin.membership.view_member', compact('membership', 'membership_level', 'student', 'no', 'membership_level', 'invoices', 'payment_data', 'type', 'payment'));
 
     }
 
@@ -321,6 +374,119 @@ class MembershipController extends Controller
         }
 
         return redirect('membership/level/'.$membership_id.'/'.$level_id)->with('addsuccess', 'Customer successfully added');
+
+    }
+
+    public function downloadInvoices($level, $invoice, $student)
+    {
+        // $stud_id = Session::get('student_login_id');
+        // $stud_detail = Session::get('student_detail');
+        $stud_detail = Student::where('id', $student)->first();
+
+        // dd($student);
+
+        //dapatkan membership_id student
+        // $payment_student_id = $stud_detail->level_id;
+        $invoice_student = $stud_detail->id;
+        // $member_student = $stud_detail->level_id;
+
+        // dd($level);
+
+        // $invoices = Invoice::where('student_id', $stud_detail->id)
+        // ->where('status', 'not paid');
+
+        $payment_id_student = Payment::where('level_id', $level)->first();
+        $member = Membership_level::where('level_id', $level)->first();
+        $invoice_id = Invoice::where('student_id', $student)->where('invoice_id', $invoice)->first();
+        $inv = Invoice::where('student_id', $student)->where('invoice_id', $invoice)->first();
+
+        $no = 1;
+
+        $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+
+        $data['name'] = $stud_detail->first_name;
+        $data['secondname'] = $stud_detail->last_name;
+        $data['ic'] = $stud_detail->ic;
+        $data['email'] = $stud_detail->email;
+        $data['phoneno'] = $stud_detail->phoneno;
+
+        $data['invoice'] = $invoice_id->invoice_id;
+        $data['no'] = $invoice_id->id;
+
+        $data['price'] = $payment_id_student->pay_price;
+        $data['total'] = $payment_id_student->totalprice;
+
+        // $data['balance']=$balance;
+        $data['invoices'] = $inv;
+
+        $data['quantity'] = $payment_id_student->quantity;
+        $data['upgrade_count'] = $payment_id_student->upgrade_count;
+
+        $data['date_receive'] = date('d-m-Y');
+        $data['due_date'] = date('d-m-Y');
+        $data['bulan'] = date('M Y');
+
+        $data['payment_id'] = $payment_id_student;
+        $data['student_id'] = $stud_detail->student_id;
+
+        $data['membership'] = $member->name;
+
+        // dd($inv);
+
+        $pdf = PDF::loadView('emails.downloadinvoice', $data);
+        return $pdf->download('Receipt.pdf');
+
+    }
+
+    public function downloadReceipt($stud_id)
+    {
+        $stud_detail = Student::where('stud_id', $stud_id)->first();
+
+        //dapatkan membership_id student
+        $payment_student_id = $stud_detail->level_id;
+        $invoice_student = $stud_detail->id;
+        $member_student = $stud_detail->level_id;
+
+        $payment_id_student = Payment::where('level_id', $payment_student_id)->first();
+        $invoice_id = Invoice::where('student_id', $invoice_student)->first();
+        $member = Membership_level::where('level_id', $member_student)->first();
+
+        $no = 1;
+
+        $balance = ($payment_id_student->totalprice) - ($payment_id_student->pay_price);
+
+        // add
+        $data['name'] = $stud_detail->first_name;
+        $data['secondname'] = $stud_detail->last_name;
+        $data['ic'] = $stud_detail->ic;
+        $data['email'] = $stud_detail->email;
+        $data['phoneno'] = $stud_detail->phoneno;
+
+        $data['invoice'] = $invoice_id->invoice_id;
+        $data['no'] = $invoice_id->id;
+
+        $data['price'] = $payment_id_student->pay_price;
+        $data['total'] = $payment_id_student->totalprice;
+        $data['pay_id'] = $payment_id_student->payment_id;
+        $data['method'] = $payment_id_student->pay_method;
+
+        $data['balance'] = $balance;
+
+        $data['quantity'] = $payment_id_student->quantity;
+        $data['upgrade_count'] = $payment_id_student->upgrade_count;
+
+        // $data['date_receive']=$payment_id_student->created_at->date('d-m-Y');
+        $data['date_receive'] = $payment_id_student->created_at;
+        $data['due_date'] = date('d-m-Y');
+        $data['bulan'] = date('M Y');
+
+        $data['payment_id'] = $payment_id_student;
+        $data['student_id'] = $stud_id;
+
+        $data['membership'] = $member->name;
+
+        $pdf = PDF::loadView('emails.resitmember', $data);
+        return $pdf->download('Receipt.pdf');
 
     }
 }

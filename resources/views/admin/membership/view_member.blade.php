@@ -34,8 +34,7 @@ Membership
 
 @section('content')
 
-<div class="col-md-12 pt-3">   
-        
+<div class="col-md-12 pt-3">        
   <div class="card-header" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
       <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/membership">...</a>
       / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}">{{ $membership->name }}</a> / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}">{{ $membership_level->name }}</a>
@@ -47,20 +46,16 @@ Membership
   </div> 
 
   <div class="row">      
-
     <div class="col-md-12">
-
       <form class="px-1" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
         @csrf
       
-        <div class="row py-2">
-                
-          <div class="col-md-3">
+        <div class="row py-2">     
+          <div class="col-md-6">
             <label class="form-label">IC No.</label>
-            <input type="text" name="ic" value="{{ $student->ic }}" class="form-control" required>
+            <input type="text" name="ic" value="{{ $student->ic }}" placeholder="Enter Ic Number" class="form-control" required>
           </div>
-
-          <div class="col-md-3">
+          <div class="col-md-6">
             <label class="form-label">Status</label>
             <select class="form-select form-control" name="status">
               <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
@@ -76,67 +71,173 @@ Membership
           </div>
         </div>
 
-        <div class="row py-2">
-                
-          <div class="col-md-3">
+        <div class="row py-2">       
+          <div class="col-md-6">
             <label class="form-label">First Name</label>
             <input type="text" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" class="form-control" required>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6">
             <label class="form-label">Last Name</label>
             <input type="text" name="last_name" value="{{ ucwords(strtolower($student->last_name)) }}" class="form-control" required>
           </div>
-
         </div>
 
         <div class="row py-2">
-          <div class="col-md-3">
+          <div class="col-md-6">
             <label class="form-label">Email</label>
-            <input type="text" name="email" value="{{ $student->email }}" class="form-control" required>
+            <input type="text" name="email" value="{{ $student->email }}" placeholder="Enter Email Address" class="form-control" required>
           </div>
-
-          <div class="col-md-3">
+          <div class="col-md-6">
             <label class="form-label">Phone No.</label>
-            <input type="text" name="phoneno" value="{{ $student->phoneno }}" class="form-control" required>
+            <input type="text" name="phoneno" value="{{ $student->phoneno }}" placeholder="Enter Phone Number" class="form-control" required>
           </div>
         </div>
 
-        <div class="col-md-6 py-3 text-end">
-          @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-          @else
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body text-start">
-                    <p>This action will remove the details from the table :</p>
-                    <ul>
-                      <li>Student</li>
-                      <li>Payment</li>
-                      <li>Ticket</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
+        <div class="row py-2">
+          <div class="col-md-12 text-end">
+            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+
+            @else
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                      <p>This action will remove the details from the table :</p>
+                      <ul>
+                        <li>Student</li>
+                        <li>Payment</li>
+                        <li>Ticket</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          @endif
-          <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
+            @endif
+            <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
+          </div>
         </div>
-
       </form>
-        
     </div>
+  </div>
 
+  <!-- List Invoices -->
+  <div class="flex-md-nowrap pt-3 mb-3">
+      <h1 class="h2">List Invoices</h1>
+  </div> 
+  
+  <div class="row">
+    <div class="col-md-12 "> 
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Membership</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th class="text-center"><i class="fas fa-cogs"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($invoices as $key => $invoice)
+                        <tr>
+                            <td>
+                            {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                            </td>
+                            <td>
+                            {{ $membership_level->name }}
+                            </td>
+                            <td>
+                            {{ $invoice->for_date }}
+                            </td>
+                            <td>
+                                @if ($invoice->status == 'not paid')
+                                    <span class="badge bg-danger">Unpaid</span>
+                                @endif
+
+                                @if ($invoice->status == 'paid')
+                                    <span class="badge bg-success">Paid</span>
+                                @endif
+                            </td>
+                            <td>
+                            <b>RM {{ number_format($invoice->price) }}</b>
+                            </td>
+                            <td class="text-center">
+                            <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>   
+            @if(isset($query))
+                {{ $invoices->appends(['search' => $query])->links() }} 
+            @else
+                {{ $invoices->links() }} 
+            @endif
+        </div>  
+    </div>
+  </div>
+
+  <!-- List Receipt -->
+  <div class="flex-md-nowrap mt-4">
+      <h1 class="h2">List Receipt</h1>
+  </div> 
+  
+  <div class="row">
+    <div class="col-md-12 ">     
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Paid Date</th>
+                        <th scope="col">Paid Price</th>
+                        <th scope="col">Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($payment as $key => $p)
+                        <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>
+                                {{ $payment_data[$key]->name }}
+                            </td>
+                            <td>
+                                {{ date('d/m/Y', strtotime($p->created_at)) }}
+                            </td>
+                            <td>
+                                <b>RM {{ number_format($p->pay_price) }}.00</b>
+                            </td>
+                            <td>
+                                <a href="{{ url('download-receipt') }}/{{ $p->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No result founds</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>  
+            @if(isset($query))
+                {{ $payment->appends(['search' => $query])->links() }} 
+            @else
+                {{ $payment->links() }} 
+            @endif
+        </div>  
+    </div>
   </div>
 </div>
-
 @endsection
