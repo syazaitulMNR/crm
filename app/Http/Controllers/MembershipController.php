@@ -8,6 +8,7 @@ use App\Membership_Level;
 use App\Student;
 use App\Payment;
 use App\Ticket;
+use App\Product;
 use App\Imports\MembershipImport;
 use App\Exports\MembersFormat;
 use Maatwebsite\Excel\Facades\Excel;
@@ -225,10 +226,12 @@ class MembershipController extends Controller
     
     public function track_members($membership_id, $level_id, $student_id)
     {
+
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
+        $level = Membership_level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+        $invoice = Invoice::where('id', $student->id)->get();
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
-
 
         /*
         |--------------------------------------------------------------------------
@@ -238,13 +241,11 @@ class MembershipController extends Controller
 
         // keluarkan senarai invois
         $invoices = Invoice::where('student_id', $student->id)->paginate(10);
-
         //dapatkan membership detail
         $membership_level = Membership_Level::where('level_id', $level_id)->first();
 
         $no = 1;
 
-        // dd($invoices);
 
         /*
         |--------------------------------------------------------------------------
@@ -487,6 +488,5 @@ class MembershipController extends Controller
 
         $pdf = PDF::loadView('emails.resitmember', $data);
         return $pdf->download('Receipt.pdf');
-
     }
 }

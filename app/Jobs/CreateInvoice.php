@@ -50,7 +50,7 @@ class CreateInvoice implements ShouldQueue
 
                 $now = Carbon::now();
 
-                $for_date = $now->month.'/'.$now->year;
+                $for_date = $now->day.'/'.$now->month.'/'.$now->year;
 
                 $invoice = new Invoice();
                 $invoice->invoice_id = 'INV'. '-' . $now->year . '-' . $now->month . '-'. $no;

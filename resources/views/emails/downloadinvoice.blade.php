@@ -31,7 +31,7 @@
     }
     
     .invoice-box table tr.top table td {
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
     
     .invoice-box table tr.top table td.title {
@@ -124,9 +124,9 @@
                             </td>
                             
                             <td></td>
- 
-                            <td>
-                                <strong>Momentum Internet Sdn Bhd</strong><br>
+                        
+                            <td class="text-align">
+                                <strong>Momentum Internet</strong> <strong>Sdn Bhd</strong>
                                 <strong>1079998-A</strong><br>
                                 288 Tingkat 1, Jalan Lambak,<br>
                                 86000 Kluang, Johor.
@@ -141,7 +141,7 @@
                     <table>
                         <tr>
                             <td>Bill To<br>
-                                {{ $name }} {{ $secondname }}<br>
+                                <strong>{{ $name }} {{ $secondname }}</strong><br>
                             </td>
 
                             <td></td>
@@ -151,13 +151,13 @@
                                 <strong>Invoice Date :</strong> {{ $date_receive }}<br>
                                 <strong>Due Date :</strong> {{ $due_date }}
                             </td>
+
                         </tr>
-                        <p class="center">Invoices</p>
                     </table>
                 </td>
             </tr>
             
-            <tr class="heading">
+            <tr class="heading text-center">
                 <td>
                     No
                 </td>
@@ -193,11 +193,11 @@
                 </td>
 
                 <td>
-                    {{ $invoices->price }}
+                    {{ $price }}
                 </td>
                 
                 <td colspan="8">
-                    {{ $invoices->price }}
+                    {{ $price }}
                 </td>
             </tr>
             <tr class="information">
@@ -212,8 +212,8 @@
                             <td></td>
                             
                             <td>
-                                Sub Total RM{{ $invoices->price }}<br>
-                                <strong>Total RM{{ $invoices->price }}<br></strong>
+                                Sub Total RM{{ $price }}<br>
+                                <strong>Total RM{{ $price }}<br></strong>
                                 {{-- Payment Made (-) RM{{ $price }}<br> --}}
                                 {{-- <strong>Balance Due RM{{ $balance }}<br></strong> --}}
                             </td>
@@ -232,7 +232,7 @@
         </footer>
     </div>
 </body>
-        {{ dd($invoices) }}
+        {{-- {{ dd($invoices) }} --}}
 </html>
 
 
