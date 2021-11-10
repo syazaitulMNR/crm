@@ -456,7 +456,7 @@ Customer Profiles
                                                     RM {{ $p->pay_price }}.00
                                                 </td>
                                                 <td>
-                                                    <a href="receipt" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                                    <a href="/student/receipt/{level}/{invoice}/{student}" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
                                                 </td>
                                             </tr>
                                         @empty

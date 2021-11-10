@@ -49,7 +49,7 @@
                                 <b>RM {{ number_format($p->pay_price) }}.00</b>
                             </td>
                             <td>
-                                <a href="{{ route('receipt') }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                <a href="{{ route('invoices-receipt.receipt') }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
                             </td>
                         </tr>
                     @empty

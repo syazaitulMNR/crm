@@ -124,7 +124,13 @@ Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Bla
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
-Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');;
+Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');
+
+// send Statement of Account , Invoice , Receipt ke email
+Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
+Route::get('send-invoicemember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_invoicemember');
+Route::get('send-receiptmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_receiptmember');
+
 /*
 |--------------------------------------------------------------------------
 | Manage event
@@ -143,7 +149,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 |--------------------------------------------------------------------------
 */
 Route::get('addpackage/{id}', 'ProductController@pack');
-Route::post('storepack/{id}', 'ProductController@storepack');
+Route::post('storepack/{id}/{offer_id}', 'ProductController@storepack');
 Route::get('package/{id}', 'ProductController@view');
 Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
 Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
@@ -417,7 +423,7 @@ Route::prefix('student')->group(function()
 	Route::get('/statement-format','StudentPortal@exportstatement_format')->name('statement-format');
 
 	//add new resit 
-	Route::get('/receipt','StudentPortal@downloadResit')->name('receipt');
+	Route::get('/receipt/{level}/{invoice}/{student}','StudentPortal@downloadResit')->name('emails.resitmember');
 
 	// shauqi add new routes
 	
@@ -489,27 +495,3 @@ Route::post('save-customer', 'HomeController@saveinviteCustomer');
 Route::get('invite-customer-thankyou', 'HomeController@inviteCustomerThankyou');
 
 Route::get('/sample-customer', 'SampleCustomer@index');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -203,8 +203,8 @@ Membership
                         </div>
                         <div class="col-md-12 mt-3">
                           <p><b>Total Price : </b>RM {{ number_format($membership_levels->price) }}</p>
-                          <p><b>Tax (%) : </b>RM {{ number_format($membership_levels->price - $membership_levels->price / $membership_levels->tax, 2) }}</p>
-                          <p><b>Total Taxable Amount : </b>RM {{ number_format($membership_levels->price / $membership_levels->tax, 2) }}</p>
+                          {{-- <p><b>Tax (%) : </b>RM {{ number_format($membership_levels->price - $membership_levels->price / $membership_levels->tax, 2) }}</p> --}}
+                          {{-- <p><b>Total Taxable Amount : </b>RM {{ number_format($membership_levels->price / $membership_levels->tax, 2) }}</p> --}}
                         </div>
                       </div>
                     </div>

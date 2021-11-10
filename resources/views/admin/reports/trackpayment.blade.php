@@ -4,7 +4,6 @@
 Sales Report
 @endsection
   
-
 @section('content')
 <div class="col-md-12 pt-3"> 
         
@@ -103,10 +102,8 @@ Sales Report
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
-
                     </div>
                 </div>
 
