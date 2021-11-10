@@ -70,9 +70,9 @@ Membership
             </select>
           </div>
         </div>
-
-        <div class="row py-2">       
-          <div class="col-md-6">
+        <div class="row py-2">
+                
+          <div class="col-md-3">
             <label class="form-label">First Name</label>
             <input type="text" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" class="form-control" required>
           </div>
@@ -93,32 +93,113 @@ Membership
           </div>
         </div>
 
-        <div class="row py-2">
-          <div class="col-md-12 text-end">
-            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-
-            @else
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+        <div class="align-end">
+          <br>
+          {{-- send Invoice to email  -->
+          <button type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</button>
+          <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
+                      <p>Example: </p>
+                      <div class="text-center">
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                      {{-- <a class="btn btn-sm btn-dark" href="{{ url('send-invoicemember') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                          Send
+                      </a> --}}
+                  {{-- </div>
+                  </div>
+              </div>
+          </div>
+
+          {{-- send Receipt to email --}}
+          {{-- <button type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</button>
+            <!-- Purchased Modal Triggered -->
+            <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body text-start">
-                      <p>This action will remove the details from the table :</p>
-                      <ul>
-                        <li>Student</li>
-                        <li>Payment</li>
-                        <li>Ticket</li>
-                      </ul>
+                    <div class="modal-body">
+                        <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
+                        <p>Example: </p>
+                        <div class="text-center">
+                            <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
+                        </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                        {{-- <a class="btn btn-sm btn-dark" href="{{ url('send-receiptmember') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
+                            Send
+                        </a> --}}
+                    {{-- </div>
                     </div>
+                </div>
+            </div> --}}
+                  {{-- send Statement to email   --}}
+                  <button type="sendstatement" data-bs-toggle="modal" data-bs-target="#test" class="btn btn-danger"><i class="bi bi-save pr-2"></i>Send Statement</button>
+                  <!-- Purchased Modal Triggered -->
+                  <div class="modal fade" id="test" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-scrollable">
+                          <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <p>Are you sure you want to send '<b>Statement of Account</b>' to this customer?</p>
+                              <p>Example: </p>
+                              <div class="text-center">
+                                  <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <a class="btn btn-sm btn-dark" href="{{ url('send-statementmember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $student->stud_id }}">
+                                  Send
+                              </a>
+                          </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="col-md-6 py-3 text-end">
+          @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+          @else
+          <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body text-start">
+                    <p>This action will remove the details from the table :</p>
+                    <ul>
+                      <li>Student</li>
+                      <li>Payment</li>
+                      <li>Ticket</li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
                   </div>
                 </div>
               </div>
@@ -175,6 +256,7 @@ Membership
                             </td>
                             <td class="text-center">
                             <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                            <a type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
                             </td>
                         </tr>
                     @endforeach
@@ -222,6 +304,7 @@ Membership
                             </td>
                             <td>
                                 <a href="{{ url('download-receipt') }}/{{ $p->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                <a type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn-sm btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</a>
                             </td>
                         </tr>
                     @empty
