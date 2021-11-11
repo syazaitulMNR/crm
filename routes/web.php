@@ -149,7 +149,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 |--------------------------------------------------------------------------
 */
 Route::get('addpackage/{id}', 'ProductController@pack');
-Route::post('storepack/{id}/{offer_id}', 'ProductController@storepack');
+Route::post('storepack/{id}', 'ProductController@storepack');
 Route::get('package/{id}', 'ProductController@view');
 Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
 Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
