@@ -206,7 +206,6 @@ class ProductController extends Controller
             'package_id'=> $packageId,
             'name' => $request->name,
             'price'=> $request->price,
-            // 'package_image' => $imagename,
             'product_id'=> $id
 
         ));  
@@ -224,7 +223,6 @@ class ProductController extends Controller
             ));
         }
 
-       // dd($package->package_image);
         return redirect('package/'.$id)->with('success', 'Package Successfully Created'); 
     }
 
