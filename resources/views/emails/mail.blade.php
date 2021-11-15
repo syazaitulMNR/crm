@@ -1,6 +1,16 @@
 @extends('layouts.email')
 
 @section('content')
+
+<style>
+  a {
+    display : block;
+    width:200px;
+    height:40px;
+  }
+
+</style>
+
     <table style="border: none; cellpadding: 0; cellspacing: 0;" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -40,7 +50,7 @@
                             </tr>
                             <tr>
                               <td class="align-center">
-                                <a href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
+                                <a style="font-size:130%; background-color:#FF0000;" href="{{ url('updateform') }}/{{ $productId }}/{{ $packageId }}/{{ $student_id }}/{{ $payment_id }}">Kemaskini</a>
                               </td>
                             </tr>
                             <hr>

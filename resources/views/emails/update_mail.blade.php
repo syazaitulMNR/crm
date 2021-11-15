@@ -1,6 +1,16 @@
 @extends('layouts.email')
 
 @section('content')
+
+<style>
+    a {
+      display : block;
+      width:200px;
+      height:40px;
+  }
+  
+</style>
+
     <table style="border: none; cellpadding: 0; cellspacing: 0;" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -41,7 +51,7 @@
                             </tr>
                             <tr>
                                 <td class="align-center">
-                                  <a href="{{ $survey_form }}"> Soalan kaji selidik</a>
+                                  <a style="font-size:130%;" href="{{ $survey_form }}"> Soalan kaji selidik</a>
                                 </td>
                             </tr>
                             <b><p style="font-size: 14px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p><b>
@@ -55,7 +65,7 @@
                             </tr>
                             <tr>
                               <td class="align-center">
-                                <a href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a>
+                                <a style="font-size:130%; background-color:#FF0000;" href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a>
                               </td>
                             </tr>
 
