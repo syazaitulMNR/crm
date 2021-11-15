@@ -38,7 +38,7 @@ class PengesahanPembelian extends Mailable
      */
     public function build()
     {
-        return $this->subject('Pengesahan Pembelian Tiket')            
+        return $this->subject('[KEMASKINI SEKARANG] Pengesahan Pembelian Tiket')            
             ->view('emails.mail')
             ->with(
                 [
