@@ -192,10 +192,10 @@ Pendaftaran Pembeli
                     } else if (val == 2) {
                         total = price * 2;
                     } else {
-                        total = price * 3;
+                        total = (price * 3) * 0.7 ;
                     }
                     var totallagi = document.getElementById('jumlahharga');
-                    totallagi.value = total;
+                    totallagi.value = Math.round(total);
 
                 } else {
 
@@ -204,10 +204,10 @@ Pendaftaran Pembeli
                     } else if (val == 2) {
                         total = price * 2;
                     } else {
-                        total = price * 3;
+                        total = (price * 3) * 0.7;
                     }
                     var totallagi = document.getElementById('jumlahharga');
-                    totallagi.value = total;
+                    totallagi.value = Math.round(total);
 
                 }
 
@@ -218,7 +218,7 @@ Pendaftaran Pembeli
                 } else if (val == 2) {
                     total = price * 2;
                 } else {
-                    total = price * 3;
+                    total = (price * 3) * 0.7;
                 }
                 var totallagi = document.getElementById('jumlahharga');
                 totallagi.value = Math.round(total);
@@ -230,7 +230,7 @@ Pendaftaran Pembeli
                 } else if (val == 2) {
                     total = price * 2;
                 } else {
-                    total = price * 3;
+                    total = (price * 3) * 0.7;
                 }
                 var totallagi = document.getElementById('jumlahharga');
                 totallagi.value = Math.round(total);
