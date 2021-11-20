@@ -60,7 +60,7 @@ Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipC
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
-Route::get('download-receipt/{stud_id}', 'MembershipController@downloadReceipt');
+Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController@downloadReceipt');
 
 /*
 |--------------------------------------------------------------------------
@@ -128,8 +128,8 @@ Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('emai
 
 // send Statement of Account , Invoice , Receipt ke email
 Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
-Route::get('send-invoicemember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_invoicemember');
-Route::get('send-receiptmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_receiptmember');
+Route::get('send-invoicemember/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_invoicemember');
+Route::get('send-receiptmember/{level_id}/{payment_id}/{student_id}', 'BlastingController@send_receiptmember');
 
 /*
 |--------------------------------------------------------------------------
@@ -149,7 +149,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 |--------------------------------------------------------------------------
 */
 Route::get('addpackage/{id}', 'ProductController@pack');
-Route::post('storepack/{id}', 'ProductController@storepack');
+Route::post('storepack/{id}/{offer_id}', 'ProductController@storepack');
 Route::get('package/{id}', 'ProductController@view');
 Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
 Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
@@ -333,8 +333,14 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 Route::get('e-cert/{product_id}', 'CertController@ic_check');
 Route::get('verify/{product_id}', 'CertController@checking_ic');
 Route::get('check-cert/{product_id}/{stud_id}', 'CertController@checking_cert');
-
 Route::get('certificate/{product_id}/{stud_id}', 'CertController@extract_cert');
+
+/*
+|--------------------------------------------------------------------------
+| E-Certificate
+|--------------------------------------------------------------------------
+*/
+Route::post('uploadCheque/{membership_id}/{level_id}/{student_id}','MembershipController@uploadcheque');
 
 /*
 |--------------------------------------------------------------------------
@@ -495,3 +501,5 @@ Route::post('save-customer', 'HomeController@saveinviteCustomer');
 Route::get('invite-customer-thankyou', 'HomeController@inviteCustomerThankyou');
 
 Route::get('/sample-customer', 'SampleCustomer@index');
+
+
