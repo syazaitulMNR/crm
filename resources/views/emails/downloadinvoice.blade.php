@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Customer Invoice</title>
+    <title>Invoice</title>
     
     <style>
     .invoice-box {
@@ -31,7 +31,7 @@
     }
     
     .invoice-box table tr.top table td {
-        padding-bottom: 15px;
+        padding-bottom: 20px;
     }
     
     .invoice-box table tr.top table td.title {
@@ -113,7 +113,7 @@
 </head>
 
 <body>
-    <div class="invoice-box">
+<div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="8">
@@ -124,9 +124,9 @@
                             </td>
                             
                             <td></td>
-                        
-                            <td class="text-align">
-                                <strong>Momentum Internet</strong> <strong>Sdn Bhd</strong>
+ 
+                            <td>
+                                <strong>Momentum Internet</strong><strong> Sdn Bhd</strong>
                                 <strong>1079998-A</strong><br>
                                 288 Tingkat 1, Jalan Lambak,<br>
                                 86000 Kluang, Johor.
@@ -140,86 +140,125 @@
                 <td colspan="8">
                     <table>
                         <tr>
-                            <td>Bill To<br>
+                            <td>To<br>
                                 <strong>{{ $name }} {{ $secondname }}</strong><br>
                             </td>
 
                             <td></td>
-                            
-                            <td>
-                                <strong>Invoice :</strong> {{$invoice}}<br>
-                                <strong>Invoice Date :</strong> {{ $date_receive }}<br>
-                                <strong>Due Date :</strong> {{ $due_date }}
-                            </td>
 
+                            <td>
+                                <strong>Invoice :</strong> {{ $inv->invoice_id }}<br>
+                                <strong>Invoice Date :</strong> {{ $inv->for_date }}<br>
+                                <strong>Due Date :</strong> {{ $datesum }}
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
-            
-            <tr class="heading text-center">
-                <td>
-                    No
-                </td>
-                
-                <td>
-                    Item & Description
-                </td>
-                
-                <td>
-                    Qty
-                </td>
 
-                <td>
-                    Rate
-                </td>
-                
-                <td colspan="8">
-                    Amount
-                </td>
+            <tr class="heading">
+                    <td>
+                        No
+                    </td>
+                    
+                    <td>
+                        Item & Description
+                    </td>
+                    
+                    <td>
+                        Qty
+                    </td>
+
+                    <td></td>
+
+                    <td style="text-align: right">
+                        Rate
+                    </td>
+
+                    <td colspan="8" style="text-align: right">
+                        Amount
+                    </td>
             </tr>
             <tr class="item">
                 <td>
-                    {{ $no }}
+                    1
                 </td>
-                
                 <td>
                     MBM - {{ $membership }}<br>
-                    <em>Monthly Consultation Fees - {{ $bulan }}</em>
+                    <em>Monthly Consultation Fees - {{ $inv->for_date }}</em>
                 </td>
                 
                 <td>
-                    {{ $quantity }}
+                    1
                 </td>
 
-                <td>
-                    {{ $price }}
-                </td>
+                <td></td>
                 
-                <td colspan="8">
-                    {{ $price }}
+                <td style="text-align: right">
+                    {{ $inv->price }}
+                </td>
+
+                <td colspan="8" style="text-align: right">
+                    {{ $inv->price }}
                 </td>
             </tr>
-            <tr class="information">
-                <td colspan="8">
-                    <table>
-                        <tr>
-                            <td>
-                                <br>
-                                <br>
-                            </td>
-
-                            <td></td>
-                            
-                            <td>
-                                Sub Total RM{{ $price }}<br>
-                                <strong>Total RM{{ $price }}<br></strong>
-                                {{-- Payment Made (-) RM{{ $price }}<br> --}}
-                                {{-- <strong>Balance Due RM{{ $balance }}<br></strong> --}}
-                            </td>
-                        </tr>
-                    </table>
+            @if ($membership == 'Ultimate Plus' || $membership == 'Ultimate Partners')
+            <tr class="item">
+                <td>
+                    2
                 </td>
+                <td>
+                    {{ $member->add_on_name }}<br>
+                    <em>Consultation Fee with Dato' Norhafis Suleiman {{ $inv->for_date }}</em>
+                </td>
+                
+                <td>
+                    1
+                </td>
+
+                <td></td>
+
+                <td style="text-align: right">
+                    {{ $member->add_on_price }}
+                </td>
+
+                <td colspan="8" style="text-align: right">
+                    {{ $member->add_on_price }}
+                </td>
+            </tr>
+            @else  
+            @endif
+            
+            <tr class="information">
+            <td colspan="8">
+                <table>
+                    <tr>
+                        <td>
+                            <br>
+                            <br>
+                        </td>
+
+                        <td></td>
+                        @if ($membership == 'Ultimate Plus' || $membership == 'Ultimate Partners')
+                        <td>
+                            Sub Total RM{{ $subtotal }}<br>
+                            Total Taxable Amount RM 9433.96<br>
+                            SST ({{ $member->tax }}%) RM 566.04<br>
+                            <hr style="width:35%;text-align:right;margin-right:0">
+                            <strong>Total RM{{ $subtotal }}</strong><br>
+                            <hr style="width:35%;text-align:right;margin-right:0">
+                            <strong>Balance Due RM{{ $subtotal }}</strong><br>
+                        </td>
+                        @else
+                        <td>
+                            Sub Total RM{{ $inv->price }}<br>
+                            <strong>Total RM{{ $inv->price }}<br></strong>
+                            <strong>Balance Due RM{{ $balance }}<br></strong>
+                        </td>
+                        @endif
+                    </tr>
+                </table>
+            </td>
             </tr>
         </table>
         <br>
@@ -232,7 +271,6 @@
         </footer>
     </div>
 </body>
-        {{-- {{ dd($invoices) }} --}}
 </html>
 
 
