@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Customer Receipt</title>
+    <title>Receipt</title>
     
     <style>
     .invoice-box {
@@ -109,90 +109,79 @@
     .rtl table tr td:nth-child(3) {
         text-align: left;
     }
-
     </style>
 </head>
 
 <body>
-    <div class="invoice-box">
-      <table cellpadding="0" cellspacing="0">
-          <tr class="top">
-              <td colspan="8">
-                  <table>
-                      <tr>
-                          <td class="title">
-                              <a href="https://ibb.co/ncWZLTQ"><img src="https://i.ibb.co/xj4P7yz/Group-1.png" alt="Group-1" border="0" width="30%"/></a>
-                          </td>
-                          <td></td>
-                          <div class = "align-start">
-                              <td>
-                                  <strong>Momentum Internet</strong><strong> Sdn Bhd</strong>
-                                  <strong>1079998-A</strong><br> 288 Tingkat 1, Jalan Lambak,<br> 86000 Kluang, Johor. 
-                              </td>
-                          <div>    
-                      </tr>
-                  </table>
-                  <h2 class = "center">Payment Receipt</h2>
-              </td>
-          </tr>
-          
-          <tr class="information">
-            <td colspan="8">
-                <table>
-                    <tr>
+<div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="8">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <a href="https://ibb.co/ncWZLTQ"><img src="https://i.ibb.co/xj4P7yz/Group-1.png" alt="Group-1" border="0" width="30%"/></a>
+                            </td>
+                            
+                            <td></td>
+ 
+                            <td>
+                                <strong>Momentum Internet</strong><strong> Sdn Bhd</strong>
+                                <strong>1079998-A</strong><br>
+                                288 Tingkat 1, Jalan Lambak,<br>
+                                86000 Kluang, Johor.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="8">
+                    <table>
+                        <tr>
+                            <td>
+                                {{-- {{ dd($method) }} --}}
+                                Receipt No. <strong>{{ $receipt->payment_id }} </strong><br>
+                                Payment Date : <strong>{{ $receipt->created_at->format('d/m/Y') }}</strong> <br>
+                                @if ($receipt->billplz_id != NULL) 
+                                    Reference Number : <strong>{{ ucwords($billplz) }}</strong> <br>
+                                    Payment Method : <strong>{{ ucwords($method) }}</strong>
+                                @else 
+                                    Cheque No : <strong>{{ ucwords($receipt->cheque_no) }}</strong> <br>
+                                    Payment Method : <strong>{{ ucwords($method) }}</strong>
+                                @endif
+                            </td>
+                        </tr>
+                        <td>Receive From<br>
+                            <strong>{{ $name }} {{ $secondname }}</strong><br>
+                        </td>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td> Receipt Number</td>
+                <td> Receipt Date</td>
+                <td colspan="8">Payment Amount </td>
+            </tr>
+                    <tr class="item">
                         <td>
-                            Receipt No. <strong>{{ $pay_id }} </strong><br>
-                            Payment Date : <strong>{{ $date }}</strong> <br>
-                            Reference Number : <strong>{{ ucwords($billplz) }}</strong> <br>
-                            Payment Method : <strong>{{ ucwords($method) }}</strong> <br>
+                            {{ $receipt->payment_id }}
+                        </td>
+                        <td> 
+                            {{ $receipt->created_at->format('d/m/Y') }}<br>
+                        </td>
+                        <td colspan="8" class="text-right">
+                            {{ $receipt->totalprice }}
                         </td>
                     </tr>
-                    
-                </table>
-                <td>
-                <p style="background-color: green; color: #ffffff; border-radius: 4px; font-size: 16px; padding: 20px; margin: 5px;" align="justify" ><b>PAID</b><br><b>MYR1234</b></p>
-              </td>
-            </td>
-            
-          </tr>
-          <tr class="information">
-              <td colspan="8">
-                  <table>
-                      <tr>
-                          <td>Receive From<br>
-                              <strong>{{ $name }} {{ $secondname }}</strong><br>
-                          </td>
-                          <td></td>
-                      </tr>
-                  </table>
-                  <p><strong>Payment for</strong></p>
-              </td>
-          </tr>
-          
-          <tr class="heading">
-              <td> Invoice Number</td>
-              <td> Invoice Date</td>
-              <td> Invoice Amount</td>
-              <td colspan="8">Payment Amount </td>
-          </tr>
-          <tr class="item">
-              <td>
-                  {{ $invid }}
-              </td>
-              <td> 
-                  {{ $date }}<br>
-              </td>
-              <td>
-                  {{ $quantity }}
-              </td>
-              <td colspan="8" class="text-right">
-                  {{ $total }}
-              </td>
-          </tr>
-      </table>
-      <br>
-  </div>
-  {{ dd($total) }}
+
+        </table>
+        <br>
+        <footer class="left mt-1" style="font-size: 9pt;">
+        </footer>
+    </div>
 </body>
 </html>
 

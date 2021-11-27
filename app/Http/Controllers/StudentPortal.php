@@ -235,7 +235,8 @@ class StudentPortal extends Controller
             $student_detail = Student::where('stud_id', $student_authenticated)->firstOrFail();
     
             $member_lvl = Membership_Level::where('level_id', $student_detail->level_id)->first()->name;
-    
+
+            $membership_level = Membership_Level::where('level_id', $student_detail->level_id)->first();
             /*
             |--------------------------------------------------------------------------
             | Comment Section
@@ -333,7 +334,7 @@ class StudentPortal extends Controller
                 }
             }
     
-            return view('studentportal.dashboard', compact( 'stud_id','student_detail', 'payment', 'data', 'total_paid', 'total_event', 'member_lvl', 'total_paid_month', 'payment_data', 'ncomment', 'type'));
+            return view('studentportal.dashboard', compact( 'stud_id','student_detail', 'payment', 'data', 'total_paid', 'total_event', 'member_lvl', 'membership_level', 'total_paid_month', 'payment_data', 'ncomment', 'type'));
            
         }
     }
@@ -673,67 +674,55 @@ class StudentPortal extends Controller
         }else{
 
             //dapatkan membership_id student
-            $payment_student_id = $stud_detail->level_id;
             $invoice_student = $stud_detail->id;
             $member_student = $stud_detail->level_id;
             $student_id = $stud_detail->student_id;
 
-            $payment_id_student = Payment::where('level_id', $payment_student_id)->first();
+            // connect ke database melalui table student
+            $payment_id_student = Payment::where('level_id', $member_student)->first();
             $invoice_id_student = Invoice::where('student_id', $invoice_student)->first();
-            $payment_amount = Payment::where('level_id', $payment_student_id)->first();
-            $invoice_id = Invoice::where('student_id', $invoice_student)->get();
-            $balance_due = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->sum('price');
-            $invoice_amount = Invoice::where('student_id', $invoice_student)->sum('price');
-            $amount_received = Invoice::where('student_id', $invoice_student)->where('status', 'paid')->sum('price');
             $member = Membership_level::where('level_id', $member_student)->first();
             $date = Invoice::where('student_id', $invoice_student)->pluck('for_date');
 
-            // $i = 1;
-            // $baki = ($invoice_amount)-($payment_id_student->pay_price);
+            // dapatkan total table
+            $balance_due = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->sum('price');
+            $amount_received = Invoice::where('student_id', $invoice_student)->where('status', 'paid')->sum('price');
+            $invoice_amount = Invoice::where('student_id', $invoice_student)->where('status','not paid')->sum('price');
+
+            // formula due date
+            $date_receive = date('d-m-Y');
+            $daystosum = '7';
+            $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
+
+            // calculation
             $balance = ($invoice_id_student->price)-($payment_id_student->pay_price);
 
-            // add
-            $data['name']=$stud_detail->first_name;
-            $data['secondname']=$stud_detail->last_name;
-            $data['ic']=$stud_detail->ic;
-            $data['email']=$stud_detail->email;
-            $data['phoneno']=$stud_detail->phoneno;
-            $data['studentid']=$stud_detail->stud_id;
+            // details of customer
+            $data['name']=$stud_detail->first_name; //
+            $data['secondname']=$stud_detail->last_name; //
+            $data['date_receive']=date('d-m-Y');
+            $data['membership']=$member->name;
         
-            //invoice data
-            // $data['invoice']=$invoice_id->invoice_id;
-            $data['invoice']=Invoice::where('student_id', $invoice_student)->get();
+            // invoice
+            $data['invoice']=Invoice::where('student_id', $invoice_student)->get(); //
             $data['sumprice']=Invoice::where('student_id', $invoice_student)->get();
-            $data['payment']=Payment::where('level_id', $payment_student_id)->get();
-            
-            // balance due
-            $data['balance_due'] = $balance_due;
-            
-            $data['invoice_amount'] = $invoice_amount;
-            $data['amount_received'] = $amount_received;
+            $data['invoice_amount'] = $invoice_amount; //
 
-            $data['price']=$payment_id_student->pay_price;
-            $data['total']=$payment_id_student->totalprice;
-
-            $data['balance']=$balance;
-
+            // payment
+            $data['payment']=Payment::where('level_id', $member_student)->get();
+            $data['price']=$payment_id_student->pay_price; //
+            $data['total']=$payment_id_student->totalprice; //
             $data['quantity']=$payment_id_student->quantity;
             $data['upgrade_count']=$payment_id_student->upgrade_count;
-
-            $data['date_receive']=date('d-m-Y');
-            $data['due_date']=date('d-m-Y');
+            $data['amount_received'] = $amount_received; //
+            $data['payment_id']=$payment_id_student;  
             
-            // $data['firstdate']=Invoice::where('student_id', $invoice_student)->date('d/m/y')->latest()->get();
-            // $data['firstdate']=Invoice::where('student_id', $invoice_student)->created_at->format('m/d/Y');;
-            // $data['lastdate']=date('d/m/Y')->latest('created_at')->first();
-
-            $data['payment_id']=$payment_id_student;       
-            $data['student_id']=$stud_id;
-
-            $data['membership']=$member->name;
+            // balance 
+            $data['balance_due'] = $balance_due; //
+            $data['balance']=$balance; //
 
             $pdf = PDF::loadView('emails.statement', $data);
-            return $pdf->download('Statement.pdf');
+            return $pdf->download( 'Statement.pdf' );
             
         }
     }
@@ -752,64 +741,56 @@ class StudentPortal extends Controller
             
         }else{
 
-            //dapatkan membership_id student
+            // connect ke database melalui table student
             $payment_student_id = $stud_detail->level_id;
             $invoice_student = $stud_detail->id;
             $member_student = $stud_detail->level_id;
 
             $level_id = $level;
-            $invoice_student = $stud_detail->id;
             $member_student = $student;
 
-            // $invoices = Invoice::where('student_id', $stud_detail->id)
-            // ->where('status', 'not paid');
-
-            $payment_id_student = Payment::where('level_id', $level_id)->first();
-            $member = Membership_level::where('level_id', $level_id)->first();
+            $payment_id_student = Payment::where('level_id', $level)->first();
+            $member = Membership_level::where('level_id', $level)->first();
             $invoice_id = Invoice::where('student_id', $member_student)->where('invoice_id', $invoice)->first();
-            // $inv = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->first();
-            $inv = Invoice::where('student_id', $member_student)->where('status', 'not paid')->where('invoice_id', $invoice);
+            $inv = Invoice::where('student_id', $student)->where('invoice_id', $invoice)->first();
+            $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+
+            //calculation for taxes ultimate
+            $subtotal = (($inv->price)+($member->add_on_price));
+
+            // due date format
+            $date_receive = date('d-m-Y');
+            $daystosum = '7';
+            $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
 
             $no = 1;
             
-            // $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+            $data['subtotal'] = $subtotal;
+            $data['balance'] = $balance;
+            $data['member'] = $member; // 
+            $data['inv'] = $inv; // 
+            $data['name'] = $stud_detail->first_name; //
+            $data['secondname'] = $stud_detail->last_name; //
+            $data['invoice'] = $invoice_id->invoice_id; //
+            $data['no'] = $invoice_id->id; //
 
-            $data['name'] = $stud_detail->first_name;
-            $data['secondname'] = $stud_detail->last_name;
-            $data['ic'] = $stud_detail->ic;
-            $data['email'] = $stud_detail->email;
-            $data['phoneno'] = $stud_detail->phoneno;
-        
-            $data['invoice'] = $invoice_id->invoice_id;
-            $data['no'] = $invoice_id->id;
+            $data['price'] = $payment_id_student->pay_price; //
+            $data['quantity'] = $payment_id_student->quantity; //
 
-            $data['price'] = $payment_id_student->pay_price;
+            $data['date_receive'] = date('d-m-Y'); //
+            $data['bulan'] = date('M Y'); //
+            $data['datesum'] = $datesum; //
 
-            $data['total'] = $payment_id_student->totalprice;
+            $data['membership'] = $member->name; //
 
-            // $data['balance']=$balance;
-            $data['invoices'] = $inv;
-            
-            $data['quantity'] = $payment_id_student->quantity;
-            $data['upgrade_count'] = $payment_id_student->upgrade_count;
-
-            $data['date_receive'] = date('d-m-Y');
-            $data['due_date'] = date('d-m-Y');
-            $data['bulan'] = date('M Y');
-
-            $data['payment_id'] = $payment_id_student;       
-            $data['student_id'] = $stud_id;
-
-            $data['membership'] = $member->name;
-
-            $pdf = PDF::loadView('emails.downloadinvoice', $data);
-            return $pdf->download('Receipt.pdf');
+            $pdf = PDF::loadView('emails.downloadinvoice', $data)->setPaper('a4');
+            return $pdf->download('Invoice.pdf');
             
         }
     }
 
-    //download invoice
-    public function downloadResit($level, $invoice, $student){
+    //download receipt
+    public function downloadResit($level, $payment, $student){
 
         $stud_id = Session::get('student_login_id');
         $stud_detail = Session::get('student_detail');
@@ -830,11 +811,14 @@ class StudentPortal extends Controller
             $member_student = $student;
 
             //testing dari downloadinvoice
-            $payment_id_student = Payment::where('level_id', $level_id)->first();
+            $payment_id_student = Payment::where('payment_id', $payment)->first();
             $member = Membership_level::where('level_id', $level_id)->first();
-            $invoice_id = Invoice::where('student_id', $member_student)->where('invoice_id', $invoice)->first();
+            $invoice_id = Invoice::where('student_id', $stud_detail->id)->first();
+            $receipt = Payment::where('payment_id',$payment)->first();
+            $inv = Invoice::where('invoice_id', $invoice_id)->first();
+            $membership_level = Membership_Level::where('membership_id', $level)->where('level_id', $level_id)->first();
+
             // $inv = Invoice::where('student_id', $invoice_student)->where('status', 'not paid')->first();
-            $inv = Invoice::where('student_id', $member_student)->where('status', 'not paid')->where('invoice_id', $invoice);
 
             //dapatkan membership_id student
             $payment_student_id = $stud_detail->level_id;
@@ -842,7 +826,7 @@ class StudentPortal extends Controller
             $member_student = $stud_detail->level_id;
 
             $payment_id_student = Payment::where('level_id', $payment_student_id)->first();
-            $payment = Payment::where('level_id', $payment_student_id)->first();
+            $payment = Payment::where('payment_id', $payment)->first();
             $invoice_id = Invoice::where('student_id', $invoice_student)->first();
             $member = Membership_level::where('level_id', $member_student)->first();
 
@@ -851,6 +835,7 @@ class StudentPortal extends Controller
             $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
 
             // add
+            $data['receipt'] = $receipt;
             $data['name']=$stud_detail->first_name;
             $data['secondname']=$stud_detail->last_name;
             $data['ic']=$stud_detail->ic;
@@ -876,7 +861,6 @@ class StudentPortal extends Controller
             $data['quantity']=$payment_id_student->quantity;
             $data['upgrade_count']=$payment_id_student->upgrade_count;
 
-            // $data['date_receive']=$payment_id_student->created_at->date('d-m-Y');
             $data['date_receive']=$payment_id_student->created_at;
             $data['due_date']=date('d-m-Y');
             $data['bulan']=date('M Y');
@@ -886,7 +870,7 @@ class StudentPortal extends Controller
 
             $data['membership']=$member->name;
 
-            $pdf = PDF::loadView('emails.resitmember', $data)->setPaper('A4');
+            $pdf = PDF::loadView('emails.resitmember', $data);
             return $pdf->download('Receipt.pdf');
             
         }
@@ -931,21 +915,28 @@ class StudentPortal extends Controller
 
             $no = 1;
 
-            return view('studentportal.invoicesreceipt.invoices', compact('stud_detail', 'membership_level', 'invoices', 'no'));
+            $date_receive = date('d-m-Y');
+            $daystosum = '7';
+            $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
+
+            return view('studentportal.invoicesreceipt.invoices', compact('stud_detail', 'membership_level', 'invoices', 'no', 'datesum', 'date_receive', 'daystosum'));
         }
     }
 
     public function receipt()
     {
-        $student_authenticated = session('student_login_id');
+        $stud_id = Session::get('student_login_id');
+        $stud_detail = Session::get('student_detail');
 
-        if($student_authenticated == (null||"")){
+        if($stud_id == (null||"")) {
 
             return redirect('/student/login');
 
         }else{
 
-            $payment = Payment::where('stud_id', $student_authenticated)->where('status', 'paid')->orderBy('created_at', 'DESC')->paginate(10);
+            $payment = Payment::where('stud_id', $stud_detail->stud_id)->where('status', 'paid')->orderBy('created_at', 'DESC')->paginate(10);
+            $membership_level = Membership_level::where('level_id', $stud_detail->level_id)->first();
+            $student = Student::where('stud_id', $stud_detail->stud_id)->first();
 
             $payment_data = [];
             $type = [];
@@ -971,7 +962,7 @@ class StudentPortal extends Controller
                 }
             }
 
-            return view('studentportal.invoicesreceipt.receipt', compact('payment','payment_data','type'));
+            return view('studentportal.invoicesreceipt.receipt', compact('student','stud_detail','payment','payment_data','type','membership_level'));
         }
     }
 

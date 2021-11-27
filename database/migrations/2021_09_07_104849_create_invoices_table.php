@@ -18,6 +18,7 @@ class CreateInvoicesTable extends Migration
             $table->string('invoice_id');
             $table->string('price');
             $table->string('for_date');
+            $table->string('due_date');
             $table->string('status');
             $table->foreignId('student_id')->constrained('student');
             $table->timestamps();

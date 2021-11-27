@@ -20,7 +20,7 @@ Sales Report
     </div>
     @endif
 
-    <form action="{{ url('importExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="row" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('uploadCheque') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="row" method="POST" enctype="multipart/form-data">
         @csrf
 
         <h5 class="py-3">Import Customer</h5>
