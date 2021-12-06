@@ -228,8 +228,15 @@ class UpdatePendaftaran extends Command
         $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday this week')) , date('Y-m-d 23:59:59', strtotime('wednesday this week')) ])->count();
         $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday this week')) , date('Y-m-d 23:59:59', strtotime('tuesday this week')) ])->count();
 
+        $textes = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."Total Package : ".$totalregister."\n"."Total Now : ".$total_now."\n";
+        Telegram::sendMessage([
+            "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+            "parse_mode" => "HTML",
+            "text" => $textes
+        ]);
+
         for ($i = 0; $i < $count_package; $i++){
-            $text = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n"."Total Now : ".$total_now."\n"."Total per Package : ".$totalpackage[$i]."\n".$package[$i]->name." : ".number_format($registration[$i])."\n";
+            $text = "Total per Package : ".$totalpackage[$i]."\n".$package[$i]->name." : ".number_format($registration[$i])."\n";
             Telegram::sendMessage([
                 "chat_id" => env('TELEGRAM_CHAT_ID', ''),
                 "parse_mode" => "HTML",
