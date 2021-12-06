@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Hash;
 //---------------------------------------------- Info Part -------------------------------------------------//
 
 Route::get('information', 'InfoController@info');
+Route::get('teleUpdates', 'InfoController@teleUpdates');
 
 //---------------------------------------------- Administrator Part -------------------------------------------------//
 
@@ -69,6 +70,7 @@ Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController
 */
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
+Route::get('searchreport', 'ReportsController@search_report')->name('searchreport');
 
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
