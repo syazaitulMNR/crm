@@ -236,7 +236,7 @@ class UpdatePendaftaran extends Command
         ]);
 
         for ($i = 0; $i < $count_package; $i++){
-            $text = strtoupper($package[$i]->name)."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";
+            $text = "<b>".strtoupper($package[$i]->name)."</b>"."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";
             Telegram::sendMessage([
                 "chat_id" => env('TELEGRAM_CHAT_ID', ''),
                 "parse_mode" => "HTML",
