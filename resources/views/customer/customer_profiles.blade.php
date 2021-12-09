@@ -44,7 +44,7 @@ Customer Profiles
     <div class="col-md-12 pt-3 table-responsive">
         
         <form action="{{ url('customer_profiles') }}" class="input-group" method="GET">
-            <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search name and IC number">
+            <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search Name, IC Number and Email">
         </form>
         
         <table class="table table-hover">
@@ -53,6 +53,7 @@ Customer Profiles
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">IC</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -66,6 +67,7 @@ Customer Profiles
                     <th scope="row">{{ ++$no }}</th>
                     <td>{{ ucwords(strtolower($customer->first_name)) }} {{ ucwords(strtolower($customer->last_name)) }}</td>
                     <td>{{ $customer->ic }}</td>
+                    <td>{{ $customer->email }}</td>
                     <td>
                         @if ($customer->status === "Active")
                             <span class="badge rounded-pill bg-success p-2">Active</span>

@@ -62,8 +62,13 @@ Pendaftaran Pembeli
                         </div>
                     @endif
 
+                    <div class="alert alert-warning" role="alert">
+                        <small>* Pastikan pembayaran secara <b>Billplz</b> anda telah berjaya dengan menekan butang '<b>Merchant Page</b>' dan memasuki ke <b>Group Telegram</b> kami.<center>Terima Kasih</center></small>
+                    </div>
+
                     <div class="form-group row">
                         <div class="col-md-12 text-center">
+
                             {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
                                 <i class="far fa-credit-card fa-3x"></i>
                                 <br><br>Kad Debit/Kredit
@@ -73,8 +78,39 @@ Pendaftaran Pembeli
                                 <i class="fas fa-university fa-3x"></i>
                                 <br><br>Billplz
                             </button>
+
+                            <button type="button" class="button button4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <!-- <button type="submit" class="button button4" name="pay_method" value="{{ $manual ?? '' }}"> -->
+                            <!-- <img src="{{ asset('assets/images/invoice.jpg') }}"> -->
+                            <i class="fas fa-file-invoice-dollar fa-3x"></i>
+                                <br><br>Resit Manual
+                            </button>
+
                         </div>
                     </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">PERINGATAN</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="px-4">
+                                        <li class="text-justify py-2">Pastikan anda telah selesai melakukan pembayaran secara <b>Online</b> atau di <b>Mesin CDM</b> sebelum meneruskan proses naik taraf pakej.</li>
+
+                                        <li class="text-justify py-2">Pastikan anda muat naik resit pembayaran yang sah. Kegagalan memuat naik resit pembayaran yang sah akan dikira sebagai batal.</li>
+
+                                        <p class="text-center">Terima kasih</p>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-dark" name="pay_method" value="{{ $manual ?? '' }}">Setuju</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
 
                 </div>
                 <div class="col-md-12">

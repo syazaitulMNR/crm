@@ -72,6 +72,9 @@
                                     
                                 <!-- Participant Modal Button -->
                                 <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="bi bi-envelope pr-2"></i>Participant Email </button>
+                                <!-- View Receipt Modal Button -->
+                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#receiptModal"><i class="bi bi-file-earmark-text"></i> Payment Receipt </button>
+
                                 <!-- Participant Modal Triggered -->
                                 <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -121,6 +124,18 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">PIC Name</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $ticket->pic }}</p>
+                            </div>
+
+                            <label class="col-sm-2">Date Time Payment</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y (h:i A)', strtotime($ticket->pay_datetime)) }}</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -158,6 +173,46 @@
         </div>
 
     </div>
+
+    <!-- View Receipt Modal Triggered -->
+    <div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="receiptModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Payment Receipt</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" method="POST" enctype="multipart/form-data"> 
+                    @csrf
+                        <div class="form-group row px-4">
+                            <label for="receipt" class="col-sm-3 col-form-label">Receipt File</label>
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control form-control-sm" name="receipt_path" id="receipt_path" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type='submit' class='btn btn-success btn-sm'></i>Save</button>
+                            </div>
+                        </div>
+                    </form>
+                    @if($ticket->receipt_path == '')
+                        &nbsp;
+                    @else
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 mb-5 text-center">
+                                <embed src="{{ asset($ticket->receipt_path) }}" height="500" width="450">
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+            </div>
+        </div>
+
 </div>
 
 @endsection

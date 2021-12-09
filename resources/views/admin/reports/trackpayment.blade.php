@@ -27,7 +27,7 @@ Sales Report
     <div class="row">      
 
         <div class="col-md-12">
-
+        
             @if ($message = Session::get('purchased-sent'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-bs-dismiss="alert">×</button>	
@@ -36,7 +36,22 @@ Sales Report
             @endif 
             
             @if ($message = Session::get('updated-sent'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
+            @if ($message = Session::get('uploadSuccess'))
             <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif 
+            
+
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
                 <button type="button" class="close" data-bs-dismiss="alert">×</button>	
                 <strong>{{ $message }}</strong>
             </div>
@@ -78,6 +93,9 @@ Sales Report
                                                 
                                 <!-- Purchased Modal Button -->
                                 <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#purchaseModal"><i class="bi bi-envelope pr-2"></i>Purchased Email </button>
+                                <!-- Add/View Receipt Modal Button -->
+                               
+
                                 <!-- Purchased Modal Triggered -->
                                 <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -102,6 +120,15 @@ Sales Report
                                         </div>
                                     </div>
                                 </div>
+
+                                @if($payment->receipt_path == '')
+                                    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#uploadModal" data-attr="{{ $payment->payment_id }}"><i class="bi bi-file-earmark-text"></i> Upload Receipt </button>
+                                @else
+                                    <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#receiptModal" data-attr="{{ $payment->payment_id }}"><i class="bi bi-file-earmark-text"></i> View Receipt </button>
+                                @endif
+
+                               
+
                             </div>
                         </div>
                     </div>
@@ -119,9 +146,9 @@ Sales Report
                                 <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
                             </div>
 
-                            <label class="col-sm-2">Date Purchase</label>
+                            <label class="col-sm-2">Date Time Payment</label>
                             <div class="col-sm-4">
-                                <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
+                                <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y (h:i A)', strtotime($payment->pay_datetime)) }}</p>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -142,6 +169,18 @@ Sales Report
                                         <p>NULL</p>
                                     @endif
                                 </p>
+                            </div>
+                        </div>
+                        <!-- add -->
+                        <div class="mb-3 row">
+                            <label class="col-sm-2">PIC Name</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $payment->pic }}</p>
+                            </div>
+
+                            <label class="col-sm-2">Date Key-In</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y', strtotime($payment->created_at)) }}</p>
                             </div>
                         </div>
                         <div class="mb-3 row">
@@ -199,6 +238,74 @@ Sales Report
 
             </form>
             
+        </div>
+
+        <!-- Upload Receipt Modal Triggered -->
+        <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Upload Payment Receipt</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <form action="{{ url('viewpayment/save') }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="POST" enctype="multipart/form-data"> 
+                        @csrf
+                            
+                            <div class="form-group row px-4">
+                                <label for="receipt" class="col-sm-4 col-form-label">Receipt File</label>
+                                <div class="col-sm-8">
+                                <input type="file" class="form-control" name="receipt_path" id="receipt_path" required>
+                                </div>
+                            </div>                        
+                    </div>
+
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type='submit' class='btn btn-sm btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
+                        </form>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+        <!-- View Receipt Modal Triggered -->
+        <div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="receiptModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Payment Receipt</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ url('viewpayment/save') }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="POST" enctype="multipart/form-data"> 
+                    @csrf
+                        <div class="form-group row px-4">
+                            <label for="receipt" class="col-sm-3 col-form-label">Receipt File</label>
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control form-control-sm" name="receipt_path" id="receipt_path" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type='submit' class='btn btn-success btn-sm'></i>Save</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12 mb-5 text-center">
+                            <embed src="{{ asset($payment->receipt_path) }}" height="500" width="450">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
