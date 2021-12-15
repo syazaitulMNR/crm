@@ -382,7 +382,7 @@ class UpgradeController extends Controller
         if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
         {
             $name = $filename->getClientOriginalName();
-            $uniqe = 'UP_RE'. uniqid() . '.' . $extension;
+            $uniqe = 'UP_RE' . uniqid() . '.' . $extension;
             $dirpath = public_path('assets/receipts/');
             $filename->move($dirpath, $uniqe);
             $receipt_name = 'assets/receipts/'.$uniqe;

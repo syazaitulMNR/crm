@@ -14,7 +14,7 @@ class AddPicToPaymentTable extends Migration
     public function up()
     {
         Schema::table('payment', function (Blueprint $table) {
-            $table->string('pic')->after('pay_datetime');
+            $table->string('pic')->nullable()->after('pay_datetime');
         });
     }
 

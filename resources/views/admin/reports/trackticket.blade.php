@@ -36,18 +36,33 @@
             </div>
             @endif
 
+            @if ($message = Session::get('uploadSuccess'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif 
+            
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+            </div>
+            @endif
+
             <form action="{{ url('ticket/update') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}" method="post">
                 @csrf
             
                 <div class="card mb-4">
                     <div class="card-header">
-                    <b>Personal Details</b>
+                        <b>Personal Details</b>
                     </div>
+                    
                     <div class="pt-3 px-4">
 
-                        <div class="mb-3 row">
+                        <div class="mb-2 row">
                             <label class="col-sm-2">IC No.</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4 mb-2">
                                 <input type="text" class="form-control" name="ic" value="{{ $student->ic }}">
                             </div>
 
@@ -56,9 +71,9 @@
                                 <input type="text" class="form-control" name="phoneno" value="{{ $student->phoneno }}">
                             </div>
                         </div>
-                        <div class="mb-3 row">
+                        <div class="mb-2 row">
                             <label class="col-sm-2">Name</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4 mb-2">
                                 <input type="text" class="form-control" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" placeholder="First Name">
                                 <input type="text" class="form-control" name="last_name" value="{{ ucwords(strtolower($student->last_name)) }}" placeholder="Last Name">
                             </div>
@@ -67,39 +82,45 @@
                             <div class="col-sm-4">
                                 
                                 <input type="text" class="form-control" name="email" value="{{ $student->email }}">
-                                
-                                <br>
-                                    
+                            </div>
+                        </div> 
+                        
+                        <div class="row text-right mb-2">
+                            <div class="col-12">
                                 <!-- Participant Modal Button -->
-                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="bi bi-envelope pr-2"></i>Participant Email </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#participantModal"><i class="bi bi-envelope pr-2"></i>Participant Email</button>
+                            
                                 <!-- View Receipt Modal Button -->
-                                <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#receiptModal"><i class="bi bi-file-earmark-text"></i> Payment Receipt </button>
+                                @if($ticket->pay_method == 'Manual')
+                                    <button type="button" class="btn btn-sm btn-outline-dark mt-1" data-bs-toggle="modal" data-bs-target="#receiptModal"><i class="bi bi-file-earmark-text"></i> View Receipt</button>
+                                @else
+                                    &nbsp;
+                                @endif
+                            </div>
+                        </div>   
 
-                                <!-- Participant Modal Triggered -->
-                                <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?</p>
-                                            <p>Example: </p>
-                                            <div class="text-center">
-                                                <img src="{{ asset('assets/images/pengesahan_peserta.jpg') }}" style="max-width:300px">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
-                                                Send
-                                            </a>
-                                        </div>
+                        <!-- Participant Modal Triggered -->
+                        <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?</p>
+                                        <p>Example: </p>
+                                        <div class="text-center">
+                                            <img src="{{ asset('assets/images/pengesahan_peserta.jpg') }}" style="max-width:300px">
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a class="btn btn-sm btn-dark" href="{{ url('updated-mail') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $student->stud_id }}">
+                                            Send
+                                        </a>
+                                    </div> 
                                 </div>
-                                
                             </div>
                         </div>
 
@@ -108,11 +129,12 @@
 
                 <div class="card mb-4">
                     <div class="card-header">
-                    <b>Ticket Details</b>
+                        <b>Ticket Details</b>
                     </div>
+
                     <div class="pt-3 px-4">
 
-                        <div class="mb-3 row">
+                        <div class="mb-2 row">
                             <label class="col-sm-2">Package Name</label>
                             <div class="col-sm-4">
                                 <p>: &nbsp;&nbsp;&nbsp; {{ $package->name }}</p>
@@ -124,17 +146,25 @@
                             </div>
                         </div>
 
-                        <div class="mb-3 row">
-                            <label class="col-sm-2">PIC Name</label>
-                            <div class="col-sm-4">
-                                <p>: &nbsp;&nbsp;&nbsp; {{ $ticket->pic }}</p>
-                            </div>
+                        @if($ticket->pay_method == 'Manual')
+                            <div class="mb-2 row">
+                                <label class="col-sm-2">PIC Name</label>
+                                <div class="col-sm-4">
+                                    <p>: &nbsp;&nbsp;&nbsp; {{ $ticket->pic }}</p>
+                                </div>
 
-                            <label class="col-sm-2">Date Time Payment</label>
-                            <div class="col-sm-4">
-                                <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y (h:i A)', strtotime($ticket->pay_datetime)) }}</p>
+                                <label class="col-sm-2">Date Time Payment</label>
+                                <div class="col-sm-4">
+                                @if($ticket->pay_datetime == '')
+                                    <p>:</p>
+                                @else
+                                    <p>: &nbsp;&nbsp;&nbsp; {{ date('d/m/Y (h:i A)', strtotime($ticket->pay_datetime)) }}</p>
+                                @endif
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="mb-2 row"></div>
+                        @endif
 
                     </div>
                 </div>
@@ -186,7 +216,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="" method="POST" enctype="multipart/form-data"> 
+                    <form action="{{ url('view/ticket/save') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}" method="POST" enctype="multipart/form-data"> 
                     @csrf
                         <div class="form-group row px-4">
                             <label for="receipt" class="col-sm-3 col-form-label">Receipt File</label>
@@ -199,7 +229,7 @@
                         </div>
                     </form>
                     @if($ticket->receipt_path == '')
-                        &nbsp;
+                       <center> No Receipt Data </center>
                     @else
                         <hr>
                         <div class="row">

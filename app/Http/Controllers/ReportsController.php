@@ -905,6 +905,38 @@ class ReportsController extends Controller
         return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'count'));
     }
 
+    //upload receipt for existing data participant (modal)
+    public function update_receipt($product_id, $package_id, $ticket_id, Request $request)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+        
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        // dd($extension);
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'UP_RE' . uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+
+            $ticket->receipt_path = $receipt_name;
+            $ticket->save();
+
+            return redirect()->back()->with('uploadSuccess','Receipt has been successfully saved!');
+        } else {
+            return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+        }
+        // End receipt
+    }
+
     public function update_ticket($product_id, $package_id, $ticket_id, $student_id, Request $request)
     {
         // dd('john12');
@@ -1188,7 +1220,7 @@ class ReportsController extends Controller
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
     }
 
-    //upload receipt for existing data (modal)
+    //upload receipt for existing data buyer (modal)
     public function uploadFile($product_id, $package_id, $payment_id, $student_id, Request $request)
     {
         $product = Product::where('product_id', $product_id)->first();

@@ -69,12 +69,12 @@ Pendaftaran Pembeli
                     <div class="form-group row">
                         <div class="col-md-12 text-center">
 
-                            {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $card ?? '' }}">
+                            {{-- <button type="submit" class="button button4 mb-3" name="pay_method" value="{{ $card ?? '' }}">
                                 <i class="far fa-credit-card fa-3x"></i>
                                 <br><br>Kad Debit/Kredit
                             </button> --}}
                         
-                            <button type="submit" class="button button4" name="pay_method" value="{{ $fpx ?? '' }}">
+                            <button type="submit" class="button button4 mb-3" name="pay_method" value="{{ $fpx ?? '' }}">
                                 <i class="fas fa-university fa-3x"></i>
                                 <br><br>Billplz
                             </button>
@@ -98,7 +98,13 @@ Pendaftaran Pembeli
                                 </div>
                                 <div class="modal-body">
                                     <ul class="px-4">
-                                        <li class="text-justify py-2">Pastikan anda telah selesai melakukan pembayaran secara <b>Online</b> atau di <b>Mesin CDM</b> sebelum meneruskan proses naik taraf pakej.</li>
+                                        <li class="text-justify py-2">Pastikan anda telah selesai melakukan pembayaran secara <b>Online</b> atau di <b>Mesin CDM</b> sebelum meneruskan proses pendaftaran pakej.</li>
+
+                                        <li class="text-justify py-2">Contoh bukti pembayaran:</li>
+                                        
+                                        <div class="text-center">
+                                            <img src="{{ asset('assets/images/eg_receipt.jpg') }}" style="max-width:250px">
+                                        </div>
 
                                         <li class="text-justify py-2">Pastikan anda muat naik resit pembayaran yang sah. Kegagalan memuat naik resit pembayaran yang sah akan dikira sebagai batal.</li>
 

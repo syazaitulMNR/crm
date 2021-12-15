@@ -86,6 +86,10 @@ Upgrade Pakej
                                         <ul class="px-4">
                                             <li class="text-justify py-2">Pastikan anda telah selesai melakukan pembayaran secara <b>Online</b> atau di <b>Mesin CDM</b> sebelum meneruskan proses naik taraf pakej.</li>
 
+                                            <div class="text-center">
+                                                <img src="{{ asset('assets/images/eg_receipt.jpg') }}" style="max-width:250px">
+                                            </div>
+                                            
                                             <li class="text-justify py-2">Pastikan anda muat naik resit pembayaran yang sah. Kegagalan memuat naik resit pembayaran yang sah akan dikira sebagai batal.</li>
 
                                             <p class="text-center">Terima kasih</p>

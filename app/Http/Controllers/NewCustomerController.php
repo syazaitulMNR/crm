@@ -721,10 +721,8 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-        // $ticket = $request->session()->get('ticket');
-
-        // dd($ticket);
-
+        $ticket = $request->session()->get('ticket');
+        // dd($student);
         return view('customer_new.manual_method',compact('product', 'package', 'student', 'payment'));
     }
 
@@ -735,7 +733,7 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-        // $ticket = $request->session()->get('ticket');
+        $ticket = $request->session()->get('ticket');
         // dd($ticket);
 
         // Start receipt
@@ -794,8 +792,7 @@ class NewCustomerController extends Controller
             $time_to = $product->time_to;
             $packageId = $package_id;
             $payment_id = $payment->payment_id;
-            $productId = $product_id;
-            $ticket_id = $ticket->ticket_id;       
+            $productId = $product_id;      
             $student_id = $student->stud_id;
             //penambahan pic, tarikh, resit
             $payment->pic = $request->pic;

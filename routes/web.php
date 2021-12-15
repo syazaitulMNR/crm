@@ -84,10 +84,7 @@ Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'R
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
 // Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
-//modal upload receipt existing data
-// Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}/upload', 'ReportsController@uploadFile');
-
-Route::post('viewpayment/save/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@uploadFile');
+Route::post('viewpayment/save/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@uploadFile'); //modal upload receipt existing data
 
 //participant
 Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
@@ -96,6 +93,7 @@ Route::get('import-participant/{product_id}/{package_id}','ReportsController@imp
 Route::post('import/store-participant/{product_id}/{package_id}','ReportsController@store_participant');
 Route::get('participant-format/{product_id}/{package_id}', 'ReportsController@participant_format');
 Route::get('view/ticket/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_ticket');
+Route::post('view/ticket/save/{product_id}/{package_id}/{ticket_id}', 'ReportsController@update_receipt');
 Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 'ReportsController@update_ticket');
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsController@destroy_ticket');

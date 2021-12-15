@@ -14,7 +14,7 @@ class AddPicToTicketTable extends Migration
     public function up()
     {
         Schema::table('ticket', function (Blueprint $table) {
-            $table->string('pic')->after('pay_datetime');
+            $table->string('pic')->nullable()->after('pay_datetime');
         });
     }
 
