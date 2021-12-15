@@ -262,13 +262,15 @@ Sales Report
                     <div class="modal-body">
                         <form action="{{ url('viewpayment/save') }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $payment->payment_id }}/{{ $payment->stud_id }}" method="POST" enctype="multipart/form-data"> 
                         @csrf
-                            
-                            <div class="form-group row px-4">
-                                <label for="receipt" class="col-sm-4 col-form-label">Receipt File</label>
-                                <div class="col-sm-8">
-                                <input type="file" class="form-control" name="receipt_path" id="receipt_path" required>
-                                </div>
-                            </div>                        
+                        <div class="form-group row px-4">
+                            <label for="receipt" class="col-sm-3 col-form-label">Receipt File</label>
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control form-control-sm mb-2" name="receipt_path" id="receipt_path" required>
+                            </div>
+                            <div class="col-sm-3 text-right">
+                                <button type='submit' class='btn btn-success btn-sm'></i>Save</button>
+                            </div>
+                        </div>                       
                     </div>
 
                     <div class="modal-footer">
@@ -298,17 +300,19 @@ Sales Report
                         <div class="form-group row px-4">
                             <label for="receipt" class="col-sm-3 col-form-label">Receipt File</label>
                             <div class="col-sm-6">
-                                <input type="file" class="form-control form-control-sm" name="receipt_path" id="receipt_path" required>
+                                <input type="file" class="form-control form-control-sm mb-2" name="receipt_path" id="receipt_path" required>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 text-right">
                                 <button type='submit' class='btn btn-success btn-sm'></i>Save</button>
                             </div>
                         </div>
                     </form>
                     <hr>
-                    <div class="row">
-                        <div class="col-md-12 mb-5 text-center">
-                            <embed src="{{ asset($payment->receipt_path) }}" height="500" width="450">
+                    <div class="row text-center">
+                        <div class="content">
+                            <div class="embed-container">
+                                <iframe src="{{ asset($payment->receipt_path) }}" frameborder="0" height="480"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>

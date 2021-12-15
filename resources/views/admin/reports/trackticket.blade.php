@@ -221,9 +221,9 @@
                         <div class="form-group row px-4">
                             <label for="receipt" class="col-sm-3 col-form-label">Receipt File</label>
                             <div class="col-sm-6">
-                                <input type="file" class="form-control form-control-sm" name="receipt_path" id="receipt_path" required>
+                                <input type="file" class="form-control form-control-sm mb-2" name="receipt_path" id="receipt_path" required>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 text-right">
                                 <button type='submit' class='btn btn-success btn-sm'></i>Save</button>
                             </div>
                         </div>
@@ -232,9 +232,11 @@
                        <center> No Receipt Data </center>
                     @else
                         <hr>
-                        <div class="row">
-                            <div class="col-md-12 mb-5 text-center">
-                                <embed src="{{ asset($ticket->receipt_path) }}" height="500" width="450">
+                        <div class="row text-center">
+                            <div class="content">
+                                <div class="embed-container">
+                                    <iframe src="{{ asset($ticket->receipt_path) }}" frameborder="0" height="480"></iframe>
+                                </div>
                             </div>
                         </div>
                     @endif
