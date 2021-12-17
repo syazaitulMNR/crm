@@ -9,6 +9,7 @@ use App\Package;
 use App\Student;
 use App\Payment;
 use App\Ticket;
+use Carbon\Carbon;
 use Stripe;
 use Mail;
 use Billplz\Client;
@@ -635,6 +636,7 @@ class ExistCustomerController extends Controller
     //Added for to view manual payment
     public function manual_payment($product_id, $package_id, Request $request)
     {
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d\TH:i');
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
@@ -643,7 +645,7 @@ class ExistCustomerController extends Controller
 
         // dd($ticket);
 
-        return view('customer_exist.manual_method',compact('product', 'package', 'student', 'payment'));
+        return view('customer_exist.manual_method',compact('tomorrow', 'product', 'package', 'student', 'payment'));
     }
 
     //Added to save manual payment & upload receipt
@@ -684,9 +686,14 @@ class ExistCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            //penambahan pic, tarikh, resit
+            $ticket_id = $ticket->ticket_id;
+            //ticket table -> pic, tarikh, resit
+            $ticket->pic = $request->pic;
+            $ticket->pay_datetime = $request->pay_datetime;
+            $ticket->receipt_path = $receipt_name;
+            $ticket->pay_method = 'Manual';
+            //payment table -> pic, tarikh, resit
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;

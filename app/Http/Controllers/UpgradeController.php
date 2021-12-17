@@ -9,6 +9,7 @@ use App\Student;
 use App\Payment;
 use App\Feature;
 use App\Ticket;
+use Carbon\Carbon;
 use Stripe;
 use Billplz\Client;
 use App\Jobs\UpgradeJob;
@@ -345,6 +346,7 @@ class UpgradeController extends Controller
     //Added for to view manual payment
     public function manual_option($product_id, $package_id, $ticket_id, Request $request)
     {
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d\TH:i');
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $packagename = Package::where('product_id', $product_id)->get();
@@ -356,7 +358,7 @@ class UpgradeController extends Controller
         // $name = Package::where('package_id', )
         // dd($new_package);
 
-        return view('upgrade_ticket.use_manual', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'packagename'));
+        return view('upgrade_ticket.use_manual', compact('tomorrow', 'product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'packagename'));
     }
 
     //Added to save manual payment & upload receipt

@@ -71,7 +71,7 @@ Pendaftaran Pembeli
 
                                     <dd class="col-4">Tarikh / Masa Pembayaran</dd>
                                     <dd class="col-1">:</dd>
-                                    <dt class="col-7"><input type="datetime-local" name="pay_datetime" id="pay_datetime" class="form-control form-control-sm" style="font-size: 9pt" required></dt>
+                                    <dt class="col-7"><input type="datetime-local" name="pay_datetime" id="pay_datetime" max="{{ $tomorrow }}"  class="form-control form-control-sm" style="font-size: 9pt" required></dt>
 
                                     <dd class="col-4">Bukti Pembayaran</dd>
                                     <dd class="col-1">:</dd>
@@ -112,7 +112,7 @@ Pendaftaran Pembeli
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <img src="{{ asset('assets/images/contoh_resit.jpg') }}" style="max-width:270px">
+                        <img src="{{ asset('assets/images/eg_resit_ic.jpg') }}" style="max-width:270px">
                     </div>
                 </div>
             </div>

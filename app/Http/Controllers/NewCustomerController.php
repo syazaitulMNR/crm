@@ -9,6 +9,7 @@ use App\Package;
 use App\Student;
 use App\Payment;
 use App\Ticket;
+use Carbon\Carbon;
 use Stripe;
 use Mail;
 use Billplz\Client;
@@ -717,13 +718,14 @@ class NewCustomerController extends Controller
     //Added for to view manual payment
     public function manual_payment($product_id, $package_id, Request $request)
     {
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d\TH:i');
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
         // dd($student);
-        return view('customer_new.manual_method',compact('product', 'package', 'student', 'payment'));
+        return view('customer_new.manual_method',compact('tomorrow', 'product', 'package', 'student', 'payment'));
     }
 
     //Added to save manual payment & upload receipt
