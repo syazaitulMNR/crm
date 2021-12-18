@@ -353,7 +353,6 @@ class UpgradeController extends Controller
         $current_package = Package::where('package_id', $package_id)->first();
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
-
         $new_package = $request->session()->get('ticket');
         // $name = Package::where('package_id', )
         // dd($new_package);

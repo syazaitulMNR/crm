@@ -146,6 +146,22 @@
                             </div>
                         </div>
 
+                        @if($payment->quantity > '1')
+                        <div class="mb-2 row">
+                            <label class="col-sm-2">Buyer Name</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $buyer->first_name }}&nbsp;{{ $buyer->last_name }}</p>
+                            </div>
+
+                            <label class="col-sm-2">Buyer IC</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $buyer->ic }}</p>
+                            </div>
+                        </div>
+                        @else
+                            <div class="mb-2 row"></div>
+                        @endif
+
                         @if($ticket->pay_method == 'Manual')
                             <div class="mb-2 row">
                                 <label class="col-sm-2">PIC Name</label>

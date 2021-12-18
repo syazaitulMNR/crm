@@ -386,7 +386,11 @@ class HomeController extends Controller
                                     'stud_id' => $participant_id,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
-                                    'payment_id' => $payment_id
+                                    'payment_id' => $payment_id,
+                                    'pay_method' => $payment->pay_method,
+                                    'receipt_path' => $payment->receipt_path,
+                                    'pay_datetime' => $payment->pay_datetime,
+                                    'pic' => $payment->pic
                                 ));
 
                                 // Manage email (for existed ic in looping form) 
@@ -439,7 +443,11 @@ class HomeController extends Controller
                                 'stud_id' => $stud_id_looping,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
-                                'payment_id' => $payment_id
+                                'payment_id' => $payment_id,
+                                'pay_method' => $payment->pay_method,
+                                'receipt_path' => $payment->receipt_path,
+                                'pay_datetime' => $payment->pay_datetime,
+                                'pic' => $payment->pic
                             ));
                 
                             // Manage email (for existed ic in looping form) 
@@ -479,7 +487,11 @@ class HomeController extends Controller
                         'stud_id' => $participant_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
 
                     // Manage email (for existed ic in looping form) 
@@ -531,7 +543,11 @@ class HomeController extends Controller
                         'stud_id' => $stud_id_single,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
 
                     // Manage email (for new ic in single form)                    
@@ -578,7 +594,11 @@ class HomeController extends Controller
                                     'stud_id' => $participant_id,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
-                                    'payment_id' => $payment_id
+                                    'payment_id' => $payment_id,
+                                    'pay_method' => $payment->pay_method,
+                                    'receipt_path' => $payment->receipt_path,
+                                    'pay_datetime' => $payment->pay_datetime,
+                                    'pic' => $payment->pic
                                 ));
 
                                 // Manage email (for existed ic in single form)                        
@@ -631,7 +651,11 @@ class HomeController extends Controller
                                 'stud_id' => $stud_id_looping,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
-                                'payment_id' => $payment_id
+                                'payment_id' => $payment_id,
+                                'pay_method' => $payment->pay_method,
+                                'receipt_path' => $payment->receipt_path,
+                                'pay_datetime' => $payment->pay_datetime,
+                                'pic' => $payment->pic
                             ));
                                                     
                             // Manage email (for new ic in looping form)
@@ -699,7 +723,11 @@ class HomeController extends Controller
                         'stud_id' => $participant_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
 
                     // Manage email (for existed ic in paid ticket form)  
@@ -738,7 +766,11 @@ class HomeController extends Controller
                             'stud_id' => $participant_id,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
 
                         // Manage email (for existed ic in looping form) 
@@ -790,7 +822,11 @@ class HomeController extends Controller
                             'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
             
                         // Manage email (for new ic in looping form)
@@ -842,7 +878,11 @@ class HomeController extends Controller
                         'stud_id' => $stud_id_paid,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
                                     
                     // Manage email (for new ic in paid ticket form)   
@@ -881,7 +921,11 @@ class HomeController extends Controller
                             'stud_id' => $participant_id,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
 
                         // Manage email (for existed ic in free ticket form)      
@@ -932,7 +976,11 @@ class HomeController extends Controller
                             'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
 
                         // Manage email (for new ic in looping form)

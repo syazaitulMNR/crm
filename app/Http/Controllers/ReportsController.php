@@ -898,11 +898,13 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
+        $payment = Payment::where('payment_id', $ticket->payment_id)->first();
+        $buyer = Student::where('stud_id', $payment->stud_id)->first();
 
         //Count the data
         $count = 1;
         
-        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'payment', 'buyer', 'count'));
     }
 
     //upload receipt for existing data participant (modal)
