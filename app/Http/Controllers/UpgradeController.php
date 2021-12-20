@@ -103,7 +103,6 @@ class UpgradeController extends Controller
         }else{
             $new_package = $request->session()->get('ticket');
             $new_package->fill($validatedData);
-            // dd($new_package);
             $request->session()->put('ticket', $new_package);
         }
 
@@ -130,7 +129,6 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('ticket');
         $new_package->fill($validatedData);
-        // dd($new_package);
         $request->session()->put('ticket', $new_package);
 
         return redirect('upgrade-payment/'.  $product_id . '/' . $package_id . '/' . $ticket_id);
@@ -145,7 +143,6 @@ class UpgradeController extends Controller
         $student = Student::where('ic', $ticket->ic)->first();
 
         $new_package = $request->session()->get('ticket');
-        // dd($new_package);
         $stripe = 'Debit/Credit Card';
         $billplz = 'FPX';
         $manual = 'Manual';
@@ -155,7 +152,6 @@ class UpgradeController extends Controller
 
     public function store_payment($product_id, $package_id, $ticket_id, Request $request)
     {
-        // dd('john');
         $validatedData = $request->validate([
             'pay_method' => 'required',
         ]);
@@ -163,7 +159,6 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('ticket');
         $new_package->fill($validatedData);
         $request->session()->put('ticket', $new_package);
-        // dd($new_package);
         return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id);
     }
 
@@ -354,8 +349,6 @@ class UpgradeController extends Controller
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
         $new_package = $request->session()->get('ticket');
-        // $name = Package::where('package_id', )
-        // dd($new_package);
 
         return view('upgrade_ticket.use_manual', compact('tomorrow', 'product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'packagename'));
     }
@@ -371,14 +364,11 @@ class UpgradeController extends Controller
 
         $new_package = $request->session()->get('ticket');
         $get_package = $new_package->package_id; //get upgrade package name
-        // dd($get_package);
         $package_name = Package::where('package_id', $get_package)->first();
-        // dd($package_name);
 
         // Start receipt
         $filename = $request->file('receipt_path');
         $extension = $filename->getClientOriginalExtension();
-        // dd($extension);
         
         if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
         {
@@ -398,7 +388,6 @@ class UpgradeController extends Controller
 
             $new_package->fill($addData);
             $request->session()->put('ticket', $new_package);
-            // dd($new_package);
             if ($new_package->status == 'paid')
             {
                 $product = Product::where('product_id', $new_package->product_id)->first();

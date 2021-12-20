@@ -380,18 +380,12 @@ class MembershipController extends Controller
 
     public function downloadInvoices($level, $invoice, $student)
     {
-        // $stud_id = Session::get('student_login_id');
-        // $stud_detail = Session::get('student_detail');
         $stud_detail = Student::where('id', $student)->first();
-
-        // dd($student);
 
         //dapatkan membership_id student
         // $payment_student_id = $stud_detail->level_id;
         $invoice_student = $stud_detail->id;
         // $member_student = $stud_detail->level_id;
-
-        // dd($level);
 
         // $invoices = Invoice::where('student_id', $stud_detail->id)
         // ->where('status', 'not paid');
@@ -431,8 +425,6 @@ class MembershipController extends Controller
         $data['student_id'] = $stud_detail->student_id;
 
         $data['membership'] = $member->name;
-
-        // dd($inv);
 
         $pdf = PDF::loadView('emails.downloadinvoice', $data);
         return $pdf->download('Receipt.pdf');

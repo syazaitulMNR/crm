@@ -91,12 +91,10 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        // dd($ticket);
 
         //generate id
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
-        // dd($ticket_id);
         $ticket_type = 'paid';
   
         if($product->offer_id == 'OFF001') {
@@ -189,7 +187,6 @@ class NewCustomerController extends Controller
             $ticket = new Ticket();
             $ticket->fill($validatedTicket);
             $request->session()->put('ticket', $ticket);
-            // dd($ticket);
       
             return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
 
@@ -231,8 +228,6 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-        // $ticket = $request->session()->get('ticket');
-        // dd($ticket);
         
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
@@ -249,7 +244,6 @@ class NewCustomerController extends Controller
     public function postCreateStepFour($product_id, $package_id, Request $request)
     {
         $ticket = $request->session()->get('ticket');
-        // dd($ticket);
 
         $validatedData = $request->validate([
             'pay_method' => 'required',
@@ -268,8 +262,6 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-        // $ticket = $request->session()->get('ticket');
-        // dd($ticket);
   
         //Check if form has been key in
         if($payment->pay_method == 'Debit/Credit Card'){
@@ -724,7 +716,7 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        // dd($student);
+
         return view('customer_new.manual_method',compact('tomorrow', 'product', 'package', 'student', 'payment'));
     }
 
@@ -736,12 +728,10 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        // dd($ticket);
 
         // Start receipt
         $filename = $request->file('receipt_path');
         $extension = $filename->getClientOriginalExtension();
-        // dd($extension);
         
         if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
         {
@@ -768,7 +758,6 @@ class NewCustomerController extends Controller
             $student_id = $student->stud_id;
             $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            //penambahan pic, tarikh, resit
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
@@ -776,8 +765,7 @@ class NewCustomerController extends Controller
 
             $student->save();
             $payment->save();
-            $ticket->save();
-            //   dd( $payment->save());   
+            $ticket->save(); 
             $request->session()->forget('student');
             $request->session()->forget('payment');
             $request->session()->forget('ticket');
@@ -796,7 +784,6 @@ class NewCustomerController extends Controller
             $payment_id = $payment->payment_id;
             $productId = $product_id;      
             $student_id = $student->stud_id;
-            //penambahan pic, tarikh, resit
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;

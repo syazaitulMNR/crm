@@ -62,7 +62,6 @@ class ReportsController extends Controller
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $paidticket = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         
         return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket' , 'link'));
@@ -109,10 +108,8 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    // if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -132,11 +129,9 @@ class ReportsController extends Controller
                                             $payments->created_at,
                                         ]);
 
-                                    // }
 
                                 }
                             }
-                        // }
                     }
                 }
                 
@@ -175,11 +170,8 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    // if($payments->user_id == $user->user_id){
-
                                         fputcsv($file, [
                                             $payments->payment_id,
                                             $students->first_name,
@@ -198,10 +190,8 @@ class ReportsController extends Controller
                                             $payments->created_at,
                                         ]);
 
-                                    // }
                                 }
                             }
-                        // }
                     }
                 }
                 
@@ -340,8 +330,6 @@ class ReportsController extends Controller
             fclose($file);
 
         }
-
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
                 
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
@@ -506,7 +494,6 @@ class ReportsController extends Controller
 
     public function destroy($payment_id, $product_id, $package_id) 
     {
-        // dd('john2');
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id);
         $payment->delete();
 
@@ -864,7 +851,6 @@ class ReportsController extends Controller
 
     public function import_participant($product_id, $package_id)
     {
-        // dd('john9');
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         return view('admin.reports.import_participant', compact('product', 'package'));
@@ -877,7 +863,6 @@ class ReportsController extends Controller
 
     function store_participant($product_id, $package_id)
     {
-        // dd('john10');
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
 
@@ -892,7 +877,6 @@ class ReportsController extends Controller
 
     public function track_ticket($product_id, $package_id, $ticket_id)
     {
-        // dd('john11');
         //Get the details
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -919,7 +903,6 @@ class ReportsController extends Controller
         // Start receipt
         $filename = $request->file('receipt_path');
         $extension = $filename->getClientOriginalExtension();
-        // dd($extension);
         
         if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
         {
@@ -941,7 +924,6 @@ class ReportsController extends Controller
 
     public function update_ticket($product_id, $package_id, $ticket_id, $student_id, Request $request)
     {
-        // dd('john12');
         //Get the details
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -961,7 +943,6 @@ class ReportsController extends Controller
 
     public function destroy_ticket($ticket_id, $product_id, $package_id) 
     {
-        // dd('john13');
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id);
         $ticket->delete();
 
@@ -970,7 +951,6 @@ class ReportsController extends Controller
 
     public function track_paid($product_id, $package_id, $ticket_id)
     {
-        // dd('john14');
         //Get the details
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -985,7 +965,6 @@ class ReportsController extends Controller
 
     public function update_paid($product_id, $package_id, $ticket_id, $student_id, Request $request)
     {
-        // dd('john15');
         //Get the details
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -1005,9 +984,7 @@ class ReportsController extends Controller
     // search paid participant
     public function search_participant($product_id, $package_id, Request $request)
     {   
-        // dd('john16');
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -1029,7 +1006,6 @@ class ReportsController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
             $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
             if(count($ticket) > 0)
@@ -1047,7 +1023,6 @@ class ReportsController extends Controller
 
     public function free_ticket($product_id, $package_id)
     {
-        // dd('john16');
         //Get the details
         $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
@@ -1062,14 +1037,11 @@ class ReportsController extends Controller
 
     public function export_free($product_id, $package_id)
     {
-        // dd('john17');
         $ticket = Ticket::where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type','free')->get();
         $student = Student::orderBy('id','desc')->get();
         $product = Product::where('product_id', $product_id)->first();
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        // return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
         $fileName = $package_name->name.'_free.csv';
@@ -1128,7 +1100,6 @@ class ReportsController extends Controller
 
     public function track_free($product_id, $package_id, $ticket_id)
     {
-        // dd('john18');
         //Get the details
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -1143,7 +1114,6 @@ class ReportsController extends Controller
 
     public function update_free($product_id, $package_id, $ticket_id, $student_id, Request $request)
     {
-        // dd('john19');
         //Get the details
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
@@ -1163,9 +1133,7 @@ class ReportsController extends Controller
     // search free participant
     public function search_free($product_id, $package_id, Request $request)
     {   
-        // dd('john20');
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -1173,13 +1141,7 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
 
-        // //get details from search
-        // $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
-        // $stud_id = $student_id->stud_id;
-
         $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->get();
-
-        // dd($ticket);
 
         if(count($ticket) > 0)
         {
@@ -1194,7 +1156,6 @@ class ReportsController extends Controller
 
     public function updated_mail($product_id, $package_id, $ticket_id, $student_id)
     {
-        // dd('john21');
         $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
@@ -1233,7 +1194,6 @@ class ReportsController extends Controller
         // Start receipt
         $filename = $request->file('receipt_path');
         $extension = $filename->getClientOriginalExtension();
-        // dd($extension);
         
         if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
         {

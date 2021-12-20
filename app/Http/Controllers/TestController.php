@@ -70,7 +70,6 @@ class TestController extends Controller
       );
 
       $test = $response->toArray();
-      //dd($test['url']);
 
       return redirect($test['url']);
       

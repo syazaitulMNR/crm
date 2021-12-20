@@ -113,7 +113,6 @@ class HomeController extends Controller
     public function ICValidation(Request $request, $ticket_id) {
         $data = Ticket::where('ticket_id', $ticket_id)->first();
         $dataStudent = Student::where('stud_id', $data->stud_id)->first();
-        // dd($dataStudent->ic); // 871117065195
         if($dataStudent->ic === $request->ic) {
             Session::put('validatedIC', 1);
 

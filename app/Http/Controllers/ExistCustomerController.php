@@ -643,7 +643,6 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
 
-        // dd($ticket);
 
         return view('customer_exist.manual_method',compact('tomorrow', 'product', 'package', 'student', 'payment'));
     }
@@ -656,12 +655,10 @@ class ExistCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        // dd($ticket);
 
         // Start receipt
         $filename = $request->file('receipt_path');
         $extension = $filename->getClientOriginalExtension();
-        // dd($extension);
         
         if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
         {
@@ -688,12 +685,10 @@ class ExistCustomerController extends Controller
             $student_id = $student->stud_id;
             $survey_form = $product->survey_form;
             $ticket_id = $ticket->ticket_id;
-            //ticket table -> pic, tarikh, resit
             $ticket->pic = $request->pic;
             $ticket->pay_datetime = $request->pay_datetime;
             $ticket->receipt_path = $receipt_name;
             $ticket->pay_method = 'Manual';
-            //payment table -> pic, tarikh, resit
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
@@ -701,8 +696,7 @@ class ExistCustomerController extends Controller
 
             $student->save();
             $payment->save();
-            $ticket->save();
-            //   dd( $payment->save());   
+            $ticket->save();  
             $request->session()->forget('student');
             $request->session()->forget('payment');
             $request->session()->forget('ticket');
@@ -721,7 +715,6 @@ class ExistCustomerController extends Controller
             $payment_id = $payment->payment_id;
             $productId = $product_id;      
             $student_id = $student->stud_id;
-            //penambahan pic, tarikh, resit
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
