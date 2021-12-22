@@ -87,7 +87,7 @@ Pendaftaran Pembeli
                             </button>
 
                         </div>
-                    </div>YESSS YESS YESS
+                    </div>
                     
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

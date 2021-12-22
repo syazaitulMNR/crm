@@ -56,6 +56,10 @@ Upgrade Pakej
                             </div>
                         @endif
 
+                        <div class="alert alert-warning text-center" role="alert">
+                            <small>* Pastikan pembayaran secara <b>Billplz</b> anda telah berjaya dengan menekan butang '<b>Merchant Page</b>' dan memasuki ke <b>Group Telegram</b> kami.<center>Terima Kasih</center></small>
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-md-12 text-center">
                                 {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
