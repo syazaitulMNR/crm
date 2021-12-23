@@ -183,7 +183,7 @@
 
           // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
           for (var k = 0; k < firstObjCells.length; k++) {
-            if(firstObjCells.item(k).innerHTML == "Email"){
+            if(firstObjCells.item(k).innerHTML == ""){
               column = k;
             }
             if(firstObjCells.item(k).innerHTML == "PaymentID"){

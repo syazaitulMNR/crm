@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Hash;
 //---------------------------------------------- Info Part -------------------------------------------------//
 
 Route::get('information', 'InfoController@info');
+Route::get('teleUpdates', 'InfoController@teleUpdates');
 
 //---------------------------------------------- Administrator Part -------------------------------------------------//
 
@@ -60,7 +61,7 @@ Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipC
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
-Route::get('download-receipt/{stud_id}', 'MembershipController@downloadReceipt');
+Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController@downloadReceipt');
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::get('download-receipt/{stud_id}', 'MembershipController@downloadReceipt')
 */
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
+Route::get('searchreport', 'ReportsController@search_report')->name('searchreport');
 
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
@@ -108,8 +110,7 @@ Route::get('participant/search/{product_id}/{package_id}', 'ReportsController@se
 // Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
 // Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
 // Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
-// Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
-
+// Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');d
 
 /*
 |--------------------------------------------------------------------------
@@ -127,11 +128,13 @@ Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Blasti
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
 Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');
+Route::get('bulkpurchased-mail', 'BlastingController@bulkpurchased_mail');
+
 
 // send Statement of Account , Invoice , Receipt ke email
 Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
-Route::get('send-invoicemember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_invoicemember');
-Route::get('send-receiptmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_receiptmember');
+Route::get('send-invoicemember/{membership_id}/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_invoicemember');
+Route::get('send-receiptmember/{membership_id}/{level_id}/{payment_id}/{student_id}', 'BlastingController@send_receiptmember');
 
 /*
 |--------------------------------------------------------------------------
@@ -151,7 +154,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 |--------------------------------------------------------------------------
 */
 Route::get('addpackage/{id}', 'ProductController@pack');
-Route::post('storepack/{id}', 'ProductController@storepack');
+Route::post('storepack/{id}/{offer_id}', 'ProductController@storepack');
 Route::get('package/{id}', 'ProductController@view');
 Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
 Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
@@ -341,8 +344,14 @@ Route::post('store-manual/{product_id}/{package_id}/{ticket_id}', 'UpgradeContro
 Route::get('e-cert/{product_id}', 'CertController@ic_check');
 Route::get('verify/{product_id}', 'CertController@checking_ic');
 Route::get('check-cert/{product_id}/{stud_id}', 'CertController@checking_cert');
-
 Route::get('certificate/{product_id}/{stud_id}', 'CertController@extract_cert');
+
+/*
+|--------------------------------------------------------------------------
+| E-Certificate
+|--------------------------------------------------------------------------
+*/
+Route::post('uploadCheque/{membership_id}/{level_id}/{student_id}','MembershipController@uploadcheque');
 
 /*
 |--------------------------------------------------------------------------
@@ -426,12 +435,13 @@ Route::prefix('student')->group(function()
 
 	//download invoice kat list-invoice
 	Route::get('/invoice-download/{level}/{invoice}/{student}','StudentPortal@downloadInvoice')->name('invoice-download');
+	Route::get('/invoice-receipt/{level}/{payment}/{student}','StudentPortal@downloadResit')->name('receipt-download');
 
 	//add new download statement 
 	Route::get('/statement-format','StudentPortal@exportstatement_format')->name('statement-format');
 
 	//add new resit 
-	Route::get('/receipt/{level}/{invoice}/{student}','StudentPortal@downloadResit')->name('emails.resitmember');
+	Route::get('/receipt/{level_id}/{payment_id}/{stud_id}','StudentPortal@downloadResit')->name('emails.resitmember');
 
 	// shauqi add new routes
 	
@@ -503,3 +513,5 @@ Route::post('save-customer', 'HomeController@saveinviteCustomer');
 Route::get('invite-customer-thankyou', 'HomeController@inviteCustomerThankyou');
 
 Route::get('/sample-customer', 'SampleCustomer@index');
+
+

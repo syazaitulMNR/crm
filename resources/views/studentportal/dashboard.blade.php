@@ -326,19 +326,6 @@ Customer Profiles
                                         <label for="Phone Number">Phone Number</label>
                                         <input type="text" name="phone" class="form-control" value="{{ $student_detail->phoneno }}" disabled>
                                     </div>
-                                    <div class="form-group col-md-6 mx-auto">
-                                        <div class="form-check pt-4">
-                                            <input type="hidden" name="subs" value="0" />
-                                            <input type="checkbox" 
-                                            class="form-check-input"
-                                            name="subs"
-                                            id="subs"
-                                            value="1" {{ $student_detail->isSubscribe || old('isSubscribe', 0) === 1 ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                <p class="">Subscribe</p>
-                                            </label>
-                                        </div>
-                                    </div>
                                 </div>
                                 
                             </form>
@@ -447,7 +434,7 @@ Customer Profiles
                                             <tr>
                                                 <th scope="row">{{ $key+1 }}</th>
                                                 <td>
-                                                    {{ $payment_data[$key]->name }}
+                                                    {{ $membership_level->name }}
                                                 </td>
                                                 <td>
                                                     {{ date('d/m/Y', strtotime($p->created_at)) }}
@@ -456,7 +443,8 @@ Customer Profiles
                                                     RM {{ $p->pay_price }}.00
                                                 </td>
                                                 <td>
-                                                    <a href="/student/receipt/{level}/{invoice}/{student}" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                                    {{-- <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a> --}}
+                                                    <a href="{{ url('/student/receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $stud_id }}" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
                                                 </td>
                                             </tr>
                                         @empty

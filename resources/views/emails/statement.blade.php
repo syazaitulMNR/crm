@@ -113,7 +113,212 @@
 </head>
 
 <body>
-<h1>testing</h1>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="8">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <a href="https://ibb.co/ncWZLTQ"><img src="https://i.ibb.co/xj4P7yz/Group-1.png" alt="Group-1" border="0" width="30%"/></a>
+                            </td>
+                            
+                            <td></td>
+ 
+                            <td>
+                                <strong>Momentum Internet</strong><strong> Sdn Bhd</strong>
+                                <strong>1079998-A</strong><br>
+                                288 Tingkat 1, Jalan Lambak,<br>
+                                86000 Kluang, Johor.
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="8">
+                    <table>
+                        <tr>
+                            <td>To<br>
+                                <strong>{{ $name }} {{ $secondname }}</strong><br>
+                            </td>
+
+                            <td></td>
+
+                            <td>
+                                <h3><strong>Statement of Accounts</strong></h3>
+                                 1/1/2021 to 31/12/2021<br><br>
+                                <strong>Account Summary</strong><br><br>
+                                <strong>Invoiced Amount</strong> {{ $invoice_amount }}<br>
+                                <strong>Amount Received</strong> {{ $amount_received }}<br>
+                                <strong>Balance Due</strong> {{ $balance_due }}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="heading">
+                    <td>
+                        Date
+                    </td>
+                    
+                    <td>
+                        Transactions
+                    </td>
+                    
+                    <td>
+                        Details
+                    </td>
+
+                    <td>
+                        Amount
+                    </td>
+                    
+                    <td>
+                        Payments
+                    </td>
+                    
+                    <td colspan="8">
+                        Balance
+                    </td>
+            </tr>
+            @foreach ($invoice as $invoices)
+                @if ($invoices->status == 'paid')
+                    {{-- INVOICE --}}
+                    <tr class="item">
+                        <td>
+                            {{ $invoices->for_date }}
+                        </td>
+
+                        <td>
+                            Invoice
+                        </td>
+
+                        <!-- table membership-->
+                        <td>
+                            <strong>{{ $invoices->invoice_id }}</strong><br>
+                            <em>due on {{ $invoices->for_date }}</em>
+                        </td>
+
+                        <!-- table payment-->
+                        <td>
+                            {{ $invoices->price }}
+                        </td>
+                        
+                        <!-- table payment-->
+                        <td>
+                            
+                        </td>
+                        
+                        @if ($invoices->price)
+                            <td colspan="8">
+                                {{ $invoices->price }}
+                            </td>
+                        @else
+                            <td colspan="8">
+                                {{ $price }}
+                            </td>   
+                        @endif
+                    </tr>
+
+                    {{-- PAYMENT --}}
+                    <tr class="item">
+                        <td>
+                            {{ $invoices->for_date }}
+                        </td>
+
+                        <td>
+                            Payment
+                        </td>
+
+                        <!-- table membership-->
+                        <td>
+                            <strong>{{ $invoices->invoice_id }}</strong><br>
+                            <em><strong>RM{{ $invoices->price }}</strong> for payment of {{ $invoices->invoice_id }}</em>
+                        </td>
+
+                        <!-- table payment-->
+                        <td>
+                            
+                        </td>
+                        
+                        <!-- table payment-->
+                        <td>
+                            {{ $invoices->price }}
+                        </td>
+                        
+                        @if ($balance == 0)
+                            <td colspan="8">
+                                0
+                            </td>
+                        @else
+                            <td colspan="8">
+                                {{ $invoices->price }}
+                            </td>   
+                        @endif
+                    </tr>
+                @else 
+                <tr class="item">
+                    <td>
+                        {{ $invoices->for_date }}
+                    </td>
+
+                    <td>
+                        Invoice
+                    </td>
+
+                    <!-- table membership-->
+                    <td>
+                        <strong>{{ $invoices->invoice_id }}</strong><br>
+                        <em>due on {{ $invoices->for_date }}</em>
+                    </td>
+
+                    <!-- table payment-->
+                    <td>
+                        {{ $invoices->price }}
+                    </td>
+                    
+                    <!-- table payment-->
+                    <td>
+                        
+                    </td>
+            
+                    @if ($invoices->price != 0)
+                        <td colspan="8">
+                            {{-- {{ $invoices->price }} --}}
+                            {{ ($total += $invoices->price)-($price) }}
+                        </td>
+                    @else
+                        <td colspan="8">
+                            {{ $price }}
+                        </td>   
+                    @endif
+                @endif
+            @endforeach
+            
+            <tr class="information">
+            <td colspan="8">
+                <table>
+                    <tr>
+                        <td>
+                            <br>
+                            <br>
+                        </td>
+
+                        <td></td>
+                       <td>
+                            <strong>Balance Due </strong> RM {{ $balance_due }}<br>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            </tr>
+        </table>
+        <footer class="left mt-1" style="font-size: 9pt;">
+        </footer>
+    </div>
 </body>
 </html>
 
