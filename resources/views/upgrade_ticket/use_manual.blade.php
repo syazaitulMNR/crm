@@ -63,7 +63,11 @@ Pendaftaran Pembeli
 
                                         <dd class="col-4">Nama Team Momentum</dd>
                                         <dd class="col-1">:</dd>
-                                        <dt class="col-7"><input type="text" name="pic" id="pic" class="form-control form-control-sm" value="{{ $ticket->pic }}" placeholder="Nama team yang berurusan" style="font-size: 9pt" readonly></dt>
+                                        @if ($ticket->pic == NULL)
+                                            <dt class="col-7"><input type="text" name="pic" id="pic" class="form-control form-control-sm" value="{{ $ticket->pic }}" placeholder="Nama team yang berurusan" style="font-size: 9pt" required></dt>
+                                        @else
+                                            <dt class="col-7"><input type="text" name="pic" id="pic" class="form-control form-control-sm" value="{{ $ticket->pic }}" placeholder="Nama team yang berurusan" style="font-size: 9pt" readonly></dt>
+                                        @endif
 
                                         <dd class="col-4">Tarikh / Masa Pembayaran</dd>
                                         <dd class="col-1">:</dd>
