@@ -31,7 +31,7 @@
     </div>
     
     <!-- Add package form ---------------------------------------------------->
-    <form class="row g-3 px-3" action="{{ url('storepack') }}/{{ $product->product_id }}" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
+    <form class="row g-3 px-3" action="{{ url('storepack') }}/{{ $product->product_id }}/{{ $product->offer_id }}" method="POST" id="dynamic_form" enctype="multipart/form-data"> 
     @csrf
             <div class='col-md-8'>
                 <div class='row'>

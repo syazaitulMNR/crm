@@ -185,7 +185,7 @@ Pendaftaran Pembeli
                     var divobj = document.getElementById('jumlahharga');
                     divobj.value = total_price;
 
-                } else if ( price > 10 && price <= 33 ){
+                } else if ( price > 10 && price <= 30 ){
 
                     if (val == 1) {
                         total = price * 1;

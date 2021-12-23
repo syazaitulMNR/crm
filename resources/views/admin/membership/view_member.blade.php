@@ -71,7 +71,6 @@ Membership
           </div>
         </div>
         <div class="row py-2">
-                
           <div class="col-md-3">
             <label class="form-label">First Name</label>
             <input type="text" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" class="form-control" required>
@@ -93,90 +92,7 @@ Membership
           </div>
         </div>
 
-        <div class="align-end">
-          <br>
-          {{-- send Invoice to email  -->
-          <button type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</button>
-          <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-scrollable">
-                  <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                      <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
-                      <p>Example: </p>
-                      <div class="text-center">
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                      {{-- <a class="btn btn-sm btn-dark" href="{{ url('send-invoicemember') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                          Send
-                      </a> --}}
-                  {{-- </div>
-                  </div>
-              </div>
-          </div>
-
-          {{-- send Receipt to email --}}
-          {{-- <button type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</button>
-            <!-- Purchased Modal Triggered -->
-            <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to send '<b>Pengesahan Pembelian Tiket</b>' to this customer?</p>
-                        <p>Example: </p>
-                        <div class="text-center">
-                            <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                        {{-- <a class="btn btn-sm btn-dark" href="{{ url('send-receiptmember') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $payment->payment_id }}/{{ $student->stud_id }}">
-                            Send
-                        </a> --}}
-                    {{-- </div>
-                    </div>
-                </div>
-            </div> --}}
-                  {{-- send Statement to email   --}}
-                  <button type="sendstatement" data-bs-toggle="modal" data-bs-target="#test" class="btn btn-danger"><i class="bi bi-save pr-2"></i>Send Statement</button>
-                  <!-- Purchased Modal Triggered -->
-                  <div class="modal fade" id="test" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-scrollable">
-                          <div class="modal-content">
-                          <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                              <p>Are you sure you want to send '<b>Statement of Account</b>' to this customer?</p>
-                              <p>Example: </p>
-                              <div class="text-center">
-                                  <img src="{{ asset('assets/images/pengesahan_tiket.jpg') }}" style="max-width:300px">
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <a class="btn btn-sm btn-dark" href="{{ url('send-statementmember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $student->stud_id }}">
-                                  Send
-                              </a>
-                          </div>
-                          </div>
-                      </div>
-                  </div>
-            </div>
-          </div> 
-        </div>
-
-        <div class="col-md-6 py-3 text-end">
+        <div class="col-md-6 py-3 float-end">
           @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
           @else
           <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
@@ -211,6 +127,157 @@ Membership
     </div>
   </div>
 
+  <!-- List Invoices -->
+  <div class="flex-md-nowrap pt-3 mb-3">
+    <h1 class="h2">Manage Student</h1>
+      </div> 
+
+      <div class="row">
+        <div class="col-md-12 "> 
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Membership</th>
+                            <th><i class="fas fa-cogs"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <td>
+                          1
+                          </td>
+                          <td>
+                          Send Statement
+                          </td>
+                          <td>
+                            <div class="modal fade" id="test" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-scrollable">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Sending Confirmation</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p>Are you sure you want to send '<b>Statement of Account</b>' to this customer?</p>
+                                      <p>Example: </p>
+                                      <div class="text-center">
+                                          <img src="{{ asset('assets/images/Statement.png') }}" style="max-width:300px">
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <a class="btn btn-sm btn-dark" href="{{ url('send-statementmember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $student->stud_id }}">
+                                          Send
+                                      </a>
+                                  </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <button type="sendstatement" data-bs-toggle="modal" data-bs-target="#test" class="btn btn-danger"><i class="bi bi-save pr-2"></i>Send Statement</button>
+                          </td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                          <td>
+                          2
+                          </td>
+                          <td>
+                          Upload Cheque
+                          </td>
+                          <td>
+                            <div class="modal fade" id="newcustomer" tabindex="-1" role="dialog" aria-labelledby="newcustomerLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header border-bottom-0">
+                                    <h5 class="modal-title" id="exampleModalLabel">Insert Check Information</h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <form action="{{ url('uploadCheque') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="POST"> 
+                                  @csrf
+                                    <div class="form-group row px-4">
+                                        <label for="name" class="col-sm-4 col-form-label">Cheque No.</label>
+                                        <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="cheque_no" placeholder="09 123451 13 12455 14" maxlength="26" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row px-4">
+                                        <label for="name" class="col-sm-4 col-form-label">Bank Name</label>
+                                        <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="bankname" placeholder="Maybank" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row px-4">
+                                        <label for="name" class="col-sm-4 col-form-label">Total Price</label>
+                                        <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="price" placeholder="RM 10 000" value="" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row px-4">
+                                        <label for="name" class="col-sm-4 col-form-label">Date</label>
+                                        <div class="col-sm-8">
+                                        <input type="date" class="form-control" name="date_payment" placeholder="10/10/2021" required>
+                                        </div>
+                                    </div>
+                                    @if ($membership_level->name == 'Ultimate Plus')
+                                      <div class="form-group row px-4">
+                                          <label for="name" class="col-sm-4 col-form-label">Membership</label>
+                                          <div class="col-sm-8">
+                                          <select name="membership_type" class="form-select" required>
+                                              <option value="ultimateplus" disabled selected>Ultimate Plus</option>
+                                          </select>
+                                          </div>
+                                      </div>
+                                    @elseif ($membership_level->name == 'Ultimate Partners')
+                                      <div class="form-group row px-4">
+                                          <label for="name" class="col-sm-4 col-form-label">Membership</label>
+                                          <div class="col-sm-8">
+                                          <select name="membership_type" class="form-select" required>
+                                              <option value="ultimatepartners" disabled selected>Ultimate Partners</option>
+                                          </select>
+                                          </div>
+                                      </div>
+                                    @elseif ($membership_level->name == 'Platinum Pro')
+                                      <div class="form-group row px-4">
+                                          <label for="name" class="col-sm-4 col-form-label">Membership</label>
+                                          <div class="col-sm-8">
+                                          <select name="membership_type" class="form-select" required>
+                                              <option value="platinumpro" disabled selected>Platinum Pro</option>
+                                          </select>
+                                          </div>
+                                      </div>
+                                    @elseif ($membership_level->name == 'Platinum Lite')
+                                      <div class="form-group row px-4">
+                                          <label for="name" class="col-sm-4 col-form-label">Membership</label>
+                                          <div class="col-sm-8">
+                                          <select name="membership_type" class="form-select" required>
+                                              <option value="platinumlite" disabled selected>Platinum Lite</option>
+                                          </select>
+                                          </div>
+                                      </div>
+                                    @endif
+                                    <div class='col-md-12 text-right px-4 pb-4'>
+                                      {{-- <button type="submit"  class="btn btn-small btn-dark"><i class="bi bi-upload pr-2"></i>Upload</button> --}}
+                                      <button type="post" href="{{ url('uploadCheque') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" class='btn btn-success btn-dark'> <i class="bi bi-save pr-2"></i> Upload </button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="insertcheck" data-bs-toggle="modal" data-bs-target="#newcustomer" class="btn btn-warning"><i class="bi bi-save pr-2"></i>Upload Check</button>
+                          </div>
+                      </div>
+                          </td>
+                      </tr>
+                    </tbody>
+                </table>   
+            </div>  
+        </div>
+      </div>
   <!-- List Invoices -->
   <div class="flex-md-nowrap pt-3 mb-3">
       <h1 class="h2">List Invoices</h1>
@@ -255,8 +322,8 @@ Membership
                             <b>RM {{ number_format($invoice->price) }}</b>
                             </td>
                             <td class="text-center">
-                            <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
-                            <a type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                            <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                            <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
                             </td>
                         </tr>
                     @endforeach
@@ -294,7 +361,7 @@ Membership
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
-                                {{ $payment_data[$key]->name }}
+                                {{ $membership_level->name }}
                             </td>
                             <td>
                                 {{ date('d/m/Y', strtotime($p->created_at)) }}
@@ -303,8 +370,8 @@ Membership
                                 <b>RM {{ number_format($p->pay_price) }}.00</b>
                             </td>
                             <td>
-                                <a href="{{ url('download-receipt') }}/{{ $p->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
-                                <a type="submit" data-bs-toggle="modal" data-bs-target="#purchaseModal" class="btn-sm btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</a>
+                                <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                <a href="{{ url('send-receiptmember') }}/{{ $student->membership_id }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm mr-8 ml-1 float-left text-decoration-none btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</a>
                             </td>
                         </tr>
                     @empty
