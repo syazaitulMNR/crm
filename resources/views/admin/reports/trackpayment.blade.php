@@ -168,6 +168,12 @@ Sales Report
                                         <span class="badge rounded-pill bg-success"> &nbsp;{{ $payment->status }}&nbsp; </span>
                                     @elseif ($payment->status == 'due')
                                         <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payment->status }}&nbsp; </span>
+                                    @elseif ($payment->status == 'approve by sales')
+                                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payment->status }}&nbsp; </span>
+                                    @elseif ($payment->status == 'approve by account')
+                                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payment->status }}&nbsp; </span>
+                                    @elseif ($payment->status == 'not approve')
+                                        <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payment->status }}&nbsp; </span>
                                     @else
                                         <p>NULL</p>
                                     @endif
@@ -208,6 +214,14 @@ Sales Report
                                     <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
                                     <option value="paid">paid</option>
                                     <option value="due">due</option>
+                                    @if(Auth::user()->user_id == 'UID002' || Auth::user()->role_id == 'ROD001')
+                                    <option value="approve by sales">approve by sales</option>
+                                    @else
+                                    @endif
+                                    @if(Auth::user()->user_id == 'UID008' || Auth::user()->role_id == 'ROD001')
+                                    <option value="approve by account">approve by account</option>
+                                    @else
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -215,7 +229,57 @@ Sales Report
                     </div>
                 </div>
 
-                <div class="row-fluid text-right">                        
+                <div class="row-fluid text-right">
+                    @if(Auth::user()->user_id == 'UID002' || Auth::user()->role_id == 'ROD001')
+                    <button type="button" class="btn btn-outline-dark bg-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Sales</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Approve Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-start">
+                                <p>This action will approve this customer payment. Are you sure?</p>
+                                <ul>
+                                  <li>Payment</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a class="btn btn-danger" href="{{ url('approvesales') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Approve</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    @else
+                    @endif
+                    @if(Auth::user()->user_id == 'UID008' || Auth::user()->role_id == 'ROD001')
+                    <button type="button" class="btn btn-outline-dark bg-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Account</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Approve Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-start">
+                                <p>This action will approve this customer payment. Are you sure?</p>
+                                <ul>
+                                  <li>Payment</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a class="btn btn-success" href="{{ url('approveacc') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Approve</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    @else
+                    @endif
                     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                     @else
                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>

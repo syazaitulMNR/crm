@@ -692,7 +692,7 @@ class ExistCustomerController extends Controller
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
-            $payment->status = 'paid';
+            $payment->status = 'not approve';
 
             $student->save();
             $payment->save();
@@ -718,7 +718,7 @@ class ExistCustomerController extends Controller
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
-            $payment->status = 'paid';
+            $payment->status = 'not approve';
 
             $student->save();
             $payment->save();

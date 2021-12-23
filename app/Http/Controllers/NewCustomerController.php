@@ -96,7 +96,7 @@ class NewCustomerController extends Controller
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
         $ticket_type = 'paid';
-  
+        
         if($product->offer_id == 'OFF001') {
 
             //for no offer ticket
@@ -761,7 +761,7 @@ class NewCustomerController extends Controller
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
-            $payment->status = 'paid';
+            $payment->status = 'not approve';
 
             $student->save();
             $payment->save();
@@ -787,7 +787,7 @@ class NewCustomerController extends Controller
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
-            $payment->status = 'paid';
+            $payment->status = 'not approve';
 
             $student->save();
             $payment->save();
