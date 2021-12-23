@@ -62,7 +62,6 @@ class ReportsController extends Controller
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $paidticket = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         
         return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket' , 'link'));
@@ -109,10 +108,8 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    // if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -132,11 +129,9 @@ class ReportsController extends Controller
                                             $payments->created_at,
                                         ]);
 
-                                    // }
 
                                 }
                             }
-                        // }
                     }
                 }
                 
@@ -175,11 +170,8 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    // if($payments->user_id == $user->user_id){
-
                                         fputcsv($file, [
                                             $payments->payment_id,
                                             $students->first_name,
@@ -198,10 +190,8 @@ class ReportsController extends Controller
                                             $payments->created_at,
                                         ]);
 
-                                    // }
                                 }
                             }
-                        // }
                     }
                 }
                 
@@ -340,8 +330,6 @@ class ReportsController extends Controller
             fclose($file);
 
         }
-
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
                 
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
@@ -512,27 +500,52 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
+    //insert pay_datetime, receipt_path & PIC_name
     public function save_customer($product_id, $package_id, Request $request)
     { 
         $student = Student::where('ic', $request->ic)->first();
         
         if(Student::where('ic', $request->ic)->exists()){
 
-            $payment_id = 'OD'.uniqid();
+            // Start Receipt
+            $filename = $request->file('receipt_path');
+            if($filename != '')
+            {   
+                $extension = $filename->getClientOriginalExtension();
+                
+                if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+                {
+                    $name = $filename->getClientOriginalName();
+                    $uniqe = 'RE'. uniqid() . '.' . $extension;
+                    $dirpath = public_path('assets/receipts/');
+                    $filename->move($dirpath, $uniqe); 
 
+                    $receipt_name = 'assets/receipts/'.$uniqe;
+                } else {
+                    return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+                }
+            } else {
+                $receipt_name = NULL;
+            }
+            // End Receipt
+
+            $payment_id = 'OD'.uniqid();
             Payment::create(array(
                 'payment_id'=> $payment_id,
                 'pay_price'=> $request->pay_price,
                 'totalprice'=> $request->totalprice,
                 'quantity' => $request->quantity,
                 'status' => 'paid',
-                'pay_method' => 'FPX',
+                'pay_method' => 'Manual',
                 'email_status'  => 'Hold',
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
                 'offer_id' => $request->offer_id,
-                'user_id' => Auth::user()->user_id
+                'user_id' => Auth::user()->user_id,
+                'pay_datetime' => $request->pay_datetime,
+                'pic' => $request->pic,
+                'receipt_path' => $receipt_name
             ));
 
         }else{
@@ -548,6 +561,28 @@ class ReportsController extends Controller
                 'email' => $request->email
             ));
 
+            // Start Receipt
+            $filename = $request->file('receipt_path');
+            if($filename != '')
+            {   
+                $extension = $filename->getClientOriginalExtension();
+                
+                if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+                {
+                    $name = $filename->getClientOriginalName();
+                    $uniqe = 'RE'. uniqid() . '.' . $extension;
+                    $dirpath = public_path('assets/receipts/');
+                    $filename->move($dirpath, $uniqe); 
+
+                    $receipt_name = 'assets/receipts/'.$uniqe;
+                } else {
+                    return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+                }
+            } else {
+                $receipt_name = NULL;
+            }
+            // End Receipt
+
             $payment_id = 'OD'.uniqid();
 
             Payment::create(array(
@@ -556,13 +591,16 @@ class ReportsController extends Controller
                 'totalprice'=> $request->totalprice,
                 'quantity' => $request->quantity,
                 'status' => 'paid',
-                'pay_method' => 'FPX',
+                'pay_method' => 'Manual',
                 'email_status'  => 'Hold',
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
                 'offer_id' => $request->offer_id,
-                'user_id' => Auth::user()->user_id
+                'user_id' => Auth::user()->user_id,
+                'pay_datetime' => $request->pay_datetime,
+                'pic' => $request->pic,
+                'receipt_path' => $receipt_name
             ));
 
         }
@@ -844,11 +882,44 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
+        $payment = Payment::where('payment_id', $ticket->payment_id)->first();
+        $buyer = Student::where('stud_id', $payment->stud_id)->first();
 
         //Count the data
         $count = 1;
         
-        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'payment', 'buyer', 'count'));
+    }
+
+    //upload receipt for existing data participant (modal)
+    public function update_receipt($product_id, $package_id, $ticket_id, Request $request)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+        
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'UP_RE' . uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+
+            $ticket->receipt_path = $receipt_name;
+            $ticket->save();
+
+            return redirect()->back()->with('uploadSuccess','Receipt has been successfully saved!');
+        } else {
+            return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+        }
+        // End receipt
     }
 
     public function update_ticket($product_id, $package_id, $ticket_id, $student_id, Request $request)
@@ -914,7 +985,6 @@ class ReportsController extends Controller
     public function search_participant($product_id, $package_id, Request $request)
     {   
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -936,7 +1006,6 @@ class ReportsController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
             $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
             if(count($ticket) > 0)
@@ -973,8 +1042,6 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        // return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
         $fileName = $package_name->name.'_free.csv';
@@ -1067,7 +1134,6 @@ class ReportsController extends Controller
     public function search_free($product_id, $package_id, Request $request)
     {   
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -1075,13 +1141,7 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
 
-        // //get details from search
-        // $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
-        // $stud_id = $student_id->stud_id;
-
         $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->get();
-
-        // dd($ticket);
 
         if(count($ticket) > 0)
         {
@@ -1121,5 +1181,35 @@ class ReportsController extends Controller
         $ticket->save();
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
+    }
+
+    //upload receipt for existing data buyer (modal)
+    public function uploadFile($product_id, $package_id, $payment_id, $student_id, Request $request)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+ 
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'RE'. uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+
+            $payment->receipt_path = $receipt_name;
+            $payment->save();
+
+            return redirect()->back()->with('uploadSuccess','Receipt has been successfully saved!');
+        } else {
+            return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+        }
+        // End receipt
     }
 }

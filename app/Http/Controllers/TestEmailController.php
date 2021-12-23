@@ -7,7 +7,6 @@ class TestEmailController extends Controller
     public function testBulkEmails()
     {
         $users = User::whereIn('id', [8,9])->get();
-        // dd($users);
         $subject = 'Testing bulk Emails';
         // $sendgridPersonalization = [
         //     // [

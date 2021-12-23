@@ -9,6 +9,7 @@ use App\Package;
 use App\Student;
 use App\Payment;
 use App\Ticket;
+use Carbon\Carbon;
 use Stripe;
 use Mail;
 use Billplz\Client;
@@ -94,7 +95,6 @@ class NewCustomerController extends Controller
         //generate id
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
-
         $ticket_type = 'paid';
   
         if($product->offer_id == 'OFF001') {
@@ -173,7 +173,7 @@ class NewCustomerController extends Controller
             'package_id' => 'required',
             'payment_id' => 'required'
         ]);
-
+        
         if($request->quantity == 1){
             
             $student = $request->session()->get('student');
@@ -212,6 +212,7 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+        // $ticket = $request->session()->get('ticket');
   
         return view('customer_new.step3',compact('student', 'payment', 'product', 'package'));
     }
@@ -227,11 +228,12 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-
+        
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
+        $manual = 'Manual';
   
-        return view('customer_new.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx'));
+        return view('customer_new.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx', 'manual'));
     }
 
     /**
@@ -241,6 +243,8 @@ class NewCustomerController extends Controller
      */
     public function postCreateStepFour($product_id, $package_id, Request $request)
     {
+        $ticket = $request->session()->get('ticket');
+
         $validatedData = $request->validate([
             'pay_method' => 'required',
         ]);
@@ -267,6 +271,10 @@ class NewCustomerController extends Controller
         }else if($payment->pay_method == 'FPX'){
 
             return redirect('data-fpx/'.  $product_id . '/' . $package_id );
+
+        }else if($payment->pay_method == 'Manual'){
+
+            return redirect('maklumat-pembayaran/'.  $product_id . '/' . $package_id );
 
         }else{
 
@@ -697,6 +705,99 @@ class NewCustomerController extends Controller
             return redirect('pendaftaran-tidak-berjaya');
         }
         
+    }
+    
+    //Added for to view manual payment
+    public function manual_payment($product_id, $package_id, Request $request)
+    {
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d\TH:i');
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
+
+        return view('customer_new.manual_method',compact('tomorrow', 'product', 'package', 'student', 'payment'));
+    }
+
+    //Added to save manual payment & upload receipt
+    public function manual_paymentprocess($product_id, $package_id, Request $request)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
+
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'RE'. uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+        } else {
+            return redirect()->back()->with('error','Sila muat naik fail bukti pembayaran dalam JPG, JPEG, PNG, atau PDF.');
+        }
+        // End receipt
+
+        if($payment->quantity == 1){
+
+            $product_name = $product->name; 
+            $package_name = $package->name; 
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+            $ticket_id = $ticket->ticket_id;
+            $survey_form = $product->survey_form;
+            $payment->pic = $request->pic;
+            $payment->pay_datetime = $request->pay_datetime;
+            $payment->receipt_path = $receipt_name;
+            $payment->status = 'paid';
+
+            $student->save();
+            $payment->save();
+            $ticket->save(); 
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
+            
+            return redirect('pendaftaran-berjaya/' . $product_id );
+
+        }else{
+
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;      
+            $student_id = $student->stud_id;
+            $payment->pic = $request->pic;
+            $payment->pay_datetime = $request->pay_datetime;
+            $payment->receipt_path = $receipt_name;
+            $payment->status = 'paid';
+
+            $student->save();
+            $payment->save();
+
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
+            
+            return redirect('pendaftaran-berjaya/' . $product_id );
+        }
     }
   
 }

@@ -50,7 +50,6 @@ class ZoomController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validated = $request->validate([
             'topic' => 'required|min:3',
             'start' => 'required|min:3',
@@ -134,7 +133,6 @@ class ZoomController extends Controller
         if(!isset($webinarDetails->registrants)){
 
             $students = $zoom->students()->where('email', 'LIKE','%'.$query.'%')->paginate(10);
-            // dd($students);
             
             return view('zoom.participants', compact('students', 'query', 'zoom', 'webinarId'));
             

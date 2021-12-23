@@ -56,6 +56,10 @@ Upgrade Pakej
                             </div>
                         @endif
 
+                        <div class="alert alert-warning text-center" role="alert">
+                            <small>* Pastikan pembayaran secara <b>Billplz</b> anda telah berjaya dengan menekan butang '<b>Merchant Page</b>' dan memasuki ke <b>Group Telegram</b> kami.<center>Terima Kasih</center></small>
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-md-12 text-center">
                                 {{-- <button type="submit" class="button button4" name="pay_method" value="{{ $stripe ?? '' }}">
@@ -67,6 +71,71 @@ Upgrade Pakej
                                     <i class="fas fa-university fa-3x"></i>
                                     <br><br>Billplz
                                 </button>
+
+                                <button type="button" class="button button4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fas fa-file-invoice-dollar fa-3x"></i>
+                                    <br><br>Resit Manual
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">PERINGATAN</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="px-4">
+                                            <li class="text-justify py-2">Untuk pembayaran secara <b>Online</b> atau di <b>Mesin CDM/ATM</b> boleh transfer ke bank akaun:</li>
+
+                                            <div class="card border-danger bg-light">
+                                                <div class="card-body mx-auto">
+                                                    <table class="col-12" style="font-size: 0.8rem; font-weight: bold;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="text-end align-text-top">Bank </td>
+                                                                <td class="align-text-top"> : </td>
+                                                                <td class="align-text-top"> MAYBANK</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="text-end align-text-top">No. Akaun </td>
+                                                                <td class="align-text-top"> : </td>
+                                                                <td class="align-text-top"> 5510 6130 6335</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="text-end align-text-top">Akaun </td>
+                                                                <td class="align-text-top"> : </td>
+                                                                <td class="align-text-top"> MOMENTUM INTERNET SDN BHD</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+
+                                            <small style="color: red"> *Pastikan anda tulis <b>No IC</b> pada <b>reference</b> atau <b>rujukan</b> di dalam resit anda</small>
+
+                                            <li class="text-justify py-2">Pastikan anda telah selesai melakukan pembayaran dan mendapatkan bukti resit sebelum meneruskan proses pendaftaran pakej.</li>
+
+                                            <li class="text-justify py-2">Contoh bukti resit pembayaran:</li>
+                                            
+                                            <div class="text-center">
+                                                <img src="{{ asset('assets/images/eg_resit_ic.jpg') }}" style="max-width:250px">
+                                            </div>
+
+                                            <li class="text-justify py-2">Pastikan anda muat naik resit pembayaran yang sah. Kegagalan memuat naik resit pembayaran yang sah akan dikira sebagai batal.</li>
+
+                                            <p class="text-center">Terima kasih</p>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-dark" name="pay_method" value="{{ $manual ?? '' }}">Setuju</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

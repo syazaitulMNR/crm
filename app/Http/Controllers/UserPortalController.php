@@ -96,7 +96,6 @@ class UserPortalController extends Controller
         $payment = Payment::where('user_invite', Session::get('user_id'))->get();
         // $pay = Payment::where('user_invite', Session::get('user_id'))->paginate(2);
         
-        // dd($pay);
         $payment_detail = [];
 
         if(count($payment) != 0) {

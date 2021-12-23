@@ -166,7 +166,8 @@ class customerProfileController extends Controller
             ->where(function($query) use ($search){
                 $query->where('first_name', 'LIKE', '%'.$search.'%')
                 ->orWhere('last_name', 'LIKE', '%'.$search.'%')
-                ->orWhere('ic', 'LIKE', '%'.$search.'%');
+                ->orWhere('ic', 'LIKE', '%'.$search.'%')
+                ->orWhere('email', 'LIKE', '%'.$search.'%');
             })->paginate(10);
         }else {
             $customers = Student::whereNotNull('membership_id')->paginate(10);

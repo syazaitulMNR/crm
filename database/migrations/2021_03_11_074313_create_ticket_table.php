@@ -30,6 +30,8 @@ class CreateTicketTable extends Migration
             $table->string('package_id');
             $table->string('payment_id');
             $table->string('user_id');
+
+           
             $table->timestamps();
         });
     }

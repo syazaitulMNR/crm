@@ -108,8 +108,6 @@ class StudentPortal extends Controller
             'password' => 'required',
         ]);
 
-        // dd(Hash::make('password'));
-
         $student_detail = Student::where('email', '=',$validatedData['email'])->first();
         $student_chat = UserChatModel::where('stud_id', '=', $student_detail->stud_id)->first();
 
@@ -522,7 +520,6 @@ class StudentPortal extends Controller
 
             //dapatkan membership detail
             $membership_level = Membership_Level::where('level_id', $membership_lvl_id)->first();
-            // dd($membership_level);
 
             $no = 1;
 
@@ -612,8 +609,6 @@ class StudentPortal extends Controller
         $payment->level_id = $lvl_detail->level_id;
         $payment->billplz_id = $billplz['id'];
         $payment->invoiceId = $invoice;
-
-        // dd($billplz['paid']);
 
         if($billplz['paid'] == "true")
         {
