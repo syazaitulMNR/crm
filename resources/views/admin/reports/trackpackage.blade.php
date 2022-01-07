@@ -1,3 +1,4 @@
+{{-- {{dd('john')}} --}}
 @extends('layouts.app')
 
 @section('title')
@@ -131,7 +132,6 @@ Sales Report
                 </div>
               </div>
             </div>
-
             {{-- <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a> --}}
           </div>
         </div>
@@ -214,14 +214,13 @@ Sales Report
         <p>There are no package yet.</p>
         @endif
         <div class="float-right pt-3">{{$package->links()}}</div>
-        
 
         <!--- Display upgrade link ---->
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Package Name</th>
+                <th scope="" class='col-4'>Package Name</th>
                 <th scope="col">Link</th>          
                 <th scope="col"></th>
                 {{-- <th scope="col">Image</th> --}}
@@ -252,7 +251,91 @@ Sales Report
               </tr> 
             </div>
           </table> 
-        </div>   
+        </div>
+        
+        <!--- Display upgrade link ---->
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <form action="{{ route('searchreport') }}" method="get">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="">Start Date</label>
+                  <input type="date" class="form-control" name="start_date">
+                  <label for="">End Date</label>
+                  <input type="date" class="form-control" name="end_date">
+                </div>
+              </div>
+              <div class="col-md-2" style="margin-top: 24px;">
+                 <div class="form-group">
+                   <input type="submit" class="btn btn-primary" value="Submit">
+                  </div>
+              </div>
+            </form>
+            <thead>
+              <tr>
+                <th scope="" class='col-2'>Date</th>
+                <th scope="" class='col-2'>Total</th>
+                @for ($i = 0; $i < $count_package; $i++)
+                  <th>{{ $package[$i]->name }}</th>
+                @endfor         
+                <th scope="col"><i class="fas fa-cogs"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+            <div class="table-responsive">
+              <tr>
+                {{-- <pre><code>{{ json_encode($data, JSON_PRETTY_PRINT) }}</code></pre> --}}
+                @foreach ($data as $key => $value)
+                    {{  }}
+                    <td class="text-left">{{ $key }}</td>
+                    <td class="text-left">{{ $totalpackageall }}</td>
+                    @for ($i = 0; $i < $count_package; $i++)
+                      {{-- <th>{{ number_format($te[$i]) }}</th> --}}
+                    @endfor 
+                    @foreach ($value as $key)
+                      @for ($i = 0; $i < $count_package; $i++)
+                        <th>{{ number_format($totalperpackage[$i]) }}</th>
+                      @endfor 
+                      <td class="text-left">
+                        <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-person pr-2"></i>Download</a>
+                      </td>     
+                    @endforeach
+                @endforeach
+              </tr>
+            </tbody>  
+
+                {{-- @foreach ($data as $key => $value)
+                    <td class="text-left">{{ $key }}</td>
+                    <td class="text-left">{{ $value->sum(quantity) }}</td>
+                    @foreach ($value as $key)
+                      <td>{{ $key }}</td>
+                      @for ($i = 0; $i < $count_package; $i++)
+                        <th>{{ number_format($package[$i]) }}</th>
+                      @endfor 
+                    @endforeach
+                @endforeach --}}
+                    
+                {{-- @foreach ($package as $key => $p)
+                <td class="text-left">{{ date('d M Y', strtotime($packageinfo->created_at)) }}</td>
+                  @for ($i = 0; $i < $count_package; $i++)
+                    <td class="text-left">{{ $package[$i]->name }}</td>
+                  @endfor 
+                @endforeach --}}
+                 
+                {{-- @for ($i = 0; $i < $count_package; $i++)
+                  <td>{{ $date_yesterday }}</td>
+                  <td>dummy total</td>
+                    @for ($i = 0; $i < $count_package; $i++)
+                      <th>{{ $package[$i]->name }}</th>
+                    @endfor 
+                  <td>
+                    <a class="btn btn-sm btn-dark" href=""><i class="bi bi-arrow-down-circle-fill mr-2"></i>Download</a>                    
+                  </td>
+                @endfor --}}
+              </tr> 
+            </div>
+          </table> 
+        </div>
       </div>
     </div>
   </div>

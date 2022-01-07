@@ -35,13 +35,71 @@ class AdminController extends Controller
     }
 
     /*-- Dashboard --------------------------------------------------------*/
-    public function dashboard(Request $request){      
+    public function dashboard(Request $request){   
+        
+        // get product id
+        $product = Product::where('status', 'active')->first();
+        $product_id = $product->product_id;
+        // $count_product = $product->count();
+
+        // get package
+        $package = Package::where('product_id', $product_id)->get();
+        $count_package = Package::where('product_id', $product_id)->count();
+
+        //get payment info
+        // $ = Payment::where('product_id', $product_id)->get();
+        // $package = Package::where('product_id', $product_id)->get();
+        // where('package_id', $package[$i]->package_id)->
         
         // get date and time
         $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
+        $date_yesterday = Carbon::now('Asia/Kuala_Lumpur')->subDays(1)->format('d M Y');
+        $date_yesterday1 = Carbon::now('Asia/Kuala_Lumpur')->subDays(2)->format('d M Y');
+        $date_yesterday2 = Carbon::now('Asia/Kuala_Lumpur')->subDays(3)->format('d M Y');
+        $date_yesterday3 = Carbon::now('Asia/Kuala_Lumpur')->subDays(4)->format('d M Y');
+        $date_yesterday4 = Carbon::now('Asia/Kuala_Lumpur')->subDays(5)->format('d M Y');
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+        $total_package_day[$i] = 0;
+        $package_day[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-1 days")) , date('Y-m-d 23:59:59', strtotime("-1 days")) ])->count();
+        // dd($product_day);
+        $total_package_day[$i] = $total_package_day[$i] + $package_day[$i];
+        }
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+        $total_package_day1[$i] = 0;
+        $package_day1[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-2 days")) , date('Y-m-d 23:59:59', strtotime("-2 days")) ])->count();
+        // dd($total_product_day1);
+        $total_package_day1[$i] = $total_package_day1[$i] + $package_day1[$i];
+        }
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+        $total_package_day2[$i] = 0;
+        $package_day2[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-3 days")) , date('Y-m-d 23:59:59', strtotime("-3 days")) ])->count();
+        $total_package_day2[$i] = $total_package_day2[$i] + $package_day2[$i];
+        }
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+        $total_package_day3[$i] = 0;    
+        $package_day3[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-4 days")) , date('Y-m-d 23:59:59', strtotime("-4 days")) ])->count();
+        $total_package_day3[$i] = $total_package_day3[$i] + $package_day3[$i];
+        }
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+        $total_package_day4[$i] = 0;
+        $package_day4[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-5 days")) , date('Y-m-d 23:59:59', strtotime("-5 days")) ])->count();
+        $total_package_day4[$i] = $total_package_day4[$i] + $package_day4[$i];
+        }
+
         $current_time = Carbon::now('Asia/Kuala_Lumpur')->format('h:i a');
         $time = Carbon::now('Asia/Kuala_Lumpur')->format('H:i');
-        
+
+        //get total ticket for event        
         // show the duration of current 2 hours
         // the $time is +1 hour from the duration
         if ($time < "08:10") {
@@ -172,17 +230,10 @@ class AdminController extends Controller
 
         }
 
-        // get product id
-        $product = Product::where('status', 'active')->first();
-        $product_id = $product->product_id;
 
-        // get package
-        $package = Package::where('product_id', $product_id)->get();
-        $count_package = Package::where('product_id', $product_id)->count();
-
+        
         for ($i = 0; $i < $count_package; $i++)
         {
-
             // get report by 2 hours
             $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
             $paidticket[$i] = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
@@ -193,19 +244,46 @@ class AdminController extends Controller
 
             // get total collection
             $collection[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
-            
+
         }
-        
+
+        // $date = Carbon::now()->subDays(1);
+        $date1 = Carbon::now()->subDays(2);
+        $date2 = Carbon::now()->subDays(3);
+        $date3 = Carbon::now()->subDays(4);
+        $date4 = Carbon::now()->subDays(5);
+        // $get = Payment::where('product_id', $product_id)->where('created_at', '>=', $date)->get();
+
         // get the total 
-        $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
+        $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();        
+        $total_yesterday1 = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-2 day")) , date('Y-m-d 23:59:59', strtotime("-2 day")) ])->count();
+        $total_yesterday2 = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-3 day")) , date('Y-m-d 23:59:59', strtotime("-3 day")) ])->count();
+        $total_yesterday3 = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-4 day")) , date('Y-m-d 23:59:59', strtotime("-4 day")) ])->count();
+        $total_yesterday4 = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-5 day")) , date('Y-m-d 23:59:59', strtotime("-5 day")) ])->count();
         $total_now = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-        
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+            // get report by 1 hours
+            $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+
+        }
+
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         $totalticket = Ticket::where('product_id', $product_id)->count();        
         $pendingticket = $totalregister - $totalpaid;
         $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
+        
+        //    Testing        //////////////////////////////////////////////////////////////////////
+
+        // $date = Carbon::now()->subDays(7);
+        // $users = Payment::where('created_at', '>=', $date)->get();
+    
+        // dd($users);
+
+        //      End Testing      /////////////////////////////////////////////////////////////////
 
         //getting report for each day
         $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('monday this week')) , date('Y-m-d 23:59:59', strtotime('monday this week')) ])->count();
@@ -215,7 +293,7 @@ class AdminController extends Controller
         $thu = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('thursday this week')) , date('Y-m-d 23:59:59', strtotime('thursday this week')) ])->count();
         $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday this week')) , date('Y-m-d 23:59:59', strtotime('wednesday this week')) ])->count();
         $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday this week')) , date('Y-m-d 23:59:59', strtotime('tuesday this week')) ])->count();
-       
+        
         // // check duplicate student data --------------------------------//
         // $users = Student::whereIn('stud_id', function ( $query ) {
         //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
@@ -236,7 +314,7 @@ class AdminController extends Controller
         //     echo $user->payment_id . "<br>";
         // }
         
-        return view('admin.dashboard', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'));
+        return view('admin.dashboard', compact( 'product', 'package', 'date_yesterday', 'date_yesterday1', 'date_yesterday2', 'date_yesterday3', 'date_yesterday4', 'package_day', 'package_day1', 'package_day2', 'package_day3', 'package_day4', 'total_package_day', 'total_package_day1', 'total_package_day2', 'total_package_day3', 'total_package_day4', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'total_yesterday1', 'total_yesterday2', 'total_yesterday3', 'total_yesterday4', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'));
     }
 
     /*-- Manage User --------------------------------------------------------*/
