@@ -292,7 +292,7 @@ class NewCustomerController extends Controller
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
         $manual = 'Manual';
-  
+
         return view('customer_new.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx', 'manual'));
     }
 
