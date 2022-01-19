@@ -30,7 +30,7 @@ class TestJobMail implements ShouldQueue
         $this->regex_content = $regex_content;
 
         // \Log::info($request['emailId']);
-        $email = Email::where('id', $request['emailId'])->first();dd($email);
+        $email = Email::where('id', $request['emailId'])->first();
 
         // \Log::info($email['content']);
         $this->message = $email['content'];

@@ -75,7 +75,11 @@
                         <div class="form-group">
                           <label for="formGroupExampleInput">Bussiness Type</label>
                           <input type="text" name="bussiness" class="form-control" id="formGroupExampleInput" placeholder="Bussiness type" required>
-                          <small id="emailHelp" class="form-text text-muted">Bussiness type such as bauty product, food supplier and etc.</small>
+                          <small id="emailHelp" class="form-text text-muted">Bussiness type such as beauty product, food supplier and etc.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Business Role</label>
+                          <input type="text" name="role" class="form-control" id="formGroupExampleInput" placeholder="Bussiness Role" required>
                         </div>
                         <div class="form-group">
                           <label for="formGroupExampleInput2">Monthly income</label>

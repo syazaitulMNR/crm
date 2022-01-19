@@ -206,7 +206,6 @@ class InfoController extends Controller
     public function teleUpdates()
     {
         $updates = Telegram::getUpdates();
-        dd($updates);
     }
 }
 

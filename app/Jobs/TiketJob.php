@@ -51,6 +51,6 @@ class TiketJob implements ShouldQueue
                                                         $this->packageId,
                                                         $this->productId,
                                                         $this->student_id,
-                                                        $this->survey_form    ));
+                                                        $this->survey_form ));
     }
 }

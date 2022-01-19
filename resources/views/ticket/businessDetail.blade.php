@@ -13,43 +13,64 @@
     
     <div class="col-md-6 offset-md-3">
         <div class="card px-4 py-4 shadow">
-            <div class="bg-dark text-white px-2 py-2">Langkah 2/2: Maklumat Bisnes</div>
+            {{-- <div class="bg-dark text-white px-2 py-2">Langkah 2/2: Maklumat Bisnes</div> --}}
             <div class="card-body">
                 <form action="{{ url('save-business-details') }}/{{ $ticket_id }}" method="POST" class="col-md-12">
                     @csrf
-                    <h5 class="card-title">Insert Your Bussiness Details</h5>
+                    <h5 class="card-title">Isikan Maklumat Perniagaan</h5>
                     <hr>
                     
                     <div class="pb-3 form-group">
-                        <label for="formGroupExampleInput">Bussiness Type</label>
-                        <input type="text" name="business" class="form-control" id="formGroupExampleInput" placeholder="Bussiness type" required>
-                        <small id="emailHelp" class="form-text text-muted">Bussiness type such as beauty product, food supplier and etc.</small>
+                        {{-- <label for="formGroupExampleInput">Bussiness Type</label> --}}
+                        {{-- <input type="text" name="business" class="form-control" id="formGroupExampleInput" placeholder="Bussiness type" required> --}}
+                        <label for="formGroupExampleInput">Jenis Perniagaan:</label>
+                        <select name="business" class="form-control" id="formGroupExampleInput" required>
+                            {{-- <small id="emailHelp" class="form-text text-muted">Bussiness type such as beauty product, food supplier and etc.</small> --}}
+                            <option value="" disabled selected>-- Sila Pilih --</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Makanan">Makanan</option>
+                            <option value="Katering & Perkahwinan">Katering & Perkahwinan</option>
+                            <option value="Kesihatan">Kesihatan</option>
+                            <option value="Kecantikan">Kecantikan</option>
+                            <option value="Pelancongan">Pelancongan</option>
+                            <option value="Automotif">Automotif</option>
+                            <option value="Hartanah">Hartanah</option>
+                            <option value="Umrah">Umrah</option>
+                            <option value="Takaful / Insuran">Takaful / Insuran</option>
+                            <option value="Perunding Kewangan">Perunding Kewangan</option>
+                            <option value="Homedeco / Interior Designer">Homedeco / Interior Designer</option>
+                            <option value="Pecetakan">Pecetakan</option>
+                            <option value="Belum Berniaga">Belum Berniaga</option>
+                            <option value="Lain-lain">Lain-lain</option>
+                        </select>
                     </div>
 
                     <div class="pb-3 row">
                         <div class="form-group col-md-6">
-                            <label for="formGroupExampleInput2">Monthly income</label>
+                            <label for="formGroupExampleInput2">Purata Jualan Bulanan</label>
                             {{-- <input type="number" name="income" class="form-control" min="0" id="formGroupExampleInput2" placeholder="0" onkeypress="return isNumber(event)" required> --}}
                             <select id="inputState" class="form-control" name='income' required>
-                                <option value=''>Choose...</option>
+                                <option value=''>Pilih...</option>
                                 @foreach ($incomeOptions as $i)
                                     <option value="{{ $i->range }}">{{ $i->range }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputState">Business Role</label>
+                            <label for="inputState">Status dalam Perniagaan</label>
                             <select id="inputState" class="form-control" name='role' required>
                                 <option value=''>Choose...</option>
-                                <option value="Employee">Employee</option>
-                                <option value="Dropship">Dropship</option>
-                                <option value="Agent">Agent</option>
                                 <option value="Founder">Founder</option>
+                                <option value="Agent">Agent</option>
+                                <option value="Stokis">Stokis</option>
+                                <option value="Dropship">Dropship</option>
+                                <option value="Team/PekerjaSyarikat">Team / Pekerja Syarikat</option>
+                                <option value="Lain-lain">Lain-lain</option>
                             </select>
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i> Submit</button>
+                    <button type="submit" class="btn btn-primary float-end"><i class="bi bi-save pr-2"></i> Submit</button>
                 </form>
             </div>
         </div>

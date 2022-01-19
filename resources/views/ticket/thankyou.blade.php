@@ -3,6 +3,16 @@
 @section('title')
   Terima Kasih
 @endsection
+<head>
+  @if ($package == 'PKD0065')
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
+  @elseif ($package == 'PKD0066')
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
+  @elseif ($package == 'PKD0067')
+  <meta http-equiv="refresh" content="2;url=https://momentuminternet.com/buku-8-video-fb/">   
+  @endif  
+  {{-- <meta http-equiv="refresh" content="2;url=https://yahoo.com/">  --}}
+</head>
 
 <style>
   body {
@@ -40,13 +50,14 @@
 <div class="row">
   <div class="col-md-12 px-3 py-4">
     <div class="text-center">
-        <h3 class="display-4">Kemaskini berjaya!</h3>
+      <h3 class="display-4">Sila Tunggu Sebentar!!</h3>
+      <h5>Kami akan berikan anda tawaran yang menarik untuk anda</h5>
         {{-- <p class="lead pt-3">Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p> --}}
         {{-- <p class="lead">2) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p> --}}
         <div class="py-3" style="font-size: 24px; color: green;">
           <i class="far fa-check-circle fa-8x text-center"></i>
         </div>
-        <a class="btn btn-primary" href="{{ $product_link }}" role="button">Zoom Link</a>
+        {{-- <a class="btn btn-primary" href="{{ $product_link }}" role="button">Zoom Link</a> --}}
         
         {{-- <div class="mx-auto py-4"> --}}
           {{-- <div class="text-center mx-auto py-1">
@@ -64,4 +75,13 @@
     </div>
   </div>
 </div>
+
+<script>
+setRedirectTime(function () 
+{
+   window.location.href= 'www.google.com'; // the redirect URL will be here
+
+},3000); 
+</script>  
+
 @endsection
