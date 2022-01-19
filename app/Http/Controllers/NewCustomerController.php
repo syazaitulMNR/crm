@@ -91,7 +91,8 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        dd($product);
+        dd($product->offer_id);
+
         //generate id
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
