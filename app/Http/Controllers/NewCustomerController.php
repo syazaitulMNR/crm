@@ -91,7 +91,7 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        dd($product->offer_id);
+        // dd($product->offer_id);
 
         //generate id
         $payment_id = 'OD'.uniqid();
@@ -150,7 +150,7 @@ class NewCustomerController extends Controller
 
         } else {
 
-            echo 'No Such Offer';
+            echo 'No Such Offer test';
 
         }
         
