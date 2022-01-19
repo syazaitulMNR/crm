@@ -1,8 +1,23 @@
+{{-- {{dd('john')}} --}}
 @extends('layouts.app')
 
 @section('title')
 Sales Report
 @endsection
+
+<style>
+  label {
+      font-family: sans-serif;
+      font-size: 1rem;
+      padding-right: 10px;
+  }
+
+  select {
+      font-size: .9rem;
+      padding: 2px 5px;
+  }
+
+</style>  
 
 
 @section('content')
@@ -131,7 +146,6 @@ Sales Report
                 </div>
               </div>
             </div>
-
             {{-- <a class="btn btn-sm btn-outline-warning" href="{{ url('export-participant') }}/{{ $product->product_id }}"><i class="bi bi-download pr-2"></i>Export Participant</a> --}}
           </div>
         </div>
@@ -182,7 +196,6 @@ Sales Report
           </div>
         </div>
 
-
         <!-- Show package in table ----------------------------------------------->
         @if(count($package) > 0)
         <div class="table-responsive">
@@ -214,14 +227,12 @@ Sales Report
         <p>There are no package yet.</p>
         @endif
         <div class="float-right pt-3">{{$package->links()}}</div>
-        
-
         <!--- Display upgrade link ---->
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Package Name</th>
+                <th scope="" class='col-4'>Package Name</th>
                 <th scope="col">Link</th>          
                 <th scope="col"></th>
                 {{-- <th scope="col">Image</th> --}}
@@ -252,10 +263,62 @@ Sales Report
               </tr> 
             </div>
           </table> 
-        </div>   
+          <select class="form-control" name="product_id">
+          @foreach ($data as $key => $value)
+            <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }} 
+            </option>
+            @if (($key == $key) == true)
+              @foreach ($value as $keys => $values)
+                <span>{{ $values->stud_id }}</span>
+              @endforeach
+            @else
+            @endif
+          @endforeach
+          </select>
+        </div>
+        <br>
+
+        {{-- <form action="{{ url('searchreport/{product_id}') }}" method="POST">
+          @csrf
+          <div class="row filter-row">
+              <div class="col-sm-6 col-md-3">  
+                  <div class="form-group form-focus">
+                    <select class="form-control" id="date" name="date" >
+                    @foreach ($data as $key => $value)
+                      <option id="date" name="date" value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }}</option>
+                      @foreach ($value as $keys => $values)
+                        @if (($key == $values->created_at->format('Y-m-d')) == true)
+                          @foreach ($value as $keys => $values)
+                            <span>{{ $values->stud_id }}</span>
+                          @endforeach
+                        @else
+                        @endif
+                      @endforeach
+                    @endforeach
+                    </select>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-md-3">  
+                  <button type="submit" class="btn btn-success btn-block"> Display </button>  
+              </div>
+          </div>
+        </form>  --}}
+
+        {{-- <div class="row">
+          <select class="form-control" name="product_id">
+            <option>Select Date</option>
+            @foreach ($data as $key => $value)
+                <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }} 
+                </option>
+                @foreach ($value as $keys => $values)
+                    <td>{{ $values->stud_id }}</td>
+                @endforeach
+            @endforeach    
+          </select>
+        </div> --}}
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 @endsection

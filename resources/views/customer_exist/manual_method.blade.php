@@ -114,7 +114,7 @@ Pendaftaran Pembeli
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <img src="{{ asset('assets/images/eg_resit_ic.jpg') }}" style="max-width:280px">
+                        <img src="{{ asset('assets/images/contoh-resit.jpg') }}" style="max-width:280px">
                     </div>
                 </div>
             </div>

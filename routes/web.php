@@ -70,7 +70,7 @@ Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController
 */
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
-Route::get('searchreport', 'ReportsController@search_report')->name('searchreport');
+Route::post('searchreport/{product_id}', 'ReportsController@search_report')->name('searchreport','[A-Za-z0-9-]+');
 
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
@@ -81,10 +81,11 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
+Route::get('approveacc/{payment_id}/{product_id}/{package_id}', 'ReportsController@approveaccount');
+Route::get('approvesales/{payment_id}/{product_id}/{package_id}', 'ReportsController@approvesales');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
-// Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
 Route::post('viewpayment/save/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@uploadFile'); //modal upload receipt existing data
 
@@ -128,8 +129,10 @@ Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Blasti
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
 Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');
-Route::get('bulkpurchased-mail', 'BlastingController@bulkpurchased_mail');
-
+Route::post('confirmation-email-blast', 'BlastingController@blastConfirmationEmail')->name('email-confirmation-blast');
+Route::get('bulkpurchased-mail/{product_id}/{package_id}', 'BlastingController@bulkpurchased_mail');
+Route::get('blastconfirmation_mail/{product_id}/{package_id}', 'BlastingController@blastconfirmation_mail');
+Route::get('blastConfirmationEmail/{product_id}/{package_id}', 'BlastingController@blastConfirmationEmail');
 
 // send Statement of Account , Invoice , Receipt ke email
 Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
@@ -256,6 +259,9 @@ Route::get('callback-payment/{product_id}/{package_id}', 'NewCustomerController@
 Route::get('redirect-payment/{product_id}/{package_id}', 'NewCustomerController@redirect_payment');
 Route::get('maklumat-pembayaran/{product_id}/{package_id}', 'NewCustomerController@manual_payment'); // manual payment form
 Route::post('store-manual/{product_id}/{package_id}', 'NewCustomerController@manual_paymentprocess'); // manual payment process
+Route::get('maklumat-free/{product_id}/{package_id}', 'NewCustomerController@manual_payment'); // free payment form
+Route::get('store-free/{product_id}/{package_id}', 'NewCustomerController@free_paymentprocess'); // free payment process
+Route::get('store-paid/{product_id}/{package_id}', 'NewCustomerController@paid_paymentprocess'); // free payment process
 
 // Existedstudent
 Route::get('langkah-pertama/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stepOne');
@@ -273,6 +279,8 @@ Route::get('callback-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerController@redirect_billplz');
 Route::get('data-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@manual_payment'); // manual payment form
 Route::post('save-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@save_manual_payment'); // manual payment process
+Route::get('save-free/{product_id}/{package_id}', 'ExistCustomerController@save_free_paymentprocess'); // free payment process
+Route::get('save-paid/{product_id}/{package_id}', 'ExistCustomerController@save_paid_paymentprocess'); // free payment process
 
 // Thank you page
 Route::get('pendaftaran-berjaya/{product_id}','HomeController@thankyou');
@@ -429,8 +437,8 @@ Route::prefix('student')->group(function()
 	Route::post('/reset-password', 'StudentPortal@resetPassword')->name('reset-password');
 
 	Route::get('/dashboard', 'StudentPortal@show')->name('student.dashboard');
-	// Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
-	// Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
+	Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
+	Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
 	Route::get('/list-invoice', 'StudentPortal@listInvoice')->name('student.listInvoice');
 
 	//download invoice kat list-invoice
@@ -500,10 +508,10 @@ Route::get('business_details/{ticket_id}', 'HomeController@showIC');
 Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
 Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
-Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
-
 Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
+Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
+
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');
 

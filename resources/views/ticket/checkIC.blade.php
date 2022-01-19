@@ -1,7 +1,7 @@
 @extends('layouts.temp')
 
 @section('title')
-{{ $packageName }}
+{{ $productName }}
 @endsection
 
 @section('content')

@@ -11,14 +11,14 @@ class SendMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form;
+    protected $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form)
+    public function __construct($product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form)
     {
         $this->product_name = $product_name; 
         $this->package_name = $package_name;      
@@ -29,7 +29,6 @@ class SendMailable extends Mailable
         $this->packageId = $packageId;
         $this->productId = $productId;
         $this->student_id = $student_id;
-        $this->ticket_id = $ticket_id;
         $this->survey_form = $survey_form;
     }
 
@@ -53,7 +52,6 @@ class SendMailable extends Mailable
                 'packageId' => $this->packageId,
                 'productId' => $this->productId,
                 'student_id' => $this->student_id,
-                'ticket_id' => $this->ticket_id,
                 'survey_form' => $this->survey_form,
             ]);
     }

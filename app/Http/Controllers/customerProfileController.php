@@ -29,6 +29,7 @@ class customerProfileController extends Controller
     
 
     public function customerDetails(Request $request) {
+
         $search = (is_null($request->query('search')) ? "" : $request->query('search'));
         $price = (is_null($request->query('price')) ? "" : $request->query('price'));
         $role = (is_null($request->query('role')) ? "" : $request->query('role'));
@@ -44,7 +45,7 @@ class customerProfileController extends Controller
 
             $q->where(function($query) use($search){
                 $query->where('business_name', 'LIKE', '%'.$search.'%')
-                      ->orWhere('business_type', 'LIKE', '%'.$search.'%');
+                        ->orWhere('business_type', 'LIKE', '%'.$search.'%');
             });
         }
 
@@ -66,7 +67,6 @@ class customerProfileController extends Controller
         }else {
             $customers = BusinessDetail::all();
         }
-
         if(count($customers) != 0) {
             foreach($customers as $c) {
                 $ticketname = Ticket::where('ticket_id', $c->ticket_id);
@@ -77,8 +77,9 @@ class customerProfileController extends Controller
                     $productname = Product::where('product_id', $ticketname->product_id)->first();
                     $user = Student::where('ic', $ticketname->ic)->first();
 
+                    // dd($user->first_name);
                     $c->class = $productname->name;
-                    $c->name = $user->first_name . " " . $user->last_name;
+                    $c->name = $request->first_name . " " . $request->last_name;
                 }else {
                     $c->class = '';
                     $c->name = '';
@@ -119,7 +120,7 @@ class customerProfileController extends Controller
 
         $role = ['Role', 'Employee', 'Dropship', 'Agent', 'Founder'];
         
-        $data = $this->paginate($business_details, 10);
+        $data = $this->paginate($business_details, 50);
         $data->setPath('business_details');
 
         return view('customer.business_details', compact('data', 'incomeOptions', 'role'));

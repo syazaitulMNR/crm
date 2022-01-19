@@ -13,14 +13,14 @@ use Mail;
 class TiketJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form;
+    protected $email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form)
+    public function __construct($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form)
     {
         $this->email = $email;
         $this->product_name = $product_name;   
@@ -32,7 +32,6 @@ class TiketJob implements ShouldQueue
         $this->packageId = $packageId;
         $this->productId = $productId;
         $this->student_id = $student_id;
-        $this->ticket_id = $ticket_id;
         $this->survey_form = $survey_form;
     }
 
@@ -52,7 +51,6 @@ class TiketJob implements ShouldQueue
                                                         $this->packageId,
                                                         $this->productId,
                                                         $this->student_id,
-                                                        $this->ticket_id,
-                                                        $this->survey_form    ));
+                                                        $this->survey_form ));
     }
 }

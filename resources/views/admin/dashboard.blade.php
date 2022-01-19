@@ -6,6 +6,24 @@
 
 @section('content')
 
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  </style>
+
 <div class="col-md-12">     
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard</h1>
@@ -76,60 +94,6 @@
           </table>
         </div>
 
-        {{-- @if ( Auth::user()->user_id == 'UID001' )
-          <div class="table-responsive pb-4">
-            <table class="table table-sm table-bordered text-center">
-              <thead class="thead">
-                <tr>
-                  <th class="text-center" rowspan="2">Time</th>       
-                  <th colspan="3">Registration [A]</th>
-                  <th colspan="3">Updated Paid Ticket [B]</th>
-                  <th colspan="3">Updated Free Ticket [C]</th>       
-                </tr>
-                <tr>
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <th>{{ $package[$i]->name }}</th>
-                  @endfor
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <th>{{ $package[$i]->name }}</th>
-                  @endfor
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <th>{{ $package[$i]->name }}</th>
-                  @endfor
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th class="text-left">12:00 am - 08:00 am</th>                  
-                  @for ($i = 0; $i < $count_package; $i++)
-                    <td>{{ number_format($registration[$i]) }}</td>
-                    <td>{{ number_format($paidticket[$i]) }}</td>
-                    <td>{{ number_format($freeticket[$i]) }}</td>
-                  @endfor
-                </tr>
-                <tr>
-                  <th class="text-left">08:00 am - 09:00 am</th>
-                </tr>
-                <tr>
-                  <th class="text-left">09:00 am - 10:00 am</th>
-                </tr>
-                <tr>
-                  <th class="text-left">10:00 am - 11:00 am</th>
-                </tr>
-                <tr>
-                  <th class="text-left">11:00 am - 12:00 pm</th>
-                </tr>
-                <tfoot>
-                  <tr> 
-                    <th class="text-left">Total Yesterday</th>
-                  </tr>
-                </tfoot>
-              </tbody>
-            </table>
-          </div>
-        @else
-        @endif --}}
-
       </div>
     </div>
 
@@ -151,6 +115,54 @@
     </div>
 
   </div>
+
+  <h4 class="border-bottom pb-3">Update per-Day</h4>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Total Ticket</th>
+      @for ($i = 0; $i < $count_package; $i++)
+      <th>{{ $package[$i]->name }}</th>
+      @endfor
+    </tr>
+    <tr>
+      <td>{{ $date_yesterday }}</td>
+      <td>{{ $total_yesterday }}</td>
+      @for ($i = 0; $i < $count_package; $i++)
+        <td>{{ $package_day[$i] }}</td>
+      @endfor
+    </tr>
+    <tr>
+      <td>{{ $date_yesterday1 }}</td>
+      <td>{{ $total_yesterday1 }}</td>
+      @for ($i = 0; $i < $count_package; $i++)
+      <td>{{ $package_day1[$i] }}</td>
+      @endfor
+    </tr>
+    <tr>
+      <td>{{ $date_yesterday2 }}</td>
+      <td>{{ $total_yesterday2 }}</td>
+      @for ($i = 0; $i < $count_package; $i++)
+      <td>{{ $package_day2[$i] }}</td>
+      @endfor
+    </tr>
+    <tr>
+      <td>{{ $date_yesterday3 }}</td>
+      <td>{{ $total_yesterday3 }}</td>
+      @for ($i = 0; $i < $count_package; $i++)
+      <td>{{ $package_day3[$i] }}</td>
+      @endfor
+    </tr>
+    <tr>
+      <td>{{ $date_yesterday4 }}</td>
+      <td>{{ $total_yesterday4 }}</td>
+      @for ($i = 0; $i < $count_package; $i++)
+      <td>{{ $package_day4[$i] }}</td>
+      @endfor
+    </tr>
+  </table>
+  <br>
 
   <h4 class="border-bottom pb-3">Overall Registration</h4>
 

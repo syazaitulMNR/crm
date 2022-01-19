@@ -163,6 +163,8 @@ Sales Report
         </div>
 
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-FRece pr-2"></i>Import Customer</a>
+        <a href="{{ url('blastConfirmationEmail') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa fa-send-o" style="font-size:14px"></i> Send Confirmation Email</a>
+        <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
       </div>
         
     </div>

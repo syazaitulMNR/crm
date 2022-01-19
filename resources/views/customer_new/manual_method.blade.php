@@ -83,7 +83,6 @@ Pendaftaran Pembeli
                             </div>
                             </form>
                         </div>
-                      
                     </div>
 
                     <hr>

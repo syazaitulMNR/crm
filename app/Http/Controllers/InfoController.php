@@ -14,22 +14,10 @@ use App\Product;
 use App\Package;
 use App\Ticket;
 use Carbon\Carbon;
+use Telegram;
 
 class InfoController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | AdminController
-    |--------------------------------------------------------------------------
-    |   This controller is for managing user, role and dashboard
-    | 
-    */
-
-    /*public function __construct()
-    {
-        $this->middleware('auth');
-    }*/
-
     /*-- Dashboard --------------------------------------------------------*/
     public function info(Request $request){      
         
@@ -189,7 +177,7 @@ class InfoController extends Controller
 
             // get total collection
             $collection[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
-            
+
         }
         
         // get the total 
@@ -212,196 +200,12 @@ class InfoController extends Controller
         $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday this week')) , date('Y-m-d 23:59:59', strtotime('wednesday this week')) ])->count();
         $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday this week')) , date('Y-m-d 23:59:59', strtotime('tuesday this week')) ])->count();
        
-        // // check duplicate student data --------------------------------//
-        // $users = Student::whereIn('stud_id', function ( $query ) {
-        //     $query->select('stud_id')->from('student')->groupBy('stud_id')->havingRaw('count(*) > 1');
-        // })->orderBy('id','Desc')->get();
-
-        // foreach ($users as $user) 
-        // {
-        //     echo $user->stud_id . "<br>";
-        // }
-
-        // // check duplicate payment data --------------------------------//
-        // $users = Payment::whereIn('payment_id', function ( $query ) {
-        //     $query->select('payment_id')->from('payment')->groupBy('payment_id')->havingRaw('count(*) > 1');
-        // })->orderBy('id','Desc')->get();
-
-        // foreach ($users as $user) 
-        // {
-        //     echo $user->payment_id . "<br>";
-        // }
-        
         return view('information.info', compact('product', 'package', 'count_package', 'date_today', 'current_time', 'from', 'to', 'duration', 'greetings', 'totalregister', 'totalpaid', 'totalfree', 'totalticket', 'total_now', 'total_yesterday', 'registration', 'paidticket', 'freeticket', 'totalpackage', 'pendingticket', 'collection', 'totalcollection', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'));
     }
 
-    
-    /*-- Manage User --------------------------------------------------------*/
-    /*public function manage()
+    public function teleUpdates()
     {
-        $users = User::orderBy('id', 'asc')->paginate(15);
-        $roles = Role::orderBy('id','asc')->get();
-        return view('admin.manageuser', compact('users','roles'));
-        
+        $updates = Telegram::getUpdates();
     }
-
-    public function create()
-    {
-        $roles = Role::orderBy('id','asc')->paginate(10);
-        return view('admin.adduser', compact('roles'));
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    /*
-    protected function validator(Request $request)
-    {
-        return Validator::make($request, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    /*protected function adduser(Request $request)
-    {
-        $user = User::orderBy('id','desc')->first();
-
-        $auto_inc_user = $user->id + 1;
-        $userId = 'UID' . 0 . 0 . $auto_inc_user;
-
-        User::create(array(
-            'user_id'=> $userId,
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'role_id' => $request['optradio'],
-            
-        ));
-
-        return redirect('manageuser')->with('success', 'User Successfully Created');
-    }
-
-    public function update($id, Request $request)
-    {
-        $users = User::where('user_id', $id)->first();
-        $roles = Role::orderBy('id','asc')->get();
-
-        return view('admin.updateuser', compact('users','roles'));
-    }
-
-    public function updateuser($id, Request $request){
-        
-        foreach($request->optradio as $key => $value){
-
-            $users = User::where('user_id', $id)->first();  
-
-            $users->name = $request->name;
-            $users->email = $request->email;
-            $users->password = Hash::make($request['password']);
-            $users->role_id = $value;
-            $users->save();
-            
-        }
-
-        return redirect('manageuser')->with('updatesuccess','User updated successfully!');      
-    }
-
-    public function destroy($id){
-        $users = User::where('user_id', $id);
-        
-        $users->delete();
-        return redirect('manageuser')->with('delete','User Successfully Deleted!');
-    }
-    */
-    /*-- Manage Role --------------------------------------------------------*/
-    /*public function managerole()
-    {
-        $roles = Role::orderBy('id','asc')->paginate(10);
-        return view('admin.managerole', compact('roles'));
-    }
-
-    public function addrole(Request $request){
-        
-        $role = Role::orderBy('id','desc')->first();
-
-        $auto_inc_role = $role->id + 1;
-        $roleId = 'ROD' . 0 . 0 . $auto_inc_role;
-
-        Role::create(array(
-            'role_id'=> $roleId,
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'permission' => $request['permission'],
-            
-        ));
-
-        return redirect()->back()->with('rolesuccess', 'Role Successfully Created!');
-    }
-
-    public function details($id)
-    {
-        $roles = Role::where('role_id', $id)->first();
-        return view('admin.updaterole', compact('roles'));
-    }
-
-    public function updaterole($id, Request $request)
-    {
-        $roles = Role::where('role_id', $id)->first();        
-
-        $roles->name = $request->name;
-        $roles->description = $request->description;
-
-        $roles->save();
-
-        foreach($request->permission as $key => $value){
-
-            $p = Permission::where('role_id', $id)->where('permission_id', $request->permission_id[$key])->first();
-
-            $p->name = $value;
-
-            $p->save();
-            
-
-        }
-
-        return redirect('managerole')->with('updatesuccess','Role Successfully Updated!');
-    }
-
-    public function deleterole($id){
-        $roles = Role::where('role_id', $id);
-        
-        $roles->delete();
-        return redirect('managerole')->with('deletesuccess','Role Successfully Deleted!');
-    }
-    */
-    /*-- Manage Profile --------------------------------------------------------*/
-    /*public function profile()
-    {
-        return view('admin.updateprofile');
-    }
-
-    public function manageprofile($id, Request $request){
-        
-        $users = User::where('user_id', $id)->first();  
-
-        // $users->name = $request->name;
-        // $users->email = $request->email;
-        $users->password = Hash::make($request['password']);
-        $users->save();
-
-        return redirect('dashboard')->with('updateprofile','Password Successfully Updated!');      
-    }
-    */
 }
 
