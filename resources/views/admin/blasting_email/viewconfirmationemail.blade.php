@@ -7,8 +7,7 @@
 
 @section('content')
 
-<div class="col-md-12 pt-3">   
-    
+<div class="col-md-12 pt-3">
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
     <a href="{{ url('view')}}/{{ $product->product_id }}"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">...</a> / <a href="/emailblast">Email Blasting</a> 
     / <a href="{{ url('view')}}/{{ $product->product_id }}"> {{ $product->name }} </a> / <b>{{ $package->name }}</b>
@@ -27,6 +26,12 @@
         <strong>{{ $message }}</strong>
       </div>
       @endif
+      
+      {{-- @foreach ($getemail as $key => $value)
+      @foreach ($value as $emails)
+          {{ dd($emails->email) }}
+      @endforeach
+      @endforeach --}}
 
       <!-- Search box ---------------------------------------------------------->
       <input type="text" id="searchInput" class="form-control" onkeyup="successFunction()" placeholder="Enter IC no." title="Type in a name">
@@ -35,38 +40,11 @@
 
       @if(count($payment) > 0)
       <div class="row">
-
-        <div class="col-md-5">
-          <form id="productForm" name="productForm" class="form-horizontal">
-            <em class="pl-3">Choose email template</em>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Emails</label>
-              </div>
-              <select class="custom-select" id="emailId" name="email" required>
-                  <option value="">--</option>
-                  @foreach ($emails as $email)
-                      <option value="{{$email->id}}">{{$email->name}}</option>
-                  @endforeach
-              </select>
-            </div>
-            <span id="chooseEmail" style="visibility:hidden;" class="text-danger font-weight-bold">Email was not chosen</span>
-          </form>
-        </div>
-
-        <div class="col-md-4">
-          <div class="spinner-border text-primary" id="loader" role="status" style="visibility:hidden;">
-              <span class="sr-only">Loading...</span>
-            </div>
-            
-        </div>
-
-        <div class="col-md-3">
-          <div class="col-sm-offset-2 col-sm-10 ml-5">
-            <button type="submit" class="btn btn-primary ml-5" id="bt-get-email" value="create" >Send emails</button>
+        <div class="col-md-12">
+          <div class="float-end mb-3">
+            <a href="{{ url('blastconfirmation_mail') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa fa-send-o" style="font-size:14px"></i> Send Confirmation Email</a>
           </div>
         </div>
-
       </div>
 
       <div class="table-responsive">
@@ -122,7 +100,7 @@
           <i class="fas fa-file-invoice-dollar fa-6x" style="color:rgba(0, 229, 255, 0.3)"></i>
           </div>
           <h3 class="pt-3 pl-3">{{$total}}</h3>
-          <h6 class="lead pb-2 pl-3">Imported Customer</h6>
+          <h6 class="lead pb-2 pl-3">Unsend Confirmation Email</h6>
         </div>
       </div>
     
@@ -223,7 +201,7 @@
           });
         }else{
           document.getElementById("chooseEmail").style.visibility = "visible";
-          console.log('please choose email');
+          console.log('please choose eail');
         }
     });
   });

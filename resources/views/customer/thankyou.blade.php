@@ -4,6 +4,20 @@
   Terima Kasih
 @endsection
 
+<head>
+  @foreach ($package as $key => $value)
+    @if ($value->package_id == 'PKD0065')
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
+    @elseif ($value->package_id == 'PKD0067')
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
+    @elseif ($value->package_id == 'PKD0066')
+    <meta http-equiv="refresh" content="2;url=https://www.google.com">   
+    @endif  
+  @endforeach
+  
+  {{-- <meta http-equiv="refresh" content="2;url=https://yahoo.com/">  --}}
+</head>
+
 <style>
   body {
     background-color:rgb(233, 233, 233)!important ; 

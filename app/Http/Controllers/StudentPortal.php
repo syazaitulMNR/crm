@@ -19,7 +19,7 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use App\User;
 use App\StudentStaff;
-use App\BussinessDetail;
+use App\BusinessDetail;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Services\Billplz;
@@ -76,11 +76,15 @@ class StudentPortal extends Controller
     {
         if($request->filled('income') && $request->filled('bussiness')) {
             
-            $bussInsert = BussinessDetail::create([
+            $bussInsert = BusinessDetail::create([
                 'student_id' => Session::get("student_login_id"),
-                'training_course_id' => 'TEST123',
-                'bussiness_type' => $request->bussiness,
-                'monthly_income' => $request->income
+                'ticket_id' => 'TEST123',
+                'business_type' => 'type',
+                'business_role' => $request->role,
+                // 'training_course_id' => 'TEST123',
+                'business_name' => $request->bussiness,
+                'business_amount' => $request->income
+                // 'monthly_income' => $request->income
             ]);
 
             if($bussInsert) 

@@ -91,12 +91,11 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-
         //generate id
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
         $ticket_type = 'paid';
-  
+        
         if($product->offer_id == 'OFF001') {
 
             //for no offer ticket
@@ -137,6 +136,16 @@ class NewCustomerController extends Controller
       
             }
 
+        } else if($product->offer_id == 'OFF005') {
+      
+            //for free ticket
+            return view('customer_new.step2_freeticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
+
+        } else if($product->offer_id == 'OFF006') {
+    
+            //for paid ticket
+            return view('customer_new.step2_paidticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
+
         } else {
 
             echo 'No Such Offer';
@@ -152,30 +161,55 @@ class NewCustomerController extends Controller
      */
     public function postCreateStepTwo($product_id, $package_id, Request $request)
     {
-        $validatedPayment = $request->validate([
-            'payment_id' => 'required',
-            'pay_price'=> 'required|numeric',
-            'quantity' => 'required|numeric',
-            'totalprice'=> 'required|numeric',
-            'stud_id' => 'required',
-            'product_id' => 'required',
-            'package_id' => 'required',
-            'offer_id' => 'required'
-        ]);
+        $product = Product::where('product_id',$product_id)->first();
 
-        $validatedTicket = $request->validate([
-            'ticket_id' => 'required',
-            'ticket_type'=> 'required',
-            'ic' => 'required',
-            'pay_price'=> 'required|numeric',
-            'stud_id' => 'required',
-            'product_id' => 'required',
-            'package_id' => 'required',
-            'payment_id' => 'required'
-        ]);
+        if ($product->offer_id == 'OFF005' || $product->offer_id == 'OFF006') {
+            $validatedPayment = $request->validate([
+                'payment_id' => 'required',
+                'pay_price'=> 'required|numeric',
+                'quantity' => 'required|numeric',
+                'totalprice'=> 'numeric',
+                'stud_id' => 'required',
+                'product_id' => 'required',
+                'package_id' => 'required',
+                'offer_id' => 'required'
+            ]);
+    
+            $validatedTicket = $request->validate([
+                'ticket_id' => 'required',
+                'ticket_type'=> 'required',
+                'ic' => 'required',
+                'pay_price'=> 'required|numeric',
+                'stud_id' => 'required',
+                'product_id' => 'required',
+                'package_id' => 'required',
+                'payment_id' => 'required'
+            ]);
+        } else {
+            $validatedPayment = $request->validate([
+                'payment_id' => 'required',
+                'pay_price'=> 'required|numeric',
+                'quantity' => 'required|numeric',
+                'totalprice'=> 'required|numeric',
+                'stud_id' => 'required',
+                'product_id' => 'required',
+                'package_id' => 'required',
+                'offer_id' => 'required'
+            ]);
+    
+            $validatedTicket = $request->validate([
+                'ticket_id' => 'required',
+                'ticket_type'=> 'required',
+                'ic' => 'required',
+                'pay_price'=> 'required|numeric',
+                'stud_id' => 'required',
+                'product_id' => 'required',
+                'package_id' => 'required',
+                'payment_id' => 'required'
+            ]);
+        }
         
-        if($request->quantity == 1){
-            
+        if ($product->offer_id == 'OFF005' || $product->offer_id == 'OFF006'){
             $student = $request->session()->get('student');
 
             $request->session()->get('payment');
@@ -187,17 +221,35 @@ class NewCustomerController extends Controller
             $ticket = new Ticket();
             $ticket->fill($validatedTicket);
             $request->session()->put('ticket', $ticket);
-      
-            return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
-
-        }else{
-
-            $request->session()->get('payment');
-            $payment = new Payment();
-            $payment->fill($validatedPayment);
-            $request->session()->put('payment', $payment);
     
             return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
+        }
+        else {
+            if($request->quantity == 1){
+                
+                $student = $request->session()->get('student');
+
+                $request->session()->get('payment');
+                $payment = new Payment();
+                $payment->fill($validatedPayment);
+                $request->session()->put('payment', $payment);
+
+                $request->session()->get('ticket');
+                $ticket = new Ticket();
+                $ticket->fill($validatedTicket);
+                $request->session()->put('ticket', $ticket);
+        
+                return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
+
+            }else{
+
+                $request->session()->get('payment');
+                $payment = new Payment();
+                $payment->fill($validatedPayment);
+                $request->session()->put('payment', $payment);
+        
+                return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
+            }
         }
     }
   
@@ -210,8 +262,14 @@ class NewCustomerController extends Controller
     {
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
+
+        Session::put('product_id', $product_id);
+        Session::put('package_id', $package_id);
+        Session::put('payment', $payment);
+        // dd($payment);
         // $ticket = $request->session()->get('ticket');
   
         return view('customer_new.step3',compact('student', 'payment', 'product', 'package'));
@@ -248,11 +306,11 @@ class NewCustomerController extends Controller
         $validatedData = $request->validate([
             'pay_method' => 'required',
         ]);
-  
+
         $payment = $request->session()->get('payment');
         $payment->fill($validatedData);
         $request->session()->put('payment', $payment);
- 
+
         return redirect('payment-method/'.  $product_id . '/' . $package_id );
     }
 
@@ -262,7 +320,7 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-  
+
         //Check if form has been key in
         if($payment->pay_method == 'Debit/Credit Card'){
 
@@ -550,7 +608,7 @@ class NewCustomerController extends Controller
                 $ticket->save();
                 
                 dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-                               
+                
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
                 $request->session()->forget('ticket');
@@ -656,7 +714,7 @@ class NewCustomerController extends Controller
                 $ticket->save();
                 
                 dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-                               
+                
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
                 $request->session()->forget('ticket');
@@ -761,7 +819,7 @@ class NewCustomerController extends Controller
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
-            $payment->status = 'paid';
+            $payment->status = 'not approve';
 
             $student->save();
             $payment->save();
@@ -787,7 +845,7 @@ class NewCustomerController extends Controller
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
             $payment->receipt_path = $receipt_name;
-            $payment->status = 'paid';
+            $payment->status = 'not approve';
 
             $student->save();
             $payment->save();
@@ -799,5 +857,108 @@ class NewCustomerController extends Controller
             return redirect('pendaftaran-berjaya/' . $product_id );
         }
     }
-  
+
+    public function free_payment($product_id, $package_id, Request $request)
+    {
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d\TH:i');
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
+
+        return view('customer_new.manual_method',compact('tomorrow', 'product', 'package', 'student', 'payment'));
+    }
+
+    //Added to save free payment
+    public function free_paymentprocess($product_id, $package_id, Request $request)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $ticket = Ticket::where('package_id', $package_id)->first();
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
+
+            $email = $student->email;
+            $product_name = $product->name; 
+            $package_name = $package->name; 
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+            $ticket_id = $ticket->ticket_id;
+            $survey_form = $product->survey_form;
+            $payment->status = 'paid ';
+            $updateform = array(
+                'update_count' => 1
+            );
+
+            $student->save();
+            $payment->save();
+            $ticket->save(); 
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            // $request->session()->forget('ticket');
+            
+            // return redirect('next_details/' . $ticket_id );
+
+        
+        return redirect('next-details/' . $ticket_id );
+    }
+        
+    //Added to save free payment
+    public function paid_paymentprocess($product_id, $package_id, Request $request)
+    {
+        $product = Product::where('product_id',$product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $ticket = Ticket::where('package_id', $package_id)->first();
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+        $ticket = $request->session()->get('ticket');
+
+            $email = $student->email;
+            $product_name = $product->name; 
+            $package_name = $package->name; 
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+            $ticket_id = $ticket->ticket_id;
+            $survey_form = $product->survey_form;
+            $payment->status = 'paid ';
+            $updateform = array(
+                'update_count' => 1
+            );
+
+            $student->save();
+            $payment->save();
+            $ticket->save(); 
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+
+            if ($product->offer_id == 'OFF005'){
+                $request->session()->forget('student');
+                $request->session()->forget('payment');
+            }
+            elseif ($product->offer_id == 'OFF006'){
+            }
+            else{
+                $request->session()->forget('student');
+                $request->session()->forget('payment');
+            }
+
+            // $request->session()->forget('ticket');
+        
+        return redirect('next-details/' . $ticket_id );
+    }
 }

@@ -4,7 +4,6 @@
   Email Blasting
 @endsection
 
-
 @section('content')
 
 <div class="col-md-12 pt-3">   

@@ -225,6 +225,19 @@ class BlastingController extends Controller
 
     }
 
+    public function blastConfirmationEmail($product_id, $package_id){
+    
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+        $emails = Email::all();
+
+        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
+        
+        return view('admin.blasting_email.viewconfirmationemail', compact('student', 'product', 'package', 'payment', 'total', 'emails', 'product_id', 'package_id'));
+    }
+
     public function send_statementmember($membership_id , $level_id , $student_id)
     {
         // testing
@@ -371,39 +384,93 @@ class BlastingController extends Controller
         return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $student_id )->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
     }
     
-    public function bulkpurchased_mail(Request $request)
+    public function bulkpurchased_mail($product_id, $package_id)
     {
-        $product_id = $request->prod_id;
-        $package_id = $request->pack_id;
-        $email = Email::where('id', $request->emailId)->first();
+        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                    $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                    })->get();
+        $ticket = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                    $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                    })->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $payment->stud_id)->pluck('email'); 
 
-        preg_match_all("/(?<={).*?(?=})/", $email->content, $regex_content);
-			
-        if(count($regex_content) > 0){
-            if(count($regex_content[0]) > 0){
-                $regex_content = $regex_content[0];
-            }else{
-                $regex_content = [];
-            }
-        }else{
-            $regex_content = [];
+        foreach ($student as $students){
+
+            // Email content
+            $email = $students->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $students->stud_id;
+            $survey_form = $product->survey_form;
+
+            // change email status
+            $ticket->email_status = 'Sent';
+
         }
+        // send the email
+        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
 
-        $paymentIds = $request->paymentId;
-        $reqEmails = $request->emailList;
+        $ticket->save();
 
-        for($i=0; $i < sizeof($request->paymentId); $i++){
-            $payment = Payment::where('id', $paymentIds[$i])->first();
-
-            if($reqEmails[$i] != (null || "")){
-                $payment->email_status = 'Sent';
-                $payment->save();
-            }
-            $payment->save();
-        }
-
-        dispatch(new TestJobMail($request->all(), $regex_content));
-
-        return redirect('view-event/'.$product_id.'/'.$package_id)->with('success', 'List email has been qued for sending with template.');
+        return redirect('view/buyer/' . $product_id . '/' . $package_id)->with('sent-success', 'Participant confirmation email has been sent successfully') ;
     }
+
+    public function blastconfirmation_mail($product_id, $package_id)
+    {
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                    $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                    })->pluck('stud_id');
+
+        $paymentss = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+            $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+            })->pluck('stud_id')->count();
+
+        for ($i = 0; $i < $paymentss; $i++)
+        {
+            $getemail = Student::where('stud_id' , $payment[$i])->get();
+        }
+            foreach ($getemail as $emailss){
+                $emailstudent = $emailss->email;
+                $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                            $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                            })->get();
+                $ticket = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                            $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                            })->first();
+                $product = Product::where('product_id', $product_id)->first();
+                $package = Package::where('package_id', $package_id)->first();
+    
+                    // Email content
+                    $email = $emailstudent;
+                    $product_name = $product->name;  
+                    $package_name = $package->name;       
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
+                    $packageId = $package_id;
+                    $productId = $product_id;        
+                    $student_id = $payment;
+                    $survey_form = $product->survey_form;
+    
+                    // change email status
+                    $ticket->email_status = 'Sent';
+                
+                // send the email
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+    
+                $ticket->save();
+            }
+
+        return redirect('blastConfirmationEmail/' . $product_id . '/' . $package_id)->with('sent-success', 'Email had been send successfully') ;
+
+     }
 }
