@@ -13,7 +13,26 @@ Sales Report
       / <b>{{ $package->name }}</b>
     </div>
 
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    @if ($message = Session::get('uploadSuccess'))
+    <div class="col-md-12 pt-2">
+      <div class="alert alert-success alert-block pt-2">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
+    </div>
+    @endif 
+      
+
+    @if ($message = Session::get('error'))
+    <div class="col-md-12 pt-2">
+      <div class="alert alert-danger alert-block pt-2">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
+    </div>
+    @endif
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
       <h1 class="h2">{{ $package->name }}</h1>
 
       <div class="btn-group">
@@ -31,7 +50,7 @@ Sales Report
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST"> 
+              <form action="{{ url('new-customer/save') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST" enctype="multipart/form-data"> 
               @csrf
                 <div class="form-group row px-4">
                     <label for="ic" class="col-sm-4 col-form-label">IC No.</label>
@@ -111,6 +130,30 @@ Sales Report
                   </div>
                 </div>
 
+                <hr>
+
+                <div class="form-group row px-4">
+                    <label for="pic" class="col-sm-4 col-form-label">PIC Name</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-group row px-4">
+                    <label for="pay" class="col-sm-4 col-form-label">Payment Date Time</label>
+                    <div class="col-sm-8">
+                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt" required>
+                      <span style="color: red">* Please refer payment date and time from customer receipt</span>
+                    </div>
+                </div>
+
+                <div class="form-group row px-4">
+                    <label for="receipt" class="col-sm-4 col-form-label">Receipt File</label>
+                    <div class="col-sm-8">
+                      <input type="file" class="form-control" name="receipt_path" id="receipt_path">
+                    </div>
+                </div>
+
                 <div class='col-md-12 text-right px-4 pb-4'>
                   <button type='submit' class='btn btn-success'> <i class="bi bi-save pr-2"></i>Save</button>
                 </div>
@@ -119,6 +162,8 @@ Sales Report
           </div>
         </div>
 
+        <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-FRece pr-2"></i>Import Customer</a>
+        <a href="{{ url('blastConfirmationEmail') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa fa-send-o" style="font-size:14px"></i> Send Confirmation Email</a>
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
       </div>
         

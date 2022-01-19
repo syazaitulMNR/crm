@@ -72,48 +72,103 @@ class HomeController extends Controller
     // Business Details
     public function saveBusinessDetails(Request $request, $ticket_id) {
         
-        if(Session::get('validatedIC')) {
-            if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
-                $validatedData = $request->validate([
-                    'business' => 'required',
-                    'income'=> 'required',
-                    'role' => 'required'
-                ]);
+        $tiket = Ticket::where('ticket_id', $ticket_id)->first();
+        $product = Product::where('product_id', $tiket->product_id)->first();
+        $package = $request->session()->get('package');
 
-                $data = Ticket::where('ticket_id', $ticket_id)->first();
-                $dataStudent = Student::where('ic', $data->ic)->first();
-                $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
+        if(($request->session()->get('product_id')) == 'PRD0034'){
+            if(Session::get('validatedIC')) {
+                if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
+                    $validatedData = $request->validate([
+                        'business' => 'required',
+                        'income'=> 'required',
+                        'role' => 'required'
+                    ]);
+    
+                    $data = Ticket::where('ticket_id', $ticket_id)->first();
+                    $dataStudent = Student::where('ic', $data->ic)->first();
+                    $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
+    
+                    $bussInsert = BusinessDetail::create([
+                        'ticket_id' => $ticket_id,
+                        'business_role' => $request->role,
+                        'business_type' => $request->business,
+                        'business_amount' => $request->income,
+                        'business_name' => $request->business
+                    ]);
+    
+                    $student = $request->session()->get('student');
+                    $student->save();
+                    
+                    if($bussInsert) {
+                        Session::put('product_id_session', $data->product_id);
+                        Session::put('package_id_session', $data->package_id);
+                        if($product->offer_id == 'OFF005'){
+                            $request->session()->forget('student');
+                            Session::forget('validatedIC');
+                        }
+                        elseif ($product->offer_id == 'OFF006'){
 
-                $bussInsert = BusinessDetail::create([
-                    'ticket_id' => $ticket_id,
-                    'business_role' => $request->role,
-                    'business_type' => $request->business,
-                    'business_amount' => $request->income,
-                    'business_name' => $name
-                ]);
+                        }
+                        else{
+                            $request->session()->forget('student');
+                            Session::forget('validatedIC');
+                        }
 
-                $student = $request->session()->get('student');
-                $student->save();
-                
-                if($bussInsert) {
-                    Session::put('product_id_session', $data->product_id);
-                    $request->session()->forget('student');
-                    Session::forget('validatedIC');
-
-                    return redirect('pendaftaran-berjaya-ticket');
+    
+                        return redirect('jenis-pembayaran/'. $request->session()->get('product_id') .'/'. $request->session()->get('package_id'));
+                    }
+                }else {
+                    return redirect('business_details/'. $ticket_id);
                 }
             }else {
                 return redirect('business_details/'. $ticket_id);
             }
-        }else {
-            return redirect('business_details/'. $ticket_id);
+        }
+        else{
+            if(Session::get('validatedIC')) {
+                if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
+                    $validatedData = $request->validate([
+                        'business' => 'required',
+                        'income'=> 'required',
+                        'role' => 'required'
+                    ]);
+    
+                    $data = Ticket::where('ticket_id', $ticket_id)->first();
+                    $dataStudent = Student::where('ic', $data->ic)->first();
+                    $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
+    
+                    $bussInsert = BusinessDetail::create([
+                        'ticket_id' => $ticket_id,
+                        'business_role' => $request->role,
+                        'business_type' => $request->business,
+                        'business_amount' => $request->income,
+                        'business_name' => $request->business
+                    ]);
+    
+                    $student = $request->session()->get('student');
+                    $student->save();
+                    
+                    if($bussInsert) {
+                        Session::put('product_id_session', $data->product_id);
+                        Session::put('package_id_session', $data->package_id);
+                        $request->session()->forget('student');
+                        Session::forget('validatedIC');
+    
+                        return redirect('pendaftaran-berjaya-ticket');
+                    }
+                }else {
+                    return redirect('business_details/'. $ticket_id);
+                }
+            }else {
+                return redirect('business_details/'. $ticket_id);
+            }
         }
     }
 
     public function ICValidation(Request $request, $ticket_id) {
         $data = Ticket::where('ticket_id', $ticket_id)->first();
         $dataStudent = Student::where('stud_id', $data->stud_id)->first();
-        // dd($dataStudent->ic); // 871117065195
         if($dataStudent->ic === $request->ic) {
             Session::put('validatedIC', 1);
 
@@ -136,8 +191,19 @@ class HomeController extends Controller
         }
     }
 
-    public function businessForm($ticket_id) {
+    public function businessForm(Request $request ,$ticket_id) {
+        
+        $product_id = $request->session()->get('product_id');
+        $package_id = $request->session()->get('package_id');
+        $student = $request->session()->get('student');
+        $payment = $request->session()->get('payment');
+
+        $data = Ticket::where('ticket_id', $ticket_id)->first();
+        $dataStudent = Student::where('stud_id', $data->stud_id)->first();
+        Session::put('validatedIC', 1);
+
         if(Session::get('validatedIC')) {
+            
             $ticket = Ticket::where('ticket_id', $ticket_id)->first();
             $product = Product::where('product_id', $ticket->product_id)->first();
             $package = Package::where('package_id', $ticket->package_id)->first();
@@ -145,13 +211,35 @@ class HomeController extends Controller
             $productName = $product->name;
             $incomeOptions = Income::all();
 
-            return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id', 'incomeOptions'));
+            $stud = Student::where('stud_id', $ticket->stud_id)->first();
+            $request->session()->put('student', $stud);
+
+            if ($product->offer_id == 'OFF005') {
+                $request->session()->forget('ticket');
+            } else if ($product->offer_id == 'OFF006') {
+            }
+            else{
+                $request->session()->forget('ticket');
+            }
+            
+
+            return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id', 'incomeOptions', 'student', 'payment'));
         }else {
-            return redirect('business_details/'. $ticket_id);
         }
     }
 
     public function showIC($ticket_id) {
+
+        // // Testing
+        // $product = Product::where('product_id', $product_id)->first();
+        // $ticket = Ticket::where('ticket_id', $product->product_id)->where('created_at', 'asc')->first();
+        // // $package = Package::where('package_id', $product->package_id)->first();
+        // // $packageName = $package->name;
+        // $productName = $product->name;
+
+        // return view('ticket.checkIC', compact('productName'));
+        // // End Testing
+
         $ticket = Ticket::where('ticket_id', $ticket_id)->first();
         $product = Product::where('product_id', $ticket->product_id)->first();
         $package = Package::where('package_id', $ticket->package_id)->first();
@@ -237,22 +325,30 @@ class HomeController extends Controller
     }
 	
     public function thankyouTicket() {
+
         $product_link = Product::where('product_id', Session::get('product_id_session'))->first();
-        
+        $package_link = Package::where('package_id', Session::get('package_id_session'))->first();
+        $package = $package_link->package_id;
+        // $url = $product->tq_page;
+
         if(!is_null($product_link)) {
             $product_link = $product_link->zoom_link;
+            // $tq_link = $url;
         }else {
             $product_link = "";
         }
 
         // Session::forget('product_id_session');
         
-        return view('ticket.thankyou', compact('product_link'));
+        return view('ticket.thankyou', compact('product_link','package'));
     }
 
     public function thankyou($product_id) 
     {
-        return view('customer/thankyou');
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('product_id', $product->product_id)->get();
+        
+        return view('customer/thankyou', compact('product', 'package'));
     }
 
     public function failed_payment() 
@@ -327,7 +423,13 @@ class HomeController extends Controller
 
                 //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-    
+                
+            } else if($payment->offer_id == 'OFF005') {
+
+                //for Bulk Ticket
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+        
+
             } else {
     
                 echo 'No Such Offer';
@@ -386,7 +488,11 @@ class HomeController extends Controller
                                     'stud_id' => $participant_id,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
-                                    'payment_id' => $payment_id
+                                    'payment_id' => $payment_id,
+                                    'pay_method' => $payment->pay_method,
+                                    'receipt_path' => $payment->receipt_path,
+                                    'pay_datetime' => $payment->pay_datetime,
+                                    'pic' => $payment->pic
                                 ));
 
                                 // Manage email (for existed ic in looping form) 
@@ -439,7 +545,11 @@ class HomeController extends Controller
                                 'stud_id' => $stud_id_looping,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
-                                'payment_id' => $payment_id
+                                'payment_id' => $payment_id,
+                                'pay_method' => $payment->pay_method,
+                                'receipt_path' => $payment->receipt_path,
+                                'pay_datetime' => $payment->pay_datetime,
+                                'pic' => $payment->pic
                             ));
                 
                             // Manage email (for existed ic in looping form) 
@@ -479,7 +589,11 @@ class HomeController extends Controller
                         'stud_id' => $participant_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
 
                     // Manage email (for existed ic in looping form) 
@@ -531,7 +645,11 @@ class HomeController extends Controller
                         'stud_id' => $stud_id_single,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
 
                     // Manage email (for new ic in single form)                    
@@ -578,7 +696,11 @@ class HomeController extends Controller
                                     'stud_id' => $participant_id,
                                     'product_id' => $product_id,
                                     'package_id' => $package_id,
-                                    'payment_id' => $payment_id
+                                    'payment_id' => $payment_id,
+                                    'pay_method' => $payment->pay_method,
+                                    'receipt_path' => $payment->receipt_path,
+                                    'pay_datetime' => $payment->pay_datetime,
+                                    'pic' => $payment->pic
                                 ));
 
                                 // Manage email (for existed ic in single form)                        
@@ -631,7 +753,11 @@ class HomeController extends Controller
                                 'stud_id' => $stud_id_looping,
                                 'product_id' => $product_id,
                                 'package_id' => $package_id,
-                                'payment_id' => $payment_id
+                                'payment_id' => $payment_id,
+                                'pay_method' => $payment->pay_method,
+                                'receipt_path' => $payment->receipt_path,
+                                'pay_datetime' => $payment->pay_datetime,
+                                'pic' => $payment->pic
                             ));
                                                     
                             // Manage email (for new ic in looping form)
@@ -699,7 +825,11 @@ class HomeController extends Controller
                         'stud_id' => $participant_id,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
 
                     // Manage email (for existed ic in paid ticket form)  
@@ -738,7 +868,11 @@ class HomeController extends Controller
                             'stud_id' => $participant_id,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
 
                         // Manage email (for existed ic in looping form) 
@@ -790,7 +924,11 @@ class HomeController extends Controller
                             'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
             
                         // Manage email (for new ic in looping form)
@@ -842,7 +980,11 @@ class HomeController extends Controller
                         'stud_id' => $stud_id_paid,
                         'product_id' => $product_id,
                         'package_id' => $package_id,
-                        'payment_id' => $payment_id
+                        'payment_id' => $payment_id,
+                        'pay_method' => $payment->pay_method,
+                        'receipt_path' => $payment->receipt_path,
+                        'pay_datetime' => $payment->pay_datetime,
+                        'pic' => $payment->pic
                     ));
                                     
                     // Manage email (for new ic in paid ticket form)   
@@ -881,7 +1023,11 @@ class HomeController extends Controller
                             'stud_id' => $participant_id,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
 
                         // Manage email (for existed ic in free ticket form)      
@@ -932,7 +1078,11 @@ class HomeController extends Controller
                             'stud_id' => $stud_id_free,
                             'product_id' => $product_id,
                             'package_id' => $package_id,
-                            'payment_id' => $payment_id
+                            'payment_id' => $payment_id,
+                            'pay_method' => $payment->pay_method,
+                            'receipt_path' => $payment->receipt_path,
+                            'pay_datetime' => $payment->pay_datetime,
+                            'pic' => $payment->pic
                         ));
 
                         // Manage email (for new ic in looping form)

@@ -10,6 +10,8 @@ use App\Payment;
 use App\Ticket;
 use App\Offer;
 use App\User;
+use Carbon\Carbon;
+use DB;
 use App\Imports\ParticipantImport;
 // use App\Exports\ProgramExport;
 use App\Exports\ParticipantFormat;
@@ -58,14 +60,158 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->paginate(15);
         $link = 'https://mims.momentuminternet.my/upgrade/'. $product->product_id . '/';
 
+        // Testing //////////////////////////////////////////////////////////////////
+
+        // $count_package = Package::where('product_id', $product_id)->count();
+        // for ($i = 0; $i < $count_package; $i++)
+        // {
+        //     $date_yesterday[$i] = Payment::where('created_at', $product_id)->where('status', 'paid')->subDays($i)->format('d M Y');
+        //     dd($date_yesterday[$i]);
+        //     $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-[$i] day")) , date('Y-m-d 23:59:59', strtotime("-[$i] day")) ])->count();        
+        //     // $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        // }
+
+        // $visitorTraffic = Payment::where('created_at', '>=', \Carbon\Carbon::now->subMonth())
+        //                 ->groupBy(DB::raw('Date(created_at)'))
+        //                 ->orderBy('created_at', 'DESC')->get();
+
+        // $hingga = Payment::where('created_at', '>=', Carbon::now()->subDays(14));
+        // $dari = Payment::where('created_at', '==', Carbon::now());
+
+        // $visitors = Payment::select(
+        //                     "id" ,
+        //                     DB::raw("(sum(quantity)) as total_quantity"),
+        //                     DB::raw("(DATE_FORMAT(created_at, '%d-%m-%Y')) as my_date")
+        //                     )
+        //                     ->orderBy('created_at')
+        //                     ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%m-%Y')"))
+        //                     ->get();
+        // dd($visitors);
+
+        // worked  latest ambik latest buyer, oldest ambik oldest buyer
+        // $latest = Payment::latest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->get();
+        // $oldest = Payment::oldest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->first();
+
+        // dd($latest);
+
+        $startDate = Carbon::createFromFormat('Y-m-d', '2021-09-01');
+        $endDate = Carbon::createFromFormat('Y-m-d', '2021-09-30');
+
+        // $posts = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0023')->orderBy('created_at', 'desc')->whereBetween('created_at', [$startDate, $endDate])->groupBy(function($date) {
+        //     return Carbon::parse($date->created_at)->format('D');})->get();
+
+        // $data= Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')
+        //     ->get()
+        //     ->groupBy(function($val) {
+        //     return Carbon::parse($val->created_at)->format('d M Y');
+        //     });
+
+        $visitorTraffic = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->get()->groupBy(function($date) {
+                            return Carbon::parse($date->created_at)->format('D'); // grouping by years
+                            });
+        $results = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->latest()->get();
+
+        // worked
+        $order = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->groupBy(function($date){
+                $created_at = Carbon::parse($date->created_at);
+                $start = $created_at->startOfWeek()->format('d-m-Y');
+                $end = $created_at->endOfWeek()->format('d-m-Y');
+                return "{$start} - {$end}";
+                });
+
+        //////////////////////      ////////////////////////
+ 
+        $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
+        $test = $productfirst->created_at->format('Y-m-d H:i:s');
+
+        $hingga = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d H:i:s');
+        $dari = $test;
+
+        $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-1 days")) , date('Y-m-d 23:59:59', strtotime("-1 days")) ])->get();
+        $count_package = Package::where('product_id', $product_id)->count();
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+            $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
+            $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
+            $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->get();
+
+            for ($i = 0; $i < $count_package; $i++)
+            {
+                $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
+            }
+            $data = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
+                    ->get()
+                    ->groupBy(function($val) {
+                    return Carbon::parse($val->created_at)->format('Y-m-d','[A-Za-z0-9-]+');
+                    });
+            $data1 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
+                    ->get()
+                    ->groupBy(function($val) {
+                    return Carbon::parse($val->created_at)->format('Y-m-d');
+                    })->first(); 
+            $data2 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
+                    ->get()
+                    ->groupBy(function($val) {
+                    return Carbon::parse($val->created_at)->format('Y-m-d');
+                    })->skip(1)->first(); 
+            $totalquantity = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
+                            ->get()
+                            ->groupBy(function($val) {
+                                return Carbon::parse($val->created_at)->format('d M Y');
+                                });
+            $total_listproduct[$i] = Payment::where('package_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();        
+        }
+
+        // foreach($data1 as $key1 => $value1){
+        //     foreach($data2 as $key2 => $value2){
+        //         $testdate1 =  $value1->created_at->format('Y-m-d');
+        //         $testdate2 =  $value2->created_at->format('Y-m-d');
+        //     }
+        // }
+        
+        $totalpackageall = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->first();
+        $totaldays = $data->count();
+        // dd($totalpackageall);
+        // for ($j = 0; $j < $count_package; $j++){
+        //     for($i = 0; $i < $totaldays; $i++){
+        //         foreach($data as $key => $value){
+        //             // dd($testdate2);
+        //             // $q = Payment::where('status','paid')->where('product_id', 'PRD0022')->where('package_id' , 'PKD0046')->orderBy('created_at', 'desc')->where('created_at', '>', '2021-12-1 00:00:00')->where('created_at', '<=','2021-12-17 00:00:00')->get();
+        //             $t[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id' , $package[$j]->package_id)->orderBy('created_at', 'desc')->whereBetween('created_at',array($testdate2,$testdate1))->get();//
+
+        //             $te[$i] = count($t['status'== 'paid']);
+        //             // dd($te);
+        //         }
+        //     }    
+        // }
+        
+        // $testingla = $q->where('startdate', '>', '16 Dec 2021')->where('startdate', '<=', '17 Dec 2021')->get();
+
+        // for ($i = 0; $i < $count_package; $i++)
+        // {
+        // $total_package_date[$i] = 0;
+        // $package_date[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',)->count();
+        // $total_package_date[$i] = $total_package_date[$i] + $package_date[$i];
+        // }
+
+        for ($i = 0; $i < $count_package; $i++)
+        {
+            $totalpackagealls = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
+            $totalperpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
+            $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
+        }
+
+        $selectedID = 1;
+        // End Testing ///////////////////////////////////////////////////////////////
+
         $counter = Student::count();
         $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
         $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $paidticket = Payment::where('product_id', $product_id)->where('status', 'paid')->where('update_count', 1)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
         
-        return view('admin.reports.trackpackage', compact('product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket' , 'link'));
+        return view('admin.reports.trackpackage', compact('selectedID','totalpackageall','totalperpackage', 'totalpackage', 'totalquantity', 'registration', 'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket' , 'link'));
     }
 
     public function exportProgram($product_id, Request $request)
@@ -109,10 +255,8 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    // if($payments->user_id == $user->user_id){
 
                                         fputcsv($file, [
                                             $payments->payment_id,
@@ -132,11 +276,9 @@ class ReportsController extends Controller
                                             $payments->created_at,
                                         ]);
 
-                                    // }
 
                                 }
                             }
-                        // }
                     }
                 }
                 
@@ -175,11 +317,8 @@ class ReportsController extends Controller
             foreach ($student as $students) {
                 foreach($payment as $payments){
                     foreach($package as $packages){
-                        // foreach($users as $user){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-                                    // if($payments->user_id == $user->user_id){
-
                                         fputcsv($file, [
                                             $payments->payment_id,
                                             $students->first_name,
@@ -198,10 +337,8 @@ class ReportsController extends Controller
                                             $payments->created_at,
                                         ]);
 
-                                    // }
                                 }
                             }
-                        // }
                     }
                 }
                 
@@ -340,8 +477,6 @@ class ReportsController extends Controller
             fclose($file);
 
         }
-
-        // return Excel::download(new ProgramExport($payment, $student, $package), $product->name.'.xlsx');
                 
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
@@ -512,27 +647,88 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
+    public function approveaccount($payment_id, $product_id, $package_id, Request $request) 
+    {
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+
+        if($payment->status == 'approve by sales'){
+            $payment->status = 'paid';
+            $payment->save();
+            $request->session()->forget('payment');
+        }
+        else if($payment->status == 'not approve'){
+            $payment->status = 'approve by account';
+            $payment->save();
+            $request->session()->forget('payment');
+        }    
+
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('accountapprove', 'Account Approve Successfully');
+    }
+
+    public function approvesales($payment_id, $product_id, $package_id, Request $request) 
+    {
+        $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+
+        if($payment->status == 'approve by account'){
+            $payment->status = 'paid';
+            $payment->save();
+            $request->session()->forget('payment');
+        }
+        else if($payment->status == 'not approve'){
+            $payment->status = 'approve by sales';
+            $payment->save();
+            $request->session()->forget('payment');
+        }    
+
+        return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('accountapprove', 'Account Approve Successfully');
+    }
+
+    //insert pay_datetime, receipt_path & PIC_name
     public function save_customer($product_id, $package_id, Request $request)
     { 
         $student = Student::where('ic', $request->ic)->first();
         
         if(Student::where('ic', $request->ic)->exists()){
 
-            $payment_id = 'OD'.uniqid();
+            // Start Receipt
+            $filename = $request->file('receipt_path');
+            if($filename != '')
+            {   
+                $extension = $filename->getClientOriginalExtension();
+                
+                if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+                {
+                    $name = $filename->getClientOriginalName();
+                    $uniqe = 'RE'. uniqid() . '.' . $extension;
+                    $dirpath = public_path('assets/receipts/');
+                    $filename->move($dirpath, $uniqe); 
 
+                    $receipt_name = 'assets/receipts/'.$uniqe;
+                } else {
+                    return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+                }
+            } else {
+                $receipt_name = NULL;
+            }
+            // End Receipt
+
+            $payment_id = 'OD'.uniqid();
             Payment::create(array(
                 'payment_id'=> $payment_id,
                 'pay_price'=> $request->pay_price,
                 'totalprice'=> $request->totalprice,
                 'quantity' => $request->quantity,
                 'status' => 'paid',
-                'pay_method' => 'FPX',
+                'pay_method' => 'Manual',
                 'email_status'  => 'Hold',
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
                 'offer_id' => $request->offer_id,
-                'user_id' => Auth::user()->user_id
+                'user_id' => Auth::user()->user_id,
+                'pay_datetime' => $request->pay_datetime,
+                'pic' => $request->pic,
+                'receipt_path' => $receipt_name
             ));
 
         }else{
@@ -548,6 +744,28 @@ class ReportsController extends Controller
                 'email' => $request->email
             ));
 
+            // Start Receipt
+            $filename = $request->file('receipt_path');
+            if($filename != '')
+            {   
+                $extension = $filename->getClientOriginalExtension();
+                
+                if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+                {
+                    $name = $filename->getClientOriginalName();
+                    $uniqe = 'RE'. uniqid() . '.' . $extension;
+                    $dirpath = public_path('assets/receipts/');
+                    $filename->move($dirpath, $uniqe); 
+
+                    $receipt_name = 'assets/receipts/'.$uniqe;
+                } else {
+                    return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+                }
+            } else {
+                $receipt_name = NULL;
+            }
+            // End Receipt
+
             $payment_id = 'OD'.uniqid();
 
             Payment::create(array(
@@ -556,13 +774,16 @@ class ReportsController extends Controller
                 'totalprice'=> $request->totalprice,
                 'quantity' => $request->quantity,
                 'status' => 'paid',
-                'pay_method' => 'FPX',
+                'pay_method' => 'Manual',
                 'email_status'  => 'Hold',
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
                 'offer_id' => $request->offer_id,
-                'user_id' => Auth::user()->user_id
+                'user_id' => Auth::user()->user_id,
+                'pay_datetime' => $request->pay_datetime,
+                'pic' => $request->pic,
+                'receipt_path' => $receipt_name
             ));
 
         }
@@ -844,11 +1065,44 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
+        $payment = Payment::where('payment_id', $ticket->payment_id)->first();
+        $buyer = Student::where('stud_id', $payment->stud_id)->first();
 
         //Count the data
         $count = 1;
         
-        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'count'));
+        return view('admin.reports.trackticket', compact('ticket', 'product', 'package', 'student', 'payment', 'buyer', 'count'));
+    }
+
+    //upload receipt for existing data participant (modal)
+    public function update_receipt($product_id, $package_id, $ticket_id, Request $request)
+    {
+        //Get the details
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+        
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'UP_RE' . uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+
+            $ticket->receipt_path = $receipt_name;
+            $ticket->save();
+
+            return redirect()->back()->with('uploadSuccess','Receipt has been successfully saved!');
+        } else {
+            return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+        }
+        // End receipt
     }
 
     public function update_ticket($product_id, $package_id, $ticket_id, $student_id, Request $request)
@@ -914,7 +1168,6 @@ class ReportsController extends Controller
     public function search_participant($product_id, $package_id, Request $request)
     {   
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -936,7 +1189,6 @@ class ReportsController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            // $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'paid')->get();
             $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
             if(count($ticket) > 0)
@@ -973,8 +1225,6 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package_name = Package::where('product_id', $product_id)->where('package_id', $package_id)->first();
         $package = Package::where('product_id', $product_id)->where('package_id', $package_id)->get();
-
-        // return Excel::download(new FreeTicket_Export($ticket, $student, $package), $package_name->name.'_free.xlsx');
 
         /*-- Manage Email ---------------------------------------------------*/
         $fileName = $package_name->name.'_free.csv';
@@ -1067,7 +1317,6 @@ class ReportsController extends Controller
     public function search_free($product_id, $package_id, Request $request)
     {   
         //Get the details
-        // $ticket = Ticket::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->paginate(100);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
@@ -1075,13 +1324,7 @@ class ReportsController extends Controller
         //Count the data
         $count = 1;
 
-        // //get details from search
-        // $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
-        // $stud_id = $student_id->stud_id;
-
         $ticket = Ticket::where('ic','LIKE','%'. $request->search .'%')->where('product_id', $product_id)->where('package_id', $package_id)->where('ticket_type', 'free')->get();
-
-        // dd($ticket);
 
         if(count($ticket) > 0)
         {
@@ -1121,5 +1364,64 @@ class ReportsController extends Controller
         $ticket->save();
         
         return redirect()->back()->with('updated-sent', 'Participant confirmation email has been sent successfully') ;
+    }
+
+    //upload receipt for existing data buyer (modal)
+    public function uploadFile($product_id, $package_id, $payment_id, $student_id, Request $request)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $student = Student::where('stud_id', $student_id)->first();
+
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'RE'. uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+
+            $payment->receipt_path = $receipt_name;
+            $payment->save();
+
+            return redirect()->back()->with('uploadSuccess','Receipt has been successfully saved!');
+        } else {
+            return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+        }
+        // End receipt
+    }
+
+    public function search_report($product_id, Request $request)
+    {
+        // $search = Payment::where('product_id', $product_id)->get();
+        $payment = Payment::where('product_id', $product_id)->get();
+        $product = Product::where('product_id', $product_id)->first();
+
+        // $product = Product::where('product_id', $product_id)->first();
+
+        $productfirst = Payment::where('status', 'paid')->where('product_id', $product)->orderBy('created_at', 'asc')->first();
+        $test = $productfirst->created_at->format('Y-m-d H:i:s');
+
+        $hingga = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d H:i:s');
+        $dari = $test;
+
+        $data = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
+                    ->get()
+                    ->groupBy(function($val) {
+                    return Carbon::parse($val->created_at)->format('Y-m-d','[A-Za-z0-9-]+');
+                    });
+
+        $start_date = Carbon::parse($request->start_date)->toDateTimeString();
+        $end_date = Carbon::parse($request->end_date)->toDateTimeString();
+        $exact_date = Carbon::parse()->toDateTimeString();
+
+        $searchresult = Payment::whereBetween('created_at',[$start_date,$end_date])->get();
+
+        return redirect()->back()->with('Search Found', 'List of buyer based on the date') ;
     }
 }

@@ -28,7 +28,6 @@ Pendaftaran Pembeli
                             </ul>
                         </div>
                     @endif
-
                     <div class="form-group row">
                         <input type="hidden" value="{{ $payment_id ?? ''}}" class="form-control" name="payment_id" readonly/>
                         <input type="hidden" value="{{ $product->product_id }}" class="form-control" name="product_id" readonly/>
@@ -63,7 +62,6 @@ Pendaftaran Pembeli
                             <h3><input type="text" id="totalprice" name="totalprice" value="{{ $payment->totalprice ?? '' }}" style="border: none; background-color: transparent;" readonly></h3>
                         </div>
                     </div>
-
                 </div>
                 
                 <div class="col-md-12">
@@ -77,7 +75,6 @@ Pendaftaran Pembeli
             </div>
         </form>
     </div>
-
 </div>
 
 @endsection

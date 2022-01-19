@@ -8,8 +8,6 @@ class ZoomService
 
     public static function createWebinar($request)
     {
-        // dd($request->password);
-
         $postData = [ 
             "topic" => $request->topic,
             "type"=> 8,

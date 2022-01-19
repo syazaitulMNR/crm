@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Hash;
 //---------------------------------------------- Info Part -------------------------------------------------//
 
 Route::get('information', 'InfoController@info');
+Route::get('teleUpdates', 'InfoController@teleUpdates');
 
 //---------------------------------------------- Administrator Part -------------------------------------------------//
 
@@ -60,7 +61,7 @@ Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipC
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
-Route::get('download-receipt/{stud_id}', 'MembershipController@downloadReceipt');
+Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController@downloadReceipt');
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::get('download-receipt/{stud_id}', 'MembershipController@downloadReceipt')
 */
 Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
+Route::post('searchreport/{product_id}', 'ReportsController@search_report')->name('searchreport','[A-Za-z0-9-]+');
 
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
@@ -79,11 +81,13 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
+Route::get('approveacc/{payment_id}/{product_id}/{package_id}', 'ReportsController@approveaccount');
+Route::get('approvesales/{payment_id}/{product_id}/{package_id}', 'ReportsController@approvesales');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
-// Route::get('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
+Route::post('viewpayment/save/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@uploadFile'); //modal upload receipt existing data
 
 //participant
 Route::get('view/participant/{product_id}/{package_id}', 'ReportsController@paid_ticket');
@@ -92,6 +96,7 @@ Route::get('import-participant/{product_id}/{package_id}','ReportsController@imp
 Route::post('import/store-participant/{product_id}/{package_id}','ReportsController@store_participant');
 Route::get('participant-format/{product_id}/{package_id}', 'ReportsController@participant_format');
 Route::get('view/ticket/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_ticket');
+Route::post('view/ticket/save/{product_id}/{package_id}/{ticket_id}', 'ReportsController@update_receipt');
 Route::post('ticket/update/{product_id}/{package_id}/{ticket_id}/{student_id}', 'ReportsController@update_ticket');
 Route::get('updated-mail/{product_id}/{package_id}/{ticket_id}/{stud_id}', 'ReportsController@updated_mail');
 Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsController@destroy_ticket');
@@ -106,8 +111,7 @@ Route::get('participant/search/{product_id}/{package_id}', 'ReportsController@se
 // Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
 // Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
 // Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
-// Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');
-
+// Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');d
 
 /*
 |--------------------------------------------------------------------------
@@ -124,7 +128,17 @@ Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Bla
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
-Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');;
+Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');
+Route::post('confirmation-email-blast', 'BlastingController@blastConfirmationEmail')->name('email-confirmation-blast');
+Route::get('bulkpurchased-mail/{product_id}/{package_id}', 'BlastingController@bulkpurchased_mail');
+Route::get('blastconfirmation_mail/{product_id}/{package_id}', 'BlastingController@blastconfirmation_mail');
+Route::get('blastConfirmationEmail/{product_id}/{package_id}', 'BlastingController@blastConfirmationEmail');
+
+// send Statement of Account , Invoice , Receipt ke email
+Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
+Route::get('send-invoicemember/{membership_id}/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_invoicemember');
+Route::get('send-receiptmember/{membership_id}/{level_id}/{payment_id}/{student_id}', 'BlastingController@send_receiptmember');
+
 /*
 |--------------------------------------------------------------------------
 | Manage event
@@ -143,7 +157,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 |--------------------------------------------------------------------------
 */
 Route::get('addpackage/{id}', 'ProductController@pack');
-Route::post('storepack/{id}', 'ProductController@storepack');
+Route::post('storepack/{id}/{offer_id}', 'ProductController@storepack');
 Route::get('package/{id}', 'ProductController@view');
 Route::get('editpack/{id}/{productId}', 'ProductController@editpack');
 Route::post('updatepack/{id}/{productId}',  'ProductController@updatepack');
@@ -243,6 +257,11 @@ Route::post('storeCard/{product_id}/{package_id}', 'NewCustomerController@postCa
 Route::get('data-fpx/{product_id}/{package_id}', 'NewCustomerController@pay_billplz');
 Route::get('callback-payment/{product_id}/{package_id}', 'NewCustomerController@callback_payment');
 Route::get('redirect-payment/{product_id}/{package_id}', 'NewCustomerController@redirect_payment');
+Route::get('maklumat-pembayaran/{product_id}/{package_id}', 'NewCustomerController@manual_payment'); // manual payment form
+Route::post('store-manual/{product_id}/{package_id}', 'NewCustomerController@manual_paymentprocess'); // manual payment process
+Route::get('maklumat-free/{product_id}/{package_id}', 'NewCustomerController@manual_payment'); // free payment form
+Route::get('store-free/{product_id}/{package_id}', 'NewCustomerController@free_paymentprocess'); // free payment process
+Route::get('store-paid/{product_id}/{package_id}', 'NewCustomerController@paid_paymentprocess'); // free payment process
 
 // Existedstudent
 Route::get('langkah-pertama/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stepOne');
@@ -258,6 +277,10 @@ Route::post('saveStripe/{product_id}/{package_id}/{stud_id}', 'ExistCustomerCont
 Route::get('data-billplz/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@billplz_payment');
 Route::get('callback-billplz/{product_id}/{package_id}', 'ExistCustomerController@callback_billplz');
 Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerController@redirect_billplz');
+Route::get('data-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@manual_payment'); // manual payment form
+Route::post('save-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@save_manual_payment'); // manual payment process
+Route::get('save-free/{product_id}/{package_id}', 'ExistCustomerController@save_free_paymentprocess'); // free payment process
+Route::get('save-paid/{product_id}/{package_id}', 'ExistCustomerController@save_paid_paymentprocess'); // free payment process
 
 // Thank you page
 Route::get('pendaftaran-berjaya/{product_id}','HomeController@thankyou');
@@ -318,6 +341,8 @@ Route::post('store-stripe/{product_id}/{package_id}/{ticket_id}', 'UpgradeContro
 Route::get('billplz-option/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@billplz_option');
 Route::get('redirect-page/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@redirect_page');
 Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
+Route::get('manual-option/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@manual_option');
+Route::post('store-manual/{product_id}/{package_id}/{ticket_id}', 'UpgradeController@save_manual_option');
 
 /*
 |--------------------------------------------------------------------------
@@ -327,8 +352,14 @@ Route::get('naik-taraf-berjaya', 'UpgradeController@success_upgrade');
 Route::get('e-cert/{product_id}', 'CertController@ic_check');
 Route::get('verify/{product_id}', 'CertController@checking_ic');
 Route::get('check-cert/{product_id}/{stud_id}', 'CertController@checking_cert');
-
 Route::get('certificate/{product_id}/{stud_id}', 'CertController@extract_cert');
+
+/*
+|--------------------------------------------------------------------------
+| E-Certificate
+|--------------------------------------------------------------------------
+*/
+Route::post('uploadCheque/{membership_id}/{level_id}/{student_id}','MembershipController@uploadcheque');
 
 /*
 |--------------------------------------------------------------------------
@@ -406,18 +437,19 @@ Route::prefix('student')->group(function()
 	Route::post('/reset-password', 'StudentPortal@resetPassword')->name('reset-password');
 
 	Route::get('/dashboard', 'StudentPortal@show')->name('student.dashboard');
-	// Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
-	// Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
+	Route::get('/bussiness-event-details', 'StudentPortal@registerForm')->name('student.regForm');
+	Route::post('/bussiness-form', 'StudentPortal@bussinessForm');
 	Route::get('/list-invoice', 'StudentPortal@listInvoice')->name('student.listInvoice');
 
 	//download invoice kat list-invoice
 	Route::get('/invoice-download/{level}/{invoice}/{student}','StudentPortal@downloadInvoice')->name('invoice-download');
+	Route::get('/invoice-receipt/{level}/{payment}/{student}','StudentPortal@downloadResit')->name('receipt-download');
 
 	//add new download statement 
 	Route::get('/statement-format','StudentPortal@exportstatement_format')->name('statement-format');
 
 	//add new resit 
-	Route::get('/receipt','StudentPortal@downloadResit')->name('receipt');
+	Route::get('/receipt/{level_id}/{payment_id}/{stud_id}','StudentPortal@downloadResit')->name('emails.resitmember');
 
 	// shauqi add new routes
 	
@@ -476,10 +508,10 @@ Route::get('business_details/{ticket_id}', 'HomeController@showIC');
 Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
 Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
-Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
-
 Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
+Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
+
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');
 
@@ -489,27 +521,5 @@ Route::post('save-customer', 'HomeController@saveinviteCustomer');
 Route::get('invite-customer-thankyou', 'HomeController@inviteCustomerThankyou');
 
 Route::get('/sample-customer', 'SampleCustomer@index');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

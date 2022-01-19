@@ -1,6 +1,16 @@
 @extends('layouts.email')
 
 @section('content')
+
+<style>
+    a {
+      display : block;
+      width:200px;
+      height:40px;
+  }
+  
+</style>
+
     <table style="border: none; cellpadding: 0; cellspacing: 0;" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -27,7 +37,7 @@
                                 <td>
                                   <b>Tarikh</b> : {{  date('d/m/Y', strtotime($date_from))  }} - {{  date('d/m/Y', strtotime($date_to))  }}<br>
                                   <b>Masa</b> : {{  date('h:i a', strtotime($time_from))  }} - {{  date('h:i a', strtotime($time_to))  }}<br>
-                                  <b>Tiket ID</b> : {{ $ticket_id }}<br>
+                                  {{-- <b>Tiket ID</b> : {{ $ticket_id }}<br> --}}
                                   <b>Pakej</b> : {{ $package_name }}
                                 </td>
                             </tr>
@@ -41,24 +51,10 @@
                             </tr>
                             <tr>
                                 <td class="align-center">
-                                  <a href="{{ $survey_form }}"> Soalan kaji selidik</a>
+                                  <a style="font-size:130%;" href="{{ $survey_form }}"> Soalan kaji selidik</a>
                                 </td>
                             </tr>
-                            <p style="font-size: 10px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p>
-                            
-                            {{-- Download resit --}}
-                            <tr>
-                              <td>
-                                <br>
-                                <p>2. Jika anda hendak memuat turun invois dan resit</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="align-center">
-                                <a href="/student/invoice-download/">Invois</a>
-                                <a href="receipt">Resit</a>
-                              </td>
-                            </tr>
+                            <b><p style="font-size: 14px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p><b>
 
                             {{-- For upgrade by ticket --}}
                             <tr>
@@ -69,7 +65,7 @@
                             </tr>
                             <tr>
                               <td class="align-center">
-                                <a href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a>
+                                {{-- <a style="font-size:130%; background-color:#FF0000;" href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a> --}}
                               </td>
                             </tr>
 

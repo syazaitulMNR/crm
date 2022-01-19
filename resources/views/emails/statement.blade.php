@@ -113,7 +113,7 @@
 </head>
 
 <body>
-<div class="invoice-box">
+    <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
                 <td colspan="8">
@@ -126,7 +126,7 @@
                             <td></td>
  
                             <td>
-                                <strong>Momentum Internet Sdn Bhd</strong><br>
+                                <strong>Momentum Internet</strong><strong> Sdn Bhd</strong>
                                 <strong>1079998-A</strong><br>
                                 288 Tingkat 1, Jalan Lambak,<br>
                                 86000 Kluang, Johor.
@@ -141,14 +141,14 @@
                     <table>
                         <tr>
                             <td>To<br>
-                                {{ $name }} {{ $secondname }}<br>
+                                <strong>{{ $name }} {{ $secondname }}</strong><br>
                             </td>
 
                             <td></td>
-                            
+
                             <td>
-                                <strong><h3>Statement of Accounts</h3></strong>
-                                01/01/2021 To 31/12/2021<br><br>
+                                <h3><strong>Statement of Accounts</strong></h3>
+                                 1/1/2021 to 31/12/2021<br><br>
                                 <strong>Account Summary</strong><br><br>
                                 <strong>Invoiced Amount</strong> {{ $invoice_amount }}<br>
                                 <strong>Amount Received</strong> {{ $amount_received }}<br>
@@ -158,6 +158,7 @@
                     </table>
                 </td>
             </tr>
+
             <tr class="heading">
                     <td>
                         Date
@@ -183,13 +184,12 @@
                         Balance
                     </td>
             </tr>
-            
             @foreach ($invoice as $invoices)
                 @if ($invoices->status == 'paid')
                     {{-- INVOICE --}}
                     <tr class="item">
                         <td>
-                            {{ $bulan }}
+                            {{ $invoices->for_date }}
                         </td>
 
                         <td>
@@ -198,8 +198,8 @@
 
                         <!-- table membership-->
                         <td>
-                            MBM - {{ $membership }}<br>
-                            <em>Monthly Consultation Fees - {{ $bulan }}</em>
+                            <strong>{{ $invoices->invoice_id }}</strong><br>
+                            <em>due on {{ $invoices->for_date }}</em>
                         </td>
 
                         <!-- table payment-->
@@ -212,15 +212,21 @@
                             
                         </td>
                         
-                        <td colspan="8">
-                            {{ $balance }}
-                        </td>
+                        @if ($invoices->price)
+                            <td colspan="8">
+                                {{ $invoices->price }}
+                            </td>
+                        @else
+                            <td colspan="8">
+                                {{ $price }}
+                            </td>   
+                        @endif
                     </tr>
 
                     {{-- PAYMENT --}}
                     <tr class="item">
                         <td>
-                            {{ $bulan }}
+                            {{ $invoices->for_date }}
                         </td>
 
                         <td>
@@ -229,8 +235,8 @@
 
                         <!-- table membership-->
                         <td>
-                            MBM - {{ $membership }}<br>
-                            <em>Monthly Consultation Fees - {{ $bulan }}</em>
+                            <strong>{{ $invoices->invoice_id }}</strong><br>
+                            <em><strong>RM{{ $invoices->price }}</strong> for payment of {{ $invoices->invoice_id }}</em>
                         </td>
 
                         <!-- table payment-->
@@ -240,19 +246,23 @@
                         
                         <!-- table payment-->
                         <td>
-                            {{ $price }}
+                            {{ $invoices->price }}
                         </td>
                         
-                        <td colspan="8">
-                            {{ $balance }}
-                        </td>
+                        @if ($balance == 0)
+                            <td colspan="8">
+                                0
+                            </td>
+                        @else
+                            <td colspan="8">
+                                {{ $invoices->price }}
+                            </td>   
+                        @endif
                     </tr>
-
-
                 @else 
                 <tr class="item">
                     <td>
-                        {{ $bulan }}
+                        {{ $invoices->for_date }}
                     </td>
 
                     <td>
@@ -261,8 +271,8 @@
 
                     <!-- table membership-->
                     <td>
-                        MBM - {{ $membership }}<br>
-                        <em>Monthly Consultation Fees - {{ $bulan }}</em>
+                        <strong>{{ $invoices->invoice_id }}</strong><br>
+                        <em>due on {{ $invoices->for_date }}</em>
                     </td>
 
                     <!-- table payment-->
@@ -274,12 +284,18 @@
                     <td>
                         
                     </td>
-                    
-                    <td colspan="8">
-                        {{ $balance }}
-                    </td>
+            
+                    @if ($invoices->price != 0)
+                        <td colspan="8">
+                            {{-- {{ $invoices->price }} --}}
+                            {{ ($total += $invoices->price)-($price) }}
+                        </td>
+                    @else
+                        <td colspan="8">
+                            {{ $price }}
+                        </td>   
+                    @endif
                 @endif
-                
             @endforeach
             
             <tr class="information">
@@ -300,11 +316,9 @@
             </td>
             </tr>
         </table>
-        <br>
         <footer class="left mt-1" style="font-size: 9pt;">
         </footer>
     </div>
-    {{ dd($bulan) }}
 </body>
 </html>
 

@@ -101,7 +101,7 @@
               @forelse ($data as $key => $k)
                   <tr>
                     <th scope="row">{{ ++$no }}</th>
-                    <td>{{ $k->name }}</td>
+                    <td>{{ $k->business_name }}</td>
                     <td>{{ $k->business_role }}</td>
                     <td>{{ $k->business_type }}</td>
                     <td>RM{{ $k->business_amount }}</td>

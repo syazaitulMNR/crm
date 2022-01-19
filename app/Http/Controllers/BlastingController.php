@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\StatementMembershipJob;
+use App\Jobs\ReceiptMembershipJob;
+use App\Jobs\InvoiceMembershipJob;
+use App\Membership_Level;
+use App\Invoice;
 use Illuminate\Http\Request;
 use App\Jobs\BlastQueueEmail;
 use App\Jobs\PengesahanJob;
@@ -218,7 +223,254 @@ class BlastingController extends Controller
 
         return redirect('view-event/'.$product_id.'/'.$package_id)->with('success', 'List email has been qued for sending with template.');
 
+    }
+
+    public function blastConfirmationEmail($product_id, $package_id){
+    
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+        $emails = Email::all();
+
+        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
         
+        return view('admin.blasting_email.viewconfirmationemail', compact('student', 'product', 'package', 'payment', 'total', 'emails', 'product_id', 'package_id'));
+    }
+
+    public function send_statementmember($membership_id , $level_id , $student_id)
+    {
+        // testing
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
+        $level = Membership_level::where('level_id', $level_id)->first();
+        $invoice = Invoice::where('student_id', $student->id)->get();
+        $payment = Payment::where('level_id', $level_id)->first();
+        $inv_amount = Invoice::where('student_id', $student->id)->where('status','not paid')->sum('price');
+
+        $payment_id_student = Payment::where('level_id', $payment)->first();
+        $invoice_id_student = Invoice::where('student_id', $student->id)->first();
+
+        $bal_due = Invoice::where('student_id', $student->id)->where('status', 'not paid')->sum('price');
+        $payment_received = Invoice::where('student_id', $student->id)->where('status', 'paid')->sum('price');
+        
+        $payment_id_student = Payment::where('stud_id', $student_id)->first();
+        $invoice_id_student = Invoice::where('student_id', $student->id)->first();
+
+        $bal = ($invoice_id_student->price)-($payment_id_student->pay_price);
+        
+        // testing Email content
+        $send_mail = $student->email;
+        $firstname = $student->first_name;
+        $secondname = $student->last_name;
+        $invoice = $invoice;
+        $membership = $level->name;
+        $price = $payment->pay_price;
+        $total = $payment->totalprice;
+
+        $date_receive = date('d-m-Y');
+        $daystosum = '7';
+        $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
+
+        $invoice_amount = $inv_amount;
+        $amount_received = $payment_received;
+        $balance = $bal;
+        $balance_due = $bal_due;
+
+        // testing
+        dispatch(new StatementMembershipJob($send_mail, $firstname, $secondname, $invoice , $membership, $price, $total, $date_receive, $datesum, $invoice_amount, $amount_received, $balance, $balance_due));
+
+        $payment->save();
+
+        return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $student_id )->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
     }
     
+    public function send_invoicemember($membership_id , $level_id, $invoice_id , $student_id)
+    {
+        // testing
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
+        $level = Membership_level::where('id', $student->id)->first();
+        $invoice = Invoice::where('id', $student->id)->where('invoice_id', $invoice_id )->get();
+        $payment = Payment::where('level_id', $level_id)->first();
+        $inv_amount = Invoice::where('id', $student->id)->sum('price');
+        $memberships = Membership_level::where('level_id', $membership_id)->first();
+
+        $payment_id_student = Payment::where('level_id', $payment)->first();
+        $invoice_id_student = Invoice::where('student_id', $student->id)->first();
+
+        $bal_due = Invoice::where('student_id', $student->id)->where('status', 'not paid')->sum('price');
+        $payment_received = Invoice::where('student_id', $student->id)->where('status', 'paid')->sum('price');
+        
+        $payment_id_student = Payment::where('stud_id', $student_id)->first();
+        $invoice_id_student = Invoice::where('student_id', $student->id)->first();
+
+        $bal = ($invoice_id_student->price)-($payment_id_student->pay_price);
+        // testing Email content
+        $send_mail = $student->email;
+        $daystosum = '7';
+
+        $inv = Invoice::where('student_id', $student->id)->first();
+        // dd($inv);
+        $subtotal = ($inv->price)+($level->add_on_price);
+        $member = $level;
+        $name = $student->first_name;
+        $no = 1;
+        $secondname = $student->last_name;
+        $invoice = $invoice;
+        $membership = $level->name;
+        $price = $payment->pay_price;
+        $total = $payment->totalprice;
+        $date_receive = date('d-m-Y');
+        $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
+        $invoice_amount = $inv_amount;
+        $amount_received = $payment_received;
+        $balance = $bal;
+        $balance_due = $bal_due;
+
+        // testing
+        dispatch(new InvoiceMembershipJob($send_mail, $inv, $subtotal, $member, $name, $no, $secondname, $invoice , $membership, $price, $total, $date_receive, $datesum, $invoice_amount, $amount_received, $balance, $balance_due));
+
+        $payment->save();
+
+        return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $student_id )->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
+    }
+
+    public function send_receiptmember($membership_id , $level_id , $payment_id, $student_id)
+    {
+        // testing
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
+        $level = Membership_level::where('id', $student->id)->first();
+        $invoice = Invoice::where('id', $student->id)->get();
+        $payment = Payment::where('payment_id', $payment_id)->where('stud_id', $student->stud_id)->first();
+        $inv_amount = Invoice::where('id', $student_id)->sum('price');
+        $receipt = Payment::where('stud_id', $student_id)->where('payment_id', $payment_id)->first();
+
+        $payment_id_student = Payment::where('level_id', $payment)->first();
+        $invoice_id_student = Invoice::where('student_id', $invoice)->first();
+
+        $bal_due = Invoice::where('student_id', $student->id)->where('status', 'not paid')->sum('price');
+        $payment_received = Invoice::where('student_id', $student->id)->where('status', 'paid')->sum('price');
+        
+        $payment_id_student = Payment::where('stud_id', $student_id)->first();
+        $invoice_id_student = Invoice::where('student_id', $student->id)->first();
+
+        $bal = ($invoice_id_student->price)-($payment_id_student->pay_price);
+        // testing Email content
+        $send_mail = $student->email;
+        $name = $student->first_name;
+        $secondname = $student->last_name;
+        $invoice = $invoice;
+        $membership = $level->name;
+        $price = $payment->pay_price;
+
+        // payment date
+        $date = $invoice_id_student->for_date;
+
+        $billplz = $payment->billplz_id;
+        $method = $payment->pay_method;
+        $total = $payment->totalprice;
+        $date_receive = date('d-m-Y');
+        $daystosum = '7';
+        $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
+        $invoice_amount = $inv_amount;
+        $amount_received = $payment_received;
+        $balance = $bal;
+        $balance_due = $bal_due;
+
+        // testing
+        dispatch(new ReceiptMembershipJob($send_mail, $name, $secondname, $billplz, $receipt, $method, $payment, $invoice, $membership, $price, $date, $total, $date_receive, $datesum, $invoice_amount, $amount_received, $balance, $balance_due));
+
+        $payment->save();
+
+        return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $student_id )->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
+    }
+    
+    public function bulkpurchased_mail($product_id, $package_id)
+    {
+        $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                    $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                    })->get();
+        $ticket = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                    $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                    })->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::where('stud_id', $payment->stud_id)->pluck('email'); 
+
+        foreach ($student as $students){
+
+            // Email content
+            $email = $students->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $students->stud_id;
+            $survey_form = $product->survey_form;
+
+            // change email status
+            $ticket->email_status = 'Sent';
+
+        }
+        // send the email
+        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+
+        $ticket->save();
+
+        return redirect('view/buyer/' . $product_id . '/' . $package_id)->with('sent-success', 'Participant confirmation email has been sent successfully') ;
+    }
+
+    public function blastconfirmation_mail($product_id, $package_id)
+    {
+        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                    $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                    })->pluck('stud_id');
+
+        $paymentss = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+            $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+            })->pluck('stud_id')->count();
+
+        for ($i = 0; $i < $paymentss; $i++)
+        {
+            $getemail = Student::where('stud_id' , $payment[$i])->get();
+        }
+            foreach ($getemail as $emailss){
+                $emailstudent = $emailss->email;
+                $payment = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                            $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                            })->get();
+                $ticket = Payment::where('product_id', $product_id)->where('package_id', $package_id)->where(function ($q) {
+                            $q->where('email_status', 'Hold')->orWhere('email_status', NULL);
+                            })->first();
+                $product = Product::where('product_id', $product_id)->first();
+                $package = Package::where('package_id', $package_id)->first();
+    
+                    // Email content
+                    $email = $emailstudent;
+                    $product_name = $product->name;  
+                    $package_name = $package->name;       
+                    $date_from = $product->date_from;
+                    $date_to = $product->date_to;
+                    $time_from = $product->time_from;
+                    $time_to = $product->time_to;
+                    $packageId = $package_id;
+                    $productId = $product_id;        
+                    $student_id = $payment;
+                    $survey_form = $product->survey_form;
+    
+                    // change email status
+                    $ticket->email_status = 'Sent';
+                
+                // send the email
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+    
+                $ticket->save();
+            }
+
+        return redirect('blastConfirmationEmail/' . $product_id . '/' . $package_id)->with('sent-success', 'Email had been send successfully') ;
+
+     }
 }

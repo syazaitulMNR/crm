@@ -9,6 +9,7 @@ use App\Student;
 use App\Payment;
 use App\Feature;
 use App\Ticket;
+use Carbon\Carbon;
 use Stripe;
 use Billplz\Client;
 use App\Jobs\UpgradeJob;
@@ -144,11 +145,13 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('ticket');
         $stripe = 'Debit/Credit Card';
         $billplz = 'FPX';
+        $manual = 'Manual';
         
-        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz'));
+        return view('upgrade_ticket.payment', compact('product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'stripe', 'billplz', 'manual'));
     }
 
-    public function store_payment($product_id, $package_id, $ticket_id, Request $request){
+    public function store_payment($product_id, $package_id, $ticket_id, Request $request)
+    {
         $validatedData = $request->validate([
             'pay_method' => 'required',
         ]);
@@ -156,7 +159,6 @@ class UpgradeController extends Controller
         $new_package = $request->session()->get('ticket');
         $new_package->fill($validatedData);
         $request->session()->put('ticket', $new_package);
-
         return redirect('payment-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id);
     }
 
@@ -178,6 +180,10 @@ class UpgradeController extends Controller
         }else if($new_package->pay_method == 'FPX'){
 
             return redirect('billplz-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id );
+        
+        }else if($new_package->pay_method == 'Manual'){
+
+            return redirect('manual-option/'.  $product_id . '/' . $package_id . '/' . $ticket_id );
 
         }else{
 
@@ -186,8 +192,8 @@ class UpgradeController extends Controller
         }
     }
 
-    public function card_option($product_id, $package_id, $ticket_id, Request $request){
-
+    public function card_option($product_id, $package_id, $ticket_id, Request $request)
+    {
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $current_package = Package::where('package_id', $package_id)->first();
@@ -330,6 +336,97 @@ class UpgradeController extends Controller
         $request->session()->put('ticket', $new_package);
 
         return redirect($pay_data['url']);
+    }
+
+    //Added for to view manual payment
+    public function manual_option($product_id, $package_id, $ticket_id, Request $request)
+    {
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d\TH:i');
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $packagename = Package::where('product_id', $product_id)->get();
+        $current_package = Package::where('package_id', $package_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+        $new_package = $request->session()->get('ticket');
+
+        return view('upgrade_ticket.use_manual', compact('tomorrow', 'product', 'package', 'current_package', 'student', 'ticket', 'new_package', 'packagename'));
+    }
+
+    //Added to save manual payment & upload receipt
+    public function save_manual_option($product_id, $package_id, $ticket_id, Request $request)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $current_package = Package::where('package_id', $package_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+        $student = Student::where('ic', $ticket->ic)->first();
+
+        $new_package = $request->session()->get('ticket');
+        $get_package = $new_package->package_id; //get upgrade package name
+        $package_name = Package::where('package_id', $get_package)->first();
+
+        // Start receipt
+        $filename = $request->file('receipt_path');
+        $extension = $filename->getClientOriginalExtension();
+        
+        if($extension == 'jpeg' || $extension == 'jpg' || $extension == 'png' || $extension == 'pdf' || $extension == 'JPEG' || $extension == 'JPG' || $extension == 'PNG' || $extension == 'PDF')
+        {
+            $name = $filename->getClientOriginalName();
+            $uniqe = 'UP_RE' . uniqid() . '.' . $extension;
+            $dirpath = public_path('assets/receipts/');
+            $filename->move($dirpath, $uniqe);
+            $receipt_name = 'assets/receipts/'.$uniqe;
+        
+            $addData = array(
+                'status' => 'paid',
+                'upgrade_count' => '1',
+                'pay_datetime' => $request->pay_datetime,
+                'pic' => $request->pic,
+                'receipt_path' => $receipt_name
+            );
+
+            $new_package->fill($addData);
+            $request->session()->put('ticket', $new_package);
+            if ($new_package->status == 'paid')
+            {
+                $product = Product::where('product_id', $new_package->product_id)->first();
+                $package = Package::where('package_id', $new_package->package_id)->first();
+                $student = Student::where('ic', $new_package->ic)->first();  
+                
+                $product_name = $product->name;   
+                $package_name = $package->name;       
+                $date_from = $product->date_from;
+                $date_to = $product->date_to;
+                $time_from = $product->time_from;
+                $time_to = $product->time_to;
+                $packageId = $package_id;
+                $productId = $product_id;        
+                $stud_id = $student->stud_id;
+                $survey_form = $product->survey_form;
+
+                $new_package->save();
+        
+                $request->session()->forget('student');
+                $request->session()->forget('ticket');
+
+                return redirect('naik-taraf-berjaya');  
+
+            } else {
+
+                $new_package->save();
+        
+                $request->session()->forget('student');
+                $request->session()->forget('ticket');
+
+                return redirect('pendaftaran-tidak-berjaya');
+                
+            }
+            
+        } else {
+            return redirect()->back()->with('error','Not valid file. Please insert pdf, jpeg, jpg & png only.');
+        }
+        
     }
 
     public function redirect_page($product_id, $package_id, $ticket_id, Request $request)

@@ -40,7 +40,7 @@
                         <tr>
                             <th scope="row">{{ $key+1 }}</th>
                             <td>
-                                {{ $payment_data[$key]->name }}
+                                {{ $membership_level->name }}
                             </td>
                             <td>
                                 {{ date('d/m/Y', strtotime($p->created_at)) }}
@@ -49,7 +49,7 @@
                                 <b>RM {{ number_format($p->pay_price) }}.00</b>
                             </td>
                             <td>
-                                <a href="{{ route('receipt') }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
                             </td>
                         </tr>
                     @empty
