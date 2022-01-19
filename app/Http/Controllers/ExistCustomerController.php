@@ -120,12 +120,12 @@ class ExistCustomerController extends Controller
         } else if($product->offer_id == 'OFF005') {
       
                 //for free ticket
-                return view('customer_new.step2_freeticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
+                return view('customer_exist.step2_freeticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
     
         } else if($product->offer_id == 'OFF006') {
         
                 //for paid ticket
-                return view('customer_new.step2_paidticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
+                return view('customer_exist.step2_paidticket',compact('student', 'payment', 'product', 'package', 'payment_id', 'ticket_id', 'ticket_type', 'package_name'));
             
         } else {
 
