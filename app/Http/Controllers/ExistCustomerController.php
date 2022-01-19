@@ -819,8 +819,11 @@ class ExistCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
+            $ticket_id = $ticket->ticket_id;
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+
             $payment->status = 'paid ';
             $updateform = array(
                 'update_count' => 1
@@ -830,7 +833,6 @@ class ExistCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -862,8 +864,11 @@ class ExistCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
+            $ticket_id = $ticket->ticket_id;
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+
             $payment->status = 'paid ';
             $updateform = array(
                 'update_count' => 1
@@ -873,7 +878,6 @@ class ExistCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             if ($product->offer_id == 'OFF005'){
                 $request->session()->forget('student');
