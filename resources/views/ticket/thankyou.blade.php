@@ -9,7 +9,9 @@
   @elseif ($package == 'PKD0066')
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
   @elseif ($package == 'PKD0067')
-  <meta http-equiv="refresh" content="2;url=https://momentuminternet.com/buku-8-video-fb/">   
+  <meta http-equiv="refresh" content="2;url=https://momentuminternet.com/buku-8-video-fb/">
+  @else 
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
   @endif  
   {{-- <meta http-equiv="refresh" content="2;url=https://yahoo.com/">  --}}
 </head>

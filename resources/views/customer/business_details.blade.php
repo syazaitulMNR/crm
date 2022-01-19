@@ -88,7 +88,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Business Role</th>
                 <th scope="col">Business Type</th>
-                <th scope="col">Business Amount</th>
+                <th scope="col">Business Amount (RM)</th>
                 <th scope="col">Class</th>
               </tr>
             </thead>
@@ -104,7 +104,7 @@
                     <td>{{ $k->business_name }}</td>
                     <td>{{ $k->business_role }}</td>
                     <td>{{ $k->business_type }}</td>
-                    <td>RM{{ $k->business_amount }}</td>
+                    <td>{{ $k->business_amount }}</td>
                     <td>{{ $k->class }}</td>
                   </tr>
               @empty
