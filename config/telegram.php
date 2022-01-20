@@ -33,8 +33,8 @@ return [
     */
     'bots'                         => [
         'mybot' => [
-            'username'            => 'MIMS_Information_bot',
-            'token'               => env('TELEGRAM_BOT_TOKEN', '5077800974:AAHh9w-4iyP9KROvlPEVRKVsE93OzcuXdm8'),
+            'username'            => 'KawanMIMSbot',
+            'token'               => env('TELEGRAM_BOT_TOKEN', '5053624406:AAF79yqr_V_e1hlNoJ8R6kk6UlDcZtqzgAc'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', 'YOUR-CERTIFICATE-PATH'),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', 'YOUR-BOT-WEBHOOK-URL'),
             'commands'            => [
