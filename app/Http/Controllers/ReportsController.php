@@ -60,75 +60,75 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->paginate(15);
         $link = 'https://mims.momentuminternet.my/upgrade/'. $product->product_id . '/';
 
-        // // Testing //////////////////////////////////////////////////////////////////
+        // Testing //////////////////////////////////////////////////////////////////
 
-        // // $count_package = Package::where('product_id', $product_id)->count();
-        // // for ($i = 0; $i < $count_package; $i++)
-        // // {
-        // //     $date_yesterday[$i] = Payment::where('created_at', $product_id)->where('status', 'paid')->subDays($i)->format('d M Y');
-        // //     dd($date_yesterday[$i]);
-        // //     $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-[$i] day")) , date('Y-m-d 23:59:59', strtotime("-[$i] day")) ])->count();        
-        // //     // $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // // }
-
-        // // $visitorTraffic = Payment::where('created_at', '>=', \Carbon\Carbon::now->subMonth())
-        // //                 ->groupBy(DB::raw('Date(created_at)'))
-        // //                 ->orderBy('created_at', 'DESC')->get();
-
-        // // $hingga = Payment::where('created_at', '>=', Carbon::now()->subDays(14));
-        // // $dari = Payment::where('created_at', '==', Carbon::now());
-
-        // // $visitors = Payment::select(
-        // //                     "id" ,
-        // //                     DB::raw("(sum(quantity)) as total_quantity"),
-        // //                     DB::raw("(DATE_FORMAT(created_at, '%d-%m-%Y')) as my_date")
-        // //                     )
-        // //                     ->orderBy('created_at')
-        // //                     ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%m-%Y')"))
-        // //                     ->get();
-        // // dd($visitors);
-
-        // // worked  latest ambik latest buyer, oldest ambik oldest buyer
-        // // $latest = Payment::latest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->get();
-        // // $oldest = Payment::oldest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->first();
-
-        // // dd($latest);
-
-        // $startDate = Carbon::createFromFormat('Y-m-d', '2021-09-01');
-        // $endDate = Carbon::createFromFormat('Y-m-d', '2021-09-30');
-
-        // // $posts = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0023')->orderBy('created_at', 'desc')->whereBetween('created_at', [$startDate, $endDate])->groupBy(function($date) {
-        // //     return Carbon::parse($date->created_at)->format('D');})->get();
-
-        // // $data= Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')
-        // //     ->get()
-        // //     ->groupBy(function($val) {
-        // //     return Carbon::parse($val->created_at)->format('d M Y');
-        // //     });
-
-        // $visitorTraffic = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->get()->groupBy(function($date) {
-        //                     return Carbon::parse($date->created_at)->format('D'); // grouping by years
-        //                     });
-        // $results = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->latest()->get();
-
-        // // worked
-        // $order = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->groupBy(function($date){
-        //         $created_at = Carbon::parse($date->created_at);
-        //         $start = $created_at->startOfWeek()->format('d-m-Y');
-        //         $end = $created_at->endOfWeek()->format('d-m-Y');
-        //         return "{$start} - {$end}";
-        //         });
-
-        // //////////////////////      ////////////////////////
- 
-        // $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
-        // $test = $productfirst->created_at->format('Y-m-d H:i:s');
-
-        // $hingga = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d H:i:s');
-        // $dari = $test;
-
-        // $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-1 days")) , date('Y-m-d 23:59:59', strtotime("-1 days")) ])->get();
         // $count_package = Package::where('product_id', $product_id)->count();
+        // for ($i = 0; $i < $count_package; $i++)
+        // {
+        //     $date_yesterday[$i] = Payment::where('created_at', $product_id)->where('status', 'paid')->subDays($i)->format('d M Y');
+        //     dd($date_yesterday[$i]);
+        //     $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-[$i] day")) , date('Y-m-d 23:59:59', strtotime("-[$i] day")) ])->count();        
+        //     // $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+        // }
+
+        // $visitorTraffic = Payment::where('created_at', '>=', \Carbon\Carbon::now->subMonth())
+        //                 ->groupBy(DB::raw('Date(created_at)'))
+        //                 ->orderBy('created_at', 'DESC')->get();
+
+        // $hingga = Payment::where('created_at', '>=', Carbon::now()->subDays(14));
+        // $dari = Payment::where('created_at', '==', Carbon::now());
+
+        // $visitors = Payment::select(
+        //                     "id" ,
+        //                     DB::raw("(sum(quantity)) as total_quantity"),
+        //                     DB::raw("(DATE_FORMAT(created_at, '%d-%m-%Y')) as my_date")
+        //                     )
+        //                     ->orderBy('created_at')
+        //                     ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%m-%Y')"))
+        //                     ->get();
+        // dd($visitors);
+
+        // worked  latest ambik latest buyer, oldest ambik oldest buyer
+        // $latest = Payment::latest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->get();
+        // $oldest = Payment::oldest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->first();
+
+        // dd($latest);
+
+        $startDate = Carbon::createFromFormat('Y-m-d', '2021-09-01');
+        $endDate = Carbon::createFromFormat('Y-m-d', '2021-09-30');
+
+        // $posts = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0023')->orderBy('created_at', 'desc')->whereBetween('created_at', [$startDate, $endDate])->groupBy(function($date) {
+        //     return Carbon::parse($date->created_at)->format('D');})->get();
+
+        // $data= Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')
+        //     ->get()
+        //     ->groupBy(function($val) {
+        //     return Carbon::parse($val->created_at)->format('d M Y');
+        //     });
+
+        $visitorTraffic = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->get()->groupBy(function($date) {
+                            return Carbon::parse($date->created_at)->format('D'); // grouping by years
+                            });
+        $results = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->latest()->get();
+
+        // worked
+        $order = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->groupBy(function($date){
+                $created_at = Carbon::parse($date->created_at);
+                $start = $created_at->startOfWeek()->format('d-m-Y');
+                $end = $created_at->endOfWeek()->format('d-m-Y');
+                return "{$start} - {$end}";
+                });
+
+        //////////////////////      ////////////////////////
+ 
+        $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
+        $test = $productfirst->created_at->format('Y-m-d H:i:s');
+
+        $hingga = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d H:i:s');
+        $dari = $test;
+
+        $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-1 days")) , date('Y-m-d 23:59:59', strtotime("-1 days")) ])->get();
+        $count_package = Package::where('product_id', $product_id)->count();
 
         // for ($i = 0; $i < $count_package; $i++)
         // {
@@ -163,46 +163,46 @@ class ReportsController extends Controller
         //     $total_listproduct[$i] = Payment::where('package_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();        
         // }
 
-        // // foreach($data1 as $key1 => $value1){
-        // //     foreach($data2 as $key2 => $value2){
-        // //         $testdate1 =  $value1->created_at->format('Y-m-d');
-        // //         $testdate2 =  $value2->created_at->format('Y-m-d');
-        // //     }
-        // // }
+        // foreach($data1 as $key1 => $value1){
+        //     foreach($data2 as $key2 => $value2){
+        //         $testdate1 =  $value1->created_at->format('Y-m-d');
+        //         $testdate2 =  $value2->created_at->format('Y-m-d');
+        //     }
+        // }
         
-        // $totalpackageall = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->first();
-        // $totaldays = $data->count();
-        // // dd($totalpackageall);
-        // // for ($j = 0; $j < $count_package; $j++){
-        // //     for($i = 0; $i < $totaldays; $i++){
-        // //         foreach($data as $key => $value){
-        // //             // dd($testdate2);
-        // //             // $q = Payment::where('status','paid')->where('product_id', 'PRD0022')->where('package_id' , 'PKD0046')->orderBy('created_at', 'desc')->where('created_at', '>', '2021-12-1 00:00:00')->where('created_at', '<=','2021-12-17 00:00:00')->get();
-        // //             $t[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id' , $package[$j]->package_id)->orderBy('created_at', 'desc')->whereBetween('created_at',array($testdate2,$testdate1))->get();//
+        $totalpackageall = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->first();
+        $totaldays = $data->count();
+        // dd($totalpackageall);
+        // for ($j = 0; $j < $count_package; $j++){
+        //     for($i = 0; $i < $totaldays; $i++){
+        //         foreach($data as $key => $value){
+        //             // dd($testdate2);
+        //             // $q = Payment::where('status','paid')->where('product_id', 'PRD0022')->where('package_id' , 'PKD0046')->orderBy('created_at', 'desc')->where('created_at', '>', '2021-12-1 00:00:00')->where('created_at', '<=','2021-12-17 00:00:00')->get();
+        //             $t[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id' , $package[$j]->package_id)->orderBy('created_at', 'desc')->whereBetween('created_at',array($testdate2,$testdate1))->get();//
 
-        // //             $te[$i] = count($t['status'== 'paid']);
-        // //             // dd($te);
-        // //         }
-        // //     }    
-        // // }
+        //             $te[$i] = count($t['status'== 'paid']);
+        //             // dd($te);
+        //         }
+        //     }    
+        // }
         
-        // // $testingla = $q->where('startdate', '>', '16 Dec 2021')->where('startdate', '<=', '17 Dec 2021')->get();
-
-        // // for ($i = 0; $i < $count_package; $i++)
-        // // {
-        // // $total_package_date[$i] = 0;
-        // // $package_date[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',)->count();
-        // // $total_package_date[$i] = $total_package_date[$i] + $package_date[$i];
-        // // }
+        // $testingla = $q->where('startdate', '>', '16 Dec 2021')->where('startdate', '<=', '17 Dec 2021')->get();
 
         // for ($i = 0; $i < $count_package; $i++)
         // {
-        //     $totalpackagealls = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
-        //     $totalperpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
-        //     $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
+        // $total_package_date[$i] = 0;
+        // $package_date[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',)->count();
+        // $total_package_date[$i] = $total_package_date[$i] + $package_date[$i];
         // }
 
-        // $selectedID = 1;
+        for ($i = 0; $i < $count_package; $i++)
+        {
+            $totalpackagealls = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
+            $totalperpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
+            $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
+        }
+
+        $selectedID = 1;
         // End Testing ///////////////////////////////////////////////////////////////
 
         $counter = Student::count();
