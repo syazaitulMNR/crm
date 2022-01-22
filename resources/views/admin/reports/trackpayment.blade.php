@@ -213,6 +213,7 @@ Sales Report
                                 <select class="form-select form-control-sm" name="status">
                                     <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
                                     <option value="paid">paid</option>
+                                    <option value="not approve">not approve</option>
                                     <option value="due">due</option>
                                     @if(Auth::user()->user_id == 'UID002' || Auth::user()->role_id == 'ROD001')
                                     <option value="approve by sales">approve by sales</option>
@@ -243,7 +244,7 @@ Sales Report
                             <div class="modal-body text-start">
                                 <p>This action will approve this customer payment. Are you sure?</p>
                                 <ul>
-                                  <li>Payment</li>
+                                    <li>Payment</li>
                                 </ul>
                             </div>
                             <div class="modal-footer">
