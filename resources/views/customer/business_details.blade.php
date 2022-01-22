@@ -58,12 +58,23 @@
               {{-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> --}}
               <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search business type and name">
               <div class="input-group-append col-md-4">
+
                 <select class="custom-select" id="inputGroupSelect01" name="role">
                   @foreach ($role as $r)
                     @if (request()->query('role'))
                       <option {{ request()->query('role') === $r ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
                     @else
                       <option {{ request()->query('role') === 'Role' ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
+                    @endif
+                  @endforeach
+                </select>
+
+                <select class="custom-select" id="inputGroupSelect01" name="type">
+                  @foreach ($type as $t)
+                    @if (request()->query('type'))
+                      <option {{ request()->query('type') === $t ? 'selected' : '' }} value="{{ $t === 'Type' ? '' : $t }}">{{ $t }}</option>
+                    @else
+                      <option {{ request()->query('type') === 'Type' ? 'selected' : '' }} value="{{ $t === 'Type' ? '' : $t }}">{{ $t }}</option>
                     @endif
                   @endforeach
                 </select>
@@ -85,7 +96,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
+                {{-- <th scope="col">Name</th> --}}
                 <th scope="col">Business Role</th>
                 <th scope="col">Business Type</th>
                 <th scope="col">Business Amount (RM)</th>
@@ -101,7 +112,7 @@
               @forelse ($data as $key => $k)
                   <tr>
                     <th scope="row">{{ ++$no }}</th>
-                    <td>{{ $k->business_name }}</td>
+                    {{-- <td>{{ $k->business_name }}</td> --}}
                     <td>{{ $k->business_role }}</td>
                     <td>{{ $k->business_type }}</td>
                     <td>{{ $k->business_amount }}</td>

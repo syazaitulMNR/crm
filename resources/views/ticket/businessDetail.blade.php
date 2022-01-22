@@ -64,7 +64,7 @@
                                 <option value="Agent">Agent</option>
                                 <option value="Stokis">Stokis</option>
                                 <option value="Dropship">Dropship</option>
-                                <option value="Team/PekerjaSyarikat">Team / Pekerja Syarikat</option>
+                                <option value="Team / Pekerja Syarikat">Team / Pekerja Syarikat</option>
                                 <option value="Lain-lain">Lain-lain</option>
                             </select>
                         </div>
