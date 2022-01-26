@@ -261,7 +261,7 @@ Route::get('maklumat-pembayaran/{product_id}/{package_id}', 'NewCustomerControll
 Route::post('store-manual/{product_id}/{package_id}', 'NewCustomerController@manual_paymentprocess'); // manual payment process
 Route::get('maklumat-free/{product_id}/{package_id}', 'NewCustomerController@manual_payment'); // free payment form
 Route::get('store-free/{product_id}/{package_id}', 'NewCustomerController@free_paymentprocess'); // free payment process
-Route::get('store-paid/{product_id}/{package_id}', 'NewCustomerController@paid_paymentprocess'); // free payment process
+Route::get('store-paid/{product_id}/{package_id}', 'NewCustomerController@paid_paymentprocess'); // paid payment process
 
 // Existedstudent
 Route::get('langkah-pertama/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stepOne');
@@ -280,7 +280,7 @@ Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 Route::get('data-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@manual_payment'); // manual payment form
 Route::post('save-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@save_manual_payment'); // manual payment process
 Route::get('save-free/{product_id}/{package_id}', 'ExistCustomerController@save_free_paymentprocess'); // free payment process
-Route::get('save-paid/{product_id}/{package_id}', 'ExistCustomerController@save_paid_paymentprocess'); // free payment process
+Route::get('save-paid/{product_id}/{package_id}', 'ExistCustomerController@save_paid_paymentprocess'); // paid payment process
 
 // Thank you page
 Route::get('pendaftaran-berjaya/{product_id}','HomeController@thankyou');
@@ -511,6 +511,7 @@ Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDet
 Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
+Route::get('export-surveyform/','HomeController@exportsurveyform');
 
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');
