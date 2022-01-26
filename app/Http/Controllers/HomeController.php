@@ -433,7 +433,7 @@ class HomeController extends Controller
 
                 //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
-
+        
 
             } else {
     
@@ -1184,63 +1184,126 @@ class HomeController extends Controller
     }
 
     public function exportsurveyform()
-    {
-
+    {   
         $business = BusinessDetail::all();
-        foreach ($business as $businessdetails){
-            $ticket = Ticket::where('ticket_id', $businessdetails->ticket_id)->get(); 
-        }
-        foreach ($ticket as $tvalue){
-            $student = Student::orderBy('id','desc')->where('ic',$tvalue->ic)->first();
-        }
-        $product = Product::where('product_id', $tvalue->product_id)->first();
-        $package = Package::where('package_id', $tvalue->package_id)->first();
+        $ticket = Ticket::where('product_id','PRD0033')->get();
+        $student = Student::all();
+        $product = Product::where('product_id', 'PRD0033')->first();
+        $package = Package::where('package_id', 'PKD0065')->first();
 
-        $fileName = $product->product_id.' - SurveyForm.'.uniqid().'.csv';
-        $columnNames = [
-            'First Name',
-            'Last Name',
-            'IC No',
-            'Phone No',
-            'Email',
-            'Business Type',
-            'Business Role',
-            'Business Amount',
-            'Class',
-            'Package',
-            'Registered At'
-        ];
-        
-        $file = fopen(public_path('export/') . $fileName, 'w');
-        fputcsv($file, $columnNames);
+        // $sameticid = $ticket->ticket_id == $buss->ticket_id;
 
-        foreach ($business as $businessdetails) {
+            /*-- Success Payment ---------------------------------------------------*/
+            $fileName = $product->product_id.' '. uniqid() .'.csv';
+            $columnNames = [
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Business Type',
+                'Business Role',
+                'Business Amount',
+                'Class',
+                'Package',
+                'Registered At'
+            ];
+
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
             foreach ($student as $students) {
-                foreach ($ticket as $tickets){
-                    if($tickets->ic == $student->ic){
-                        if($tickets->package_id == $package->package_id){
-                            fputcsv($file, [
-                                $student->first_name,
-                                $student->last_name,
-                                $student->ic,
-                                $student->phoneno,
-                                $student->email,
-                                $businessdetails->business_type,
-                                $businessdetails->business_role,
-                                $businessdetails->business_amount,
-                                $product->name,
-                                $package->name,
-                                $tickets->created_at,
-                            ]);   
-                        }    
-                    }        
+                foreach($ticket as $tickets){
+                    foreach($business as $businessdetails){
+                            if ($tickets->ticket_id == $businessdetails->ticket_id){
+                                if ($tickets->stud_id == $students->stud_id){
+                                            fputcsv($file, [
+                                            $students->first_name,
+                                            $students->last_name,
+                                            $students->ic,
+                                            $students->phoneno,
+                                            $students->email,
+                                            $businessdetails->business_type,
+                                            $businessdetails->business_role,
+                                            $businessdetails->business_amount,
+                                            $product->name,
+                                            $package->name,
+                                            $tickets->created_at,
+                                        ]);
+
+                                }
+                            }  
+                    }
                 }
             }
-        }
-        fclose($file);    
-    
+            
+            fclose($file);
+
+        ////////////////////////////// Save /////////////////////////////////////////////////////// 
+
+        // $product = Product::where('product_id','PRD0033')->first();
+        // $package = Package::where('package_id','PKD0066')->first();
+        // $business = BusinessDetail::all();
+        // $stud = Student::all();
+
+        // foreach ($business as $bvalue){
+        //     $ticket = Ticket::where('ticket_id', $bvalue->ticket_id)->get(); 
+        //     $student = Student::orderBy('id','desc')->get();
+        // }
+
+        //         $fileName = $product->product_id.' - SurveyForm.'.uniqid().'.csv';
+        //         $columnNames = [
+        //             'First Name',
+        //             'Last Name',
+        //             'IC No',
+        //             'Phone No',
+        //             'Email',
+        //             'Business Type',
+        //             'Business Role',
+        //             'Business Amount',
+        //             'Class',
+        //             'Package',
+        //             'Registered At'
+        //         ];
+                
+        //         $file = fopen(public_path('export/') . $fileName, 'w');
+        //         fputcsv($file, $columnNames);
+
+        //         foreach ($student as $students) {
+        //             // echo $student."<br>";
+        //             // dd($student);
+        //             foreach ($ticket as $tickets) {
+        //                 foreach ($business as $businessdetails){
+        //                     if ($students->ic == $tickets->ic){
+        //                         if ($tickets->ticket_id == $businessdetails->ticket_id){
+
+        //                             fputcsv($file, [
+        //                                 $students->first_name,
+        //                                 $students->last_name,
+        //                                 $students->ic,
+        //                                 $students->phoneno,
+        //                                 $students->email,
+        //                                 $businessdetails->business_type,
+        //                                 $businessdetails->business_role,
+        //                                 $businessdetails->business_amount,
+        //                                 $product->name,
+        //                                 $package->name,
+        //                                 $tickets->created_at,
+        //                             ]);   
+
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         fclose($file);    
+
+        ////////////////////////////// Save /////////////////////////////////////////////////////// 
+        
         // $filter = $request->filter_export;
 
+        
         Mail::send('emails.export_mail', [], function($message) use ($fileName)
         {
             // $message->to(request()->receipient_mail)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
