@@ -53,7 +53,7 @@
               <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search name and IC number">
           </form> --}}
           
-          <div class="input-group mb-3">
+          <div class="input-group">
             <form action="{{ url('customer_details') }}" class="input-group" method="GET">
               {{-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> --}}
               <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search business type and name">
@@ -92,11 +92,17 @@
             </form>
           </div>
 
+          <div class="float-end mr-3" >
+            <form action="{{ url('export-surveyform') }}" method="GET">
+              <button class="btn btn-outline-secondary" type="submit">Download</button>
+            </form>
+          </div>  
+
           <table class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                {{-- <th scope="col">Name</th> --}}
+                <th scope="col">Name</th>
                 <th scope="col">Business Role</th>
                 <th scope="col">Business Type</th>
                 <th scope="col">Business Amount (RM)</th>
@@ -112,7 +118,7 @@
               @forelse ($data as $key => $k)
                   <tr>
                     <th scope="row">{{ ++$no }}</th>
-                    {{-- <td>{{ $k->business_name }}</td> --}}
+                    <td>{{ $k->ticket_id }}</td>
                     <td>{{ $k->business_role }}</td>
                     <td>{{ $k->business_type }}</td>
                     <td>{{ $k->business_amount }}</td>
@@ -123,6 +129,7 @@
                   <td colspan="5" class="text-center">No result founds for query</td>
                 </tr>
               @endforelse
+
             </tbody>
           </table>
           {{ $data->links() }}
