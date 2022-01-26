@@ -429,6 +429,11 @@ class HomeController extends Controller
                 //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
         
+            } else if($payment->offer_id == 'OFF006') {
+
+                //for Bulk Ticket
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+
 
             } else {
     
@@ -669,7 +674,7 @@ class HomeController extends Controller
                     $survey_form = $product->survey_form;
                     
                     dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-             
+            
                     if ($payment->quantity == 1){ //If quantity = 1
                         // Can access single form
                     }else{
@@ -1178,6 +1183,74 @@ class HomeController extends Controller
         // return view('customer.thankyou_update', compact('product'));
     }
 
+    public function exportsurveyform()
+    {
+
+        $business = BusinessDetail::all();
+        foreach ($business as $businessdetails){
+            $ticket = Ticket::where('ticket_id', $businessdetails->ticket_id)->get(); 
+        }
+        foreach ($ticket as $tvalue){
+            $student = Student::orderBy('id','desc')->where('ic',$tvalue->ic)->first();
+        }
+        $product = Product::where('product_id', $tvalue->product_id)->first();
+        $package = Package::where('package_id', $tvalue->package_id)->first();
+
+        $fileName = $product->product_id.' - SurveyForm.'.uniqid().'.csv';
+        $columnNames = [
+            'First Name',
+            'Last Name',
+            'IC No',
+            'Phone No',
+            'Email',
+            'Business Type',
+            'Business Role',
+            'Business Amount',
+            'Class',
+            'Package',
+            'Registered At'
+        ];
+        
+        $file = fopen(public_path('export/') . $fileName, 'w');
+        fputcsv($file, $columnNames);
+
+        foreach ($business as $businessdetails) {
+            foreach ($student as $students) {
+                foreach ($ticket as $tickets){
+                    if($tickets->ic == $student->ic){
+                        if($tickets->package_id == $package->package_id){
+                            fputcsv($file, [
+                                $student->first_name,
+                                $student->last_name,
+                                $student->ic,
+                                $student->phoneno,
+                                $student->email,
+                                $businessdetails->business_type,
+                                $businessdetails->business_role,
+                                $businessdetails->business_amount,
+                                $product->name,
+                                $package->name,
+                                $tickets->created_at,
+                            ]);   
+                        }    
+                    }        
+                }
+            }
+        }
+        fclose($file);    
+    
+        // $filter = $request->filter_export;
+
+        Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        {
+            // $message->to(request()->receipient_mail)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+            $message->to('adessnoob99@gmail.com')->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+            $message->attach(public_path('export/') . $fileName);
+        });
+
+        return redirect('customer_details/')->with('export-participant','The participant details has been successfully sent to the email given.');
+
+    }
 }
 
 
