@@ -220,7 +220,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         $users = User::all();
-      
+    
         $filter = $request->filter_export;
         $receipient_mail = $request->receipient_mail;
 
@@ -257,7 +257,6 @@ class ReportsController extends Controller
                     foreach($package as $packages){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-
                                         fputcsv($file, [
                                             $payments->payment_id,
                                             $students->first_name,
@@ -275,8 +274,6 @@ class ReportsController extends Controller
                                             $payments->user_id,
                                             $payments->created_at,
                                         ]);
-
-
                                 }
                             }
                     }
