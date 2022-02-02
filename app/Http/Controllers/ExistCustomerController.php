@@ -867,9 +867,9 @@ class ExistCustomerController extends Controller
             $survey_form = $product->survey_form;
             $ticket_id = $ticket->ticket_id;
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+            // dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
 
-            $payment->status = 'paid ';
+            $payment->status = 'not paid ';
             $updateform = array(
                 'update_count' => 1
             );

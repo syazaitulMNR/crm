@@ -223,7 +223,7 @@ class NewCustomerController extends Controller
             $ticket = new Ticket();
             $ticket->fill($validatedTicket);
             $request->session()->put('ticket', $ticket);
-    
+
             return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
         }
         else {
@@ -271,9 +271,7 @@ class NewCustomerController extends Controller
         Session::put('product_id', $product_id);
         Session::put('package_id', $package_id);
         Session::put('payment', $payment);
-        // dd($payment);
-        // $ticket = $request->session()->get('ticket');
-  
+
         return view('customer_new.step3',compact('student', 'payment', 'product', 'package'));
     }
 
@@ -817,6 +815,7 @@ class NewCustomerController extends Controller
             $productId = $product_id;        
             $student_id = $student->stud_id;
             $ticket_id = $ticket->ticket_id;
+            $ticket->pay_method = 'Manual';
             $survey_form = $product->survey_form;
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
@@ -940,9 +939,9 @@ class NewCustomerController extends Controller
             $survey_form = $product->survey_form;
             $ticket_id = $ticket->ticket_id;
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id,  $survey_form, $ticket_id));
+            // dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id,  $survey_form, $ticket_id));
 
-            $payment->status = 'paid';
+            $payment->status = 'not paid';
             $updateform = array(
                 'update_count' => 1
             );
