@@ -52,7 +52,7 @@
 <div class="row">
   <div class="col-md-12 px-3 py-4">
     <div class="text-center">
-      <h3 class="display-4">Anda Sudah Mendaftar ke Pakej {{ $package->name }}</h3>
+      <h3 class="display-4">Anda Sudah Mendaftar ke Pakej {{ $package->name }} sebelum ini</h3>
       <h5>Kami akan berikan anda tawaran yang menarik untuk anda</h5>
         {{-- <p class="lead pt-3">Anda <b>PERLU</b> mengemaskini nama peserta pada pautan yang diberikan di dalam emel yang telah didaftarkan.</p> --}}
         {{-- <p class="lead">2) Sila tonton video ini sampai habis untuk dapatkan info penting untuk tindakan selanjutnya.</p> --}}
