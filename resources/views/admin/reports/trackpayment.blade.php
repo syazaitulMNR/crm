@@ -3,7 +3,7 @@
 @section('title')
 Sales Report
 @endsection
-  
+
 @section('content')
 <div class="col-md-12 pt-3"> 
         
@@ -205,6 +205,9 @@ Sales Report
                                     <option value="OFF001">OFF001</option>
                                     <option value="OFF002">OFF002</option>                                        
                                     <option value="OFF003">OFF003</option>
+                                    <option value="OFF004">OFF004</option>                                        
+                                    <option value="OFF005">OFF005</option>
+                                    <option value="OFF006">OFF006</option>                                  
                                 </select>
                             </div>
 
@@ -213,6 +216,7 @@ Sales Report
                                 <select class="form-select form-control-sm" name="status">
                                     <option value="{{ $payment->status }}" readonly selected>-- {{ $payment->status }} --</option>
                                     <option value="paid">paid</option>
+                                    <option value="not paid">not paid</option>
                                     <option value="not approve">not approve</option>
                                     <option value="due">due</option>
                                     @if(Auth::user()->user_id == 'UID002' || Auth::user()->role_id == 'ROD001')
@@ -232,6 +236,7 @@ Sales Report
 
                 <div class="row-fluid text-right">
                     @if(Auth::user()->user_id == 'UID002' || Auth::user()->role_id == 'ROD001')
+                    <div>
                     <button type="button" class="btn btn-outline-dark bg-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Sales</button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -254,9 +259,11 @@ Sales Report
                         </div>
                         </div>
                     </div>
+                    </div>
                     @else
                     @endif
                     @if(Auth::user()->user_id == 'UID008' || Auth::user()->role_id == 'ROD001')
+                    <div>
                     <button type="button" class="btn btn-outline-dark bg-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Account</button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -269,7 +276,7 @@ Sales Report
                             <div class="modal-body text-start">
                                 <p>This action will approve this customer payment. Are you sure?</p>
                                 <ul>
-                                  <li>Payment</li>
+                                    <li>Payment</li>
                                 </ul>
                             </div>
                             <div class="modal-footer">
@@ -279,10 +286,12 @@ Sales Report
                         </div>
                         </div>
                     </div>
+                    </div>
                     @else
                     @endif
                     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                     @else
+                    <div>
                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -295,7 +304,7 @@ Sales Report
                             <div class="modal-body text-start">
                                 <p>This action will remove the details from the table :</p>
                                 <ul>
-                                  <li>Payment</li>
+                                    <li>Payment</li>
                                 </ul>
                             </div>
                             <div class="modal-footer">
@@ -304,6 +313,7 @@ Sales Report
                             </div>
                         </div>
                         </div>
+                    </div>
                     </div>
                     @endif
                     <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save Changes</button>
