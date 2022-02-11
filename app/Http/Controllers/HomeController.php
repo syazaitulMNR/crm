@@ -1190,37 +1190,11 @@ class HomeController extends Controller
     {   
 
         $business = DB::table('business_details')->get();
-        $ticket = DB::table('ticket')->where('product_id','PRD0033')->get();
+        // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
+        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0034')->get();
         $student = DB::table('student')->get();
-        $product = DB::table('product')->where('product_id','PRD0033')->first();
+        $product = DB::table('product')->where('product_id','PRD0034')->first();
         // $package = DB::table('package')->where('package_id', 'PKD0065')->first();
-
-        // $business = BusinessDetail::where('business_amount', 'bawah 1000 (Sebulan)')->get();
-        // $ticket = Ticket::where('product_id','PRD0033')->get();
-        // $student = Student::orderBy('id','asc')->get();
-        // $product = Product::where('product_id', 'PRD0033')->first();
-        // $package = Package::where('package_id', 'PKD0065')->first();
-
-        // $student_fname = [];
-        // $student_lname = [];
-        // $student_phoneno = [];
-        // $student_email = [];
-        // $buss_type = [];
-        // $buss_role = [];
-        // $buss_amount = [];
-
-        //     foreach($student as $key => $stud){
-        //         foreach($business as $keys => $buss){
-        //             $student_fname[$key]  = $stud->first_name;
-        //             $student_lname[$key]  = $stud->last_name;
-        //             $student_phoneno[$key] = $stud->ic;
-        //             $student_email[$key] = $stud->email;
-        //             $buss_type[$key] = $buss->business_type;
-        //             $buss_role[$key] = $buss->business_role;
-        //             $buss_amount[$key] = $buss->business_amount;
-
-        //         }
-        //     }
 
             /*-- Success Payment ---------------------------------------------------*/
             $fileName = $product->product_id.' '. uniqid() .'.csv';
@@ -1234,6 +1208,7 @@ class HomeController extends Controller
                 'Business Role',
                 'Business Amount',
                 'Class',
+                'Pay Price',
                 'Registered At'
             ];
             
@@ -1256,6 +1231,7 @@ class HomeController extends Controller
                                     $businessdetails->business_role,
                                     $businessdetails->business_amount,
                                     $product->name,
+                                    $tickets->pay_price,
                                     $tickets->created_at,
                                 ]);
                             }
@@ -1265,69 +1241,6 @@ class HomeController extends Controller
             }
 
             fclose($file);
-
-        ////////////////////////////// Save /////////////////////////////////////////////////////// 
-
-        // $product = Product::where('product_id','PRD0033')->first();
-        // $package = Package::where('package_id','PKD0066')->first();
-        // $business = BusinessDetail::all();
-        // $stud = Student::all();
-
-        // foreach ($business as $bvalue){
-        //     $ticket = Ticket::where('ticket_id', $bvalue->ticket_id)->get(); 
-        //     $student = Student::orderBy('id','desc')->get();
-        // }
-
-        //         $fileName = $product->product_id.' - SurveyForm.'.uniqid().'.csv';
-        //         $columnNames = [
-        //             'First Name',
-        //             'Last Name',
-        //             'IC No',
-        //             'Phone No',
-        //             'Email',
-        //             'Business Type',
-        //             'Business Role',
-        //             'Business Amount',
-        //             'Class',
-        //             'Package',
-        //             'Registered At'
-        //         ];
-                
-        //         $file = fopen(public_path('export/') . $fileName, 'w');
-        //         fputcsv($file, $columnNames);
-
-        //         foreach ($student as $students) {
-        //             // echo $student."<br>";
-        //             // dd($student);
-        //             foreach ($ticket as $tickets) {
-        //                 foreach ($business as $businessdetails){
-        //                     if ($students->ic == $tickets->ic){
-        //                         if ($tickets->ticket_id == $businessdetails->ticket_id){
-
-        //                             fputcsv($file, [
-        //                                 $students->first_name,
-        //                                 $students->last_name,
-        //                                 $students->ic,
-        //                                 $students->phoneno,
-        //                                 $students->email,
-        //                                 $businessdetails->business_type,
-        //                                 $businessdetails->business_role,
-        //                                 $businessdetails->business_amount,
-        //                                 $product->name,
-        //                                 $package->name,
-        //                                 $tickets->created_at,
-        //                             ]);   
-
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //         fclose($file);    
-
-        ////////////////////////////// Save /////////////////////////////////////////////////////// 
-        
-        // $filter = $request->filter_export;
 
         
         // Mail::send('emails.export_mail', [], function($message) use ($fileName)
