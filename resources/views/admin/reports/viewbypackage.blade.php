@@ -135,14 +135,14 @@ Sales Report
                 <div class="form-group row px-4">
                     <label for="pic" class="col-sm-4 col-form-label">PIC Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe" required>
+                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe">
                     </div>
                 </div>
 
                 <div class="form-group row px-4">
                     <label for="pay" class="col-sm-4 col-form-label">Payment Date Time</label>
                     <div class="col-sm-8">
-                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt" required>
+                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt">
                       <span style="color: red">* Please refer payment date and time from customer receipt</span>
                     </div>
                 </div>

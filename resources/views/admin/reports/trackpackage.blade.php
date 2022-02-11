@@ -263,6 +263,7 @@ Sales Report
               </tr> 
             </div>
           </table> 
+          
           <select class="form-control" name="product_id">
           @foreach ($data as $key => $value)
             <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }} 
@@ -277,45 +278,6 @@ Sales Report
           </select>
         </div>
         <br>
-
-        {{-- <form action="{{ url('searchreport/{product_id}') }}" method="POST">
-          @csrf
-          <div class="row filter-row">
-              <div class="col-sm-6 col-md-3">  
-                  <div class="form-group form-focus">
-                    <select class="form-control" id="date" name="date" >
-                    @foreach ($data as $key => $value)
-                      <option id="date" name="date" value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }}</option>
-                      @foreach ($value as $keys => $values)
-                        @if (($key == $values->created_at->format('Y-m-d')) == true)
-                          @foreach ($value as $keys => $values)
-                            <span>{{ $values->stud_id }}</span>
-                          @endforeach
-                        @else
-                        @endif
-                      @endforeach
-                    @endforeach
-                    </select>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-md-3">  
-                  <button type="submit" class="btn btn-success btn-block"> Display </button>  
-              </div>
-          </div>
-        </form>  --}}
-
-        {{-- <div class="row">
-          <select class="form-control" name="product_id">
-            <option>Select Date</option>
-            @foreach ($data as $key => $value)
-                <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }} 
-                </option>
-                @foreach ($value as $keys => $values)
-                    <td>{{ $values->stud_id }}</td>
-                @endforeach
-            @endforeach    
-          </select>
-        </div> --}}
         </div>
       </div>
     </div>

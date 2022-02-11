@@ -463,7 +463,6 @@ class BlastingController extends Controller
     
                     // change email status
                     $ticket->email_status = 'Sent';
-                
                 // send the email
                 dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
     

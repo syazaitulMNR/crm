@@ -512,6 +512,7 @@ Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
 Route::get('export-surveyform/','HomeController@exportsurveyform');
+Route::get('export-test','HomeController@exporttest');
 
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');

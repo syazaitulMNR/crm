@@ -49,6 +49,7 @@ class ReportsController extends Controller
         $totalcust = Student::count();
         $totalpay = Payment::count();
         
+        
         return view('admin.reports.trackprogram', compact('student','product','package', 'payment', 'totalcust','totalpay'));
     }
 
@@ -633,7 +634,7 @@ class ReportsController extends Controller
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.reports.viewbypackage', compact('ticket', 'product', 'package', 'payment', 'offer', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+        return view('admin.reports.viewbypackage', compact( 'ticket', 'product', 'package', 'payment', 'offer', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
     public function destroy($payment_id, $product_id, $package_id) 
