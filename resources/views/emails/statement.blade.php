@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Customer Statement Account</title>
-    
     <style>
     .invoice-box {
         max-width: 800px;
