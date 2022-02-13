@@ -158,6 +158,7 @@ class MembershipController extends Controller
         $membership = Membership::where('membership_id', $membership_id)->first();
         $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
         $count = 1; 
+
         $total = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalactive = Student::where('status','Active')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totaldeactive = Student::where('status','Deactive')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
@@ -165,11 +166,12 @@ class MembershipController extends Controller
         $totalstop = Student::where('status','Stop')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalpending = Student::where('status','Pending')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalendmembership = Student::where('status','End-Membership')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
-        $totalupgradepro = Student::where('status','Upgrade-Pro')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totalupgrade = Student::where('status','Upgrade')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
+        $totaldowngrade = Student::where('status','Downgrade')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
         $totalterminate = Student::where('status','Terminate')->where('membership_id', $membership_id)->where('level_id', $level_id)->count();
 
         
-        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'count', 'totalbreak', 'totalstop','totalpending','totalendmembership', 'totalupgradepro', 'totalterminate'));
+        return view('admin.membership.view', compact('student', 'membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'count', 'totalbreak', 'totalstop','totalpending','totalendmembership', 'totalupgrade', 'totaldowngrade', 'totalterminate'));
     }
 
     // search buyer
@@ -426,7 +428,6 @@ class MembershipController extends Controller
     public function downloadReceipt($level, $payment, $student)
     {
         $stud_detail = Student::where('stud_id', $student)->first();
-
         $payment_id_student = Payment::where('level_id', $level)->first();
         $member = Membership_level::where('level_id', $level)->first();
         $invoice_id = Invoice::where('student_id', $stud_detail->id)->get();
@@ -464,6 +465,7 @@ class MembershipController extends Controller
         $pdf = PDF::loadView('emails.resitmember', $data);
         return $pdf->stream('Receipt.pdf');
     }
+
     public function uploadcheque($membership_id, $level_id, $stud_id, Request $request)
     {
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $stud_id)->first();
@@ -555,5 +557,114 @@ class MembershipController extends Controller
         }
         
         return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $stud_id )->with('sent-success', 'Cheque has been inserted') ;
+    }
+
+    public function manualStatement()
+    {
+        return view('admin.membership.manualstatement');
+    }
+
+    public function Statementsave(Request $request)
+    {
+        $key = $request['date'];
+        $data['key'] = count($key);
+        $name = $request['custname'];
+
+        // details of customer
+        $data['name'] = $request['custname']; //
+        $data['date1'] = $request['date1'];
+        $data['date2'] = $request['date2'];
+        $data['invoice_amount'] = $request['invoice_amount']; //
+        $data['amountreceived'] = $request['amountreceived'];
+        // dd($request['date']);
+        // invoice and payment
+        $data['date'] = $request['date']; //
+        $data['transaction'] = $request['transaction']; //
+        $data['details'] = $request['details']; //
+        $data['amount'] = $request['amount']; //
+        $data['payment'] = $request['payment']; //
+        $data['balance'] = $request['balance']; //
+
+        // balance 
+        $data['balancedue'] = $request['balancedue'];
+
+        $pdf = PDF::loadView('admin.manual_edit.editstatement', $data);
+        return $pdf->download( $name.' Statement.pdf' );
+
+        return view('admin.membership.membership');
+    }
+
+    public function manualReceipt()
+    {
+        return view('admin.membership.manualreceipt');
+    }
+
+    public function Receiptsave(Request $request)
+    {
+        $key = $request['receiptnumber'];
+        $data['key'] = count($key);
+        $name = $request['receiptfrom'];
+
+        // student information
+        $data['receiptfrom'] = $request['receiptfrom'];
+        $data['receiptno'] = $request['receiptno'];
+        $data['date1'] = $request['date1'];
+        $data['referencenumber'] = $request['referencenumber'];
+        $data['paymentmethod'] = $request['paymentmethod'];
+
+        // information of receipt
+        $data['receiptnumber'] = $request['receiptnumber'];
+        $data['receiptdate'] = $request['receiptdate'];
+        $data['paymentamount'] = $request['paymentamount'];
+
+        // total already paid
+        $data['subtotal'] = $request['subtotal'];
+
+        $pdf = PDF::loadView('admin.manual_edit.editreceipt', $data);
+        return $pdf->download( $name.' Receipt.pdf');
+
+        return view('admin.membership.manualreceipt');
+    }
+
+    public function manualInvoice()
+    {
+        return view('admin.membership.manualinvoice');
+    }
+
+    public function Invoicesave(Request $request)
+    {
+        $total = $request['subtotal'];
+        $tax = $request['sst'];
+        $totaltax = (($tax/100)*$total);
+        $key = $request['no'];
+        $name = $request['to'];
+
+        $data['key'] = count($key);
+
+        // student information
+        $data['name'] = $request['to']; //
+        $data['invoice_id'] = $request['invoiceno']; //
+        $data['inv_date'] = $request['date1']; //
+        $data['due_date'] = $request['date2']; //
+        $data['membership'] = $request['membership']; //
+
+        // information for invoices
+        $data['no'] = $request['no']; 
+        $data['description'] = $request['description']; 
+        $data['quantity'] = $request['quantity']; 
+        $data['rate'] = $request['rate']; 
+        $data['amount'] = $request['amount']; 
+
+        // total to pay and tax
+        $data['subtotal'] = $request['subtotal'];
+        $data['taxableamount'] = $request['taxableamount'];
+        $data['sst'] = $request['sst'];
+        $data['totaltax'] = $totaltax;
+
+        $pdf = PDF::loadView('admin.manual_edit.editinvoice', $data)->setPaper('a4');
+        return $pdf->download( $name.' Invoice.pdf' );
+
+        return redirect('admin.membership.manualinvoice')->with('success', 'Invoice Successfully Created');
+        // return view('admin.membership.manualinvoice');
     }
 }

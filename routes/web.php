@@ -58,6 +58,15 @@ Route::post('store-import/{membership_id}/{level_id}','MembershipController@stor
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
 
+// Manual Key in Statement , Receipt & Invoice
+Route::get('manual-statement', 'MembershipController@manualStatement');
+Route::get('manual-receipt', 'MembershipController@manualReceipt');
+Route::get('manual-invoice', 'MembershipController@manualInvoice');
+
+// Manual Download Statement , Receipt & Invoice
+Route::post('manualdownload-statement', 'MembershipController@Statementsave');
+Route::post('manualdownload-receipt', 'MembershipController@Receiptsave');
+Route::post('manualdownload-invoice', 'MembershipController@Invoicesave');
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
