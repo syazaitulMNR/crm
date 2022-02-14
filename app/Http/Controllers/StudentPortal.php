@@ -487,13 +487,11 @@ class StudentPortal extends Controller
         }else{
 
             $invoices = Invoice::where('student_id', $stud_detail->id)->where('status', 'not paid')->paginate(10);
-
             //dapatkan membership_id student
             $membership_lvl_id = $stud_detail->level_id;
 
             //dapatkan membership detail
             $membership_level = Membership_Level::where('level_id', $membership_lvl_id)->first();
-
             $no = 1;
 
             return view('invoice.listInvoice', compact('stud_detail', 'membership_level', 'invoices', 'no'));
