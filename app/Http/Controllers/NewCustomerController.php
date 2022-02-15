@@ -91,7 +91,7 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        dd($product->offer_id);
+        // dd($product->offer_id);
 
         //generate id
         $payment_id = 'OD'.uniqid();
@@ -150,7 +150,7 @@ class NewCustomerController extends Controller
 
         } else {
 
-            echo 'No Such Offer';
+            echo 'No Such Offer test';
 
         }
         
@@ -223,7 +223,7 @@ class NewCustomerController extends Controller
             $ticket = new Ticket();
             $ticket->fill($validatedTicket);
             $request->session()->put('ticket', $ticket);
-    
+
             return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
         }
         else {
@@ -271,9 +271,7 @@ class NewCustomerController extends Controller
         Session::put('product_id', $product_id);
         Session::put('package_id', $package_id);
         Session::put('payment', $payment);
-        // dd($payment);
-        // $ticket = $request->session()->get('ticket');
-  
+
         return view('customer_new.step3',compact('student', 'payment', 'product', 'package'));
     }
 
@@ -292,7 +290,7 @@ class NewCustomerController extends Controller
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
         $manual = 'Manual';
-  
+
         return view('customer_new.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx', 'manual'));
     }
 
@@ -817,6 +815,7 @@ class NewCustomerController extends Controller
             $productId = $product_id;        
             $student_id = $student->stud_id;
             $ticket_id = $ticket->ticket_id;
+            $ticket->pay_method = 'Manual';
             $survey_form = $product->survey_form;
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
@@ -892,9 +891,12 @@ class NewCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            $payment->status = 'paid ';
+            $ticket_id = $ticket->ticket_id;
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+            
+            $payment->status = 'paid';
             $updateform = array(
                 'update_count' => 1
             );
@@ -903,7 +905,6 @@ class NewCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -935,9 +936,12 @@ class NewCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            $payment->status = 'paid ';
+            $ticket_id = $ticket->ticket_id;
+
+            // dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id,  $survey_form, $ticket_id));
+
+            $payment->status = 'not paid';
             $updateform = array(
                 'update_count' => 1
             );
@@ -946,7 +950,6 @@ class NewCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             if ($product->offer_id == 'OFF005'){
                 $request->session()->forget('student');

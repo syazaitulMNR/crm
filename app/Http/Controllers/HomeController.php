@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,8 @@ use App\Income;
 use App\Ticket;
 use App\BusinessDetail;
 use Illuminate\Support\Facades\Mail;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class HomeController extends Controller
@@ -76,7 +79,7 @@ class HomeController extends Controller
         $product = Product::where('product_id', $tiket->product_id)->first();
         $package = $request->session()->get('package');
 
-        if(($request->session()->get('product_id')) == 'PRD0034'){
+        if(($request->session()->get('offer_id')) == 'OFF006'){
             if(Session::get('validatedIC')) {
                 if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
                     $validatedData = $request->validate([
@@ -429,6 +432,11 @@ class HomeController extends Controller
                 //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
         
+            } else if($payment->offer_id == 'OFF006') {
+
+                //for Bulk Ticket
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
+        
 
             } else {
     
@@ -669,7 +677,7 @@ class HomeController extends Controller
                     $survey_form = $product->survey_form;
                     
                     dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
-             
+            
                     if ($payment->quantity == 1){ //If quantity = 1
                         // Can access single form
                     }else{
@@ -1178,6 +1186,79 @@ class HomeController extends Controller
         // return view('customer.thankyou_update', compact('product'));
     }
 
+    public function exportsurveyform()
+    {   
+
+        $business = DB::table('business_details')->get();
+        // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
+        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0034')->get();
+        $student = DB::table('student')->get();
+        $product = DB::table('product')->where('product_id','PRD0034')->first();
+        // $package = DB::table('package')->where('package_id', 'PKD0065')->first();
+
+            /*-- Success Payment ---------------------------------------------------*/
+            $fileName = $product->product_id.' '. uniqid() .'.csv';
+            $columnNames = [
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Business Type',
+                'Business Role',
+                'Business Amount',
+                'Class',
+                'Pay Price',
+                'Registered At'
+            ];
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($student as $students) {
+                foreach($ticket as $tickets){
+                    if ($tickets->ic == $students->ic){
+                        foreach($business as $businessdetails){
+                            if ($tickets->ticket_id == $businessdetails->ticket_id){
+                                    
+                                    fputcsv($file, [
+                                    $students->first_name,
+                                    $students->last_name,
+                                    $students->ic,
+                                    $students->phoneno,
+                                    $students->email,
+                                    $businessdetails->business_type,
+                                    $businessdetails->business_role,
+                                    $businessdetails->business_amount,
+                                    $product->name,
+                                    $tickets->pay_price,
+                                    $tickets->created_at,
+                                ]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            fclose($file);
+
+        
+        // Mail::send('emails.export_mail', [], function($message) use ($fileName)
+        // {
+        //     // $message->to(request()->receipient_mail)->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+        //     $message->to('adessnoob99@gmail.com')->subject('ATTACHMENT OF PARTICIPANT DETAILS');
+        //     $message->attach(public_path('export/') . $fileName);
+        // });
+
+
+        return redirect('customer_details/')->with('export-participant','The participant details has been successfully sent to the email given.');
+
+    }
+
+    public function exporttest() 
+    {
+        return Excel::download(new UsersExport, 'student.xlsx');
+    }
 }
 
 

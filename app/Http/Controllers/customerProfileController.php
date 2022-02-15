@@ -33,6 +33,7 @@ class customerProfileController extends Controller
         $search = (is_null($request->query('search')) ? "" : $request->query('search'));
         $price = (is_null($request->query('price')) ? "" : $request->query('price'));
         $role = (is_null($request->query('role')) ? "" : $request->query('role'));
+        $type = (is_null($request->query('business')) ? "" : $request->query('business'));
 
         $incomeOptions = Income::all();
         $business_details = [];
@@ -49,10 +50,15 @@ class customerProfileController extends Controller
             });
         }
 
+        if($request->filled('type')) {
+            $hasReq = 1;
+            $type = $request->query('type');
+            $q->where('business_name', '=', $type);
+        }
+
         if($request->filled('role')) {
             $hasReq = 1;
             $role = $request->query('role');
-
             $q->where('business_role', '=', $role);
         }
 
@@ -88,42 +94,13 @@ class customerProfileController extends Controller
             }
         }
 
-        // if($search && $price) {
-        //     $customers = BusinessDetail::where('business_amount', '<', $price)
-        //     ->where(function($query) use($search){
-        //         $query->where('business_role', 'LIKE', '%'.$search.'%')
-        //               ->orWhere('business_type', 'LIKE', '%'.$search.'%');
-        //     })->get();
-            
-        //     $business_details = [];
+        $role = ['Role', 'Stokis', 'Team / Pekerja Syarikat', 'Employee', 'Dropship', 'Agent', 'Founder', 'Lain-lain'];
+        $type = ['Type', 'Fashion', 'Makanan', 'Katering & Perkahwinan', 'Kesihatan', 'Kecantikan', 'Pelancongan & Travel', 'Automotif', 'Hartanah', 'Umrah', 'Takaful / Insuran', 'Perunding Kewangan', 'Home Deco & Interior Design', 'Pecetakan / Printing', 'Belum Berniaga', 'Lain-lain'];
 
-        //     if(count($customers) != 0) {
-        //         foreach($customers as $c) {
-        //             $ticketname = Ticket::where('ticket_id', $c->ticket_id);
-                    
-        //             if($ticketname->count() > 0) {
-        //                 $ticketname = $ticketname->first();
-                        
-        //                 $productname = Product::where('product_id', $ticketname->product_id)->first();
-        //                 $user = Student::where('ic', $ticketname->ic)->first();
-                        
-        //                 $c->class = $productname->name;
-        //                 $c->name = $user->first_name . " " . $user->last_name;
-        //             }else {
-        //                 $c->class = '';
-        //                 $c->name = '';
-        //             }
-        //             $business_details[] = $c;
-        //         }
-        //     }
-        // }
-
-        $role = ['Role', 'Employee', 'Dropship', 'Agent', 'Founder'];
-        
         $data = $this->paginate($business_details, 50);
         $data->setPath('business_details');
 
-        return view('customer.business_details', compact('data', 'incomeOptions', 'role'));
+        return view('customer.business_details', compact('data', 'incomeOptions', 'role', 'type'));
     }
 
     public function paginate($items, $perPage, $page = null, $options = []){

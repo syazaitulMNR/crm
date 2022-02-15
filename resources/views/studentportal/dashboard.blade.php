@@ -198,8 +198,8 @@ Customer Profiles
             <h1 class="h2">Customer Information</h1>
             <div class="">
             <div class="align-right">
-            <a href="statement-format" class="btn btn-danger "><i class="fas fa-download pr-2"></i>Download Statement</a>
-            <a href="list-invoice" class="btn btn-primary "><i class="fas fa-download pr-2"></i>Check Invoices</a>
+            <a href="statement-format" class="btn btn-primary "><i class="fas fa-download pr-2"></i>Download Statement</a>
+            <a href="list-invoice" class="btn btn-danger "><i class="fa fa-money pr-2"></i>Payment Due</a>
             </div>
             </div>
         </div>

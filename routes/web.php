@@ -58,6 +58,15 @@ Route::post('store-import/{membership_id}/{level_id}','MembershipController@stor
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
 
+// Manual Key in Statement , Receipt & Invoice
+Route::get('manual-statement', 'MembershipController@manualStatement');
+Route::get('manual-receipt', 'MembershipController@manualReceipt');
+Route::get('manual-invoice', 'MembershipController@manualInvoice');
+
+// Manual Download Statement , Receipt & Invoice
+Route::post('manualdownload-statement', 'MembershipController@Statementsave');
+Route::post('manualdownload-receipt', 'MembershipController@Receiptsave');
+Route::post('manualdownload-invoice', 'MembershipController@Invoicesave');
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
@@ -261,7 +270,7 @@ Route::get('maklumat-pembayaran/{product_id}/{package_id}', 'NewCustomerControll
 Route::post('store-manual/{product_id}/{package_id}', 'NewCustomerController@manual_paymentprocess'); // manual payment process
 Route::get('maklumat-free/{product_id}/{package_id}', 'NewCustomerController@manual_payment'); // free payment form
 Route::get('store-free/{product_id}/{package_id}', 'NewCustomerController@free_paymentprocess'); // free payment process
-Route::get('store-paid/{product_id}/{package_id}', 'NewCustomerController@paid_paymentprocess'); // free payment process
+Route::get('store-paid/{product_id}/{package_id}', 'NewCustomerController@paid_paymentprocess'); // paid payment process
 
 // Existedstudent
 Route::get('langkah-pertama/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@stepOne');
@@ -280,7 +289,7 @@ Route::get('redirect-billplz/{product_id}/{package_id}', 'ExistCustomerControlle
 Route::get('data-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@manual_payment'); // manual payment form
 Route::post('save-manual/{product_id}/{package_id}/{stud_id}', 'ExistCustomerController@save_manual_payment'); // manual payment process
 Route::get('save-free/{product_id}/{package_id}', 'ExistCustomerController@save_free_paymentprocess'); // free payment process
-Route::get('save-paid/{product_id}/{package_id}', 'ExistCustomerController@save_paid_paymentprocess'); // free payment process
+Route::get('save-paid/{product_id}/{package_id}', 'ExistCustomerController@save_paid_paymentprocess'); // paid payment process
 
 // Thank you page
 Route::get('pendaftaran-berjaya/{product_id}','HomeController@thankyou');
@@ -511,6 +520,8 @@ Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDet
 Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
+Route::get('export-surveyform/','HomeController@exportsurveyform');
+Route::get('export-test','HomeController@exporttest');
 
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');

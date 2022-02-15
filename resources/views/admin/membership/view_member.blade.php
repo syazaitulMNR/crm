@@ -71,7 +71,7 @@ Membership
           </div>
         </div>
         <div class="row py-2">
-          <div class="col-md-3">
+          <div class="col-md-6">
             <label class="form-label">First Name</label>
             <input type="text" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" class="form-control" required>
           </div>

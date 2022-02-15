@@ -57,7 +57,7 @@
                             <b><p style="font-size: 14px; color:red">*Selepas menjawab soalan kaji selidik, anda akan dibawa ke saluran Telegram khas. Segala maklumat berkaitan program akan dihebahkan di saluran tersebut.</p><b>
 
                             {{-- For upgrade by ticket --}}
-                            <tr>
+                            {{-- <tr>
                               <td>
                                 <br>
                                 <p>2. Jika anda hendak menaik taraf pakej, sila klik pada butang di bawah:</p>
@@ -65,9 +65,9 @@
                             </tr>
                             <tr>
                               <td class="align-center">
-                                {{-- <a style="font-size:130%; background-color:#FF0000;" href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a> --}}
+                                <a style="font-size:130%; background-color:#FF0000;" href="{{ url('upgrade-ticket') }}/{{ $productId }}/{{ $packageId }}/{{ $ticket_id }}">Naik Taraf</a>
                               </td>
-                            </tr>
+                            </tr> --}}
 
                             <hr>
                           </tbody>

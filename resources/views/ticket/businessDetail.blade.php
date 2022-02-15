@@ -64,12 +64,11 @@
                                 <option value="Agent">Agent</option>
                                 <option value="Stokis">Stokis</option>
                                 <option value="Dropship">Dropship</option>
-                                <option value="Team/PekerjaSyarikat">Team / Pekerja Syarikat</option>
+                                <option value="Team / Pekerja Syarikat">Team / Pekerja Syarikat</option>
                                 <option value="Lain-lain">Lain-lain</option>
                             </select>
                         </div>
                     </div>
-                    
                     <button type="submit" class="btn btn-primary float-end"><i class="bi bi-save pr-2"></i> Submit</button>
                 </form>
             </div>
@@ -92,7 +91,7 @@
 </script>
 
 <footer class="text-center px-4 py-5">
-    <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
+    <b>Momentum Internet (1079998-A) © 2022 All Rights Reserved​</b>
 </footer>
 
 @endsection

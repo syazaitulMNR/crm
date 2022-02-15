@@ -53,17 +53,28 @@
               <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search name and IC number">
           </form> --}}
           
-          <div class="input-group mb-3">
+          <div class="input-group">
             <form action="{{ url('customer_details') }}" class="input-group" method="GET">
               {{-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> --}}
               <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search business type and name">
               <div class="input-group-append col-md-4">
+
                 <select class="custom-select" id="inputGroupSelect01" name="role">
                   @foreach ($role as $r)
                     @if (request()->query('role'))
                       <option {{ request()->query('role') === $r ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
                     @else
                       <option {{ request()->query('role') === 'Role' ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
+                    @endif
+                  @endforeach
+                </select>
+
+                <select class="custom-select" id="inputGroupSelect01" name="type">
+                  @foreach ($type as $t)
+                    @if (request()->query('type'))
+                      <option {{ request()->query('type') === $t ? 'selected' : '' }} value="{{ $t === 'Type' ? '' : $t }}">{{ $t }}</option>
+                    @else
+                      <option {{ request()->query('type') === 'Type' ? 'selected' : '' }} value="{{ $t === 'Type' ? '' : $t }}">{{ $t }}</option>
                     @endif
                   @endforeach
                 </select>
@@ -81,6 +92,12 @@
             </form>
           </div>
 
+          <div class="float-end mr-3" >
+            <form action="{{ url('export-surveyform') }}" method="GET">
+              <button class="btn btn-outline-secondary" type="submit">Download</button>
+            </form>
+          </div>  
+
           <table class="table table-hover">
             <thead>
               <tr>
@@ -88,7 +105,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Business Role</th>
                 <th scope="col">Business Type</th>
-                <th scope="col">Business Amount</th>
+                <th scope="col">Business Amount (RM)</th>
                 <th scope="col">Class</th>
               </tr>
             </thead>
@@ -101,10 +118,10 @@
               @forelse ($data as $key => $k)
                   <tr>
                     <th scope="row">{{ ++$no }}</th>
-                    <td>{{ $k->business_name }}</td>
+                    <td>{{ $k->ticket_id }}</td>
                     <td>{{ $k->business_role }}</td>
                     <td>{{ $k->business_type }}</td>
-                    <td>RM{{ $k->business_amount }}</td>
+                    <td>{{ $k->business_amount }}</td>
                     <td>{{ $k->class }}</td>
                   </tr>
               @empty
@@ -112,6 +129,7 @@
                   <td colspan="5" class="text-center">No result founds for query</td>
                 </tr>
               @endforelse
+
             </tbody>
           </table>
           {{ $data->links() }}

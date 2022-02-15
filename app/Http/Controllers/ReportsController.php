@@ -49,6 +49,7 @@ class ReportsController extends Controller
         $totalcust = Student::count();
         $totalpay = Payment::count();
         
+        
         return view('admin.reports.trackprogram', compact('student','product','package', 'payment', 'totalcust','totalpay'));
     }
 
@@ -220,7 +221,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->get();
         $users = User::all();
-      
+    
         $filter = $request->filter_export;
         $receipient_mail = $request->receipient_mail;
 
@@ -257,7 +258,6 @@ class ReportsController extends Controller
                     foreach($package as $packages){
                             if($payments->stud_id == $students->stud_id){
                                 if($payments->package_id == $packages->package_id){
-
                                         fputcsv($file, [
                                             $payments->payment_id,
                                             $students->first_name,
@@ -275,8 +275,6 @@ class ReportsController extends Controller
                                             $payments->user_id,
                                             $payments->created_at,
                                         ]);
-
-
                                 }
                             }
                     }
@@ -636,7 +634,7 @@ class ReportsController extends Controller
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
-        return view('admin.reports.viewbypackage', compact('ticket', 'product', 'package', 'payment', 'offer', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+        return view('admin.reports.viewbypackage', compact( 'ticket', 'product', 'package', 'payment', 'offer', 'student', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
     }
 
     public function destroy($payment_id, $product_id, $package_id) 

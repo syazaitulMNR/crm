@@ -125,6 +125,7 @@
       @for ($i = 0; $i < $count_package; $i++)
       <th>{{ $package[$i]->name }}</th>
       @endfor
+      <th>Total (RM)</th>
     </tr>
     <tr>
       <td>{{ $date_yesterday }}</td>
@@ -132,6 +133,7 @@
       @for ($i = 0; $i < $count_package; $i++)
         <td>{{ $package_day[$i] }}</td>
       @endfor
+      <td>RM {{ $total_amount }}</td>
     </tr>
     <tr>
       <td>{{ $date_yesterday1 }}</td>
@@ -139,6 +141,7 @@
       @for ($i = 0; $i < $count_package; $i++)
       <td>{{ $package_day1[$i] }}</td>
       @endfor
+      <td>RM {{ $total_amount1 }}</td>
     </tr>
     <tr>
       <td>{{ $date_yesterday2 }}</td>
@@ -146,6 +149,7 @@
       @for ($i = 0; $i < $count_package; $i++)
       <td>{{ $package_day2[$i] }}</td>
       @endfor
+      <td>RM {{ $total_amount2 }}</td>
     </tr>
     <tr>
       <td>{{ $date_yesterday3 }}</td>
@@ -153,6 +157,7 @@
       @for ($i = 0; $i < $count_package; $i++)
       <td>{{ $package_day3[$i] }}</td>
       @endfor
+      <td>RM {{ $total_amount3 }}</td>
     </tr>
     <tr>
       <td>{{ $date_yesterday4 }}</td>
@@ -160,6 +165,7 @@
       @for ($i = 0; $i < $count_package; $i++)
       <td>{{ $package_day4[$i] }}</td>
       @endfor
+      <td>RM {{ $total_amount4 }}</td>
     </tr>
   </table>
   <br>

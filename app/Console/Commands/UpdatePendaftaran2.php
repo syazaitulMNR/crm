@@ -18,14 +18,14 @@ use Telegram;
 
 use Illuminate\Console\Command;
 
-class UpdatePendaftaran extends Command
+class UpdatePendaftaran2 extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'telegram:update';
+    protected $signature = 'telegram:update2';
 
     /**
      * The console command description.
@@ -184,7 +184,7 @@ class UpdatePendaftaran extends Command
         }
 
         // get product id
-        $product = Product::where('status', 'active')->first();
+        $product = Product::where('product_id', 'PRD0034')->first();
         $product_id = $product->product_id;
 
         // get package
@@ -210,12 +210,8 @@ class UpdatePendaftaran extends Command
         
         // get the total 
         // $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
-        $harini = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-        $harini1 = Payment::where('product_id', 'PRD0034')->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-
-        $total_now = ($harini+$harini1);
+        $total_now = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
         
-        $totalregister1 = Payment::where('status','paid')->where('product_id', 'PRD0034')->count();
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         // $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         // $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
@@ -232,12 +228,12 @@ class UpdatePendaftaran extends Command
         // $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday this week')) , date('Y-m-d 23:59:59', strtotime('wednesday this week')) ])->count();
         // $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday this week')) , date('Y-m-d 23:59:59', strtotime('tuesday this week')) ])->count();
 
-        $textes = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Gold + Diamond )"."\n"."Total Registration : ".($totalregister+$totalregister1)."\n"."Total Today : +".$total_now."\n";
-        Telegram::sendMessage([
-            "chat_id" => env('TELEGRAM_CHAT_ID', ''),
-            "parse_mode" => "HTML",
-            "text" => $textes
-        ]);
+        // $textes = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."Total Registration : ".$totalregister."\n"."Total Today : +".$total_now."\n";
+        // Telegram::sendMessage([
+        //     "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+        //     "parse_mode" => "HTML",
+        //     "text" => $textes
+        // ]);
 
         for ($i = 0; $i < $count_package; $i++){
             $text = "<b>".strtoupper($package[$i]->name)."</b>"."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";

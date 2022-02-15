@@ -15,6 +15,17 @@ Pendaftaran Pembeli
     @media (-webkit-min-device-pixle-ratio: 2), (min-resolution: 192dpi){
         .iti-flag {background-image: url(image/flag@2x.png);}
     }
+    .no-arrow {
+    -moz-appearance: textfield;
+    }
+    .no-arrow::-webkit-inner-spin-button {
+    display: none;
+    }
+    .no-arrow::-webkit-outer-spin-button,
+    .no-arrow::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
 </style>
 
 <div class="row">
@@ -68,7 +79,7 @@ Pendaftaran Pembeli
                         
                         <div class="col-md-6 pb-2">
                             <label for="description">No. Telefon:</label><br>
-                            <input id="input-phone" type="tel" name="phoneno" value="+60{{ $student->phoneno ?? '' }}" class="form-control" />
+                            <input id="input-phone" type="tel" name="phoneno" value="+60{{ $student->phoneno ?? '' }}" class="form-control no-arrow" />
                             <label style="font-size: 10pt;"><em>Sila pilih kod negara Cth: *+60 dan isikan no anda *Cth: 1123456789</em></label>
                         </div>
                     </div>

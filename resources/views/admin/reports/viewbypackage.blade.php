@@ -135,14 +135,14 @@ Sales Report
                 <div class="form-group row px-4">
                     <label for="pic" class="col-sm-4 col-form-label">PIC Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe" required>
+                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe">
                     </div>
                 </div>
 
                 <div class="form-group row px-4">
                     <label for="pay" class="col-sm-4 col-form-label">Payment Date Time</label>
                     <div class="col-sm-8">
-                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt" required>
+                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt">
                       <span style="color: red">* Please refer payment date and time from customer receipt</span>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ Sales Report
           </div>
         </div>
 
-        <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-FRece pr-2"></i>Import Customer</a>
+        {{-- <a href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa-file-export pr-2"></i>Export Customer</a> --}}
         <a href="{{ url('blastConfirmationEmail') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa fa-send-o" style="font-size:14px"></i> Send Confirmation Email</a>
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
       </div>
