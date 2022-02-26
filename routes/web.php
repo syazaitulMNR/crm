@@ -59,14 +59,17 @@ Route::post('store-members/{membership_id}/{level_id}','MembershipController@sto
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
 
 // Manual Key in Statement , Receipt & Invoice
-Route::get('manual-statement', 'MembershipController@manualStatement');
-Route::get('manual-receipt', 'MembershipController@manualReceipt');
-Route::get('manual-invoice', 'MembershipController@manualInvoice');
+// Route::get('manual-statement', 'MembershipController@manualStatement');
+// Route::get('manual-receipt', 'MembershipController@manualReceipt');
+Route::get('manual-invoice/{membership_id}/{level_id}/{stud_id}', 'MembershipController@manualInvoice');
 
 // Manual Download Statement , Receipt & Invoice
-Route::post('manualdownload-statement', 'MembershipController@Statementsave');
-Route::post('manualdownload-receipt', 'MembershipController@Receiptsave');
-Route::post('manualdownload-invoice', 'MembershipController@Invoicesave');
+// Route::post('manualdownload-statement', 'MembershipController@Statementsave');
+// Route::post('manualdownload-receipt', 'MembershipController@Receiptsave');
+Route::post('manualdownload-invoice/{stud_id}', 'MembershipController@Invoicesave');
+
+// Add Features Product
+Route::post('add-features-product', 'MembershipController@addFeaturesProduct');
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
@@ -515,9 +518,9 @@ Route::get("/sample-client", 'SampleChat@index');
 // Bussiness Details
 Route::get('business_details/{ticket_id}', 'HomeController@showIC');
 Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
+Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
-Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
 Route::get('export-surveyform/','HomeController@exportsurveyform');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Package;
@@ -71,34 +73,38 @@ class customerProfileController extends Controller
         if($hasReq) {
             $customers = $q->get();
         }else {
-            $customers = BusinessDetail::all();
+            // $customers = BusinessDetail::all();
+            $customers = DB::table('business_details')->get();
         }
+
         if(count($customers) != 0) {
             foreach($customers as $c) {
-                $ticketname = Ticket::where('ticket_id', $c->ticket_id);
-
+                // $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+                $ticketname = DB::table('ticket')->where('ticket_id',$c->ticket_id);
                 if($ticketname->count() > 0) {
                     $ticketname = $ticketname->first();
 
-                    $productname = Product::where('product_id', $ticketname->product_id)->first();
-                    $user = Student::where('ic', $ticketname->ic)->first();
+                    // $productname = Product::where('product_id', $ticketname->product_id)->first();
+                    // $user = Student::where('stud_id', $ticketname->stud_id)->first();
+                    $productname = DB::table('product')->where('product_id',$ticketname->product_id)->first();
+                    $user = DB::table('student')->where('stud_id',$ticketname->stud_id)->first();
 
-                    // dd($user->first_name);
                     $c->class = $productname->name;
-                    $c->name = $request->first_name . " " . $request->last_name;
+                    $c->student = $user;
+
                 }else {
                     $c->class = '';
-                    $c->name = '';
+                    $c->student = '';
                 }
                 $business_details[] = $c;
             }
         }
 
+        $data = $this->paginate($business_details, 10);
+        $data->setPath('business_details');
+
         $role = ['Role', 'Stokis', 'Team / Pekerja Syarikat', 'Employee', 'Dropship', 'Agent', 'Founder', 'Lain-lain'];
         $type = ['Type', 'Fashion', 'Makanan', 'Katering & Perkahwinan', 'Kesihatan', 'Kecantikan', 'Pelancongan & Travel', 'Automotif', 'Hartanah', 'Umrah', 'Takaful / Insuran', 'Perunding Kewangan', 'Home Deco & Interior Design', 'Pecetakan / Printing', 'Belum Berniaga', 'Lain-lain'];
-
-        $data = $this->paginate($business_details, 50);
-        $data->setPath('business_details');
 
         return view('customer.business_details', compact('data', 'incomeOptions', 'role', 'type'));
     }

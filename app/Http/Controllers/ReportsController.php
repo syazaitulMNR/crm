@@ -121,7 +121,7 @@ class ReportsController extends Controller
                 });
 
         //////////////////////      ////////////////////////
- 
+
         $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
         $test = $productfirst->created_at->format('Y-m-d H:i:s');
 
