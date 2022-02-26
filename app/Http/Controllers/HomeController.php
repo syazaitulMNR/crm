@@ -233,16 +233,6 @@ class HomeController extends Controller
 
     public function showIC($ticket_id) {
 
-        // // Testing
-        // $product = Product::where('product_id', $product_id)->first();
-        // $ticket = Ticket::where('ticket_id', $product->product_id)->where('created_at', 'asc')->first();
-        // // $package = Package::where('package_id', $product->package_id)->first();
-        // // $packageName = $package->name;
-        // $productName = $product->name;
-
-        // return view('ticket.checkIC', compact('productName'));
-        // // End Testing
-
         $ticket = Ticket::where('ticket_id', $ticket_id)->first();
         $product = Product::where('product_id', $ticket->product_id)->first();
         $package = Package::where('package_id', $ticket->package_id)->first();
@@ -1194,6 +1184,7 @@ class HomeController extends Controller
         $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0034')->get();
         $student = DB::table('student')->get();
         $product = DB::table('product')->where('product_id','PRD0034')->first();
+        // dd($ticket);
         // $package = DB::table('package')->where('package_id', 'PKD0065')->first();
 
             /*-- Success Payment ---------------------------------------------------*/

@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('title')
-    Event
+    Manual Invoice
 @endsection
 
 
 @section('content')
 
+<!DOCTYPE html>
+<html>
 <!-- Jquery (For Date) --------------------------------------------------->
 <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
@@ -30,12 +32,12 @@
     @endif
 
     <!-- Add product form --------------------------------------------------->
-    <form class="row g-3 px-3" action="{{ url('manualdownload-invoice') }}" method="POST" enctype="multipart/form-data"> 
+    <form class="row g-3 px-3" action="{{ url('manualdownload-invoice') }}/{{ $student->stud_id }}" method="POST" enctype="multipart/form-data"> 
     @csrf
 
         <div class="col-md-6">
             <label class="form-label">To</label>
-            <input name="to" placeholder="John Doe" type="text" class="form-control" required>
+            <input name="to" placeholder="John Doe" type="text" class="form-control" value="{{ ucwords(strtolower($student->first_name)) }} {{ ucwords(strtolower($student->last_name)) }}">
         </div>
 
         <div class="col-md-3">
@@ -45,8 +47,8 @@
 
         <div class="col-md-3">
             <label class="form-label" for="membership">Choose a Membership</label>
-            <select class="form-select" name="membership" id="membership">
-                <option class="form-control" value="select" disabled selected>Choose One</option>
+            <select class="form-select" value="{{ $membership_level->name }}" name="membership" id="membership">
+                <option class="form-control" value="{{ $membership_level->name }}" disabled selected>Choose One</option>
                 <option class="form-control" value="Platinum Pro">Platinum Pro</option>
                 <option class="form-control" value="Platinum Lite">Platinum Lite</option>
                 <option class="form-control" value="Ultimate Partners">Ultimate Partners</option>
@@ -63,7 +65,6 @@
             <label class="form-label">Due Date</label>
             <input type="duedate" name="date2" id="date2" class="form-control" placeholder="02-01-2022" required/>
         </div>
-
         <hr class="mb-2">
 
         <div class="col-md-12">
@@ -71,7 +72,12 @@
             <div id="inputFormRow">
                 <div class="input-group mb-3">
                     <input type="text" name="no[]" placeholder="No" class="form-control" autocomplete="off" required>
-                    <input type="text" name="description[]" placeholder="Item & Description" class="form-control" autocomplete="off" required>
+                    <select class="form-select" name="pfeatures[]" id="pfeatures">
+                        <option class="form-control" disabled selected>Choose One</option>
+                    @foreach ($productfeatures as $pf => $pfvalue)
+                        <option id="features_id" class="form-control" value="{{ $pfvalue->product_features_name }}">{{ $pfvalue->product_features_name }}</option>
+                    @endforeach
+                    </select>
                     <input type="text" name="quantity[]" placeholder="Quantity" class="form-control" autocomplete="off" required>
                     <input type="text" name="rate[]" placeholder="Rate" class="form-control" autocomplete="off" required>
                     <input type="text" name="amount[]" placeholder="Amount" class="form-control" autocomplete="off" required>
@@ -106,7 +112,7 @@
 </div>
 
 <!-- Function for datepicker --------------------------------------------------->
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
 
         $("#date1").datepicker({
@@ -130,17 +136,24 @@
     });
 
      // add row
-     $("#addRow").click(function () {
+    $("#addRow").click(function () {
         var html = '';
+        // console.log($productfeatures);
         html += '<div id="inputFormRow">';
         html += '<div class="input-group mb-3">';
         html += '<input type="text" name="no[]" placeholder="No" class="form-control" autocomplete="off" required>';
-        html += '<input type="text" name="description[]" placeholder="Item & Description" class="form-control" autocomplete="off" required>';
+        html += '<select class="form-select" name="pfeatures[]" id="pfeatures">';
+        html += '<option class="form-control" disabled selected>Choose One</option>';
+        html += '@foreach ($productfeatures as $pf => $pfvalue)';
+        html += '<option id^="features_id" class="form-control" value="{{ $pfvalue->product_features_name }}">{{ $pfvalue->product_features_name }}</option>';
+        html += '@endforeach';
+        html += '</select>';
         html += '<input type="text" name="quantity[]" placeholder="Quantity" class="form-control" autocomplete="off" required>';
         html += '<input type="text" name="rate[]" placeholder="Rate" class="form-control" autocomplete="off" required>';
         html += '<input type="text" name="amount[]" placeholder="Amount" class="form-control" autocomplete="off" required>';
-        html += '<div class="input-group-append">';
+        html += '<div class="input-group-append">';                
         html += '<button id="removeRow" type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>';
+        html += '</div>';
         html += '</div>';
         html += '</div>';
 
@@ -152,6 +165,7 @@
         $(this).closest('#inputFormRow').remove();
     });
 </script>
-  
+
 @endsection
 
+</html>

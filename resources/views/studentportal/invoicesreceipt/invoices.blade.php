@@ -13,28 +13,12 @@
     <a href="/student/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/student/dashboard">Dashboard</a> / <b>List Invoices</b>
   </div> 
      
-  <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+  <div class="flex-md-nowrap pt-3 pb-2">
       <h1 class="h2">List Invoices</h1>
   </div> 
   
   <div class="row">
-    <div class="col-md-12 "> 
-        
-      <!-- Search box ---------------------------------------------------------->
-      {{-- <form action="{{ route('student.searchInvoice') }}" class="input-group" method="GET">
-          @if(isset($query))
-
-            <input type="text" class="form-control" name="search" value="{{$query}}" placeholder="Search date">
-
-          @else
-            <input type="text" class="form-control" name="search" value="" placeholder="Search date">
-
-          @endif
-      </form> --}}
-      
-      <div class="float-right pt-3"></div>
-      <br>
-      
+    <div class="col-md-12 ">
         <!-- View event details in table ----------------------------------------->
         <div class="table-responsive">
             <table class="table table-hover" id="myTable">

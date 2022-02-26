@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Product_Features;
 use App\Membership;
 use App\Membership_Level;
 use App\Student;
@@ -13,6 +15,7 @@ use App\Product;
 use App\Imports\MembershipImport;
 use App\Exports\MembersFormat;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 use Mail;
 use Auth;
 use App\Invoice;
@@ -39,7 +42,7 @@ class MembershipController extends Controller
 
         $auto_inc_mb = $membership->id + 1;
         $membership_id = 'MB' . 0 . 0 . $auto_inc_mb;
-              
+        
         Membership::create(array(
 
             'membership_id'=> $membership_id,
@@ -626,18 +629,30 @@ class MembershipController extends Controller
         return view('admin.membership.manualreceipt');
     }
 
-    public function manualInvoice()
+    public function manualInvoice($membership_id, $level_id, $student_id)
     {
-        return view('admin.membership.manualinvoice');
+        $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
+        $level = Membership_level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+        $invoice = Invoice::where('student_id', $student_id)->get();
+        $membership = Membership::where('membership_id', $membership_id)->first();
+        $membership_level = Membership_Level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
+        $productfeatures = Product_Features::all();
+
+        return view('admin.membership.manualinvoice', compact('student', 'level', 'invoice', 'membership', 'membership_level', 'productfeatures'));
     }
 
-    public function Invoicesave(Request $request)
+    public function Invoicesave(Request $request , $stud_id)
     {
+        $productfeat = Product_Features::all();
+        $student = Student::where('stud_id', $stud_id)->first();
+        // dd($student->id);
+
         $total = $request['subtotal'];
         $tax = $request['sst'];
         $totaltax = (($tax/100)*$total);
         $key = $request['no'];
         $name = $request['to'];
+        $get = $request['pfeatures'];
 
         $data['key'] = count($key);
 
@@ -650,7 +665,15 @@ class MembershipController extends Controller
 
         // information for invoices
         $data['no'] = $request['no']; 
-        $data['description'] = $request['description']; 
+
+        foreach ($productfeat as $pff){
+            foreach ($request['pfeatures'] as $pfval) { 
+                if ($pff->product_features_name == $pfval){
+                    $data['description'] = $request['pfeatures'];
+                }
+            }
+        }
+
         $data['quantity'] = $request['quantity']; 
         $data['rate'] = $request['rate']; 
         $data['amount'] = $request['amount']; 
@@ -661,10 +684,42 @@ class MembershipController extends Controller
         $data['sst'] = $request['sst'];
         $data['totaltax'] = $totaltax;
 
+        // convert array to json for storeing database
+        $array = $request->pfeatures;
+        $features_array = json_encode($array);
+
+        // insert data to database
+        Invoice::create(array(
+            'invoice_id' => 'INV'.uniqid(),
+            'price' => $request['subtotal'],
+            'for_date' => $request->date1,
+            'status' => 'not paid',
+            'student_id' => $student->id,
+            'product_features_id' => $features_array
+        ));
+
+        // download function by use editinvoice template
         $pdf = PDF::loadView('admin.manual_edit.editinvoice', $data)->setPaper('a4');
         return $pdf->download( $name.' Invoice.pdf' );
 
-        return redirect('admin.membership.manualinvoice')->with('success', 'Invoice Successfully Created');
-        // return view('admin.membership.manualinvoice');
+        // return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $stud_id )->with('success', 'Invoice Successfully Created');
+    }
+
+    public function addFeaturesProduct(Request $request)
+    {
+        $features = Product_Features::orderBy('id','desc')->first();
+
+        $auto_inc_fp = $features->id + 1;
+        $features_product_id = 'FP' . 0 . $auto_inc_fp ;
+
+        Product_Features::create(array(
+            'product_features_name' => $request['name'],
+            'product_features_id' => $features_product_id,
+            'features_price' => $request['price'],
+            'description_features' => $request['description'],
+            'features_tax' => $request['tax']
+        ));
+
+        return redirect('membership')->with('success', 'Features Successfully Created'); 
     }
 }
