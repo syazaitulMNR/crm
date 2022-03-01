@@ -184,7 +184,7 @@ class UpdatePendaftaran2 extends Command
         }
 
         // get product id
-        $product = Product::where('product_id', 'PRD0034')->first();
+        $product = Product::where('product_id', 'PRD0037')->first();
         $product_id = $product->product_id;
 
         // get package
