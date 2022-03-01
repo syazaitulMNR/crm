@@ -308,6 +308,7 @@ class NewCustomerController extends Controller
             'pay_method' => 'required',
         ]);
 
+
         $payment = $request->session()->get('payment');
         $payment->fill($validatedData);
         $request->session()->put('payment', $payment);
