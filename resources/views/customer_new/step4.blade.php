@@ -38,7 +38,7 @@ Pendaftaran Pembeli
     </div>
 
     <div class="col-md-6 offset-md-3 pb-5">
-        <form action="{{ url('store4') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="POST">
+        <form action="{{ url('store4') }}/{{ $product->product_id }}/{{ $payment->package_id }}" method="POST">
             @csrf
             <div class="card px-4 py-4 shadow">
                 <div class="bg-dark text-white px-2 py-2">Langkah 4/5: Pilih Jenis Pembayaran</div>
