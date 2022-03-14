@@ -79,7 +79,7 @@ Pendaftaran Pembeli
                         
                         <div class="col-md-6 pb-2">
                             <label for="description">No. Telefon:</label><br>
-                            <input id="" type="number" name="phoneno" value="{{ $student->phoneno ?? '' }}" class="form-control no-arrow" />
+                            <input id="" type="number" placeholder="0123456789" name="phoneno" value="{{ $student->phoneno ?? '' }}" class="form-control no-arrow" />
                             <label style="font-size: 10pt;"><em>Sila masukkan no telefon anda <b>tanpa</b> sebarang simbol cth: 0123456789 </em></label>
                         </div>
                     </div>
