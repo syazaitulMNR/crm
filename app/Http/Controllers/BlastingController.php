@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\InvoiceManualMembershipJob;
 use App\Jobs\StatementMembershipJob;
 use App\Jobs\ReceiptMembershipJob;
 use App\Jobs\InvoiceMembershipJob;
 use App\Membership_Level;
 use App\Invoice;
+use App\Product_Features;
 use Illuminate\Http\Request;
 use App\Jobs\BlastQueueEmail;
 use App\Jobs\PengesahanJob;
@@ -330,6 +332,64 @@ class BlastingController extends Controller
         dispatch(new InvoiceMembershipJob($send_mail, $inv, $subtotal, $member, $name, $no, $secondname, $invoice , $membership, $price, $total, $date_receive, $datesum, $invoice_amount, $amount_received, $balance, $balance_due));
 
         $payment->save();
+
+        return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $student_id )->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
+    }
+
+    public function send_manualinvoicemember($membership_id , $level_id, $invoice_id , $student_id)
+    {
+
+        $stud_detail = Student::where('stud_id', $student_id)->first();
+        $payment_id_student = Payment::where('level_id', $level_id)->first();
+        $member = Membership_level::where('level_id', $level_id)->first();
+        $invoiceid = Invoice::where('student_id', $stud_detail->id)->where('invoice_id', $invoice_id)->first();
+        $inv = Invoice::where('student_id', $stud_detail->id)->where('invoice_id', $invoice_id)->first();
+        $no = 1;
+        $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+        
+        $listfeatures = Product_Features::all();
+        foreach ($listfeatures as $listfeat => $listval){
+            $listoffeat = $listval;
+        }
+
+        // quantity method decode untuk keluarkan dalam array
+        $quantity_array = $inv->quantity;
+        $arrayquan = json_decode($quantity_array,true);
+
+        // description method decode untuk keluarkan dalam array
+        $prodfeatures = $inv->product_features_name;
+        $arrayfeat = json_decode($prodfeatures,true);
+
+        $subtotal = (($inv->price)+($member->add_on_price));
+        $daystosum = '7';
+
+        $date_receives = date('d/m/Y', strtotime($invoiceid->created_at));
+        $due_dates = $invoiceid->created_at->addDays(7);
+
+        // testing Email content
+        $send_mail = $stud_detail->email;
+        $inv = $inv;
+        $subtotal = $subtotal;
+        $name = $stud_detail->first_name;
+        $secondname = $stud_detail->last_name;
+        $invoices = $invoiceid;
+        $invoice = $invoiceid->invoice_id;
+        $arrayfeat = $arrayfeat;
+        $arrayquan = $arrayquan;
+        $listoffeatures = $listfeatures;
+        $datesum = $due_dates->format('d-m-Y');
+        $no = $invoiceid->id;
+        $price = $payment_id_student->pay_price;
+        $balance = $balance;
+        $quantity = $payment_id_student->quantity;
+        $date_receive = $date_receives;
+        $due_date = $invoiceid->due_date;
+        $bulan = date('M Y');
+        $member = $member;
+        $membership = $member->name;
+
+        dispatch(new InvoiceManualMembershipJob($send_mail, $inv, $subtotal, $name, $secondname, $invoices , $invoice , $arrayfeat , $arrayquan , $listoffeatures , $datesum , $no , $price , $balance , $quantity , $date_receive , $due_date , $bulan , $member , $membership));
+        $payment_id_student->save();
 
         return redirect('view/members/' . $membership_id . '/' . $level_id . '/' . $student_id )->with('sent-success', 'Purchased confirmation email has been sent successfully') ;
     }

@@ -1181,9 +1181,9 @@ class HomeController extends Controller
 
         $business = DB::table('business_details')->get();
         // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
-        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0034')->get();
+        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0037')->get();
         $student = DB::table('student')->get();
-        $product = DB::table('product')->where('product_id','PRD0034')->first();
+        $product = DB::table('product')->where('product_id','PRD0037')->first();
         // dd($ticket);
         // $package = DB::table('package')->where('package_id', 'PKD0065')->first();
 
