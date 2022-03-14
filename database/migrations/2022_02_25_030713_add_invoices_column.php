@@ -16,7 +16,9 @@ class AddInvoicesColumn extends Migration
         Schema::table('invoices', function (Blueprint $table) {
             $table->string('product_features_id')->nullable()->after('student_id');
             $table->string('product_features_name')->nullable()->after('student_id');
-            $table->string('description_features')->nullable()->after('student_id');
+            $table->string('taxable_amount')->nullable()->after('student_id');
+            $table->string('tax')->nullable()->after('student_id');
+            $table->string('quantity')->nullable()->after('student_id');
         });
     }
 
@@ -30,7 +32,9 @@ class AddInvoicesColumn extends Migration
         Schema::table('invoices', function (Blueprint $table) {
             $table->dropColumn('product_features_id');
             $table->dropColumn('product_features_name');
-            $table->dropColumn('description_features');
+            $table->dropColumn('taxable_amount');
+            $table->dropColumn('tax');
+            $table->dropColumn('quantity');
         });
     }
 }

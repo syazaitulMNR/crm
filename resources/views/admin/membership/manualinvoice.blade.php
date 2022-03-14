@@ -42,17 +42,13 @@
 
         <div class="col-md-3">
             <label class="form-label">Invoice No</label>
-            <input name="invoiceno" placeholder="INV-01-0001" type="text" class="form-control" required>
+            <input name="invoiceno" placeholder="INV-01-001" type="text" class="form-control" value="{{ 'INV'.uniqid() }}" required>
         </div>
 
         <div class="col-md-3">
             <label class="form-label" for="membership">Choose a Membership</label>
             <select class="form-select" value="{{ $membership_level->name }}" name="membership" id="membership">
-                <option class="form-control" value="{{ $membership_level->name }}" disabled selected>Choose One</option>
-                <option class="form-control" value="Platinum Pro">Platinum Pro</option>
-                <option class="form-control" value="Platinum Lite">Platinum Lite</option>
-                <option class="form-control" value="Ultimate Partners">Ultimate Partners</option>
-                <option class="form-control" value="Ultimate Plus">Ultimate Plus</option>
+                <option class="form-control" value="{{ $membership_level->name }}" disabled selected>{{ $membership_level->name }}</option>
             </select>
         </div>
 
@@ -118,7 +114,7 @@
         $("#date1").datepicker({
             showAnim: 'drop',
             numberOfMonth: 1,
-            dateFormat: 'dd-mm-yy',
+            dateFormat: 'yy-mm-dd',
             onClose: function (selectedDate) {
                 $("#date2").datepicker("option", "minDate", selectedDate);
             }
@@ -127,7 +123,7 @@
         $("#date2").datepicker({
             showAnim: 'drop',
             numberOfMonth: 1,
-            dateFormat: 'dd-mm-yy',
+            dateFormat: 'yy-mm-dd',
             onClose: function (selectedDate) {
                 $("#date1").datepicker("option", "maxDate", selectedDate);
             }

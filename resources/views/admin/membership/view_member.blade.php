@@ -72,8 +72,8 @@ Membership
   </div>
 
   <div class="">
-    <button class="tablink" onclick="openPage('Customer Information', this)" id="defaultOpen">Customer Information</button>
-    <button class="tablink" onclick="openPage('Search', this)" id="defaultOpen">Search</button>
+    <button class="tablink" onclick="openPage('Customer Information', this)" id="defaultOpen" >Customer Information</button>
+    <button class="tablink" onclick="openPage('Search', this)" id="SearchOpen" >Search</button>
     <button class="tablink" onclick="openPage('Manage Student', this)">Manage Student</button>
     <button class="tablink" onclick="openPage('List', this)">List </button>
     
@@ -177,23 +177,23 @@ Membership
               <table class="table table-hover">
                   <tbody>
                     <tr>
-                      <form action="{{ url('uploadCheque') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method ="POST">
+                      <form action="{{ url('searchbydate') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method ="POST">
                         @csrf
                         <br>
                         <div class="container">
                           <div class="row">
                             <div class="container-fluid">
                               <div class="form-group row">
-                                <label for="date" class="col-form-label col-sm-2">Date Of Birth From</label>
+                                <label for="date" class="col-form-label col-sm-2">Date From</label>
                                 <div class="col-sm-3">
                                   <input type="date" class="form-control input-sm" id="from" name="fromDate" required/>
                                 </div>
-                                <label for="date" class="col-form-label col-sm-2">Date Of Birth To</label>
+                                <label for="date" class="col-form-label col-sm-2">Date To</label>
                                 <div class="col-sm-3">
                                   <input type="date" class="form-control input-sm" id="to" name="to" required/>
                                 </div>
-                                  <div class="col-sm-2">
-                                    <button type="submit" class="btn" name="search" title="Search"><img src="https://img.icons8.com/and">
+                                  <div class="col-sm-2 mt-1">
+                                    <button type="submit" class="btn" name="search" title="Search"><i class="fa fa-search"></i>
                                   </div>
                                 </div>
                               </div>
@@ -209,10 +209,71 @@ Membership
               @else
                   {{ $invoices->links() }} 
               @endif
+          </div>
+          <div class="row">
+            <div class="col-md-12 "> 
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Membership</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th class="text-center"><i class="fas fa-cogs"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {{-- @foreach ($invoices as $key => $invoice) --}}
+                            @foreach ($searchbydate as $key => $searchdata)
+                              @if ($searchdata->product_features_name != null)
+                                <tr>
+                                    <td>
+                                    {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                                    </td>
+                                    <td>
+                                    {{ $searchdata->invoice_id }}
+                                    </td>
+                                    <td>
+                                    {{ $searchdata->for_date }}
+                                    </td>
+                                    <td>
+                                        @if ($searchdata->status == 'not paid')
+                                            <span class="badge bg-danger">Unpaid</span>
+                                        @endif
+      
+                                        @if ($searchdata->status == 'paid')
+                                            <span class="badge bg-success">Paid</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                    <b>RM {{ number_format($searchdata->price) }}</b>
+                                    </td>
+                                    <td class="text-center">
+                                    <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $searchdata->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                                    <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $searchdata->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                                    </td>
+                                </tr>
+                              @else
+                              @endif
+                            @endforeach
+                          {{-- @endforeach --}}
+
+                        </tbody>
+                    </table>
+                    {{-- @if(isset($query))
+                        {{ $invoice->appends(['search' => $query])->links() }} 
+                    @else
+                        {{ $invoice->links() }} 
+                    @endif --}}
+                </div>  
+            </div>
           </div>  
         </div>
       </div>
     </div>
+
     
     <div id="Manage Student" class="tabcontent">
   <!-- List Invoices -->
@@ -400,65 +461,130 @@ Membership
     </div>
     
     <div id="List" class="tabcontent">
-  <!-- List Invoices -->
-  <div class="flex-md-nowrap pt-3 mb-3">
-    <h1 class="h2">List Invoices</h1>
-</div> 
+    <!-- List Invoices -->
+    <div class="flex-md-nowrap pt-3 mb-3">
+      <h1 class="h2">List Invoices</h1>
+    </div> 
 
-<div class="row">
-  <div class="col-md-12 "> 
-      <div class="table-responsive">
-          <table class="table table-hover">
-              <thead>
-                  <tr>
-                      <th>#</th>
-                      <th>Membership</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Price</th>
-                      <th class="text-center"><i class="fas fa-cogs"></i></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  @foreach ($invoices as $key => $invoice)
+    <div class="row">
+      <div class="col-md-12 "> 
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
                       <tr>
-                          <td>
-                          {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
-                          </td>
-                          <td>
-                          {{ $membership_level->name }}
-                          </td>
-                          <td>
-                          {{ $invoice->for_date }}
-                          </td>
-                          <td>
-                              @if ($invoice->status == 'not paid')
-                                  <span class="badge bg-danger">Unpaid</span>
-                              @endif
-
-                              @if ($invoice->status == 'paid')
-                                  <span class="badge bg-success">Paid</span>
-                              @endif
-                          </td>
-                          <td>
-                          <b>RM {{ number_format($invoice->price) }}</b>
-                          </td>
-                          <td class="text-center">
-                          <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
-                          <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
-                          </td>
+                          <th>#</th>
+                          <th>Membership</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Price</th>
+                          <th class="text-center"><i class="fas fa-cogs"></i></th>
                       </tr>
-                  @endforeach
-              </tbody>
-          </table>   
-          @if(isset($query))
-              {{ $invoices->appends(['search' => $query])->links() }} 
-          @else
-              {{ $invoices->links() }} 
-          @endif
-      </div>  
-  </div>
-</div>
+                  </thead>
+                  <tbody>
+                      @foreach ($invoices as $key => $invoice)
+                        @if ($invoice->product_features_name == null)
+                          <tr>
+                              <td>
+                              {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                              </td>
+                              <td>
+                              {{ $membership_level->name }}
+                              </td>
+                              <td>
+                              {{ $invoice->for_date }}
+                              </td>
+                              <td>
+                                  @if ($invoice->status == 'not paid')
+                                      <span class="badge bg-danger">Unpaid</span>
+                                  @endif
+
+                                  @if ($invoice->status == 'paid')
+                                      <span class="badge bg-success">Paid</span>
+                                  @endif
+                              </td>
+                              <td>
+                              <b>RM {{ number_format($invoice->price) }}</b>
+                              </td>
+                              <td class="text-center">
+                              <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                              <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                              </td>
+                          </tr>
+                        @else
+                        @endif
+                      @endforeach
+                  </tbody>
+              </table>   
+              @if(isset($query))
+                  {{ $invoices->appends(['search' => $query])->links() }} 
+              @else
+                  {{ $invoices->links() }} 
+              @endif
+          </div>  
+      </div>
+    </div>
+
+    <div class="flex-md-nowrap pt-3 mb-3">
+      <h1 class="h2">Manual Insert</h1>
+    </div> 
+
+    <div class="row">
+      <div class="col-md-12 "> 
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Membership</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Price</th>
+                          <th class="text-center"><i class="fas fa-cogs"></i></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($invoices as $key => $invoice)
+                        @if ($invoice->product_features_name != null)
+                          <tr>
+                              <td>
+                              {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                              </td>
+                              <td>
+                              {{ $membership_level->name }}
+                              </td>
+                              <td>
+                              {{ $invoice->for_date }}
+                              </td>
+                              <td>
+                                  @if ($invoice->status == 'not paid')
+                                      <span class="badge bg-danger">Unpaid</span>
+                                  @endif
+
+                                  @if ($invoice->status == 'paid')
+                                      <span class="badge bg-success">Paid</span>
+                                  @endif
+                              </td>
+                              <td>
+                              <b>RM {{ number_format($invoice->price) }}</b>
+                              </td>
+                              <td class="text-center">
+                              <a href="{{ url('download-manual-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                              <a href="{{ url('send-manualinvoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                              </td>
+                          </tr>
+                        @else 
+                        @endif
+                      @endforeach
+                  </tbody>
+              </table>   
+              @if(isset($query))
+                  {{ $invoices->appends(['search' => $query])->links() }} 
+              @else
+                  {{ $invoices->links() }} 
+              @endif
+          </div>  
+      </div>
+    </div>
 
 <!-- List Receipt -->
 <div class="flex-md-nowrap mt-4">
@@ -513,32 +639,55 @@ Membership
 </div>
 </div>
 @endsection
-    </div>
-  </div>
+</div>
+</div>
 
-
-
-
-<script>
-  function openPage(pageName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+@if ($date1 == null)
+  <script>
+    function openPage(pageName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
     }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].style.backgroundColor = "";
+
+    window.onload = function(e){ 
+        document.getElementById("defaultOpen").click();
     }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-  }
 
-  window.onload = function(e){ 
-      document.getElementById("defaultOpen").click();
-  }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+@else
+  <script>
+    function openPage(pageName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+    }
 
-   // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
+    window.onload = function(e){ 
+        document.getElementById("SearchOpen").click();
+    }
 
-</script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("SearchOpen").click();
+  </script>
+@endif
+
+
