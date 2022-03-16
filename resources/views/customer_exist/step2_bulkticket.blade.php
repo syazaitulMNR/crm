@@ -122,6 +122,7 @@ Pendaftaran Pembeli
                         total = price * 3;
                     } else {
                         total = (price * 5);
+
                     }
                     var totallagi = document.getElementById('jumlahharga');
                     totallagi.value = total;
@@ -133,7 +134,7 @@ Pendaftaran Pembeli
                     } else if (val == 3) {
                         total = price * 3;
                     } else {
-                        total = (price * 5);
+                        total = price * 5;
                     }
                     var totallagi = document.getElementById('jumlahharga');
                     totallagi.value = total;
@@ -147,7 +148,7 @@ Pendaftaran Pembeli
                 } else if (val == 3) {
                     total = price * 3;
                 } else {
-                    total = (price * 5);
+                    total = price * 5;
                 }
                 var totallagi = document.getElementById('jumlahharga');
                 totallagi.value = Math.round(total);
@@ -159,7 +160,7 @@ Pendaftaran Pembeli
                 } else if (val == 3) {
                     total = price * 3;
                 } else {
-                    total = (price * 5);
+                    total = price * 5;
                 }
                 var totallagi = document.getElementById('jumlahharga');
                 totallagi.value = Math.round(total);
