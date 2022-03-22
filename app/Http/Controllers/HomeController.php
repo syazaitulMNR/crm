@@ -394,7 +394,6 @@ class HomeController extends Controller
 
         $count=2;
         $phonecode=1;
-        dd($payment->offer_id);
 
         // Check if form has been key in
         if($payment->update_count == 1){
