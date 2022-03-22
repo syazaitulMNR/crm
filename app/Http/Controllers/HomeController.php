@@ -417,6 +417,11 @@ class HomeController extends Controller
                 //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
                 
+            } else if($payment->offer_id == 'OFF004') {
+
+                //for Bulk Ticket
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));    
+
             } else if($payment->offer_id == 'OFF005') {
 
                 //for Bulk Ticket
