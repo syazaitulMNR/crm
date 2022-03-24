@@ -23,7 +23,7 @@
                         <li><a class="dropdown-item" href="/customer_profiles"><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
                         
                         @if (Auth::user()->user_id == 'UID001')
-                        <li><a class="dropdown-item" href="/customer_details"><i class="bi bi-person-lines-fill pr-2"></i>Business Customer Detail</a></li>
+                        <li><a class="dropdown-item" href="/customer_surveyform"><i class="bi bi-person-lines-fill pr-2"></i>Business Customer Detail</a></li>
                         {{-- <li><a class="dropdown-item" href="/customer-invite"><i class="bi bi-person-lines-fill pr-2"></i>Customer Invite List</a></li> --}}
                         @endif
                         @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')

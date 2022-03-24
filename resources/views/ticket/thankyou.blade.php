@@ -4,11 +4,11 @@
   Terima Kasih
 @endsection
 <head>
-  @if ($package == 'PKD0065')
+  @if ($package == 'PKD0075')
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
-  @elseif ($package == 'PKD0066')
+  @elseif ($package == 'PKD0076')
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
-  @elseif ($package == 'PKD0067')
+  @elseif ($package == 'PKD0078')
   <meta http-equiv="refresh" content="2;url=https://momentuminternet.com/buku-8-video-fb/">
   @else 
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 

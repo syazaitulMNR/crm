@@ -29,6 +29,36 @@ Membership
       -ms-transform: rotate(-44deg);
       transform: rotate(-44deg);
     }
+    * {box-sizing: border-box}
+    /* Set height of body and the document to 100% */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
+    }
+    /* Style tab links */
+    .tablink {
+      background-color: #afafaf;
+      color: black;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 25%;
+    }
+    .tablink:hover {
+      background-color: #777;
+    }
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+      color: black;
+      display: none;
+      padding: 60px 20px;
+      height: 100%;
+    }
+    
 </style>
   
 
@@ -40,93 +70,212 @@ Membership
       / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}">{{ $membership->name }}</a> / <a href="{{ url('membership/level') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}">{{ $membership_level->name }}</a>
       / <b>{{ $student->first_name }}</b>
   </div>
-          
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">Customer Information</h1>
-  </div> 
 
-  <div class="row">      
-    <div class="col-md-12">
-      <form class="px-1" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
-        @csrf
-      
-        <div class="row py-2">     
-          <div class="col-md-6">
-            <label class="form-label">IC No.</label>
-            <input type="text" name="ic" value="{{ $student->ic }}" placeholder="Enter Ic Number" class="form-control" required>
+  <div class="">
+    <button class="tablink" onclick="openPage('Customer Information', this)" id="defaultOpen" >Customer Information</button>
+    <button class="tablink" onclick="openPage('Search', this)" id="SearchOpen" >Search</button>
+    <button class="tablink" onclick="openPage('Manage Student', this)">Manage Student</button>
+    <button class="tablink" onclick="openPage('List', this)">List </button>
+    
+    <div id="Customer Information" class="tabcontent">
+      <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Customer Information</h1>
+    </div> 
+  
+    <div class="row">      
+      <div class="col-md-12">
+        <form class="px-1" action="{{ url('update/members') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method="post">
+          @csrf
+        
+          <div class="row py-2">     
+            <div class="col-md-6">
+              <label class="form-label">IC No.</label>
+              <input type="text" name="ic" value="{{ $student->ic }}" placeholder="Enter Ic Number" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Status</label>
+              <select class="form-select form-control" name="status">
+                <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
+                <option value="Active">Active</option>
+                <option value="Downgrade">Downgrade</option>
+                <option value="Break">Break</option>
+                <option value="Stop">Stop</option>
+                <option value="Pending">Pending</option>
+                <option value="End-Membership">End Membership</option>
+                <option value="Upgrade">Upgrade</option>
+                <option value="Terminate">Terminate</option>
+              </select>
+            </div>
           </div>
-          <div class="col-md-6">
-            <label class="form-label">Status</label>
-            <select class="form-select form-control" name="status">
-              <option value="{{ $student->status }}" readonly selected>-- {{ $student->status }} --</option>
-              <option value="Active">Active</option>
-              <option value="Downgrade">Downgrade</option>
-              <option value="Break">Break</option>
-              <option value="Stop">Stop</option>
-              <option value="Pending">Pending</option>
-              <option value="End-Membership">End Membership</option>
-              <option value="Upgrade">Upgrade</option>
-              <option value="Terminate">Terminate</option>
-            </select>
+          <div class="row py-2">
+            <div class="col-md-6">
+              <label class="form-label">First Name</label>
+              <input type="text" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last Name</label>
+              <input type="text" name="last_name" value="{{ ucwords(strtolower($student->last_name)) }}" class="form-control" required>
+            </div>
           </div>
-        </div>
-        <div class="row py-2">
-          <div class="col-md-6">
-            <label class="form-label">First Name</label>
-            <input type="text" name="first_name" value="{{ ucwords(strtolower($student->first_name)) }}" class="form-control" required>
+  
+          <div class="row py-2">
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="text" name="email" value="{{ $student->email }}" placeholder="Enter Email Address" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone No.</label>
+              <input type="text" name="phoneno" value="{{ $student->phoneno }}" placeholder="Enter Phone Number" class="form-control" required>
+            </div>
           </div>
-          <div class="col-md-6">
-            <label class="form-label">Last Name</label>
-            <input type="text" name="last_name" value="{{ ucwords(strtolower($student->last_name)) }}" class="form-control" required>
-          </div>
-        </div>
-
-        <div class="row py-2">
-          <div class="col-md-6">
-            <label class="form-label">Email</label>
-            <input type="text" name="email" value="{{ $student->email }}" placeholder="Enter Email Address" class="form-control" required>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Phone No.</label>
-            <input type="text" name="phoneno" value="{{ $student->phoneno }}" placeholder="Enter Phone Number" class="form-control" required>
-          </div>
-        </div>
-
-        <div class="col-md-6 py-3 float-end">
-          @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
-          @else
-          <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
-            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body text-start">
-                    <p>This action will remove the details from the table :</p>
-                    <ul>
-                      <li>Student</li>
-                      <li>Payment</li>
-                      <li>Ticket</li>
-                    </ul>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
+  
+          <div class="col-md-6 py-3 float-end">
+            @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+            @else
+            <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $student->stud_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal{{ $student->stud_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                      <p>This action will remove the details from the table :</p>
+                      <ul>
+                        <li>Student</li>
+                        <li>Payment</li>
+                        <li>Ticket</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <a class="btn btn-danger" href="{{ url('delete-member') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}">Delete</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            @endif
-            <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
+              @endif
+              <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save  Changes</button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
+    </div>
+    
+    <div id="Search" class="tabcontent">
+    <!-- Search by date Statement -->
+    <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Search by Date Statement</h1>
+    </div> 
+    
+    <div class="row">
+      <div class="col-md-12 "> 
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <form action="{{ url('searchbydate') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}" method ="POST">
+                        @csrf
+                        <br>
+                        <div class="container">
+                          <div class="row">
+                            <div class="container-fluid">
+                              <div class="form-group row">
+                                <label for="date" class="col-form-label col-sm-2">Date From</label>
+                                <div class="col-sm-3">
+                                  <input type="date" class="form-control input-sm" id="from" name="fromDate" required/>
+                                </div>
+                                <label for="date" class="col-form-label col-sm-2">Date To</label>
+                                <div class="col-sm-3">
+                                  <input type="date" class="form-control input-sm" id="to" name="to" required/>
+                                </div>
+                                  <div class="col-sm-2 mt-1">
+                                    <button type="submit" class="btn" name="search" title="Search"><i class="fa fa-search"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <br>
+                        </form>
+                      </tr>  
+                  </tbody>
+              </table>   
+              @if(isset($query))
+                  {{ $invoices->appends(['search' => $query])->links() }} 
+              @else
+                  {{ $invoices->links() }} 
+              @endif
+          </div>
+          <div class="row">
+            <div class="col-md-12 "> 
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Membership</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Price</th>
+                                <th class="text-center"><i class="fas fa-cogs"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {{-- @foreach ($invoices as $key => $invoice) --}}
+                            @foreach ($searchbydate as $key => $searchdata)
+                              @if ($searchdata->product_features_name != null)
+                                <tr>
+                                    <td>
+                                    {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                                    </td>
+                                    <td>
+                                    {{ $searchdata->invoice_id }}
+                                    </td>
+                                    <td>
+                                    {{ $searchdata->for_date }}
+                                    </td>
+                                    <td>
+                                        @if ($searchdata->status == 'not paid')
+                                            <span class="badge bg-danger">Unpaid</span>
+                                        @endif
+      
+                                        @if ($searchdata->status == 'paid')
+                                            <span class="badge bg-success">Paid</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                    <b>RM {{ number_format($searchdata->price) }}</b>
+                                    </td>
+                                    <td class="text-center">
+                                    <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $searchdata->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                                    <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $searchdata->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                                    </td>
+                                </tr>
+                              @else
+                              @endif
+                            @endforeach
+                          {{-- @endforeach --}}
 
+                        </tbody>
+                    </table>
+                    {{-- @if(isset($query))
+                        {{ $invoice->appends(['search' => $query])->links() }} 
+                    @else
+                        {{ $invoice->links() }} 
+                    @endif --}}
+                </div>  
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="Manage Student" class="tabcontent">
   <!-- List Invoices -->
   <div class="flex-md-nowrap pt-3 mb-3">
     <h1 class="h2">Manage Student</h1>
@@ -278,116 +427,267 @@ Membership
             </div>  
         </div>
       </div>
-  <!-- List Invoices -->
-  <div class="flex-md-nowrap pt-3 mb-3">
+
+      <div class="table-responsive">
+        <h1 class="h2">Insert Manual</h1>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">File Name</th>
+              <th scope="col"><i class="fas fa-cogs"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{-- <tr>
+              <td>1</td>
+              <td>Statement of Account</td>
+              <td><a class="btn btn-dark" href="{{ url('manual-statement') }}"><i class="bi bi-arrow-right"></i></a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Receipt</td>
+              <td><a class="btn btn-dark" href="{{ url('manual-receipt') }}"><i class="bi bi-arrow-right"></i></a></td>
+            </tr>  
+            <tr> --}}
+              <td>1</td>
+              <td>Invoice</td>
+              <td><a class="btn btn-dark" href="{{ url('manual-invoice') }}/{{ $membership->membership_id }}/{{ $membership_level->level_id }}/{{ $student->stud_id }}"><i class="bi bi-arrow-right"></i></a></td>
+            </tr>    
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    
+    <div id="List" class="tabcontent">
+    <!-- List Invoices -->
+    <div class="flex-md-nowrap pt-3 mb-3">
       <h1 class="h2">List Invoices</h1>
-  </div> 
-  
-  <div class="row">
-    <div class="col-md-12 "> 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Membership</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Price</th>
-                        <th class="text-center"><i class="fas fa-cogs"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($invoices as $key => $invoice)
-                        <tr>
-                            <td>
-                            {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
-                            </td>
-                            <td>
-                            {{ $membership_level->name }}
-                            </td>
-                            <td>
-                            {{ $invoice->for_date }}
-                            </td>
-                            <td>
-                                @if ($invoice->status == 'not paid')
-                                    <span class="badge bg-danger">Unpaid</span>
-                                @endif
+    </div> 
 
-                                @if ($invoice->status == 'paid')
-                                    <span class="badge bg-success">Paid</span>
-                                @endif
-                            </td>
-                            <td>
-                            <b>RM {{ number_format($invoice->price) }}</b>
-                            </td>
-                            <td class="text-center">
-                            <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
-                            <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>   
-            @if(isset($query))
-                {{ $invoices->appends(['search' => $query])->links() }} 
-            @else
-                {{ $invoices->links() }} 
-            @endif
-        </div>  
-    </div>
-  </div>
+    <div class="row">
+      <div class="col-md-12 "> 
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Membership</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Price</th>
+                          <th class="text-center"><i class="fas fa-cogs"></i></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($invoices as $key => $invoice)
+                        @if ($invoice->product_features_name == null)
+                          <tr>
+                              <td>
+                              {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                              </td>
+                              <td>
+                              {{ $membership_level->name }}
+                              </td>
+                              <td>
+                              {{ $invoice->for_date }}
+                              </td>
+                              <td>
+                                  @if ($invoice->status == 'not paid')
+                                      <span class="badge bg-danger">Unpaid</span>
+                                  @endif
 
-  <!-- List Receipt -->
-  <div class="flex-md-nowrap mt-4">
-      <h1 class="h2">List Receipt</h1>
-  </div> 
-  
-  <div class="row">
-    <div class="col-md-12 ">     
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Paid Date</th>
-                        <th scope="col">Paid Price</th>
-                        <th scope="col">Download</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($payment as $key => $p)
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>
-                                {{ $membership_level->name }}
-                            </td>
-                            <td>
-                                {{ date('d/m/Y', strtotime($p->created_at)) }}
-                            </td>
-                            <td>
-                                <b>RM {{ number_format($p->pay_price) }}.00</b>
-                            </td>
-                            <td>
-                                <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
-                                <a href="{{ url('send-receiptmember') }}/{{ $student->membership_id }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm mr-8 ml-1 float-left text-decoration-none btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</a>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center">No result founds</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>  
-            @if(isset($query))
-                {{ $payment->appends(['search' => $query])->links() }} 
-            @else
-                {{ $payment->links() }} 
-            @endif
-        </div>  
+                                  @if ($invoice->status == 'paid')
+                                      <span class="badge bg-success">Paid</span>
+                                  @endif
+                              </td>
+                              <td>
+                              <b>RM {{ number_format($invoice->price) }}</b>
+                              </td>
+                              <td class="text-center">
+                              <a href="{{ url('download-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                              <a href="{{ url('send-invoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                              </td>
+                          </tr>
+                        @else
+                        @endif
+                      @endforeach
+                  </tbody>
+              </table>   
+              @if(isset($query))
+                  {{ $invoices->appends(['search' => $query])->links() }} 
+              @else
+                  {{ $invoices->links() }} 
+              @endif
+          </div>  
+      </div>
     </div>
+
+    <div class="flex-md-nowrap pt-3 mb-3">
+      <h1 class="h2">Manual Insert</h1>
+    </div> 
+
+    <div class="row">
+      <div class="col-md-12 "> 
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Membership</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                          <th>Price</th>
+                          <th class="text-center"><i class="fas fa-cogs"></i></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach ($invoices as $key => $invoice)
+                        @if ($invoice->product_features_name != null)
+                          <tr>
+                              <td>
+                              {{( ( $invoices->currentPage() - 1 ) * 10) + $key + 1}}
+                              </td>
+                              <td>
+                              {{ $membership_level->name }}
+                              </td>
+                              <td>
+                              {{ $invoice->for_date }}
+                              </td>
+                              <td>
+                                  @if ($invoice->status == 'not paid')
+                                      <span class="badge bg-danger">Unpaid</span>
+                                  @endif
+
+                                  @if ($invoice->status == 'paid')
+                                      <span class="badge bg-success">Paid</span>
+                                  @endif
+                              </td>
+                              <td>
+                              <b>RM {{ number_format($invoice->price) }}</b>
+                              </td>
+                              <td class="text-center">
+                              <a href="{{ url('download-manual-invoice') }}/{{ $membership_level->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary text-decoration-none"><i class="fas fa-download pr-2"></i>Invoice</a>
+                              <a href="{{ url('send-manualinvoicemember') }}/{{ $student->membership_id }}/{{ $student->level_id }}/{{ $invoice->invoice_id }}/{{ $student->stud_id }}"class="btn-sm btn-success"><i class="bi bi-save pr-2"></i>Send Invoice</a>
+                              </td>
+                          </tr>
+                        @else 
+                        @endif
+                      @endforeach
+                  </tbody>
+              </table>   
+              @if(isset($query))
+                  {{ $invoices->appends(['search' => $query])->links() }} 
+              @else
+                  {{ $invoices->links() }} 
+              @endif
+          </div>  
+      </div>
+    </div>
+
+<!-- List Receipt -->
+<div class="flex-md-nowrap mt-4">
+    <h1 class="h2">List Receipt</h1>
+</div> 
+
+<div class="row">
+  <div class="col-md-12 ">     
+      <div class="table-responsive">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Paid Date</th>
+                      <th scope="col">Paid Price</th>
+                      <th scope="col">Download</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @forelse ($payment as $key => $p)
+                      <tr>
+                          <td>{{ $key+1 }}</td>
+                          <td>
+                              {{ $membership_level->name }}
+                          </td>
+                          <td>
+                              {{ date('d/m/Y', strtotime($p->created_at)) }}
+                          </td>
+                          <td>
+                              <b>RM {{ number_format($p->pay_price) }}.00</b>
+                          </td>
+                          <td>
+                              <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                              <a href="{{ url('send-receiptmember') }}/{{ $student->membership_id }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm mr-8 ml-1 float-left text-decoration-none btn-warning"><i class="bi bi-save pr-2"></i>Send Receipt</a>
+                          </td>
+                      </tr>
+                  @empty
+                      <tr>
+                          <td colspan="5" class="text-center">No result founds</td>
+                      </tr>
+                  @endforelse
+              </tbody>
+          </table>  
+          @if(isset($query))
+              {{ $payment->appends(['search' => $query])->links() }} 
+          @else
+              {{ $payment->links() }} 
+          @endif
+      </div>  
   </div>
 </div>
+</div>
 @endsection
+</div>
+</div>
+
+@if ($date1 == null)
+  <script>
+    function openPage(pageName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+    }
+
+    window.onload = function(e){ 
+        document.getElementById("defaultOpen").click();
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+@else
+  <script>
+    function openPage(pageName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(pageName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+    }
+
+    window.onload = function(e){ 
+        document.getElementById("SearchOpen").click();
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("SearchOpen").click();
+  </script>
+@endif
+
+

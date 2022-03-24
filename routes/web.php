@@ -57,20 +57,23 @@ Route::get('members-format/{membership_id}/{level_id}','MembershipController@exp
 Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
+Route::post('searchbydate/{membership_id}/{level_id}/{student_id}', 'MembershipController@searchbydate');
 
 // Manual Key in Statement , Receipt & Invoice
-Route::get('manual-statement', 'MembershipController@manualStatement');
-Route::get('manual-receipt', 'MembershipController@manualReceipt');
-Route::get('manual-invoice', 'MembershipController@manualInvoice');
+Route::get('manual-invoice/{membership_id}/{level_id}/{stud_id}', 'MembershipController@manualInvoice');
 
 // Manual Download Statement , Receipt & Invoice
-Route::post('manualdownload-statement', 'MembershipController@Statementsave');
-Route::post('manualdownload-receipt', 'MembershipController@Receiptsave');
-Route::post('manualdownload-invoice', 'MembershipController@Invoicesave');
+Route::post('manualdownload-invoice/{stud_id}', 'MembershipController@Invoicesave');
+
+// Add Features Product
+Route::post('add-features-product', 'MembershipController@addFeaturesProduct');
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
 Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController@downloadReceipt');
+
+//Download Invoices for manual insert
+Route::get('download-manual-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadManualInvoices');
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +149,7 @@ Route::get('blastConfirmationEmail/{product_id}/{package_id}', 'BlastingControll
 // send Statement of Account , Invoice , Receipt ke email
 Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
 Route::get('send-invoicemember/{membership_id}/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_invoicemember');
+Route::get('send-manualinvoicemember/{membership_id}/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_manualinvoicemember');
 Route::get('send-receiptmember/{membership_id}/{level_id}/{payment_id}/{student_id}', 'BlastingController@send_receiptmember');
 
 /*
@@ -250,6 +254,8 @@ Route::get('customer_profiles/{id}', 'customerProfileController@customerProfile'
 Route::post('update_cust/{id}', 'customerProfileController@customerUpdate');
 Route::post('add_comment/{id}', 'customerProfileController@customerAddComment');
 Route::get('customer_details', 'customerProfileController@customerDetails');
+Route::get('customer_surveyform', 'customerProfileController@customerSurveyForm')->name('customerSurveyForm');
+Route::get('business_surveyform/{product_id}', 'customerProfileController@businessSurveyForm')->name('businessSurveyForm');
 //Route::get('customer-invite', 'customerProfileController@customerInvite')->name('staff.customer-invite');;
 
 // Newstudent
@@ -454,6 +460,9 @@ Route::prefix('student')->group(function()
 	Route::get('/invoice-download/{level}/{invoice}/{student}','StudentPortal@downloadInvoice')->name('invoice-download');
 	Route::get('/invoice-receipt/{level}/{payment}/{student}','StudentPortal@downloadResit')->name('receipt-download');
 
+	// download manual invoice untuk user
+	Route::get('download-manual-invoice/{level}/{invoice}/{student}', 'StudentPortal@downloadManualUserInvoices');
+
 	//add new download statement 
 	Route::get('/statement-format','StudentPortal@exportstatement_format')->name('statement-format');
 
@@ -477,7 +486,6 @@ Route::prefix('student')->group(function()
 	Route::get('invoices-receipt/receipt', 'StudentPortal@receipt')->name('invoices-receipt.receipt');
 	
 });
-
 
 Route::prefix('staff')->group(function() {
 	Route::get('/login','UserPortalController@showLoginForm')->name('staff.login');
@@ -515,9 +523,9 @@ Route::get("/sample-client", 'SampleChat@index');
 // Bussiness Details
 Route::get('business_details/{ticket_id}', 'HomeController@showIC');
 Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
+Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
-Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
 Route::get('export-surveyform/','HomeController@exportsurveyform');

@@ -104,7 +104,6 @@
         <div class="col-12">
             <button type="submit" class="btn btn-primary float-right"><i class="bi bi-save pr-2"></i>Submit</button>
         </div>
-
     </form>
 
     <p>Refer to this table for Offer ID </p>

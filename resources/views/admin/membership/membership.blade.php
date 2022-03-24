@@ -12,8 +12,67 @@
     <a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="dashboard">Dashboard</a> / <b>Membership</b>
   </div>
 
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <div class="d-flex flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Membership</h1>
+    
+    @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
+    @else
+    <div class="mb-2 mb-md-0" style="margin-left: 860px; align-content: flex-end;">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newfeatures">
+        <i class="bi bi-plus-lg pr-2"></i> New Features
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="newfeatures" tabindex="-1" role="dialog" aria-labelledby="newfeaturesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <h5 class="modal-title" id="exampleModalLabel">Add New Features</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="{{ url('add-features-product') }}" method="POST"> 
+            @csrf
+              <div class="form-group row px-4">
+                  <label class="col-sm-4 col-form-label">Features Name</label>
+                  <div class="col-sm-8">
+                  <input type="text" class="form-control" name="name" required>
+                  </div>
+              </div>
+              
+              <div class="form-group row px-4">
+                  <label class="col-sm-4 col-form-label">Features Price</label>
+                  <div class="col-sm-8">
+                  <input type="text" class="form-control" name="price" required>
+                  </div>
+              </div>
+
+              <div class="form-group row px-4">
+                  <label class="col-sm-4 col-form-label">Tax</label>
+                  <div class="col-sm-8">
+                  <input type="text" class="form-control" name="tax">
+                  </div>
+              </div>
+
+              <div class="form-group row px-4">
+                  <label class="col-sm-4 col-form-label">Description</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control" type="text" rows="5" cols="80" name="description" id="description">
+                    </textarea>
+                  </div>
+              </div>
+
+              <div class='col-md-12 text-right px-4 pb-3'>
+                  <button type='submit' class='btn btn-success'> <i class="fas fa-save pr-1"></i> Save </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endif
+
     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
     @else
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -25,7 +84,7 @@
       <div class="modal fade" id="newmembership" tabindex="-1" role="dialog" aria-labelledby="newmembershipLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header border-bottom-0">
+            <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Add New Membership</h5>
               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -115,39 +174,6 @@
     <p>There are no membership to display.</p>
   @endif
 </div>
-
-<div class="col-md-12 pt-3">     
-    <div class="table-responsive">
-      <h1 class="h2">Edit Manual</h1>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">File Name</th>
-            <th scope="col"><i class="fas fa-cogs"></i></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Statement of Account</td>
-            <td><a class="btn btn-dark" href="{{ url('manual-statement') }}"><i class="bi bi-arrow-right"></i></a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Receipt</td>
-            <td><a class="btn btn-dark" href="{{ url('manual-receipt') }}"><i class="bi bi-arrow-right"></i></a></td>
-          </tr>  
-          <tr>
-            <td>3</td>
-            <td>Invoice</td>
-            <td><a class="btn btn-dark" href="{{ url('manual-invoice') }}"><i class="bi bi-arrow-right"></i></a></td>
-          </tr>    
-        </tbody>
-      </table>
-    </div>
-</div>
-
 
 <!-- Enable function to add row ------------------------------------------>
 <script type="text/javascript">
