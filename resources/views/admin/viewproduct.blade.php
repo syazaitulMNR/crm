@@ -43,7 +43,6 @@
   </div>
   @endif
 
-  <div class="float-right pt-3">{{$product->links()}}</div>
   @if(count($product) > 0)
   <div class="table-responsive">
     <table class="table table-hover">
@@ -104,6 +103,7 @@
   @else
     <p>There are no event to display.</p>
   @endif
+  <div class="float-left pt-3">{{$product->links()}}</div>
     
 </div>
 @endsection

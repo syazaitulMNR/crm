@@ -111,6 +111,17 @@ Kemaskini Peserta
                 <label for="description">No. Telefon:</label><br>
                 <input id="phoneno2" class="form-control pb-2" type="tel" name="phoneno" placeholder="Tanpa '-' cth. 01123456789" required>
             </div>
+
+            <label class="mt-3" for="title">Adakah anda akan hadir pada hari tersebut?</label>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-primary col-6">
+                <input type="radio" name="kehadiran" value="hadir" id="option1" autocomplete="off" checked> Hadir
+              </label>
+              <label class="btn btn-danger col-6">
+                <input type="radio" name="kehadiran" value="tidak hadir" id="option2" autocomplete="off"> Tidak Hadir
+              </label>
+            </div>
+
           </div>
 
           @for ($i = 1;  $i < $payment->quantity ; $i++) 

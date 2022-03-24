@@ -43,96 +43,69 @@
             </ol>
         </nav>
 
-        {{-- <script>
-          $(document).ready( function() {
-          $('.dropdown-toggle').dropdown();
-          });
-        </script> --}}
-        <div class="col-md-12 pt-3 table-responsive">
-          {{-- <form action="{{ url('customer_details') }}" class="input-group" method="GET">
-              <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search name and IC number">
-          </form> --}}
-          
-          <div class="input-group">
-            <form action="{{ url('customer_details') }}" class="input-group" method="GET">
-              {{-- <input type="text" class="form-control" aria-label="Text input with segmented dropdown button"> --}}
-              <input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search business type and name">
-              <div class="input-group-append col-md-4">
-
-                <select class="custom-select" id="inputGroupSelect01" name="role">
-                  @foreach ($role as $r)
-                    @if (request()->query('role'))
-                      <option {{ request()->query('role') === $r ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
-                    @else
-                      <option {{ request()->query('role') === 'Role' ? 'selected' : '' }} value="{{ $r === 'Role' ? '' : $r }}">{{ $r }}</option>
-                    @endif
-                  @endforeach
-                </select>
-
-                <select class="custom-select" id="inputGroupSelect01" name="type">
-                  @foreach ($type as $t)
-                    @if (request()->query('type'))
-                      <option {{ request()->query('type') === $t ? 'selected' : '' }} value="{{ $t === 'Type' ? '' : $t }}">{{ $t }}</option>
-                    @else
-                      <option {{ request()->query('type') === 'Type' ? 'selected' : '' }} value="{{ $t === 'Type' ? '' : $t }}">{{ $t }}</option>
-                    @endif
-                  @endforeach
-                </select>
-
-                <select class="custom-select" id="inputGroupSelect02" name="price">
-                  <option {{ !request()->query('price') ? 'selected' : '' }} value="">Income</option>
-                  @foreach ($incomeOptions as $i)
-                      <option {{ request()->query('price') === $i->range ? 'selected' : '' }} value="{{ $i->range }}">{{ $i->range }}</option>
-                  @endforeach
-                </select>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </div>
-              </div>
-            </form>
+        <div class="col-md-12 table-responsive">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+            <h1 class="h2">Business Details</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <form action="{{ url('export-surveyform') }}" method="GET">
+                  <button class="btn btn-outline-secondary" type="submit">Download</button>
+                </form>
+              </div>  
+            </div>
           </div>
-
-          <div class="float-end mr-3" >
-            <form action="{{ url('export-surveyform') }}" method="GET">
-              <button class="btn btn-outline-secondary" type="submit">Download</button>
-            </form>
-          </div>  
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Business Role</th>
-                <th scope="col">Business Type</th>
-                <th scope="col">Business Amount (RM)</th>
-                <th scope="col">Class</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              @php
-                  $no = (10 * ($data->currentPage() - 1));
-              @endphp
-
-              @forelse ($data as $key => $k)
-                  <tr>
-                    <th scope="row">{{ ++$no }}</th>
-                    <td>{{ $k->ticket_id }}</td>
-                    <td>{{ $k->business_role }}</td>
-                    <td>{{ $k->business_type }}</td>
-                    <td>{{ $k->business_amount }}</td>
-                    <td>{{ $k->class }}</td>
-                  </tr>
-              @empty
+          @if(count($prod) > 0)
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
                 <tr>
-                  <td colspan="5" class="text-center">No result founds for query</td>
+                  <th scope="col">#</th>
+                  <th scope="col">Event</th>
+                  <th scope="col">Offer</th>
+                  <th scope="col"><i class="fas fa-cogs"></i></th>
                 </tr>
-              @endforelse
-
-            </tbody>
-          </table>
-          {{ $data->links() }}
-        </div>
+              </thead>
+              <tbody>
+                @foreach ($product as $key => $products)    
+                @foreach ($offers as $offer)     
+                @if ($products->offer_id == $offer->offer_id)               
+                  <tr>
+                      <td>{{ $product->firstItem() + $key  }}</td>
+                      <td>
+                        {{ $products->name  }} 
+                      </td>
+                      <td>{{ $offer->name }}</td>
+                    <td>
+                      <a class="btn btn-dark" href="{{ url('business_surveyform') }}/{{ $products->product_id }}"><i class="bi bi-chevron-right"></i></a>
+                      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $products->product_id }}"><i class="bi bi-trash"></i></button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal{{ $products->product_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Are you sure you want to delete this event ?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>   
+                @endif
+                @endforeach 
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          @else
+            <p>There are no event to display.</p>
+          @endif
+          <div class="float-left pt-3">{{$product->links()}}</div>
     </div>
 @endsection
