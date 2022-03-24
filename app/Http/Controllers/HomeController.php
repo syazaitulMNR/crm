@@ -194,7 +194,7 @@ class HomeController extends Controller
         }
     }
 
-    public function businessForm(Request $request ,$ticket_id) {
+    public function businessForm($ticket_id, Request $request) {
         
         $product_id = $request->session()->get('product_id');
         $package_id = $request->session()->get('package_id');
@@ -224,7 +224,6 @@ class HomeController extends Controller
             else{
                 $request->session()->forget('ticket');
             }
-            
 
             return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id', 'incomeOptions', 'student', 'payment'));
         }else {
@@ -457,9 +456,19 @@ class HomeController extends Controller
                 return view('customer/exceed_limit');
             }else{
 
-                // To tell system the participant form has been key in
-                $payment->update_count = 1;
-                $payment->save();
+                switch ($request->input('kehadiran')) {
+                    case 'hadir':
+                        // To tell system the participant form has been key in
+                        $payment->attendance = "hadir";
+                        $payment->save();
+                        break;
+            
+                    case 'tidak hadir':
+                        // To tell system the participant form has been key in
+                        $payment->attendance = "tidak hadir";
+                        $payment->save();
+                        break;
+                }
                 
                 if(Student::where('ic', $request->ic)->exists())  //If the ic at single form exist
                 {
@@ -634,7 +643,7 @@ class HomeController extends Controller
                         'package_id' => $package_id
             
                     ));
-                           
+                    
                     // Process for Paid Ticket form
                     $ticket = Ticket::orderBy('id','Desc')->first();
                     $auto_inc_tik = $ticket->id + 1;

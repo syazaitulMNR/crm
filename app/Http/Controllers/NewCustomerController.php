@@ -270,7 +270,7 @@ class NewCustomerController extends Controller
 
         Session::put('offer_id', $product->offer_id);
         Session::put('product_id', $product_id);
-        Session::put('package_id', $package_id);
+        Session::put('package_id', $package->package_id);
         Session::put('payment', $payment);
 
         return view('customer_new.step3',compact('student', 'payment', 'product', 'package'));
@@ -287,7 +287,7 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-        
+
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
         $manual = 'Manual';

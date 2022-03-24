@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Offer;
 use App\Package;
 use App\Student;
 use App\Payment;
@@ -42,71 +43,135 @@ class customerProfileController extends Controller
         $q = (new BusinessDetail)->newQuery();
         $hasReq = 0;
 
-        if($request->filled('search')) {
-            $hasReq = 1;
-            $search = $request->query('search');
+        // if($request->filled('search')) {
+        //     $hasReq = 1;
+        //     $search = $request->query('search');
 
-            $q->where(function($query) use($search){
-                $query->where('business_name', 'LIKE', '%'.$search.'%')
-                        ->orWhere('business_type', 'LIKE', '%'.$search.'%');
-            });
-        }
+        //     $q->where(function($query) use($search){
+        //         $query->where('business_name', 'LIKE', '%'.$search.'%')
+        //                 ->orWhere('business_type', 'LIKE', '%'.$search.'%');
+        //     });
+        // }
 
-        if($request->filled('type')) {
-            $hasReq = 1;
-            $type = $request->query('type');
-            $q->where('business_name', '=', $type);
-        }
+        // if($request->filled('type')) {
+        //     $hasReq = 1;
+        //     $type = $request->query('type');
+        //     $q->where('business_name', '=', $type);
+        // }
 
-        if($request->filled('role')) {
-            $hasReq = 1;
-            $role = $request->query('role');
-            $q->where('business_role', '=', $role);
-        }
+        // if($request->filled('role')) {
+        //     $hasReq = 1;
+        //     $role = $request->query('role');
+        //     $q->where('business_role', '=', $role);
+        // }
 
-        if($request->filled('price')) {
-            $hasReq = 1;
-            $price = $request->query('price');
-            $q->where('business_amount', '=', $price);
-        }
+        // if($request->filled('price')) {
+        //     $hasReq = 1;
+        //     $price = $request->query('price');
+        //     $q->where('business_amount', '=', $price);
+        // }
 
-        if($hasReq) {
-            $customers = $q->get();
-        }else {
-            // $customers = BusinessDetail::all();
-            $customers = DB::table('business_details')->get();
-        }
+        // if($hasReq) {
+        //     $customers = $q->get();
+        // }else {
+        //     // $customers = BusinessDetail::all();
+        //     $customers = DB::table('business_details')->get();
+        // }
 
-        if(count($customers) != 0) {
-            foreach($customers as $c) {
-                // $ticketname = Ticket::where('ticket_id', $c->ticket_id);
-                $ticketname = DB::table('ticket')->where('ticket_id',$c->ticket_id);
-                if($ticketname->count() > 0) {
-                    $ticketname = $ticketname->first();
+        // if(count($customers) != 0) {
+        //     foreach($customers as $c) {
+        //         // $ticketname = Ticket::where('ticket_id', $c->ticket_id);
+        //         $ticketname = DB::table('ticket')->where('ticket_id',$c->ticket_id);
+        //         if($ticketname->count() > 0) {
+        //             $ticketname = $ticketname->first();
 
-                    // $productname = Product::where('product_id', $ticketname->product_id)->first();
-                    // $user = Student::where('stud_id', $ticketname->stud_id)->first();
-                    $productname = DB::table('product')->where('product_id',$ticketname->product_id)->first();
-                    $user = DB::table('student')->where('stud_id',$ticketname->stud_id)->first();
+        //             // $productname = Product::where('product_id', $ticketname->product_id)->first();
+        //             // $user = Student::where('stud_id', $ticketname->stud_id)->first();
+        //             $productname = DB::table('product')->where('product_id',$ticketname->product_id)->first();
+        //             $user = DB::table('student')->where('stud_id',$ticketname->stud_id)->first();
 
-                    $c->class = $productname->name;
-                    $c->student = $user;
+        //             $c->class = $productname->name;
+        //             $c->student = $user;
 
-                }else {
-                    $c->class = '';
-                    $c->student = '';
-                }
-                $business_details[] = $c;
-            }
-        }
+        //         }else {
+        //             $c->class = '';
+        //             $c->student = '';
+        //         }
+        //         $business_details[] = $c;
+        //     }
+        // }
 
-        $data = $this->paginate($business_details, 10);
-        $data->setPath('business_details');
+        // $data = $this->paginate($business_details, 10);
+        // $data->setPath('business_details');
+        $data = BusinessDetail::all();
 
         $role = ['Role', 'Stokis', 'Team / Pekerja Syarikat', 'Employee', 'Dropship', 'Agent', 'Founder', 'Lain-lain'];
         $type = ['Type', 'Fashion', 'Makanan', 'Katering & Perkahwinan', 'Kesihatan', 'Kecantikan', 'Pelancongan & Travel', 'Automotif', 'Hartanah', 'Umrah', 'Takaful / Insuran', 'Perunding Kewangan', 'Home Deco & Interior Design', 'Pecetakan / Printing', 'Belum Berniaga', 'Lain-lain'];
 
         return view('customer.business_details', compact('data', 'incomeOptions', 'role', 'type'));
+    }
+
+    public function customerSurveyForm(Request $request) {
+
+        $incomeOptions = Income::all();
+        $business_details = [];
+        $q = (new BusinessDetail)->newQuery();
+        $hasReq = 0;
+
+        $offers = Offer::orderBy('id','desc')->get();
+        $prod = Product::orderBy('id','desc')->get();
+        $product = Product::orderBy('id','desc')->paginate(15);
+
+        // $data = BusinessDetail::all();
+        $data = BusinessDetail::orderBy('id','asc')->paginate(20);
+
+        foreach ($data as $key => $valuedata){
+            $ticket = Ticket::where('ticket_id',$valuedata->ticket_id)->first();
+            $student = Student::where('ic',$ticket->ic)->first();
+        }
+
+        $role = ['Role', 'Stokis', 'Team / Pekerja Syarikat', 'Employee', 'Dropship', 'Agent', 'Founder', 'Lain-lain'];
+        $type = ['Type', 'Fashion', 'Makanan', 'Katering & Perkahwinan', 'Kesihatan', 'Kecantikan', 'Pelancongan & Travel', 'Automotif', 'Hartanah', 'Umrah', 'Takaful / Insuran', 'Perunding Kewangan', 'Home Deco & Interior Design', 'Pecetakan / Printing', 'Belum Berniaga', 'Lain-lain'];
+
+        return view('customer.business_details', compact('data', 'incomeOptions', 'role', 'type', 'ticket', 'student', 'offers', 'product', 'prod'));
+    }
+    public function businessSurveyForm($product_id, Request $request) {
+
+        $incomeOptions = Income::all();
+        $business_details = [];
+        $q = (new BusinessDetail)->newQuery();
+        $hasReq = 0;
+
+        $offers = Offer::orderBy('id','desc')->get();
+        $prod = Product::orderBy('id','desc')->get();
+
+        $product = Product::where('product_id',$product_id)->first();
+
+        // $data = BusinessDetail::all();
+        $data = BusinessDetail::orderBy('id','asc')->paginate(20);
+
+        // $students = Student::all();
+        // $ticketss = Ticket::where('product_id',$product_id)->get();
+        // $datas = BusinessDetail::orderBy('id','asc')->get();
+
+        $studentsdata = DB::table('student')->orderBy('id','asc')->get();
+        $ticketsdata = DB::table('ticket')->where('product_id', $product_id)->get();
+        $datasdata = DB::table('business_details')->orderBy('id','asc')->get();
+
+        $students = $studentsdata->chunk(1000);
+        $tickets = $ticketsdata->chunk(1000);
+        $datas = $datasdata->chunk(1000);
+
+        // foreach ($students as $stud => $stu){
+        //     foreach ($stu as $st => $s){
+        //         dd($s->stud_id);
+        //     }
+        // }
+
+        $role = ['Role', 'Stokis', 'Team / Pekerja Syarikat', 'Employee', 'Dropship', 'Agent', 'Founder', 'Lain-lain'];
+        $type = ['Type', 'Fashion', 'Makanan', 'Katering & Perkahwinan', 'Kesihatan', 'Kecantikan', 'Pelancongan & Travel', 'Automotif', 'Hartanah', 'Umrah', 'Takaful / Insuran', 'Perunding Kewangan', 'Home Deco & Interior Design', 'Pecetakan / Printing', 'Belum Berniaga', 'Lain-lain'];
+
+        return view('customer.business_survey', compact('data', 'datas', 'tickets', 'students', 'incomeOptions', 'role', 'type', 'offers', 'product', 'prod'));
     }
 
     public function paginate($items, $perPage, $page = null, $options = []){

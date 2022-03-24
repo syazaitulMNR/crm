@@ -254,6 +254,8 @@ Route::get('customer_profiles/{id}', 'customerProfileController@customerProfile'
 Route::post('update_cust/{id}', 'customerProfileController@customerUpdate');
 Route::post('add_comment/{id}', 'customerProfileController@customerAddComment');
 Route::get('customer_details', 'customerProfileController@customerDetails');
+Route::get('customer_surveyform', 'customerProfileController@customerSurveyForm')->name('customerSurveyForm');
+Route::get('business_surveyform/{product_id}', 'customerProfileController@businessSurveyForm')->name('businessSurveyForm');
 //Route::get('customer-invite', 'customerProfileController@customerInvite')->name('staff.customer-invite');;
 
 // Newstudent
