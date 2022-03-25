@@ -92,7 +92,7 @@ class MembershipController extends Controller
         $totalendmembership = Student::where('status','End-Membership')->where('membership_id', $membership_id)->count();
         $totalupgradepro = Student::where('status','Upgrade-Pro')->where('membership_id', $membership_id)->count();
         $totalterminate = Student::where('status','Terminate')->where('membership_id', $membership_id)->count();
-        
+                
         return view('admin.membership.level', compact('membership', 'membership_level', 'total', 'totalactive', 'totaldeactive', 'totalbreak', 'totalstop', 'totalpending', 'totalendmembership', 'totalupgradepro', 'totalterminate'));
     }
 

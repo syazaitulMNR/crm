@@ -30,9 +30,17 @@
             <input name="prodname" type="text" class="form-control" value="{{ $product->name }}" required>
         </div>
 
+        {{-- {{ dd($product->offer_id) }} --}}
         <div class="col-md-6">
             <label class="form-label">Offer ID</label>
-            <input name="offer_id" type="text" class="form-control" value="{{ $product->offer_id }}">
+            <select class="form-select" name="offer_id" >
+                    <option value="{{ $product->offer_id }}" name="{{ $product->offer_id }}" selected>{{ $product->offer_id }}</option>
+            @foreach ($offers as $offer)
+                    <option value="{{ $offer->offer_id }}" name="{{ $offer->offer_id }}">{{ $offer->offer_id }}</option>
+            @endforeach
+            </select>
+            {{-- <input name="offer_id" type="text" class="form-control" value="{{ $product->offer_id }}"> --}}
+
             <em>*Please refer the Offer ID table below</em>
         </div>
 
@@ -71,14 +79,16 @@
         </div>
 
         <div class="col-md-6">
+           
             <label class="form-label">BillPlz Collection ID</label>
-            <input name="collection_id" type="text" class="form-control" value="{{ $product->collection_id }}">
-            {{-- <select class="form-select" name="collection_id">
-                <option disabled selected>-- Please Select One --</option>
-                @foreach($offers as $offer)
-                <option value="{{ $offer->offer_id }}">{{ $offer->name }}</option>
+            <select class="form-select" name="collection_id" required>
+                <option selected> {{ $product->collection_id }}</option>
+                @foreach ($collection_id as $coll_id)
+                    <option value="{{ $coll_id->collection_id }}" name="{{ $coll_id->collection_id }}">{{ $coll_id->name}}</option>
                 @endforeach
-            </select> --}}
+            </select>
+            </select>
+        
         </div>
         <div class="col-md-6">
             <label class="form-label">Dashboard Report</label>

@@ -60,7 +60,7 @@
         <div class="col-md-6">
             <label class="form-label">Time To</label>
             <input type="time" name="time2" class="form-control" required/>
-        </div>
+        </div> 
 
         <div class="col-md-4">
             <label class="form-label">Certificate Image</label>
