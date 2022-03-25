@@ -31,7 +31,7 @@
                         <li><a class="dropdown-item" href="/membership"><i class="bi bi-person-badge pr-2"></i>Membership Programme</a></li>
                         @endif
                         <li><a class="dropdown-item" href="/trackprogram"><i class="bi bi-graph-up pr-2"></i>Sales Report</a></li>
-
+                        <li><a class="dropdown-item" href="/segmentation"><i class="bi bi-bookshelf pr-2"></i>Segmentation</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/emailblast"><i class="bi bi-envelope pr-2"></i>Email Blasting</a></li>
 						<li><a class="dropdown-item" href="/emailtemplate"><i class="bi bi-palette pr-2"></i>Email Template</a></li>

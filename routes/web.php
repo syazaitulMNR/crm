@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\SegmentationController;
 
 // Route::get('test-password', function () {
 // 	echo Hash::make('password');
@@ -74,6 +75,12 @@ Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController
 
 //Download Invoices for manual insert
 Route::get('download-manual-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadManualInvoices');
+//Data Segmentation
+Route::get('segmentation','SegmentationController@index')->name('admin-segmentation');
+Route::post('addclass','SegmentationController@store');
+Route::get('updateclass/{id}','SegmentationController@edit');
+Route::get('updatesegmentation/{id}','SegmentationController@updateclass');
+Route::get('classdata/{id}','SegmentationController@classdata');
 
 /*
 |--------------------------------------------------------------------------
@@ -163,6 +170,22 @@ Route::post('new-product/save', 'ProductController@store');
 Route::get('edit/{id}', 'ProductController@edit');
 Route::post('update/{id}',  'ProductController@update');
 Route::get('delete/{id}', 'ProductController@destroy');
+/*
+|--------------------------------------------------------------------------
+| Pengesahan Kehadiran
+|--------------------------------------------------------------------------
+*/
+Route::get('pengesahan-pendaftaran/{product_id}/{package_id}', 'AttendanceController@ICdetails');
+Route::get('validation/{product_id}/{package_id}', 'AttendanceController@validation');
+Route::get('/unregister', function () {
+    return view('attendance.unregister');
+});
+Route::get('pengesahan-maklumat/{product_id}/{package_id}/{stud_id}', 'AttendanceController@detailconfirmation');
+Route::get('simpan-maklumat/{product_id}/{package_id}/{stud_id}', 'AttendanceController@simpanmaklumat');
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
