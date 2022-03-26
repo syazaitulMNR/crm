@@ -30,7 +30,7 @@ Pendaftaran Pembeli
             <div class="card px-4 py-4 shadow">
                 <div class="bg-dark text-white px-2 py-2">Maklumat Pembelian</div>
                     <div class="center mt-4 mb-4">
-                        {!! QrCode::size(200)->generate('http://mims.momentuminternet.my/kehadiran-peserta'. $product->product_id .'/'. $package->package_id .'/'. $ticket->ticket_id .'/'. $payment->payment_id .'/'. $student->ic) !!}
+                        {!! QrCode::size(200)->generate('http://mims.momentuminternet.my/kehadiran-peserta/'. $product->product_id .'/'. $package->package_id .'/'. $ticket->ticket_id .'/'. $payment->payment_id .'/'. $student->ic) !!}
                     </div>    
                 <div class="card-body px-2">
                     <table class="table table-borderless">
