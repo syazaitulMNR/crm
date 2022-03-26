@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Package;
+use App\BusinessDetail;
 use App\Student;
 use App\Payment;
 use App\Ticket;
@@ -63,9 +64,8 @@ class AttendanceController extends Controller
         Session::put('payment', $payment);
 
         $stud = $request->session()->get('student');
-        $payment = $request->session()->get('payment');
-         
-       
+        $payment = $request->session()->get('payment');     
+    
         return view('attendance.detailconfirmation',compact('student', 'stud', 'payment', 'product', 'package'));
     }
 
@@ -95,9 +95,64 @@ class AttendanceController extends Controller
                 return view('attendance.tidakhadirattendance',compact('student', 'payment', 'product', 'package'));
                 break;
         }
-         
-       
+        
     }
 
+    public function maklumatPeserta()
+    {
+        $package = Package::all();
+        $product = Product::all();
+
+        return view('attendance.caripeserta', compact('package','product'));
+    }
+
+    public function icPeserta(Request $request)
+    {
+        $student = Student::where('ic', $request->ic)->first();
+        $payment = Payment::orderBy('id','desc')->where('stud_id',$student->stud_id)->get();
+
+        foreach ($payment as $keypay => $payval){
+
+            $payinfo = Product::where('product_id',$payval->product_id)->first();
+
+            if ($payinfo->class == 'MMB'){
+
+                $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payval->payment_id)->first();
+                $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
+                $peserta = Student::where('ic', $ticket->ic)->first();
+                $pay = Payment::where('payment_id', $ticket->payment_id)->first();
+
+                return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
+            }
+        }
+        dd('bukan MMB');
+    }
+
+    public function dataPeserta($product_id, $package_id, $ticket_id, $payment_id, $ic, Request $request)
+    {
+        $student = Student::where('ic', $ic)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('payment_id', $payment_id)->first();
+        $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
+
+        return view('attendance.maklumatpeserta', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
+    }
+
+    public function pengesahanKehadiranPeserta($product_id, $package_id, $ticket_id, $payment_id, $ic, Request $request)
+    {
+        $student = Student::where('ic', $ic)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('payment_id', $payment_id)->first();
+        $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
+
+        $payment->attendance = "kehadiran disahkan";
+        $payment->save();
+
+        return view('attendance.kehadirandisahkan', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
+    }
 }
 
