@@ -106,6 +106,7 @@ Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}',
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
+Route::get('customer/attendance/{product_id}/{package_id}', 'ReportsController@attendance');
 Route::post('viewpayment/save/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@uploadFile'); //modal upload receipt existing data
 
 //participant
