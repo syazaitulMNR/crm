@@ -21,11 +21,8 @@
                     <hr>
                     
                     <div class="pb-3 form-group">
-                        {{-- <label for="formGroupExampleInput">Bussiness Type</label> --}}
-                        {{-- <input type="text" name="business" class="form-control" id="formGroupExampleInput" placeholder="Bussiness type" required> --}}
                         <label for="formGroupExampleInput">Jenis Perniagaan:</label>
                         <select name="business" class="form-control" id="formGroupExampleInput" required>
-                            {{-- <small id="emailHelp" class="form-text text-muted">Bussiness type such as beauty product, food supplier and etc.</small> --}}
                             <option value="" disabled selected>-- Sila Pilih --</option>
                             <option value="Fashion">Fashion</option>
                             <option value="Makanan">Makanan</option>

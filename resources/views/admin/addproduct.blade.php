@@ -60,7 +60,7 @@
         <div class="col-md-6">
             <label class="form-label">Time To</label>
             <input type="time" name="time2" class="form-control" required/>
-        </div>
+        </div> 
 
         <div class="col-md-4">
             <label class="form-label">Certificate Image</label>
@@ -104,7 +104,6 @@
         <div class="col-12">
             <button type="submit" class="btn btn-primary float-right"><i class="bi bi-save pr-2"></i>Submit</button>
         </div>
-
     </form>
 
     <p>Refer to this table for Offer ID </p>

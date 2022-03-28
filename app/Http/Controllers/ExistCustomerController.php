@@ -417,7 +417,7 @@ class ExistCustomerController extends Controller
             $payment->save();
             $ticket->save();
             
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -552,7 +552,7 @@ class ExistCustomerController extends Controller
                 $payment->save();
                 $ticket->save();
                 
-                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                             
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
@@ -659,7 +659,7 @@ class ExistCustomerController extends Controller
                 $payment->save();
                 $ticket->save();
                 
-                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
@@ -845,7 +845,7 @@ class ExistCustomerController extends Controller
 
             dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
 
-            $payment->status = 'paid ';
+            $payment->status = 'paid';
             $updateform = array(
                 'update_count' => 1
             );

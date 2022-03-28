@@ -6,11 +6,11 @@
 
 <head>
   @foreach ($package as $key => $value)
-    @if ($value->package_id == 'PKD0065')
+    @if ($value->package_id == 'PKD0075')
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
-    @elseif ($value->package_id == 'PKD0067')
+    @elseif ($value->package_id == 'PKD0076')
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
-    @elseif ($value->package_id == 'PKD0066')
+    @elseif ($value->package_id == 'PKD0078')
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/">  
     @else 
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/">

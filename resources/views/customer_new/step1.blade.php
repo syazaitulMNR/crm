@@ -7,7 +7,7 @@ Pendaftaran Pembeli
 @section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 {{-- Phone country code css -----------------------}}
-<link rel="stylesheet" href="{{ URL::asset('assets/css/intlTelInput.css') }}" />
+{{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/intlTelInput.css') }}" /> --}}
 
 <style>
     .iti-flag {background-image: url(cover_images/flags.png);}
@@ -79,8 +79,8 @@ Pendaftaran Pembeli
                         
                         <div class="col-md-6 pb-2">
                             <label for="description">No. Telefon:</label><br>
-                            <input id="input-phone" type="tel" name="phoneno" value="+60{{ $student->phoneno ?? '' }}" class="form-control no-arrow" />
-                            <label style="font-size: 10pt;"><em>Sila pilih kod negara Cth: *+60 dan isikan no anda *Cth: 1123456789</em></label>
+                            <input id="" type="number" placeholder="0123456789" name="phoneno" value="{{ $student->phoneno ?? '' }}" class="form-control no-arrow" />
+                            <label style="font-size: 10pt;"><em>Sila masukkan no telefon anda <b>tanpa</b> sebarang simbol cth: 0123456789 </em></label>
                         </div>
                     </div>
                         

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\SegmentationController;
 
 // Route::get('test-password', function () {
 // 	echo Hash::make('password');
@@ -57,20 +58,29 @@ Route::get('members-format/{membership_id}/{level_id}','MembershipController@exp
 Route::post('store-import/{membership_id}/{level_id}','MembershipController@store_import');
 Route::post('store-members/{membership_id}/{level_id}','MembershipController@store_members');
 Route::get('delete-member/{membership_id}/{level_id}/{student_id}', 'MembershipController@destroy');
+Route::post('searchbydate/{membership_id}/{level_id}/{student_id}', 'MembershipController@searchbydate');
 
 // Manual Key in Statement , Receipt & Invoice
-Route::get('manual-statement', 'MembershipController@manualStatement');
-Route::get('manual-receipt', 'MembershipController@manualReceipt');
-Route::get('manual-invoice', 'MembershipController@manualInvoice');
+Route::get('manual-invoice/{membership_id}/{level_id}/{stud_id}', 'MembershipController@manualInvoice');
 
 // Manual Download Statement , Receipt & Invoice
-Route::post('manualdownload-statement', 'MembershipController@Statementsave');
-Route::post('manualdownload-receipt', 'MembershipController@Receiptsave');
-Route::post('manualdownload-invoice', 'MembershipController@Invoicesave');
+Route::post('manualdownload-invoice/{stud_id}', 'MembershipController@Invoicesave');
+
+// Add Features Product
+Route::post('add-features-product', 'MembershipController@addFeaturesProduct');
 
 //Download Invoices & Receipt
 Route::get('download-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadInvoices');
 Route::get('download-receipt/{level}/{invoice}/{student}', 'MembershipController@downloadReceipt');
+
+//Download Invoices for manual insert
+Route::get('download-manual-invoice/{level}/{invoice}/{student}', 'MembershipController@downloadManualInvoices');
+//Data Segmentation
+Route::get('segmentation','SegmentationController@index')->name('admin-segmentation');
+Route::post('addclass','SegmentationController@store');
+Route::get('updateclass/{id}','SegmentationController@edit');
+Route::get('updatesegmentation/{id}','SegmentationController@updateclass');
+Route::get('classdata/{id}','SegmentationController@classdata');
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +106,7 @@ Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}',
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
 Route::get('customer/search/{product_id}/{package_id}', 'ReportsController@search');
+Route::get('customer/attendance/{product_id}/{package_id}', 'ReportsController@attendance');
 Route::post('viewpayment/save/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@uploadFile'); //modal upload receipt existing data
 
 //participant
@@ -146,6 +157,7 @@ Route::get('blastConfirmationEmail/{product_id}/{package_id}', 'BlastingControll
 // send Statement of Account , Invoice , Receipt ke email
 Route::get('send-statementmember/{membership_id}/{level_id}/{student_id}', 'BlastingController@send_statementmember');
 Route::get('send-invoicemember/{membership_id}/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_invoicemember');
+Route::get('send-manualinvoicemember/{membership_id}/{level_id}/{invoice_id}/{student_id}', 'BlastingController@send_manualinvoicemember');
 Route::get('send-receiptmember/{membership_id}/{level_id}/{payment_id}/{student_id}', 'BlastingController@send_receiptmember');
 
 /*
@@ -159,6 +171,22 @@ Route::post('new-product/save', 'ProductController@store');
 Route::get('edit/{id}', 'ProductController@edit');
 Route::post('update/{id}',  'ProductController@update');
 Route::get('delete/{id}', 'ProductController@destroy');
+/*
+|--------------------------------------------------------------------------
+| Pengesahan Kehadiran
+|--------------------------------------------------------------------------
+*/
+Route::get('pengesahan-pendaftaran/{product_id}/{package_id}', 'AttendanceController@ICdetails');
+Route::get('validation/{product_id}/{package_id}', 'AttendanceController@validation');
+Route::get('/unregister', function () {
+    return view('attendance.unregister');
+});
+Route::get('pengesahan-maklumat/{product_id}/{package_id}/{stud_id}', 'AttendanceController@detailconfirmation');
+Route::get('simpan-maklumat/{product_id}/{package_id}/{stud_id}', 'AttendanceController@simpanmaklumat');
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -250,6 +278,8 @@ Route::get('customer_profiles/{id}', 'customerProfileController@customerProfile'
 Route::post('update_cust/{id}', 'customerProfileController@customerUpdate');
 Route::post('add_comment/{id}', 'customerProfileController@customerAddComment');
 Route::get('customer_details', 'customerProfileController@customerDetails');
+Route::get('customer_surveyform', 'customerProfileController@customerSurveyForm')->name('customerSurveyForm');
+Route::get('business_surveyform/{product_id}', 'customerProfileController@businessSurveyForm')->name('businessSurveyForm');
 //Route::get('customer-invite', 'customerProfileController@customerInvite')->name('staff.customer-invite');;
 
 // Newstudent
@@ -454,6 +484,9 @@ Route::prefix('student')->group(function()
 	Route::get('/invoice-download/{level}/{invoice}/{student}','StudentPortal@downloadInvoice')->name('invoice-download');
 	Route::get('/invoice-receipt/{level}/{payment}/{student}','StudentPortal@downloadResit')->name('receipt-download');
 
+	// download manual invoice untuk user
+	Route::get('download-manual-invoice/{level}/{invoice}/{student}', 'StudentPortal@downloadManualUserInvoices');
+
 	//add new download statement 
 	Route::get('/statement-format','StudentPortal@exportstatement_format')->name('statement-format');
 
@@ -477,7 +510,6 @@ Route::prefix('student')->group(function()
 	Route::get('invoices-receipt/receipt', 'StudentPortal@receipt')->name('invoices-receipt.receipt');
 	
 });
-
 
 Route::prefix('staff')->group(function() {
 	Route::get('/login','UserPortalController@showLoginForm')->name('staff.login');
@@ -515,9 +547,9 @@ Route::get("/sample-client", 'SampleChat@index');
 // Bussiness Details
 Route::get('business_details/{ticket_id}', 'HomeController@showIC');
 Route::post('ticket-verification/{ticket_id}', 'HomeController@ICValidation');
+Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
-Route::get('user-details/{ticket_id}', 'HomeController@userDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
 Route::get('export-surveyform/','HomeController@exportsurveyform');
@@ -532,5 +564,11 @@ Route::post('save-customer', 'HomeController@saveinviteCustomer');
 Route::get('invite-customer-thankyou', 'HomeController@inviteCustomerThankyou');
 
 Route::get('/sample-customer', 'SampleCustomer@index');
+
+// route untuk kehadiran offline event
+Route::get('/maklumat-peserta', 'AttendanceController@maklumatPeserta');
+Route::get('/ic-peserta', 'AttendanceController@icPeserta');
+Route::get('/data-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@dataPeserta');
+Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
 
 

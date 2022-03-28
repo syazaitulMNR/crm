@@ -211,11 +211,11 @@ class UpdatePendaftaran extends Command
         // get the total 
         // $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
         $harini = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-        $harini1 = Payment::where('product_id', 'PRD0034')->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
+        $harini1 = Payment::where('product_id', 'PRD0037')->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
 
         $total_now = ($harini+$harini1);
         
-        $totalregister1 = Payment::where('status','paid')->where('product_id', 'PRD0034')->count();
+        $totalregister1 = Payment::where('status','paid')->where('product_id', 'PRD0037')->count();
         $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
         // $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         // $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();

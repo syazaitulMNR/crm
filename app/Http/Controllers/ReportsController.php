@@ -121,7 +121,7 @@ class ReportsController extends Controller
                 });
 
         //////////////////////      ////////////////////////
- 
+
         $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
         $test = $productfirst->created_at->format('Y-m-d H:i:s');
 
@@ -842,10 +842,10 @@ class ReportsController extends Controller
 
         //get details from search
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
+        $attendance_id = Payment::where('attendance',$request->kehadiran)->first();
 
         if ($student_id == NULL)
         {
-
             return redirect()->back()->with('search-error', 'Buyer not exist!');
 
         }else{
@@ -864,8 +864,56 @@ class ReportsController extends Controller
 
             }
 
-        }
+        }  
         
+    }
+
+    public function attendance($product_id, $package_id, Request $request)
+    {   
+        // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $student = Student::orderBy('id','desc')->get();
+        $offer = Offer::orderBy('id','desc')->get();
+
+        //Count the data
+        $count = 1;
+        $total = Payment::where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+        $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package_id)->count();
+
+        //get details from search
+        $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
+        $attendance_id = Payment::where('product_id',$product_id)->where('package_id',$package_id)->where('attendance',$request->kehadiran)->get();
+        foreach ($attendance_id as $attend_id)
+        // dd($attend_id);
+
+        if ($attend_id == NULL)
+        {
+
+            return redirect()->back()->with('search-error', 'Buyer not exist!');
+
+        }elseif ($attend_id->attendance == 'hadir'){
+            $att_id = $attend_id->attendance;
+                
+            $payment = Payment::where('attendance','hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+
+        }elseif ($attend_id->attendance == 'tidak hadir'){
+            $att_id = $attend_id->attendance;
+                
+            $payment = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+        }
+        if(count($payment) > 0)
+            {
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+
+            }else{
+
+                return redirect()->back()->with('search-error', 'Buyer not found!');
+
+            }
     }
 
     public function purchased_mail($product_id, $package_id, $payment_id, $student_id)

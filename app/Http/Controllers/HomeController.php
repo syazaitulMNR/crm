@@ -194,7 +194,7 @@ class HomeController extends Controller
         }
     }
 
-    public function businessForm(Request $request ,$ticket_id) {
+    public function businessForm($ticket_id, Request $request) {
         
         $product_id = $request->session()->get('product_id');
         $package_id = $request->session()->get('package_id');
@@ -224,7 +224,6 @@ class HomeController extends Controller
             else{
                 $request->session()->forget('ticket');
             }
-            
 
             return view('ticket.businessDetail', compact('productName', 'packageName', 'ticket_id', 'incomeOptions', 'student', 'payment'));
         }else {
@@ -232,16 +231,6 @@ class HomeController extends Controller
     }
 
     public function showIC($ticket_id) {
-
-        // // Testing
-        // $product = Product::where('product_id', $product_id)->first();
-        // $ticket = Ticket::where('ticket_id', $product->product_id)->where('created_at', 'asc')->first();
-        // // $package = Package::where('package_id', $product->package_id)->first();
-        // // $packageName = $package->name;
-        // $productName = $product->name;
-
-        // return view('ticket.checkIC', compact('productName'));
-        // // End Testing
 
         $ticket = Ticket::where('ticket_id', $ticket_id)->first();
         $product = Product::where('product_id', $ticket->product_id)->first();
@@ -427,6 +416,11 @@ class HomeController extends Controller
                 //for Bulk Ticket
                 return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));
                 
+            } else if($payment->offer_id == 'OFF004') {
+
+                //for Bulk Ticket
+                return view('customer.loopingform', compact('student','product', 'package', 'payment', 'count', 'phonecode'));    
+
             } else if($payment->offer_id == 'OFF005') {
 
                 //for Bulk Ticket
@@ -462,9 +456,19 @@ class HomeController extends Controller
                 return view('customer/exceed_limit');
             }else{
 
-                // To tell system the participant form has been key in
-                $payment->update_count = 1;
-                $payment->save();
+                switch ($request->input('kehadiran')) {
+                    case 'hadir':
+                        // To tell system the participant form has been key in
+                        $payment->attendance = "hadir";
+                        $payment->save();
+                        break;
+            
+                    case 'tidak hadir':
+                        // To tell system the participant form has been key in
+                        $payment->attendance = "tidak hadir";
+                        $payment->save();
+                        break;
+                }
                 
                 if(Student::where('ic', $request->ic)->exists())  //If the ic at single form exist
                 {
@@ -519,7 +523,7 @@ class HomeController extends Controller
                                 $student_id = $participant_id;
                                 $survey_form = $product->survey_form;
                                 
-                                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                                 
                                 continue;
                             }
@@ -576,7 +580,7 @@ class HomeController extends Controller
                             $student_id = $stud_id_looping;
                             $survey_form = $product->survey_form;
                             
-                            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                             
                         }
                     }
@@ -620,7 +624,7 @@ class HomeController extends Controller
                     $student_id = $participant_id;
                     $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form)); 
+                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form)); 
 
                 }else{
 
@@ -639,7 +643,7 @@ class HomeController extends Controller
                         'package_id' => $package_id
             
                     ));
-                           
+                    
                     // Process for Paid Ticket form
                     $ticket = Ticket::orderBy('id','Desc')->first();
                     $auto_inc_tik = $ticket->id + 1;
@@ -676,7 +680,7 @@ class HomeController extends Controller
                     $student_id = $stud_id_single;
                     $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
             
                     if ($payment->quantity == 1){ //If quantity = 1
                         // Can access single form
@@ -727,7 +731,7 @@ class HomeController extends Controller
                                 $student_id = $participant_id;
                                 $survey_form = $product->survey_form;
                                 
-                                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                                 
                                 continue;
                             }
@@ -784,7 +788,7 @@ class HomeController extends Controller
                             $student_id = $stud_id_looping;
                             $survey_form = $product->survey_form;
                             
-                            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                             
                         }
                     }
@@ -856,7 +860,7 @@ class HomeController extends Controller
                     $student_id = $participant_id;
                     $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                         
                     // Process for free ticket form
                     if(Student::where('ic', $request->ic_free1)->exists()) // Check if the ic at free ticket form exist
@@ -899,7 +903,7 @@ class HomeController extends Controller
                         $student_id = $participant_id;
                         $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
 
                     } else {
 
@@ -955,7 +959,7 @@ class HomeController extends Controller
                         $student_id = $stud_id_free;
                         $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));     
+                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));     
                     }
 
                 }else{
@@ -1011,7 +1015,7 @@ class HomeController extends Controller
                     $student_id = $stud_id_paid;
                     $survey_form = $product->survey_form;
                     
-                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));        
+                    dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));        
                 
                     // Process for free ticket form
                     if(Student::where('ic', $request->ic_free1)->exists()) // If the ic at free ticket form exist
@@ -1054,7 +1058,7 @@ class HomeController extends Controller
                         $student_id = $participant_id;
                         $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));          
+                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));          
 
                     } else {
 
@@ -1109,7 +1113,7 @@ class HomeController extends Controller
                         $student_id = $stud_id_free;
                         $survey_form = $product->survey_form;
                         
-                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                        dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                         
                     }
                 }
@@ -1191,9 +1195,10 @@ class HomeController extends Controller
 
         $business = DB::table('business_details')->get();
         // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
-        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0034')->get();
+        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0037')->get();
         $student = DB::table('student')->get();
-        $product = DB::table('product')->where('product_id','PRD0034')->first();
+        $product = DB::table('product')->where('product_id','PRD0037')->first();
+        // dd($ticket);
         // $package = DB::table('package')->where('package_id', 'PKD0065')->first();
 
             /*-- Success Payment ---------------------------------------------------*/

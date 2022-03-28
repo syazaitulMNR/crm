@@ -232,16 +232,34 @@ Sales Report
     </div>
     @endif
 
-    <!-- Search box ---------------------------------------------------------->
-    <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
-        @csrf
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </div>
+    <div class="col-12">
+      <div class="row">
+        <!-- Search box ---------------------------------------------------------->
+        <div class="col-6">
+          <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+              @csrf
+              <div class="input-group mb-3 mx-auto">
+                  <input type="text" class="form-control" placeholder="Enter IC Number" name="search">
+                  <div class="col px-md-2">
+                      <button class="btn btn-outline-secondary" type="submit">Search</button>
+                  </div>
+              </div>
+          </form>
         </div>
-    </form>
+
+        <div class="col-6">
+          <form action="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+            @csrf
+            <div class="input-group mb-3 mx-auto">
+                <input type="text" class="form-control" placeholder="Enter Kehadiran" name="kehadiran">
+                <div class="col px-md-2">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+          </form>
+        </div>  
+      </div>  
+    </div>    
 
     <!-- Show success payment in table ----------------------------------------------->
     {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
@@ -271,9 +289,9 @@ Sales Report
                 <td>{{ $students->email }}</td>
                 <td>
                   @if ($payments->status == 'paid')
-                    <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                    <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
                   @elseif ($payments->status == 'due')
-                    <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                    <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
                   @else
                     <p>NULL</p>
                   @endif
@@ -309,6 +327,7 @@ Sales Report
           <th>IC No.</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Status</th>
           <th class="text-center">Update Participant</th> 
           <th><i class="fas fa-cogs"></i></th>
         </tr>
@@ -323,13 +342,37 @@ Sales Report
               <td>{{ $students->ic }}</td>
               <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
               <td>{{ $students->email }}</td>
+              <td>
+                {{-- status pembayaran --}}
+                @if ($payments->status == 'paid')
+                  <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                    {{-- status kehadiran --}}
+                    @if ($payments->attendance == 'hadir')
+                      <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
+                    @elseif ($payments->attendance == 'tidak hadir')
+                      <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
+                    @else
+                      <p></p>
+                    @endif
+                @elseif ($payments->status == 'not paid')
+                  <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                @elseif ($payments->status == 'due')
+                  <i class="badge rounded-pill bg-warning"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                @elseif ($payments->status == 'not approve')
+                  <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                @else
+                  <p></p>
+                @endif
+
+
+              </td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
                   <i class="bi bi-check-lg" style="color:green"></i>
                 @elseif ($payments->update_count == Null)
                   <i class="bi bi-x-lg" style="color:red"></i>
                 @else
-                  <p>NULL</p>
+                  <p></p>
                 @endif
               </td>
               <td>

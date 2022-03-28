@@ -146,9 +146,9 @@
                             <td></td>
 
                             <td>
-                                <h3><strong>Statement of Accounts</strong></h3>
-                                 1/1/2021 to 31/12/2021<br><br>
-                                <strong>Account Summary</strong><br><br>
+                                <h4 style="text-decoration: underline;"><strong>Statement of Accounts</strong></h4>
+                                 1/1/{{ date('Y') }} to 31/12/{{ date('Y') }}<br><br>
+                                <strong style="text-decoration: underline;">Account Summary</strong><br><br>
                                 <strong>Invoiced Amount</strong> {{ $invoice_amount }}<br>
                                 <strong>Amount Received</strong> {{ $amount_received }}<br>
                                 <strong>Balance Due</strong> {{ $balance_due }}
@@ -307,7 +307,7 @@
                         </td>
 
                         <td></td>
-                       <td>
+                        <td>
                             <strong>Balance Due </strong> RM {{ $balance_due }}<br>
                         </td>
                     </tr>

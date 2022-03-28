@@ -22,6 +22,7 @@ use App\StudentStaff;
 use App\BusinessDetail;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use App\Product_Features;
 use App\Services\Billplz;
 use App\Invoice;
 use App\UserChatModel;
@@ -873,6 +874,66 @@ class StudentPortal extends Controller
         }
     }
 
+    // download manual invoice untuk user untuk manual insert
+    public function downloadManualUserInvoices($level, $invoice, $student)
+    {
+        $stud_detail = Student::where('id', $student)->first();
+
+        $payment_id_student = Payment::where('level_id', $level)->first();
+        $member = Membership_level::where('level_id', $level)->first();
+        $invoiceid = Invoice::where('student_id', $stud_detail->id)->where('invoice_id', $invoice)->first();
+        $inv = Invoice::where('student_id', $stud_detail->id)->where('invoice_id', $invoice)->first();
+        $no = 1;
+        $balance = ($payment_id_student->totalprice)-($payment_id_student->pay_price);
+
+        // table product features
+        $listfeatures = Product_Features::all();
+        foreach ($listfeatures as $listfeat => $listval){
+            $listoffeat = $listval;
+        }
+
+        // quantity method decode untuk keluarkan dalam array
+        $quantity_array = $invoiceid->quantity;
+        $arrayquan = json_decode($quantity_array,true);
+
+        // description method decode untuk keluarkan dalam array
+        $prodfeatures = $invoiceid->product_features_name;
+        $arrayfeat = json_decode($prodfeatures,true);
+
+        //calculation for taxes ultimate
+        $subtotal = (($inv->price)+($member->add_on_price));
+
+        // due date format
+        $date_receive = date('d-m-Y');
+        $daystosum = '7';
+        $datesum = date('d-m-Y', strtotime($date_receive.' + '.$daystosum.' days'));
+
+        $data['subtotal'] = $subtotal;
+        $data['inv'] = $inv;
+        $data['name'] = $stud_detail->first_name; //
+        $data['secondname'] = $stud_detail->last_name; //
+        $data['invoices'] = $invoiceid; //
+        $data['invoice'] = $invoiceid->invoice_id; //
+        // $data['arrays'] = $newArray;
+        $data['arrayquan'] = $arrayquan;
+        $data['arrayfeat'] = $arrayfeat;
+        $data['listoffeatures'] = $listfeatures;
+        $data['datesum'] = $datesum; //
+        $data['no'] = $invoiceid->id; //
+        $data['price'] = $payment_id_student->pay_price; // 
+        $data['balance']=$balance; // 
+        $data['quantity'] = $payment_id_student->quantity; //
+        $data['date_receive'] = date('d/m/Y', strtotime($invoiceid->created_at)); //
+        $data['due_date'] = $invoiceid->due_date;
+        $data['bulan'] = date('M Y'); //
+        $data['member'] = $member; // 
+        $data['membership'] = $member->name; // 
+
+        $pdf = PDF::loadView('emails.downloadmanualinvoice', $data);
+        return $pdf->stream('Invoice.pdf');
+
+    }
+
     // Dashboard Invoices & Receipt
     public function invoicesAndreceipt()
     {   
@@ -894,7 +955,6 @@ class StudentPortal extends Controller
     {
         $stud_id = Session::get('student_login_id');
         $stud_detail = Session::get('student_detail');
-
         if ($stud_id == (null || "")) {
 
             return redirect('/student/login');
