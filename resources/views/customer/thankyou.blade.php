@@ -11,7 +11,7 @@
     @elseif ($value->package_id == "PKD0084" || $value->package_id == "PKD0085")
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
     @elseif ($value->package_id == "PKD0086" || $value->package_id == "PKD0088")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/">  
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">  
     @else 
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/">
     @endif  
