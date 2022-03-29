@@ -6,6 +6,7 @@
 
 <head>
   @foreach ($package as $key => $value)
+    {{dd($value->package_id)}}
     @if ($value->package_id == 'PKD0082' && $value->package_id == 'PKD0083' )
     <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjohor/"> 
     @elseif ($value->package_id == 'PKD0084' && $value->package_id == 'PKD0085')
