@@ -176,7 +176,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 | Pengesahan Kehadiran
 |--------------------------------------------------------------------------
 */
-Route::get('pengesahan-pendaftaran/{product_id}/{package_id}', 'AttendanceController@ICdetails');
+Route::get('pengesahan-pendaftarban/{product_id}/{package_id}', 'AttendanceController@ICdetails');
 Route::get('validation/{product_id}/{package_id}', 'AttendanceController@validation');
 Route::get('/unregister', function () {
     return view('attendance.unregister');

@@ -149,8 +149,12 @@ class AttendanceController extends Controller
         $ticket = Ticket::where('payment_id', $payment_id)->first();
         $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
 
-        $payment->attendance = "kehadiran disahkan";
-        $payment->save();
+        if ($payment->attendance = "kehadiran disahkan"){
+            return view('attendance.sudahdisahkan'); 
+        }else {
+            $payment->attendance = "kehadiran disahkan";
+            $payment->save();
+        }
 
         return view('attendance.kehadirandisahkan', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
     }
