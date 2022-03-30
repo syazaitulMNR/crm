@@ -6,18 +6,16 @@
 
 <head>
   @foreach ($package as $key => $value)
-    @if ($value->package_id == 'PKD0075')
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
-    @elseif ($value->package_id == 'PKD0076')
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
-    @elseif ($value->package_id == 'PKD0078')
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/">  
+    @if ($value->package_id == "PKD0082" || $value->package_id == "PKD0083" )
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjohor/"> 
+    @elseif ($value->package_id == "PKD0084" || $value->package_id == "PKD0085")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
+    @elseif ($value->package_id == "PKD0086" || $value->package_id == "PKD0088")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">  
     @else 
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/">
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/">
     @endif  
   @endforeach
-  
-  {{-- <meta http-equiv="refresh" content="2;url=https://yahoo.com/">  --}}
 </head>
 
 <style>

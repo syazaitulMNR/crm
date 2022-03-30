@@ -4,16 +4,15 @@
   Terima Kasih
 @endsection
 <head>
-  @if ($package->package_id == 'PKD0065')
-  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
-  @elseif ($package->package_id== 'PKD0066')
-  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
-  @elseif ($package->package_id == 'PKD0067')
-  <meta http-equiv="refresh" content="2;url=https://momentuminternet.com/buku-8-video-fb/">
+  @if ($package->package_id == "PKD0082" || $package->package_id == "PKD0083")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjohor/"> 
+  @elseif ($package->package_id == "PKD0084" || $package->package_id == "PKD0085")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
+  @elseif ($package->package_id == "PKD0086" || $package->package_id == "PKD0088")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">
   @else 
-  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/"> 
   @endif  
-  {{-- <meta http-equiv="refresh" content="2;url=https://yahoo.com/">  --}}
 </head>
 
 <style>
