@@ -232,16 +232,34 @@ Sales Report
     </div>
     @endif
 
-    <!-- Search box ---------------------------------------------------------->
-    <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
-        @csrf
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </div>
+    <div class="col-12">
+      <div class="row">
+        <!-- Search box ---------------------------------------------------------->
+        <div class="col-6">
+          <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+              @csrf
+              <div class="input-group mb-3 mx-auto">
+                  <input type="text" class="form-control" placeholder="Enter IC Number" name="search">
+                  <div class="col px-md-2">
+                      <button class="btn btn-outline-secondary" type="submit">Search</button>
+                  </div>
+              </div>
+          </form>
         </div>
-    </form>
+
+        <div class="col-6">
+          <form action="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+            @csrf
+            <div class="input-group mb-3 mx-auto">
+                <input type="text" class="form-control" placeholder="Enter Kehadiran" name="kehadiran">
+                <div class="col px-md-2">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+          </form>
+        </div>  
+      </div>  
+    </div>    
 
     <!-- Show success payment in table ----------------------------------------------->
     {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
