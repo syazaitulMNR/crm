@@ -333,6 +333,8 @@ Sales Report
                       <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
                     @elseif ($payments->attendance == 'tidak hadir')
                       <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
+                    @elseif ($payments->attendance == 'kehadiran disahkan')
+                      <i class="badge rounded-pill bg-primary"> &nbsp; Disahkan &nbsp; </i>
                     @else
                       <p></p>
                     @endif
