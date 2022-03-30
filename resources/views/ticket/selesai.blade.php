@@ -10,6 +10,18 @@
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
   @elseif ($package->package_id == "PKD0086" || $package->package_id == "PKD0088")
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">
+  @elseif ($package->package_id == "PKD0091" || $package->package_id == "PKD0092")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbshahalam/">
+  @elseif ($package->package_id == "PKD0093" || $package->package_id == "PKD0094")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkotabahru/">
+  @elseif ($package->package_id == "PKD0095" || $package->package_id == "PKD0096")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkuantan/">
+  @elseif ($package->package_id == "PKD0097" || $package->package_id == "PKD0098")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsabah/">
+  @elseif ($package->package_id == "PKD0099" || $package->package_id == "PKD00100")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbmelaka/">
+  @elseif ($package->package_id == "PKD00101" || $package->package_id == "PKD00102")
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjb/">
   @else 
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/"> 
   @endif  
