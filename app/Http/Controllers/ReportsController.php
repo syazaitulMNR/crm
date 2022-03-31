@@ -887,33 +887,31 @@ class ReportsController extends Controller
         //get details from search
         $student_id = Student::where('ic', $request->search)->orWhere('first_name', $request->search)->orWhere('last_name', $request->search)->orWhere('email', $request->search)->first();
         $attendance_id = Payment::where('product_id',$product_id)->where('package_id',$package_id)->where('attendance',$request->kehadiran)->get();
-        foreach ($attendance_id as $attend_id)
-        // dd($attend_id);
 
-        if ($attend_id == NULL)
+        if($attendance_id->isEmpty())
         {
+            return redirect('view/buyer/'. $product_id . '/' .$package_id)->with('search-error', 'Buyer not exist!');
 
-            return redirect()->back()->with('search-error', 'Buyer not exist!');
+        }else{
+            
+            foreach ($attendance_id as $attend_id) {
 
-        }elseif ($attend_id->attendance == 'hadir'){
-            $att_id = $attend_id->attendance;
-                
-            $payment = Payment::where('attendance','hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+                $att_id = $attend_id->attendance;
 
-        }elseif ($attend_id->attendance == 'tidak hadir'){
-            $att_id = $attend_id->attendance;
-                
-            $payment = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
-        }
-        if(count($payment) > 0)
-            {
-                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+                $payment = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-            }else{
+                if (count($payment) > 0) {
 
-                return redirect()->back()->with('search-error', 'Buyer not found!');
+                    return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
+
+                } else {
+
+                    return redirect()->back()->with('search-error', 'Buyer not found!');
+
+                }
 
             }
+        }
     }
 
     public function purchased_mail($product_id, $package_id, $payment_id, $student_id)
