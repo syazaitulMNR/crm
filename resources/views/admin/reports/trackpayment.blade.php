@@ -234,12 +234,12 @@ Sales Report
                     </div>
                 </div>
 
-                <div class="row-fluid text-right">
+                <div class="btn-group row-fluid" style="float:right;" role="group" aria-label="example">
                     @if(Auth::user()->user_id == 'UID002' || Auth::user()->role_id == 'ROD001')
                     <div>
-                    <button type="button" class="btn btn-outline-dark bg-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Sales</button>
+                    <button type="button" class="btn btn-outline-dark bg-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Sales</button>&nbsp;
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -262,15 +262,17 @@ Sales Report
                     </div>
                     @else
                     @endif
+                    
+
                     @if(Auth::user()->user_id == 'UID008' || Auth::user()->role_id == 'ROD001')
                     <div>
-                    <button type="button" class="btn btn-outline-dark bg-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Account</button>
+                    <button type="button" class="btn btn-outline-dark bg-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="bi bi-check-circle-fill pr-2"></i>Approve by Account</button>&nbsp;
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Approve Confirmation</h5>
+                            <h5 class="modal-title" id="exampleModalLabel1">Approve Confirmation</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-start">
@@ -289,12 +291,14 @@ Sales Report
                     </div>
                     @else
                     @endif
+
+                    
                     @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                     @else
                     <div>
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payment->payment_id }}"><i class="bi bi-trash pr-2"></i>Delete</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal3"><i class="bi bi-trash pr-2"></i>Delete</button>&nbsp;
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ $payment->payment_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -316,8 +320,10 @@ Sales Report
                     </div>
                     </div>
                     @endif
-                    <button type="submit" class="btn btn-primary"><i class="bi bi-save pr-2"></i>Save Changes</button>
+                    <button type="submit" class="btn btn-primary "><i class="bi bi-save pr-2"></i>Save Changes</button>
+
                 </div>
+
 
             </form>
             
