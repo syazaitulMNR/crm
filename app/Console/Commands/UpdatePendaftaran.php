@@ -187,95 +187,95 @@ class UpdatePendaftaran extends Command
 
         // Johor General
         $product1 = Product::where('product_id','PRD0039')->first();
-        $package1 = Payment::where('product_id',$product1)->where('status','paid')->count();
-        $packages1 = Payment::where('product_id',$product1)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->count();
+        $packages1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Johor Diamond
         $product2 = Product::where('product_id','PRD0040')->first();
-        $package2 = Payment::where('product_id',$product2)->where('status','paid')->count();
-        $packages2 = Payment::where('product_id',$product2)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->count();
+        $packages2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // KL General
         $product3 = Product::where('product_id','PRD0041')->first();
-        $package3 = Payment::where('product_id',$product3)->where('status','paid')->count();
-        $packages3 = Payment::where('product_id',$product3)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package3 = Payment::where('product_id',$product3->product_id)->where('status','paid')->count();
+        $packages3 = Payment::where('product_id',$product3->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         //KL Diamond
         $product4 = Product::where('product_id','PRD0042')->first();
-        $package4 = Payment::where('product_id',$product4)->where('status','paid')->count();
-        $packages4 = Payment::where('product_id',$product4)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->count();
+        $packages4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Kedah General
         $product5 = Product::where('product_id','PRD0043')->first();
-        $package5 = Payment::where('product_id',$product5)->where('status','paid')->count();
-        $packages5 = Payment::where('product_id',$product5)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package5 = Payment::where('product_id',$product5->product_id)->where('status','paid')->count();
+        $packages5 = Payment::where('product_id',$product5->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Kedah Diamond
         $product6 = Product::where('product_id','PRD0044')->first();
-        $package6 = Payment::where('product_id',$product6)->where('status','paid')->count();
-        $packages6 = Payment::where('product_id',$product6)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->count();
+        $packages6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Shah Alam General
         $product7 = Product::where('product_id','PRD0047')->first();
-        $package7 = Payment::where('product_id',$product7)->where('status','paid')->count();
-        $packages7 = Payment::where('product_id',$product7)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package7 = Payment::where('product_id',$product7->product_id)->where('status','paid')->count();
+        $packages7 = Payment::where('product_id',$product7->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Shah Alam Diamond
         $product8 = Product::where('product_id','PRD0048')->first();
-        $package8 = Payment::where('product_id',$product8)->where('status','paid')->count();
-        $packages8 = Payment::where('product_id',$product8)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->count();
+        $packages8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Kota Bahru General
         $product9 = Product::where('product_id','PRD0049')->first();
-        $package9 = Payment::where('product_id',$product9)->where('status','paid')->count();
-        $packages9 = Payment::where('product_id',$product9)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package9 = Payment::where('product_id',$product9->product_id)->where('status','paid')->count();
+        $packages9 = Payment::where('product_id',$product9->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Kota Bahru Diamond
         $product10 = Product::where('product_id','PRD0050')->first();
-        $package10 = Payment::where('product_id',$product10)->where('status','paid')->count();
-        $packages10 = Payment::where('product_id',$product10)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->count();
+        $packages10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Kuantan General
         $product11 = Product::where('product_id','PRD0051')->first();
-        $package11 = Payment::where('product_id',$product11)->where('status','paid')->count();
-        $packages11 = Payment::where('product_id',$product11)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package11 = Payment::where('product_id',$product11->product_id)->where('status','paid')->count();
+        $packages11 = Payment::where('product_id',$product11->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Kuantan Diamond
         $product12 = Product::where('product_id','PRD0052')->first();
-        $package12 = Payment::where('product_id',$product12)->where('status','paid')->count();
-        $packages12 = Payment::where('product_id',$product12)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->count();
+        $packages12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Sabah General
         $product13 = Product::where('product_id','PRD0053')->first();
-        $package13 = Payment::where('product_id',$product13)->where('status','paid')->count();
-        $packages13 = Payment::where('product_id',$product13)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package13 = Payment::where('product_id',$product13->product_id)->where('status','paid')->count();
+        $packages13 = Payment::where('product_id',$product13->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Sabah Diamond
         $product14 = Product::where('product_id','PRD0054')->first();
-        $package14 = Payment::where('product_id',$product14)->where('status','paid')->count();
-        $packages14 = Payment::where('product_id',$product14)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->count();
+        $packages14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Melaka General
         $product15 = Product::where('product_id','PRD0055')->first();
-        $package15 = Payment::where('product_id',$product15)->where('status','paid')->count();
-        $packages15 = Payment::where('product_id',$product15)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package15 = Payment::where('product_id',$product15->product_id)->where('status','paid')->count();
+        $packages15 = Payment::where('product_id',$product15->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // Melaka Diamond
         $product16 = Product::where('product_id','PRD0056')->first();
-        $package16 = Payment::where('product_id',$product16)->where('status','paid')->count();
-        $packages16 = Payment::where('product_id',$product16)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->count();
+        $packages16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         
         // JB General
         $product17 = Product::where('product_id','PRD0057')->first();
-        $package17 = Payment::where('product_id',$product17)->where('status','paid')->count();
-        $packages17 = Payment::where('product_id',$product17)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package17 = Payment::where('product_id',$product17->product_id)->where('status','paid')->count();
+        $packages17 = Payment::where('product_id',$product17->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         // JB Diamond
         $product18 = Product::where('product_id','PRD0058')->first();
-        $package18 = Payment::where('product_id',$product18)->where('status','paid')->count();
-        $packages18 = Payment::where('product_id',$product18)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
+        $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-
+        dd($package1);
         ////////////////////////////////////////
 
         $textes = strtoupper("MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Diamond )"."\n"."Total Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)."\n\n"."By Hours"."\n"."Total General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)." (+".($packages1+$packages3+$packages5+$packages7+$packages9+$packages11+$packages13+$packages15+$packages17).")"."\n"."Total Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)." (+".($packages2+$packages4+$packages6+$packages8+$packages10+$packages12+$packages14+$packages16+$packages18).")";
