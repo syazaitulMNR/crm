@@ -10,6 +10,18 @@
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
   @elseif ($package == "PKD0086" || $package == "PKD0088" )
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">
+  @elseif ($package == "PKD0091" || $package == "PKD0092" )
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbshahalam/">
+  @elseif ($package == "PKD0093" || $package == "PKD0094" )
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkotabahru/">
+  @elseif ($package == "PKD0095" || $package == "PKD0096" )
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkuantan/">
+  @elseif ($package == "PKD0097" || $package == "PKD0098" )
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsabah/">
+  @elseif ($package == "PKD0099" || $package == "PKD00100" )
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbmelaka/">
+  @elseif ($package == "PKD00101" || $package == "PKD00102" )
+  <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjb/">
   @else 
   <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/"> 
   @endif  
