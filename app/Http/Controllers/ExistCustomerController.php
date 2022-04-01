@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Product;
@@ -28,14 +29,28 @@ class ExistCustomerController extends Controller
         $student = Student::where('stud_id', $stud_id)->first();
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+        // $ticket = DB::table('ticket')->where('product_id',$product_id)->where('package_id',$package_id)->get();
+
 		$count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
+
+
+        // foreach ($ticket as $tickets){
+        //     if($tickets->stud_id == $stud->stud_id){
+        //         dd('jadi');
+        //         return view('ticket.thankyou', compact('package'));
+        //     }
+        // }
 
         return view('customer_exist.step1', compact('student','product', 'package','count_package', 'stud' ));
 
     }
 
     public function saveStepOne($product_id, $package_id, $stud_id, Request $request){
+
+        $ticket = DB::table('ticket')->where('product_id',$product_id)->where('package_id',$package_id)->get();
+        $package = Package::where('package_id', $package_id)->first();
+
         $validatedData = $request->validate([
             'stud_id' => 'required',
             'first_name' => 'required',
@@ -53,7 +68,13 @@ class ExistCustomerController extends Controller
             $stud->fill($validatedData);
             $request->session()->put('student', $stud);
         }
-  
+
+        foreach ($ticket as $tickets)
+            if($stud->stud_id == $tickets->stud_id){
+
+                return view('ticket.selesai', compact('package'));
+            }
+
         return redirect('langkah-kedua/'.  $product_id . '/' . $package_id . '/' . $stud_id );
     }
 
@@ -67,7 +88,6 @@ class ExistCustomerController extends Controller
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
         $count_package = Package::where('product_id', $product_id)->count();
-        dd($product->offer_id);
         //generate id
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
@@ -241,7 +261,7 @@ class ExistCustomerController extends Controller
 
         $stud = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-  
+
         return view('customer_exist.step3',compact('student', 'stud', 'payment', 'product', 'package'));
     }
 
@@ -397,7 +417,7 @@ class ExistCustomerController extends Controller
             $payment->save();
             $ticket->save();
             
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -532,7 +552,7 @@ class ExistCustomerController extends Controller
                 $payment->save();
                 $ticket->save();
                 
-                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                             
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
@@ -639,7 +659,7 @@ class ExistCustomerController extends Controller
                 $payment->save();
                 $ticket->save();
                 
-                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
@@ -820,9 +840,12 @@ class ExistCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            $payment->status = 'paid ';
+            $ticket_id = $ticket->ticket_id;
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+
+            $payment->status = 'paid';
             $updateform = array(
                 'update_count' => 1
             );
@@ -831,7 +854,6 @@ class ExistCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -863,9 +885,12 @@ class ExistCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            $payment->status = 'paid ';
+            $ticket_id = $ticket->ticket_id;
+
+            // dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+
+            $payment->status = 'not paid';
             $updateform = array(
                 'update_count' => 1
             );
@@ -874,7 +899,6 @@ class ExistCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             if ($product->offer_id == 'OFF005'){
                 $request->session()->forget('student');

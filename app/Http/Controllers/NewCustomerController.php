@@ -91,7 +91,8 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        dd($product);
+        // dd($product->offer_id);
+
         //generate id
         $payment_id = 'OD'.uniqid();
         $ticket_id = 'TIK'.uniqid();
@@ -149,7 +150,7 @@ class NewCustomerController extends Controller
 
         } else {
 
-            echo 'No Such Offer';
+            echo 'No Such Offer test';
 
         }
         
@@ -222,7 +223,7 @@ class NewCustomerController extends Controller
             $ticket = new Ticket();
             $ticket->fill($validatedTicket);
             $request->session()->put('ticket', $ticket);
-    
+
             return redirect('pengesahan-pembelian/'.  $product_id . '/' . $package_id );
         }
         else {
@@ -267,12 +268,11 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
 
+        Session::put('offer_id', $product->offer_id);
         Session::put('product_id', $product_id);
-        Session::put('package_id', $package_id);
+        Session::put('package_id', $package->package_id);
         Session::put('payment', $payment);
-        // dd($payment);
-        // $ticket = $request->session()->get('ticket');
-  
+
         return view('customer_new.step3',compact('student', 'payment', 'product', 'package'));
     }
 
@@ -287,11 +287,11 @@ class NewCustomerController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
-        
+
         $card = 'Debit/Credit Card';
         $fpx = 'FPX';
         $manual = 'Manual';
-  
+
         return view('customer_new.step4',compact('student', 'payment', 'product', 'package', 'card', 'fpx', 'manual'));
     }
 
@@ -308,6 +308,8 @@ class NewCustomerController extends Controller
             'pay_method' => 'required',
         ]);
 
+        // $package = $request->session()->get('package');
+        // dd($package);
         $payment = $request->session()->get('payment');
         $payment->fill($validatedData);
         $request->session()->put('payment', $payment);
@@ -437,7 +439,7 @@ class NewCustomerController extends Controller
             $payment->save();
             $ticket->save();
             
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -608,7 +610,7 @@ class NewCustomerController extends Controller
                 $payment->save();
                 $ticket->save();
                 
-                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
@@ -714,7 +716,7 @@ class NewCustomerController extends Controller
                 $payment->save();
                 $ticket->save();
                 
-                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
+                dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
                 
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
@@ -816,6 +818,7 @@ class NewCustomerController extends Controller
             $productId = $product_id;        
             $student_id = $student->stud_id;
             $ticket_id = $ticket->ticket_id;
+            $ticket->pay_method = 'Manual';
             $survey_form = $product->survey_form;
             $payment->pic = $request->pic;
             $payment->pay_datetime = $request->pay_datetime;
@@ -891,9 +894,12 @@ class NewCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            $payment->status = 'paid ';
+            $ticket_id = $ticket->ticket_id;
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form, $ticket_id));
+            
+            $payment->status = 'paid';
             $updateform = array(
                 'update_count' => 1
             );
@@ -902,7 +908,6 @@ class NewCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             $request->session()->forget('student');
             $request->session()->forget('payment');
@@ -920,9 +925,28 @@ class NewCustomerController extends Controller
         $product = Product::where('product_id',$product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $ticket = Ticket::where('package_id', $package_id)->first();
+
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
+
+        $billplz = Client::make(env('BILLPLZ_API_KEY', '3f78dfad-7997-45e0-8428-9280ba537215'), env('BILLPLZ_X_SIGNATURE', 'S-jtSalzkEawdSZ0Mb0sqmgA'));
+
+        //get the bill
+        $bill = $billplz->bill();
+        $response = $bill->get($payment->billplz_id);
+        $pay_data = $response->toArray();
+
+        //update payment history status to database
+        $addData = array(
+            'status' => $pay_data['state']
+        );
+
+        $payment->fill($addData);
+        $request->session()->put('payment', $payment);
+
+        if ($payment->status == 'paid')
+        {
 
             $email = $student->email;
             $product_name = $product->name; 
@@ -934,9 +958,12 @@ class NewCustomerController extends Controller
             $packageId = $package_id;
             $productId = $product_id;        
             $student_id = $student->stud_id;
-            $ticket_id = $ticket->ticket_id;
             $survey_form = $product->survey_form;
-            $payment->status = 'paid ';
+            $ticket_id = $ticket->ticket_id;
+
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id,  $survey_form, $ticket_id));
+
+            // $payment->status = 'not paid';
             $updateform = array(
                 'update_count' => 1
             );
@@ -945,7 +972,6 @@ class NewCustomerController extends Controller
             $payment->save();
             $ticket->save(); 
 
-            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $ticket_id, $survey_form));
 
             if ($product->offer_id == 'OFF005'){
                 $request->session()->forget('student');
@@ -957,7 +983,18 @@ class NewCustomerController extends Controller
                 $request->session()->forget('student');
                 $request->session()->forget('payment');
             }
+        } else {
 
+            $student->save();
+            $payment->save();
+
+            Session::forget('user_invite');
+            $request->session()->forget('student');
+            $request->session()->forget('payment');
+            $request->session()->forget('ticket');
+
+            return redirect('pendaftaran-tidak-berjaya');
+        }
             // $request->session()->forget('ticket');
         
         return redirect('next-details/' . $ticket_id );

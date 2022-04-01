@@ -34,7 +34,7 @@
 </div>
 
 <footer class="text-center px-4 py-5">
-    <b>Momentum Internet (1079998-A) © 2020 All Rights Reserved​</b>
+    <b>Momentum Internet (1079998-A) © {{ date('Y') }} All Rights Reserved​</b>
 </footer>
 
 @endsection

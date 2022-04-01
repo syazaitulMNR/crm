@@ -23,7 +23,7 @@
                         <li><a class="dropdown-item" href="/customer_profiles"><i class="bi bi-person-lines-fill pr-2"></i>Customer Profile</a></li>
                         
                         @if (Auth::user()->user_id == 'UID001')
-                        <li><a class="dropdown-item" href="/customer_details"><i class="bi bi-person-lines-fill pr-2"></i>Business Customer Detail</a></li>
+                        <li><a class="dropdown-item" href="/customer_surveyform"><i class="bi bi-person-lines-fill pr-2"></i>Business Customer Detail</a></li>
                         {{-- <li><a class="dropdown-item" href="/customer-invite"><i class="bi bi-person-lines-fill pr-2"></i>Customer Invite List</a></li> --}}
                         @endif
                         @if(Auth::user()->user_id == 'UID002' || Auth::user()->user_id == 'UID003' || Auth::user()->user_id == 'UID004')
@@ -31,7 +31,7 @@
                         <li><a class="dropdown-item" href="/membership"><i class="bi bi-person-badge pr-2"></i>Membership Programme</a></li>
                         @endif
                         <li><a class="dropdown-item" href="/trackprogram"><i class="bi bi-graph-up pr-2"></i>Sales Report</a></li>
-
+                        <li><a class="dropdown-item" href="/segmentation"><i class="bi bi-bookshelf pr-2"></i>Segmentation</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/emailblast"><i class="bi bi-envelope pr-2"></i>Email Blasting</a></li>
 						<li><a class="dropdown-item" href="/emailtemplate"><i class="bi bi-palette pr-2"></i>Email Template</a></li>

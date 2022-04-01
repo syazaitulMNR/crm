@@ -11,7 +11,6 @@ use App\Feature;
 use App\Offer;
 use App\Collection_id;
 use validator;
-
 class ProductController extends Controller
 {
     /*
@@ -28,10 +27,9 @@ class ProductController extends Controller
     }
     
     /*-- Product -------------------------------------------------------------*/
-
     public function viewproduct()
     {
-        $offers = Offer::orderBy('id','desc')->get();
+        $offers = Offer::orderBy('id','asc')->get();
         $product = Product::orderBy('id','desc')->paginate(15);
         
         return view('admin.viewproduct', compact('offers', 'product'));
@@ -39,6 +37,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        
         $offers = Offer::orderBy('id','asc')->get();
         $count = 1;
 
@@ -71,7 +70,6 @@ class ProductController extends Controller
                 'tq_page' => $request->tq_page,
                 'status' => $request->status
             ]);
-
         } else {
 
             $imagename = 'img_' . uniqid().'.'.$request->cert_image->extension();
@@ -103,10 +101,11 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::where('product_id', $id)->first();
+        $collection_id = Collection_id::all();
         $offers = Offer::orderBy('id','asc')->get();
         $count = 1;
 
-        return view('admin/updateproduct', compact('product', 'offers', 'count'));        
+        return view('admin/updateproduct', compact('product', 'offers', 'count' , 'collection_id'));        
     }
 
     public function update($id, Request $request)
@@ -197,7 +196,7 @@ class ProductController extends Controller
 
         $auto_inc_pkd = $package->id + 1;
         $packageId = 'PKD' . 0 . 0 . $auto_inc_pkd;
-              
+        
         // $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
         // $request->package_image->move(public_path('assets/images/packages'), $imagename);
 
@@ -215,7 +214,7 @@ class ProductController extends Controller
             
             $featureId = 'FID' . uniqid();
                     
-           Feature::create(array(
+            Feature::create(array(
                 'feat_id'=> $featureId,
                 'name'=> $values,
                 'product_id'=> $id,
@@ -247,35 +246,28 @@ class ProductController extends Controller
 
         $product = Product::where('product_id', $productId)->first();
         $package = Package::where('package_id', $packageId)->first();    
-        
-        // if($request->hasFile('package_image'))
-        // {
-        //     $imagename = 'img_' . uniqid().'.'.$request->package_image->extension();
-        //     $request->package_image->move(public_path('assets/images/packages'), $imagename);
-        // }
 
         $package->name = $request->name;
         $package->price = $request->price;
-
-        // if($request->hasFile('package_image'))
-        // {
-        //     $package->package_image = $imagename;
-        // }
-
         $package->save();
 
         foreach($request->feature as $key => $value)
         {
+            // dd($request->feature);
             $feature = Feature::where('package_id', $packageId)->where('feat_id', $request->feat_id[$key])->first();
             $feature->name = $value;
             $feature->save();
         }
 
+        // dapatkan features dari user tapi kalau kosong dia lalu sini
         if ($request->features == null)
         {
-
+            // $feature->name = $value;
+            // $feature->delete();
+            
         }else{
 
+            // untuk setiap features dia ada id pastu dia buat features tu berdasarkan id 
             foreach($request->features as $keys => $values) 
             {        
                 $feature = Feature::orderBy('id','desc')->first(); 
@@ -290,6 +282,8 @@ class ProductController extends Controller
                 ));
             }
         }
+        // dd($request->features);
+        // dd($feature->name);
 
         return redirect('package/'.$productId)->with('updatesuccess','Package Successfully Updated!');
     }

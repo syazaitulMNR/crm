@@ -12,17 +12,12 @@
     <a href="/student/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/student/dashboard">Dashboard</a> / <b>List Receipt</b>
   </div> 
      
-  <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
+  <div class="flex-md-nowrap pt-3 pb-2">
       <h1 class="h2">List Receipt</h1>
   </div> 
   
   <div class="row">
     <div class="col-md-12 "> 
-        
-      
-      <div class="float-right pt-3"></div>
-      <br>
-      
         <!-- View event details in table ----------------------------------------->
         <div class="table-responsive">
             <table class="table table-hover">
@@ -49,7 +44,7 @@
                                 <b>RM {{ number_format($p->pay_price) }}.00</b>
                             </td>
                             <td>
-                                <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                <a href="{{ url('student/invoice-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->stud_id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a>
                             </td>
                         </tr>
                     @empty

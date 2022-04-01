@@ -292,8 +292,10 @@ Membership
                   <span class="badge rounded-pill bg-secondary"> &nbsp;{{ $students->status }}&nbsp; </span>
                   @elseif ($students->status == 'End Membership')
                   <span class="badge rounded-pill bg-danger"> &nbsp;End Membership&nbsp; </span>
-                  @elseif ($students->status == 'Upgrade Pro')
-                  <span class="badge rounded-pill bg-secondary"> &nbsp;Upgrade Pro&nbsp; </span>
+                  @elseif ($students->status == 'Upgrade')
+                  <span class="badge rounded-pill bg-secondary"> &nbsp;Upgrade&nbsp; </span>
+                  @elseif ($students->status == 'Downgrade')
+                  <span class="badge rounded-pill bg-secondary"> &nbsp;Downgrade&nbsp; </span>
                   @elseif ($students->status == 'Terminate')
                   <span class="badge rounded-pill bg-dark"> &nbsp;{{ $students->status }}&nbsp; </span>
                   @else
@@ -366,8 +368,12 @@ Membership
                                     <td><span class="label label-success">{{$totalendmembership}}</span></td>
                                 </tr>
                                 <tr>
-                                    <td>Upgrade Pro</td>
-                                    <td><span class="label label-success">{{$totalupgradepro}}</span></td>
+                                    <td>Upgrade</td>
+                                    <td><span class="label label-success">{{$totalupgrade}}</span></td>
+                                </tr>
+                                <tr>
+                                  <td>Downgrade</td>
+                                  <td><span class="label label-success">{{$totaldowngrade}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Terminate</td>

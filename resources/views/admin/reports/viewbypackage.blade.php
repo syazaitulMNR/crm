@@ -135,14 +135,14 @@ Sales Report
                 <div class="form-group row px-4">
                     <label for="pic" class="col-sm-4 col-form-label">PIC Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe" required>
+                      <input type="text" class="form-control" name="pic" placeholder="Jane Doe">
                     </div>
                 </div>
 
                 <div class="form-group row px-4">
                     <label for="pay" class="col-sm-4 col-form-label">Payment Date Time</label>
                     <div class="col-sm-8">
-                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt" required>
+                      <input type="datetime-local" class="form-control" name="pay_datetime" placeholder="Please refer date time from receipt">
                       <span style="color: red">* Please refer payment date and time from customer receipt</span>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ Sales Report
           </div>
         </div>
 
-        <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-FRece pr-2"></i>Import Customer</a>
+        {{-- <a href="{{ url('exportExcel') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa-file-export pr-2"></i>Export Customer</a> --}}
         <a href="{{ url('blastConfirmationEmail') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa fa-send-o" style="font-size:14px"></i> Send Confirmation Email</a>
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
       </div>
@@ -225,23 +225,43 @@ Sales Report
     </div>
     @endif
 
-    @if ($message = Session::get('search-error'))
+    @if (session('search-error'))
     <div class="alert alert-danger alert-block">
         <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
+        <strong>{{ session('search-error') }}</strong>
     </div>
     @endif
 
-    <!-- Search box ---------------------------------------------------------->
-    <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
-        @csrf
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter IC Number" name="search" required>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </div>
+   
+      <div class="row">
+        <!-- Search box ---------------------------------------------------------->
+        <div class="col-md-6">
+          <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+              <div class="input-group mb-3 mx-auto">
+                  <input type="text" class="form-control" placeholder="Enter IC Number" name="search">
+                  <div class="col px-md-2">
+                      <button class="btn btn-outline-secondary" type="submit">Search</button>
+                  </div>
+              </div>
+          </form>
         </div>
-    </form>
+        <div class="col-md-6">
+          <a href="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}?kehadiran=tidak+hadir" class="btn btn-danger btn-sm text-decoration-none float-end">Tidak Hadir</a>
+          <a href="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}?kehadiran=hadir" class="btn btn-success btn-sm text-decoration-none float-end mr-2">Hadir</a>
+        </div>
+
+        {{-- <div class="col-md-6">
+          <form action="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
+            <div class="input-group mb-3 mx-auto">
+                <input type="text" class="form-control" placeholder="Enter Kehadiran" name="kehadiran">
+                <div class="col px-md-2">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+          </form>
+        </div>   --}}
+      </div>  
+      
 
     <!-- Show success payment in table ----------------------------------------------->
     {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
@@ -271,9 +291,9 @@ Sales Report
                 <td>{{ $students->email }}</td>
                 <td>
                   @if ($payments->status == 'paid')
-                    <span class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                    <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
                   @elseif ($payments->status == 'due')
-                    <span class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </span>
+                    <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
                   @else
                     <p>NULL</p>
                   @endif
@@ -309,6 +329,7 @@ Sales Report
           <th>IC No.</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Status</th>
           <th class="text-center">Update Participant</th> 
           <th><i class="fas fa-cogs"></i></th>
         </tr>
@@ -323,13 +344,39 @@ Sales Report
               <td>{{ $students->ic }}</td>
               <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
               <td>{{ $students->email }}</td>
+              <td>
+                {{-- status pembayaran --}}
+                @if ($payments->status == 'paid')
+                  <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                    {{-- status kehadiran --}}
+                    @if ($payments->attendance == 'hadir')
+                      <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
+                    @elseif ($payments->attendance == 'tidak hadir')
+                      <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
+                    @elseif ($payments->attendance == 'kehadiran disahkan')
+                      <i class="badge rounded-pill bg-primary"> &nbsp; Disahkan &nbsp; </i>
+                    @else
+                      <p></p>
+                    @endif
+                @elseif ($payments->status == 'not paid')
+                  <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                @elseif ($payments->status == 'due')
+                  <i class="badge rounded-pill bg-warning"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                @elseif ($payments->status == 'not approve')
+                  <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                @else
+                  <p></p>
+                @endif
+
+
+              </td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
                   <i class="bi bi-check-lg" style="color:green"></i>
                 @elseif ($payments->update_count == Null)
                   <i class="bi bi-x-lg" style="color:red"></i>
                 @else
-                  <p>NULL</p>
+                  <p></p>
                 @endif
               </td>
               <td>

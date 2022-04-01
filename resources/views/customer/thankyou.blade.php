@@ -6,16 +6,28 @@
 
 <head>
   @foreach ($package as $key => $value)
-    @if ($value->package_id == 'PKD0065')
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-2022/"> 
-    @elseif ($value->package_id == 'PKD0067')
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/upgrade-diamond/"> 
-    @elseif ($value->package_id == 'PKD0066')
-    <meta http-equiv="refresh" content="2;url=https://www.google.com">   
+    @if ($value->package_id == "PKD0082" || $value->package_id == "PKD0083" )
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjohor/"> 
+    @elseif ($value->package_id == "PKD0084" || $value->package_id == "PKD0085")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
+    @elseif ($value->package_id == "PKD0086" || $value->package_id == "PKD0088")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">
+    @elseif ($value->package_id == "PKD0091" || $value->package_id == "PKD0092")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbshahalam/">
+    @elseif ($value->package_id == "PKD0093" || $value->package_id == "PKD0094")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkotabahru/">
+    @elseif ($value->package_id == "PKD0095" || $value->package_id == "PKD0096")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkuantan/">
+    @elseif ($value->package_id == "PKD0097" || $value->package_id == "PKD0098")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsabah/">
+    @elseif ($value->package_id == "PKD0099" || $value->package_id == "PKD00100")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbmelaka/">
+    @elseif ($value->package_id == "PKD00101" || $value->package_id == "PKD00102")
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjb/">  
+    @else 
+    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/">
     @endif  
   @endforeach
-  
-  {{-- <meta http-equiv="refresh" content="2;url=https://yahoo.com/">  --}}
 </head>
 
 <style>
