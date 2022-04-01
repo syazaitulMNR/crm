@@ -49,26 +49,26 @@ Pendaftaran Pembeli
 
                         <div class="col-md-12 pb-2">
                             <label for="description">No. Kad Pengenalan/Passport:</label>
-                            <input type="text"  value="" class="form-control" id="productAmount" placeholder="cth: 768811-11-1111" name="ic">
+                            <input type="text"  value="{{ old('ic') }}" class="form-control" id="productAmount" placeholder="cth: 768811223333" name="ic">
                         </div>
 
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Pertama:</label>
-                            <input type="text" value="" class="form-control" placeholder="cth: Mohammad"  name="first_name">
+                            <input type="text" value="{{ old('first_name') }}" class="form-control" placeholder="cth: Mohammad"  name="first_name">
                         </div>
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Akhir:</label>
-                            <input type="text" value="" class="form-control" placeholder="cth: Ali"  name="last_name">
+                            <input type="text" value="{{ old('last_name') }}" class="form-control" placeholder="cth: Ali"  name="last_name">
                         </div>
 
                         <div class="col-md-6 pb-2">
                             <label for="description">Emel:</label>
-                            <input type="email"  value="" class="form-control" name="email" placeholder="cth: example@gmail.com"/>
+                            <input type="email"  value="{{ old('email') }}" class="form-control" name="email" placeholder="cth: example@gmail.com"/>
                         </div>
                         
                         <div class="col-md-6 pb-2">
                             <label for="description">No. Telefon:</label><br>
-                            <input id="input-phone" type="tel" name="phoneno" value="" class="form-control" />
+                            <input id="input-phone" type="tel" name="phoneno" value="{{ old('phoneno') }}" class="form-control" />
                             <label style="font-size: 10pt;"><em>Sila pilih kod negara Cth: *+60 dan isikan no anda *Cth: 1123456789</em></label>
                         </div>
                     </div>
