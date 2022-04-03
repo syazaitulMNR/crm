@@ -52,8 +52,12 @@ class UpdatePendaftaran3 extends Command
     public function handle(Request $request)
     {
         $date_today = Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y');
-        $start_time = date($date_today.' 16:00:00');
-        $end_time = date($date_today.' 08:59:59');
+        $date_tomorrow = Carbon::tomorrow('Asia/Kuala_Lumpur')->format('d-m-Y');
+        $start_times = date($date_today.'06:00:00');
+        $end_times = date($date_tomorrow.'10:00:00');
+
+        $start_time = Carbon::parse($start_times)->toDateTimeString();
+        $end_time = Carbon::parse($end_times)->toDateTimeString();
 
         $product1 = Product::where('product_id','PRD0039')->first();
         $package1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time ])->count();
@@ -127,7 +131,7 @@ class UpdatePendaftaran3 extends Command
         $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
         $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
         
-        $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18);
+        $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n"."Time : 12:00 AM - 4:00 PM"."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18);
         Telegram::sendMessage([
             "chat_id" => env('TELEGRAM_CHAT_ID', ''),
             "parse_mode" => "HTML",
