@@ -45,8 +45,7 @@
                             <tr>
                               <td>                                
                                 <p class="align-center">PENTING!</p>
-                                <br>
-                                <p>1. Anda perlu menjawab soalan kaji selidik ini untuk mendapatkan akses ke platform zoom:</p>
+                                <p class="align-center">Soalan kaji selidik ini adalah wajib untuk dijawab kerana ianya dapat membantu kami untuk menambahbaik program yang bakal dijalankan</p>
                               </td>
                             </tr>
                             <tr>
