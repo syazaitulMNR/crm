@@ -79,10 +79,10 @@ Kemaskini Peserta
   
         <div class="card-body">
           
-          <div class="col-md-12 mx-auto text-end">
-            <h4>Tiket {{ $package->name}} #1</h4>
+          <div class="col-md-12 mx-auto text-center">
+            <h4><center>Tiket {{ $package->name}} #1</center></h4>
             <div class="checkbox">
-              <label><input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" > Sila tandakan ruangan ini jika pembeli adalah peserta</label>
+              <label> Sila tandakan ruangan ini jika pembeli adalah peserta&nbsp;<input class="form-check-input" type="checkbox" name="check1" onchange="copyTextValue(this);" ></label>
             </div>
             <hr>
           </div>
@@ -114,11 +114,11 @@ Kemaskini Peserta
 
             <label class="mt-3" for="title">Adakah anda akan hadir pada hari tersebut?</label>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-primary col-6">
-                <input type="radio" name="kehadiran" value="hadir" id="option1" autocomplete="off" checked> Hadir
-              </label>
               <label class="btn btn-danger col-6">
                 <input type="radio" name="kehadiran" value="tidak hadir" id="option2" autocomplete="off"> Tidak Hadir
+              </label>
+              <label class="btn btn-primary col-6">
+                <input type="radio" name="kehadiran" value="hadir" id="option1" autocomplete="off" checked> Hadir
               </label>
             </div>
 
