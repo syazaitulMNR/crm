@@ -48,7 +48,7 @@
                 
                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                 @else
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Employee
                     </a>
@@ -56,7 +56,7 @@
                       <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Employee Profile</a></li>
                       <li><a class="dropdown-item" href=""><i class="bi bi-currency-dollar pr-2"></i>Commission</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
