@@ -64,8 +64,8 @@ class UpdatePendaftaran3 extends Command
         $packages1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->count();
 
         $product2 = Product::where('product_id','PRD0040')->first();
-        $package2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->count();
+        $package2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->sum('quantity');
         $totalsale2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product3 = Product::where('product_id','PRD0041')->first();
@@ -73,8 +73,8 @@ class UpdatePendaftaran3 extends Command
         $packages3 = Payment::where('product_id',$product3->product_id)->where('status','paid')->count();
 
         $product4 = Product::where('product_id','PRD0042')->first();
-        $package4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->count();
+        $package4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->sum('quantity');
         $totalsale4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product5 = Product::where('product_id','PRD0043')->first();
@@ -82,8 +82,8 @@ class UpdatePendaftaran3 extends Command
         $packages5 = Payment::where('product_id',$product5->product_id)->where('status','paid')->count();
 
         $product6 = Product::where('product_id','PRD0044')->first();
-        $package6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->count();
+        $package6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->sum('quantity');
         $totalsale6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product7 = Product::where('product_id','PRD0047')->first();
@@ -91,8 +91,8 @@ class UpdatePendaftaran3 extends Command
         $packages7 = Payment::where('product_id',$product7->product_id)->where('status','paid')->count();
 
         $product8 = Product::where('product_id','PRD0048')->first();
-        $package8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->count();
+        $package8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->sum('quantity');
         $totalsale8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product9 = Product::where('product_id','PRD0049')->first();
@@ -100,8 +100,8 @@ class UpdatePendaftaran3 extends Command
         $packages9 = Payment::where('product_id',$product9->product_id)->where('status','paid')->count();
 
         $product10 = Product::where('product_id','PRD0050')->first();
-        $package10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->count();
+        $package10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->sum('quantity');
         $totalsale10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product11 = Product::where('product_id','PRD0051')->first();
@@ -109,8 +109,8 @@ class UpdatePendaftaran3 extends Command
         $packages11 = Payment::where('product_id',$product11->product_id)->where('status','paid')->count();
 
         $product12 = Product::where('product_id','PRD0052')->first();
-        $package12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->count();
+        $package12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->sum('quantity');
         $totalsale12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product13 = Product::where('product_id','PRD0053')->first();
@@ -118,8 +118,8 @@ class UpdatePendaftaran3 extends Command
         $packages13 = Payment::where('product_id',$product13->product_id)->where('status','paid')->count();
 
         $product14 = Product::where('product_id','PRD0054')->first();
-        $package14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->count();
+        $package14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->sum('quantity');
         $totalsale14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
 
         $product15 = Product::where('product_id','PRD0055')->first();
@@ -127,8 +127,8 @@ class UpdatePendaftaran3 extends Command
         $packages15 = Payment::where('product_id',$product15->product_id)->where('status','paid')->count();
 
         $product16 = Product::where('product_id','PRD0056')->first();
-        $package16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->count();
+        $package16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->sum('quantity');
         $totalsale16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
         
         $product17 = Product::where('product_id','PRD0057')->first();
@@ -136,8 +136,8 @@ class UpdatePendaftaran3 extends Command
         $packages17 = Payment::where('product_id',$product17->product_id)->where('status','paid')->count();
 
         $product18 = Product::where('product_id','PRD0058')->first();
-        $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->count();
-        $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
+        $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->sum('quantity');
         $totalsale18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
         
         $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n"."Time : 12:00 AM - 4:00 PM"."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)." ( RM".($totalsale2+$totalsale4+$totalsale6+$totalsale8+$totalsale10+$totalsale12+$totalsale14+$totalsale16)." )"."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)."\n\n"
