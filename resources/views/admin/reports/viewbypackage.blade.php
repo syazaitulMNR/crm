@@ -320,7 +320,6 @@ Sales Report
       </table> 
     </div> 
     @endif
-
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
@@ -387,6 +386,9 @@ Sales Report
           @endif
           @endforeach
           @endforeach
+          <div class="float-right">
+            {{ $payment->links() }}
+          </div>
         </tbody>
       </table>  
     </div>

@@ -632,7 +632,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $offer = Offer::orderBy('id','desc')->get();
-        $student = Student::orderBy('id','desc')->paginate(33);
+        $student = Student::orderBy('id','desc')->get();
 
         //Count the data
         $count = 1;
