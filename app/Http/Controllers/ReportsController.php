@@ -246,7 +246,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -274,6 +275,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $payments->user_id,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
                                 }
                             }
@@ -305,7 +307,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -333,6 +336,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $payments->user_id,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
 
                                 }
@@ -365,7 +369,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -396,6 +401,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $user->email,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
 
                                     }
@@ -430,7 +436,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -461,6 +468,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $payments->user_id,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
 
                                     // }
@@ -624,7 +632,7 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $offer = Offer::orderBy('id','desc')->get();
-        $student = Student::orderBy('id','desc')->get();
+        $student = Student::orderBy('id','desc')->paginate(33);
 
         //Count the data
         $count = 1;
