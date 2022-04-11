@@ -67,9 +67,19 @@ Pendaftaran Pembeli
                             <label for="title">Nama Pertama:</label>
                             <input type="text" value="{{ $student->first_name ?? '' }}" class="form-control" placeholder="Mohammad"  name="first_name">
                         </div>
+
                         <div class="col-md-6 pb-2">
                             <label for="title">Nama Akhir:</label>
                             <input type="text" value="{{ $student->last_name ?? '' }}" class="form-control" placeholder="Ali"  name="last_name">
+                        </div>
+
+                        <div class="col-md-6 pb-2">
+                            <label for="title">Jantina:</label>
+                            <select class="form-select" name="jantina" required>
+                                    <option value="" name="jantina" selected disabled>-- Sila Pilih --</option>
+                                    <option value="Lelaki" name="jantina">Lelaki</option>
+                                    <option value="Perempuan" name="jantina">Perempuan</option>
+                            </select>
                         </div>
 
                         <div class="col-md-6 pb-2">
