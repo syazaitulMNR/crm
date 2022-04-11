@@ -11,15 +11,15 @@
   @elseif ($package->package_id == "PKD0086" || $package->package_id == "PKD0088")
   <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbsp/">
   @elseif ($package->package_id == "PKD0091" || $package->package_id == "PKD0092")
-  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbshahalam/">
+  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbsa/">
   @elseif ($package->package_id == "PKD0093" || $package->package_id == "PKD0094")
-  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbkotabahru/">
+  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbkb/">
   @elseif ($package->package_id == "PKD0095" || $package->package_id == "PKD0096")
-  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbkuantan/">
+  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbktn/">
   @elseif ($package->package_id == "PKD0097" || $package->package_id == "PKD0098")
-  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbsabah/">
+  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbsbh/">
   @elseif ($package->package_id == "PKD0099" || $package->package_id == "PKD00100")
-  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbmelaka/">
+  <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbmlk/">
   @elseif ($package->package_id == "PKD00101" || $package->package_id == "PKD00102")
   <meta http-equiv="refresh" content="2;url=https://www.momentumbisnes.com/oto-mbjb/">
   @else 
