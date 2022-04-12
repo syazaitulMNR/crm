@@ -39,18 +39,11 @@ class ReportsController extends Controller
         $this->middleware('auth');
     }
 
-    public function trackprogram(Request $request)
+    public function trackprogram()
     {
-        $student = Student::orderBy('id','desc')->get();
         $product = Product::orderBy('id','desc')->paginate(15);
-        $package = Package::orderBy('id','asc')->get();
-        $payment = Payment::orderBy('id','asc')->get(); 
-
-        $totalcust = Student::count();
-        $totalpay = Payment::count();
         
-        
-        return view('admin.reports.trackprogram', compact('student','product','package', 'payment', 'totalcust','totalpay'));
+        return view('admin.reports.trackprogram', compact('product'));
     }
 
     public function trackpackage($product_id)
