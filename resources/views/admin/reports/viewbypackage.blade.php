@@ -330,6 +330,7 @@ Sales Report
           <th>Name</th>
           <th>Email</th>
           <th>Status</th>
+          <th>Attendance</th>
           <th class="text-center">Update Participant</th> 
           <th><i class="fas fa-cogs"></i></th>
         </tr>
@@ -348,14 +349,6 @@ Sales Report
                 {{-- status pembayaran --}}
                 @if ($payments->status == 'paid')
                   <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
-                    {{-- status kehadiran --}}
-                    @if ($payments->attendance == 'hadir')
-                      <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
-                    @elseif ($payments->attendance == 'tidak hadir')
-                      <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
-                    @else
-                      <p></p>
-                    @endif
                 @elseif ($payments->status == 'not paid')
                   <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
                 @elseif ($payments->status == 'due')
@@ -365,8 +358,16 @@ Sales Report
                 @else
                   <p></p>
                 @endif
-
-
+              </td>
+              <td>
+                {{-- status kehadiran --}}
+                @if ($payments->attendance == 'hadir')
+                  <i class="badge rounded-pill bg-success"> &nbsp; Attend &nbsp; </i>
+                @elseif ($payments->attendance == 'tidak hadir')
+                  <i class="badge rounded-pill bg-danger"> &nbsp; Not Attend &nbsp; </i>
+                @else
+                  
+                @endif
               </td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
