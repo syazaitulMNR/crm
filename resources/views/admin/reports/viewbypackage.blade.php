@@ -386,11 +386,12 @@ Sales Report
           @endif
           @endforeach
           @endforeach
-          <div class="float-right">
-            {{ $payment->links() }}
-          </div>
+
         </tbody>
       </table>  
+      <div class="float-right">
+        {{ $payment->links() }}
+      </div>
     </div>
   </div>
 </div>
