@@ -857,10 +857,10 @@ class ReportsController extends Controller
             return redirect()->back()->with('search-error', 'Buyer not exist!');
 
         }else{
-            
+
             $stud_id = $student_id->stud_id;
 
-            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
             if(count($payment) > 0)
             {
