@@ -183,70 +183,159 @@ class UpdatePendaftaran extends Command
 
         }
 
-        // get product id
-        $product = Product::where('status', 'active')->first();
-        $product_id = $product->product_id;
+        /////////////////////////////////////////////////////////////////////////////////
 
-        // get package
-        $package = Package::where('product_id', $product_id)->get();
-        $count_package = Package::where('product_id', $product_id)->count();
+        // Johor General
+        $product1 = Product::where('product_id','PRD0039')->first();
+        $package1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->count();
+        $packages1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-        for ($i = 0; $i < $count_package; $i++)
-        {
+        // Johor Diamond
+        $product2 = Product::where('product_id','PRD0040')->first();
+        $package2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->count();
+        $packages2 = Payment::where('product_id',$product2->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-            // get report by 2 hours
-            $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-            $paidticket[$i] = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-            $freeticket[$i] = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-            
-            // get total registration
-            $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
+        // KL General
+        $product3 = Product::where('product_id','PRD0041')->first();
+        $package3 = Payment::where('product_id',$product3->product_id)->where('status','paid')->count();
+        $packages3 = Payment::where('product_id',$product3->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-            // get total collection
-            $collection[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
+        //KL Diamond
+        $product4 = Product::where('product_id','PRD0042')->first();
+        $package4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->count();
+        $packages4 = Payment::where('product_id',$product4->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-            
-        }
+        // Kedah General
+        $product5 = Product::where('product_id','PRD0043')->first();
+        $package5 = Payment::where('product_id',$product5->product_id)->where('status','paid')->count();
+        $packages5 = Payment::where('product_id',$product5->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Kedah Diamond
+        $product6 = Product::where('product_id','PRD0044')->first();
+        $package6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->count();
+        $packages6 = Payment::where('product_id',$product6->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Shah Alam General
+        $product7 = Product::where('product_id','PRD0047')->first();
+        $package7 = Payment::where('product_id',$product7->product_id)->where('status','paid')->count();
+        $packages7 = Payment::where('product_id',$product7->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Shah Alam Diamond
+        $product8 = Product::where('product_id','PRD0048')->first();
+        $package8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->count();
+        $packages8 = Payment::where('product_id',$product8->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Kota Bahru General
+        $product9 = Product::where('product_id','PRD0049')->first();
+        $package9 = Payment::where('product_id',$product9->product_id)->where('status','paid')->count();
+        $packages9 = Payment::where('product_id',$product9->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Kota Bahru Diamond
+        $product10 = Product::where('product_id','PRD0050')->first();
+        $package10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->count();
+        $packages10 = Payment::where('product_id',$product10->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Kuantan General
+        $product11 = Product::where('product_id','PRD0051')->first();
+        $package11 = Payment::where('product_id',$product11->product_id)->where('status','paid')->count();
+        $packages11 = Payment::where('product_id',$product11->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Kuantan Diamond
+        $product12 = Product::where('product_id','PRD0052')->first();
+        $package12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->count();
+        $packages12 = Payment::where('product_id',$product12->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Sabah General
+        $product13 = Product::where('product_id','PRD0053')->first();
+        $package13 = Payment::where('product_id',$product13->product_id)->where('status','paid')->count();
+        $packages13 = Payment::where('product_id',$product13->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Sabah Diamond
+        $product14 = Product::where('product_id','PRD0054')->first();
+        $package14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->count();
+        $packages14 = Payment::where('product_id',$product14->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Melaka General
+        $product15 = Product::where('product_id','PRD0055')->first();
+        $package15 = Payment::where('product_id',$product15->product_id)->where('status','paid')->count();
+        $packages15 = Payment::where('product_id',$product15->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+
+        // Melaka Diamond
+        $product16 = Product::where('product_id','PRD0056')->first();
+        $package16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->count();
+        $packages16 = Payment::where('product_id',$product16->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         
-        // get the total 
-        // $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();
-        $harini = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-        $harini1 = Payment::where('product_id', 'PRD0037')->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
+        // JB General
+        $product17 = Product::where('product_id','PRD0057')->first();
+        $package17 = Payment::where('product_id',$product17->product_id)->where('status','paid')->count();
+        $packages17 = Payment::where('product_id',$product17->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-        $total_now = ($harini+$harini1);
-        
-        $totalregister1 = Payment::where('status','paid')->where('product_id', 'PRD0037')->count();
-        $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        // $totalpaid = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
-        // $totalfree = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        // $totalticket = Ticket::where('product_id', $product_id)->count();        
-        // $pendingticket = $totalregister - $totalpaid;
-        // $totalcollection = Payment::where('status','paid')->where('product_id', $product_id)->sum('totalprice');
+        // JB Diamond
+        $product18 = Product::where('product_id','PRD0058')->first();
+        $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
+        $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-        // //getting report for each day
-        // $mon = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('monday this week')) , date('Y-m-d 23:59:59', strtotime('monday this week')) ])->count();
-        // $fri = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('friday this week')) , date('Y-m-d 23:59:59', strtotime('friday this week')) ])->count();
-        // $sat = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('saturday this week')) , date('Y-m-d 23:59:59', strtotime('saturday this week')) ])->count();
-        // $sun = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('sunday this week')) , date('Y-m-d 23:59:59', strtotime('sunday this week')) ])->count();
-        // $thu = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('thursday this week')) , date('Y-m-d 23:59:59', strtotime('thursday this week')) ])->count();
-        // $wed = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('wednesday this week')) , date('Y-m-d 23:59:59', strtotime('wednesday this week')) ])->count();
-        // $tue = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime('tuesday this week')) , date('Y-m-d 23:59:59', strtotime('tuesday this week')) ])->count();
+        ////////////////////////////////////////
 
-        $textes = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Gold + Diamond )"."\n"."Total Registration : ".($totalregister+$totalregister1)."\n"."Total Today : +".$total_now."\n";
+        $textes = strtoupper("MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Diamond )"."\n"."Total Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)."\n\n"."By Hours"."\n"."Total General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)." (+".($packages1+$packages3+$packages5+$packages7+$packages9+$packages11+$packages13+$packages15+$packages17).")"."\n"."Total Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)." (+".($packages2+$packages4+$packages6+$packages8+$packages10+$packages12+$packages14+$packages16+$packages18).")";
         Telegram::sendMessage([
             "chat_id" => env('TELEGRAM_CHAT_ID', ''),
             "parse_mode" => "HTML",
             "text" => $textes
         ]);
 
-        for ($i = 0; $i < $count_package; $i++){
-            $text = "<b>".strtoupper($package[$i]->name)."</b>"."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";
-            Telegram::sendMessage([
-                "chat_id" => env('TELEGRAM_CHAT_ID', ''),
-                "parse_mode" => "HTML",
-                "text" => $text
-            ]);
-        }
-       return 0;
+        /////////////////////////////////////////////////////////////////////////////////
+
+    //     // get product id
+    //     $product = Product::where('status', 'active')->first();
+    //     $product_id = $product->product_id;
+
+    //     // get package
+    //     $package = Package::where('product_id', $product_id)->get();
+    //     $count_package = Package::where('product_id', $product_id)->count();
+
+    //     for ($i = 0; $i < $count_package; $i++)
+    //     {
+
+    //         // get report by 2 hours
+    //         $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+    //         $paidticket[$i] = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+    //         $freeticket[$i] = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
+            
+    //         // get total registration
+    //         $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
+
+    //         // get total collection
+    //         $collection[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
+
+            
+    //     }
+        
+    //     // get the total 
+    //     $harini = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
+    //     $harini1 = Payment::where('product_id', 'PRD0037')->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
+
+    //     $total_now = ($harini+$harini1);
+        
+    //     $totalregister1 = Payment::where('status','paid')->where('product_id', 'PRD0037')->count();
+    //     $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
+
+
+    //     $textes = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Gold + Diamond )"."\n"."Total Registration : ".($totalregister+$totalregister1)."\n"."Total Today : +".$total_now."\n";
+    //     Telegram::sendMessage([
+    //         "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+    //         "parse_mode" => "HTML",
+    //         "text" => $textes
+    //     ]);
+
+    //     for ($i = 0; $i < $count_package; $i++){
+    //         $text = "<b>".strtoupper($package[$i]->name)."</b>"."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";
+    //         Telegram::sendMessage([
+    //             "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+    //             "parse_mode" => "HTML",
+    //             "text" => $text
+    //         ]);
+    //     }
+    //    return 0;
     }
 }

@@ -320,7 +320,6 @@
       </table> 
     </div> 
     @endif
-
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
@@ -349,6 +348,16 @@
                 {{-- status pembayaran --}}
                 @if ($payments->status == 'paid')
                   <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
+                    {{-- status kehadiran --}}
+                    @if ($payments->attendance == 'hadir')
+                      <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
+                    @elseif ($payments->attendance == 'tidak hadir')
+                      <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
+                    @elseif ($payments->attendance == 'kehadiran disahkan')
+                      <i class="badge rounded-pill bg-primary"> &nbsp; Disahkan &nbsp; </i>
+                    @else
+                      <p></p>
+                    @endif
                 @elseif ($payments->status == 'not paid')
                   <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
                 @elseif ($payments->status == 'due')
@@ -386,8 +395,12 @@
           @endif
           @endforeach
           @endforeach
+
         </tbody>
       </table>  
+      <div class="float-right">
+        {{ $payment->links() }}
+      </div>
     </div>
   </div>
 </div>

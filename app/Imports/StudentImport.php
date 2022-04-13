@@ -45,9 +45,12 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'email_status'  => 'Hold',
                     'stud_id'       => $student->stud_id,
                     'offer_id'      => $row['offer_id'], 
+                    'membership_id' => $row['membership_id'],
+                    'level_id' => $row['level_id'],
                     'user_id'       => $this->_user_id,
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
+                    'pay_datetime' => $row['pay_datetime']
                 ]);
 
             }else{
@@ -62,6 +65,8 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'ic'         => $row['ic'],
                     'email'      => $row['email'],
                     'phoneno'    => '+' . $row['phoneno'],
+                    'membership_id' => $row['membership_id'],
+                    'level_id' => $row['level_id'],
                     'student_password' => Hash::make($row['ic']),
                 ]);
 
@@ -75,9 +80,12 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'email_status'  => 'Hold',
                     'stud_id'       => $stud_id,
                     'offer_id'      => $row['offer_id'], 
+                    'membership_id' => $row['membership_id'],
+                    'level_id' => $row['level_id'],
                     'user_id'      	=> $this->_user_id,
                     'product_id'    => $this->product,
                     'package_id'    => $this->package,
+                    'pay_datetime' => $row['pay_datetime']
                 ]);
 
             }

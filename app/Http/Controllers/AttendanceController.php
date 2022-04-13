@@ -77,8 +77,6 @@ class AttendanceController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $payment = Payment::where('stud_id',$student->stud_id)->first();
 
-        // dd($request->kehadiran);
-
         switch ($request->input('kehadiran')) {
             case 'hadir':
                 // To t)ell system the participant form has been key in
@@ -112,18 +110,18 @@ class AttendanceController extends Controller
         $payment = Payment::orderBy('id','desc')->where('stud_id',$student->stud_id)->get();
 
         foreach ($payment as $keypay => $payval){
-
+            
             $payinfo = Product::where('product_id',$payval->product_id)->first();
 
-            if ($payinfo->class == 'MMB'){
+                if ($payinfo->class == 'MMB'){
 
-                $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payval->payment_id)->first();
-                $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
-                $peserta = Student::where('ic', $ticket->ic)->first();
-                $pay = Payment::where('payment_id', $ticket->payment_id)->first();
+                    $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payval->payment_id)->where('product_id',$payinfo->product_id)->first();
+                    $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
+                    $peserta = Student::where('ic', $ticket->ic)->first();
+                    $pay = Payment::where('payment_id', $ticket->payment_id)->first();
 
-                return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
-            }
+                    return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
+                }
         }
         dd('bukan MMB');
     }
@@ -149,8 +147,12 @@ class AttendanceController extends Controller
         $ticket = Ticket::where('payment_id', $payment_id)->first();
         $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
 
-        $payment->attendance = "kehadiran disahkan";
-        $payment->save();
+        if ($payment->attendance == 'kehadiran disahkan'){
+            return view('attendance.sudahdisahkan'); 
+        }else {
+            $payment->attendance = "kehadiran disahkan";
+            $payment->save();
+        }
 
         return view('attendance.kehadirandisahkan', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
     }

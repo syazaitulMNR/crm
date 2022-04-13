@@ -67,7 +67,7 @@ Pendaftaran Pembeli
                         <tr>
                             <td class="w-50">Jumlah Bayaran</td>
                             <td>:</td>
-                            <td><strong>FREE</strong></td>
+                            <td><strong>{{ $payment->pay_price }}</strong></td>
                         </tr>
                     </table>
 
