@@ -110,15 +110,35 @@ class AttendanceController extends Controller
         $product = Product::where('product_id',$product_id)->first();
 
         $student = Student::where('ic', $request->ic)->first();
-        $payment = Payment::orderBy('id','desc')->where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+        $payment = Payment::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+        
+        // kalau orang beli lebih dari 1 dia cari kat table ticket
+        if ($payment == NULL){
+            $ticket = Ticket::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+            if ($ticket->ticket_type == 'paid'){
+                $pay = Payment::where('payment_id',$ticket->payment_id)->where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->first();
+                $peserta = Student::where('ic', $ticket->ic)->first();
+    
+                return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
+            }
+            else {
+                return view('customer.failed_payment');
+            }
+        }
 
-        $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payment->payment_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
-        $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
-        $peserta = Student::where('ic', $ticket->ic)->first();
-        $pay = Payment::where('payment_id', $ticket->payment_id)->first();
+        // tiket selesai bayar
+        if ($payment->status == 'paid'){
 
-        return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
-
+            $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payment->payment_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+            $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
+            $peserta = Student::where('ic', $ticket->ic)->first();
+            $pay = Payment::where('payment_id', $ticket->payment_id)->first();
+    
+            return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
+        }
+        else { // belum buat pembayaran
+            return view('customer.failed_payment');
+        }
 
         // $student = Student::where('ic', $request->ic)->first();
         // $payment = Payment::orderBy('id','desc')->where('stud_id',$student->stud_id)->get();
@@ -161,12 +181,39 @@ class AttendanceController extends Controller
         $payment = Payment::where('payment_id', $payment_id)->first();
         $ticket = Ticket::where('payment_id', $payment_id)->first();
         $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
-
-        if ($payment->attendance == 'kehadiran disahkan'){
-            return view('attendance.sudahdisahkan'); 
-        }else {
-            $payment->attendance = "kehadiran disahkan";
-            $payment->save();
+        
+        // kalau peserta beli ticket lebih dari satu
+        if($payment->quantity > 1 ){
+            // ubah kat table payment kalau orang yang beli yang discan
+            if($student->stud_id == $payment->stud_id){
+                if ($payment->attendance == 'kehadiran disahkan'){
+                    return view('attendance.sudahdisahkan'); 
+                }
+                else {
+                    $payment->attendance = "kehadiran disahkan";
+                    $payment->save();
+                    $ticket->attendance = "kehadiran disahkan";
+                    $ticket->save();
+                }
+            }
+            // kalau orang bukan yang beli tiket scan
+            else {
+                if ($ticket->attendance == 'kehadiran disahkan'){
+                    return view('attendance.sudahdisahkan'); 
+                }else {
+                    $ticket->attendance = "kehadiran disahkan";
+                    $ticket->save();
+                }
+            }
+        }
+        // beli 1 tiket je
+        else {
+            if ($payment->attendance == 'kehadiran disahkan'){
+                return view('attendance.sudahdisahkan'); 
+            }else {
+                $payment->attendance = "kehadiran disahkan";
+                $payment->save();
+            }
         }
 
         return view('attendance.kehadirandisahkan', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));

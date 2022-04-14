@@ -67,7 +67,7 @@ Pendaftaran Pembeli
                         <tr>
                             <td class="w-50">Jumlah Bayaran</td>
                             <td>:</td>
-                            <td><strong>{{ $payment->pay_price }}</strong></td>
+                            <td><strong>{{ $payment->totalprice }}</strong></td>
                         </tr>
                     </table>
 
