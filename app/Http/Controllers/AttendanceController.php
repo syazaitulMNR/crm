@@ -11,6 +11,7 @@ use App\BusinessDetail;
 use App\Student;
 use App\Payment;
 use App\Ticket;
+use App\User;
 use Carbon\Carbon;
 use Stripe;
 use Mail;
@@ -171,6 +172,18 @@ class AttendanceController extends Controller
         $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
 
         return view('attendance.maklumatpeserta', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
+    }
+
+    public function adminDataPeserta($product_id, $package_id, $ticket_id, $payment_id, $ic, Request $request)
+    {
+        $student = Student::where('ic', $ic)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $payment = Payment::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('payment_id', $payment_id)->first();
+        $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
+
+        return view('attendance.admin.maklumatdatapeserta', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
     }
 
     public function pengesahanKehadiranPeserta($product_id, $package_id, $ticket_id, $payment_id, $ic, Request $request)

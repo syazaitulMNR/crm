@@ -25,7 +25,7 @@ Pendaftaran Pembeli
     </div>
 
     <div class="col-md-6 offset-md-3 pb-5">
-        <form action="{{ url('kehadiran-peserta') }}/{{ $product->product_id }}/{{ $package->package_id }}/{{ $ticket->ticket_id }}/{{ $payment->payment_id }}/{{ $student->ic }}" method="get">
+        <form action="{{ url('store-free') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get" >
             {{ csrf_field() }}
             <div class="card px-4 py-4 shadow">
                 <div class="bg-dark text-white px-2 py-2">Maklumat Pembelian</div>
@@ -70,22 +70,12 @@ Pendaftaran Pembeli
                             <td><strong>{{ $payment->totalprice }}</strong></td>
                         </tr>
                     </table>
-
                     <hr>
-                    <div class="col-md-12">
-                        <p class="fs-6 text-center">Sila pastikan maklumat anda tepat dan betul</p>
-                    </div>
-                    <hr>
-
-                    @if (Auth::check())
-                        <div class="container">
-                            <div class='float-end'>
-                                <button type='submit' class='btn btn-primary'> <i class="fas fa-save pr-1"></i> Sahkan Kehadiran</button>
-                            </div>
+                    <div class="container">
+                        <div class='float-end'>
+                            <button type='submit' class='btn btn-primary'> <i class="fas fa-save pr-1"></i> Sahkan Kehadiran</button>
                         </div>
-                    @endif
-                    
-
+                    </div>
                 </div>
             </div>
         </form>
