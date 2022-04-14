@@ -16,6 +16,7 @@ class Ticket extends Model
         'upgrade_count', 
         'pay_method', 
         'status', 
+        'attendance',
         'stripe_id', 
         'billplz_id', 
         'email_status', 
