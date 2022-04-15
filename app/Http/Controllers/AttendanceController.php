@@ -216,6 +216,7 @@ class AttendanceController extends Controller
             }
             // kalau orang bukan yang beli tiket scan
             else {
+                dd($ticket);
                 if ($ticket->attendance == 'kehadiran disahkan'){
                     dd('c');
                     return view('attendance.sudahdisahkan'); 
