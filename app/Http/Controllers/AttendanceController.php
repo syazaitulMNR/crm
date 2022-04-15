@@ -168,7 +168,7 @@ class AttendanceController extends Controller
         $package = Package::where('package_id', $package_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
-        $ticket = Ticket::where('payment_id', $payment_id)->first();
+        $ticket = Ticket::where('ticket_id', $ticket_id)->first();
         $businessdetail = BusinessDetail::where('ticket_id', $ticket_id)->first();
 
         return view('attendance.maklumatpeserta', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
@@ -200,11 +200,11 @@ class AttendanceController extends Controller
             // ubah kat table payment kalau orang yang beli yang discan
             if($student->stud_id == $payment->stud_id){
                 if ($payment->attendance == 'kehadiran disahkan'){
-                    dd('a');
+                    // dd('a');
                     return view('attendance.sudahdisahkan'); 
                 }
                 else {
-                    dd('b');
+                    // dd('b');
                     $payments = Payment::where('payment_id', $payment_id)->first();
                     $payments->attendance = "kehadiran disahkan";
                     $payments->save();
@@ -216,12 +216,11 @@ class AttendanceController extends Controller
             }
             // kalau orang bukan yang beli tiket scan
             else {
-                dd($ticket);
                 if ($ticket->attendance == 'kehadiran disahkan'){
-                    dd('c');
+                    // dd('c');
                     return view('attendance.sudahdisahkan'); 
                 }else {
-                    dd('d');
+                    // dd('d');
                     $ticket->attendance = "kehadiran disahkan";
                     $ticket->save();
                 }
