@@ -200,26 +200,27 @@ class AttendanceController extends Controller
             // ubah kat table payment kalau orang yang beli yang discan
             if($student->stud_id == $payment->stud_id){
                 if ($payment->attendance == 'kehadiran disahkan'){
-                    // dd('a');
+                    dd('a');
                     return view('attendance.sudahdisahkan'); 
                 }
                 else {
-                    // dd('b');
-
+                    dd('b');
+                    $payments = Payment::where('payment_id', $payment_id)->first();
                     $payments->attendance = "kehadiran disahkan";
-                    $ticket->attendance = "kehadiran disahkan";
                     $payments->save();
-                    $ticket->save();
+
+                    $tickets = Ticket::where('ticket_id', $ticket_id)->first();
+                    $tickets->attendance = "kehadiran disahkan";
+                    $tickets->save();
                 }
             }
             // kalau orang bukan yang beli tiket scan
             else {
                 if ($ticket->attendance == 'kehadiran disahkan'){
-                    // dd('d');
+                    dd('c');
                     return view('attendance.sudahdisahkan'); 
                 }else {
-                    // dd('e');
-
+                    dd('d');
                     $ticket->attendance = "kehadiran disahkan";
                     $ticket->save();
                 }
