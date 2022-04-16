@@ -206,11 +206,11 @@ class AttendanceController extends Controller
                 }
                 else {
                     // dd('b');
-                    $payments->attendance = "kehadiran disahkan";
-                    $payments->save();
+                    $payment->attendance = "kehadiran disahkan";
+                    $payment->save();
 
-                    $tickets->attendance = "kehadiran disahkan";
-                    $tickets->save();
+                    $ticket->attendance = "kehadiran disahkan";
+                    $ticket->save();
                 }
             }
             // kalau orang bukan yang beli tiket scan
