@@ -198,6 +198,16 @@ Sales Report
                         @endif
 
                         <div class="mb-2 row">
+                            <label class="col-sm-2">Kehadiran</label>
+                            <div class="col-sm-4 mb-2">
+                                <select class="form-select form-control-sm" name="attendance">
+                                    <option value="{{ $payment->attendance }}" readonly selected>-- {{ $payment->attendance }} --</option>
+                                    <option value="hadir">hadir</option>
+                                    <option value="tidak hadir">tidak hadir</option>                                        
+                                    <option value="kehadiran disahkan">kehadiran disahkan</option>                               
+                                </select>
+                            </div>
+
                             <label class="col-sm-2">Offer ID</label>
                             <div class="col-sm-4 mb-2">
                                 <select class="form-select form-control-sm" name="offer_id">

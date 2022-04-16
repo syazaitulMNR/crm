@@ -116,6 +116,7 @@ class AttendanceController extends Controller
         // kalau orang beli lebih dari 1 dia cari kat table ticket
         if ($payment == NULL){
             $ticket = Ticket::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+            dd($ticket);
             if ($ticket->ticket_type == 'paid'){
                 $pay = Payment::where('payment_id',$ticket->payment_id)->where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->first();
                 $peserta = Student::where('ic', $ticket->ic)->first();
@@ -128,7 +129,7 @@ class AttendanceController extends Controller
         }
 
         // tiket selesai bayar
-        if ($payment->status == 'paid'){
+        elseif ($payment->status == 'paid'){
 
             $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payment->payment_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
             $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
@@ -205,11 +206,9 @@ class AttendanceController extends Controller
                 }
                 else {
                     // dd('b');
-                    $payments = Payment::where('payment_id', $payment_id)->first();
                     $payments->attendance = "kehadiran disahkan";
                     $payments->save();
 
-                    $tickets = Ticket::where('ticket_id', $ticket_id)->first();
                     $tickets->attendance = "kehadiran disahkan";
                     $tickets->save();
                 }

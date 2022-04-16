@@ -800,14 +800,15 @@ class ReportsController extends Controller
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
     {
         $paginate = Payment::where('product_id', $product_id)->paginate(15);
+        $student = Student::where('stud_id', $student_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
-        $student = Student::where('stud_id', $student_id)->first();
+        $ticket = Ticket::where('ic', $student->ic)->where('payment_id')->first();
 
         $counter = Student::count();
         
-        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
+        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'ticket', 'student', 'counter'));
     }
 
     public function updatepayment($product_id, $package_id, $payment_id, $student_id, Request $request)
@@ -824,6 +825,7 @@ class ReportsController extends Controller
         $student->email = $request->email;
         $student->save();
 
+        $payment->attendance = $request->attendance;
         $payment->status = $request->status;
         $payment->offer_id = $request->offer_id;
         $payment->save();
