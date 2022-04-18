@@ -247,8 +247,9 @@
         <div class="col-md-3">
           <select class="form-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
             <option value="">Select Attendance</option>
-            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/hadir">Attend</option>
-            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/tidak hadir">Not Attend</option>
+            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/hadir">Hadir</option>
+            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/tidak hadir">Tidak Hadir</option>
+            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/kehadiran disahkan">Kehadiran Disahkan</option>
           </select>
         </div>
       </div>  
@@ -297,9 +298,11 @@
               <td>
                 {{-- status kehadiran --}}
                 @if ($payments->attendance == 'hadir')
-                  <i class="badge rounded-pill bg-success"> &nbsp; Attend &nbsp; </i>
+                  <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
                 @elseif ($payments->attendance == 'tidak hadir')
-                  <i class="badge rounded-pill bg-danger"> &nbsp; Not Attend &nbsp; </i>
+                  <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
+                @elseif ($payments->attendance == 'kehadiran disahkan')
+                  <i class="badge rounded-pill bg-primary"> &nbsp; Disahkan &nbsp; </i>
                 @else
           
                 @endif
