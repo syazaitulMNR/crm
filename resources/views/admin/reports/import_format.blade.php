@@ -6,13 +6,15 @@
             <th>ic</th>
             <th>email</th>
             <th>phoneno</th>
+            <th>membership_id</th>
+            <th>level_id</th>
             <th>price</th>
             <th>quantity</th>
             <th>payment</th>
             <th>status</th>
             <th>pay_method</th>
             <th>offer_id</th>
-        
+            <th>pay_datetime</th>
         </tr>
     </thead>
     <tbody>
@@ -22,11 +24,14 @@
             <td>912345006789</td>
             <td>example@gmail.com</td>
             <td>+60123456789</td>
+            <td>MB001</td>
+            <td>MBL001</td>
             <td>199</td>
             <td>1</td>
             <td>199</td>
             <td>paid</td>
             <td>CDM/FPX/Senang Pay</td>
             <td>OFF001</td>
+            <td>2022-04-01 03:45:06</td>
         </tr>
 </tbody>

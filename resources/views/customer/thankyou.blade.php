@@ -7,25 +7,25 @@
 <head>
   @foreach ($package as $key => $value)
     @if ($value->package_id == "PKD0082" || $value->package_id == "PKD0083" )
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjohor/"> 
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbjohor/"> 
     @elseif ($value->package_id == "PKD0084" || $value->package_id == "PKD0085")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkl/"> 
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbkl/"> 
     @elseif ($value->package_id == "PKD0086" || $value->package_id == "PKD0088")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsp/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbsp/">
     @elseif ($value->package_id == "PKD0091" || $value->package_id == "PKD0092")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbshahalam/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbsa/">
     @elseif ($value->package_id == "PKD0093" || $value->package_id == "PKD0094")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkotabahru/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbkb/">
     @elseif ($value->package_id == "PKD0095" || $value->package_id == "PKD0096")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbkuantan/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbktn/">
     @elseif ($value->package_id == "PKD0097" || $value->package_id == "PKD0098")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbsabah/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbsbh/">
     @elseif ($value->package_id == "PKD0099" || $value->package_id == "PKD00100")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbmelaka/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbmlk/">
     @elseif ($value->package_id == "PKD00101" || $value->package_id == "PKD00102")
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmbjb/">  
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mbjb/">  
     @else 
-    <meta http-equiv="refresh" content="2;url=https://www.naktarikpelanggan.com/oto-mmb/">
+    <meta http-equiv="refresh" content="2;url=http://www.momentumbisnes.com/oto-mb/">
     @endif  
   @endforeach
 </head>

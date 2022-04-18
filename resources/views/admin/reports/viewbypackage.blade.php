@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Sales Report
+  Sales Report
 @endsection
 
 
@@ -166,7 +166,6 @@ Sales Report
         <a href="{{ url('blastConfirmationEmail') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="fa fa-send-o" style="font-size:14px"></i> Send Confirmation Email</a>
         <a href="{{ url('import-customer') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-sm btn-outline-dark"><i class="bi bi-upload pr-2"></i>Import Customer</a>
       </div>
-        
     </div>
 
     <!-- Show data in cards --------------------------------------------------->
@@ -198,31 +197,31 @@ Sales Report
     </div>  
     
     @if ($message = Session::get('addsuccess'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
+      <div class="alert alert-success alert-block">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
     @endif
 
     @if ($message = Session::get('importsuccess'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
+      <div class="alert alert-success alert-block">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
     @endif
 
     @if ($message = Session::get('updatepayment'))
-    <div class="alert alert-info alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
+      <div class="alert alert-info alert-block">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
     @endif
 
     @if ($message = Session::get('deletepayment'))
-    <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-bs-dismiss="alert">×</button>	
-        <strong>{{ $message }}</strong>
-    </div>
+      <div class="alert alert-danger alert-block">
+          <button type="button" class="close" data-bs-dismiss="alert">×</button>	
+          <strong>{{ $message }}</strong>
+      </div>
     @endif
 
     @if (session('search-error'))
@@ -235,7 +234,7 @@ Sales Report
    
       <div class="row">
         <!-- Search box ---------------------------------------------------------->
-        <div class="col-md-6">
+        <div class="col-md-9">
           <form action="{{ url('customer/search') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
               <div class="input-group mb-3 mx-auto">
                   <input type="text" class="form-control" placeholder="Enter IC Number" name="search">
@@ -245,82 +244,19 @@ Sales Report
               </div>
           </form>
         </div>
-        <div class="col-md-6">
-          <a href="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}?kehadiran=tidak+hadir" class="btn btn-danger btn-sm text-decoration-none float-end">Tidak Hadir</a>
-          <a href="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}?kehadiran=hadir" class="btn btn-success btn-sm text-decoration-none float-end mr-2">Hadir</a>
+        <div class="col-md-3">
+          <select class="form-select" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <option value="">Select Attendance</option>
+            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/hadir">Hadir</option>
+            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/tidak hadir">Tidak Hadir</option>
+            <option value="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $package->package_id }}/kehadiran disahkan">Kehadiran Disahkan</option>
+          </select>
         </div>
-
-        {{-- <div class="col-md-6">
-          <form action="{{ url('customer/attendance') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="GET" class="needs-validation" novalidate>
-            <div class="input-group mb-3 mx-auto">
-                <input type="text" class="form-control" placeholder="Enter Kehadiran" name="kehadiran">
-                <div class="col px-md-2">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </div>
-            </div>
-          </form>
-        </div>   --}}
       </div>  
       
 
     <!-- Show success payment in table ----------------------------------------------->
     {{-- <div class="float-right">{{$payment->links()}}</div>    --}}
-    @if(isset($details))
-    <div class="table-responsive">
-      <table class="table table-hover">
-          <thead>
-          <tr class="header">
-            <th>#</th>
-            <th>IC No.</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th class="text-center">Update Participant</th> 
-            <th><i class="fas fa-cogs"></i></th>
-          </tr>
-          </thead>
-          <tbody> 
-            @foreach ($student as $students) 
-            @foreach ($payment as $payments)  
-            @if ($students->stud_id == $payments->stud_id)
-            {{-- @if ($payments->product_id == $product->product_id)   --}}
-            <tr>
-                <td>{{ $count++ }}</td>
-                <td>{{ $students->ic }}</td>
-                <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
-                <td>{{ $students->email }}</td>
-                <td>
-                  @if ($payments->status == 'paid')
-                    <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
-                  @elseif ($payments->status == 'due')
-                    <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
-                  @else
-                    <p>NULL</p>
-                  @endif
-                </td>
-                <td class="text-center">
-                  @if ($payments->update_count == 1)
-                    <i class="bi bi-check-lg" style="color:green"></i>
-                  @elseif ($payments->update_count == Null)
-                    <i class="bi bi-x-lg" style="color:red"></i>
-                  @else
-                    <p>NULL</p>
-                  @endif
-                </td>
-                <td>
-                  <a class="btn btn-dark" href="{{ url('viewpayment') }}/{{ $product->product_id }}/{{ $payments->package_id }}/{{ $payments->payment_id }}/{{ $payments->stud_id }}"><i class="bi bi-chevron-right"></i></a>
-                </td>
-            </tr>
-            {{-- @endif --}}
-            @endif
-            @endforeach
-            @endforeach
-          
-          </tbody>
-      </table> 
-    </div> 
-    @endif
-
     <div class="table-responsive">
       <table class="table table-hover">
         <thead>
@@ -330,6 +266,7 @@ Sales Report
           <th>Name</th>
           <th>Email</th>
           <th>Status</th>
+          <th>Attendance</th>
           <th class="text-center">Update Participant</th> 
           <th><i class="fas fa-cogs"></i></th>
         </tr>
@@ -348,16 +285,6 @@ Sales Report
                 {{-- status pembayaran --}}
                 @if ($payments->status == 'paid')
                   <i class="badge rounded-pill bg-success"> &nbsp;{{ $payments->status }}&nbsp; </i>
-                    {{-- status kehadiran --}}
-                    @if ($payments->attendance == 'hadir')
-                      <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
-                    @elseif ($payments->attendance == 'tidak hadir')
-                      <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
-                    @elseif ($payments->attendance == 'kehadiran disahkan')
-                      <i class="badge rounded-pill bg-primary"> &nbsp; Disahkan &nbsp; </i>
-                    @else
-                      <p></p>
-                    @endif
                 @elseif ($payments->status == 'not paid')
                   <i class="badge rounded-pill bg-danger"> &nbsp;{{ $payments->status }}&nbsp; </i>
                 @elseif ($payments->status == 'due')
@@ -367,8 +294,18 @@ Sales Report
                 @else
                   <p></p>
                 @endif
-
-
+              </td>
+              <td>
+                {{-- status kehadiran --}}
+                @if ($payments->attendance == 'hadir')
+                  <i class="badge rounded-pill bg-success"> &nbsp; Hadir &nbsp; </i>
+                @elseif ($payments->attendance == 'tidak hadir')
+                  <i class="badge rounded-pill bg-danger"> &nbsp; Tidak Hadir &nbsp; </i>
+                @elseif ($payments->attendance == 'kehadiran disahkan')
+                  <i class="badge rounded-pill bg-primary"> &nbsp; Disahkan &nbsp; </i>
+                @else
+          
+                @endif
               </td>
               <td class="text-center">
                 @if ($payments->update_count == 1)
@@ -387,8 +324,12 @@ Sales Report
           @endif
           @endforeach
           @endforeach
+
         </tbody>
       </table>  
+      <div class="float-right">
+        {{ $payment->links() }}
+      </div>
     </div>
   </div>
 </div>
