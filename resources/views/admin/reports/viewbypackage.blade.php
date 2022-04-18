@@ -327,9 +327,9 @@
 
         </tbody>
       </table>  
-      {{-- <div class="float-right">
+      <div class="float-right">
         {{ $payment->links() }}
-      </div> --}}
+      </div>
     </div>
   </div>
 </div>
