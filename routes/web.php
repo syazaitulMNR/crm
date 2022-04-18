@@ -570,5 +570,3 @@ Route::get('/maklumat-peserta', 'AttendanceController@maklumatPeserta');
 Route::get('/ic-peserta', 'AttendanceController@icPeserta');
 Route::get('/data-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@dataPeserta');
 Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
-
-
