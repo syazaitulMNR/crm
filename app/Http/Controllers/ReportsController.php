@@ -39,18 +39,11 @@ class ReportsController extends Controller
         $this->middleware('auth');
     }
 
-    public function trackprogram(Request $request)
+    public function trackprogram()
     {
-        $student = Student::orderBy('id','desc')->get();
         $product = Product::orderBy('id','desc')->paginate(15);
-        $package = Package::orderBy('id','asc')->get();
-        $payment = Payment::orderBy('id','asc')->get(); 
-
-        $totalcust = Student::count();
-        $totalpay = Payment::count();
         
-        
-        return view('admin.reports.trackprogram', compact('student','product','package', 'payment', 'totalcust','totalpay'));
+        return view('admin.reports.trackprogram', compact('product'));
     }
 
     public function trackpackage($product_id)
@@ -878,7 +871,7 @@ class ReportsController extends Controller
         
     }
 
-    public function attendance($product_id, $package_id, Request $request)
+    public function attendance($product_id, $package_id, Request $request, $attendance)
     {   
         // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
@@ -904,22 +897,13 @@ class ReportsController extends Controller
 
         }else{
             
-            foreach ($attendance_id as $attend_id) {
-
+            foreach ($attendance_id as $attend_id) 
+            {
                 $att_id = $attend_id->attendance;
 
-                $payment = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+                $payment = Payment::where('attendance', $attendance)->where('product_id', $product_id)->where('package_id', $package_id)->get();
 
-                if (count($payment) > 0) {
-
-                    return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
-
-                } else {
-
-                    return redirect()->back()->with('search-error', 'Buyer not found!');
-
-                }
-
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
             }
         }
     }
