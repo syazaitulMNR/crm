@@ -236,5 +236,74 @@ class AttendanceController extends Controller
 
         return view('attendance.kehadirandisahkan', compact('student', 'package', 'product', 'payment', 'ticket', 'businessdetail'));
     }
+
+    public function download_attendance($product_id, $package_id, Request $request)
+    {
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
+        $ticket = Ticket::where('ticket_type','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
+        
+        for ($i=0; $i < count($payment) ; $i++) { 
+            $studentpay[$i] = Student::where('stud_id', $payment[$i]->stud_id)->get();
+        }
+        for ($i=0; $i < count($ticket) ; $i++) { 
+            $studenttic[$i] = Student::where('stud_id', $ticket[$i]->stud_id)->get();
+        }
+
+        // foreach ($payment as $keypay) {
+        //     $studentpay = Student::where('stud_id', $keypay->stud_id)->first();
+        // }
+
+        // foreach ($ticket as $keytic) {
+        //     $studenttic = Student::where('ic', $keytic->ic)->first();
+        // }
+        // dd(count($ticket) == 0);
+
+        $fileName = $product->name.' Kehadiran'.'.csv';
+            $columnNames = [
+                'First Name',
+                'Last Name',
+                'IC No',
+                'Phone No',
+                'Email',
+                'Product',
+            ];
+            
+            $file = fopen(public_path('export/') . $fileName, 'w');
+            fputcsv($file, $columnNames);
+            
+            foreach ($studentpay as $keystud => $valpay) {
+                foreach ($valpay as $datastud) {
+                    fputcsv($file, [
+                        $datastud->first_name,
+                        $datastud->last_name,
+                        $datastud->ic,
+                        $datastud->phoneno,
+                        $datastud->email,
+                        $product->name,
+                    ]);
+                }
+            }
+
+            if (count($ticket) >= 1){
+                foreach ($studenttic as $keytic => $valtic){
+                    foreach ($valtic as $datatic) {
+                        fputcsv($file, [
+                            $datatic->first_name,
+                            $datatic->last_name,
+                            $datatic->ic,
+                            $datatic->phoneno,
+                            $datatic->email,
+                            $product->name,
+                            ]);
+                    }
+                }
+            }
+
+            fclose($file);
+
+        return redirect('trackpackage/'. $product->product_id)->with('success', 'User Successfully Created');
+    }
 }
 

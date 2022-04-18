@@ -123,15 +123,9 @@ Route::get('delete/ticket/{ticket_id}/{product_id}/{package_id}', 'ReportsContro
 Route::get('export-participant/{product_id}', 'ReportsController@exportParticipant');
 Route::get('participant/search/{product_id}/{package_id}', 'ReportsController@search_participant');
 
+// Attendance
+Route::get('download/attendance/{product_id}/{package_id}', 'AttendanceController@download_attendance');
 
-// Route::get('free-ticket/search/{product_id}/{package_id}', 'ReportsController@search_free');
-// Route::get('export-paid/{product_id}/{package_id}', 'ReportsController@export_paid');
-// Route::get('paid-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_paid');
-// Route::post('paid-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_paid');
-// Route::get('free-ticket/{product_id}/{package_id}', 'ReportsController@free_ticket');
-// Route::get('export-free/{product_id}/{package_id}', 'ReportsController@export_free');
-// Route::get('free-ticket/view/{product_id}/{package_id}/{ticket_id}', 'ReportsController@track_free');
-// Route::post('free-ticket/update/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@update_free');d
 
 /*
 |--------------------------------------------------------------------------
@@ -552,7 +546,7 @@ Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
-Route::get('export-surveyform/','HomeController@exportsurveyform');
+Route::get('export-surveyform','HomeController@exportsurveyform');
 Route::get('export-test','HomeController@exporttest');
 
 //check invoice template email
