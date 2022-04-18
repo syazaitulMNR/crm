@@ -176,7 +176,7 @@ Route::get('delete/{id}', 'ProductController@destroy');
 | Pengesahan Kehadiran
 |--------------------------------------------------------------------------
 */
-Route::get('pengesahan-pendaftarban/{product_id}/{package_id}', 'AttendanceController@ICdetails');
+Route::get('pengesahan-pendaftaran/{product_id}/{package_id}', 'AttendanceController@ICdetails');
 Route::get('validation/{product_id}/{package_id}', 'AttendanceController@validation');
 Route::get('/unregister', function () {
     return view('attendance.unregister');
@@ -566,9 +566,13 @@ Route::get('invite-customer-thankyou', 'HomeController@inviteCustomerThankyou');
 Route::get('/sample-customer', 'SampleCustomer@index');
 
 // route untuk kehadiran offline event
-Route::get('/maklumat-peserta', 'AttendanceController@maklumatPeserta');
-Route::get('/ic-peserta', 'AttendanceController@icPeserta');
+Route::get('/maklumat-peserta/{product_id}/{package_id}', 'AttendanceController@maklumatPeserta');
+Route::get('/ic-peserta/{product_id}/{package_id}', 'AttendanceController@icPeserta');
 Route::get('/data-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@dataPeserta');
-Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
+Route::group(['middleware' => 'auth'], function () {
+	// Route::get('/data-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@adminDataPeserta');
+    Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
+});
+// Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
 
 
