@@ -211,15 +211,22 @@ class customerProfileController extends Controller
         $search = $request->query('search');
 
         if($search) {
-            $customers = Student::whereNotNull('membership_id')
-            ->where(function($query) use ($search){
-                $query->where('first_name', 'LIKE', '%'.$search.'%')
-                ->orWhere('last_name', 'LIKE', '%'.$search.'%')
-                ->orWhere('ic', 'LIKE', '%'.$search.'%')
-                ->orWhere('email', 'LIKE', '%'.$search.'%');
+            // $customers = Student::whereNotNull('membership_id')
+            // ->where(function($query) use ($search){
+            //     $query->where('first_name', 'LIKE', '%'.$search.'%')
+            //     ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+            //     ->orWhere('ic', 'LIKE', '%'.$search.'%')
+            //     ->orWhere('email', 'LIKE', '%'.$search.'%');
+            // })->paginate(10);
+            $customers = Student::where(function ($query) use ($search) {
+                $query->where('first_name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('ic', 'LIKE', '%' . $search . '%')
+                    ->orWhere('email', 'LIKE', '%' . $search . '%');
             })->paginate(10);
         }else {
-            $customers = Student::whereNotNull('membership_id')->paginate(10);
+            // $customers = Student::whereNotNull('membership_id')->paginate(10);
+            $customers = Student::paginate(10);
         }
         
         return view('customer.customer_profiles', compact('customers'));
