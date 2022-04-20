@@ -225,8 +225,8 @@ class customerProfileController extends Controller
                     ->orWhere('email', 'LIKE', '%' . $search . '%');
             })->paginate(10);
         }else {
-            // $customers = Student::whereNotNull('membership_id')->paginate(10);
-            $customers = Student::paginate(10);
+            $customers = Student::whereNotNull('membership_id')->paginate(10);
+            //$customers = Student::paginate(10);
         }
         
         return view('customer.customer_profiles', compact('customers'));
