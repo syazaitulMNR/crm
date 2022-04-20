@@ -226,7 +226,7 @@ class customerProfileController extends Controller
             })->paginate(10);
         }else {
             // $customers = Student::whereNotNull('membership_id')->paginate(10);
-            $customers = Student::orderBy('id', 'D')->paginate(10);
+            $customers = Student::paginate(10);
         }
         
         return view('customer.customer_profiles', compact('customers'));
