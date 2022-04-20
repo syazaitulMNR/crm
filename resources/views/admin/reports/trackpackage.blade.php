@@ -216,7 +216,10 @@ Sales Report
                 <td>
                   <a class="btn btn-sm btn-dark" href="{{ url('view/buyer') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-person pr-2"></i>Buyer</a>                    
                   <a class="btn btn-sm btn-dark" href="{{ url('view/participant') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="bi bi-people pr-2"></i>Participant</a>
-                  <a class="btn btn-sm btn-primary" href="{{ url('download/attendance') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fa fa-download pr-2"></i>Attendance</a>
+                  @if ($product->class == "MMB")
+                    <a class="btn btn-sm btn-primary" href="{{ url('download/attendance') }}/{{ $product->product_id }}/{{ $packages->package_id }}"><i class="fa fa-download pr-2"></i>Attendance</a>
+                  @else
+                  @endif
                 </td>
               </tr>
               @endif
