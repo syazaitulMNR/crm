@@ -901,7 +901,7 @@ class ReportsController extends Controller
             {
                 $att_id = $attend_id->attendance;
 
-                $payment = Payment::where('attendance', $attendance)->where('product_id', $product_id)->where('package_id', $package_id)->get();
+                $payment = Payment::where('attendance', $attendance)->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
                 return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
             }
