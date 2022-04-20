@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Attendance_Download;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Package;
@@ -241,24 +243,22 @@ class AttendanceController extends Controller
     {
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
+
+        Session::put('product_id',$product_id);
+        Session::put('package_id',$package_id);
+
         $payment = Payment::where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
         $ticket = Ticket::where('ticket_type','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
         
         for ($i=0; $i < count($payment) ; $i++) { 
             $studentpay[$i] = Student::where('stud_id', $payment[$i]->stud_id)->get();
         }
-        for ($i=0; $i < count($ticket) ; $i++) { 
-            $studenttic[$i] = Student::where('stud_id', $ticket[$i]->stud_id)->get();
+
+        if (count($ticket) == 0){
+            for ($i=0; $i < count($ticket) ; $i++) { 
+                $studenttic[$i] = Student::where('stud_id', $ticket[$i]->stud_id)->get();
+            }
         }
-
-        // foreach ($payment as $keypay) {
-        //     $studentpay = Student::where('stud_id', $keypay->stud_id)->first();
-        // }
-
-        // foreach ($ticket as $keytic) {
-        //     $studenttic = Student::where('ic', $keytic->ic)->first();
-        // }
-        // dd(count($ticket) == 0);
 
         $fileName = $product->name.' Kehadiran'.'.csv';
             $columnNames = [
@@ -303,7 +303,7 @@ class AttendanceController extends Controller
 
             fclose($file);
 
-        return redirect('trackpackage/'. $product->product_id)->with('success', 'User Successfully Created');
+        return Excel::download(new Attendance_Download, 'Attendance '.$product->name.'.xlsx');
     }
 }
 
