@@ -407,7 +407,9 @@ Customer Profiles
             
                         <div class="card-body">
                             <div class="col-md-12 pt-3 table-responsive" id="content" class="overflow-auto" style="height: 400px;">
-                                <table class="table table-hover">
+
+                                <p class="text-center">Not available</p>
+                                {{-- <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -426,11 +428,17 @@ Customer Profiles
                                             </tr>
                                         @empty
                                             <tr>
+                                                <th scope="row">1</th>
+                                                <td>test</td>
+                                                <td>12-01-2022</td>
+                                                <td>RM 3</td>
+                                            </tr>
+                                            <tr>
                                                 <td colspan="5" class="text-center">No result founds</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
-                                </table>
+                                </table> --}}
                             </div>
                         </div>
                     </div>
