@@ -268,7 +268,7 @@ Sales Report
             </div>
           </table> 
           
-          <select class="form-control" name="product_id">
+          {{-- <select class="form-control" name="product_id">
           @foreach ($data as $key => $value)
             <option value="{{ $key }}" {{ ( $key == $selectedID) ? 'selected' : '' }}>{{ $key }} 
             </option>
@@ -279,7 +279,7 @@ Sales Report
             @else
             @endif
           @endforeach
-          </select>
+          </select> --}}
         </div>
         <br>
         </div>
