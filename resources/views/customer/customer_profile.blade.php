@@ -408,9 +408,7 @@ Customer Profiles
                         <div class="card-body">
                             <div class="col-md-12 pt-3 table-responsive" id="content" class="overflow-auto" style="height: 400px;">
 
-                                <p class="text-center">Not available
-                                    
-                                </p>
+                                <p class="text-center">Not available</p>
                                 {{-- <table class="table table-hover">
                                     <thead>
                                         <tr>
