@@ -276,13 +276,14 @@ class UpdatePendaftaran extends Command
         $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
         $textes = strtoupper("MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Diamond )"."\n"."Total Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)."\n\n"."By Hours"."\n"."Total General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)." (+".($packages1+$packages3+$packages5+$packages7+$packages9+$packages11+$packages13+$packages15+$packages17).")"."\n"."Total Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)." (+".($packages2+$packages4+$packages6+$packages8+$packages10+$packages12+$packages14+$packages16+$packages18).")";
-        
+    
+        $id = env('TELEGRAM_CHAT_ID','');
         $tester =  Telegram::sendMessage([
             "chat_id" => env('TELEGRAM_CHAT_ID', ''),
             "parse_mode" => "HTML",
             "text" => $textes
         ]);
-        dd($tester);
+        dd($id);
     
     }
 }
