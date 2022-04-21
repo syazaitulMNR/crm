@@ -59,12 +59,16 @@ Sales Report
                             <th>IC No.</th>
                             <th>Email</th>
                             <th>Phone No</th>
+                            <th>Membership ID</th>
+                            <th>Level ID</th>
                             <th>Price (RM)</th>
                             <th>Quantity</th>
                             <th>Total Payment</th>
                             <th>Pay Method</th>
                             {{-- <th>Ticket Type</th> --}}
                             <th>Offer ID</th>
+                            <th>Pay_datetime</th>
+                            
                         </tr>
                         <tr>
                             <td>John</td>
@@ -72,12 +76,15 @@ Sales Report
                             <td>900101014321</td>
                             <td>example@gmail.com</td>
                             <td>+60123456789</td>
+                            <td>MB001</td>
+                            <td>MBL001</td>
                             <td>199</td>
                             <td>1</td>
                             <td>199</td>
                             <td>FPX</td>
                             {{-- <td>free</td> --}}
                             <td>OFF001</td>
+                            <td>2022-04-01 03:45:06</td>
                         </tr>
                     </table>
                 </div>
@@ -107,6 +114,63 @@ Sales Report
                             <td>{{ $offers->name }}</td>
                         </tr>
 						@endforeach
+                    </table>
+                </div>
+            </div>  
+        </div>
+        <p>3) Just refer to this table for Memberhsip ID column.</p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <!-- Show details in table ----------------------------------------------->
+                    <table class="table table-bordered table-sm">
+                        <tr class="table-active">
+                            <th>#</th>
+                            <th>Membership ID</th>
+                            <th>Description</th>
+                        </tr>
+						 {{-- @foreach ($offer as $offers) --}}
+                        <tr>
+                            <td>1</td>
+                            <td>MB001</td>
+                            <td>Ultimate</td>
+                        </tr>
+                        <td>1</td>
+                        <td>MB002</td>
+                        <td>Platinum    </td>
+                        
+						{{-- @endforeach --}}
+                    </table>
+                </div>
+            </div>  
+        </div>
+        <p>4) Just refer to this table for Level ID column.</p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <!-- Show details in table ----------------------------------------------->
+                    <table class="table table-bordered table-sm">
+                        <tr class="table-active">
+                            <th>#</th>
+                            <th>Level ID</th>
+                            <th>Description</th>
+                        </tr>
+						 {{-- @foreach ($offer as $offers) --}}
+                        <tr>
+                            <td>1</td>
+                            <td>MBL001</td>
+                            <td>Ultimate Plus</td>
+                        </tr>
+                        <td>2</td>
+                        <td>MBL002</td>
+                        <td>Ultimate Partner</td>
+                        <tr>
+                            <td>3</td>
+                            <td>MBL005</td>
+                            <td>Platinum</td>
+                        </tr>
+                        
+						{{-- @endforeach --}}
                     </table>
                 </div>
             </div>  

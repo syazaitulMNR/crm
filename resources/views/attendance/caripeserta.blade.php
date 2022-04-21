@@ -8,13 +8,13 @@
 <div class="row pt-4">
     <div class="col-md-12 px-2 py-5 text-center">
         <img src="/assets/images/logo.png" style="max-width:150px">
-        <h1 class="display-5 text-dark px-3 pt-4">Maklumat Peserta</h1>
+        <h1 class="display-5 text-dark px-3 pt-4">{{ $product->name }} Kehadiran</h1>
     </div>
     
     <div class="col-md-6 offset-md-3">
         <div class="card px-4 py-4 shadow">
             <p>No. Kad Pengenalan / Passport</p>
-            <form action="{{ url('ic-peserta')}}" method="get">
+            <form action="{{ url('ic-peserta')}}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
                 @csrf
                 <div class="col-md-12 pb-3">
                     <input type="text" class="form-control" name="ic" placeholder="tanpa '-' .Cth: 91042409**** / A********" maxlength="12" required="" >

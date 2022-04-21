@@ -281,9 +281,7 @@ class UpdatePendaftaran2 extends Command
         $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
 
-            $text = "<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages1." (+".$package1.")"."\n"."Diamond : ".$packages2." (+".$package2.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuala Lumpur')."</b>"."\n"."General : ".$packages3." (+".$package3.")"."\n"."Diamond : ".$packages4." (+".$package4.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : ".$packages5." (+".$package5.")"."\n"."Diamond : ".$packages6." (+".$package6.")"."\n\n"
+            $text = "<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : ".$packages5." (+".$package5.")"."\n"."Diamond : ".$packages6." (+".$package6.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : ".$packages7." (+".$package7.")"."\n"."Diamond : ".$packages8." (+".$package8.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages9." (+".$package9.")"."\n"."Diamond : ".$packages10." (+".$package10.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : ".$packages11." (+".$package11.")"."\n"."Diamond : ".$packages12." (+".$package12.")"."\n\n"

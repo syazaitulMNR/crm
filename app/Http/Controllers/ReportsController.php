@@ -39,18 +39,11 @@ class ReportsController extends Controller
         $this->middleware('auth');
     }
 
-    public function trackprogram(Request $request)
+    public function trackprogram()
     {
-        $student = Student::orderBy('id','desc')->get();
         $product = Product::orderBy('id','desc')->paginate(15);
-        $package = Package::orderBy('id','asc')->get();
-        $payment = Payment::orderBy('id','asc')->get(); 
-
-        $totalcust = Student::count();
-        $totalpay = Payment::count();
         
-        
-        return view('admin.reports.trackprogram', compact('student','product','package', 'payment', 'totalcust','totalpay'));
+        return view('admin.reports.trackprogram', compact('product'));
     }
 
     public function trackpackage($product_id)
@@ -246,7 +239,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -274,6 +268,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $payments->user_id,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
                                 }
                             }
@@ -305,7 +300,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -333,6 +329,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $payments->user_id,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
 
                                 }
@@ -365,7 +362,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -396,6 +394,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $user->email,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
 
                                     }
@@ -430,7 +429,8 @@ class ReportsController extends Controller
                 'Offer ID',
                 'Update Participant',
                 'Payment Source',
-                'Purchased At'
+                'Purchased At',
+                'Payment Date Time'
             ];
 
             
@@ -461,6 +461,7 @@ class ReportsController extends Controller
                                             $payments->update_count,
                                             $payments->user_id,
                                             $payments->created_at,
+                                            $payments->pay_datetime
                                         ]);
 
                                     // }
@@ -792,14 +793,15 @@ class ReportsController extends Controller
     public function trackpayment($product_id, $package_id, $payment_id, $student_id)
     {
         $paginate = Payment::where('product_id', $product_id)->paginate(15);
+        $student = Student::where('stud_id', $student_id)->first();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $payment = Payment::where('payment_id', $payment_id)->first();
-        $student = Student::where('stud_id', $student_id)->first();
+        $ticket = Ticket::where('ic', $student->ic)->where('payment_id')->first();
 
         $counter = Student::count();
         
-        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'student', 'counter'));
+        return view('admin.reports.trackpayment', compact('paginate', 'product', 'package', 'payment', 'ticket', 'student', 'counter'));
     }
 
     public function updatepayment($product_id, $package_id, $payment_id, $student_id, Request $request)
@@ -816,6 +818,7 @@ class ReportsController extends Controller
         $student->email = $request->email;
         $student->save();
 
+        $payment->attendance = $request->attendance;
         $payment->status = $request->status;
         $payment->offer_id = $request->offer_id;
         $payment->save();
@@ -849,10 +852,10 @@ class ReportsController extends Controller
             return redirect()->back()->with('search-error', 'Buyer not exist!');
 
         }else{
-            
+
             $stud_id = $student_id->stud_id;
 
-            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $payment = Payment::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
             if(count($payment) > 0)
             {
@@ -868,7 +871,7 @@ class ReportsController extends Controller
         
     }
 
-    public function attendance($product_id, $package_id, Request $request)
+    public function attendance($product_id, $package_id, Request $request, $attendance)
     {   
         // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
@@ -894,22 +897,13 @@ class ReportsController extends Controller
 
         }else{
             
-            foreach ($attendance_id as $attend_id) {
-
+            foreach ($attendance_id as $attend_id) 
+            {
                 $att_id = $attend_id->attendance;
 
-                $payment = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+                $payment = Payment::where('attendance', $attendance)->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
-                if (count($payment) > 0) {
-
-                    return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
-
-                } else {
-
-                    return redirect()->back()->with('search-error', 'Buyer not found!');
-
-                }
-
+                return view('admin.reports.viewbypackage', compact('product', 'package', 'payment', 'student', 'offer', 'count', 'total', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket'));
             }
         }
     }

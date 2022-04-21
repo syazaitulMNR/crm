@@ -663,9 +663,7 @@ class MembershipController extends Controller
         $get = $request['pfeatures'];
 
         $data['key'] = count($key);
-
-        // dd($request->date1);
-
+        
         // student information
         $data['name'] = $request['to']; //
         $data['invoice_id'] = $request['invoiceno']; //
