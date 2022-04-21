@@ -105,7 +105,29 @@
 					<textarea class="form-control" name="description" placeholder="Description"></textarea><br />
 					
 					Content:
-					<textarea class="form-control" name="content" placeholder="Content"></textarea><br />
+					<textarea class="form-control" name="content" placeholder="Content"></textarea><hr>
+
+					<span class="fw-bolder">For SMS auto blasting purpose only. Can leave it blank.</span><br>
+					Class:
+					<select class="form-control" name="class">
+						<option value="">Select Event Class...</option>
+						@foreach ($prods as $prod)
+							<option value="{{ $prod->class }}">{{ $prod->class }}</option>
+						@endforeach
+					</select><br>
+					
+					<div class="row">
+						<span class="text-danger text-sm">*<b>Choose</b> between <b>DAY</b> or <b>HOUR</b> before event start</span>
+						<div class="col-md-6">
+							Day:
+							<input type="number" class="form-control" name="day" max="10" min="1" placeholder="Day Before Event Start"><br>
+						</div>
+						<div class="col-md-6">
+							Hour:
+							<input type="number" class="form-control" name="hour" max="23" min="1" placeholder="Hour Before Event Start">
+						</div>
+					</div>
+
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
