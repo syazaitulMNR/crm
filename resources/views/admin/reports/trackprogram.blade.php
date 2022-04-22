@@ -12,7 +12,14 @@
   <div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
     <a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; <a href="/dashboard">Dashboard</a> / <b>Sales Report</b>
   </div> 
-     
+  
+  @if(session('error'))
+    <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+      <strong>Sorry!</strong> {{ session('error') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  @endif
+
   <div class="flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Sales Report</h1>
   </div> 

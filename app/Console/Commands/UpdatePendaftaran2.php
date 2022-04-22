@@ -183,32 +183,6 @@ class UpdatePendaftaran2 extends Command
 
         }
 
-
-        /////////////////////////////////////////////////////////////////////
-        // get product id
-        // $listprd = ['PRD0039','PRD0040','PRD0041','PRD0042','PRD0043','PRD0044','PRD0047','PRD0048','PRD0049','PRD0050','PRD0051','PRD0052','PRD0053','PRD0054','PRD0055','PRD0056','PRD0057','PRD0058'];
-        // $listprd = Product::where('class','MMB')->orderBy('id','asc')->get();
-        // $count_product = count($listprd);
-
-        // foreach ($listprd as $keyprd => $dataprd){
-        //     $product = Product::where('product_id', $dataprd->product_id)->get();
-        //     $package = Package::where('product_id', $product->product_id)->first();
-        // }
-
-        // foreach ($product as $keyprod => $dataprod){
-        // for ($i = 0; $i < $count_product; $i++)
-        // {
-        //     // get report by 2 hours
-        //     $registration[$i] = Payment::where('status','paid')->where('product_id', $product[$i]->product_id)->whereBetween('created_at', [ $from , $to ])->count();
-            
-        //     // get total registration
-        //     $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product[$i]->product_id)->count();
-
-        //     // get total collection
-        //     $collection[$i] = Payment::where('status','paid')->where('product_id', $product[$i]->product_id)->sum('totalprice');
-        // }
-        // }
-
         $product1 = Product::where('product_id','PRD0039')->first();
         $package1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         $packages1 = Payment::where('product_id',$product1->product_id)->where('status','paid')->count();
@@ -294,44 +268,5 @@ class UpdatePendaftaran2 extends Command
             ]);
         return 0;
 
-        // PENTINGGGGGGGGG //
-        /////////////////////////////////////////////////////////////////////
-        // $product = Product::where('product_id', 'PRD0037')->first();
-        // $product_id = $product->product_id;
-
-        // // get package
-        // $package = Package::where('product_id', $product_id)->get();
-        // $count_package = Package::where('product_id', $product_id)->count();
-
-        // for ($i = 0; $i < $count_package; $i++)
-        // {
-
-        //     // get report by 2 hours
-        //     $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        //     $paidticket[$i] = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        //     $freeticket[$i] = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-            
-        //     // get total registration
-        //     $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
-
-        //     // get total collection
-        //     $collection[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
-
-            
-        // }
-        
-        // $total_now = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-        
-        // $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
-
-        // for ($i = 0; $i < $count_package; $i++){
-        //     $text = "<b>".strtoupper($package[$i]->name)."</b>"."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";
-        //     Telegram::sendMessage([
-        //         "chat_id" => env('TELEGRAM_CHAT_ID', ''),
-        //         "parse_mode" => "HTML",
-        //         "text" => $text
-        //     ]);
-        // }
-        // return 0;
     }
 }
