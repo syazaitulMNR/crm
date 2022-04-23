@@ -54,9 +54,10 @@ class SMSEventHour extends Command
         foreach ($startcron as $sms) {
             if($sms->class != NULL && $sms->hour != NULL) {
                 $twohour = Carbon::now('Asia/Kuala_Lumpur')->addHours($sms->hour)->format('H:i');
-                $onehour = Carbon::now('Asia/Kuala_Lumpur')->addHours(($sms->hour)-1)->format('H:i');
+                // $onehour = Carbon::now('Asia/Kuala_Lumpur')->addHours(($sms->hour)-1)->format('H:i');
 
-                $bytime = Product::select('product_id', 'name', 'date_from', 'time_from')->where('time_from', '>=', $onehour)->where('time_from', '<=', $twohour)->where('class', $sms->class)->where('date_from', Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y'))->get();
+                // $bytime = Product::select('product_id', 'name', 'date_from', 'time_from')->where('time_from', '>=', $onehour)->where('time_from', '<=', $twohour)->where('class', $sms->class)->where('date_from', Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y'))->get();
+                $bytime = Product::select('product_id', 'name', 'date_from', 'time_from')->where('time_from', $twohour)->where('class', $sms->class)->where('date_from', Carbon::now('Asia/Kuala_Lumpur')->format('d-m-Y'))->get();
                 foreach($bytime as $event) {
                     $lists = Payment::select('stud_id')->where('product_id', $event->product_id)->where('status', 'paid')->orderBy('product_id','asc')->get();
             
