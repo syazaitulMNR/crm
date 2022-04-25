@@ -275,67 +275,15 @@ class UpdatePendaftaran extends Command
         $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
         $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
 
-        ////////////////////////////////////////
-
         $textes = strtoupper("MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Diamond )"."\n"."Total Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)."\n\n"."By Hours"."\n"."Total General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)." (+".($packages1+$packages3+$packages5+$packages7+$packages9+$packages11+$packages13+$packages15+$packages17).")"."\n"."Total Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)." (+".($packages2+$packages4+$packages6+$packages8+$packages10+$packages12+$packages14+$packages16+$packages18).")";
-        Telegram::sendMessage([
+    
+        $id = env('TELEGRAM_CHAT_ID','');
+        $tester =  Telegram::sendMessage([
             "chat_id" => env('TELEGRAM_CHAT_ID', ''),
             "parse_mode" => "HTML",
             "text" => $textes
         ]);
-
-        /////////////////////////////////////////////////////////////////////////////////
-
-    //     // get product id
-    //     $product = Product::where('status', 'active')->first();
-    //     $product_id = $product->product_id;
-
-    //     // get package
-    //     $package = Package::where('product_id', $product_id)->get();
-    //     $count_package = Package::where('product_id', $product_id)->count();
-
-    //     for ($i = 0; $i < $count_package; $i++)
-    //     {
-
-    //         // get report by 2 hours
-    //         $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-    //         $paidticket[$i] = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-    //         $freeticket[$i] = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-            
-    //         // get total registration
-    //         $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
-
-    //         // get total collection
-    //         $collection[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->sum('totalprice');
-
-            
-    //     }
-        
-    //     // get the total 
-    //     $harini = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-    //     $harini1 = Payment::where('product_id', 'PRD0037')->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00') , date('Y-m-d H:i:s') ])->count();
-
-    //     $total_now = ($harini+$harini1);
-        
-    //     $totalregister1 = Payment::where('status','paid')->where('product_id', 'PRD0037')->count();
-    //     $totalregister = Payment::where('status','paid')->where('product_id', $product_id)->count();
-
-
-    //     $textes = $product->name."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Gold + Diamond )"."\n"."Total Registration : ".($totalregister+$totalregister1)."\n"."Total Today : +".$total_now."\n";
-    //     Telegram::sendMessage([
-    //         "chat_id" => env('TELEGRAM_CHAT_ID', ''),
-    //         "parse_mode" => "HTML",
-    //         "text" => $textes
-    //     ]);
-
-    //     for ($i = 0; $i < $count_package; $i++){
-    //         $text = "<b>".strtoupper($package[$i]->name)."</b>"."\n\n"."Total Ticket : ".$totalpackage[$i]."\n"."Current Registration (Hours)"." : +".number_format($registration[$i])."\n";
-    //         Telegram::sendMessage([
-    //             "chat_id" => env('TELEGRAM_CHAT_ID', ''),
-    //             "parse_mode" => "HTML",
-    //             "text" => $text
-    //         ]);
-    //     }
-    //    return 0;
+        dd($id);
+    
     }
 }

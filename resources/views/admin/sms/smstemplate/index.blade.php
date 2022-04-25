@@ -10,6 +10,7 @@
 		<div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
 			<a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; 
 			<a href="/dashboard">Dashboard</a> / 
+			<a href="/smsblast">SMS Bulk</a> / 
 			<b>SMS Template</b>
 		</div> 
 
@@ -58,20 +59,12 @@
 				@foreach ($x as $k => $t)
 					<tr>
 						<td>{{ $no++ }}</td>
-						
-						<td>
-							{{ $t->title }}
-						</td>
-						
-						<td>
-							{{ $t->description }}
-						</td>
-						
+						<td>{{ $t->title }}</td>
+						<td>{{ $t->description }}</td>
 						<td class="text-right">
 							<a class="btn btn-dark" href="{{ url('smstemplate') }}/edit/{{ $t->id }}">
 								<i class="bi bi-pencil"></i>
 							</a>
-							
 							<a class="btn btn-danger" href="{{ url('smstemplate') }}/delete/{{ $t->id }}">
 								<i class="bi bi-trash"></i>
 							</a>
@@ -99,13 +92,37 @@
 				<form action="{{ url('smstemplate/add') }}" method="POST"> 
 					@csrf
 					Title:
-					<input type="text" name="title" class="form-control" placeholder="Template Title" /><br />
+					<input type="text" name="title" class="form-control" placeholder="Template Title" required/><br />
 					
 					Description:
-					<textarea class="form-control" name="description" placeholder="Description"></textarea><br />
+					<textarea class="form-control" name="description" placeholder="Description" required></textarea><br />
 					
 					Content:
-					<textarea class="form-control" name="content" placeholder="Content"></textarea><br />
+					<textarea class="form-control" id="textarea" name="content" maxlength="142" placeholder="Content" required></textarea>
+					<div class="text-danger" id="textarea_feedback"></div>
+					<hr>
+
+					<span class="fw-bolder">For SMS auto blasting purpose only. Can leave it blank.</span><br>
+					Class:
+					<select class="form-control" name="class">
+						<option value="">Select Event Class...</option>
+						@foreach ($prods as $prod)
+							<option value="{{ $prod->class }}">{{ $prod->class }}</option>
+						@endforeach
+					</select><br>
+					
+					<div class="row">
+						<span class="text-danger text-sm">*<b>Choose</b> between <b>DAY</b> or <b>HOUR</b> before event start</span>
+						<div class="col-md-6">
+							Day:
+							<input type="number" class="form-control" name="day" max="10" min="1" placeholder="Day Before Event Start"><br>
+						</div>
+						<div class="col-md-6">
+							Hour:
+							<input type="number" class="form-control" name="hour" max="23" min="1" placeholder="Hour Before Event Start">
+						</div>
+					</div>
+
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
@@ -118,6 +135,20 @@
 	</div>
 </div>
 
+<script>
+	$(document).ready(function() {
+		var text_max = 142;
+		$('#textarea_feedback').html(text_max + ' characters remaining');
+
+		$('#textarea').keyup(function() {
+			var text_length = $('#textarea').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#textarea_feedback').html(text_remaining + ' characters remaining');
+		});
+
+	});
+</script>
 @endsection
 
 
