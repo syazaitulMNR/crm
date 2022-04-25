@@ -139,18 +139,45 @@ class UpdatePendaftaran3 extends Command
         $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
         $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->sum('quantity');
         $totalsale18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+
+        // XCESS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $product19 = Product::where('product_id','PRD0068')->first();
+        $product20 = Product::where('product_id','PRD0069')->first();
+        $product21 = Product::where('product_id','PRD0070')->first();
+        $product22 = Product::where('product_id','PRD0071')->first();
+        $product23 = Product::where('product_id','PRD0072')->first();
+        $product24 = Product::where('product_id','PRD0073')->first();
+        $product25 = Product::where('product_id','PRD0074')->first();
+
+        $package19 = Payment::where('product_id',$product19->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $package20 = Payment::where('product_id',$product20->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $package21 = Payment::where('product_id',$product21->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $package22 = Payment::where('product_id',$product22->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $package23 = Payment::where('product_id',$product23->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $package24 = Payment::where('product_id',$product24->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+        $package25 = Payment::where('product_id',$product25->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('quantity');
+
+        $totalsale19 = Payment::where('product_id',$product19->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+        $totalsale20 = Payment::where('product_id',$product20->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+        $totalsale21 = Payment::where('product_id',$product21->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+        $totalsale22 = Payment::where('product_id',$product22->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+        $totalsale23 = Payment::where('product_id',$product23->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+        $totalsale24 = Payment::where('product_id',$product24->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+        $totalsale25 = Payment::where('product_id',$product25->product_id)->where('status','paid')->whereBetween('created_at', [ $start_time , $end_time  ])->sum('totalprice');
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n"."Time : 12:00 AM - 4:00 PM"."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16)." ( RM".($totalsale2+$totalsale4+$totalsale6+$totalsale8+$totalsale10+$totalsale12+$totalsale14+$totalsale16)." )"."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : "." (+".$package1.")"."\n"."Diamond : "." (+".$package2.")"."\n"."Total Collection : RM".$totalsale2."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuala Lumpur')."</b>"."\n"."General : "." (+".$package3.")"."\n"."Diamond : "." (+".$package4.")"."\n"."Total Collection : RM".$totalsale4."\n\n"
+        $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n"."Time : 12:00 AM - 4:00 PM"."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16+$package17+$package18+$package19+$package20+$package21+$package22+$package23+$package24+$package25)." ( RM".($totalsale2+$totalsale4+$totalsale6+$totalsale8+$totalsale10+$totalsale12+$totalsale14+$totalsale16+$totalsale17+$totalsale18+$totalsale19+$totalsale20+$totalsale21+$totalsale22+$totalsale23+$totalsale24+$totalsale25)." )"."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Xcess : ".($package19+$package20+$package21+$package22+$package23+$package24+$package25)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : "." (+".$package5.")"."\n"."Diamond : "." (+".$package6.")"."\n"."Total Collection : RM".$totalsale6."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : "." (+".$package7.")"."\n"."Diamond : "." (+".$package8.")"."\n"."Total Collection : RM".$totalsale8."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : "." (+".$package9.")"."\n"."Diamond : "." (+".$package10.")"."\n"."Total Collection : RM".$totalsale10."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : "." (+".$package11.")"."\n"."Diamond : "." (+".$package12.")"."\n"."Total Collection : RM".$totalsale12."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : "." (+".$package13.")"."\n"."Diamond : "." (+".$package14.")"."\n"."Total Collection : RM".$totalsale14."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n";
+                    ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n";
         Telegram::sendMessage([
-            "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+            "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
             "parse_mode" => "HTML",
             "text" => $textes
         ]);
