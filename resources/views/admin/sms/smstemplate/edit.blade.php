@@ -42,13 +42,13 @@
 			@csrf
 			
 			Title:
-			<input type="text" name="title" class="form-control" placeholder="Template Title" value="{{ $x->first()->title }}" /><br/>
+			<input type="text" name="title" class="form-control" placeholder="Template Title" value="{{ $x->first()->title }}" required/><br/>
 			
 			Description:
-			<textarea class="form-control" name="description" placeholder="Description">{{ $x->first()->description }}</textarea><br/>
+			<textarea class="form-control" name="description" placeholder="Description" required>{{ $x->first()->description }}</textarea><br/>
 			
 			Content:
-			<textarea class="form-control" name="content" placeholder="Content">{{ $x->first()->content }}</textarea><br/><hr>
+			<textarea class="form-control" name="content" placeholder="Content" required>{{ $x->first()->content }}</textarea><br/><hr>
 			
 			<span class="fw-bolder mb-3">For SMS auto blasting purpose only. Can leave it blank.</span><br>
 			<div class="text-danger text-xss mb-2">(<b>Choose</b> between <b>DAY</b> or <b>HOUR</b> before event start)</div>
