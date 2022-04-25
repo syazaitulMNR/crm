@@ -48,7 +48,9 @@
 			<textarea class="form-control" name="description" placeholder="Description" required>{{ $x->first()->description }}</textarea><br/>
 			
 			Content:
-			<textarea class="form-control" name="content" placeholder="Content" required>{{ $x->first()->content }}</textarea><br/><hr>
+			<textarea class="form-control" id="textarea" name="content" maxlength="142" placeholder="Content" required>{{ $x->first()->content }}</textarea>
+			<div class="text-danger" id="textarea_feedback"></div>
+			<hr>
 			
 			<span class="fw-bolder mb-3">For SMS auto blasting purpose only. Can leave it blank.</span><br>
 			<div class="text-danger text-xss mb-2">(<b>Choose</b> between <b>DAY</b> or <b>HOUR</b> before event start)</div>
@@ -94,6 +96,20 @@
 	</div>
 </div>
 
+<script>
+	$(document).ready(function() {
+		var text_max = 142;
+		$('#textarea_feedback').html(text_max + ' characters remaining');
+
+		$('#textarea').keyup(function() {
+			var text_length = $('#textarea').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#textarea_feedback').html(text_remaining + ' characters remaining');
+		});
+
+	});
+</script>
 @endsection
 
 

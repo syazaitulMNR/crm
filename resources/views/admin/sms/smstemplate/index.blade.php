@@ -59,20 +59,12 @@
 				@foreach ($x as $k => $t)
 					<tr>
 						<td>{{ $no++ }}</td>
-						
-						<td>
-							{{ $t->title }}
-						</td>
-						
-						<td>
-							{{ $t->description }}
-						</td>
-						
+						<td>{{ $t->title }}</td>
+						<td>{{ $t->description }}</td>
 						<td class="text-right">
 							<a class="btn btn-dark" href="{{ url('smstemplate') }}/edit/{{ $t->id }}">
 								<i class="bi bi-pencil"></i>
 							</a>
-							
 							<a class="btn btn-danger" href="{{ url('smstemplate') }}/delete/{{ $t->id }}">
 								<i class="bi bi-trash"></i>
 							</a>
@@ -106,7 +98,9 @@
 					<textarea class="form-control" name="description" placeholder="Description" required></textarea><br />
 					
 					Content:
-					<textarea class="form-control" name="content" placeholder="Content" required></textarea><hr>
+					<textarea class="form-control" id="textarea" name="content" maxlength="142" placeholder="Content" required></textarea>
+					<div class="text-danger" id="textarea_feedback"></div>
+					<hr>
 
 					<span class="fw-bolder">For SMS auto blasting purpose only. Can leave it blank.</span><br>
 					Class:
@@ -141,6 +135,20 @@
 	</div>
 </div>
 
+<script>
+	$(document).ready(function() {
+		var text_max = 142;
+		$('#textarea_feedback').html(text_max + ' characters remaining');
+
+		$('#textarea').keyup(function() {
+			var text_length = $('#textarea').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#textarea_feedback').html(text_remaining + ' characters remaining');
+		});
+
+	});
+</script>
 @endsection
 
 
