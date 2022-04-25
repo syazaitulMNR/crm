@@ -17,6 +17,10 @@
 			<h1 class="h2">SMS Bulk</h1>
 			
 			<div class="btn-toolbar mb-2 mb-md-0">
+				<a href="/smstemplate" class="btn btn-outline-dark">
+					<i class="bi bi-chat-right-quote pr-2"></i> SMS Template
+				</a>&nbsp;
+
 				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#new-bulk-sms">
 					<i class="bi bi-plus-lg pr-2"></i> New Bulk SMS
 				</button>&nbsp;
