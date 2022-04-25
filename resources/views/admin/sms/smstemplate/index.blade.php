@@ -10,6 +10,7 @@
 		<div class="card-header py-2" style="border: 1px solid rgb(233, 233, 233); border-radius: 5px;">
 			<a href="/dashboard"><i class="bi bi-arrow-left"></i></a> &nbsp; 
 			<a href="/dashboard">Dashboard</a> / 
+			<a href="/smsblast">SMS Bulk</a> / 
 			<b>SMS Template</b>
 		</div> 
 
@@ -99,13 +100,13 @@
 				<form action="{{ url('smstemplate/add') }}" method="POST"> 
 					@csrf
 					Title:
-					<input type="text" name="title" class="form-control" placeholder="Template Title" /><br />
+					<input type="text" name="title" class="form-control" placeholder="Template Title" required/><br />
 					
 					Description:
-					<textarea class="form-control" name="description" placeholder="Description"></textarea><br />
+					<textarea class="form-control" name="description" placeholder="Description" required></textarea><br />
 					
 					Content:
-					<textarea class="form-control" name="content" placeholder="Content"></textarea><hr>
+					<textarea class="form-control" name="content" placeholder="Content" required></textarea><hr>
 
 					<span class="fw-bolder">For SMS auto blasting purpose only. Can leave it blank.</span><br>
 					Class:
