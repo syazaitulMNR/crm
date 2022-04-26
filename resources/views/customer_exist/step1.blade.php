@@ -62,6 +62,18 @@ Pendaftaran Pembeli
                         </div>
 
                         <div class="col-md-6 pb-2">
+                            <label for="title">Jantina:</label>
+                            <select class="form-select" name="gender" required>
+                                    <option value="{{ $student->gender }}" name="gender" selected>{{ $student->gender ?? '' }}</option>
+                                    @if ($student->gender == 'Lelaki')
+                                        <option value="Perempuan" name="gender">Perempuan</option>
+                                    @else
+                                        <option value="Lelaki" name="gender">Lelaki</option>
+                                    @endif
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 pb-2">
                             <label for="description">Emel:</label>
                             <input type="email"  value="{{ $student->email ?? '' }}" class="form-control" name="email" placeholder="example@gmail.com"/>
                         </div>
