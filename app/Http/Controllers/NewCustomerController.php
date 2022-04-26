@@ -41,7 +41,7 @@ class NewCustomerController extends Controller
         
         //generate id
         $stud_id = 'MI'.uniqid();
-  
+
         return view('customer_new.step1',compact('student', 'product', 'package', 'stud_ic', 'stud_id'));
     }
   
@@ -57,6 +57,7 @@ class NewCustomerController extends Controller
             'stud_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
+            'gender' => 'required',
             'ic' => 'required',
             'email' => 'required',
             'phoneno' => 'required'
@@ -91,7 +92,6 @@ class NewCustomerController extends Controller
         $student = $request->session()->get('student');
         $payment = $request->session()->get('payment');
         $ticket = $request->session()->get('ticket');
-        // dd($product->offer_id);
 
         //generate id
         $payment_id = 'OD'.uniqid();

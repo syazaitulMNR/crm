@@ -34,14 +34,6 @@ class ExistCustomerController extends Controller
 		$count_package = Package::where('product_id', $product_id)->count();
         $stud = $request->session()->get('student');
 
-
-        // foreach ($ticket as $tickets){
-        //     if($tickets->stud_id == $stud->stud_id){
-        //         dd('jadi');
-        //         return view('ticket.thankyou', compact('package'));
-        //     }
-        // }
-
         return view('customer_exist.step1', compact('student','product', 'package','count_package', 'stud' ));
 
     }
@@ -55,6 +47,7 @@ class ExistCustomerController extends Controller
             'stud_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
+            'gender' => 'required',
             'ic' => 'required',
             'email' => 'required',
             'phoneno' => 'required'
