@@ -6,6 +6,7 @@
 Customer Profiles
 @endsection
 
+@section('content')
 <style>
     .card {
         overflow: hidden;
@@ -38,15 +39,16 @@ Customer Profiles
         border-bottom-right-radius: 4px;
         border-top-right-radius: 4px;
         background: rgba(114, 124, 245, 0.09);
+        left: 40px;
         margin: 0 auto;
         letter-spacing: 0.2px;
         position: relative;
         line-height: 1.4em;
         font-size: 1.03em;
-        padding: 50px;
+        padding: 20px;
         list-style: none;
         text-align: left;
-        max-width: 40%;
+        max-width: 55%;
     }
 
     @media (max-width: 767px) {
@@ -95,7 +97,7 @@ Customer Profiles
     }
 
     .timeline .event:before {
-        left: -207px;
+        left: -177px;
         content: attr(data-date);
         text-align: right;
         font-weight: 100;
@@ -113,7 +115,7 @@ Customer Profiles
     .timeline .event:after {
         -webkit-box-shadow: 0 0 0 3px #727cf5;
         box-shadow: 0 0 0 3px #727cf5;
-        left: -55.8px;
+        left: -26px;
         background: #fff;
         border-radius: 50%;
         height: 9px;
@@ -205,6 +207,7 @@ Customer Profiles
         </div>
 
         <div class="col-md-12">
+
             <div class="row">
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
@@ -274,6 +277,219 @@ Customer Profiles
                     </div>
                 </div>
             </div>
+
+            <hr>
+
+            <h5 class="m-3 fw-bolder">Affiliate Details</h5>
+            <div class="row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Closing (Overall)</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">130</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa fa-thumbs-up fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Commission (Overall)</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM 28 360.56</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Paid Commission</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM 15 000.00</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa fa-check-circle-o fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                        Balance</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">RM 13 360.56</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-balance-scale fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-md-6 pt-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Affiliate Overview</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-3 mb-3">
+                                    <div class="fw-bolder">Daily Closing</div>
+                                    <div class="text-success lh-1 fs-3 fw-bolder">8</div>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <div class="fw-bolder">Weekly Closing</div>
+                                    <div class="text-success lh-1 fs-3 fw-bolder">21</div>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <div class="fw-bolder">Monthly Closing</div>
+                                    <div class="text-success lh-1 fs-3 fw-bolder">52</div>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <div class="fw-bolder">Yearly Closing</div>
+                                    <div class="text-success lh-1 fs-3 fw-bolder">136</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-select float-end" style="width: 100px">
+                                        <option value="2020"> 2020 </option>
+                                        <option value="2021"> 2021 </option>
+                                        <option selected value="2022"> 2022 </option>
+                                    </select>
+                                    <select class="form-select float-end" style="width: 100px" id="selectid" onchange="generate_chart()">
+                                        <option value="day"> Day </option>
+                                        <option value="week"> Week </option>
+                                        <option selected value="month"> Month </option>
+                                        <option value="year"> Year </option>
+                                    </select>
+                                    
+                                    <canvas id="chart"></canvas>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>                        
+                </div>
+ 
+                <div class="col-md-6 pt-3">                            
+                    <div class="card">
+                        <div class="card-header">
+                            <strong><i class="fa fa-fire text-danger" aria-hidden="true"></i> Top 10 Affiliate</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-md-12 pt-3 table-responsive" id="content" >
+                                <table class="table table-hover table-sm">
+                                    <thead class="text-center">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Closing</th>
+                                            <th scope="col">Commission</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">1</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">2</th>
+                                            <td>Nurzarinah Zakaria</td>
+                                            <td class="text-center">130</td>
+                                            <td class="text-center">RM 28 360.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">3</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">4</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">5</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">6</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">7</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">8</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">9</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">10</th>
+                                            <td>demo user</td>
+                                            <td class="text-center">145</td>
+                                            <td class="text-center">RM 35 000.56</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
             <div class="row">
                 <div class="col-md-6 pt-3">
                     <div class="card">
@@ -295,9 +511,8 @@ Customer Profiles
                             </strong>
                         </div>
             
-                        <div class="card-body">
-                            <form class="px-5" action="{{ url('update_cust', $student_detail) }}" method="post">
-                                {{-- url('update/customer_profile') --}}
+                        <div class="card-body" style="height: 380px;">
+                            <form  action="{{ url('update_cust', $student_detail) }}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -315,6 +530,7 @@ Customer Profiles
                                         <label for="IC Number">IC Number</label>
                                         <input type="text" name="ic" class="form-control" value="{{ $student_detail->ic }}" disabled>
                                     </div>
+                                
                                     <div class="form-group col-md-6">
                                         <label for="First Name">Email Address</label>
                                         <input type="text" name="email" class="form-control" value="{{ $student_detail->email }}" disabled>
@@ -322,13 +538,88 @@ Customer Profiles
                                 </div>
             
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                         <label for="Phone Number">Phone Number</label>
                                         <input type="text" name="phone" class="form-control" value="{{ $student_detail->phoneno }}" disabled>
                                     </div>
                                 </div>
                                 
                             </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 pt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- <div class="card"> -->
+                                <div class="card-header">
+                                    <strong>Timeline</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div id="content" class="overflow-auto" style="height: 350;">
+                                        <ul class="timeline">
+                                            @foreach ($data as $key => $d)
+                                                <li class="event" data-date="{{ $d->date_from }}">
+                                                    <h3>{{ $d->name }}</h3>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <hr>
+            
+            <div class="row">
+                <div class="col-md-6 pt-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Payment Details</strong>
+                        </div>
+            
+                        <div class="card-body">
+                            <div class="col-md-12 pt-3 table-responsive" id="content" class="overflow-auto" style="height: 350px;">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Paid Date</th>
+                                            <th scope="col">Paid Price</th>
+                                            <th scope="col">Download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($payment as $key => $p)
+                                            <tr>
+                                                <th scope="row">{{ $key+1 }}</th>
+                                                <td>
+                                                    {{ $membership_level->name }}
+                                                </td>
+                                                <td>
+                                                    {{ date('d/m/Y', strtotime($p->created_at)) }}
+                                                </td>
+                                                <td>
+                                                    RM {{ $p->pay_price }}.00
+                                                </td>
+                                                <td>
+                                                    {{-- <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a> --}}
+                                                    <a href="{{ url('/student/receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $stud_id }}" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">No result founds</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div><hr>
                         </div>
                     </div>
                 </div>
@@ -339,7 +630,7 @@ Customer Profiles
                             <strong>Comment</strong>
                         </div>
                         <div class="card-body">
-                            <div class="col-md-12 pt-3 table-responsive" id="content" class="overflow-auto" style="height: 230px;">
+                            <div class="col-md-12 pt-3 table-responsive" id="content" class="overflow-auto" style="height: 350px;">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -406,85 +697,80 @@ Customer Profiles
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <hr>
-            
-            <div class="row">
-                <div class="col-md-6 pt-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Payment Details</strong>
-                        </div>
-            
-                        <div class="card-body">
-                            <div class="col-md-12 pt-3 table-responsive" id="content" class="overflow-auto" style="height: 400px;">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Paid Date</th>
-                                            <th scope="col">Paid Price</th>
-                                            <th scope="col">Download</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($payment as $key => $p)
-                                            <tr>
-                                                <th scope="row">{{ $key+1 }}</th>
-                                                <td>
-                                                    {{ $membership_level->name }}
-                                                </td>
-                                                <td>
-                                                    {{ date('d/m/Y', strtotime($p->created_at)) }}
-                                                </td>
-                                                <td>
-                                                    RM {{ $p->pay_price }}.00
-                                                </td>
-                                                <td>
-                                                    {{-- <a href="{{ url('download-receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $student->id }}" class="btn-sm btn-secondary mr-8 float-left text-decoration-none"><i class="fas fa-download pr-2"></i>Receipt</a> --}}
-                                                    <a href="{{ url('/student/receipt') }}/{{ $membership_level->level_id }}/{{ $p->payment_id }}/{{ $stud_id }}" class="btn-sm btn-danger mr-8 float-left"><i class="fas fa-download pr-2"></i>Receipt</a>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="5" class="text-center">No result founds</td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 pt-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- <div class="card"> -->
-                                <div class="card-header">
-                                    <strong>Timeline</strong>
-                                </div>
-                                <div class="card-body">
-                                    <div id="content" class="overflow-auto" style="height: 400px;">
-                                        <ul class="timeline">
-                                            @foreach ($data as $key => $d)
-                                                <li class="event" data-date="{{ $d->date_from }}">
-                                                    <h3>{{ $d->name }}</h3>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
-        <script>
-            
-        </script>
+        
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>   
+    
+<script>
+    var xValues = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var yValues = [ 14,20,42,52,0, 0,0,0,0,0, 0,0 ];
+    
+    chart = new Chart(document.getElementById("chart"), {
+        type: 'line',
+        data: {
+            labels: xValues,
+            datasets: [{
+            label: 'Closing Number',
+            data: yValues,
+            fill: false,
+            borderColor: '#0E9036',
+            tension: 0.1
+
+            }]
+        },
+    });
+
+    function generate_chart() {
+        var conceptName = $('#selectid').find(':selected').text();
+        console.log(conceptName);
+        var xValues = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var yValues = [ 14,20,42,52,0, 0,0,0,0,0, 0,0 ];
+
+        if(document.getElementById('selectid').value == "day") {
+        var xValues = [ '1/4', '2/4', '3/4', '4/4', '5/4', '6/4', '7/4', '8/4', '9/4', '10/4',
+                '11/4', '12/4', '13/4', '14/4', '15/4', '16/4', '17/4', '18/4', '19/4', '20/4',
+                '21/4', '22/4', '23/4', '24/4', '25/4', '26/4', '27/4', '28/4', '29/4', '30/4' ];
+        var yValues = [ 2,0, 0,5,21,0,0,0,0, 0,11,23,21,3,4,1, 9,2,8,2,0,0,0, 0,0,0,0,0,0,0];
+
+    } else if(document.getElementById('selectid').value == "week") {
+        var xValues = [ 'week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
+                'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17', 'week 18', 'week 19', 'week 20',
+                'week 21', 'week 22', 'week 23', 'week 24', 'week 25', 'week 26', 'week 27', 'week 28', 'week 29', 'week 30',
+                'week 31', 'week 32', 'week 33', 'week 34', 'week 35', 'week 36', 'week 37', 'week 38', 'week 39', 'week 40',
+                'week 41', 'week 42', 'week 43', 'week 44', 'week 45', 'week 45', 'week 47', 'week 48', 'week 49', 'week 50',
+                'week 51', 'week 52', 'week 53' ];
+        var yValues = [ 0,0,0,12,2,4,5,1,0,10, 2,26,63,21,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0,0, 0,0,0];
+        
+    } else if(document.getElementById('selectid').value == "month") {
+        var xValues = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var yValues = [ 14,20,42,52,0, 0,0,0,0,0, 0,0 ];
+
+    } else if(document.getElementById('selectid').value == "year") {
+        var xValues = [ '2020', '2021', '2022'];
+        var yValues = [ 51,87,136 ];
+    }
+    
+        //generate chart
+        chart = new Chart(document.getElementById("chart"), {
+        type: 'line',
+        data: {
+            labels: xValues,
+            datasets: [{
+            label: 'Closing Number',
+            data: yValues,
+            fill: false,
+            borderColor: '#0E9036',
+            tension: 0.1
+
+            }]
+        },
+        });
+
+    }
+
+</script>
 @endsection 

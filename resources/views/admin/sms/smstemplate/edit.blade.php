@@ -42,20 +42,50 @@
 			@csrf
 			
 			Title:
-			<input type="text" name="title" class="form-control" placeholder="Template Title" value="{{ $x->first()->title }}" /><br />
+			<input type="text" name="title" class="form-control" placeholder="Template Title" value="{{ $x->first()->title }}" required/><br/>
 			
 			Description:
-			<textarea class="form-control" name="description" placeholder="Description">{{ $x->first()->description }}</textarea><br />
+			<textarea class="form-control" name="description" placeholder="Description" required>{{ $x->first()->description }}</textarea><br/>
 			
 			Content:
-			<textarea class="form-control" name="content" placeholder="Content">{{ $x->first()->content }}</textarea><br />
+			<textarea class="form-control" id="textarea" name="content" maxlength="142" placeholder="Content" required>{{ $x->first()->content }}</textarea>
+			<div class="text-danger" id="textarea_feedback"></div>
+			<hr>
 			
+			<span class="fw-bolder mb-3">For SMS auto blasting purpose only. Can leave it blank.</span><br>
+			<div class="text-danger text-xss mb-2">(<b>Choose</b> between <b>DAY</b> or <b>HOUR</b> before event start)</div>
+			<div class="row">
+				<div class="col-md-4 mb-3">	
+					Class:
+					<select class="form-select" name="class" >
+						@if($x->first()->class != NULL)
+							<option value="{{ $x->first()->class}}" style="bg-color: lightblue;" name="{{ $x->first()->class }}" selected>{{ $x->first()->class }}</option>
+							<option value="" class="text-danger">Remove Class</option>
+						@else
+							<option value="">Please Select...</option>
+						@endif
+					@foreach ($prods as $prod)
+							<option value="{{ $prod->class }}" name="{{ $prod->class }}">{{ $prod->class }}</option>
+					@endforeach
+					</select>
+				</div>
+
+				<div class="col-md-4 mb-3">				
+					Day:
+					<input type="number" class="form-control" name="day" max="10" min="1" value="{{ $x->first()->day }}" placeholder="Day Before Event Start">
+				</div>
+
+				<div class="col-md-4 mb-3">
+					Hour:
+					<input type="number" class="form-control" name="hour" max="23" min="1" value="{{ $x->first()->hour }}" placeholder="Hour Before Event Start">
+				</div>
+			</div>
+
 			<div class='col-md-12 text-right px-4'>
 				<button type='submit' class='btn btn-success'> 
 					<i class="fas fa-save pr-1"></i> Save 
 				</button>
 			</div>
-			
 			
 		</form>
 		@else
@@ -66,6 +96,20 @@
 	</div>
 </div>
 
+<script>
+	$(document).ready(function() {
+		var text_max = 142;
+		$('#textarea_feedback').html(text_max + ' characters remaining');
+
+		$('#textarea').keyup(function() {
+			var text_length = $('#textarea').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#textarea_feedback').html(text_remaining + ' characters remaining');
+		});
+
+	});
+</script>
 @endsection
 
 

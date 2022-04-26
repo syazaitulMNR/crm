@@ -38,7 +38,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
       .center {
       margin: auto;

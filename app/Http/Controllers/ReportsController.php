@@ -115,46 +115,45 @@ class ReportsController extends Controller
 
         //////////////////////      ////////////////////////
 
-        $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
+        // $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
+        $productfirst = Payment::where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
         $test = $productfirst->created_at->format('Y-m-d H:i:s');
 
         $hingga = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d H:i:s');
         $dari = $test;
 
-        $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at',[ date('Y-m-d 00:00:00', strtotime("-1 days")) , date('Y-m-d 23:59:59', strtotime("-1 days")) ])->get();
+        $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime("-1 days")), date('Y-m-d 23:59:59', strtotime("-1 days"))])->get();
         $count_package = Package::where('product_id', $product_id)->count();
 
-        for ($i = 0; $i < $count_package; $i++)
-        {
-            $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
-            $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
-            $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->get();
+        for ($i = 0; $i < $count_package; $i++) {
+            $packageinfo[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->count();
+            $registration[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->count();
+            $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->get();
 
-            for ($i = 0; $i < $count_package; $i++)
-            {
-                $totalpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
+            for ($i = 0; $i < $count_package; $i++) {
+                $totalpackage[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->count();
             }
-            $data = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
-                    ->get()
-                    ->groupBy(function($val) {
-                    return Carbon::parse($val->created_at)->format('Y-m-d','[A-Za-z0-9-]+');
-                    });
-            $data1 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
-                    ->get()
-                    ->groupBy(function($val) {
+            $data = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
+                ->get()
+                ->groupBy(function ($val) {
+                    return Carbon::parse($val->created_at)->format('Y-m-d', '[A-Za-z0-9-]+');
+                });
+            $data1 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
+                ->get()
+                ->groupBy(function ($val) {
                     return Carbon::parse($val->created_at)->format('Y-m-d');
-                    })->first(); 
-            $data2 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
-                    ->get()
-                    ->groupBy(function($val) {
+                })->first();
+            $data2 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
+                ->get()
+                ->groupBy(function ($val) {
                     return Carbon::parse($val->created_at)->format('Y-m-d');
-                    })->skip(1)->first(); 
-            $totalquantity = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')
-                            ->get()
-                            ->groupBy(function($val) {
-                                return Carbon::parse($val->created_at)->format('d M Y');
-                                });
-            $total_listproduct[$i] = Payment::where('package_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-1 day")) , date('Y-m-d 23:59:59', strtotime("-1 day")) ])->count();        
+                })->skip(1)->first();
+            $totalquantity = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
+                ->get()
+                ->groupBy(function ($val) {
+                    return Carbon::parse($val->created_at)->format('d M Y');
+                });
+            $total_listproduct[$i] = Payment::where('package_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime("-1 day")), date('Y-m-d 23:59:59', strtotime("-1 day"))])->count();
         }
 
         // foreach($data1 as $key1 => $value1){
@@ -163,8 +162,8 @@ class ReportsController extends Controller
         //         $testdate2 =  $value2->created_at->format('Y-m-d');
         //     }
         // }
-        
-        $totalpackageall = Payment::where('status','paid')->where('product_id', $product_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->first();
+
+        $totalpackageall = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->first();
         $totaldays = $data->count();
         // dd($totalpackageall);
         // for ($j = 0; $j < $count_package; $j++){
@@ -177,9 +176,9 @@ class ReportsController extends Controller
         //             $te[$i] = count($t['status'== 'paid']);
         //             // dd($te);
         //         }
-        //     }    
+        //     }
         // }
-        
+
         // $testingla = $q->where('startdate', '>', '16 Dec 2021')->where('startdate', '<=', '17 Dec 2021')->get();
 
         // for ($i = 0; $i < $count_package; $i++)
@@ -189,23 +188,25 @@ class ReportsController extends Controller
         // $total_package_date[$i] = $total_package_date[$i] + $package_date[$i];
         // }
 
-        for ($i = 0; $i < $count_package; $i++)
-        {
-            $totalpackagealls = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
-            $totalperpackage[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->orderBy('created_at', 'desc')->count();
-            $registration[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $dari , $hingga ])->count();
+        for ($i = 0; $i < $count_package; $i++) {
+            $totalpackagealls = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->count();
+            $totalperpackage[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->count();
+            $registration[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->count();
         }
 
         $selectedID = 1;
         // End Testing ///////////////////////////////////////////////////////////////
 
         $counter = Student::count();
-        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
-        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
+        $totalsuccess = Payment::where('status', 'paid')->where('product_id', $product_id)->count();
+        $totalcancel = Payment::where('status', 'due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
-        
-        return view('admin.reports.trackpackage', compact('selectedID','totalpackageall','totalperpackage', 'totalpackage', 'totalquantity', 'registration', 'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel', 'paidticket', 'freeticket' , 'link'));
+
+        return view('admin.reports.trackpackage', compact('selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
+        'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel',
+        'paidticket', 'freeticket', 'link'));
+    
     }
 
     public function exportProgram($product_id, Request $request)

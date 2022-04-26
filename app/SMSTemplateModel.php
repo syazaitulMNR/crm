@@ -9,7 +9,7 @@ class SMSTemplateModel extends Model
     protected $table = 'sms_template';
 	
 	protected $fillable = [
-        'title', 'content', 'description', 'user_id'
+        'title', 'content', 'description', 'user_id', 'class', 'day', 'hour'
     ];
 
     public function bulks()
