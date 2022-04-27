@@ -69,8 +69,10 @@ Pendaftaran Pembeli
                                         <option value="Lelaki" name="gender">Lelaki</option>
                                         <option value="Perempuan" name="gender">Perempuan</option>
                                     @elseif ($student->gender == 'Perempuan')
+                                        <option value="{{ $student->gender }}" name="gender" selected>{{ $student->gender }}</option>
                                         <option value="Lelaki" name="gender">Lelaki</option>
-                                    @elseif ($student->gender == 'Lelaki')    
+                                    @elseif ($student->gender == 'Lelaki')
+                                        <option value="{{ $student->gender }}" name="gender" selected>{{ $student->gender }}</option>    
                                         <option value="Perempuan" name="gender">Perempuan</option>
                                     @endif
                             </select>
