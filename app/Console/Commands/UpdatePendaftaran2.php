@@ -255,14 +255,47 @@ class UpdatePendaftaran2 extends Command
         $package18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         $packages18 = Payment::where('product_id',$product18->product_id)->where('status','paid')->count();
 
-            $text = "<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : ".$packages5." (+".$package5.")"."\n"."Diamond : ".$packages6." (+".$package6.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : ".$packages7." (+".$package7.")"."\n"."Diamond : ".$packages8." (+".$package8.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages9." (+".$package9.")"."\n"."Diamond : ".$packages10." (+".$package10.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : ".$packages11." (+".$package11.")"."\n"."Diamond : ".$packages12." (+".$package12.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : ".$packages13." (+".$package13.")"."\n"."Diamond : ".$packages14." (+".$package14.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n";
+        // XCESS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $product19 = Product::where('product_id','PRD0068')->first();
+        $package19 = Payment::where('product_id',$product19->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages19 = Payment::where('product_id',$product19->product_id)->where('status','paid')->count();
+
+        $product20 = Product::where('product_id','PRD0069')->first();
+        $package20 = Payment::where('product_id',$product20->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages20 = Payment::where('product_id',$product20->product_id)->where('status','paid')->count();
+
+        $product21 = Product::where('product_id','PRD0070')->first();
+        $package21 = Payment::where('product_id',$product21->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages21 = Payment::where('product_id',$product21->product_id)->where('status','paid')->count();
+
+        $product22 = Product::where('product_id','PRD0071')->first();
+        $package22 = Payment::where('product_id',$product22->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages22 = Payment::where('product_id',$product22->product_id)->where('status','paid')->count();
+        
+        $product23 = Product::where('product_id','PRD0072')->first();
+        $package23 = Payment::where('product_id',$product23->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages23 = Payment::where('product_id',$product23->product_id)->where('status','paid')->count();
+
+        $product24 = Product::where('product_id','PRD0073')->first();
+        $package24 = Payment::where('product_id',$product24->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages24 = Payment::where('product_id',$product24->product_id)->where('status','paid')->count();
+
+        $product25 = Product::where('product_id','PRD0074')->first();
+        $package25 = Payment::where('product_id',$product24->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages25 = Payment::where('product_id',$product24->product_id)->where('status','paid')->count();
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            $text = "<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : ".$packages5." (+".$package5.")"."\n"."Xcess : ".$packages19." (+".$package19.")"."\n"."Diamond : ".$packages6." (+".$package6.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : ".$packages7." (+".$package7.")"."\n"."Xcess : ".$packages20." (+".$package20.")"."\n"."Diamond : ".$packages8." (+".$package8.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages9." (+".$package9.")"."\n"."Xcess : ".$packages21." (+".$package21.")"."\n"."Diamond : ".$packages10." (+".$package10.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : ".$packages11." (+".$package11.")"."\n"."Xcess : ".$packages22." (+".$package22.")"."\n"."Diamond : ".$packages12." (+".$package12.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : ".$packages13." (+".$package13.")"."\n"."Xcess : ".$packages23." (+".$package23.")"."\n"."Diamond : ".$packages14." (+".$package14.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages17." (+".$package17.")"."\n"."Xcess : ".$packages25." (+".$package25.")"."\n"."Diamond : ".$packages18." (+".$package18.")"."\n\n";
             Telegram::sendMessage([
-                "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+                "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
                 "parse_mode" => "HTML",
                 "text" => $text
             ]);
