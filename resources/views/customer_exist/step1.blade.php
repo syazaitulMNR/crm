@@ -64,11 +64,14 @@ Pendaftaran Pembeli
                         <div class="col-md-6 pb-2">
                             <label for="title">Jantina:</label>
                             <select class="form-select" name="gender" required>
-                                    <option value="{{ $student->gender }}" name="gender" selected>{{ $student->gender ?? '' }}</option>
-                                    @if ($student->gender == 'Lelaki')
-                                        <option value="Perempuan" name="gender">Perempuan</option>
-                                    @else
+                                    @if ($student->gender == Null)
+                                        <option value="" name="gender" selected>-- Sila Pilih --</option>
                                         <option value="Lelaki" name="gender">Lelaki</option>
+                                        <option value="Perempuan" name="gender">Perempuan</option>
+                                    @elseif ($student->gender == 'Perempuan')
+                                        <option value="Lelaki" name="gender">Lelaki</option>
+                                    @elseif ($student->gender == 'Lelaki')    
+                                        <option value="Perempuan" name="gender">Perempuan</option>
                                     @endif
                             </select>
                         </div>
