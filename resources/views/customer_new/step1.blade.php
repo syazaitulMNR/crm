@@ -75,10 +75,10 @@ Pendaftaran Pembeli
 
                         <div class="col-md-6 pb-2">
                             <label for="title">Jantina:</label>
-                            <select class="form-select" name="jantina" required>
-                                    <option value="" name="jantina" selected disabled>-- Sila Pilih --</option>
-                                    <option value="Lelaki" name="jantina">Lelaki</option>
-                                    <option value="Perempuan" name="jantina">Perempuan</option>
+                            <select class="form-select" name="gender" required>
+                                    <option value="gender" name="gender" selected disabled>-- Sila Pilih --</option>
+                                    <option value="Lelaki" name="gender">Lelaki</option>
+                                    <option value="Perempuan" name="gender">Perempuan</option>
                             </select>
                         </div>
 

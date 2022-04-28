@@ -142,7 +142,9 @@ Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Bla
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
+
 Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');
+
 Route::post('confirmation-email-blast', 'BlastingController@blastConfirmationEmail')->name('email-confirmation-blast');
 Route::get('bulkpurchased-mail/{product_id}/{package_id}', 'BlastingController@bulkpurchased_mail');
 Route::get('blastconfirmation_mail/{product_id}/{package_id}', 'BlastingController@blastconfirmation_mail');

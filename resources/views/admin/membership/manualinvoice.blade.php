@@ -67,7 +67,7 @@
             <label for="feature">List of statement</label>
             <div id="inputFormRow">
                 <div class="input-group mb-3">
-                    <input type="text" name="no[]" placeholder="No" class="form-control" autocomplete="off" required>
+                    <input type="text" name="no[]" placeholder="No" class="form-control" autocomplete="off" required >
                     <select class="form-select" name="pfeatures[]" id="pfeatures">
                         <option class="form-control" disabled selected>Choose One</option>
                     @foreach ($productfeatures as $pf => $pfvalue)
@@ -107,59 +107,65 @@
     </form>
 </div>
 
-<table>
-    <tr>
-      <th>#</th>
-      <th>Item Name</th>
-      <th>Item Description</th>
-      <th>Amount Per Hour</th>
-      <th>Total Hours</th>
-      <th>Line Total</th>
-    </tr>
-  
-    <tbody id="addItems"></tbody>
-  </table>
-  
-  <p>
-    <button type="button" onclick="addItem();">
-      Add Item
-    </button>
-  </p>
-  
-  <p>
-    Amount Due: RM <span id="amountDue">0.00</span>
-    <script type="text/javascript">
-      //add the amounts from all items.
-      //if none added then have it set to zero.
-    </script>
-  </p>
+{{---------------------------------------------------------- Testing ------------------------------------------------------------}}
+    
+    <div class="justify-content-center">
+    <table>
+        <tr>
+        <th>#</th>
+        <th>Item Name</th>
+        <th>Item Description</th>
+        <th>Amount Per Hour</th>
+        <th>Total Hours</th>
+        <th>Line Total</th>
+        </tr>
+    
+        <tbody id="addItems"></tbody>
+    </table>
+    </div>
+    
+    <p>
+        <button type="button" class='btn' onclick="addItem();"><i class="bi bi-plus-lg pr-2"></i>
+        Add Item
+        </button>
+    </p>
+    
+    <p>
+        Amount Due: RM <span id="amountDue">0.00</span>
+        <script type="text/javascript">
 
-  <p>
-    Taxable Amount <span id="taxableAmount">0.00</span>
-    <script type="text/javascript">
-      //add the amounts from all items.
-      //if none added then have it set to zero.
-    </script>
-  </p>
+        </script>
+    </p>
 
-  <p>
-    Tax  <span id="tax"></span>%
-    <script type="text/javascript">
-      //add the amounts from all items.
-      //if none added then have it set to zero.
-    </script>
-  </p>
-  
-  <p>
-    Due Date:
-    <script type="text/javascript">
-      //start it 2 weeks from actual date
-    </script>
-  </p>
-  
-  <p>
-    <input id="invoice_submit" type="submit" name="submit">
-  </p>
+    <p>
+        Taxable Amount <span id="taxableAmount">0.00</span>
+        <script type="text/javascript">
+        //add the amounts from all items.
+        //if none added then have it set to zero.
+        </script>
+    </p>
+
+    <p>
+        Tax  <span id="tax"></span>%
+        <script type="text/javascript">
+        //add the amounts from all items.
+        //if none added then have it set to zero.
+        </script>
+    </p>
+    
+    <p>
+        Due Date:
+        <script type="text/javascript">
+        //start it 2 weeks from actual date
+        </script>
+    </p>
+    
+    <p>
+        <input id="invoice_submit" type="submit" name="submit">
+    </p>
+
+{{---------------------------------------------------------- End Testing ------------------------------------------------------------}}
+
 
 <!-- Function for datepicker --------------------------------------------------->
 <script type="text/javascript">
@@ -182,25 +188,7 @@
                 $("#date1").datepicker("option", "maxDate", selectedDate);
             }
         });
-
     });
-
-    // function multiply() {
-
-    //     a = Number(document.getElementById('quantity').value);
-    //     b = Number(document.getElementById('rate').value);
-    //     c = a * b;
-
-    //     document.getElementById('totalPrice').value = c;
-    // }
-    // function multiply2() {
-
-    //     a = Number(document.getElementById('quantitys').value);
-    //     b = Number(document.getElementById('rates').value);
-    //     c = a * b;
-
-    //     document.getElementById('totalPrices').value = c;
-    // }
 
      // add row
     $("#addRow").click(function () {
@@ -238,33 +226,29 @@
 
     // trigger everytime there is change in the table row to calculate the new due amount.
     function calculateDueAmount() {
-        var tblRows = document.getElementById("addItems").getElementsByTagName('tr');
-        let total = 0;
-        for (var i = 0; i < tblRows.length; i++) {
-            let lineTotal = tblRows[i].getElementsByTagName('td')[5].getElementsByTagName('input')[0].value;
-            total += Number(lineTotal) / (106/100);
-            taxable += Number(lineTotal) - total;
-            tax += Number(lineTotal);
+    var tblRows = document.getElementById("addItems").getElementsByTagName('tr');
+    let total = 0;
+    for (var i = 0; i < tblRows.length; i++) {
+        let lineTotal = tblRows[i].getElementsByTagName('td')[5].getElementsByTagName('input')[0].value;
+        total += Number(lineTotal)
     }
     document.getElementById("amountDue").innerText = total.toFixed(2);
-    document.getElementById("taxableAmount").innerText = taxble.toFixed(2);
-    document.getElementById("tax").innerText = tax.toFixed(2);
     }
     // no changes required in this
     function addItem() {
-        renumber++;
-        var html = "<tr>";
-
-        html += "<td id='itemNum'><input class='form-control' value='"+ renumber +"' readonly></td>";
-        html += "<td><input class='form-control' name='itemName[]' placeholder='Name'></td>";
-        html += "<td><input class='form-control' name='itemDescription[]' placeholder='Description'></td>";
-        html += "<td><span class='currency'></span><input id='perHour' class='form-control' placeholder='Quantity' onblur='lineTotal(this);' name='amountPerHour[]'></td>";
-        html += "<td><input class='form-control' id='lineHours' onblur='lineTotal(this);' placeholder='Rate' name='hours[]'></td>";
-        html += "<td><span class='currency'></span><input class='form-control' id='lineTotal' onblur='lineTotal(this);' placeholder='Amount' name='lineTotal[]'></td>";
-        html += "<td><button class='btn btn-danger' type='button' id='remove_button' onclick='removeItem(this);'><i class='bi bi-x-lg'></i></button></td>";
-        html += "</tr>";
-
-        document.getElementById("addItems").insertRow().innerHTML = html;
+    renumber++;
+    var html = "<tr>";
+    html += "<div class='justify-content-center'>";
+    html += "<td class='form-control' id='itemNum'>" + renumber + "</td>";
+    html += "<td><input class='form-select' id='pfeatures[]' name='itemName[]'></td>";
+    html += "<td><input class='form-control' name='itemDescription[]'></td>";
+    html += "<td><span class='currency'></span><input class='form-control' id='perHour' onblur='lineTotal(this);' value='0' name='amountPerHour[]'></td>";
+    html += "<td><input id='lineHours' class='form-control' onblur='lineTotal(this);' value='0' name='hours[]'></td>";
+    html += "<td><span class='currency'></span><input id='lineTotal' class='form-control' onblur='lineTotal(this);' value='0' name='lineTotal[]'></td>";
+    html += "<td><button type='button' class='btn btn-danger' id='remove_button' onclick='removeItem(this);'> X </button></td>";
+    html += "</tr>";
+    html += "</div>";
+    document.getElementById("addItems").insertRow().innerHTML = html;
     }
     // updated and sanitized the logic to delete the row
     function removeItem(elem) {
@@ -289,10 +273,9 @@
     var myResult = Number(AmtPerHour) * Number(lnHrs);
     total.value = myResult;
     calculateDueAmount(); // calculate due amount since row got added
-    }
+}
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
-
 </script>
 
 @endsection

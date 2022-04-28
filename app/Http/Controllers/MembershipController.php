@@ -21,6 +21,7 @@ use Auth;
 use DB;
 use App\Invoice;
 use PDF;
+use sirajcse\UniqueIdGenerator\UniqueIdGenerator;
 
 class MembershipController extends Controller
 {
@@ -639,6 +640,7 @@ class MembershipController extends Controller
 
     public function manualInvoice($membership_id, $level_id, $student_id)
     {
+
         $student = Student::where('membership_id', $membership_id)->where('level_id', $level_id)->where('stud_id', $student_id)->first();
         $level = Membership_level::where('membership_id', $membership_id)->where('level_id', $level_id)->first();
         $invoice = Invoice::where('student_id', $student_id)->get();

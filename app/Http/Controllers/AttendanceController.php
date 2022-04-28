@@ -139,29 +139,10 @@ class AttendanceController extends Controller
     
             return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
         }
-        else { // belum buat pembayaran
+        else { 
+            // belum buat pembayaran
             return view('customer.failed_payment');
         }
-
-        // $student = Student::where('ic', $request->ic)->first();
-        // $payment = Payment::orderBy('id','desc')->where('stud_id',$student->stud_id)->get();
-        // dd($payment);
-
-        // foreach ($payment as $keypay => $payval){
-            
-        //     $payinfo = Product::where('product_id',$payval->product_id)->first();
-
-        //         if ($payinfo->class == 'MMB'){
-
-        //             $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payval->payment_id)->where('product_id',$payinfo->product_id)->first();
-        //             $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
-        //             $peserta = Student::where('ic', $ticket->ic)->first();
-        //             $pay = Payment::where('payment_id', $ticket->payment_id)->first();
-
-        //             return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
-        //         }
-        // }
-        // dd('bukan MMB');
     }
 
     public function dataPeserta($product_id, $package_id, $ticket_id, $payment_id, $ic, Request $request)
@@ -249,12 +230,14 @@ class AttendanceController extends Controller
 
         $payment = Payment::where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
         $ticket = Ticket::where('ticket_type','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
-        
+        // dd($ticket);
+
         for ($i=0; $i < count($payment) ; $i++) { 
             $studentpay[$i] = Student::where('stud_id', $payment[$i]->stud_id)->get();
         }
 
         if (count($ticket) == 0){
+        }else {
             for ($i=0; $i < count($ticket) ; $i++) { 
                 $studenttic[$i] = Student::where('stud_id', $ticket[$i]->stud_id)->get();
             }
@@ -269,7 +252,6 @@ class AttendanceController extends Controller
                 'Email',
                 'Product',
             ];
-            
             $file = fopen(public_path('export/') . $fileName, 'w');
             fputcsv($file, $columnNames);
             
