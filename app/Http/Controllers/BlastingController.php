@@ -19,6 +19,9 @@ use App\Package;
 use App\Payment;
 use App\Ticket;
 use App\Email;
+
+use Mail;
+use App\Mail\TestMail;
 use App\Jobs\TestJobMail;
 
 class BlastingController extends Controller
