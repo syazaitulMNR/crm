@@ -49,6 +49,7 @@ class ReportsController extends Controller
     public function trackpackage($product_id)
     {
         $payment = Payment::where('product_id', $product_id)->get();
+        $ticket = Ticket::where('product_id', $product_id)->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->paginate(15);
         $student = Student::orderBy('id','desc')->paginate(15);
@@ -197,13 +198,46 @@ class ReportsController extends Controller
         $selectedID = 1;
         // End Testing ///////////////////////////////////////////////////////////////
 
+        // foreach ($payment as $datapay) {
+        //     foreach ($ticket as $datatic) {
+        //         // dd($datapay->stud_id == $datatic->stud_id);
+        //         if ($datapay->stud_id == $datatic->stud_id){
+        //             $phadir = Payment::where('attendance','hadir')->where('product_id', $product_id)->count();
+        //             $pth = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->count();
+        //             $plain = Payment::whereNull('attendance')->where('product_id', $product_id)->count();
+        //             $pdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$product_id)->count();
+        //             $tdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $product_id)->count();
+
+
+
+        //         }
+        //         else {
+        //             $thadir = Ticket::where('attendance','hadir')->where('product_id', $product_id)->count();
+        //             $tth = Ticket::where('attendance','tidak hadir')->where('product_id', $product_id)->count();
+        //             $tlain = Ticket::whereNull('attendance')->where('product_id', $product_id)->count();
+
+
+        //         }
+        //     }
+        // }
+
         $counter = Student::count();
-        $totalsuccess = Payment::where('status', 'paid')->where('product_id', $product_id)->count();
-        $totalcancel = Payment::where('status', 'due')->where('product_id', $product_id)->count();
+        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
 
-        return view('admin.reports.trackpackage', compact('selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
+        $tdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $product_id)->count();
+        $pdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$product_id)->count();
+        $thadir = Ticket::where('attendance','hadir')->where('product_id', $product_id)->count();
+        $phadir = Payment::where('attendance','hadir')->where('product_id', $product_id)->count();
+        $tth = Ticket::where('attendance','tidak hadir')->where('product_id', $product_id)->count();
+        $pth = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->count();
+        $tlain = Ticket::whereNull('attendance')->where('product_id', $product_id)->count();
+        $plain = Payment::whereNull('attendance')->where('product_id', $product_id)->count();
+
+
+        return view('admin.reports.trackpackage', compact(/*'datapay','datatic',*/'plain','tlain','pth','tth','tdisahkan','pdisahkan','phadir','thadir','selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
         'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel',
         'paidticket', 'freeticket', 'link'));
     
@@ -647,12 +681,36 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
-    public function approveaccount($payment_id, $product_id, $package_id, Request $request) 
+    public function approveaccount($payment_id, $product_id, $package_id, $stud_id, Request $request) 
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
 
         if($payment->status == 'approve by sales'){
+
+            $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+            $student = Student::where('stud_id', $stud_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            // change email status
+            $payment->email_status = 'Sent';
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+
             $payment->status = 'paid';
+
             $payment->save();
             $request->session()->forget('payment');
         }
@@ -665,12 +723,36 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('accountapprove', 'Account Approve Successfully');
     }
 
-    public function approvesales($payment_id, $product_id, $package_id, Request $request) 
+    public function approvesales($payment_id, $product_id, $package_id, $stud_id, Request $request) 
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
 
         if($payment->status == 'approve by account'){
+
+            $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+            $student = Student::where('stud_id', $stud_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            // change email status
+            $payment->email_status = 'Sent';
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+
             $payment->status = 'paid';
+
             $payment->save();
             $request->session()->forget('payment');
         }

@@ -105,7 +105,16 @@
       }
       .gradient-4
       {
-        background-image: linear-gradient(to bottom right, #ffcda5, #ee4d5f);
+        background-image: linear-gradient(to bottom right, #ffcda5, #f9a115);
+      }
+      .gradient-5
+      {
+        background-image: linear-gradient(to bottom right, #e3f242 ,#f78623);
+      }
+
+      .gradient-6
+      {
+        background-image: linear-gradient(to bottom right,  #eccbf2 , #e11bef);
       }
 
     </style>

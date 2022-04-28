@@ -237,10 +237,10 @@ class AttendanceController extends Controller
         }
 
         if (count($ticket) == 0){
-        }else {
+        }else{
             for ($i=0; $i < count($ticket) ; $i++) { 
                 $studenttic[$i] = Student::where('stud_id', $ticket[$i]->stud_id)->get();
-            }
+            } 
         }
 
         $fileName = $product->name.' Kehadiran'.'.csv';

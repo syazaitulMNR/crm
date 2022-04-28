@@ -100,8 +100,8 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
-Route::get('approveacc/{payment_id}/{product_id}/{package_id}', 'ReportsController@approveaccount');
-Route::get('approvesales/{payment_id}/{product_id}/{package_id}', 'ReportsController@approvesales');
+Route::get('approveacc/{payment_id}/{product_id}/{package_id}/{stud_id}', 'ReportsController@approveaccount');
+Route::get('approvesales/{payment_id}/{product_id}/{package_id}/{stud_id}', 'ReportsController@approvesales');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');

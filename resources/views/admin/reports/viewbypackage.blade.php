@@ -287,6 +287,10 @@
                   <i class="badge rounded-pill bg-success"> &nbsp; {{ $payments->status }} &nbsp; </i>
                 @elseif ($payments->status == 'not paid')
                   <i class="badge rounded-pill bg-danger"> &nbsp; {{ $payments->status }} &nbsp; </i>
+                @elseif ($payments->status == 'approve by sales')
+                  <i class="badge rounded-pill bg-danger"> &nbsp; {{ $payments->status }} &nbsp; </i>
+                @elseif ($payments->status == 'approve by account')
+                  <i class="badge rounded-pill bg-success"> &nbsp; {{ $payments->status }} &nbsp; </i>
                 @elseif ($payments->status == 'due')
                   <i class="badge rounded-pill bg-warning"> &nbsp; {{ $payments->status }} &nbsp; </i>
                 @elseif ($payments->status == 'not approve')
