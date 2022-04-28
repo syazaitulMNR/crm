@@ -38,7 +38,7 @@
 
         <div class="col-md-5">
           <form id="productForm" name="productForm" class="form-horizontal">
-            <em class="pl-3">Choose email template</em>
+            <p>Choose email template</p>
             <div class="input-group">
               <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">Emails</label>

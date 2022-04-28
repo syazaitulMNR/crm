@@ -197,9 +197,9 @@ class BlastingController extends Controller
     
     public function blastBulkEmail(Request $request){
 
-        // $product_id = $request->prod_id;
-        // $package_id = $request->pack_id;
-        // $email = Email::where('id', $request->emailId)->first();
+        $product_id = $request->prod_id;
+        $package_id = $request->pack_id;
+        $email = Email::where('id', $request->email)->first();
 
         // preg_match_all("/(?<={).*?(?=})/", $email->content, $regex_content);
 			
@@ -228,7 +228,7 @@ class BlastingController extends Controller
 
         // dispatch(new TestJobMail($request->all(), $regex_content));
 
-        $message = "Saya Kacak!!";
+        $message = $email->content;
 
         Mail::to('pelikb@gmail.com')->send(new Testmail($message));
 
