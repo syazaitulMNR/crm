@@ -20,7 +20,6 @@ class TestMail extends Mailable
 
     public function build()
     {
-        return $this->view('test')
-                    ->with([ 'content' => $this->message ]);
+        return $this->view('test')->with([ 'content' => $this->message ]);
     }
 }
