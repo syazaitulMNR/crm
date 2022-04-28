@@ -63,7 +63,11 @@
 
         <div class="col-md-3">
           <div class="col-sm-offset-2 col-sm-10 ml-5">
-            <button type="submit" class="btn btn-primary ml-5" id="bt-get-email" value="create" >Send emails</button>
+            {{-- <button type="submit" class="btn btn-primary ml-5" id="bt-get-email" value="create" >Send emails</button> --}}
+            <form action="{{ route('email-bulk-blast') }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-primary ml-5">Send emails</button>
+            </form>
           </div>
         </div>
 

@@ -46,13 +46,15 @@ class BlastingController extends Controller
     /*-- imported buyer --------------------------------------------------------*/
     public function show($product_id, $package_id)
     {
-        $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
+        // $payment = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->paginate(15);
+        $payment = Payment::orderBy('id', 'desc')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::orderBy('id','desc')->get();
         $emails = Email::all();
 
-        $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
+        // $total = Payment::orderBy('id','desc')->where('product_id', $product_id)->where('package_id', $package_id)->where('email_status', 'Hold')->count();
+        $total = Payment::orderBy('id', 'desc')->where('product_id', $product_id)->where('package_id', $package_id)->count();
         
         return view('admin.blasting_email.viewblast', compact('student', 'product', 'package', 'payment', 'total', 'emails', 'product_id', 'package_id'));
     }
@@ -192,36 +194,40 @@ class BlastingController extends Controller
     
     public function blastBulkEmail(Request $request){
 
-        $product_id = $request->prod_id;
-        $package_id = $request->pack_id;
-        $email = Email::where('id', $request->emailId)->first();
+        // $product_id = $request->prod_id;
+        // $package_id = $request->pack_id;
+        // $email = Email::where('id', $request->emailId)->first();
 
-        preg_match_all("/(?<={).*?(?=})/", $email->content, $regex_content);
+        // preg_match_all("/(?<={).*?(?=})/", $email->content, $regex_content);
 			
-        if(count($regex_content) > 0){
-            if(count($regex_content[0]) > 0){
-                $regex_content = $regex_content[0];
-            }else{
-                $regex_content = [];
-            }
-        }else{
-            $regex_content = [];
-        }
+        // if(count($regex_content) > 0){
+        //     if(count($regex_content[0]) > 0){
+        //         $regex_content = $regex_content[0];
+        //     }else{
+        //         $regex_content = [];
+        //     }
+        // }else{
+        //     $regex_content = [];
+        // }
 
-        $paymentIds = $request->paymentId;
-        $reqEmails = $request->emailList;
+        // $paymentIds = $request->paymentId;
+        // $reqEmails = $request->emailList;
 
-        for($i=0; $i < sizeof($request->paymentId); $i++){
-            $payment = Payment::where('id', $paymentIds[$i])->first();
+        // for($i=0; $i < sizeof($request->paymentId); $i++){
+        //     $payment = Payment::where('id', $paymentIds[$i])->first();
 
-            if($reqEmails[$i] != (null || "")){
-                $payment->email_status = 'Sent';
-                $payment->save();
-            }
-            $payment->save();
-        }
+        //     if($reqEmails[$i] != (null || "")){
+        //         $payment->email_status = 'Sent';
+        //         $payment->save();
+        //     }
+        //     $payment->save();
+        // }
 
-        dispatch(new TestJobMail($request->all(), $regex_content));
+        // dispatch(new TestJobMail($request->all(), $regex_content));
+
+        $message = "Saya Kacak!!";
+
+        Mail::to('pelikb@gmail.com')->send(new Testmail($message));
 
         return redirect('view-event/'.$product_id.'/'.$package_id)->with('success', 'List email has been qued for sending with template.');
 
