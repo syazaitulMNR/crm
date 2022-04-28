@@ -731,6 +731,18 @@ class ReportsController extends Controller
                 'receipt_path' => $receipt_name
             ));
 
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => $request->offer_id,
+                'ic'            => $request->ic,
+                'email_status'  => 'Hold',
+                'stud_id'       => $student->stud_id,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id,
+            ]);
+
         }else{
 
             $stud_id = 'MI'.uniqid();
@@ -785,6 +797,18 @@ class ReportsController extends Controller
                 'pic' => $request->pic,
                 'receipt_path' => $receipt_name
             ));
+
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => $request->offer_id,
+                'ic'            => $request->ic,
+                'email_status'  => 'Hold',
+                'stud_id'       => $stud_id,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id,
+            ]);
 
         }
 
