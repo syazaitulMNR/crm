@@ -270,7 +270,7 @@ Sales Report
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-danger" href="{{ url('approvesales') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Approve</a>
+                            <a class="btn btn-danger" href="{{ url('approvesales') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $student->stud_id }}">Approve</a>
                             </div>
                         </div>
                         </div>
@@ -299,7 +299,7 @@ Sales Report
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-success" href="{{ url('approveacc') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Approve</a>
+                            <a class="btn btn-success" href="{{ url('approveacc') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $student->stud_id }}">Approve</a>
                             </div>
                         </div>
                         </div>
