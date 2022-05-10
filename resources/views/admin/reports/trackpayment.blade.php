@@ -64,7 +64,7 @@ Sales Report
                         <b>Personal Details</b>
                     </div>
 
-                    <div class="pt-3 px-4">
+                    <div class="card-body pt-5 px-5">
 
                         <div class="mb-2 row">
                             <label class="col-sm-2">IC No.</label>
@@ -141,8 +141,14 @@ Sales Report
                     <div class="card-header">
                     <b>Payment Details</b>
                     </div>
-                    <div class="pt-3 px-4">
+                    <div class="card-body pt-5 px-5">
 
+                        <div class="mb-2 row">
+                            <label class="col-sm-2">Payment ID</label>
+                            <div class="col-sm-4">
+                                <p>: &nbsp;&nbsp;&nbsp; {{ $payment->payment_id }}</p>
+                            </div>
+                        </div>
                         <div class="mb-2 row">
                             <label class="col-sm-2">Package Name</label>
                             <div class="col-sm-4">
@@ -264,7 +270,7 @@ Sales Report
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-danger" href="{{ url('approvesales') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Approve</a>
+                            <a class="btn btn-danger" href="{{ url('approvesales') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $student->stud_id }}">Approve</a>
                             </div>
                         </div>
                         </div>
@@ -293,7 +299,7 @@ Sales Report
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a class="btn btn-success" href="{{ url('approveacc') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}">Approve</a>
+                            <a class="btn btn-success" href="{{ url('approveacc') }}/{{ $payment->payment_id }}/{{ $product->product_id }}/{{ $payment->package_id }}/{{ $student->stud_id }}">Approve</a>
                             </div>
                         </div>
                         </div>

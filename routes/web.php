@@ -100,8 +100,8 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
-Route::get('approveacc/{payment_id}/{product_id}/{package_id}', 'ReportsController@approveaccount');
-Route::get('approvesales/{payment_id}/{product_id}/{package_id}', 'ReportsController@approvesales');
+Route::get('approveacc/{payment_id}/{product_id}/{package_id}/{stud_id}', 'ReportsController@approveaccount');
+Route::get('approvesales/{payment_id}/{product_id}/{package_id}/{stud_id}', 'ReportsController@approvesales');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
@@ -142,7 +142,9 @@ Route::post('update-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'Bla
 Route::get('send-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@send_mail');
 Route::get('participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@participant_mail');
 Route::post('update-participant-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'BlastingController@update_participant_mail');
+
 Route::post('bulk-email-blast', 'BlastingController@blastBulkEmail')->name('email-bulk-blast');
+
 Route::post('confirmation-email-blast', 'BlastingController@blastConfirmationEmail')->name('email-confirmation-blast');
 Route::get('bulkpurchased-mail/{product_id}/{package_id}', 'BlastingController@bulkpurchased_mail');
 Route::get('blastconfirmation_mail/{product_id}/{package_id}', 'BlastingController@blastconfirmation_mail');
