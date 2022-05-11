@@ -23,7 +23,6 @@ Sales Report
             padding: 0;
             border: 1px solid #ccc;
             border-radius: .5em;
-            width: 15.80em;
         }
 
         .list-group li {
@@ -235,7 +234,7 @@ Sales Report
             </div>
           </div>
           <div class="col-xl-2 col-lg-6 py-2" >
-            <div class="card border-0 shadow ">
+            <div class="card border-0 shadow text-center">
               <ul class="list-group" >
                 <li >Hadir <span class="badge">{{ number_format($phadir) }}</span></li>
                 <li >Tidak hadir <span class="badge">{{ number_format($pth) }}</span></li>
