@@ -34,44 +34,42 @@
       <br>
 
       @if(count($payment) > 0)
-      <div class="row">
-
-        <div class="col-md-5">
-          <form id="productForm" name="productForm" class="form-horizontal">
-            <em class="pl-3">Choose email template</em>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Emails</label>
+      <form action="{{ route('email-bulk-blast') }}" method="POST">
+        @csrf
+        <div class="row">
+          <div class="col-md-5">
+            <form id="productForm" name="productForm" class="form-horizontal">
+              <p>Choose email template</p>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Emails</label>
+                </div>
+                <select class="custom-select" id="emailId" name="email" required>
+                    <option value="">--</option>
+                    @foreach ($emails as $email)
+                        <option value="{{$email->id}}">{{$email->name}}</option>
+                    @endforeach
+                </select>
               </div>
-              <select class="custom-select" id="emailId" name="email" required>
-                  <option value="">--</option>
-                  @foreach ($emails as $email)
-                      <option value="{{$email->id}}">{{$email->name}}</option>
-                  @endforeach
-              </select>
-            </div>
-            <span id="chooseEmail" style="visibility:hidden;" class="text-danger font-weight-bold">Email was not chosen</span>
-          </form>
-        </div>
-
-        <div class="col-md-4">
-          <div class="spinner-border text-primary" id="loader" role="status" style="visibility:hidden;">
-              <span class="sr-only">Loading...</span>
-            </div>
-            
-        </div>
-
-        <div class="col-md-3">
-          <div class="col-sm-offset-2 col-sm-10 ml-5">
-            {{-- <button type="submit" class="btn btn-primary ml-5" id="bt-get-email" value="create" >Send emails</button> --}}
-            <form action="{{ route('email-bulk-blast') }}" method="POST">
-              @csrf
-              <button type="submit" class="btn btn-primary ml-5">Send emails</button>
+              <span id="chooseEmail" style="visibility:hidden;" class="text-danger font-weight-bold">Email was not chosen</span>
             </form>
           </div>
-        </div>
 
-      </div>
+          <div class="col-md-4">
+            <div class="spinner-border text-primary" id="loader" role="status" style="visibility:hidden;">
+                <span class="sr-only">Loading...</span>
+              </div>
+              
+          </div>
+
+          <div class="col-md-3">
+            <div class="col-sm-offset-2 col-sm-10 ml-5">
+              {{-- <button type="submit" class="btn btn-primary ml-5" id="bt-get-email" value="create" >Send emails</button> --}}
+                <button type="submit" class="btn btn-primary ml-5">Send emails</button>
+            </div>
+          </div>
+        </div>
+      </form>
 
       <div class="table-responsive">
         <table class="table table-hover" id="searchTable">
