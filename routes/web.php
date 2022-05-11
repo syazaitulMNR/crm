@@ -91,6 +91,10 @@ Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::post('searchreport/{product_id}', 'ReportsController@search_report')->name('searchreport','[A-Za-z0-9-]+');
 
+/////////////////////////////////////////////////////////////////////////
+Route::get('ticketcreate', 'ReportsController@ticketcreate');
+/////////////////////////////////////////////////////////////////////////
+
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
@@ -571,3 +575,31 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
 });
 // Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
+
+Route::get('ic', function () {
+
+	$students = \App\Student::all();
+	foreach ($students as $student) 
+	{
+		if ($student->gender == NULL){
+		if (is_numeric($student->ic))
+		{
+			if (strlen($student->ic) == 12)
+			{
+				if($student->ic % 2 == 0){
+		
+				$student->gender = "Perempuan";
+				$student->save();
+				}
+				else if ($student->ic % 2 == 1) {
+
+				$student->gender = "Lelaki";
+				$student->save();
+			}
+			}
+			else {
+			}
+		}
+		}
+	}
+});
