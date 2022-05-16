@@ -169,7 +169,7 @@ class UpdatePendaftaran5 extends Command
                     ."XCESS"."\n"."Hadir : ".($xsathadir+$xsaphadir)."\n"."Tidak Hadir : ".($xsatth+$xsapth)."\n\n"
                     ."DIAMOND"."\n"."Hadir : ".($dsathadir+$dsaphadir)."\n"."Tidak Hadir : ".($dsatth+$dsapth);
         Telegram::sendMessage([
-            "chat_id" => env('TELEGRAM_CHAT_ID', ''),
+            "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
             "parse_mode" => "HTML",
             "text" => $textes
         ]);
