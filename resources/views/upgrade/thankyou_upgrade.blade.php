@@ -23,7 +23,7 @@
         <hr>
         <p class="lead"> Pengesahan naik taraf pakej akan dihantar kepada emel yang telah didaftarkan dalam masa 48 Jam. Terima kasih kerana menunggu. </p>
         <p class="lead py-3">
-          Jika ada sebarang pertanyaan, sila <a href="https://momentuminternet.com/contactus/">hubungi kami.</a><br><br>
+          Jika ada sebarang pertanyaan, sila <a href="http://bit.ly/journeymomentuminternet">hubungi kami.</a><br><br>
           {{-- <a class="btn btn-dark py-3 px-4" href="{{ url('updateform')}}/{{$product->product_id}}/{{$package->package_id}}/{{$student->stud_id}}/{{$payment->payment_id}}" role="button">Kemaskini</a> --}}
         </p>
     </div>
