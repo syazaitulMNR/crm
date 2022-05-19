@@ -9,19 +9,19 @@
   @elseif ($package->package_id == "PKD0084" || $package->package_id == "PKD0085")
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
   @elseif ($package->package_id == "PKD0086" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbsp/">
   @elseif ($package->package_id == "PKD0091" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbsa/">
   @elseif ($package->package_id == "PKD0093" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkb/">
   @elseif ($package->package_id == "PKD0095" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbktn/">
   @elseif ($package->package_id == "PKD0097" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbsbh/">
   @elseif ($package->package_id == "PKD0099" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbmlk/">
   @elseif ($package->package_id == "PKD00101" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbjhr/">
   @elseif ($package->package_id == "PKD00114" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package->package_id == "PKD00116" )
