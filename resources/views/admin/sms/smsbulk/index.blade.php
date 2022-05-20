@@ -93,24 +93,16 @@
 				@foreach ($x as $k => $t)
 					<tr>
 						<td>{{ ++$no }}</td>
-						
 						<td>{{ $t->created_at }}</td>
-						
-						<td>
-							{{ $t->phone }}
-						</td>
-						
+						<td>{{ $t->phone }}</td>
 						<td>
 							@if (!isset($t->template->title) || $t->template->title == "")
-								NIL
+								{{ $t->title }}
 							@else
 								{{ $t->template->title }}
 							@endif
 						</td>
-						
-						<td>
-							{{ $t->message }}
-						</td>
+						<td>{{ $t->message }}</td>
 					</tr>
 					
 				@endforeach
@@ -135,11 +127,15 @@
 			<div class="modal-body">
 				<form action="{{ url('smsblast/send') }}" method="POST"> 
 					@csrf
+					Title:
+					<input class="form-control" name="title" placeholder="SMS Title or Event Name" required><br />
+
 					Message:
-					<textarea class="form-control" name="message" placeholder="Avoid using '&' in this message."></textarea><br />
-					
+					<textarea class="form-control" name="message" maxlength="142" id="message" placeholder="Avoid using '&' in this message." required></textarea>
+					<div class="text-danger" id="textarea_feedback"></div><br>
+
 					Phone Number:
-					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
+					<textarea class="form-control" name="phone" placeholder="seperated by comma ','" required></textarea><br>
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 
@@ -187,6 +183,20 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		var text_max = 142;
+		$('#textarea_feedback').html(text_max + ' characters remaining');
+
+		$('#message').keyup(function() {
+			var text_length = $('#message').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#textarea_feedback').html(text_remaining + ' characters remaining');
+		});
+
+	});
+</script>
 @endsection
 
 

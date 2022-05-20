@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>0123456789</td>
+            <td>+60123456789</td>
             <td>John Doe</td>
         </tr>
 </tbody>

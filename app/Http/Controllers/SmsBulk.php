@@ -58,9 +58,10 @@ class SmsBulk extends Controller
     public function create(Request $request)
     {
 		Http::get('http://cloudsms.trio-mobile.com/index.php/api/bulk_mt?api_key='. env("TRIO_KEY") .'&action=send&to='. $request->phone .'&msg='. $request->message .'&sender_id=CLOUDSMS&content_type=1&mode=shortcode');
-		
+		                   
 		SMSBulkModel::create([
 			"phone"		=> $request->phone,
+            "title"		=> $request->title,
 			"message"	=> $request->message,
 			"user_id"	=> Auth::user()->id,
 			"template_id" => 0
