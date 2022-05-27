@@ -38,8 +38,19 @@
 		
 		<form action="{{ url('smsblast') }}" method="GET">
 			<div class="row">
-				<div class="col-md-11">
+				<div class="col-md-8">
 					<input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search keyword">
+				</div>
+				
+				<div class="col-md-3">
+					<select class="form-control" name="search_template">
+						<option value="0">All Template</option>
+					@foreach($y as $t)
+						<option value="{{ $t->id }}" {{ request()->query('search_template') == $t->id ? 'selected' : '' }}>
+							{{ $t->title }}
+						</option>
+					@endforeach
+					</select>
 				</div>
 				
 				<div class="col-md-1">
@@ -72,43 +83,36 @@
 				<thead>
 					<tr class="text-center">
 						<th>#</th>
-						<th>Type</th>
-						<th>Title</th>
-						<th>Message</th>
 						<th>Date</th>
-						<th class="text-right"><i class="fas fa-cogs"></i></th>
+						<th>Phone</th>
+						<th>Template Title</th>
+						<th>Message</th>
 					</tr>
 				</thead>
 				
 				<tbody>
 				@php
-				$no = 0;
+				$no = (10 * ($x->currentPage() - 1));
 				@endphp
-				@foreach ($x as $k => $s)
-					@foreach($s as $t)
-					@if ($loop->last)
-						<tr>
-							<td class="text-center">{{ ++$no }}</td>
-							<td class="text-center">{{ $t->type  }}</td>
-							<td>
-								@if(isset($t->title))
-									{{ $t->title }}
-								@elseif(isset($t->template->title))
-									{{  $t->template->title }}
-								@else
-								@endif
-							</td>
-							<td>{{ $t->message }}</td>
-							<td class="fw-bold text-center">{{ date('d-m-Y g:i A', strtotime($t->created_at."+8 hours")) }}</td>
-							<td class="text-center">
-								<a class="btn btn-dark" href="{{ url('smsblast') }}/{{ $t->group_id }}"><i class="bi bi-chevron-right"></i></a>
-							</td>
-						</tr>
-						@endif
-						@endforeach
-					@endforeach
+				@foreach ($x as $k => $t)
+					<tr>
+						<td class="text-center">{{ ++$no }}</td>
+						<td class="fw-bold text-center">{{ date('d-m-Y g:i A', strtotime($t->created_at)) }}</td>
+						<td class="text-center">{{ $t->phone }}</td>
+						<td>
+							@if (!isset($t->template->title) || $t->template->title == "")
+								{{ $t->title }}
+							@else
+								{{ $t->template->title }}
+							@endif
+						</td>
+						<td>{{ $t->message }}</td>
+					</tr>
+					
+				@endforeach
 				</tbody>
 			</table>
+			{{ $x->links() }}
 		</div> 
 	</div>
 </div>
@@ -162,19 +166,16 @@
 			<div class="modal-body">
 				<form action="{{ url('smsblast/send_bulk') }}" method="POST" enctype="multipart/form-data"> 
 					@csrf
-
-					Title:
-					<input class="form-control" name="title" placeholder="Tittle or Event Name" required><br />
 					
 					SMS Template:
-					<select class="form-control" name="template" required>
-						@foreach ($y as $k => $t)
-							<option value="{{ $t->id }}">{{ $t->title }}</option>
-						@endforeach
-					</select><br>
+					<select class="form-control" name="template">
+					@foreach ($y as $k => $t)
+						<option value="{{ $t->id }}">{{ $t->title }}</option>
+					@endforeach
+					</select><br />
 					
 					Excel Data:
-					<input type="file" name="file" required/><br>
+					<input type="file" name="file" /><br />
 					<em>Click <a href="{{ url('download-phoneno-template') }}" class="text-primary">here</a> to get the upload template.</em>
 					
 					<div class='col-md-12 text-right'>

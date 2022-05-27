@@ -440,6 +440,7 @@ Route::get("/smstemplate/delete/{id}", 'SmsTemplate@del');
 Route::delete("/smstemplate/delete/{id}", 'SmsTemplate@remove');
 
 Route::get("/smsblast", 'SmsBulk@index');
+Route::get("/smsblast/{group_id}", 'SmsBulk@show');
 Route::get('/download-phoneno-template', 'SmsBulk@export');
 Route::get("/smsblast/add", 'SmsBulk@add');
 Route::post("/smsblast/send", 'SmsBulk@create');
@@ -449,9 +450,15 @@ Route::put("/smsblast/edit/{id}", 'SmsBulk@update');
 Route::get("/smsblast/delete/{id}", 'SmsBulk@del');
 Route::delete("/smsblast/delete/{id}", 'SmsBulk@remove');
 
+Route::get("/smsschedule", 'SMSScheduleController@index');
+Route::post("/smsschedule/add", 'SMSScheduleController@save');
+Route::get("/smsschedule/edit/{id}", 'SMSScheduleController@edit');
+Route::put("/smsschedule/edit/{id}", 'SMSScheduleController@update');
+Route::get("/smsschedule/delete/{id}", 'SMSScheduleController@del');
+Route::delete("/smsschedule/delete/{id}", 'SMSScheduleController@remove');
+
 Route::prefix('student')->group(function() 
 {
-
 	Route::get('/','StudentPortal@redirectLogin');
 	Route::get('/login','StudentPortal@loginForm')->name('student.login');
 	Route::post('/login', 'StudentPortal@login')->name('student.login.submit');

@@ -12,4 +12,9 @@ class Product extends Model
         'product_id', 'name', 'status', 'date_from', 'date_to', 'time_from', 'time_to', 'cert_image', 'offer_id', 'collection_id', 'survey_form', 'zoom_link', 'tq_page'
     ];
 
+    public function prodsms()
+    {
+        return $this->hasMany(SMSSchedule::class);
+    }
+
 }
