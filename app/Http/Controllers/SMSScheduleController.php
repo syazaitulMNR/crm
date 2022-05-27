@@ -14,7 +14,7 @@ class SMSScheduleController extends Controller
     {
         $schedules = SMSSchedule::orderBy("id", "desc")->paginate(20);
         $templates = SMSTemplateModel::all();
-        $products = Product::where('status', 'active')->orWhereNull('status')->orderBy('id', 'desc')->get();
+        $products = Product::orderBy('name', 'desc')->get();
         
         return view("admin.sms.smsschedule.index", compact("schedules", "templates", "products"));
     }
