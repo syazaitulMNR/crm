@@ -14,16 +14,17 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class SMSBulkImport implements ToCollection, WithChunkReading, WithHeadingRow
 {	
-	private $_templateId = "", $_regexData = [];
+	private $_title = "", $_templateId = "", $_regexData = [];
 	
-    public function __construct($templateId, $regexData){
-		$this->_templateId = $templateId;
+    public function __construct($title, $templateId, $regexData){
+		$this->_title = $title;
+        $this->_templateId = $templateId;
 		$this->_regexData = $regexData;
     }
 
     public function collection(Collection $rows)
     {	
-        dispatch(new SMSBulkSender($rows, $this->_templateId, $this->_regexData));
+        dispatch(new SMSBulkSender($rows, $this->_title, $this->_templateId, $this->_regexData));
     }
 
     public function chunkSize(): int
