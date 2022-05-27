@@ -15,15 +15,9 @@ use Auth;
 
 class SmsBulk extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
 		$y = SMSTemplateModel::orderBy("id", "desc")->get();
-		
 		$search = $request->query('search');
 		
 		if($search) {
@@ -103,8 +97,6 @@ class SmsBulk extends Controller
 				return redirect("smsblast")->with('error', 'Selected template is not available.');
 			}
 		}
-		
-		// return redirect("smsblast")->with('error', 'SMS Bulk services is not enable yet.');
     }
 
     public function show($group_id, Request $request)

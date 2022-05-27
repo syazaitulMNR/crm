@@ -10,19 +10,13 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
 use App\SMSTemplateModel;
 use App\SMSBulkModel;
-use Carbon\Carbon;
-
 use Auth;
 
 class SMSBulkSender implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $_rows = [], $_templateId = 0, $_regexData = [], $_message = "", $_title = "";
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
+   
     public function __construct($rows, $title, $templateId, $regexData)
     {
         $this->_rows = $rows;
@@ -34,11 +28,6 @@ class SMSBulkSender implements ShouldQueue
 		$this->_message = $t->first()->content;
     }
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
     public function handle()
     {
         foreach($this->_rows as $row){
@@ -62,9 +51,7 @@ class SMSBulkSender implements ShouldQueue
                         "user_id"	    => (isset(Auth::user()->id) ? Auth::user()->id : 0),
                         "title"         => $this->_title,
                         "template_id"   => $this->_templateId,
-                        "message"	    => $message,
-                        "created_at"    => Carbon::now('Asia/Kuala_Lumpur'),
-                        "updated_at"    => Carbon::now('Asia/Kuala_Lumpur'),
+                        "message"	    => $message
                     ]);
 
                     $newId = $send->id;
@@ -80,8 +67,6 @@ class SMSBulkSender implements ShouldQueue
                         "title"         => $this->_title,
                         "template_id"   => $this->_templateId,
                         "message"	    => $message,
-                        "created_at"    => Carbon::now('Asia/Kuala_Lumpur'),
-                        "updated_at"    => Carbon::now('Asia/Kuala_Lumpur'),
                         "group_id"      => $newId
                     ]);
                 } 
