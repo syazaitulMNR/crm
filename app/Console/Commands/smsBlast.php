@@ -56,40 +56,7 @@ class smsBlast extends Command
                 $details = Student::where('stud_id', $key->stud_id)->get(); 
 
                 foreach($details as $value) {
-                    // Http::get('http://cloudsms.trio-mobile.com/index.php/api/bulk_mt?api_key=NUC130101000036249535fb5accab169524b40e5468bd1de5&action=send&to='. $value->phoneno .'&msg='. $s->smstemp->content .'&sender_id=CLOUDSMS&content_type=1&mode=shortcode');
-        
-                    // if ($details->first()) {
-                    //     dump('if');
-                    //     $send = SMSBulkModel::create([
-                    //         "type"          => "Schedule",
-                    //         "phone"		    => $value->phoneno,
-                    //         "template_id"   => $s->template_id,
-                    //         "schedule_id"   => $s->id,
-                    //         "user_id"	    => 1,
-                    //         "title"         => $s->name,
-                    //         "message"	    => $s->smstemp->content,
-                    //         "created_at"    => Carbon::now('Asia/Kuala_Lumpur')
-                    //     ]);
-
-                    //     $newId = $send->id;
-
-                    //     SMSBulkModel::find($newId)->update([
-                    //         'group_id'=> $newId
-                    //     ]);
-                    // } else {
-                    //     dump('else');
-                    //     SMSBulkModel::create([
-                    //         "type"          => "Schedule",
-                    //         "phone"		    => $value->phoneno,
-                    //         "template_id"   => $s->template_id,
-                    //         "schedule_id"   => $s->id,
-                    //         "user_id"	    => 1,
-                    //         "title"         => $s->name,
-                    //         "message"	    => $s->smstemp->content,
-                    //         "group_id"      => $newId,
-                    //         "created_at"    => Carbon::now('Asia/Kuala_Lumpur')
-                    //     ]);
-                    // } 
+                    Http::get('http://cloudsms.trio-mobile.com/index.php/api/bulk_mt?api_key=NUC130101000036249535fb5accab169524b40e5468bd1de5&action=send&to='. $value->phoneno .'&msg='. $s->smstemp->content .'&sender_id=CLOUDSMS&content_type=1&mode=shortcode');
 
                     if (SMSBulkModel::where('template_id', $s->template_id)->where('schedule_id', $s->id)->count() == 0) {
                         $send = SMSBulkModel::create([
@@ -99,8 +66,7 @@ class smsBlast extends Command
                             "schedule_id"   => $s->id,
                             "user_id"	    => 1,
                             "title"         => $s->name,
-                            "message"	    => $s->smstemp->content,
-                            "created_at"    => Carbon::now('Asia/Kuala_Lumpur')
+                            "message"	    => $s->smstemp->content
                         ]);
 
                         $newId = $send->id;
@@ -117,8 +83,7 @@ class smsBlast extends Command
                             "user_id"	    => 1,
                             "title"         => $s->name,
                             "message"	    => $s->smstemp->content,
-                            "group_id"      => $newId,
-                            "created_at"    => Carbon::now('Asia/Kuala_Lumpur')
+                            "group_id"      => $newId
                         ]);
                     } 
                 }
