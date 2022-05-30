@@ -78,7 +78,7 @@
 								<td class="text-center">
 									@if ($sched->status == "In Progress")
 										<div class="text-danger fw-bolder">{{ $sched->status }}</div>
-									@elseif ($sched->status == "Sended")
+									@elseif ($sched->status == "Sent")
 										<div class="text-success fw-bolder">{{ $sched->status }}</div>
 									@endif
 								</td>

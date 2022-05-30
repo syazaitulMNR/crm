@@ -88,7 +88,7 @@ class smsBlast extends Command
                     } 
                 }
             } 
-            $s->status  = "Sended";
+            $s->status  = "Sent";
         
             $s->save();
         }
