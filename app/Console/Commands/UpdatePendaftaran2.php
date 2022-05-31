@@ -287,11 +287,7 @@ class UpdatePendaftaran2 extends Command
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            $text = "<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : ".$packages5." (+".$package5.")"."\n"."Xcess : ".$packages19." (+".$package19.")"."\n"."Diamond : ".$packages6." (+".$package6.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : ".$packages7." (+".$package7.")"."\n"."Xcess : ".$packages20." (+".$package20.")"."\n"."Diamond : ".$packages8." (+".$package8.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages9." (+".$package9.")"."\n"."Xcess : ".$packages21." (+".$package21.")"."\n"."Diamond : ".$packages10." (+".$package10.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : ".$packages11." (+".$package11.")"."\n"."Xcess : ".$packages22." (+".$package22.")"."\n"."Diamond : ".$packages12." (+".$package12.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : ".$packages13." (+".$package13.")"."\n"."Xcess : ".$packages23." (+".$package23.")"."\n"."Diamond : ".$packages14." (+".$package14.")"."\n\n"
+            $text = "<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : ".$packages13." (+".$package13.")"."\n"."Xcess : ".$packages23." (+".$package23.")"."\n"."Diamond : ".$packages14." (+".$package14.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages17." (+".$package17.")"."\n"."Xcess : ".$packages25." (+".$package25.")"."\n"."Diamond : ".$packages18." (+".$package18.")"."\n\n";
             Telegram::sendMessage([
