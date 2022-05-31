@@ -57,11 +57,11 @@ class UpdatePendaftaran5 extends Command
         $end_times = date($date_tomorrow.'16:00:00');
 
         ///////////////////////////////////////////////////////////////////////////
-        // SUNGAI PETANI
+        // SABAH
 
-        $gensp = Product::where('product_id','PRD0049')->first();
-        $diasp = Product::where('product_id','PRD0050')->first();
-        $xcesssp = Product::where('product_id','PRD0070')->first();
+        $gensp = Product::where('product_id','PRD0053')->first();
+        $diasp = Product::where('product_id','PRD0054')->first();
+        $xcesssp = Product::where('product_id','PRD0072')->first();
 
         // Ticket
         $gsptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $gensp->product_id)->count();
@@ -102,11 +102,11 @@ class UpdatePendaftaran5 extends Command
         ///////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////
-        // SHAH ALAM
+        // MELAKA
 
-        $gensa = Product::where('product_id','PRD0051')->first();
-        $diasa = Product::where('product_id','PRD0052')->first();
-        $xcesssa = Product::where('product_id','PRD0071')->first();
+        $gensa = Product::where('product_id','PRD0055')->first();
+        $diasa = Product::where('product_id','PRD0056')->first();
+        $xcesssa = Product::where('product_id','PRD0073')->first();
 
         // Ticket
         $gsatdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $gensa->product_id)->count();
@@ -162,10 +162,10 @@ class UpdatePendaftaran5 extends Command
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         $textes = strtoupper("KEHADIRAN MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."\n"
-                    .strtoupper('Momentum Bisnes Kota Bahru')."\n"."GENERAL"."\n"."Hadir : ".($gspthadir+$gspphadir)."\n"."Tidak Hadir : ".($gsptth+$gsppth)."\n\n"
+                    .strtoupper('Momentum Bisnes Sabah')."\n"."GENERAL"."\n"."Hadir : ".($gspthadir+$gspphadir)."\n"."Tidak Hadir : ".($gsptth+$gsppth)."\n\n"
                     ."XCESS"."\n"."Hadir : ".($xspthadir+$xspphadir)."\n"."Tidak Hadir : ".($xsptth+$xsppth)."\n\n"
                     ."DIAMOND"."\n"."Hadir : ".($dspthadir+$dspphadir)."\n"."Tidak Hadir : ".($dsptth+$dsppth)."\n\n"
-                    .strtoupper('Momentum Bisnes Kuantan')."\n"."GENERAL"."\n"."Hadir : ".($gsathadir+$gsaphadir)."\n"."Tidak Hadir : ".($gsatth+$gsppth)."\n\n"
+                    .strtoupper('Momentum Bisnes Melaka')."\n"."GENERAL"."\n"."Hadir : ".($gsathadir+$gsaphadir)."\n"."Tidak Hadir : ".($gsatth+$gsppth)."\n\n"
                     ."XCESS"."\n"."Hadir : ".($xsathadir+$xsaphadir)."\n"."Tidak Hadir : ".($xsatth+$xsapth)."\n\n"
                     ."DIAMOND"."\n"."Hadir : ".($dsathadir+$dsaphadir)."\n"."Tidak Hadir : ".($dsatth+$dsapth);
         Telegram::sendMessage([
