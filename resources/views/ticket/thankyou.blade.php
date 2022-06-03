@@ -22,6 +22,10 @@
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbmlk/">
   @elseif ($package == "PKD00101" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbjhr/">
+  @elseif ($package == "PKD00126" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkl/">
+  @elseif ($package == "PKD00127" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00114" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00116" )
