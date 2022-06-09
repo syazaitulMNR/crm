@@ -24,6 +24,10 @@
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbjhr/">
   @elseif ($package == "PKD00126" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkl/">
+  @elseif ($package == "PKD00131" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkb/">
+  @elseif ($package == "PKD00132" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbpg/">
   @elseif ($package == "PKD00127" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00114" )
@@ -39,6 +43,10 @@
   @elseif ($package == "PKD00120" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00121" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  @elseif ($package == "PKD00129" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  @elseif ($package == "PKD00134" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @else 
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
