@@ -299,10 +299,35 @@ class UpdatePendaftaran2 extends Command
         $package28 = Payment::where('product_id',$product28->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         $packages28 = Payment::where('product_id',$product28->product_id)->where('status','paid')->count();
 
-            $text = "<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : ".$packages13." (+".$package13.")"."\n"."Xcess : ".$packages23." (+".$package23.")"."\n"."Diamond : ".$packages14." (+".$package14.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
+        $product29 = Product::where('product_id','PRD0080')->first();
+        $package29 = Payment::where('product_id',$product29->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages29 = Payment::where('product_id',$product29->product_id)->where('status','paid')->count();
+
+        $product30 = Product::where('product_id','PRD0081')->first();
+        $package30 = Payment::where('product_id',$product30->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages30 = Payment::where('product_id',$product30->product_id)->where('status','paid')->count();
+
+        $product31 = Product::where('product_id','PRD0086')->first();
+        $package31 = Payment::where('product_id',$product31->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages31 = Payment::where('product_id',$product31->product_id)->where('status','paid')->count();
+
+        $product32 = Product::where('product_id','PRD0083')->first();
+        $package32 = Payment::where('product_id',$product32->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages32 = Payment::where('product_id',$product32->product_id)->where('status','paid')->count();
+
+        $product33 = Product::where('product_id','PRD0085')->first();
+        $package33 = Payment::where('product_id',$product33->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages33 = Payment::where('product_id',$product33->product_id)->where('status','paid')->count();
+
+        $product34 = Product::where('product_id','PRD0084')->first();
+        $package34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->count();
+
+            $text = "<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages17." (+".$package17.")"."\n"."Xcess : ".$packages25." (+".$package25.")"."\n"."Diamond : ".$packages18." (+".$package18.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuala Lumpur')."</b>"."\n"."General : ".$packages27." (+".$package27.")"."\n"."Xcess : ".$packages26." (+".$package26.")"."\n"."Diamond : ".$packages28." (+".$package28.")"."\n\n";
+                    ."<b>".strtoupper('Momentum Bisnes Kuala Lumpur')."</b>"."\n"."General : ".$packages27." (+".$package27.")"."\n"."Xcess : ".$packages26." (+".$package26.")"."\n"."Diamond : ".$packages28." (+".$package28.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages29." (+".$package29.")"."\n"."Xcess : ".$packages30." (+".$package30.")"."\n"."Diamond : ".$packages31." (+".$package31.")"."\n\n"
+                    ."<b>".strtoupper('Momentum Bisnes Penang')."</b>"."\n"."General : ".$packages32." (+".$package32.")"."\n"."Xcess : ".$packages33." (+".$package33.")"."\n"."Diamond : ".$packages34." (+".$package34.")"."\n\n";
             Telegram::sendMessage([
                 "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
                 "parse_mode" => "HTML",
