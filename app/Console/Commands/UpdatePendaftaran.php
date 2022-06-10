@@ -302,13 +302,50 @@ class UpdatePendaftaran extends Command
         $packages24 = Payment::where('product_id',$product24->product_id)->where('status','paid')->count();
 
         $product25 = Product::where('product_id','PRD0074')->first();
-        $package25 = Payment::where('product_id',$product24->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
-        $packages25 = Payment::where('product_id',$product24->product_id)->where('status','paid')->count();
+        $package25 = Payment::where('product_id',$product25->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages25 = Payment::where('product_id',$product25->product_id)->where('status','paid')->count();
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        $product26 = Product::where('product_id','PRD0078')->first();
+        $package26 = Payment::where('product_id',$product26->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages26 = Payment::where('product_id',$product26->product_id)->where('status','paid')->count();
 
-        $textes = strtoupper("MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Xcess + Diamond )"."\n"."Total Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16+$package17+$package18+$package19+$package20+$package21+$package22+$package23+$package24+$package25)."\n\n"."By Hours"."\n"."Total General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)." (+".($packages1+$packages3+$packages5+$packages7+$packages9+$packages11+$packages13+$packages15+$packages17).")"."\n"."Total Xcess : ".($packages19+$packages20+$packages21+$packages22+$packages23+$packages24+$packages25)." (+".($package19+$package20+$package21+$package22+$package23+$package24+$package25).")"."\n"."Total Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)." (+".($packages2+$packages4+$packages6+$packages8+$packages10+$packages12+$packages14+$packages16+$packages18).")";
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        $product27 = Product::where('product_id','PRD0077')->first();
+        $package27 = Payment::where('product_id',$product27->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages27 = Payment::where('product_id',$product27->product_id)->where('status','paid')->count();
+        
+        $product28 = Product::where('product_id','PRD0079')->first();
+        $package28 = Payment::where('product_id',$product28->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages28 = Payment::where('product_id',$product28->product_id)->where('status','paid')->count();
+
+        $product29 = Product::where('product_id','PRD0080')->first();
+        $package29 = Payment::where('product_id',$product29->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages29 = Payment::where('product_id',$product29->product_id)->where('status','paid')->count();
+
+        $product30 = Product::where('product_id','PRD0081')->first();
+        $package30 = Payment::where('product_id',$product30->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages30 = Payment::where('product_id',$product30->product_id)->where('status','paid')->count();
+
+        $product31 = Product::where('product_id','PRD0086')->first();
+        $package31 = Payment::where('product_id',$product31->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages31 = Payment::where('product_id',$product31->product_id)->where('status','paid')->count();
+
+        $product32 = Product::where('product_id','PRD0083')->first();
+        $package32 = Payment::where('product_id',$product32->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages32 = Payment::where('product_id',$product32->product_id)->where('status','paid')->count();
+
+        $product33 = Product::where('product_id','PRD0085')->first();
+        $package33 = Payment::where('product_id',$product33->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages33 = Payment::where('product_id',$product33->product_id)->where('status','paid')->count();
+
+        $product34 = Product::where('product_id','PRD0084')->first();
+        $package34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        $packages34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->count();
+
+        $textes = strtoupper("MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."Duration : ".$duration."\n\n"."( General + Xcess + Diamond )"."\n"."Total Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16+$package17+$package18+$package19+$package20+$package21+$package22+$package23+$package24+$package25+$package26+$package27+$package28+$package29+$package30+$package31+$package32+$package33+$package34)."\n\n"."By Hours"."\n"."Total General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17+$package27+$package29+$package32)." (+".($packages1+$packages3+$packages5+$packages7+$packages9+$packages11+$packages13+$packages15+$packages17+$packages27+$packages29+$packages32).")"."\n"."Total Xcess : ".($packages19+$packages20+$packages21+$packages22+$packages23+$packages24+$packages25+$packages26+$packages30+$packages33)." (+".($package19+$package20+$package21+$package22+$package23+$package24+$package25+$package26+$package30+$package33).")"."\n"."Total Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18+$package28+$package31+$package34)." (+".($packages2+$packages4+$packages6+$packages8+$packages10+$packages12+$packages14+$packages16+$packages18+$packages28+$package31+$package34).")";
     
         $id = env('TELEGRAM_CHAT_ID','');
         $tester =  Telegram::sendMessage([
