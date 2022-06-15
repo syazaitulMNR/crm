@@ -302,7 +302,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $payments->user_id,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
                                 }
@@ -363,7 +363,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $payments->user_id,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
 
@@ -428,7 +428,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $user->email,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
 
@@ -495,7 +495,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $payments->user_id,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
 
@@ -570,7 +570,7 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $tickets->ticket_type,
                                             $user->email,
-                                            $tickets->created_at,
+                                            $tickets->created_at->addHours(8),
                                         ]);
 
                                     }
@@ -623,7 +623,7 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $tickets->ticket_type,
                                             $tickets->user_id,
-                                            $tickets->created_at,
+                                            $tickets->created_at->addHours(8),
                                         ]);
 
                                     // }
