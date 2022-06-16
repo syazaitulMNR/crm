@@ -57,94 +57,185 @@ class UpdatePendaftaran5 extends Command
         $end_times = date($date_tomorrow.'16:00:00');
 
         ///////////////////////////////////////////////////////////////////////////
-        // SABAH
+        // JB
 
-        $gensp = Product::where('product_id','PRD0053')->first();
-        $diasp = Product::where('product_id','PRD0054')->first();
-        $xcesssp = Product::where('product_id','PRD0072')->first();
-
-        // Ticket
-        $gsptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $gensp->product_id)->count();
-        $gspthadir = Ticket::where('attendance','hadir')->where('product_id', $gensp->product_id)->count();
-        $gsptth = Ticket::where('attendance','tidak hadir')->where('product_id', $gensp->product_id)->count();
-        $gsptlain = Ticket::whereNull('attendance')->where('product_id', $gensp->product_id)->count();
-
-        // Payment
-        $gsppdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$gensp->product_id)->count();
-        $gspphadir = Payment::where('attendance','hadir')->where('product_id', $gensp->product_id)->count();
-        $gsppth = Payment::where('attendance','tidak hadir')->where('product_id', $gensp->product_id)->count();
-        $gspplain = Payment::whereNull('attendance')->where('product_id', $gensp->product_id)->count();
+        $genjb = Product::where('product_id','PRD0057')->first();
+        $diajb = Product::where('product_id','PRD0058')->first();
+        $xcessjb = Product::where('product_id','PRD0074')->first();
 
         // Ticket
-        $dsptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $diasp->product_id)->count();
-        $dspthadir = Ticket::where('attendance','hadir')->where('product_id', $diasp->product_id)->count();
-        $dsptth = Ticket::where('attendance','tidak hadir')->where('product_id', $diasp->product_id)->count();
-        $dsptlain = Ticket::whereNull('attendance')->where('product_id', $diasp->product_id)->count();
+        $gjbtdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $genjb->product_id)->count();
+        $gjbthadir = Ticket::where('attendance','hadir')->where('product_id', $genjb->product_id)->count();
+        $gjbtth = Ticket::where('attendance','tidak hadir')->where('product_id', $genjb->product_id)->count();
+        $gjbtlain = Ticket::whereNull('attendance')->where('product_id', $genjb->product_id)->count();
 
         // Payment
-        $dsppdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$diasp->product_id)->count();
-        $dspphadir = Payment::where('attendance','hadir')->where('product_id', $diasp->product_id)->count();
-        $dsppth = Payment::where('attendance','tidak hadir')->where('product_id', $diasp->product_id)->count();
-        $dspplain = Payment::whereNull('attendance')->where('product_id', $diasp->product_id)->count();
+        $gjbpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$genjb->product_id)->count();
+        $gjbphadir = Payment::where('attendance','hadir')->where('product_id', $genjb->product_id)->count();
+        $gjbpth = Payment::where('attendance','tidak hadir')->where('product_id', $genjb->product_id)->count();
+        $gjbplain = Payment::whereNull('attendance')->where('product_id', $genjb->product_id)->count();
 
         // Ticket
-        $xsptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $xcesssp->product_id)->count();
-        $xspthadir = Ticket::where('attendance','hadir')->where('product_id', $xcesssp->product_id)->count();
-        $xsptth = Ticket::where('attendance','tidak hadir')->where('product_id', $xcesssp->product_id)->count();
-        $xsptlain = Ticket::whereNull('attendance')->where('product_id', $xcesssp->product_id)->count();
+        $djbtdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $diajb->product_id)->count();
+        $djbthadir = Ticket::where('attendance','hadir')->where('product_id', $diajb->product_id)->count();
+        $djbtth = Ticket::where('attendance','tidak hadir')->where('product_id', $diajb->product_id)->count();
+        $djbtlain = Ticket::whereNull('attendance')->where('product_id', $diajb->product_id)->count();
 
         // Payment
-        $xsppdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$xcesssp->product_id)->count();
-        $xspphadir = Payment::where('attendance','hadir')->where('product_id', $xcesssp->product_id)->count();
-        $xsppth = Payment::where('attendance','tidak hadir')->where('product_id', $xcesssp->product_id)->count();
-        $xspplain = Payment::whereNull('attendance')->where('product_id', $xcesssp->product_id)->count();
+        $djbpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$diajb->product_id)->count();
+        $djbphadir = Payment::where('attendance','hadir')->where('product_id', $diajb->product_id)->count();
+        $djbpth = Payment::where('attendance','tidak hadir')->where('product_id', $diajb->product_id)->count();
+        $djbplain = Payment::whereNull('attendance')->where('product_id', $diajb->product_id)->count();
+
+        // Ticket
+        $xjbtdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $xcessjb->product_id)->count();
+        $xjbthadir = Ticket::where('attendance','hadir')->where('product_id', $xcessjb->product_id)->count();
+        $xjbtth = Ticket::where('attendance','tidak hadir')->where('product_id', $xcessjb->product_id)->count();
+        $xjbtlain = Ticket::whereNull('attendance')->where('product_id', $xcessjb->product_id)->count();
+
+        // Payment
+        $xjbpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$xcessjb->product_id)->count();
+        $xjbphadir = Payment::where('attendance','hadir')->where('product_id', $xcessjb->product_id)->count();
+        $xjbpth = Payment::where('attendance','tidak hadir')->where('product_id', $xcessjb->product_id)->count();
+        $xjbplain = Payment::whereNull('attendance')->where('product_id', $xcessjb->product_id)->count();
 
         ///////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////
-        // MELAKA
+        // KL
 
-        $gensa = Product::where('product_id','PRD0055')->first();
-        $diasa = Product::where('product_id','PRD0056')->first();
-        $xcesssa = Product::where('product_id','PRD0073')->first();
-
-        // Ticket
-        $gsatdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $gensa->product_id)->count();
-        $gsathadir = Ticket::where('attendance','hadir')->where('product_id', $gensa->product_id)->count();
-        $gsatth = Ticket::where('attendance','tidak hadir')->where('product_id', $gensa->product_id)->count();
-        $gsatlain = Ticket::whereNull('attendance')->where('product_id', $gensa->product_id)->count();
-
-        // Payment
-        $gsapdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$gensa->product_id)->count();
-        $gsaphadir = Payment::where('attendance','hadir')->where('product_id', $gensa->product_id)->count();
-        $gsapth = Payment::where('attendance','tidak hadir')->where('product_id', $gensa->product_id)->count();
-        $gsaplain = Payment::whereNull('attendance')->where('product_id', $gensa->product_id)->count();
+        $genkl = Product::where('product_id','PRD0077')->first();
+        $diakl = Product::where('product_id','PRD0079')->first();
+        $xcesskl = Product::where('product_id','PRD0078')->first();
 
         // Ticket
-        $dsatdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $diasa->product_id)->count();
-        $dsathadir = Ticket::where('attendance','hadir')->where('product_id', $diasa->product_id)->count();
-        $dsatth = Ticket::where('attendance','tidak hadir')->where('product_id', $diasa->product_id)->count();
-        $dsatlain = Ticket::whereNull('attendance')->where('product_id', $diasa->product_id)->count();
+        $gkltdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $genkl->product_id)->count();
+        $gklthadir = Ticket::where('attendance','hadir')->where('product_id', $genkl->product_id)->count();
+        $gkltth = Ticket::where('attendance','tidak hadir')->where('product_id', $genkl->product_id)->count();
+        $gkltlain = Ticket::whereNull('attendance')->where('product_id', $genkl->product_id)->count();
 
         // Payment
-        $dsapdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$diasa->product_id)->count();
-        $dsaphadir = Payment::where('attendance','hadir')->where('product_id', $diasa->product_id)->count();
-        $dsapth = Payment::where('attendance','tidak hadir')->where('product_id', $diasa->product_id)->count();
-        $dsaplain = Payment::whereNull('attendance')->where('product_id', $diasa->product_id)->count();
+        $gklpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$genkl->product_id)->count();
+        $gklphadir = Payment::where('attendance','hadir')->where('product_id', $genkl->product_id)->count();
+        $gklpth = Payment::where('attendance','tidak hadir')->where('product_id', $genkl->product_id)->count();
+        $gklplain = Payment::whereNull('attendance')->where('product_id', $genkl->product_id)->count();
 
         // Ticket
-        $xsatdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $xcesssa->product_id)->count();
-        $xsathadir = Ticket::where('attendance','hadir')->where('product_id', $xcesssa->product_id)->count();
-        $xsatth = Ticket::where('attendance','tidak hadir')->where('product_id', $xcesssa->product_id)->count();
-        $xsatlain = Ticket::whereNull('attendance')->where('product_id', $xcesssa->product_id)->count();
+        $dkltdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $diakl->product_id)->count();
+        $dklthadir = Ticket::where('attendance','hadir')->where('product_id', $diakl->product_id)->count();
+        $dkltth = Ticket::where('attendance','tidak hadir')->where('product_id', $diakl->product_id)->count();
+        $dkltlain = Ticket::whereNull('attendance')->where('product_id', $diakl->product_id)->count();
 
         // Payment
-        $xsapdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$xcesssa->product_id)->count();
-        $xsaphadir = Payment::where('attendance','hadir')->where('product_id', $xcesssa->product_id)->count();
-        $xsapth = Payment::where('attendance','tidak hadir')->where('product_id', $xcesssa->product_id)->count();
-        $xsaplain = Payment::whereNull('attendance')->where('product_id', $xcesssa->product_id)->count();
+        $dklpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$diakl->product_id)->count();
+        $dklphadir = Payment::where('attendance','hadir')->where('product_id', $diakl->product_id)->count();
+        $dklpth = Payment::where('attendance','tidak hadir')->where('product_id', $diakl->product_id)->count();
+        $dklplain = Payment::whereNull('attendance')->where('product_id', $diakl->product_id)->count();
+
+        // Ticket
+        $xkltdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $xcesskl->product_id)->count();
+        $xklthadir = Ticket::where('attendance','hadir')->where('product_id', $xcesskl->product_id)->count();
+        $xkltth = Ticket::where('attendance','tidak hadir')->where('product_id', $xcesskl->product_id)->count();
+        $xkltlain = Ticket::whereNull('attendance')->where('product_id', $xcesskl->product_id)->count();
+
+        // Payment
+        $xklpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$xcesskl->product_id)->count();
+        $xklphadir = Payment::where('attendance','hadir')->where('product_id', $xcesskl->product_id)->count();
+        $xklpth = Payment::where('attendance','tidak hadir')->where('product_id', $xcesskl->product_id)->count();
+        $xklplain = Payment::whereNull('attendance')->where('product_id', $xcesskl->product_id)->count();
 
         ///////////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////////
+        // KOTA BAHRU
+
+        $genkb = Product::where('product_id','PRD0080')->first();
+        $diakb = Product::where('product_id','PRD0086')->first();
+        $xcesskb = Product::where('product_id','PRD0081')->first();
+
+        // Ticket
+        $gkbtdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $genkb->product_id)->count();
+        $gkbthadir = Ticket::where('attendance','hadir')->where('product_id', $genkb->product_id)->count();
+        $gkbtth = Ticket::where('attendance','tidak hadir')->where('product_id', $genkb->product_id)->count();
+        $gkbtlain = Ticket::whereNull('attendance')->where('product_id', $genkb->product_id)->count();
+
+        // Payment
+        $gkbpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$genkb->product_id)->count();
+        $gkbphadir = Payment::where('attendance','hadir')->where('product_id', $genkb->product_id)->count();
+        $gkbpth = Payment::where('attendance','tidak hadir')->where('product_id', $genkb->product_id)->count();
+        $gkbplain = Payment::whereNull('attendance')->where('product_id', $genkb->product_id)->count();
+
+        // Ticket
+        $dkbtdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $diakb->product_id)->count();
+        $dkbthadir = Ticket::where('attendance','hadir')->where('product_id', $diakb->product_id)->count();
+        $dkbtth = Ticket::where('attendance','tidak hadir')->where('product_id', $diakb->product_id)->count();
+        $dkblain = Ticket::whereNull('attendance')->where('product_id', $diakb->product_id)->count();
+
+        // Payment
+        $dkbpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$diakb->product_id)->count();
+        $dkbphadir = Payment::where('attendance','hadir')->where('product_id', $diakb->product_id)->count();
+        $dkbpth = Payment::where('attendance','tidak hadir')->where('product_id', $diakb->product_id)->count();
+        $dkbplain = Payment::whereNull('attendance')->where('product_id', $diakb->product_id)->count();
+
+        // Ticket
+        $xkbtdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $xcesskb->product_id)->count();
+        $xkbthadir = Ticket::where('attendance','hadir')->where('product_id', $xcesskb->product_id)->count();
+        $xkbtth = Ticket::where('attendance','tidak hadir')->where('product_id', $xcesskb->product_id)->count();
+        $xkbtlain = Ticket::whereNull('attendance')->where('product_id', $xcesskb->product_id)->count();
+
+        // Payment
+        $xkbpdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$xcesskb->product_id)->count();
+        $xkbphadir = Payment::where('attendance','hadir')->where('product_id', $xcesskb->product_id)->count();
+        $xkbpth = Payment::where('attendance','tidak hadir')->where('product_id', $xcesskb->product_id)->count();
+        $xkbplain = Payment::whereNull('attendance')->where('product_id', $xcesskb->product_id)->count();
+
+        ///////////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////////
+        // PENANG
+
+        $genp = Product::where('product_id','PRD0083')->first();
+        $diap = Product::where('product_id','PRD0084')->first();
+        $xcessp = Product::where('product_id','PRD0085')->first();
+
+        // Ticket
+        $gptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $genp->product_id)->count();
+        $gpthadir = Ticket::where('attendance','hadir')->where('product_id', $genp->product_id)->count();
+        $gptth = Ticket::where('attendance','tidak hadir')->where('product_id', $genp->product_id)->count();
+        $gptlain = Ticket::whereNull('attendance')->where('product_id', $genp->product_id)->count();
+
+        // Payment
+        $gppdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$genp->product_id)->count();
+        $gpphadir = Payment::where('attendance','hadir')->where('product_id', $genp->product_id)->count();
+        $gppth = Payment::where('attendance','tidak hadir')->where('product_id', $genp->product_id)->count();
+        $gpplain = Payment::whereNull('attendance')->where('product_id', $genp->product_id)->count();
+
+        // Ticket
+        $dptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $diap->product_id)->count();
+        $dpthadir = Ticket::where('attendance','hadir')->where('product_id', $diap->product_id)->count();
+        $dptth = Ticket::where('attendance','tidak hadir')->where('product_id', $diap->product_id)->count();
+        $dptlain = Ticket::whereNull('attendance')->where('product_id', $diap->product_id)->count();
+
+        // Payment
+        $dppdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$diap->product_id)->count();
+        $dpphadir = Payment::where('attendance','hadir')->where('product_id', $diap->product_id)->count();
+        $dppth = Payment::where('attendance','tidak hadir')->where('product_id', $diap->product_id)->count();
+        $dpplain = Payment::whereNull('attendance')->where('product_id', $diap->product_id)->count();
+
+        // Ticket
+        $xptdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $xcessp->product_id)->count();
+        $xpthadir = Ticket::where('attendance','hadir')->where('product_id', $xcessp->product_id)->count();
+        $xptth = Ticket::where('attendance','tidak hadir')->where('product_id', $xcessp->product_id)->count();
+        $xptlain = Ticket::whereNull('attendance')->where('product_id', $xcessp->product_id)->count();
+
+        // Payment
+        $xppdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$xcessp->product_id)->count();
+        $xpphadir = Payment::where('attendance','hadir')->where('product_id', $xcessp->product_id)->count();
+        $xppth = Payment::where('attendance','tidak hadir')->where('product_id', $xcessp->product_id)->count();
+        $xplain = Payment::whereNull('attendance')->where('product_id', $xcessp->product_id)->count();
+
+        ///////////////////////////////////////////////////////////////////////////
+
 
 
         // // Ticket
@@ -162,12 +253,18 @@ class UpdatePendaftaran5 extends Command
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         $textes = strtoupper("KEHADIRAN MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."\n"
-                    .strtoupper('Momentum Bisnes Sabah')."\n"."GENERAL"."\n"."Hadir : ".($gspthadir+$gspphadir)."\n"."Tidak Hadir : ".($gsptth+$gsppth)."\n\n"
-                    ."XCESS"."\n"."Hadir : ".($xspthadir+$xspphadir)."\n"."Tidak Hadir : ".($xsptth+$xsppth)."\n\n"
-                    ."DIAMOND"."\n"."Hadir : ".($dspthadir+$dspphadir)."\n"."Tidak Hadir : ".($dsptth+$dsppth)."\n\n"
-                    .strtoupper('Momentum Bisnes Melaka')."\n"."GENERAL"."\n"."Hadir : ".($gsathadir+$gsaphadir)."\n"."Tidak Hadir : ".($gsatth+$gsppth)."\n\n"
-                    ."XCESS"."\n"."Hadir : ".($xsathadir+$xsaphadir)."\n"."Tidak Hadir : ".($xsatth+$xsapth)."\n\n"
-                    ."DIAMOND"."\n"."Hadir : ".($dsathadir+$dsaphadir)."\n"."Tidak Hadir : ".($dsatth+$dsapth);
+                    .strtoupper('Momentum Bisnes Johor')."\n"."GENERAL"."\n"."Hadir : ".($gjbthadir+$gjbphadir)."\n"."Tidak Hadir : ".($gjbtth+$gjbpth)."\n\n"
+                    ."XCESS"."\n"."Hadir : ".($xjbthadir+$xjbphadir)."\n"."Tidak Hadir : ".($xjbtth+$xjbpth)."\n\n"
+                    ."DIAMOND"."\n"."Hadir : ".($djbthadir+$djbphadir)."\n"."Tidak Hadir : ".($djbtth+$djbpth)."\n\n"
+                    .strtoupper('Momentum Bisnes Kuala Lumpur')."\n"."GENERAL"."\n"."Hadir : ".($gklthadir+$gklphadir)."\n"."Tidak Hadir : ".($gkltth+$gklpth)."\n\n"
+                    ."XCESS"."\n"."Hadir : ".($xklthadir+$xklphadir)."\n"."Tidak Hadir : ".($xkltth+$xklpth)."\n\n"
+                    ."DIAMOND"."\n"."Hadir : ".($dklthadir+$dklphadir)."\n"."Tidak Hadir : ".($dkltth+$dklpth)."\n\n"
+                    .strtoupper('Momentum Bisnes Kota Bahru')."\n"."GENERAL"."\n"."Hadir : ".($gkbthadir+$gkbphadir)."\n"."Tidak Hadir : ".($gkbtth+$gkbpth)."\n\n"
+                    ."XCESS"."\n"."Hadir : ".($xkbthadir+$xkbphadir)."\n"."Tidak Hadir : ".($xkbtth+$xkbpth)."\n\n"
+                    ."DIAMOND"."\n"."Hadir : ".($dkbthadir+$dkbphadir)."\n"."Tidak Hadir : ".($dkbtth+$dkbpth)."\n\n"
+                    .strtoupper('Momentum Bisnes Penang')."\n"."GENERAL"."\n"."Hadir : ".($gpthadir+$gpphadir)."\n"."Tidak Hadir : ".($gptth+$gppth)."\n\n"
+                    ."XCESS"."\n"."Hadir : ".($xpthadir+$xpphadir)."\n"."Tidak Hadir : ".($xptth+$xppth)."\n\n"
+                    ."DIAMOND"."\n"."Hadir : ".($dpthadir+$dpphadir)."\n"."Tidak Hadir : ".($dptth+$dppth);
         Telegram::sendMessage([
             "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
             "parse_mode" => "HTML",
