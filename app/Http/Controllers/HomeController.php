@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Exports\SurveyFormExport;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -91,13 +92,19 @@ class HomeController extends Controller
                     $data = Ticket::where('ticket_id', $ticket_id)->first();
                     $dataStudent = Student::where('ic', $data->ic)->first();
                     $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
-    
+                    if($request->business == 'Lain-lain'){
+                        $type=$request->lain;
+                        
+                    }
+                    else{
+                        $type=$request->business;
+                    }
                     $bussInsert = BusinessDetail::create([
                         'ticket_id' => $ticket_id,
                         'business_role' => $request->role,
-                        'business_type' => $request->business,
+                        'business_type' => $type,
                         'business_amount' => $request->income,
-                        'business_name' => $request->business
+                        'business_name' => $type
                     ]);
     
                     $student = $request->session()->get('student');
@@ -141,12 +148,20 @@ class HomeController extends Controller
                     $dataStudent = Student::where('ic', $data->ic)->first();
                     $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
     
+                    if($request->business == 'Lain-lain'){
+                        $type=$request->lain;
+                        
+                    }
+                    else{
+                        $type=$request->business;
+                    }
+
                     $bussInsert = BusinessDetail::create([
                         'ticket_id' => $ticket_id,
                         'business_role' => $request->role,
-                        'business_type' => $request->business,
+                        'business_type' => $type,
                         'business_amount' => $request->income,
-                        'business_name' => $request->business
+                        'business_name' => $type
                     ]);
     
                     $student = $request->session()->get('student');
@@ -1190,14 +1205,35 @@ class HomeController extends Controller
         // return view('customer.thankyou_update', compact('product'));
     }
 
-    public function exportsurveyform()
+    public function exportsurveyform($product_id)
+    {   
+
+        // $business = DB::table('business_details')->get();
+        // // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
+        // $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0037')->get();
+        // $student = DB::table('student')->get();
+        $product = DB::table('product')->where('product_id',$product_id)->first();
+
+        Session::put('product_id',$product_id);
+
+        return Excel::download(new SurveyFormExport(), '' .$product->name.'.xlsx');
+    }
+
+    public function exporttest() 
+    {
+        return Excel::download(new UsersExport, 'student.xlsx');
+    }
+
+    
+    ///////////////////////////////    Manual Export Survey Form   ////////////////////////////////////////
+    public function surveyform()
     {   
 
         $business = DB::table('business_details')->get();
         // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
-        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0037')->get();
+        $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id', 'PRD0083')->get();
         $student = DB::table('student')->get();
-        $product = DB::table('product')->where('product_id','PRD0037')->first();
+        $product = DB::table('product')->where('product_id', 'PRD0083')->first();
         // dd($ticket);
         // $package = DB::table('package')->where('package_id', 'PKD0065')->first();
 
@@ -1209,6 +1245,7 @@ class HomeController extends Controller
                 'IC No',
                 'Phone No',
                 'Email',
+                'Gender',
                 'Business Type',
                 'Business Role',
                 'Business Amount',
@@ -1232,6 +1269,7 @@ class HomeController extends Controller
                                     $students->ic,
                                     $students->phoneno,
                                     $students->email,
+                                    $students->gender,
                                     $businessdetails->business_type,
                                     $businessdetails->business_role,
                                     $businessdetails->business_amount,
@@ -1260,10 +1298,6 @@ class HomeController extends Controller
 
     }
 
-    public function exporttest() 
-    {
-        return Excel::download(new UsersExport, 'student.xlsx');
-    }
 }
 
 
