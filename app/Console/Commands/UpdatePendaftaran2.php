@@ -323,10 +323,13 @@ class UpdatePendaftaran2 extends Command
         $package34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         $packages34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->count();
 
-            $text = "<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages17." (+".$package17.")"."\n"."Xcess : ".$packages25." (+".$package25.")"."\n"."Diamond : ".$packages18." (+".$package18.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuala Lumpur')."</b>"."\n"."General : ".$packages27." (+".$package27.")"."\n"."Xcess : ".$packages26." (+".$package26.")"."\n"."Diamond : ".$packages28." (+".$package28.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages29." (+".$package29.")"."\n"."Xcess : ".$packages30." (+".$package30.")"."\n"."Diamond : ".$packages31." (+".$package31.")"."\n\n"
+            // $text = "<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
+            //         ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages17." (+".$package17.")"."\n"."Xcess : ".$packages25." (+".$package25.")"."\n"."Diamond : ".$packages18." (+".$package18.")"."\n\n"
+            //         ."<b>".strtoupper('Momentum Bisnes Kuala Lumpur')."</b>"."\n"."General : ".$packages27." (+".$package27.")"."\n"."Xcess : ".$packages26." (+".$package26.")"."\n"."Diamond : ".$packages28." (+".$package28.")"."\n\n"
+            //         ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages29." (+".$package29.")"."\n"."Xcess : ".$packages30." (+".$package30.")"."\n"."Diamond : ".$packages31." (+".$package31.")"."\n\n"
+            //         ."<b>".strtoupper('Momentum Bisnes Penang')."</b>"."\n"."General : ".$packages32." (+".$package32.")"."\n"."Xcess : ".$packages33." (+".$package33.")"."\n"."Diamond : ".$packages34." (+".$package34.")"."\n\n";
+
+            $text =  "<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages29." (+".$package29.")"."\n"."Xcess : ".$packages30." (+".$package30.")"."\n"."Diamond : ".$packages31." (+".$package31.")"."\n\n"
                     ."<b>".strtoupper('Momentum Bisnes Penang')."</b>"."\n"."General : ".$packages32." (+".$package32.")"."\n"."Xcess : ".$packages33." (+".$package33.")"."\n"."Diamond : ".$packages34." (+".$package34.")"."\n\n";
             Telegram::sendMessage([
                 "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
