@@ -236,7 +236,10 @@
                   @endforeach
                   @endforeach
                   </tbody>
-                </table>  
+                </table>
+                <div class="float-right">
+                  {{ $ticket->links() }}
+                </div>  
               </div>
             </div>
             
