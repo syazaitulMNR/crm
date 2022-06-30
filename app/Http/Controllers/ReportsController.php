@@ -1112,8 +1112,14 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
-        $payment = Payment::where('payment_id', $ticket->payment_id)->first();
-        $buyer = Student::where('stud_id', $payment->stud_id)->first();
+
+        if($ticket->payment_id != NULL) {
+            $payment = Payment::where('payment_id', $ticket->payment_id)->first();
+            $buyer = Student::where('stud_id', $payment->stud_id)->first();
+        } else {
+            $payment = null;
+            $buyer = null;
+        }
 
         //Count the data
         $count = 1;
