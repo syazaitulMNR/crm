@@ -1242,7 +1242,7 @@ class ReportsController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
             if(count($ticket) > 0)
             {
