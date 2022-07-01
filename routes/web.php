@@ -559,8 +559,9 @@ Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
-Route::get('export-surveyform','HomeController@exportsurveyform');
+Route::get('export-surveyform/{product_id}','HomeController@exportsurveyform');
 Route::get('export-test','HomeController@exporttest');
+Route::get('surveyform','HomeController@surveyform');
 
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');

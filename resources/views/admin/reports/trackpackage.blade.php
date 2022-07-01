@@ -314,7 +314,32 @@ Sales Report
                 </td>
               </tr> 
             </div>
-          </table> 
+          </table>
+          
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <div class="table-responsive">
+                <tr>
+                  <th scope="" class='col-4'>Package Name</th>
+                  <th scope="col"></th>          
+                  <th scope="col"></th>
+                  {{-- <th scope="col">Image</th> --}}
+                  <th scope="col" class="col-xl-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-cogs"></i></th>
+                </tr>
+              </thead>
+                <tr>
+                    <td>{{ $product->name  }} Export Survey</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <a class="btn btn-sm btn-success" href="{{ url('export-surveyform') }}/{{ $product->product_id }}"><i class="fa fa-download pr-2"></i>Download</a>
+                    </td>
+                </tr> 
+              </div> 
+            </table> 
+          </div>
+           
           
           {{-- <select class="form-control" name="product_id">
           @foreach ($data as $key => $value)
