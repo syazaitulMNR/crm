@@ -263,6 +263,7 @@ Route::get('showpackage/{id}', 'HomeController@view');
 // Route::get('pendaftaran/{product_id}/{package_id}/{user_invite}', 'HomeController@register_user_invite');
 Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
 Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic');
+Route::get('verification/ARBAlumni/{product_id}/{package_id}', 'HomeController@detailAlumni');
 
 /*
 |--------------------------------------------------------------------------
