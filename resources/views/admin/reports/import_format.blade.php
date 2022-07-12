@@ -5,6 +5,7 @@
             <th>last_name</th>
             <th>ic</th>
             <th>email</th>
+            <th>gender</th>
             <th>phoneno</th>
             <th>membership_id</th>
             <th>level_id</th>
@@ -23,6 +24,7 @@
             <td>Doe</td>
             <td>912345006789</td>
             <td>example@gmail.com</td>
+            <td>Lelaki</td>
             <td>+60123456789</td>
             <td>MB001</td>
             <td>MBL001</td>

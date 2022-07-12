@@ -64,6 +64,7 @@ class StudentImport implements ToCollection, WithChunkReading, WithHeadingRow
                     'last_name'  => ucwords(strtolower($row['last_name'])), 
                     'ic'         => $row['ic'],
                     'email'      => $row['email'],
+                    'gender'      => $row['gender'],
                     'phoneno'    => '+' . $row['phoneno'],
                     'membership_id' => $row['membership_id'],
                     'level_id' => $row['level_id'],

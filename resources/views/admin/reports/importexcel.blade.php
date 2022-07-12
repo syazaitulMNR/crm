@@ -58,6 +58,7 @@ Sales Report
                             <th>Last Name</th>
                             <th>IC No.</th>
                             <th>Email</th>
+                            <th>Gender</th>
                             <th>Phone No</th>
                             <th>Membership ID</th>
                             <th>Level ID</th>
@@ -75,6 +76,7 @@ Sales Report
                             <td>Doe</td>
                             <td>900101014321</td>
                             <td>example@gmail.com</td>
+                            <td>Lelaki</td>
                             <td>+60123456789</td>
                             <td>MB001</td>
                             <td>MBL001</td>
