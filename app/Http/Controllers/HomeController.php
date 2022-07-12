@@ -346,7 +346,7 @@ class HomeController extends Controller
                 return redirect('maklumat-pembeli/'. $product_id . '/' . $package_id . '/' . $request->ic);
             }
         }else{
-            redirect()->back()->with('error', 'Maaf maklumat anda tidak wujud dalam ARB Alumni. Sila hubungi Team kami.');
+            return redirect()->back()->with('error', 'Maaf maklumat anda tidak wujud dalam ARB Alumni. Sila hubungi Team kami.');
         }
         
     }

@@ -16,7 +16,7 @@
             <div class="card px-4 py-4 shadow">
                 <h3 class="text-dark px-3 pb-3 text-center">{{ $package->name }}</h3>
                 @if (session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>{{ session('error') }}</strong></div>	
+                    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert"><strong>{{ session('error') }}</strong></div>	
                 @endif
                 <p>No. Kad Pengenalan / Passport</p>
                 <form action="{{ url('verification/ARBAlumni') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
