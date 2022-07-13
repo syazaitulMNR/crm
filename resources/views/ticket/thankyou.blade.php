@@ -48,6 +48,8 @@
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00134" )
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  @elseif ($package == "PKD00137" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/tq-mmb/">
   @else 
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
   @endif  
