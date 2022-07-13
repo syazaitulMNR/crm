@@ -272,12 +272,13 @@
         </tr>
         </thead>
         <tbody> 
+          @foreach ($payment as $key => $payments)
           @foreach ($student as $students)   
-          @foreach ($payment as $payments)
+          
           @if ($students->stud_id == $payments->stud_id)
           @if ($payments->product_id == $product->product_id)  
           <tr>
-              <td>{{ $count++ }}</td>
+              <td>{{ $payment->firstItem() + $key }}</td>
               <td>{{ $students->ic }}</td>
               <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
               <td>{{ $students->email }}</td>

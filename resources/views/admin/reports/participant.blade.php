@@ -222,7 +222,7 @@
                   @if ($tickets->ic == $students->ic)
                   @if ($product->product_id == $tickets->product_id)  
                   <tr>
-                      <td>{{ $count++ }}</td>
+                      <td>{{ $ticket->firstItem() + $key }}</td>
                       <td>{{ $students->ic }}</td>
                       <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
                       <td>{{ $students->email }}</td>
