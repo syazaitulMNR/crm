@@ -19,6 +19,9 @@
                 <div class="col-md-12 pb-3">
                     <input type="text" class="form-control" name="ic" placeholder="tanpa '-' .Cth: 91042409**** / A********" maxlength="12" required="" >
                 </div>
+                <p style=" color:red;">
+                    * Jika anda bukan warganegara Malaysia sila masukkan passport anda.
+                </p>
                 <div class="col-md-12 pb-3">
                     <div class="pull-right">
                         <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
