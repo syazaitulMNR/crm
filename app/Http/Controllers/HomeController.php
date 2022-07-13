@@ -330,6 +330,26 @@ class HomeController extends Controller
             return redirect('maklumat-pembeli/'. $product_id . '/' . $package_id . '/' . $request->ic);
         }
     }
+
+    //for check if data exist from ARB Reunion
+    public function detailAlumni($product_id, $package_id, Request $request)
+    {
+        $studid = Student::where('ic', $request->ic)->value('stud_id');
+        //Package code for ARB Reunioin data
+        if(Payment::where('package_id','PKD00136')->where('stud_id', $studid)->exists()) {
+            // Check if ic exist
+            if(Student::where('ic', $request->ic)->exists()){
+                $student = Student::where('ic', $request->ic)->first();
+                return redirect('langkah-pertama/' . $product_id . '/' . $package_id .'/'.$student->stud_id);
+
+            }else{
+                return redirect('maklumat-pembeli/'. $product_id . '/' . $package_id . '/' . $request->ic);
+            }
+        }else{
+            return redirect()->back()->with('error', 'Maaf maklumat anda tidak wujud. Sila hubungi Team kami.');
+        }
+        
+    }
 	
     public function thankyouTicket() {
 

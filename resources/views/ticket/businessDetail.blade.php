@@ -30,7 +30,7 @@
                     
                     <div class="pb-3 form-group">
                         <label for="formGroupExampleInput">Jenis Perniagaan:</label>
-                        <select name="business" class="form-control" id="formGroupExampleInput" required onchange = "ShowHideDiv()">
+                        <select name="business" class="form-select" id="formGroupExampleInput" required onchange = "ShowHideDiv()">
                             <option value="" disabled selected>-- Sila Pilih --</option>
                             <option value="Fashion">Fashion</option>
                             <option value="Makanan">Makanan</option>
@@ -62,8 +62,8 @@
                         <div class="form-group col-md-6">
                             <label for="formGroupExampleInput2">Purata Jualan Bulanan</label>
                             {{-- <input type="number" name="income" class="form-control" min="0" id="formGroupExampleInput2" placeholder="0" onkeypress="return isNumber(event)" required> --}}
-                            <select id="inputState" class="form-control" name='income' required>
-                                <option value=''>Pilih...</option>
+                            <select id="inputState" class="form-select" name='income' required>
+                                <option value=''>-- Sila Pilih --</option>
                                 @foreach ($incomeOptions as $i)
                                     <option value="{{ $i->range }}">{{ $i->range }}</option>
                                 @endforeach
@@ -71,8 +71,8 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputState">Status dalam Perniagaan</label>
-                            <select id="inputState" class="form-control" name='role' required>
-                                <option value=''>Choose...</option>
+                            <select id="inputState" class="form-select" name='role' required>
+                                <option value=''>-- Sila Pilih --</option>
                                 <option value="Founder">Founder</option>
                                 <option value="Agent">Agent</option>
                                 <option value="Stokis">Stokis</option>
