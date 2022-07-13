@@ -14,10 +14,16 @@
     @if($package->package_id == 'PKD00137') {{-- Package code for ARB Alumni MMB OGOS 2022 --}}
         <div class="col-md-6 offset-md-3">
             <div class="card px-4 py-4 shadow">
-                <h3 class="text-dark px-3 pb-3 text-center">{{ $package->name }}</h3>
+                <h3 class="text-dark px-3 pb-1 text-center">{{ $package->name }}</h3>
                 @if (session('error'))
-                    <div class="alert alert-danger alert-dismissible fade show py-2" role="alert"><strong>{{ session('error') }}</strong></div>	
+                    <div class="alert alert-danger alert-dismissible fade show py-2" role="alert"><strong>{{ session('error') }}</strong></div>
+                    <div class="row pb-3">
+                        <div class="col-12 text-center">
+                            <a href="https://momen.tm/mmb-alumni" class="btn btn-success"><i class="bi bi-whatsapp"></i> Whatsapp Now</a>
+                        </div>
+                    </div>	
                 @endif
+                
                 <p>No. Kad Pengenalan / Passport</p>
                 <form action="{{ url('verification/ARBAlumni') }}/{{ $product->product_id }}/{{ $package->package_id }}" method="get">
                     @csrf
