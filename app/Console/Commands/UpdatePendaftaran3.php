@@ -168,19 +168,19 @@ class UpdatePendaftaran3 extends Command
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n"."Time : 12:00 AM - 4:00 PM"."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16+$package17+$package18+$package19+$package20+$package21+$package22+$package23+$package24+$package25)." ( RM".($totalsale2+$totalsale4+$totalsale6+$totalsale8+$totalsale10+$totalsale12+$totalsale14+$totalsale16+$totalsale17+$totalsale18+$totalsale19+$totalsale20+$totalsale21+$totalsale22+$totalsale23+$totalsale24+$totalsale25)." )"."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Xcess : ".($package19+$package20+$package21+$package22+$package23+$package24+$package25)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : "." (+".$package5.")"."\n"."Diamond : "." (+".$package6.")"."\n"."Total Collection : RM".$totalsale6."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : "." (+".$package7.")"."\n"."Diamond : "." (+".$package8.")"."\n"."Total Collection : RM".$totalsale8."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : "." (+".$package9.")"."\n"."Diamond : "." (+".$package10.")"."\n"."Total Collection : RM".$totalsale10."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : "." (+".$package11.")"."\n"."Diamond : "." (+".$package12.")"."\n"."Total Collection : RM".$totalsale12."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : "." (+".$package13.")"."\n"."Diamond : "." (+".$package14.")"."\n"."Total Collection : RM".$totalsale14."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n";
-        Telegram::sendMessage([
-            "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
-            "parse_mode" => "HTML",
-            "text" => $textes
-        ]);
+        // $textes = strtoupper("MOMENTUM BISNES 2022 (TODAY)")."\n"."Date : ".$date_today."\n"."Time : 12:00 AM - 4:00 PM"."\n\n"."Today Registration : ".($package1+$package2+$package3+$package4+$package5+$package6+$package7+$package8+$package9+$package10+$package11+$package12+$package13+$package14+$package15+$package16+$package17+$package18+$package19+$package20+$package21+$package22+$package23+$package24+$package25)." ( RM".($totalsale2+$totalsale4+$totalsale6+$totalsale8+$totalsale10+$totalsale12+$totalsale14+$totalsale16+$totalsale17+$totalsale18+$totalsale19+$totalsale20+$totalsale21+$totalsale22+$totalsale23+$totalsale24+$totalsale25)." )"."\n"."General : ".($package1+$package3+$package5+$package7+$package9+$package11+$package13+$package15+$package17)."\n"."Xcess : ".($package19+$package20+$package21+$package22+$package23+$package24+$package25)."\n"."Diamond : ".($package2+$package4+$package6+$package8+$package10+$package12+$package14+$package16+$package18)."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Kedah')."</b>"."\n"."General : "." (+".$package5.")"."\n"."Diamond : "." (+".$package6.")"."\n"."Total Collection : RM".$totalsale6."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Shah Alam')."</b>"."\n"."General : "." (+".$package7.")"."\n"."Diamond : "." (+".$package8.")"."\n"."Total Collection : RM".$totalsale8."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : "." (+".$package9.")"."\n"."Diamond : "." (+".$package10.")"."\n"."Total Collection : RM".$totalsale10."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Kuantan')."</b>"."\n"."General : "." (+".$package11.")"."\n"."Diamond : "." (+".$package12.")"."\n"."Total Collection : RM".$totalsale12."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Sabah')."</b>"."\n"."General : "." (+".$package13.")"."\n"."Diamond : "." (+".$package14.")"."\n"."Total Collection : RM".$totalsale14."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n\n"
+        //             ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : "." (+".$package15.")"."\n"."Diamond : "." (+".$package16.")"."\n"."Total Collection : RM".$totalsale16."\n";
+        // Telegram::sendMessage([
+        //     "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
+        //     "parse_mode" => "HTML",
+        //     "text" => $textes
+        // ]);
 
     }
 }

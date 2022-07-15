@@ -252,24 +252,24 @@ class UpdatePendaftaran5 extends Command
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        $textes = strtoupper("KEHADIRAN MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."\n"
-                    // .strtoupper('Momentum Bisnes Johor')."\n"."GENERAL"."\n"."Hadir : ".($gjbthadir+$gjbphadir)."\n"."Tidak Hadir : ".($gjbtth+$gjbpth)."\n\n"
-                    // ."XCESS"."\n"."Hadir : ".($xjbthadir+$xjbphadir)."\n"."Tidak Hadir : ".($xjbtth+$xjbpth)."\n\n"
-                    // ."DIAMOND"."\n"."Hadir : ".($djbthadir+$djbphadir)."\n"."Tidak Hadir : ".($djbtth+$djbpth)."\n\n"
-                    // .strtoupper('Momentum Bisnes Kuala Lumpur')."\n"."GENERAL"."\n"."Hadir : ".($gklthadir+$gklphadir)."\n"."Tidak Hadir : ".($gkltth+$gklpth)."\n\n"
-                    // ."XCESS"."\n"."Hadir : ".($xklthadir+$xklphadir)."\n"."Tidak Hadir : ".($xkltth+$xklpth)."\n\n"
-                    // ."DIAMOND"."\n"."Hadir : ".($dklthadir+$dklphadir)."\n"."Tidak Hadir : ".($dkltth+$dklpth)."\n\n"
-                    .strtoupper('Momentum Bisnes Kota Bahru')."\n"."GENERAL"."\n"."Hadir : ".($gkbthadir+$gkbphadir)."\n"."Tidak Hadir : ".($gkbtth+$gkbpth)."\n\n"
-                    ."XCESS"."\n"."Hadir : ".($xkbthadir+$xkbphadir)."\n"."Tidak Hadir : ".($xkbtth+$xkbpth)."\n\n"
-                    ."DIAMOND"."\n"."Hadir : ".($dkbthadir+$dkbphadir)."\n"."Tidak Hadir : ".($dkbtth+$dkbpth)."\n\n"
-                    .strtoupper('Momentum Bisnes Penang')."\n"."GENERAL"."\n"."Hadir : ".($gpthadir+$gpphadir)."\n"."Tidak Hadir : ".($gptth+$gppth)."\n\n"
-                    ."XCESS"."\n"."Hadir : ".($xpthadir+$xpphadir)."\n"."Tidak Hadir : ".($xptth+$xppth)."\n\n"
-                    ."DIAMOND"."\n"."Hadir : ".($dpthadir+$dpphadir)."\n"."Tidak Hadir : ".($dptth+$dppth);
-        Telegram::sendMessage([
-            "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
-            "parse_mode" => "HTML",
-            "text" => $textes
-        ]);
+        // $textes = strtoupper("KEHADIRAN MOMENTUM BISNES 2022")."\n"."Date : ".$date_today."\n"."\n"
+        //             // .strtoupper('Momentum Bisnes Johor')."\n"."GENERAL"."\n"."Hadir : ".($gjbthadir+$gjbphadir)."\n"."Tidak Hadir : ".($gjbtth+$gjbpth)."\n\n"
+        //             // ."XCESS"."\n"."Hadir : ".($xjbthadir+$xjbphadir)."\n"."Tidak Hadir : ".($xjbtth+$xjbpth)."\n\n"
+        //             // ."DIAMOND"."\n"."Hadir : ".($djbthadir+$djbphadir)."\n"."Tidak Hadir : ".($djbtth+$djbpth)."\n\n"
+        //             // .strtoupper('Momentum Bisnes Kuala Lumpur')."\n"."GENERAL"."\n"."Hadir : ".($gklthadir+$gklphadir)."\n"."Tidak Hadir : ".($gkltth+$gklpth)."\n\n"
+        //             // ."XCESS"."\n"."Hadir : ".($xklthadir+$xklphadir)."\n"."Tidak Hadir : ".($xkltth+$xklpth)."\n\n"
+        //             // ."DIAMOND"."\n"."Hadir : ".($dklthadir+$dklphadir)."\n"."Tidak Hadir : ".($dkltth+$dklpth)."\n\n"
+        //             .strtoupper('Momentum Bisnes Kota Bahru')."\n"."GENERAL"."\n"."Hadir : ".($gkbthadir+$gkbphadir)."\n"."Tidak Hadir : ".($gkbtth+$gkbpth)."\n\n"
+        //             ."XCESS"."\n"."Hadir : ".($xkbthadir+$xkbphadir)."\n"."Tidak Hadir : ".($xkbtth+$xkbpth)."\n\n"
+        //             ."DIAMOND"."\n"."Hadir : ".($dkbthadir+$dkbphadir)."\n"."Tidak Hadir : ".($dkbtth+$dkbpth)."\n\n"
+        //             .strtoupper('Momentum Bisnes Penang')."\n"."GENERAL"."\n"."Hadir : ".($gpthadir+$gpphadir)."\n"."Tidak Hadir : ".($gptth+$gppth)."\n\n"
+        //             ."XCESS"."\n"."Hadir : ".($xpthadir+$xpphadir)."\n"."Tidak Hadir : ".($xptth+$xppth)."\n\n"
+        //             ."DIAMOND"."\n"."Hadir : ".($dpthadir+$dpphadir)."\n"."Tidak Hadir : ".($dptth+$dppth);
+        // Telegram::sendMessage([
+        //     "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
+        //     "parse_mode" => "HTML",
+        //     "text" => $textes
+        // ]);
 
     }
 }
