@@ -671,6 +671,9 @@ class ReportsController extends Controller
     public function save_customer($product_id, $package_id, Request $request)
     { 
         $student = Student::where('ic', $request->ic)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('stud_id', $request->stud_id)->first();
         
         if(Student::where('ic', $request->ic)->exists()){
 
@@ -704,7 +707,7 @@ class ReportsController extends Controller
                 'quantity' => $request->quantity,
                 'status' => 'paid',
                 'pay_method' => 'Manual',
-                'email_status'  => 'Hold',
+                'email_status'  => 'Sent',
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
@@ -715,13 +718,28 @@ class ReportsController extends Controller
                 'receipt_path' => $receipt_name
             ));
 
+            $email = $request->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $payment;
+            $survey_form = $product->survey_form;
+
+            // send the email
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+
             $ticket_id = 'TIK' . uniqid();
 
             Ticket::create([
                 'ticket_id'     => $ticket_id,
                 'ticket_type'   => $request->offer_id,
                 'ic'            => $request->ic,
-                'email_status'  => 'Hold',
+                'email_status'  => 'Sent',
                 'stud_id'       => $student->stud_id,
                 'product_id'    => $product_id,
                 'package_id'    => $package_id,
@@ -771,7 +789,7 @@ class ReportsController extends Controller
                 'quantity' => $request->quantity,
                 'status' => 'paid',
                 'pay_method' => 'Manual',
-                'email_status'  => 'Hold',
+                'email_status'  => 'Sent',
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
@@ -782,13 +800,28 @@ class ReportsController extends Controller
                 'receipt_path' => $receipt_name
             ));
 
+            $email = $request->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $payment;
+            $survey_form = $product->survey_form;
+
+            // send the email
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+
             $ticket_id = 'TIK' . uniqid();
 
             Ticket::create([
                 'ticket_id'     => $ticket_id,
                 'ticket_type'   => $request->offer_id,
                 'ic'            => $request->ic,
-                'email_status'  => 'Hold',
+                'email_status'  => 'Sent',
                 'stud_id'       => $stud_id,
                 'product_id'    => $product_id,
                 'package_id'    => $package_id,
