@@ -4,7 +4,7 @@
   Terima Kasih
 @endsection
 <head>
-  @if ($package->package_id == "PKD0082" || $package->package_id == "PKD0083")
+  {{-- @if ($package->package_id == "PKD0082" || $package->package_id == "PKD0083")
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
   @elseif ($package->package_id == "PKD0084" || $package->package_id == "PKD0085")
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
@@ -47,9 +47,12 @@
   @elseif ($value->package_id == "PKD00129")
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($value->package_id == "PKD00134")
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">  
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">   --}}
+
+  @if ($package->package_id == "PKD00137" )
+    <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/tq-mmb/">
   @else 
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/8video-buku/"> 
+    <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/8video-buku/"> 
   @endif  
 </head>
 
