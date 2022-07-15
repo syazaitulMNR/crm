@@ -322,10 +322,16 @@ class UpdatePendaftaran2 extends Command
         $product34 = Product::where('product_id','PRD0084')->first();
         $package34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
         $packages34 = Payment::where('product_id',$product34->product_id)->where('status','paid')->count();
-
-        $product35 = Product::where('product_id','PRD0088')->first();
-        $package35 = Payment::where('product_id',$product35->product_id)->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
-        $packages35 = Payment::where('product_id',$product35->product_id)->where('status','paid')->count();
+        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // MMB Berjuang Gandakan Jualan
+        $product88 = Product::where('product_id','PRD0088')->first();
+        $packages137 = Payment::where('product_id','PRD0088')->where('package_id','PKD00137')->where('status','paid')->count();
+        $package137 = Payment::where('product_id','PRD0088')->where('package_id','PKD00137')->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        
+        $packages138 = Payment::where('product_id','PRD0088')->where('package_id','PKD00138')->where('status','paid')->count();
+        $package138 = Payment::where('product_id','PRD0088')->where('package_id','PKD00138')->where('status','paid')->whereBetween('created_at', [ $from , $to ])->count();
+        
 
             // $text = "<b>".strtoupper('Momentum Bisnes Melaka')."</b>"."\n"."General : ".$packages15." (+".$package15.")"."\n"."Xcess : ".$packages24." (+".$package24.")"."\n"."Diamond : ".$packages16." (+".$package16.")"."\n\n"
             //         ."<b>".strtoupper('Momentum Bisnes Johor')."</b>"."\n"."General : ".$packages17." (+".$package17.")"."\n"."Xcess : ".$packages25." (+".$package25.")"."\n"."Diamond : ".$packages18." (+".$package18.")"."\n\n"
@@ -333,11 +339,9 @@ class UpdatePendaftaran2 extends Command
             //         ."<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages29." (+".$package29.")"."\n"."Xcess : ".$packages30." (+".$package30.")"."\n"."Diamond : ".$packages31." (+".$package31.")"."\n\n"
             //         ."<b>".strtoupper('Momentum Bisnes Penang')."</b>"."\n"."General : ".$packages32." (+".$package32.")"."\n"."Xcess : ".$packages33." (+".$package33.")"."\n"."Diamond : ".$packages34." (+".$package34.")"."\n\n";
 
-            $text =  "<b>".strtoupper('Momentum Bisnes Kota Bahru')."</b>"."\n"."General : ".$packages29." (+".$package29.")"."\n"."Xcess : ".$packages30." (+".$package30.")"."\n"."Diamond : ".$packages31." (+".$package31.")"."\n\n"
-                    ."<b>".strtoupper('Momentum Bisnes Penang')."</b>"."\n"."General : ".$packages32." (+".$package32.")"."\n"."Xcess : ".$packages33." (+".$package33.")"."\n"."Diamond : ".$packages34." (+".$package34.")"."\n\n"
-                    ."<b>".strtoupper('MMB (ARB REUNION)')."</b>"."\n"."ARB Alumni : ".$packages35." (+".$package35.")"."\n\n";
+            $text =  "<b>".strtoupper('MMB Berjuang Gandakan Jualan')."</b>"."\n"."ARB Alumni : ".$packages137." (+".$package137.")"."\n"."General : ".$packages138." (+".$package138.")"."\n\n";
             Telegram::sendMessage([
-                "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'),
+                "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'), //group campaign
                 "parse_mode" => "HTML",
                 "text" => $text
             ]);
