@@ -753,6 +753,7 @@ class ReportsController extends Controller
                 'stud_id'=> $stud_id,
                 'first_name'=> ucwords(strtolower($request->first_name)),
                 'last_name'=> ucwords(strtolower($request->last_name)),
+                'gender' => $request->gender,
                 'ic' => $request->ic,
                 'phoneno' => $request->phoneno,
                 'email' => $request->email

@@ -71,6 +71,16 @@
                     </div>
                 </div>
                 <div class="form-group row px-4">
+                  <label for="name" class="col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-8">
+                      <select class="form-select" name="gender" required>
+                              <option value="gender" name="gender" selected disabled>-- Sila Pilih --</option>
+                              <option value="Lelaki" name="gender">Lelaki</option>
+                              <option value="Perempuan" name="gender">Perempuan</option>
+                      </select>
+                  </div>
+              </div>
+                <div class="form-group row px-4">
                     <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
                     <div class="col-sm-8">
                     <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" value="+60" required>
