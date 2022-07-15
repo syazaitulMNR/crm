@@ -74,7 +74,7 @@
                   <label for="name" class="col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
                       <select class="form-select" name="gender" required>
-                              <option value="gender" name="gender" selected disabled>-- Sila Pilih --</option>
+                              <option value="gender" name="gender" selected disabled>-- Please Choose --</option>
                               <option value="Lelaki" name="gender">Lelaki</option>
                               <option value="Perempuan" name="gender">Perempuan</option>
                       </select>
