@@ -344,8 +344,7 @@ class UpdatePendaftaran2 extends Command
             ."( ARB Alumni + General )"."\n"."Total Registration : ".($packages137+$packages138)."\n\n"
             ."ARB Alumni : ".$packages137." (+".$package137.")"."\n"."General : ".$packages138." (+".$package138.")"."\n\n";
             Telegram::sendMessage([
-                // "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'), //group campaign
-                "chat_id" => env('TELEGRAM_CHAT_ID', '-540420225'),
+                "chat_id" => env('TELEGRAM_CHAT_ID', '-1001581181483'), //group campaign
                 "parse_mode" => "HTML",
                 "text" => $text
             ]);
