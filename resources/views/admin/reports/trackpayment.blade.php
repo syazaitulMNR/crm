@@ -121,7 +121,7 @@ Sales Report
                                         <p>Are you sure you want to send '<b>Pengesahan Pendaftaran Peserta</b>' to this customer?</p>
                                         <p>Example: </p>
                                         <div class="text-center">
-                                            <img src="{{ asset('assets/images/pengesahan_peserta.jpg') }}" style="max-width:300px">
+                                            <img src="{{ asset('assets/images/pengesahan_pendaftaran_peserta.jpg') }}" style="max-width:300px">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
