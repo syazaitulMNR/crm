@@ -252,7 +252,7 @@ Sales Report
               <tr class="header">
                   <th>#</th>
                   <th>Package</th>
-                  <th class="w-25"><i class="fas fa-cogs"></i></th>
+                  <th class="col-md-4"><i class="fas fa-cogs"></i></th>
               </tr>
               </thead>
               <tbody>
@@ -284,61 +284,77 @@ Sales Report
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="" class='col-4'>Package Name</th>
+                <th scope="">Detail Link</th>
                 <th scope="col">Link</th>          
                 <th scope="col"></th>
                 {{-- <th scope="col">Image</th> --}}
-                <th scope="col"><i class="fas fa-cogs"></i></th>
+                <th scope="col" class="col-mb-2"><i class="fas fa-cogs"></i></th>
               </tr>
             </thead>
             <tbody>
             <div class="table-responsive">
               <tr>
-                  <td>{{ $product->name  }} Upgrade Link</td>
+                <td>Upgrade Link</td>
                 <td><input type="text" class="form-control" value="{{ $link }}" id="myInput" readonly></td>
                 {{-- <td>{{ $packages->package_image  }}</td> --}}
                 <td>
                   <div class="row">
-                        <script>
-                          function myFunction() {
-                            var copyText = document.getElementById("myInput");
-                            copyText.select();
-                            copyText.setSelectionRange(0, 99999)
-                            document.execCommand("copy");
-                          }
-                        </script>
-                        <td>                  
-                          <a class="btn btn-sm btn-dark mt-1" onclick="myFunction()">Copy</a>
-                        </td>
+                    <script>
+                      function myFunction() {
+                        var copyText = document.getElementById("myInput");
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999)
+                        document.execCommand("copy");
+                      }
+                    </script>
+                    <td>                  
+                      <a class="btn btn-sm btn-dark mt-1" onclick="myFunction()">Copy</a>
+                    </td>
                   </div>  
                 </td>
               </tr> 
+              @if($product->cert_image != NULL)
+                <tr>
+                  <td>E-Certificate Link</td>
+                  <td><input type="text" class="form-control" value="{{ $ecert }}" id="ecert" readonly></td>
+                  <td>
+                    <div class="row">
+                      <script>
+                        function certFunction() {
+                          var copyText = document.getElementById("ecert");
+                          copyText.select();
+                          copyText.setSelectionRange(0, 99999)
+                          document.execCommand("copy");
+                        }
+                      </script>
+                      <td>                  
+                        <a class="btn btn-sm btn-dark mt-1" onclick="certFunction()">Copy</a>
+                        <a href="{{ $product->cert_image }}" class="btn btn-sm btn-dark mt-1" target="_blank">Template</a>
+                      </td>
+                    </div>
+                  </td>
+                </tr>
+              @endif
             </div>
           </table>
-          
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <div class="table-responsive">
-                <tr>
-                  <th scope="" class='col-4'>Package Name</th>
-                  <th scope="col"></th>          
-                  <th scope="col"></th>
-                  {{-- <th scope="col">Image</th> --}}
-                  <th scope="col" class="col-xl-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-cogs"></i></th>
-                </tr>
-              </thead>
-                <tr>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Export Details</th>
+                    <th class="col-mb-4"><i class="fas fa-cogs"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
                     <td>{{ $product->name  }} Export Survey</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <a class="btn btn-sm btn-success" href="{{ url('export-surveyform') }}/{{ $product->product_id }}"><i class="fa fa-download pr-2"></i>Download</a>
-                    </td>
-                </tr> 
-              </div> 
-            </table> 
-          </div>
+                    <td><a class="btn btn-sm btn-success" href="{{ url('export-surveyform') }}/{{ $product->product_id }}"><i class="fa fa-download pr-2"></i>Download</a></td>
+                  </tr> 
+                </tbody>
+              </table> 
+            </div>
+          
            
           
           {{-- <select class="form-control" name="product_id">
