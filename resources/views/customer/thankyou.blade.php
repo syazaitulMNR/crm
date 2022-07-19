@@ -6,7 +6,13 @@
 
 <head>
   @foreach ($package as $key => $value)
-    @if ($value->package_id == "PKD0082" || $value->package_id == "PKD0083"  )
+  @if ( $value->package_id == "PKD00137" || $value->package_id == "PKD00138" )
+    <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/tq-mmb/">
+  @else 
+    <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
+  @endif
+
+    {{-- @if ($value->package_id == "PKD0082" || $value->package_id == "PKD0083"  )
     <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
     @elseif ($value->package_id == "PKD0084" || $value->package_id == "PKD0085")
     <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
@@ -52,7 +58,7 @@
     <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">    
     @else 
     <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/8video-buku/">
-    @endif  
+    @endif   --}}
   @endforeach
 </head>
 
