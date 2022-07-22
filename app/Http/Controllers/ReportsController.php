@@ -54,13 +54,10 @@ class ReportsController extends Controller
         $package = Package::where('product_id', $product_id)->paginate(15);
         $student = Student::orderBy('id','desc')->paginate(15);
         $link = 'https://mims.momentuminternet.my/upgrade/'. $product->product_id . '/';
-
-
+        $ecert = 'https://mims.momentuminternet.my/e-cert/'. $product->product_id;
 
         $startDate = Carbon::createFromFormat('Y-m-d', '2021-09-01');
         $endDate = Carbon::createFromFormat('Y-m-d', '2021-09-30');
-
-
 
         $visitorTraffic = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->get()->groupBy(function($date) {
                             return Carbon::parse($date->created_at)->format('D'); // grouping by years
@@ -141,7 +138,7 @@ class ReportsController extends Controller
 
         return view('admin.reports.trackpackage', compact(/*'datapay','datatic',*/'plain','tlain','pth','tth','tdisahkan','pdisahkan','phadir','thadir','selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
         'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel',
-        'paidticket', 'freeticket', 'link'));
+        'paidticket', 'freeticket', 'link', 'ecert'));
     
     }
 

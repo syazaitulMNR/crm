@@ -73,9 +73,10 @@ Pendaftaran Pembeli
                         <a href="{{ url('maklumat-tiket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                     </div>
                     <div class="pull-right">
-                        <button type="button" class="btn btn-circle btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right py-1"></i></button>
+                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
+                        {{-- <button type="button" class="btn btn-circle btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right py-1"></i></button> --}}
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -103,7 +104,8 @@ Pendaftaran Pembeli
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        <!-- End Modal -->
                     </div>
                 </div>
                 

@@ -37,11 +37,11 @@ class ProductController extends Controller
 
     public function create()
     {
-        
+        $collection_id = Collection_id::all();
         $offers = Offer::orderBy('id','asc')->get();
         $count = 1;
 
-        return view('admin.addproduct', compact('offers', 'count'));
+        return view('admin.addproduct', compact('offers', 'count', 'collection_id'));
     }
 
     public function store(Request $request)

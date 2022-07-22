@@ -49,7 +49,7 @@
   @elseif ($value->package_id == "PKD00134")
   <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">   --}}
 
-  @if ($package->package_id == "PKD00137" )
+  @if ($package->package_id == "PKD00137" || $package->package_id == "PKD00138" )
     <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/tq-mmb/">
   @else 
     <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/8video-buku/"> 

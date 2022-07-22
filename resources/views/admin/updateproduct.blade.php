@@ -81,7 +81,7 @@
         <div class="col-md-6">
            
             <label class="form-label">BillPlz Collection ID</label>
-            <select class="form-select" name="collection_id" required>
+            <select class="form-select" name="collection_id">
                 <option selected> {{ $product->collection_id }}</option>
                 @foreach ($collection_id as $coll_id)
                     <option value="{{ $coll_id->collection_id }}" name="{{ $coll_id->collection_id }}">{{ $coll_id->name}}</option>

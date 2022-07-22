@@ -80,10 +80,11 @@
 
         <div class="col-md-6">
             <label class="form-label">BillPlz Collection ID</label>
-            <select class="form-select" name="collection_id" required>
+            <select class="form-select" name="collection_id">
                 <option disabled selected>-- Please select --</option>
-                <option value="dlzmocfv">dlzmocfv (RPM)</option>
-                <option value="7gxypqhq">7gxypqhq (ARB)</option>
+                @foreach ($collection_id as $coll_id)
+                    <option value="{{ $coll_id->collection_id }}" name="{{ $coll_id->collection_id }}">{{ $coll_id->name}}</option>
+                @endforeach
             </select>
         </div>
 
