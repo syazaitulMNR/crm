@@ -83,22 +83,22 @@ Pendaftaran Pembeli
                                         <h5 class="modal-title" id="exampleModalLabel">TERMA & SYARAT</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <ol class="px-4">
-                                            <li class="text-justify py-2">Kedudukan peserta semasa program MMB adalah mengikut kepada pakej yang telah anda daftarkan.</li>
+                                        <ol class="justify-content px-4">
+                                            <li class="py-2" style="text-align: justify;"><b>Kedudukan peserta semasa program MMB</b> adalah mengikut kepada <b>pakej yang telah anda daftarkan</b>.</li>
 
-                                            <li class="text-justify py-2">Hanya peserta berdaftar sahaja akan dibenarkan masuk ke dalam dewan. Sekiranya belum berdaftar, sila buat pendaftaran baru terlebih dahulu sebelum memasuki dewan.</li>
+                                            <li class="py-2" style="text-align: justify;">Hanya peserta berdaftar sahaja akan dibenarkan masuk ke dalam dewan. <b>Sekiranya belum berdaftar, sila buat pendaftaran baru terlebih dahulu</b> sebelum memasuki dewan.</li>
 
-                                            <li class="text-justify py-2">Kanak-kanak dibawah umur 18 tahun tidak dibenarkan memasuki dewan bagi menghormati peserta lain mengikuti kelas. Penjagaan kanak-kanak adalah dibawah tanggungjawab sendiri.</li>
+                                            <li class="py-2" style="text-align: justify;"><b>Kanak-kanak dibawah umur 18 tahun tidak dibenarkan memasuki dewan</b> bagi menghormati peserta lain mengikuti kelas. Penjagaan kanak-kanak adalah dibawah tanggungjawab sendiri.</li>
 
-                                            <li class="text-justify py-2"> Sentiasa menjaga etika pemakaian sepanjang program MMB dan pastikan anda menjaga penjarakan sosial serta mengamalkan kebersihan diri.</li>
+                                            <li class="py-2" style="text-align: justify;">Sentiasa <b>menjaga etika pemakaian</b> sepanjang program MMB dan pastikan anda <b>menjaga penjarakan sosial serta mengamalkan kebersihan diri.</b></li>
 
-                                            <li class="text-justify py-2">Pastikan anda menyediakan sendiri peralatan untuk menulis borang atau nota sepanjang program MMB berlangsung.</li>
+                                            <li class="py-2" style="text-align: justify;">Pastikan anda <b>menyediakan sendiri peralatan untuk menulis borang atau nota</b> sepanjang program MMB berlangsung.</li>
 
-                                            <li class="text-justify py-2">Peserta tidak dibenarkan membawa makanan atau makan di dalam dewan. Hanya makanan ringan sahaja dibenarkan seperti gula-gula atau botol air minuman.</li>
+                                            <li class="py-2" style="text-align: justify;">Peserta <b>tidak dibenarkan membawa makanan atau makan di dalam dewan</b>. Hanya makanan ringan sahaja dibenarkan seperti gula-gula atau botol air minuman.</li>
 
-                                            <li class="text-justify py-2"> Dilarang merekod video sepanjang sesi program MMB sedang berlangsung.</li>
+                                            <li class="py-2" style="text-align: justify;"><b>Dilarang merekod video</b> sepanjang sesi program MMB sedang berlangsung.</li>
 
-                                            <li class="text-justify py-2">Makanan serta penginapan adalah dibawah tanggungjawab anda sendiri. Pihak Momentum Internet Sdn.  Bhd. tidak  akan menanggung segala  kos perbelanjaan.</li>
+                                            <li class="py-2" style="text-align: justify;"><b>Makanan serta penginapan</b> adalah dibawah <b>tanggungjawab anda sendiri</b>. Pihak Momentum Internet Sdn.  Bhd. tidak  akan menanggung segala  kos perbelanjaan.</li>
 
                                         </ol>
                                     </div>
