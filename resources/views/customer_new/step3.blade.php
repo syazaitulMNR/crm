@@ -73,38 +73,41 @@ Pendaftaran Pembeli
                         <a href="{{ url('maklumat-tiket') }}/{{ $product->product_id }}/{{ $package->package_id }}" class="btn btn-circle btn-lg btn-outline-dark"><i class="fas fa-arrow-left" style="padding-top:35%"></i></a>
                     </div>
                     <div class="pull-right">
-                        <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button>
-                        {{-- <button type="button" class="btn btn-circle btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right py-1"></i></button> --}}
+                        {{-- <button type="submit" class="btn btn-circle btn-lg btn-dark"><i class="fas fa-arrow-right py-1"></i></button> --}}
+                        <button type="button" class="btn btn-circle btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-arrow-right py-1"></i></button>
                         <!-- Modal -->
-                        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">TERMA & SYARAT</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <ul class="px-4">
-                                            <li class="text-justify py-2">Segala pembayaran yang telah dibuat kepada pihak penganjur untuk tujuan penyertaan program yang 
-                                                telah didaftarkan <b>TIDAK AKAN DIKEMBALIKAN</b>.</li>
+                                        <ol class="px-4">
+                                            <li class="text-justify py-2">Kedudukan peserta semasa program MMB adalah mengikut kepada pakej yang telah anda daftarkan.</li>
 
-                                            <li class="text-justify py-2">Bayaran penuh yuran penyertaan program mestilah diselesaikan 7 hari sebelum program bermula. Kegagalan 
-                                                menjelaskan baki bayaran yuran penyertaan anda sebelum program akan mengakibatkan penyertaan anda dibatalkan.</li>
+                                            <li class="text-justify py-2">Hanya peserta berdaftar sahaja akan dibenarkan masuk ke dalam dewan. Sekiranya belum berdaftar, sila buat pendaftaran baru terlebih dahulu sebelum memasuki dewan.</li>
 
-                                            <li class="text-justify py-2">Sekiranya anda telah menjelaskan bayaran penuh bagi pakej yang ditawarkan, anda dibenarkan untuk menunda 
-                                                ke program dan pakej yang sama pada tarikh yang akan datang dalam tempoh 6 bulan. Anda <b>MESTI</b> memaklumkan pihak 
-                                                penganjur untuk tujuan ini secara bertulis.</li>
+                                            <li class="text-justify py-2">Kanak-kanak dibawah umur 18 tahun tidak dibenarkan memasuki dewan bagi menghormati peserta lain mengikuti kelas. Penjagaan kanak-kanak adalah dibawah tanggungjawab sendiri.</li>
 
-                                            <li class="text-justify py-2">Akan tetapi, sekiranya anda menunda program yang telah didaftarkan dan bayaran penuh masih belum dijelaskan, 
-                                                jumlah yuran penyertaan program baru akan dikenakan mengikut harga dan pakej semasa. Perlu dijelaskan bahawa 
-                                                anda tidak lagi berpeluang mendapatkan harga promosi yang ditawarkan pada tarikh borang ini ditandatangani.</li>
-                                        </ul>
+                                            <li class="text-justify py-2"> Sentiasa menjaga etika pemakaian sepanjang program MMB dan pastikan anda menjaga penjarakan sosial serta mengamalkan kebersihan diri.</li>
+
+                                            <li class="text-justify py-2">Pastikan anda menyediakan sendiri peralatan untuk menulis borang atau nota sepanjang program MMB berlangsung.</li>
+
+                                            <li class="text-justify py-2">Peserta tidak dibenarkan membawa makanan atau makan di dalam dewan. Hanya makanan ringan sahaja dibenarkan seperti gula-gula atau botol air minuman.</li>
+
+                                            <li class="text-justify py-2"> Dilarang merekod video sepanjang sesi program MMB sedang berlangsung.</li>
+
+                                            <li class="text-justify py-2">Makanan serta penginapan adalah dibawah tanggungjawab anda sendiri. Pihak Momentum Internet Sdn.  Bhd. tidak  akan menanggung segala  kos perbelanjaan.</li>
+
+                                        </ol>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-dark">Setuju</button>
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                         <!-- End Modal -->
                     </div>
                 </div>
