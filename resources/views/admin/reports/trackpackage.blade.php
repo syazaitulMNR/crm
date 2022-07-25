@@ -17,6 +17,38 @@ Sales Report
       padding: 2px 5px;
   }
 
+  .list-group {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ccc;
+            border-radius: .5em;
+        }
+
+        .list-group li {
+            border-top: 1px solid #ccc;
+            padding: .5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group li:first-child {
+            border-top: 0;
+        }
+
+        .list-group .badge {
+            background-color: rebeccapurple;
+            color: #fff;
+            font-weight: bold;
+            font-size: 80%;
+            border-radius: 10em;
+            min-width: 1.5em;
+            padding: .25em;
+            text-align: center
+        }
+
+
 </style>  
 
 
@@ -169,29 +201,45 @@ Sales Report
       <div class="col-md-12 "> 
         
         <!-- Show data in cards --------------------------------------------------->
-        <div class="row mb-3">
-          <div class="col-xl-3 col-lg-6 py-2">
+        <div class="row mb-2">
+          <div class="col-xl-2 col-lg-6 py-2">
             <div class="card border-0 gradient-1 shadow text-center">
               <h6 class="pt-3">Registration</h6>
               <b class="display-6 pb-3">{{ number_format($totalsuccess) }}</b>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-6 py-2">
+          <div class="col-xl-2 col-lg-6 py-2">
             <div class="card border-0 gradient-3 shadow text-center">
               <h6 class="pt-3">Updated Paid Ticket</h6>
               <b class="display-6 pb-3">{{ number_format($paidticket) }}</b>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-6 py-2">
+          <div class="col-xl-2 col-lg-6 py-2">
             <div class="card border-0 gradient-2 shadow text-center">
               <h6 class="pt-3">Updated Free Ticket</h6>
               <b class="display-6 pb-3">{{ number_format($freeticket) }}</b>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-6 py-2">
+          <div class="col-xl-2 col-lg-6 py-2">
             <div class="card border-0 gradient-4 shadow text-center">
               <h6 class="pt-3">Pending Payment</h6>
               <b class="display-6 pb-3">{{ number_format($totalcancel) }}</b>
+            </div>
+          </div>
+
+          <div class="col-xl-2 col-lg-6 py-2 " >
+            <div class="card border-0 gradient-6 shadow text-center">
+              <h6 class="pt-3">Kehadiran Disahkan</h6>
+              <b class="display-6 pb-3"> {{ number_format($pdisahkan) }}</b>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-6 py-2" >
+            <div class="card border-0 shadow text-center">
+              <ul class="list-group" >
+                <li >Hadir <span class="badge">{{ number_format($phadir) }}</span></li>
+                <li >Tidak hadir <span class="badge">{{ number_format($pth) }}</span></li>
+                <li >Lain-Lain <span class="badge">{{ number_format($plain) }}</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -204,7 +252,7 @@ Sales Report
               <tr class="header">
                   <th>#</th>
                   <th>Package</th>
-                  <th class="w-25"><i class="fas fa-cogs"></i></th>
+                  <th class="col-md-4"><i class="fas fa-cogs"></i></th>
               </tr>
               </thead>
               <tbody>
@@ -236,37 +284,78 @@ Sales Report
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="" class='col-4'>Package Name</th>
+                <th scope="">Detail Link</th>
                 <th scope="col">Link</th>          
                 <th scope="col"></th>
                 {{-- <th scope="col">Image</th> --}}
-                <th scope="col"><i class="fas fa-cogs"></i></th>
+                <th scope="col" class="col-mb-2"><i class="fas fa-cogs"></i></th>
               </tr>
             </thead>
             <tbody>
             <div class="table-responsive">
               <tr>
-                  <td>{{ $product->name  }} Upgrade Link</td>
+                <td>Upgrade Link</td>
                 <td><input type="text" class="form-control" value="{{ $link }}" id="myInput" readonly></td>
                 {{-- <td>{{ $packages->package_image  }}</td> --}}
                 <td>
                   <div class="row">
-                        <script>
-                          function myFunction() {
-                            var copyText = document.getElementById("myInput");
-                            copyText.select();
-                            copyText.setSelectionRange(0, 99999)
-                            document.execCommand("copy");
-                          }
-                        </script>
-                        <td>                  
-                          <a class="btn btn-sm btn-dark mt-1" onclick="myFunction()">Copy</a>
-                        </td>
+                    <script>
+                      function myFunction() {
+                        var copyText = document.getElementById("myInput");
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999)
+                        document.execCommand("copy");
+                      }
+                    </script>
+                    <td>                  
+                      <a class="btn btn-sm btn-dark mt-1" onclick="myFunction()">Copy</a>
+                    </td>
                   </div>  
                 </td>
               </tr> 
+              @if($product->cert_image != NULL)
+                <tr>
+                  <td>E-Certificate Link</td>
+                  <td><input type="text" class="form-control" value="{{ $ecert }}" id="ecert" readonly></td>
+                  <td>
+                    <div class="row">
+                      <script>
+                        function certFunction() {
+                          var copyText = document.getElementById("ecert");
+                          copyText.select();
+                          copyText.setSelectionRange(0, 99999)
+                          document.execCommand("copy");
+                        }
+                      </script>
+                      <td>                  
+                        <a class="btn btn-sm btn-dark mt-1" onclick="certFunction()">Copy</a>
+                        <a href="{{ $product->cert_image }}" class="btn btn-sm btn-dark mt-1" target="_blank">Template</a>
+                      </td>
+                    </div>
+                  </td>
+                </tr>
+              @endif
             </div>
-          </table> 
+          </table>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Export Details</th>
+                    <th class="col-mb-4"><i class="fas fa-cogs"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ $product->name  }} Export Survey</td>
+                    <td><a class="btn btn-sm btn-success" href="{{ url('export-surveyform') }}/{{ $product->product_id }}"><i class="fa fa-download pr-2"></i>Download</a></td>
+                  </tr> 
+                </tbody>
+              </table> 
+            </div>
+          
+           
           
           {{-- <select class="form-control" name="product_id">
           @foreach ($data as $key => $value)

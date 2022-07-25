@@ -9,11 +9,16 @@ class SMSTemplateModel extends Model
     protected $table = 'sms_template';
 	
 	protected $fillable = [
-        'title', 'content', 'description', 'user_id', 'class', 'day', 'hour'
+        'title', 'content', 'description', 'user_id'
     ];
 
     public function bulks()
     {
         return $this->hasMany(SMSBulkModel::class);
+    }
+
+    public function smssched()
+    {
+        return $this->hasMany(SMSSchedule::class);
     }
 }

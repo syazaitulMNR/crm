@@ -17,8 +17,12 @@
 			<h1 class="h2">SMS Bulk</h1>
 			
 			<div class="btn-toolbar mb-2 mb-md-0">
-				<a href="/smstemplate" class="btn btn-outline-dark">
-					<i class="bi bi-chat-right-quote pr-2"></i> SMS Template
+				<a href="/smstemplate" class="btn bg-dark text-white">
+					<i class="bi bi-receipt-cutoff pr-2"></i> SMS Template
+				</a>&nbsp;
+
+				<a href="/smsschedule" class="btn bg-dark text-white">
+					<i class="bi bi-calendar2-week-fill pr-2"></i> SMS Schedule
 				</a>&nbsp;
 
 				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#new-bulk-sms">
@@ -34,19 +38,8 @@
 		
 		<form action="{{ url('smsblast') }}" method="GET">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-11">
 					<input type="text" class="form-control" name="search" value="{{ request()->query('search') ? request()->query('search') : '' }}" placeholder="Search keyword">
-				</div>
-				
-				<div class="col-md-3">
-					<select class="form-control" name="search_template">
-						<option value="0">All Template</option>
-					@foreach($y as $t)
-						<option value="{{ $t->id }}" {{ request()->query('search_template') == $t->id ? 'selected' : '' }}>
-							{{ $t->title }}
-						</option>
-					@endforeach
-					</select>
 				</div>
 				
 				<div class="col-md-1">
@@ -77,46 +70,45 @@
 		<div class="table-responsive">
 			<table class="table table-hover" id="myTable">
 				<thead>
-					<tr>
+					<tr class="text-center">
 						<th>#</th>
-						<th>Date</th>
-						<th>Phone</th>
-						<th>Template Title</th>
+						<th>Type</th>
+						<th>Title</th>
 						<th>Message</th>
+						<th>Date</th>
+						<th class="text-right"><i class="fas fa-cogs"></i></th>
 					</tr>
 				</thead>
 				
 				<tbody>
 				@php
-				$no = (10 * ($x->currentPage() - 1));
+				$no = 0;
 				@endphp
-				@foreach ($x as $k => $t)
-					<tr>
-						<td>{{ ++$no }}</td>
-						
-						<td>{{ $t->created_at }}</td>
-						
-						<td>
-							{{ $t->phone }}
-						</td>
-						
-						<td>
-							@if (!isset($t->template->title) || $t->template->title == "")
-								NIL
-							@else
-								{{ $t->template->title }}
-							@endif
-						</td>
-						
-						<td>
-							{{ $t->message }}
-						</td>
-					</tr>
-					
-				@endforeach
+				@foreach ($x as $k => $s)
+					@foreach($s as $t)
+					@if ($loop->last)
+						<tr>
+							<td class="text-center">{{ ++$no }}</td>
+							<td class="text-center">{{ $t->type  }}</td>
+							<td>
+								@if(isset($t->title))
+									{{ $t->title }}
+								@elseif(isset($t->template->title))
+									{{  $t->template->title }}
+								@else
+								@endif
+							</td>
+							<td>{{ $t->message }}</td>
+							<td class="fw-bold text-center">{{ date('d-m-Y g:i A', strtotime($t->created_at."+8 hours")) }}</td>
+							<td class="text-center">
+								<a class="btn btn-dark" href="{{ url('smsblast') }}/{{ $t->group_id }}"><i class="bi bi-chevron-right"></i></a>
+							</td>
+						</tr>
+						@endif
+						@endforeach
+					@endforeach
 				</tbody>
 			</table>
-			{{ $x->links() }}
 		</div> 
 	</div>
 </div>
@@ -126,7 +118,6 @@
 		<div class="modal-content">
 			<div class="modal-header border-bottom-0">
 				<h5 class="modal-title">Send New SMS</h5>
-				
 				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -135,16 +126,21 @@
 			<div class="modal-body">
 				<form action="{{ url('smsblast/send') }}" method="POST"> 
 					@csrf
+					Title:
+					<input class="form-control" name="title" placeholder="SMS Title or Event Name" required><br />
+
 					Message:
-					<textarea class="form-control" name="message" placeholder="Avoid using '&' in this message."></textarea><br />
-					
+					<textarea class="form-control" name="message" maxlength="142" id="message" placeholder="Avoid using '&' in this message." required></textarea>
+					<div class="text-danger" id="textarea_feedback"></div><br>
+
 					Phone Number:
-					<textarea class="form-control" name="phone" placeholder="seperated by comma ','"></textarea><br />
+					<textarea class="form-control" name="phone" placeholder="seperated by comma ','" required></textarea><br>
 					
-					<div class='col-md-12 text-right px-4'>
+					<div class='col-md-12 text-right'>
 						<button type='submit' class='btn btn-success'> 
-							<i class="fas fa-save pr-1"></i> Save 
+							<i class="fas fa-paper-plane"></i> Send 
 						</button>
+						<div class="text-danger">By click the Send button, this SMS will be send to customer on the spot.</div>
 					</div>
 				</form>
 			</div>
@@ -166,27 +162,46 @@
 			<div class="modal-body">
 				<form action="{{ url('smsblast/send_bulk') }}" method="POST" enctype="multipart/form-data"> 
 					@csrf
+
+					Title:
+					<input class="form-control" name="title" placeholder="Tittle or Event Name" required><br />
+					
 					SMS Template:
-					<select class="form-control" name="template">
-					@foreach ($y as $k => $t)
-						<option value="{{ $t->id }}">{{ $t->title }}</option>
-					@endforeach
-					</select><br />
+					<select class="form-control" name="template" required>
+						@foreach ($y as $k => $t)
+							<option value="{{ $t->id }}">{{ $t->title }}</option>
+						@endforeach
+					</select><br>
 					
 					Excel Data:
-					<input type="file" name="file" /><br />
+					<input type="file" name="file" required/><br>
 					<em>Click <a href="{{ url('download-phoneno-template') }}" class="text-primary">here</a> to get the upload template.</em>
 					
-					<div class='col-md-12 text-right px-4'>
+					<div class='col-md-12 text-right'>
 						<button type='submit' class='btn btn-success'> 
-							<i class="fas fa-paper-plane pr-1"></i> Save 
+							<i class="fas fa-paper-plane"></i> Send 
 						</button>
+						<div class="text-danger">By click the Send button, this SMS will be send to customer on the spot.</div>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		var text_max = 142;
+		$('#textarea_feedback').html(text_max + ' characters remaining');
+
+		$('#message').keyup(function() {
+			var text_length = $('#message').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#textarea_feedback').html(text_remaining + ' characters remaining');
+		});
+
+	});
+</script>
 @endsection
 
 

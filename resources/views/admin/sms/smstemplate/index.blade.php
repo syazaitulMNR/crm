@@ -18,6 +18,14 @@
 			<h1 class="h2">SMS Template</h1>
 			
 			<div class="btn-toolbar mb-2 mb-md-0">
+				<a href="/smsblast" class="btn bg-dark text-white">
+					<i class="bi bi-chat-right-quote pr-2"></i> SMS Bulk
+				</a>&nbsp;
+
+				<a href="/smsschedule" class="btn bg-dark text-white">
+					<i class="bi bi-calendar2-week-fill pr-2"></i> SMS Schedule
+				</a>&nbsp;
+
 				<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#add-template">
 					<i class="bi bi-plus-lg pr-2"></i> New Template
 				</button>
@@ -100,29 +108,6 @@
 					Content:
 					<textarea class="form-control" id="textarea" name="content" maxlength="142" placeholder="Content" required></textarea>
 					<div class="text-danger" id="textarea_feedback"></div>
-					<hr>
-
-					<span class="fw-bolder">For SMS auto blasting purpose only. Can leave it blank.</span><br>
-					Class:
-					<select class="form-control" name="class">
-						<option value="">Select Event Class...</option>
-						@foreach ($prods as $prod)
-							<option value="{{ $prod->class }}">{{ $prod->class }}</option>
-						@endforeach
-					</select><br>
-					
-					<div class="row">
-						<span class="text-danger text-sm">*<b>Choose</b> between <b>DAY</b> or <b>HOUR</b> before event start</span>
-						<div class="col-md-6">
-							Day:
-							<input type="number" class="form-control" name="day" max="10" min="1" placeholder="Day Before Event Start"><br>
-						</div>
-						<div class="col-md-6">
-							Hour:
-							<input type="number" class="form-control" name="hour" max="23" min="1" placeholder="Hour Before Event Start">
-						</div>
-					</div>
-
 					
 					<div class='col-md-12 text-right px-4'>
 						<button type='submit' class='btn btn-success'> 

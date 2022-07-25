@@ -49,56 +49,15 @@ class ReportsController extends Controller
     public function trackpackage($product_id)
     {
         $payment = Payment::where('product_id', $product_id)->get();
+        $ticket = Ticket::where('product_id', $product_id)->get();
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('product_id', $product_id)->paginate(15);
         $student = Student::orderBy('id','desc')->paginate(15);
         $link = 'https://mims.momentuminternet.my/upgrade/'. $product->product_id . '/';
-
-        // Testing //////////////////////////////////////////////////////////////////
-
-        // $count_package = Package::where('product_id', $product_id)->count();
-        // for ($i = 0; $i < $count_package; $i++)
-        // {
-        //     $date_yesterday[$i] = Payment::where('created_at', $product_id)->where('status', 'paid')->subDays($i)->format('d M Y');
-        //     dd($date_yesterday[$i]);
-        //     $total_yesterday = Payment::where('product_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [ date('Y-m-d 00:00:00', strtotime("-[$i] day")) , date('Y-m-d 23:59:59', strtotime("-[$i] day")) ])->count();        
-        //     // $packageinfo[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [ $from , $to ])->count();
-        // }
-
-        // $visitorTraffic = Payment::where('created_at', '>=', \Carbon\Carbon::now->subMonth())
-        //                 ->groupBy(DB::raw('Date(created_at)'))
-        //                 ->orderBy('created_at', 'DESC')->get();
-
-        // $hingga = Payment::where('created_at', '>=', Carbon::now()->subDays(14));
-        // $dari = Payment::where('created_at', '==', Carbon::now());
-
-        // $visitors = Payment::select(
-        //                     "id" ,
-        //                     DB::raw("(sum(quantity)) as total_quantity"),
-        //                     DB::raw("(DATE_FORMAT(created_at, '%d-%m-%Y')) as my_date")
-        //                     )
-        //                     ->orderBy('created_at')
-        //                     ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%m-%Y')"))
-        //                     ->get();
-        // dd($visitors);
-
-        // worked  latest ambik latest buyer, oldest ambik oldest buyer
-        // $latest = Payment::latest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->get();
-        // $oldest = Payment::oldest('created_at')->where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->first();
-
-        // dd($latest);
+        $ecert = 'https://mims.momentuminternet.my/e-cert/'. $product->product_id;
 
         $startDate = Carbon::createFromFormat('Y-m-d', '2021-09-01');
         $endDate = Carbon::createFromFormat('Y-m-d', '2021-09-30');
-
-        // $posts = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0023')->orderBy('created_at', 'desc')->whereBetween('created_at', [$startDate, $endDate])->groupBy(function($date) {
-        //     return Carbon::parse($date->created_at)->format('D');})->get();
-
-        // $data= Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')
-        //     ->get()
-        //     ->groupBy(function($val) {
-        //     return Carbon::parse($val->created_at)->format('d M Y');
-        //     });
 
         $visitorTraffic = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', 'PKD0046')->orderBy('created_at', 'desc')->get()->groupBy(function($date) {
                             return Carbon::parse($date->created_at)->format('D'); // grouping by years
@@ -115,97 +74,71 @@ class ReportsController extends Controller
 
         //////////////////////      ////////////////////////
 
-        // $productfirst = Payment::where('status', 'paid')->where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
-        $productfirst = Payment::where('product_id', $product_id)->orderBy('created_at', 'asc')->first();
-        $test = $productfirst->created_at->format('Y-m-d H:i:s');
 
-        $hingga = Carbon::now('Asia/Kuala_Lumpur')->format('Y-m-d H:i:s');
-        $dari = $test;
 
-        $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime("-1 days")), date('Y-m-d 23:59:59', strtotime("-1 days"))])->get();
+        $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->get();
         $count_package = Package::where('product_id', $product_id)->count();
 
         for ($i = 0; $i < $count_package; $i++) {
-            $packageinfo[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->count();
-            $registration[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->count();
-            $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->get();
+            $packageinfo[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
+            $registration[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
+            $packageinfo = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->get();
 
             for ($i = 0; $i < $count_package; $i++) {
-                $totalpackage[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->count();
+                $totalpackage[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
             }
-            $data = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
-                ->get()
+            $data = Payment::where('status', 'paid')->where('product_id', $product_id)->get()
                 ->groupBy(function ($val) {
                     return Carbon::parse($val->created_at)->format('Y-m-d', '[A-Za-z0-9-]+');
                 });
-            $data1 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
-                ->get()
+            $data1 = Payment::where('status', 'paid')->where('product_id', $product_id)->get()
                 ->groupBy(function ($val) {
                     return Carbon::parse($val->created_at)->format('Y-m-d');
                 })->first();
-            $data2 = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
-                ->get()
+            $data2 = Payment::where('status', 'paid')->where('product_id', $product_id)->get()
                 ->groupBy(function ($val) {
                     return Carbon::parse($val->created_at)->format('Y-m-d');
                 })->skip(1)->first();
-            $totalquantity = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')
-                ->get()
+            $totalquantity = Payment::where('status', 'paid')->where('product_id', $product_id)->get()
                 ->groupBy(function ($val) {
                     return Carbon::parse($val->created_at)->format('d M Y');
                 });
-            $total_listproduct[$i] = Payment::where('package_id', $product_id)->where('status', 'paid')->whereBetween('created_at', [date('Y-m-d 00:00:00', strtotime("-1 day")), date('Y-m-d 23:59:59', strtotime("-1 day"))])->count();
+            $total_listproduct[$i] = Payment::where('package_id', $product_id)->where('status', 'paid')->count();
         }
 
-        // foreach($data1 as $key1 => $value1){
-        //     foreach($data2 as $key2 => $value2){
-        //         $testdate1 =  $value1->created_at->format('Y-m-d');
-        //         $testdate2 =  $value2->created_at->format('Y-m-d');
-        //     }
-        // }
 
-        $totalpackageall = Payment::where('status', 'paid')->where('product_id', $product_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->first();
+        $totalpackageall = Payment::where('status', 'paid')->where('product_id', $product_id)->first();
         $totaldays = $data->count();
-        // dd($totalpackageall);
-        // for ($j = 0; $j < $count_package; $j++){
-        //     for($i = 0; $i < $totaldays; $i++){
-        //         foreach($data as $key => $value){
-        //             // dd($testdate2);
-        //             // $q = Payment::where('status','paid')->where('product_id', 'PRD0022')->where('package_id' , 'PKD0046')->orderBy('created_at', 'desc')->where('created_at', '>', '2021-12-1 00:00:00')->where('created_at', '<=','2021-12-17 00:00:00')->get();
-        //             $t[$i] = Payment::where('status','paid')->where('product_id', $product_id)->where('package_id' , $package[$j]->package_id)->orderBy('created_at', 'desc')->whereBetween('created_at',array($testdate2,$testdate1))->get();//
 
-        //             $te[$i] = count($t['status'== 'paid']);
-        //             // dd($te);
-        //         }
-        //     }
-        // }
-
-        // $testingla = $q->where('startdate', '>', '16 Dec 2021')->where('startdate', '<=', '17 Dec 2021')->get();
-
-        // for ($i = 0; $i < $count_package; $i++)
-        // {
-        // $total_package_date[$i] = 0;
-        // $package_date[$i] = Payment::where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->where('status','paid')->whereBetween('created_at',)->count();
-        // $total_package_date[$i] = $total_package_date[$i] + $package_date[$i];
-        // }
 
         for ($i = 0; $i < $count_package; $i++) {
-            $totalpackagealls = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->count();
-            $totalperpackage[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->orderBy('created_at', 'desc')->count();
-            $registration[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->whereBetween('created_at', [$dari, $hingga])->count();
+            $totalpackagealls = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
+            $totalperpackage[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
+            $registration[$i] = Payment::where('status', 'paid')->where('product_id', $product_id)->where('package_id', $package[$i]->package_id)->count();
         }
 
         $selectedID = 1;
-        // End Testing ///////////////////////////////////////////////////////////////
+
 
         $counter = Student::count();
-        $totalsuccess = Payment::where('status', 'paid')->where('product_id', $product_id)->count();
-        $totalcancel = Payment::where('status', 'due')->where('product_id', $product_id)->count();
+        $totalsuccess = Payment::where('status','paid')->where('product_id', $product_id)->count();
+        $totalcancel = Payment::where('status','due')->where('product_id', $product_id)->count();
         $paidticket = Ticket::where('ticket_type', 'paid')->where('product_id', $product_id)->count();
         $freeticket = Ticket::where('ticket_type', 'free')->where('product_id', $product_id)->count();
 
-        return view('admin.reports.trackpackage', compact('selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
+        $tdisahkan = Ticket::where('attendance','kehadiran disahkan')->where('product_id', $product_id)->count();
+        $pdisahkan = Payment::where('attendance','kehadiran disahkan')->where('product_id',$product_id)->count();
+        $thadir = Ticket::where('attendance','hadir')->where('product_id', $product_id)->count();
+        $phadir = Payment::where('attendance','hadir')->where('product_id', $product_id)->count();
+        $tth = Ticket::where('attendance','tidak hadir')->where('product_id', $product_id)->count();
+        $pth = Payment::where('attendance','tidak hadir')->where('product_id', $product_id)->count();
+        $tlain = Ticket::whereNull('attendance')->where('product_id', $product_id)->count();
+        $plain = Payment::whereNull('attendance')->where('product_id', $product_id)->count();
+
+
+        return view('admin.reports.trackpackage', compact(/*'datapay','datatic',*/'plain','tlain','pth','tth','tdisahkan','pdisahkan','phadir','thadir','selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
         'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel',
-        'paidticket', 'freeticket', 'link'));
+        'paidticket', 'freeticket', 'link', 'ecert'));
     
     }
 
@@ -268,7 +201,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $payments->user_id,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
                                 }
@@ -329,7 +262,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $payments->user_id,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
 
@@ -394,7 +327,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $user->email,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
 
@@ -461,7 +394,7 @@ class ReportsController extends Controller
                                             $payments->offer_id,
                                             $payments->update_count,
                                             $payments->user_id,
-                                            $payments->created_at,
+                                            $payments->created_at->addHours(8),
                                             $payments->pay_datetime
                                         ]);
 
@@ -536,7 +469,7 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $tickets->ticket_type,
                                             $user->email,
-                                            $tickets->created_at,
+                                            $tickets->created_at->addHours(8),
                                         ]);
 
                                     }
@@ -589,7 +522,7 @@ class ReportsController extends Controller
                                             $packages->name,
                                             $tickets->ticket_type,
                                             $tickets->user_id,
-                                            $tickets->created_at,
+                                            $tickets->created_at->addHours(8),
                                         ]);
 
                                     // }
@@ -647,12 +580,36 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('deletepayment', 'Payment Successfully Deleted');
     }
 
-    public function approveaccount($payment_id, $product_id, $package_id, Request $request) 
+    public function approveaccount($payment_id, $product_id, $package_id, $stud_id, Request $request) 
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
 
         if($payment->status == 'approve by sales'){
+
+            $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+            $student = Student::where('stud_id', $stud_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            // change email status
+            $payment->email_status = 'Sent';
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+
             $payment->status = 'paid';
+
             $payment->save();
             $request->session()->forget('payment');
         }
@@ -665,12 +622,36 @@ class ReportsController extends Controller
         return redirect('view/buyer/'.$product_id.'/'.$package_id)->with('accountapprove', 'Account Approve Successfully');
     }
 
-    public function approvesales($payment_id, $product_id, $package_id, Request $request) 
+    public function approvesales($payment_id, $product_id, $package_id, $stud_id, Request $request) 
     {
         $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
 
         if($payment->status == 'approve by account'){
+
+            $payment = Payment::where('payment_id', $payment_id)->where('product_id', $product_id)->where('package_id', $package_id)->first();
+            $product = Product::where('product_id', $product_id)->first();
+            $package = Package::where('package_id', $package_id)->first();
+            $student = Student::where('stud_id', $stud_id)->first();
+
+            $send_mail = $student->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;        
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $payment_id = $payment->payment_id;
+            $productId = $product_id;        
+            $student_id = $student->stud_id;
+
+            // change email status
+            $payment->email_status = 'Sent';
+
+            dispatch(new PengesahanJob($send_mail, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $payment_id, $productId, $student_id));
+
             $payment->status = 'paid';
+
             $payment->save();
             $request->session()->forget('payment');
         }
@@ -687,6 +668,9 @@ class ReportsController extends Controller
     public function save_customer($product_id, $package_id, Request $request)
     { 
         $student = Student::where('ic', $request->ic)->first();
+        $product = Product::where('product_id', $product_id)->first();
+        $package = Package::where('package_id', $package_id)->first();
+        $payment = Payment::where('stud_id', $request->stud_id)->first();
         
         if(Student::where('ic', $request->ic)->exists()){
 
@@ -720,7 +704,7 @@ class ReportsController extends Controller
                 'quantity' => $request->quantity,
                 'status' => 'paid',
                 'pay_method' => 'Manual',
-                'email_status'  => 'Hold',
+                'email_status'  => 'Sent',
                 'stud_id' => $student->stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
@@ -731,6 +715,33 @@ class ReportsController extends Controller
                 'receipt_path' => $receipt_name
             ));
 
+            $email = $request->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $payment;
+            $survey_form = $product->survey_form;
+
+            // send the email
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => $request->offer_id,
+                'ic'            => $request->ic,
+                'email_status'  => 'Sent',
+                'stud_id'       => $student->stud_id,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id,
+            ]);
+
         }else{
 
             $stud_id = 'MI'.uniqid();
@@ -739,6 +750,7 @@ class ReportsController extends Controller
                 'stud_id'=> $stud_id,
                 'first_name'=> ucwords(strtolower($request->first_name)),
                 'last_name'=> ucwords(strtolower($request->last_name)),
+                'gender' => $request->gender,
                 'ic' => $request->ic,
                 'phoneno' => $request->phoneno,
                 'email' => $request->email
@@ -775,7 +787,7 @@ class ReportsController extends Controller
                 'quantity' => $request->quantity,
                 'status' => 'paid',
                 'pay_method' => 'Manual',
-                'email_status'  => 'Hold',
+                'email_status'  => 'Sent',
                 'stud_id' => $stud_id,
                 'product_id' => $product_id,
                 'package_id' => $package_id,
@@ -785,6 +797,33 @@ class ReportsController extends Controller
                 'pic' => $request->pic,
                 'receipt_path' => $receipt_name
             ));
+
+            $email = $request->email;
+            $product_name = $product->name;  
+            $package_name = $package->name;       
+            $date_from = $product->date_from;
+            $date_to = $product->date_to;
+            $time_from = $product->time_from;
+            $time_to = $product->time_to;
+            $packageId = $package_id;
+            $productId = $product_id;        
+            $student_id = $payment;
+            $survey_form = $product->survey_form;
+
+            // send the email
+            dispatch(new TiketJob($email, $product_name, $package_name, $date_from, $date_to, $time_from, $time_to, $packageId, $productId, $student_id, $survey_form));
+
+            $ticket_id = 'TIK' . uniqid();
+
+            Ticket::create([
+                'ticket_id'     => $ticket_id,
+                'ticket_type'   => $request->offer_id,
+                'ic'            => $request->ic,
+                'email_status'  => 'Sent',
+                'stud_id'       => $stud_id,
+                'product_id'    => $product_id,
+                'package_id'    => $package_id,
+            ]);
 
         }
 
@@ -1104,8 +1143,14 @@ class ReportsController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
         $student = Student::where('ic', $ticket->ic)->first();
-        $payment = Payment::where('payment_id', $ticket->payment_id)->first();
-        $buyer = Student::where('stud_id', $payment->stud_id)->first();
+
+        if($ticket->payment_id != NULL) {
+            $payment = Payment::where('payment_id', $ticket->payment_id)->first();
+            $buyer = Student::where('stud_id', $payment->stud_id)->first();
+        } else {
+            $payment = null;
+            $buyer = null;
+        }
 
         //Count the data
         $count = 1;
@@ -1228,7 +1273,7 @@ class ReportsController extends Controller
             
             $stud_id = $student_id->stud_id;
 
-            $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->get();
+            $ticket = Ticket::where('stud_id','LIKE','%'. $stud_id.'%')->where('product_id', $product_id)->where('package_id', $package_id)->paginate(15);
 
             if(count($ticket) > 0)
             {

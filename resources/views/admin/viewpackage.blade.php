@@ -61,11 +61,12 @@
           <tr>
             <td>{{ $package->firstItem() + $key }}</td>
             <td>{{ $packages->name  }}</td>
-            <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}" readonly></td>
+            <td><input type="text" class="form-control" value="{{ $link }}{{ $packages->package_id }}" id="copy_{{ $link }}{{ $packages->package_id }}" readonly></td>
             {{-- <td>{{ $packages->package_image  }}</td> --}}
             <td>
-              <a class="btn btn-warning" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}"><i class="bi bi-pencil-square"></i></a>
-              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}"><i class="bi bi-trash"></i></button>
+              <a class="btn btn-warning" href="{{ url('editpack') }}/{{ $packages->package_id }}/{{ $product->product_id }}" title="Edit Package"><i class="bi bi-pencil-square"></i></a>
+              <a class="btn btn-outline-info" onclick="copyToClipboard('copy_{{ $link }}{{ $packages->package_id }}')" title="Copy Link"><i class="bi bi-link-45deg"></i></a>
+              <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $packages->package_id }}" title="Delete Package"><i class="bi bi-trash"></i></button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal{{ $packages->package_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -98,4 +99,11 @@
 </div>
 @endsection
 
-
+<script>
+  // COPY LINK
+  function copyToClipboard(page_link) {
+      document.getElementById(page_link).select();
+      document.execCommand('copy');
+      alert("Copied text to clipboard: " + event.data["text/plain"] );
+  }
+</script>

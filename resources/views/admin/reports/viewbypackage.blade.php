@@ -71,6 +71,16 @@
                     </div>
                 </div>
                 <div class="form-group row px-4">
+                  <label for="name" class="col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-8">
+                      <select class="form-select" name="gender" required>
+                              <option value="gender" name="gender" selected disabled>-- Please Choose --</option>
+                              <option value="Lelaki" name="gender">Lelaki</option>
+                              <option value="Perempuan" name="gender">Perempuan</option>
+                      </select>
+                  </div>
+              </div>
+                <div class="form-group row px-4">
                     <label for="name" class="col-sm-4 col-form-label">Tel No.</label>
                     <div class="col-sm-8">
                     <input type="text" class="form-control" name="phoneno" placeholder="+60123456789" value="+60" required>
@@ -272,12 +282,13 @@
         </tr>
         </thead>
         <tbody> 
+          @foreach ($payment as $key => $payments)
           @foreach ($student as $students)   
-          @foreach ($payment as $payments)
+          
           @if ($students->stud_id == $payments->stud_id)
           @if ($payments->product_id == $product->product_id)  
           <tr>
-              <td>{{ $count++ }}</td>
+              <td>{{ $payment->firstItem() + $key }}</td>
               <td>{{ $students->ic }}</td>
               <td>{{ ucwords(strtolower($students->first_name)) }} {{ ucwords(strtolower($students->last_name)) }}</td>
               <td>{{ $students->email }}</td>
@@ -287,6 +298,10 @@
                   <i class="badge rounded-pill bg-success"> &nbsp; {{ $payments->status }} &nbsp; </i>
                 @elseif ($payments->status == 'not paid')
                   <i class="badge rounded-pill bg-danger"> &nbsp; {{ $payments->status }} &nbsp; </i>
+                @elseif ($payments->status == 'approve by sales')
+                  <i class="badge rounded-pill bg-danger"> &nbsp; {{ $payments->status }} &nbsp; </i>
+                @elseif ($payments->status == 'approve by account')
+                  <i class="badge rounded-pill bg-success"> &nbsp; {{ $payments->status }} &nbsp; </i>
                 @elseif ($payments->status == 'due')
                   <i class="badge rounded-pill bg-warning"> &nbsp; {{ $payments->status }} &nbsp; </i>
                 @elseif ($payments->status == 'not approve')

@@ -91,6 +91,10 @@ Route::get('trackprogram', 'ReportsController@trackprogram');
 Route::get('trackpackage/{product_id}', 'ReportsController@trackpackage');
 Route::post('searchreport/{product_id}', 'ReportsController@search_report')->name('searchreport','[A-Za-z0-9-]+');
 
+/////////////////////////////////////////////////////////////////////////
+Route::get('ticketcreate', 'ReportsController@ticketcreate');
+/////////////////////////////////////////////////////////////////////////
+
 //buyer
 Route::get('view/buyer/{product_id}/{package_id}', 'ReportsController@viewbypackage');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
@@ -100,8 +104,8 @@ Route::get('exportExcel/{product_id}/{package_id}', 'ImportExcelController@expor
 Route::post('new-customer/save/{product_id}/{package_id}', 'ReportsController@save_customer');
 Route::get('viewpayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@trackpayment');
 Route::get('delete/{payment_id}/{product_id}/{package_id}', 'ReportsController@destroy');
-Route::get('approveacc/{payment_id}/{product_id}/{package_id}', 'ReportsController@approveaccount');
-Route::get('approvesales/{payment_id}/{product_id}/{package_id}', 'ReportsController@approvesales');
+Route::get('approveacc/{payment_id}/{product_id}/{package_id}/{stud_id}', 'ReportsController@approveaccount');
+Route::get('approvesales/{payment_id}/{product_id}/{package_id}/{stud_id}', 'ReportsController@approvesales');
 Route::post('updatepayment/{product_id}/{package_id}/{payment_id}/{student_id}', 'ReportsController@updatepayment');
 Route::get('purchased-mail/{product_id}/{package_id}/{payment_id}/{stud_id}', 'ReportsController@purchased_mail');
 Route::post('exportProgram/{product_id}', 'ReportsController@exportProgram');
@@ -259,6 +263,7 @@ Route::get('showpackage/{id}', 'HomeController@view');
 // Route::get('pendaftaran/{product_id}/{package_id}/{user_invite}', 'HomeController@register_user_invite');
 Route::get('pendaftaran/{product_id}/{package_id}', 'HomeController@register');
 Route::get('verification/{product_id}/{package_id}', 'HomeController@detailsic');
+Route::get('verification/ARBAlumni/{product_id}/{package_id}', 'HomeController@detailAlumni');
 
 /*
 |--------------------------------------------------------------------------
@@ -442,6 +447,7 @@ Route::get("/smstemplate/delete/{id}", 'SmsTemplate@del');
 Route::delete("/smstemplate/delete/{id}", 'SmsTemplate@remove');
 
 Route::get("/smsblast", 'SmsBulk@index');
+Route::get("/smsblast/{group_id}", 'SmsBulk@show');
 Route::get('/download-phoneno-template', 'SmsBulk@export');
 Route::get("/smsblast/add", 'SmsBulk@add');
 Route::post("/smsblast/send", 'SmsBulk@create');
@@ -451,9 +457,15 @@ Route::put("/smsblast/edit/{id}", 'SmsBulk@update');
 Route::get("/smsblast/delete/{id}", 'SmsBulk@del');
 Route::delete("/smsblast/delete/{id}", 'SmsBulk@remove');
 
+Route::get("/smsschedule", 'SMSScheduleController@index');
+Route::post("/smsschedule/add", 'SMSScheduleController@save');
+Route::get("/smsschedule/edit/{id}", 'SMSScheduleController@edit');
+Route::put("/smsschedule/edit/{id}", 'SMSScheduleController@update');
+Route::get("/smsschedule/delete/{id}", 'SMSScheduleController@del');
+Route::delete("/smsschedule/delete/{id}", 'SMSScheduleController@remove');
+
 Route::prefix('student')->group(function() 
 {
-
 	Route::get('/','StudentPortal@redirectLogin');
 	Route::get('/login','StudentPortal@loginForm')->name('student.login');
 	Route::post('/login', 'StudentPortal@login')->name('student.login.submit');
@@ -548,8 +560,9 @@ Route::get('next-details/{ticket_id}', 'HomeController@businessForm');
 Route::post('save-business-details/{ticket_id}', 'HomeController@saveBusinessDetails');
 Route::post('save-user-details/{ticket_id}', 'HomeController@saveUserDetails');
 Route::get('pendaftaran-berjaya-ticket','HomeController@thankyouTicket');
-Route::get('export-surveyform','HomeController@exportsurveyform');
+Route::get('export-surveyform/{product_id}','HomeController@exportsurveyform');
 Route::get('export-test','HomeController@exporttest');
+Route::get('surveyform','HomeController@surveyform');
 
 //check invoice template email
 Route::get('check_invoice', 'InvoiceController@show');
@@ -571,3 +584,31 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
 });
 // Route::get('/kehadiran-peserta/{product_id}/{package_id}/{ticket_id}/{payment_id}/{ic}', 'AttendanceController@pengesahanKehadiranPeserta');
+
+Route::get('ic', function () {
+
+	$students = \App\Student::all();
+	foreach ($students as $student) 
+	{
+		if ($student->gender == NULL){
+		if (is_numeric($student->ic))
+		{
+			if (strlen($student->ic) == 12)
+			{
+				if($student->ic % 2 == 0){
+		
+				$student->gender = "Perempuan";
+				$student->save();
+				}
+				else if ($student->ic % 2 == 1) {
+
+				$student->gender = "Lelaki";
+				$student->save();
+			}
+			}
+			else {
+			}
+		}
+		}
+	}
+});

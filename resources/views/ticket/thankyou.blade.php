@@ -4,40 +4,55 @@
   Terima Kasih
 @endsection
 <head>
-  @if ($package == "PKD0082" || $package == "PKD0083")
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbjohor/"> 
+  {{-- @if ($package == "PKD0082" || $package == "PKD0083")
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
   @elseif ($package == "PKD0084" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbkl/"> 
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
   @elseif ($package == "PKD0086" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbsp/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbsp/">
   @elseif ($package == "PKD0091" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbsa/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbsa/">
   @elseif ($package == "PKD0093" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbkb/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkb/">
   @elseif ($package == "PKD0095" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbktn/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbktn/">
   @elseif ($package == "PKD0097" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbsbh/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbsbh/">
   @elseif ($package == "PKD0099" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbmlk/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbmlk/">
   @elseif ($package == "PKD00101" )
-  <meta http-equiv="refresh" content="3;url=http://www.momentumbisnes.com/oto-mbjhr/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbjhr/">
+  @elseif ($package == "PKD00126" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkl/">
+  @elseif ($package == "PKD00131" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbkb/">
+  @elseif ($package == "PKD00132" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/oto-mbpg/">
+  @elseif ($package == "PKD00127" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00114" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-sp/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00116" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-sa/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00117" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-kb/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00118" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-ktn/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00119" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-sabah/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00120" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-melaka/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
   @elseif ($package == "PKD00121" )
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/diamond-johor/">
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  @elseif ($package == "PKD00129" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/">
+  @elseif ($package == "PKD00134" )
+  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> --}}
+
+  @if ( $package == "PKD00137" || $package == "PKD00138" )
+    <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/tq-mmb/">
   @else 
-  <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/8video-buku/"> 
+    <meta http-equiv="refresh" content="3;url=https://www.momentumbisnes.com/buku-8video/"> 
   @endif  
 </head>
 
