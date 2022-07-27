@@ -80,7 +80,7 @@ class HomeController extends Controller
         $product = Product::where('product_id', $tiket->product_id)->first();
         $package = $request->session()->get('package');
 
-        // if(($request->session()->get('offer_id')) == 'OFF006'){
+        if(($request->session()->get('offer_id')) == 'OFF006'){
             if(Session::get('validatedIC')) {
                 if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
                     $validatedData = $request->validate([
@@ -142,53 +142,61 @@ class HomeController extends Controller
             }else {
                 return redirect('business_details/'. $ticket_id);
             }
-        // }else{
-        //     if(Session::get('validatedIC')) {
-        //         if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
-        //             $validatedData = $request->validate([
-        //                 'business' => 'required',
-        //                 'income'=> 'required',
-        //                 'role' => 'required'
-        //             ]);
+        }else{
+            if(Session::get('validatedIC')) {
+                if(!BusinessDetail::where('ticket_id', $ticket_id)->exists()) {
+                    $validatedData = $request->validate([
+                        'business' => 'required',
+                        'income'=> 'required',
+                        'role' => 'required'
+                    ]);
     
-        //             $data = Ticket::where('ticket_id', $ticket_id)->first();
-        //             $dataStudent = Student::where('ic', $data->ic)->first();
-        //             $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
+                    $data = Ticket::where('ticket_id', $ticket_id)->first();
+                    $dataStudent = Student::where('ic', $data->ic)->first();
+                    // $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
     
-        //             if($request->business == 'Lain-lain'){
-        //                 $type=$request->lain;
+                    if($request->business == 'Lain-lain'){
+                        $type=$request->lain;
                         
-        //             }
-        //             else{
-        //                 $type=$request->business;
-        //             }
+                    }
+                    else{
+                        $type=$request->business;
+                    }
 
-        //             $bussInsert = BusinessDetail::create([
-        //                 'ticket_id' => $ticket_id,
-        //                 'business_role' => $request->role,
-        //                 'business_type' => $type,
-        //                 'business_amount' => $request->income,
-        //                 'business_name' => $type
-        //             ]);
+                    $bussInsert = BusinessDetail::create([
+                        'ticket_id' => $ticket_id,
+                        'business_role' => $request->role,
+                        'business_type' => $type,
+                        'business_amount' => $request->income,
+                        'business_name' => $type,
+                        'product_id' => $tiket->product_id,
+                        'first_name' => $dataStudent->first_name,
+                        'last_name' => $dataStudent->last_name,
+                        'ic' => $dataStudent->ic,
+                        'phoneno' => $dataStudent->phoneno,
+                        'email' => $dataStudent->email,
+                        'gender' => $dataStudent->gender,
+                        'product_name' => $product->name
+                    ]);
     
-        //             $student = $request->session()->get('student');
-        //             $student->save();
+                    $student = $request->session()->get('student');
+                    $student->save();
                     
-        //             if($bussInsert) {
-        //                 Session::put('product_id_session', $data->product_id);
-        //                 Session::put('package_id_session', $data->package_id);
-        //                 $request->session()->forget('student');
-        //                 Session::forget('validatedIC');
+                    if($bussInsert) {
+                        Session::put('product_id_session', $data->product_id);
+                        Session::put('package_id_session', $data->package_id);
+                        $request->session()->forget('student');
+                        Session::forget('validatedIC');
     
-        //                 return redirect('pendaftaran-berjaya-ticket');
-        //             }
-        //         }else {
-        //             return redirect('business_details/'. $ticket_id);
-        //         }
-        //     }else {
-        //         return redirect('business_details/'. $ticket_id);
-        //     }
-        // }
+                        return redirect('pendaftaran-berjaya-ticket');
+                    }
+                }else {
+                    return redirect('business_details/'. $ticket_id);
+                }
+            }else {
+                return redirect('business_details/'. $ticket_id);
+            }
+        }
     }
 
     public function ICValidation(Request $request, $ticket_id) {
