@@ -1242,27 +1242,9 @@ class HomeController extends Controller
 
     public function exportsurveyform($product_id)
     {   
-
-        // $business = DB::table('business_details')->get();
-        // // $ticket = DB::table('ticket')->where('product_id','PRD0034')->get();
-        // $ticket = DB::table('ticket')->where('ticket_type','paid')->where('product_id','PRD0037')->get();
-        // $student = DB::table('student')->get();
-
-        // $product = DB::table('product')->where('product_id',$product_id)->first();
-
-        // Session::put('product_id',$product_id);
-
-        // return Excel::download(new SurveyFormExport(), '' .$product->name.'.xlsx');
-
         $product = Product::where('product_id', $product_id)->first();
-        $student = Student::orderBy('id', 'desc')->get();
 
-        // $ticket = DB::table('ticket')->where('product_id', $product_id)->get();
-        $ticket = Ticket::where('product_id', $product_id)->get();
-        // $business = DB::table('business_details')->get();
-        $business = BusinessDetail::all();
-
-        return "Test";
+        return Excel::download(new SurveyFormExport($product_id), '' .$product->name.'.xlsx');
     }
 
     public function exporttest() 
