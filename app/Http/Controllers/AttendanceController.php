@@ -225,8 +225,8 @@ class AttendanceController extends Controller
         $product = Product::where('product_id', $product_id)->first();
         $package = Package::where('package_id', $package_id)->first();
 
-        Session::put('product_id',$product_id);
-        Session::put('package_id',$package_id);
+        // Session::put('product_id',$product_id);
+        // Session::put('package_id',$package_id);
 
         $payment = Payment::where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
         $ticket = Ticket::where('ticket_type','paid')->where('product_id',$product_id)->where('package_id',$package_id)->where('attendance','kehadiran disahkan')->get();
