@@ -18,7 +18,14 @@ class VoucherClaimedController extends Controller
     {
         $voucher = Voucher::where('voucher_id', $voucher_id)->first();
 
-        return view('customer_voucher.one_getic', compact('voucher'));
+        if($voucher->status == 'Active')
+        {
+            return view('customer_voucher.one_getic', compact('voucher'));
+        } else {
+            return view('customer_voucher.deactive');
+        }
+            
+
     }
 
     public function checking_ic($voucher_id, Request $request)
