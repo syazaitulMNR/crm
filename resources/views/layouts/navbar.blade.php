@@ -31,6 +31,7 @@
                         <li><a class="dropdown-item" href="/membership"><i class="bi bi-person-badge pr-2"></i>Membership Programme</a></li>
                         @endif
                         <li><a class="dropdown-item" href="/trackprogram"><i class="bi bi-graph-up pr-2"></i>Sales Report</a></li>
+                        <li><a class="dropdown-item" href="/viewvoucher"><i class="bi bi-receipt-cutoff pr-2"></i>Voucher List</a></li>
                         <li><a class="dropdown-item" href="/segmentation"><i class="bi bi-bookshelf pr-2"></i>Segmentation</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/emailblast"><i class="bi bi-envelope pr-2"></i>Email Blasting</a></li>
@@ -49,31 +50,33 @@
                 
                 @if(Auth::user()->role_id == 'ROD003' || Auth::user()->role_id == 'ROD004')
                 @else
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Employee
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Employee Profile</a></li>
-                      <li><a class="dropdown-item" href=""><i class="bi bi-currency-dollar pr-2"></i>Commission</a></li>
-                    </ul>
-                </li> --}}
+                    {{-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Employee
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                        <li><a class="dropdown-item" href=""><i class="bi bi-person-lines-fill pr-2"></i>Employee Profile</a></li>
+                        <li><a class="dropdown-item" href=""><i class="bi bi-currency-dollar pr-2"></i>Commission</a></li>
+                        </ul>
+                    </li> --}}
                 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Event
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                      <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Manage Event</a></li>
-                      <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Manage Offer</a></li>
-                      <li><hr class="dropdown-divider"></li>                      
-                      <li><a class="dropdown-item" href="/collection-id"><i class="bi bi-cash-stack pr-2"></i>Collection ID</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/manageuser">User</a>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                        <li><a class="dropdown-item" href="/product"><i class="bi bi-calendar4-event pr-2"></i>Manage Event</a></li>
+                        <li><a class="dropdown-item" href="/view-offer"><i class="bi bi-tags pr-2"></i>Manage Offer</a></li>
+                        <li><hr class="dropdown-divider"></li>                      
+                        <li><a class="dropdown-item" href="/collection-id"><i class="bi bi-cash-stack pr-2"></i>Collection ID</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a class="dropdown-item" href="/managevoucher"><i class="bi bi-receipt pr-2"></i>Manage Voucher</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/manageuser">User</a>
+                    </li>
                 @endif
 				
 				<li class="nav-item">
