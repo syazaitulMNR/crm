@@ -103,3 +103,12 @@
     
 </div>
 @endsection
+
+<script>
+  // COPY LINK
+  function copyToClipboard(page_link) {
+      document.getElementById(page_link).select();
+      document.execCommand('copy');
+      alert("Copied text to clipboard: " + event.data["text/plain"] );
+  }
+</script>
