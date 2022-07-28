@@ -12,7 +12,7 @@
         }
         .bg {
             /* The image used */
-            /* background-image: url("assets/images/voucher/img_62e0ad50d2928.jpg"); */
+            background-image: url("assets/images/voucher/img_62e0ad50d2928.jpg");
 
             /* Full height */
             height: 100%;

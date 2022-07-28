@@ -93,16 +93,14 @@ class HomeController extends Controller
                     $dataStudent = Student::where('ic', $data->ic)->first();
                     // $name = $dataStudent->first_name . ' ' . $dataStudent->last_name;
                     if($request->business == 'Lain-lain'){
-                        $type=$request->lain;
-                        
-                    }
-                    else{
-                        $type=$request->business;
+                        $type = $request->lain;  
+                    } else {
+                        $type = null;
                     }
                     $bussInsert = BusinessDetail::create([
                         'ticket_id' => $ticket_id,
                         'business_role' => $request->role,
-                        'business_type' => $type,
+                        'business_type' => $request->business,
                         'business_amount' => $request->income,
                         'business_name' => $type,
                         'product_id' => $tiket->product_id,

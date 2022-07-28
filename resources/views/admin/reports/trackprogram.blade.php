@@ -41,25 +41,31 @@
                 <th>#</th>
                 <th>Date</th>
                 <th>Event</th>
+                <th>Offer</th>
                 <th class="text-center"><i class="fas fa-cogs"></i></th>
               </tr>
             </thead>
             <tbody> 
               @foreach ($product as $key => $products)
-              <tr>
-                <td>{{ $product->firstItem() + $key }}</td>
-                <td>{{ date('d/m/Y', strtotime($products->date_from)) }}</td>
-                <td>
-                  {{ $products->name }}
-                  @if ($products->status == 'active')
-                      <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
-                  @else
+                @foreach ($offers as $offer)     
+                  @if ($products->offer_id == $offer->offer_id)   
+                    <tr>
+                      <td>{{ $product->firstItem() + $key }}</td>
+                      <td>{{ date('d/m/Y', strtotime($products->date_from)) }}</td>
+                      <td>
+                        {{ $products->name }}
+                        @if ($products->status == 'active')
+                            <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
+                        @else
+                        @endif
+                      </td>
+                      <td>{{ $offer->name }}</td>
+                      <td class="text-center">
+                        <a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="bi bi-chevron-right"></i></a>
+                      </td>
+                    </tr>
                   @endif
-                </td>
-                <td class="text-center">
-                  <a class="btn btn-dark" href="{{ url('trackpackage') }}/{{ $products->product_id }}"><i class="bi bi-chevron-right"></i></a>
-                </td>
-              </tr>
+                @endforeach 
               @endforeach
             </tbody>
           </table>   

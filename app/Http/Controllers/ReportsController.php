@@ -41,9 +41,10 @@ class ReportsController extends Controller
 
     public function trackprogram()
     {
+        $offers = Offer::orderBy('id','asc')->get();
         $product = Product::orderBy('id','desc')->paginate(15);
         
-        return view('admin.reports.trackprogram', compact('product'));
+        return view('admin.reports.trackprogram', compact('offers', 'product'));
     }
 
     public function trackpackage($product_id)
