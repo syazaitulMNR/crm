@@ -84,6 +84,38 @@ Route::get('classdata/{id}','SegmentationController@classdata');
 
 /*
 |--------------------------------------------------------------------------
+| Voucher
+|--------------------------------------------------------------------------
+*/
+// Admin Side - Voucher Manangement
+Route::get('managevoucher','VoucherController@index');
+Route::get('managevoucher/create','VoucherController@create');
+Route::get('managevoucher/create/getPackage','VoucherController@getPackage'); // Get Package list based on selected Product
+Route::post('managevoucher/save','VoucherController@store');
+Route::get('voucher/edit/{id}','VoucherController@edit');
+Route::get('voucher/edit/getPackageEdit','VoucherController@getPackageEdit'); // Get Package list based on selected Product (Edit Page)
+Route::post('voucher/edit/save/{id}','VoucherController@update');
+Route::get('voucher/delete/{id}','VoucherController@destroy');
+
+Route::get('viewvoucher','VoucherController@viewvoucher');
+Route::get('viewvoucher/{voucher_id}','VoucherController@viewclaimed');
+Route::get('viewvoucher/detail/{voucher_id}/{series_no}','VoucherController@detailclaim');
+Route::get('completevoucher/{voucher_id}/{series_no}','VoucherController@updateClaimed');
+Route::get('delete/claimed/{voucher_id}/{series_no}','VoucherController@deleteClaimed');
+Route::post('updatestudent/{stud_id}','VoucherController@updateStudent');
+Route::get('export-claimedlist/{voucher_id}','VoucherController@exportClaimed'); //export button
+
+// Student Side - claiming process
+Route::get('voucher/{voucher_id}','VoucherClaimedController@ic_check');
+Route::get('voucher/not_found','VoucherClaimedController@notFound');
+Route::get('voucher/check/{voucher_id}', 'VoucherClaimedController@checking_ic');
+Route::get('voucher/details/{voucher_id}/{stud_id}', 'VoucherClaimedController@voucher_form');
+Route::post('voucher/details/save/{voucher_id}/{stud_id}', 'VoucherClaimedController@voucher_save');
+Route::get('claimed_success/{voucher_id}/{stud_id}/{series_no}', 'VoucherClaimedController@voucher_success');
+Route::get('download-voucher/{voucher_id}/{stud_id}/{series_no}', 'VoucherClaimedController@extract_voucher');
+
+/*
+|--------------------------------------------------------------------------
 | Sales Report
 |--------------------------------------------------------------------------
 */
