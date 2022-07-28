@@ -27,44 +27,50 @@
   <div class="row">
     <div class="col-md-12 "> 
        
-      <div class="float-right pt-3">{{$vouchers->links()}}</div>
-      <br>
+      @if(count($vouchers) > 0)
+        <div class="float-right pt-3">{{$vouchers->links()}}</div>
+        <br>
+        
+          <!-- View event details in table ----------------------------------------->
+          <div class="table-responsive">
+            <table class="table table-hover" id="myTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Voucher</th>
+                  <th>Description</th>
+                  <th class="text-center"><i class="fas fa-cogs"></i></th>
+                </tr>
+              </thead>
+              <tbody> 
+                @foreach ($vouchers as $key => $v)
+                <tr>
+                  <td>{{ $key+1 }}</td>
+                  <td>{{ date('d/m/Y', strtotime($v->start_date)) }} - {{ date('d/m/Y', strtotime($v->end_date)) }}</td>
+                  <td>
+                    {{ $v->name }}
+                    @if ($v->status == 'Active')
+                        <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
+                    @else
+                    @endif
+                  </td>
+                  <td>{{ $v->desc }}</td>
+                  <td class="text-center">
+                    <a class="btn btn-dark" href="{{ url('viewvoucher') }}/{{ $v->voucher_id }}"><i class="bi bi-chevron-right"></i></a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>   
+          </div>
+
+        </div>
+      @else
+        <p>There are no voucher to display.</p>
+      @endif
       
-        <!-- View event details in table ----------------------------------------->
-        <div class="table-responsive">
-          <table class="table table-hover" id="myTable">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Date</th>
-                <th>Voucher</th>
-                <th>Description</th>
-                <th class="text-center"><i class="fas fa-cogs"></i></th>
-              </tr>
-            </thead>
-            <tbody> 
-              @foreach ($vouchers as $key => $v)
-              <tr>
-                <td>{{ $key+1 }}</td>
-                <td>{{ date('d/m/Y', strtotime($v->start_date)) }} - {{ date('d/m/Y', strtotime($v->end_date)) }}</td>
-                <td>
-                  {{ $v->name }}
-                  @if ($v->status == 'Active')
-                      <span class="badge rounded-pill bg-success"> &nbsp;On Going&nbsp; </span>
-                  @else
-                  @endif
-                </td>
-                <td>{{ $v->desc }}</td>
-                <td class="text-center">
-                  <a class="btn btn-dark" href="{{ url('viewvoucher') }}/{{ $v->voucher_id }}"><i class="bi bi-chevron-right"></i></a>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>   
-        </div>  
     </div>
   </div>
-</div>
 
 @endsection
