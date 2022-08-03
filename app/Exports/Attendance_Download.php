@@ -3,42 +3,36 @@
 namespace App\Exports;
 
 use App\Student;
-use App\Product;
-use App\Package;
 use App\Payment;
-use App\Ticket;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 // use Maatwebsite\Excel\Concerns\FromCollection;
 
 // class StudentExport implements FromCollection
 class Attendance_Download implements FromView
 {
+
+    private $productid, $packageid;
+
+    public function __construct($product_id, $package_id){
+
+        $this->productid = $product_id;
+        $this->packageid = $package_id;
+    }
+
     public function view(): View
     {
-        $product_id = Session::get('product_id');
-        $package_id = Session::get('package_id');
+        $payment = Payment::where('status', 'paid')->where('product_id', $this->productid)->where('package_id', $this->packageid)->where('attendance', 'kehadiran disahkan')->get();
+        $student = Student::all();
 
-        $product = Product::where('product_id', $product_id)->first();
-        $package = Package::where('package_id', $package_id)->first();
-        $payment = Payment::where('status','paid')->where('product_id',$product_id)->where('attendance','kehadiran disahkan')->get();
-        $ticket = Ticket::where('ticket_type','paid')->where('product_id',$product_id)->where('attendance','kehadiran disahkan')->get();
-        
-        for ($i=0; $i < count($payment) ; $i++) { 
-            $studentpay[$i] = Student::where('stud_id', $payment[$i]->stud_id)->get();
-        }
-        
-        if(count($ticket) == 0){
-            return view('admin.reports.download_attendance',compact('product','package','payment','ticket','studentpay'));
 
-        }
-        else{
-            for ($i=0; $i < count($ticket) ; $i++) { 
-                $studenttic[$i] = Student::where('stud_id', $ticket[$i]->stud_id)->get();
-            }
-            return view('admin.reports.download_attendance',compact('product','package','payment','ticket','studentpay','studenttic'));
-
-        }
+        return view('admin.reports.download_attendance', compact('payment', 'student'));
     }
+
+    // public function chunkSize(): int
+    // {
+    //     return 1000;
+    // }
 }
