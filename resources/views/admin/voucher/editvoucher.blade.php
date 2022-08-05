@@ -48,8 +48,14 @@
         </div>
 
         <div class="col-md-6 mt-3 center">
-            {{-- <img src="/assets/images/voucher/img_62d8fc112b286.jpg" style="max-width:80%"> --}}
-            <img src="{{$voucher->img_path}} " style="max-width:80%">
+            @if($width > $height)
+                {{-- <img src="/assets/images/voucher/voucherMMB.jpg" style="max-width:80%"> --}}
+                <img src="{{$voucher->img_path}} " style="max-width:80%">
+            @else
+                {{-- <img src="/assets/images/voucher/img_62dfac15d1dc3.jpg" style="max-width:20%"> --}}
+                <img src="{{$voucher->img_path}} " style="max-width:20%">
+            @endif
+            {{-- <img src="{{$voucher->img_path}} " style="max-width:80%"> --}}
         </div>
 
         <div class="col-md-4">

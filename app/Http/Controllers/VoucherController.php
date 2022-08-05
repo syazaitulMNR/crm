@@ -89,7 +89,13 @@ class VoucherController extends Controller
         $voucher = Voucher::where('voucher_id', $id)->first();
         $products = \DB::table('product')->orderby('id','desc')->get();
 
-        return view('admin.voucher.editvoucher', compact('voucher', 'products'));
+        // list($width, $height) = getimagesize(public_path('assets/images/voucher/img_62dfac15d1dc3.jpg'));
+        // dd($width, $height);
+        list($width, $height) = getimagesize($voucher->img_path);
+
+        return view('admin.voucher.editvoucher', compact('voucher', 'products', 'width', 'height'));
+
+        
     }
 
     public function getPackageEdit(Request $request) 
