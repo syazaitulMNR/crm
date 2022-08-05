@@ -279,6 +279,7 @@ Sales Report
         <p>There are no package yet.</p>
         @endif
         <div class="float-right pt-3">{{$package->links()}}</div>
+        
         <!--- Display upgrade link ---->
         <div class="table-responsive">
           <table class="table table-hover">
@@ -338,22 +339,64 @@ Sales Report
             </div>
           </table>
 
+          {{-- Untuk kegunaan offline event sahaja --}}
+          @if ($product->class == "MMB")
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>Export Details</th>
-                    <th class="col-mb-4"><i class="fas fa-cogs"></i></th>
+                    <th scope="">Package</th>
+                    <th scope="col">Link Sah Kehadiran (Kegunaan Offline Event)</th>          
+                    <th scope="col"></th>
+                    <th scope="col" class="col-mb-2"><i class="fas fa-cogs"></i></th>
                   </tr>
                 </thead>
+
                 <tbody>
-                  <tr>
-                    <td>{{ $product->name  }} Export Survey</td>
-                    <td><a class="btn btn-sm btn-success" href="{{ url('export-surveyform') }}/{{ $product->product_id }}"><i class="fa fa-download pr-2"></i>Download</a></td>
-                  </tr> 
+                  @foreach ($package as $key => $packages)    
+                    @if ($product->product_id == $packages->product_id) 
+                      <tr>
+                        <td>{{ $packages->name }}</td>
+                        <td><input type="text" class="form-control" value="{{ $sah }}{{ $packages->package_id }}" id="sah" readonly></td>
+                        <td>
+                          <div class="row">
+                            <script>
+                              function sahFunction() {
+                                var copyText = document.getElementById("sah");
+                                copyText.select();
+                                copyText.setSelectionRange(0, 99999)
+                                document.execCommand("copy");
+                              }
+                            </script>
+                            <td>                  
+                              <a class="btn btn-sm btn-dark mt-1" onclick="sahFunction()">Copy</a>
+                            </td>
+                          </div>
+                        </td>
+                      </tr>
+                    @endif
+                  @endforeach
                 </tbody>
-              </table> 
+              </table>
             </div>
+          @endif
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Export Details</th>
+                  <th class="col-mb-4"><i class="fas fa-cogs"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ $product->name }} Export Survey</td>
+                  <td><a class="btn btn-sm btn-success" href="{{ url('export-surveyform') }}/{{ $product->product_id }}"><i class="fa fa-download pr-2"></i>Download</a></td>
+                </tr> 
+              </tbody>
+            </table> 
+          </div>
           
            
           
@@ -370,6 +413,7 @@ Sales Report
           @endforeach
           </select> --}}
         </div>
+
         <br>
         </div>
       </div>

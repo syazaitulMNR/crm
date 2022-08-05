@@ -56,6 +56,7 @@ class ReportsController extends Controller
         $student = Student::orderBy('id','desc')->paginate(15);
         $link = 'https://mims.momentuminternet.my/upgrade/'. $product->product_id . '/';
         $ecert = 'https://mims.momentuminternet.my/e-cert/'. $product->product_id;
+        $sah = 'https://mims.momentuminternet.my/maklumat-peserta/'. $product->product_id . '/';
 
         $startDate = Carbon::createFromFormat('Y-m-d', '2021-09-01');
         $endDate = Carbon::createFromFormat('Y-m-d', '2021-09-30');
@@ -139,7 +140,7 @@ class ReportsController extends Controller
 
         return view('admin.reports.trackpackage', compact(/*'datapay','datatic',*/'plain','tlain','pth','tth','tdisahkan','pdisahkan','phadir','thadir','selectedID', 'totalpackageall', 'totalperpackage', 'totalpackage', 'totalquantity', 'registration',
         'data', 'visitorTraffic', 'results', 'order', 'count_package', 'product', 'package', 'payment', 'student', 'counter', 'totalsuccess', 'totalcancel',
-        'paidticket', 'freeticket', 'link', 'ecert'));
+        'paidticket', 'freeticket', 'link', 'ecert', 'sah'));
     
     }
 

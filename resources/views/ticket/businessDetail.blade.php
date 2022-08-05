@@ -44,7 +44,7 @@
                             <option value="Takaful / Insuran">Takaful / Insuran</option>
                             <option value="Perunding Kewangan">Perunding Kewangan</option>
                             <option value="Homedeco / Interior Designer">Homedeco / Interior Designer</option>
-                            <option value="Pecetakan">Percetakan</option>
+                            <option value="Percetakan">Percetakan</option>
                             <option value="Belum Berniaga">Belum Berniaga</option>
                             <option value="Lain-lain">Lain-lain</option>
                         </select>
