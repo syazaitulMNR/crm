@@ -346,8 +346,7 @@ Sales Report
                 <thead>
                   <tr>
                     <th scope="">Package</th>
-                    <th scope="col">Link Sah Kehadiran (Kegunaan Offline Event)</th>          
-                    <th scope="col"></th>
+                    <th scope="col">Link Sah Kehadiran (Kegunaan Offline Event)</th>
                     <th scope="col" class="col-mb-2"><i class="fas fa-cogs"></i></th>
                   </tr>
                 </thead>
@@ -357,21 +356,9 @@ Sales Report
                     @if ($product->product_id == $packages->product_id) 
                       <tr>
                         <td>{{ $packages->name }}</td>
-                        <td><input type="text" class="form-control" value="{{ $sah }}{{ $packages->package_id }}" id="sah" readonly></td>
-                        <td>
-                          <div class="row">
-                            <script>
-                              function sahFunction() {
-                                var copyText = document.getElementById("sah");
-                                copyText.select();
-                                copyText.setSelectionRange(0, 99999)
-                                document.execCommand("copy");
-                              }
-                            </script>
-                            <td>                  
-                              <a class="btn btn-sm btn-dark mt-1" onclick="sahFunction()">Copy</a>
-                            </td>
-                          </div>
+                        <td><input type="text" class="form-control" value="{{ $sah }}{{ $packages->package_id }}" id="copy_{{ $sah }}{{ $packages->package_id }}" readonly></td>
+                        <td>                  
+                          <a class="btn btn-sm btn-dark mt-1" onclick="copyToClipboard('copy_{{ $sah }}{{ $packages->package_id }}')">Copy</a>
                         </td>
                       </tr>
                     @endif
@@ -421,3 +408,10 @@ Sales Report
   </div>
 </div>
 @endsection
+<script>
+  function copyToClipboard(page_link) {
+    document.getElementById(page_link).select();
+    document.execCommand('copy');
+    alert("Copied text to clipboard: " + event.data["text/plain"] );
+  }
+</script>

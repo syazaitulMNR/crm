@@ -113,35 +113,41 @@ class AttendanceController extends Controller
         $product = Product::where('product_id',$product_id)->first();
 
         $student = Student::where('ic', $request->ic)->first();
-        $payment = Payment::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+
+        // jika student & ic wujud
+        if ($student != null)
+        {
+            $payment = Payment::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+            // kalau orang beli lebih dari 1 dia cari kat table ticket
+            if ($payment == NULL){
+                $ticket = Ticket::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+                if ($ticket->ticket_type == 'paid'){
+                    $pay = Payment::where('payment_id',$ticket->payment_id)->where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->first();
+                    $peserta = Student::where('ic', $ticket->ic)->first();
         
-        // kalau orang beli lebih dari 1 dia cari kat table ticket
-        if ($payment == NULL){
-            $ticket = Ticket::where('stud_id',$student->stud_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
-            if ($ticket->ticket_type == 'paid'){
-                $pay = Payment::where('payment_id',$ticket->payment_id)->where('status','paid')->where('product_id',$product_id)->where('package_id',$package_id)->first();
+                    return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
+                }
+                else {
+                    return view('customer.failed_payment');
+                }
+            }
+
+            // tiket selesai bayar
+            elseif ($payment->status == 'paid'){
+
+                $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payment->payment_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
+                $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
                 $peserta = Student::where('ic', $ticket->ic)->first();
-    
+                $pay = Payment::where('payment_id', $ticket->payment_id)->first();
+        
                 return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
             }
-            else {
+            else { 
+                // belum buat pembayaran
                 return view('customer.failed_payment');
             }
-        }
-
-        // tiket selesai bayar
-        elseif ($payment->status == 'paid'){
-
-            $ticket = Ticket::orderBy('id','desc')->where('payment_id',$payment->payment_id)->where('product_id',$product_id)->where('package_id',$package_id)->first();
-            $businessdetail = BusinessDetail::where('ticket_id', $ticket->ticket_id)->first();
-            $peserta = Student::where('ic', $ticket->ic)->first();
-            $pay = Payment::where('payment_id', $ticket->payment_id)->first();
-    
-            return redirect('data-peserta/'. $pay->product_id . '/' . $pay->package_id . '/' . $ticket->ticket_id . '/' . $pay->payment_id . '/' . $peserta->ic);
-        }
-        else { 
-            // belum buat pembayaran
-            return view('customer.failed_payment');
+        } else {
+            return view('certificate.not_found');
         }
     }
 
